@@ -41,9 +41,9 @@ You will also need the two browser tabs with Cloud Shell connected to the **prim
 1. From the one of the tabs connected to the **primary** host, download the three SQL scripts as `oracle`:
   ````
   <copy>
-  wget https://oracle.github.io/learning-library/data-management-library/database/data-guard/19c-adg-fundamentals/media-recovery/scripts/01-abmr.sql
-  wget https://oracle.github.io/learning-library/data-management-library/database/data-guard/19c-adg-fundamentals/media-recovery/scripts/02-abmr.sql
-  wget https://oracle.github.io/learning-library/data-management-library/database/data-guard/19c-adg-fundamentals/media-recovery/scripts/03-abmr.sql </copy>
+  wget https://oracle-livelabs.github.io/database-maa/19c-adg-fundamentals/media-recovery/scripts/01-abmr.sql
+  wget https://oracle-livelabs.github.io/database-maa/19c-adg-fundamentals/media-recovery/scripts/02-abmr.sql
+  wget https://oracle-livelabs.github.io/database-maa/19c-adg-fundamentals/media-recovery/scripts/03-abmr.sql </copy>
   ````
 
   ![](./images/abmr-wget.png)  

@@ -10,12 +10,12 @@
 		{
 			"title": "Get started",
 			"description": "Get started",
-			"filename": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/labs/cloud-login/cloud-login-livelabs2.md"
+			"filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
 		},
 		{
 			"title": "Lab 1: Verify compute instance setup",
 			"description": "Verify compute instance setup",
-			"filename": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/labs/verify-compute/verify-compute-novnc.md"
+			"filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-novnc.md"
 		},
 		{
 			"title": "Lab 2: Initialize environment",
@@ -60,7 +60,7 @@
 		{
 			"title": "Need help?",
 			"description": "Solutions to Common Problems and Directions for Receiving Live Help",
-			"filename": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/labs/need-help/need-help-livelabs.md"
+			"filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
 		}
 	]
 }

@@ -17,7 +17,7 @@ Estimated Lab Time: 15 Minutes
 
 2. From the menu, select **Oracle Database**, then **Bare Metal, VM, and Exadata**.
 
-  ![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-dbcs.png " ")
+  ![](https://oracle-livelabs.github.io/common/images/console/database-dbcs.png " ")
 
 3. In the List Scope section on the left, enter the first part of the compartment assigned to you in the Search field, then click the compartment name.
 
@@ -45,13 +45,13 @@ Estimated Lab Time: 15 Minutes
 
 7. Find your ssh private key which has been created earlier to connect to the host where the primary database is located.
 
-a. If you have used Reserve Workshop on Livelabs option(Green Button), you should have used anyone of the method for generating SSH key pairs using [How to Generate SSH Keys](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/labs/generate-ssh-key/?lab=generate-ssh-keys) .
+a. If you have used Reserve Workshop on Livelabs option(Green Button), you should have used anyone of the method for generating SSH key pairs using [How to Generate SSH Keys](https://oracle-livelabs.github.io/common/labs/generate-ssh-key/?lab=generate-ssh-keys) .
 
 Now, you should have the **Public** and **Private** key pair. You must have provided the Public Key while reserving the lab and you need the repsective Private key to connect the DB Server.
 
 b. If you have used Run on Your Tenancy option (Brown Button), you must use the downloaded public and private keys ( While creating the DB Systems) for connecting to the DB servers.
 
-In all the labs we use Cloud shell to connect to the DB server. You can also connect to the DB servers in anyone of your preferred way such as Terminal in Mac, Powershell in Windows, Putty etc.  Refer the above mentioned link [How to Connect to Servers](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/labs/generate-ssh-key/?lab=generate-ssh-keys) for detailed instructions. Once you are connected to the DB server, **rest of the instructions will remain same**.
+In all the labs we use Cloud shell to connect to the DB server. You can also connect to the DB servers in anyone of your preferred way such as Terminal in Mac, Powershell in Windows, Putty etc.  Refer the above mentioned link [How to Connect to Servers](https://oracle-livelabs.github.io/common/labs/generate-ssh-key/?lab=generate-ssh-keys) for detailed instructions. Once you are connected to the DB server, **rest of the instructions will remain same**.
 
   Using the **Upload** facility, upload the private key in the **Cloud Shell** environment.
 

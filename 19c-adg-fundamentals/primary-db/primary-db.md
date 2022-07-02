@@ -21,7 +21,7 @@ Estimated Lab Time: 45 Minutes
 To create the primary database we need to follow a wizard.
 1. Click the hamburger menu at the top left then select **Bare Metal, VM and Exadata**
 
-    ![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-dbcs.png " ")
+    ![](https://oracle-livelabs.github.io/common/images/console/database-dbcs.png " ")
 
     This will bring you to the Database As A Service DB Systems page.
 2. To start creating the primary database, click the **Create DB System** Button.

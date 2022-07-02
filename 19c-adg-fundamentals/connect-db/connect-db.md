@@ -27,7 +27,7 @@ Estimated Lab Time: 30 Minutes
 
 2.  From the hamburger menu, select **Bare Metal, VM, and Exadata** in the Oracle Database category.
 
-  ![](https://objectstorage.us-phoenix-1.oraclecloud.com/p/SJgQwcGUvQ4LqtQ9xGsxRcgoSN19Wip9vSdk-D_lBzi7bhDP6eG1zMBl0I21Qvaz/n/c4u02/b/common/o/images/console/database-dbcs.png " ")
+  ![](https://oracle-livelabs.github.io/common/images/console/database-dbcs.png " ")
 
 3. In the List Scope section on the left, enter the first part of the compartment assigned to you in the Search field, then click the compartment name.
 

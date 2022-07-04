@@ -1,0 +1,56 @@
+{
+    "workshoptitle": "RAC Fundamentals",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+         {
+            "title": "Introduction",
+            "description": "This lab walks you through the steps to understand a RAC database and Grid Infrastructure",
+            "filename": "../../intro/intro.md"
+        },
+        {
+            "title": "Getting Started",
+            "description": "Get a Free Trial",
+            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/pre-register-free-tier-account.md"
+        },
+        {
+            "title": "Lab 1: Generate SSH Keys",
+            "description": "Generate SSH Key",
+            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/generate-ssh-key/generate-ssh-keys.md"
+        },
+        {
+            "title": "Lab 2: Build a DB System",
+            "description": "This lab walks you through building a RAC system in the Oracle Cloud.",
+            "filename": "../../setup/setup-compute.md"
+        },
+        {
+            "title": "Lab 3: Install Sample schema",
+            "description": "This lab walks you through installing the sample schema.",
+            "filename": "../../services/setup.md"
+        },
+        {
+            "title": "Lab 4: Install Sample clients",
+            "description": "This lab walks you through installing two simple clients.",
+            "filename": "../../clients/install-clients.md"
+        },
+        {
+            "title": "Lab 5: Services",
+            "description": "This lab walks you through some of the characteristics of database services.",
+            "filename": "../../services/services.md"
+        },
+        {
+            "title": "Lab 6: Application Continuity",
+            "description": "This lab walks you through how TAC operates.",
+            "filename": "../../appcont/appcont.md"
+        },
+        {
+            "title": "Lab 7: ACCHK - verifying protection levels",
+            "description": "This lab walks you through verifying your AC protection with ACCHK.",
+            "filename": "../../appcont/acchk.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

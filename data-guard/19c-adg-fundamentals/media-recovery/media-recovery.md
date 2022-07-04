@@ -131,9 +131,9 @@ To do this, open a new SSH connection to the host as the opc user.
 Next ***sudo su - oracle*** to switch to the Oracle user and then issue the following wget commands:
 
 ````
-<copy>wget https://oracle.github.io/learning-library/data-management-library/database/data-guard/19c-adg-fundamentals/media-recovery/scripts/01-abmr.sql
-wget https://oracle.github.io/learning-library/data-management-library/database/data-guard/19c-adg-fundamentals/media-recovery/scripts/02-abmr.sql
-wget https://oracle.github.io/learning-library/data-management-library/database/data-guard/19c-adg-fundamentals/media-recovery/scripts/03-abmr.sql</copy>
+<copy>wget https://oracle-livelabs.github.io/database-maa/19c-adg-fundamentals/media-recovery/scripts/01-abmr.sql
+wget https://oracle-livelabs.github.io/database-maa/19c-adg-fundamentals/media-recovery/scripts/02-abmr.sql
+wget https://oracle-livelabs.github.io/database-maa/19c-adg-fundamentals/media-recovery/scripts/03-abmr.sql</copy>
 
 ````
 

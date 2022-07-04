@@ -30,7 +30,7 @@ Watch the video below for a quick walk through of the lab.
 
 7.  From the navigation menu, select **Bare Metal, VM, and Exadata** in the Oracle Database category.
 
-  ![Bare Metal and VM Menu](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-dbcs.png " ")
+  ![Bare Metal and VM Menu](https://oracle-livelabs.github.io/common//images/console/database-dbcs.png " ")
 
 8.  Select the compartment you were assigned in LiveLabs and identify your database system from your My Reservations page. Click the database system name to see the details.
 
@@ -51,11 +51,11 @@ Watch the video below for a quick walk through of the lab.
 
 1.  To start the Oracle Cloud Shell, go to your Cloud console and click the Cloud Shell icon at the top right of the page.  If you get a policy error, ensure you have chosen the correct compartment you were assigned in the earlier task.
 
-	![Select Oracle Cloud Shell](https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/generate-ssh-key-cloud-shell/images/cloudshellopen.png " ")
+	![Select Oracle Cloud Shell](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/cloudshellopen.png " ")
 
-    ![Oracle Cloud Shell](https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/generate-ssh-key-cloud-shell/images/cloudshellsetup.png " ")
+    ![Oracle Cloud Shell](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/cloudshellsetup.png " ")
 
-    ![Navigation Menu of Oracle Cloud Shell](https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/generate-ssh-key-cloud-shell/images/cloudshell.png " ")
+    ![Navigation Menu of Oracle Cloud Shell](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/cloudshell.png " ")
 
 2. Download the private key for the Oracle Database World LiveLab using the below command in the Cloud Shell.
     ````
@@ -88,7 +88,7 @@ Watch the video below for a quick walk through of the lab.
     cd ~
     ```
 
-    ![List Private Key](https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/generate-ssh-key-cloud-shell/images/upload-key-finished.png " ")
+    ![List Private Key](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/upload-key-finished.png " ")
 
 6.  Using one of the Public IP addresses, enter the command below to login as the *opc* user and verify connection to your nodes.
 

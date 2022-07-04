@@ -10,12 +10,12 @@
         {
             "title": "Getting Started",
             "description": "Get a Free Trial",
-            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/pre-register-free-tier-account.md"
+            "filename": "https://oracle-livelabs.github.io/common//labs/cloud-login/pre-register-free-tier-account.md"
         },
         {
             "title": "Lab 1: Generate SSH Keys",
             "description": "Generate SSH Key",
-            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/generate-ssh-key/generate-ssh-keys.md"
+            "filename": "https://oracle-livelabs.github.io/common//labs/generate-ssh-key/generate-ssh-keys.md"
         },
         {
             "title": "Lab 2: Build a DB System",
@@ -65,7 +65,7 @@
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-            "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-freetier.md"
+            "filename":"https://oracle-livelabs.github.io/common//labs/need-help/need-help-freetier.md"
         }
     ]
 }

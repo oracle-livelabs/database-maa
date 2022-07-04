@@ -28,7 +28,7 @@ In this lab, you will:
 
 2. Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Bare Metal, VM, and Exadata**.
 
-	![](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-dbcs.png " ")
+	![](https://oracle-livelabs.github.io/common//images/console/database-dbcs.png " ")
 
 3. Now let's create a DB System by clicking "Create DB System"
 

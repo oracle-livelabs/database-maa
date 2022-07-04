@@ -109,7 +109,7 @@ The following section will show you how to configure resource manager to make th
 
     -  Create a Stack by clicking on **Menu** --> **Resource Manager** --> **Stacks**.
 
-        ![](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/developer-resmgr-stacks.png " ")
+        ![](https://oracle-livelabs.github.io/common//images/console/developer-resmgr-stacks.png " ")
 
     Click **Create Stack**.
 

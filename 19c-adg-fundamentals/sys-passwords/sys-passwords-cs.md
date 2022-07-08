@@ -24,10 +24,7 @@ Watch the video below for a quick walk through of the lab.
 
 1. Navigate to the DGHOL primary database following using the below path
 
-    Overview
-    Bare Metal, VM and Exadata
-    DB Systems (choose ADGHOLAD1)
-    DB System Details
+    Overview -> Oracle Base Database (VM, BM) -> DB Systems (choose ADGHOLAD1)
 
 2. At the bottom of the page, click the DGHOL database.
 
@@ -67,6 +64,6 @@ Watch the video below for a quick walk through of the lab.
 
 ## Acknowledgements
 
-- **Author** - Pieter Van Puymbroeck, Product Manager Data Guard, Active Data Guard and Flashback Technologies
+- **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn, Ludovico Caldara, Suraj Ramesh
-- **Last Updated By/Date** -  Ludovico Caldara, October 2021
+- **Last Updated By/Date** -  Ludovico Caldara, July 2022

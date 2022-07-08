@@ -88,6 +88,6 @@ You have now successfully used Active Data Guard Restore point propagation. You 
 
 ## Acknowledgements
 
-- **Author** - Pieter Van Puymbroeck, Product Manager Data Guard, Active Data Guard and Flashback Technologies
+- **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn, Ludovico Caldara, Suraj Ramesh
-- **Last Updated By/Date** -  Ludovico Caldara, October 2021
+- **Last Updated By/Date** -  Ludovico Caldara, July 2022

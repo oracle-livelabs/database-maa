@@ -3,6 +3,8 @@
 ## Introduction
 In this lab, we will see how Active Data Guard Automatic Block media recovery works.
 
+[](youtube:WFoTNPgKll4)
+
 Block corruptions are a common source of database outages. A database block is
 corrupt when its content has changed from what Oracle Database expects to find. If
 not prevented or repaired, block corruption can bring down the database and possibly
@@ -18,7 +20,6 @@ Watch the video below for a quick walk through of the lab.
 
 [](youtube:05IR37v7kg8)
 
-05IR37v7kg8
 ### Objectives
 - Setup your environment
 - Corrupt the datafile

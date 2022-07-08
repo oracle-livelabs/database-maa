@@ -135,7 +135,7 @@ You will also need the two browser tabs with Cloud Shell connected to the **prim
   SQL>
   ````
 
-In this example, you will need to remember the number 11.
+In this example, you will need to remember the number **11**.
 
 ## Task 3: Corrupt the datafile
 1. In the same session, execute script `02-abmr.sql`.
@@ -191,7 +191,7 @@ By accessing the table, Oracle will need to read the data. This demo database is
 ## Task 5: Cleanup
 
 To clean this excercise, just drop the tablespace.
-1. In the sqlplus window, use this command:
+1. In the sqlplus window still connected to the PDB, use this command:
 
     ````
     SQL> <copy>drop tablespace corruptiontest including contents and datafiles;</copy>
@@ -206,6 +206,6 @@ You have now seen Active Data Guard Automatic Block media recovery working. You 
 
 ## Acknowledgements
 
-- **Author** - Pieter Van Puymbroeck, Product Manager Data Guard, Active Data Guard and Flashback Technologies
+- **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn, Ludovico Caldara, Suraj Ramesh
-- **Last Updated By/Date** -  Ludovico Caldara, October 2021
+- **Last Updated By/Date** -  Ludovico Caldara, July 2022

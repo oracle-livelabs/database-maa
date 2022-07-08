@@ -75,6 +75,6 @@ You may now [proceed to the next lab](#next).
 
 ## Acknowledgements
 
-- **Author** - Pieter Van Puymbroeck, Product Manager Data Guard, Active Data Guard and Flashback Technologies
+- **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn, Kamryn Vinson
-- **Last Updated By/Date** -  Suraj Ramesh, September 2021
+- **Last Updated By/Date** -  Suraj Ramesh, July 2022

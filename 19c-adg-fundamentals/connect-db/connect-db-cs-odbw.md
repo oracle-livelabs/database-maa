@@ -19,7 +19,7 @@ Watch the video below for a quick walk through of the lab.
 
 1. Open up the menu in the left hand corner.  
 
-2. From the menu, select **Oracle Database**, then **Bare Metal, VM, and Exadata**.
+2. From the menu, select **Oracle Database**, then **Oracle Base Database (VM, BM)**.
 
   ![](https://oracle-livelabs.github.io/common/images/console/database-dbcs.png " ")
 
@@ -78,7 +78,7 @@ Watch the video below for a quick walk through of the lab.
 
 1. **Duplicate the tab in your browser**. If your browser does not support tab duplication, open a new tab and connect again to the **Cloud Console**.
 
-2. From the menu, navigate again to **Oracle Database**, then  **Bare Metal, VM and Exadata**.
+2. From the menu, navigate again to **Oracle Database**, then  **Oracle Base Database (VM, BM)**.
 
   This time, select the **ADGHOLAD2** DB System (the standby database).
 
@@ -115,6 +115,6 @@ You have now successfully created a database connection to the primary and the s
 
 ## Acknowledgements
 
-- **Author** - Pieter Van Puymbroeck, Product Manager Data Guard, Active Data Guard and Flashback Technologies
-- **Contributors** - Robert Pastijn, Ludovico Caldara, Suraj Ramesh
-- **Last Updated By/Date** -  Ludovico Caldara, October 2021
+- **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
+- **Contributors** - Robert Pastijn, Suraj Ramesh
+- **Last Updated By/Date** -  Ludovico Caldara, July 2022

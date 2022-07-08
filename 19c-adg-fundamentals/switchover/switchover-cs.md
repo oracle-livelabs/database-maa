@@ -63,20 +63,20 @@ We can conclude from the previous outputs which database is PRIMARY and which is
 1. In the Oracle Cloud Infrastructure console, navigate to the DB System Details of the ADGHOLAD1 database and scroll down to the Databases section.
 
     Overview
-    -> Bare Metal, VM and Exadata
+    -> Oracle Base Database (VM, BM)
     -> DB Systems
 
 2. Select **ADGHOLAD1**
     ![](./images/switchover-03.png)
 
-3. Click name **DGHOL** and in the next screen scroll down immediately and click on **Data Guard Associations**
+3. In the Databases section click on the name **DGHOL** and in the next screen scroll down and click on **Data Guard Associations (1)** in the left pane.
 
     ![](./images/switchover-04.png)
 
 4. Click the 3 dots on the right, and click **Switchover**
     ![](./images/switchover-05.png)
 
-5. This is a DBA responsibility, so the tooling asks the password. Enter the SYS password (WElcome123##) from the Primary database and click **OK** then the role transition starts.
+5. This activity will require some downtime, so the tooling asks for the password. Enter the SYS password (WElcome123##) from the Primary database and click **OK**. The role transition starts.
     ![](./images/switchover-06.png)
 
 6. At this point, the lifecycle state will be updating and the role transition happens in the background.
@@ -110,6 +110,6 @@ You have now successfully performed a graceful role transition.
 
 ## Acknowledgements
 
-- **Author** - Pieter Van Puymbroeck, Product Manager Data Guard, Active Data Guard and Flashback Technologies
+- **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn, Ludovico Caldara, Suraj Ramesh
-- **Last Updated By/Date** -  Ludovico Caldara, October 2021
+- **Last Updated By/Date** -  Ludovico Caldara, July 2022

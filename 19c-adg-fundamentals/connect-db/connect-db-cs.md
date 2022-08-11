@@ -17,11 +17,11 @@ Estimated Lab Time: 15 Minutes
 
 2. From the menu, select **Oracle Database**, then **Oracle Base Database (VM, BM)**.
 
-  ![](https://oracle-livelabs.github.io/common/images/console/database-dbcs.png " ")
+  ![Menu of OCI Console showing how to navigate to the next steps](https://oracle-livelabs.github.io/common/images/console/database-dbcs.png " ")
 
 3. In the List Scope section on the left, enter the first part of the compartment assigned to you in the Search field, then click the compartment name.
 
-  ![](images/select-compartment-livelabs.png)
+  ![List of compartments where the correct compartment must be selected](images/select-compartment-livelabs.png)
 
 
    There are two Database Systems created for you. The system prefixed with `ADGHOLD1` is your primary database, and the system prefixed with `ADGHOLD2` is your secondary database.
@@ -30,16 +30,16 @@ Estimated Lab Time: 15 Minutes
 
 1. Click the name of the primary database (`ADGHOLD1`).
 
-  ![](images/db-systems-livelabs.png)
+  ![Screenshot of OCI Console showing how to navigate to the next step](images/db-systems-livelabs.png)
 
   Scroll down on the page and click on **Nodes(1)** to find on which host it resides.
   The Public IP Address part is the IP Address we want to know. Make a copy of this on the clipboard or make sure to have this information noted down.
 
-  ![](./images/nodes-1.png)
+  ![Screenshot of OCI Console showing how to navigate to the next step](./images/nodes-1.png)
 
 5. Open the **Cloud Shell** using the icon next to the region.
 
-  ![](./images/cloud-shell.png)
+  ![Screenshot of OCI Console showing the button for the Cloud Shell](./images/cloud-shell.png)
 
   The Cloud Shell opens after a few seconds and shows the **prompt**.
 
@@ -55,9 +55,9 @@ In all the labs we use Cloud shell to connect to the DB server. You can also con
 
   Using the **Upload** facility, upload the private key in the **Cloud Shell** environment.
 
-  ![](./images/cloud-shell-upload.png)
+  ![Screenshot of the cloud shell showing how to upload the keys](./images/cloud-shell-upload.png)
 
-  ![](./images/cloud-shell-upload-key.png)
+  ![Screenshot of the cloud shell showing how to upload the keys](./images/cloud-shell-upload-key.png)
 
 8. Change the permission of the private key to `0600` and connect to the primary host as `opc`, using the public IP address that you have noted down earlier.
     ````
@@ -77,7 +77,7 @@ In all the labs we use Cloud shell to connect to the DB server. You can also con
     <copy>Select name, db_unique_name, database_role from v$database;</copy>
     ````
 
-  ![](./images/connect-primary.png)
+  ![Screenshot of the cloud shell showing the steps executed so far](./images/connect-primary.png)
 
 
 ## Task 2: Create the Connection to the Standby in a new tab
@@ -88,16 +88,16 @@ In all the labs we use Cloud shell to connect to the DB server. You can also con
 
   This time, select the **ADGHOLAD2** DB System (the standby database).
 
-  ![](images/db-systems-livelabs.png)
+  ![Screenshot of OCI console showing the database systems](images/db-systems-livelabs.png)
 
   Scroll down on the page and click on **Nodes(1)** to find on which host it resides.
   The Public IP Address part is the IP Address we want to know. Make a copy of this on the clipboard or make sure to have this information noted down.
 
-  ![](./images/nodes-2.png)
+  ![Screenshot of OCI Console showing the public IP address of the second node](./images/nodes-2.png)
 
 5. Open the **Cloud Shell** using the icon next to the region.
 
-  ![](./images/cloud-shell.png)
+  ![Screenshot of OCI Console showing the button for the Cloud Shell](./images/cloud-shell.png)
 
   The Cloud Shell opens after a few seconds and shows the **prompt**.
 
@@ -115,7 +115,7 @@ In all the labs we use Cloud shell to connect to the DB server. You can also con
     <copy>Select name, db_unique_name, database_role from v$database;</copy>
     ````
 
-  ![](./images/connect-standby.png)
+  ![Screenshot of the cloud shell showing the steps executed so far](./images/connect-standby.png)
 
 You have now successfully created a database connection to the primary and the standby database.
 

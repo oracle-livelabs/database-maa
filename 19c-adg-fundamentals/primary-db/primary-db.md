@@ -9,7 +9,7 @@ The primary database is the database that is accessible by most of your applicat
 
 The primary database can be either a single-instance Oracle database or an Oracle Real Application Clusters (Oracle RAC) database.
 
-![](./images/primary.png)
+![Diagram of a Data Guard topology](./images/primary.png)
 
 Estimated Lab Time: 45 Minutes
 
@@ -21,12 +21,12 @@ Estimated Lab Time: 45 Minutes
 To create the primary database we need to follow a wizard.
 1. Click the hamburger menu at the top left then select **Bare Metal, VM and Exadata**
 
-    ![](https://oracle-livelabs.github.io/common/images/console/database-dbcs.png " ")
+    ![Screenshot of the OCI console menu](https://oracle-livelabs.github.io/common/images/console/database-dbcs.png " ")
 
     This will bring you to the Database As A Service DB Systems page.
 2. To start creating the primary database, click the **Create DB System** Button.
 
-    ![](./images/create-db-system-button.png)
+    ![Screenshot of the OCI console create DB button](./images/create-db-system-button.png)
 
 3. Verify that at the top, you have selected the correct compartment that you got assigned.
 
@@ -40,14 +40,14 @@ Use the following information to enter in the wizard.
 
     Up to now, the screen should look similar to this.
 
-    ![](./images/create-dbcs-prim-01.png)
+    ![Screenshot of the OCI console Create DB System page](./images/create-dbcs-prim-01.png)
 
 5. Then we scroll further down and we use following information:
     * Total node count: 1
     * Oracle Database Software Edition: Enterprise Edition Extreme Performance
     * Storage Management: Logical Volume Manager
 
-    ![](./images/create-dbcs-prim-02.png)
+    ![Screenshot of the OCI console Create DB System page](./images/create-dbcs-prim-02.png)
 
     We choose the Logical Volume Manager for 2 reasons. The creation of the database is faster but also, we need access to the datafile for the exercise about Automatic Block media recovery later in the Workshop where we will corrupt a block and let Active Data Guard repair it.
 
@@ -55,23 +55,23 @@ Use the following information to enter in the wizard.
 
 6. We leave the storage Default:
 
-    ![](./images/create-dbcs-prim-03.png)
+    ![Screenshot of the OCI console Create DB System page](./images/create-dbcs-prim-03.png)
 
 7. And we will let OCI create the SSH Key pair for us.
 
-    ![](./images/create-dbcs-prim-04.png)
+    ![Screenshot of the OCI console Create DB System page](./images/create-dbcs-prim-04.png)
 
 8. Make sure to download both of the keys **NOW** and store them locally on a safe place so you do not lose them.
 
 9. For the license, pick "License Included"
 
-    ![](./images/create-dbcs-prim-05.png)
+    ![Screenshot of the OCI console Create DB System page](./images/create-dbcs-prim-05.png)
 
 10. With regards to the network configuration, pick the Virtual Cloud network you have created with the setup of your compartment and also specified the already existing client subnet.
 
 11. For the Hostname prefix, use: **VMADGHOLAD1**
 
-    ![](./images/create-dbcs-prim-06.png)
+    ![Screenshot of the OCI console Create DB System page](./images/create-dbcs-prim-06.png)
 
 12. Next step is to configure our database. Go further by clicking the Next button.
 
@@ -80,19 +80,19 @@ Use the following information to enter in the wizard.
     * Database image: Oracle Database 19c
     * PDB name: mypdb
 
-    ![](./images/create-dbcs-prim-07.png)
+    ![Screenshot of the OCI console Create DB System page](./images/create-dbcs-prim-07.png)
 
 14. As the password use: **WElcome123##**
 
-    ![](./images/create-dbcs-prim-08.png)
+    ![Screenshot of the OCI console Create DB System page](./images/create-dbcs-prim-08.png)
 
 15. Leave all the rest default and click the "Create DB system" Button.
 
-    ![](./images/create-dbcs-prim-09.png)
+    ![Screenshot of the OCI console Create DB System page](./images/create-dbcs-prim-09.png)
 
     This will bring you to the DB System home page which will be provisioning.
 
-    ![](./images/create-dbcs-prim-10.png)
+    ![Screenshot of the OCI console showing the DB being created](./images/create-dbcs-prim-10.png)
 
     When this step completes, then you have successfully created the primary database.
 
@@ -100,7 +100,7 @@ Use the following information to enter in the wizard.
 
     Afterward the Database is available
 
-    ![](./images/create-dbcs-prim-11.png)
+    ![Screenshot of the OCI console showing the DB after the creation](./images/create-dbcs-prim-11.png)
 
 
 You may now [proceed to the next lab](#next).

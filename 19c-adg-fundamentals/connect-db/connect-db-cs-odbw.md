@@ -7,7 +7,7 @@ Estimated Lab Time: 15 Minutes
 
 Watch the video below for a quick walk through of the lab.
 
-[](youtube:6Dp49VXqjtQ)
+[Youtube video showing how to connect](youtube:6Dp49VXqjtQ)
 
 ### Objectives
 - Create a database connection to the primary database
@@ -21,29 +21,29 @@ Watch the video below for a quick walk through of the lab.
 
 2. From the menu, select **Oracle Database**, then **Oracle Base Database (VM, BM)**.
 
-  ![](https://oracle-livelabs.github.io/common/images/console/database-dbcs.png " ")
+  ![Menu of OCI Console showing how to navigate to the next step](https://oracle-livelabs.github.io/common/images/console/database-dbcs.png " ")
 
 3. In the List Scope section on the left, enter the first part of the compartment assigned to you in the Search field, then click the compartment name.
 
-  ![](images/select-compartment-livelabs.png)
+  ![List of compartments where the correct compartment must be selected](images/select-compartment-livelabs.png)
 
 
-   There are two Database Systems created for you. The system prefixed with `ADGHOLD1` is your primary database, and the system prefixed with `ADGHOLD2` is your secondary database.
+   There are two Database Systems created for you. The system prefixed with `ADGHOLAD1` is your primary database, and the system prefixed with `ADGHOLAD2` is your secondary database.
 
 </if>
 
-1. Click the name of the primary database (`ADGHOLD1`).
+1. Click the name of the primary database (`ADGHOLAD1`).
 
-  ![](images/db-systems-livelabs.png)
+  ![Screenshot of OCI Console showing how to navigate to the next step](images/db-systems-livelabs.png)
 
   Scroll down on the page and click on **Nodes(1)** to find on which host it resides.
   The Public IP Address part is the IP Address we want to know. Make a copy of this on the clipboard or make sure to have this information noted down.
 
-  ![](./images/nodes-1.png)
+  ![Screenshot of OCI Console showing the public IP address of the node](./images/nodes-1.png)
 
 5. Open the **Cloud Shell** using the icon next to the region.  If you get a policy error, ensure you have chosen the correct compartment you were assigned.
 
-  ![](./images/cloud-shell.png)
+  ![Screenshot of OCI Console showing the button for the Cloud Shell](./images/cloud-shell.png)
 
   The Cloud Shell opens after a few seconds and shows the **prompt**.
 
@@ -71,7 +71,7 @@ Watch the video below for a quick walk through of the lab.
     <copy>Select name, db_unique_name, database_role from v$database;</copy>
     ````
 
-  ![](./images/connect-primary.png)
+  ![Screenshot of the cloud shell showing the steps executed so far](./images/connect-primary.png)
 
 
 ## Task 2: Create the Connection to the Standby in a new tab
@@ -82,16 +82,16 @@ Watch the video below for a quick walk through of the lab.
 
   This time, select the **ADGHOLAD2** DB System (the standby database).
 
-  ![](images/db-systems-livelabs.png)
+  ![Screenshot of OCI console showing the database systems](images/db-systems-livelabs.png)
 
   Scroll down on the page and click on **Nodes(1)** to find on which host it resides.
   The Public IP Address part is the IP Address we want to know. Make a copy of this on the clipboard or make sure to have this information noted down.
 
-  ![](./images/nodes-2.png)
+  ![Screenshot of OCI Console showing the public IP address of the second node](./images/nodes-2.png)
 
 5. Open the **Cloud Shell** using the icon next to the region.
 
-  ![](./images/cloud-shell.png)
+  ![Screenshot of OCI Console showing the button for the Cloud Shell](./images/cloud-shell.png)
 
   The Cloud Shell opens after a few seconds and shows the **prompt**.
 
@@ -109,7 +109,7 @@ Watch the video below for a quick walk through of the lab.
     <copy>Select name, db_unique_name, database_role from v$database;</copy>
     ````
 
-  ![](./images/connect-standby.png)
+  ![Screenshot of the cloud shell showing the steps executed so far](./images/connect-standby.png)
 
 You have now successfully created a database connection to the primary and the standby database.
 

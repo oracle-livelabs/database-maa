@@ -9,7 +9,7 @@ Using a backup copy of the primary database, you can create up to thirty standby
 
 Similar to a primary database, a standby database can be either a single-instance Oracle database or an Oracle RAC database.
 
-![](./images/standby.png)
+![Diagram of a Data Guard topology](./images/standby.png)
 
 Estimated Lab Time: 45 Minutes
 
@@ -24,13 +24,13 @@ Estimated Lab Time: 45 Minutes
 To create the primary database we need to follow a wizard.
 
 1. Lab 1 ended with this screen:
-    ![](./images/create-dbcs-prim-11.png)
+    ![Screenshot of the OCI console showing the primary database](./images/create-dbcs-prim-11.png)
 
 2. Scroll down to the part with the Databases in the DB System and click the Hamburger Menu and select **Enable Data Guard**
-    ![](./images/create-stby-db-01.png)
+    ![Screenshot of the OCI console showing where to enable the Data Guard assiciation](./images/create-stby-db-01.png)
 
 3. This will bring you to the wizard that will create the Standby database. The first part, you cannot change this. The Standby database will be created with the Maximum Performance protection mode, meaning that it will use asynchronous redo transport mode.
-    ![](./images/create-stby-db-02.png)
+    ![Screenshot of the OCI console showing the Enable Data Guard wizard](./images/create-stby-db-02.png)
 
     This is not an issue. Even if synchronous mode is not required, this can be altered manually if needed.
 
@@ -41,31 +41,31 @@ To create the primary database we need to follow a wizard.
     * Availability Domain: Choose the second availability domain. In the Frankfurt Example this is AD2.
     * Do not change the shape. By default the tooling selects the same shape as the primary shape. This helps to ensure like database performance if a role transition is performed.
 
-    ![](./images/create-stby-db-03.png)
+    ![Screenshot of the OCI console showing the Enable Data Guard wizard](./images/create-stby-db-03.png)
 
 5. Provide a Hostname prefix: **VMADGHOLAD2**
 
-    ![](./images/create-stby-db-04.png)
+    ![Screenshot of the OCI console showing the Enable Data Guard wizard](./images/create-stby-db-04.png)
 
 6. Enter the Primary Database password.
     Remember that it was set to **WElcome123##**
-    ![](./images/create-stby-db-05.png)
+    ![Screenshot of the OCI console showing the Enable Data Guard wizard](./images/create-stby-db-05.png)
 
 7. Then click **Enable Data Guard**.
 
 8. First the Peer DB System will be created and then Data Guard will be instantiated.
-    ![](./images/create-stby-db-06.png)
+    ![Screenshot of the OCI console showing the Data Guard association](./images/create-stby-db-06.png)
 
 9. Click on the Display name and that brings you to the DB System.
-    ![](./images/create-stby-db-07.png)
+    ![Screenshot of the OCI console showing the standby database](./images/create-stby-db-07.png)
 
 10. Scroll down to the Databases section of the page
-    ![](./images/create-stby-db-08.png)
+    ![Screenshot of the OCI console showing the standby database](./images/create-stby-db-08.png)
 
 11. Click on the Database Name, in this example DGHOL.
     That will bring you to the Database details page where you can find that the standby database has been successfully created and that the Data Guard status is **Enabled**
 
-    ![](./images/create-stby-db-09.png)
+    ![Screenshot of the OCI console showing the Data Guard status](./images/create-stby-db-09.png)
 
     When this step has been completed, then you have successfully set up a basic Data Guard configuration in the Oracle Cloud Infrastructure in Maximum Performance mode.
 

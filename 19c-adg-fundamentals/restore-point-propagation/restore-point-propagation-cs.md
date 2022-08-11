@@ -19,7 +19,7 @@ Estimated Lab Time: 20 Minutes
 
 Watch the video below for a quick walk through of the lab.
 
-[](youtube:4KVfLFQWdiw)
+[Video showing the steps to demonstrate the restore point propagation](youtube:4KVfLFQWdiw)
 
 ### Objectives
 - Create a restore point in the primary database
@@ -54,13 +54,13 @@ Watch the video below for a quick walk through of the lab.
     ````
     <copy>select name,replicated,guarantee_flashback_database from v$restore_point;</copy>
     ````
-    ![](./images/rp-primary.png)
+    ![Screenshot of the cloud shell showing the restore point created on the primary](./images/rp-primary.png)
 
 6. Check the restore points also on the **standby** database.
     ````
     <copy>select name,replicated,guarantee_flashback_database from v$restore_point;</copy>
     ````
-    ![](./images/rp-standby.png)
+    ![Screenshot of the cloud shell showing the restore point propagated on the standby](./images/rp-standby.png)
 
   The restore point drop is now replicated to the standby and it suffixes with `_PRIMARY` and the replicated column on the primary indicates as YES.
 

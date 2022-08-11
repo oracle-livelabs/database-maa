@@ -16,7 +16,7 @@ Estimated Lab Time: 15 Minutes
 
 Watch the video below for a quick walk through of the lab.
 
-[](youtube:qSakl0XcY-w)
+[Video showing how to perform the switchover](youtube:qSakl0XcY-w)
 
 ### Objectives
 - Verify the database roles in the database
@@ -40,7 +40,7 @@ Watch the video below for a quick walk through of the lab.
     <copy>Select name, db_unique_name, database_role from v$database;</copy>
     ````
 
-  ![](../connect-db/images/connect-primary.png)
+  ![Screenshot of the cloud shell showing the primary role](../connect-db/images/connect-primary.png)
 
 1. From the **second browser tab** with Cloud Shell, connect to the standby host (skip this step if you are still connected from the previous lab):
     ````
@@ -54,7 +54,7 @@ Watch the video below for a quick walk through of the lab.
     <copy>Select name, db_unique_name, database_role from v$database;</copy>
     ````
 
-  ![](../connect-db/images/connect-standby.png)
+  ![Screenshot of the cloud shell showing the standby role](../connect-db/images/connect-standby.png)
 
 We can conclude from the previous outputs which database is PRIMARY and which is a PHYSICAL STANDBY.
 
@@ -67,23 +67,23 @@ We can conclude from the previous outputs which database is PRIMARY and which is
     -> DB Systems
 
 2. Select **ADGHOLAD1**
-    ![](./images/switchover-03.png)
+    ![Screenshot of OCI console showing the database ADGHOLAD1](./images/switchover-03.png)
 
 3. In the Databases section click on the name **DGHOL** and in the next screen scroll down and click on **Data Guard Associations (1)** in the left pane.
 
-    ![](./images/switchover-04.png)
+    ![Screenshot of OCI console showing the Data Guard association](./images/switchover-04.png)
 
 4. Click the 3 dots on the right, and click **Switchover**
-    ![](./images/switchover-05.png)
+    ![Screenshot of OCI console showing how to initiate the switchover](./images/switchover-05.png)
 
 5. This activity will require some downtime, so the tooling asks for the password. Enter the SYS password (WElcome123##) from the Primary database and click **OK**. The role transition starts.
-    ![](./images/switchover-06.png)
+    ![Screenshot of OCI console dialogue asking for the admin password](./images/switchover-06.png)
 
 6. At this point, the lifecycle state will be updating and the role transition happens in the background.
-    ![](./images/switchover-07.png)
+    ![Screenshot of OCI console showing the DGHOL database during the switchover](./images/switchover-07.png)
 
 7. After some time the role transition finished and the state is Available again.
-    ![](./images/switchover-08.png)
+    ![Screenshot of OCI console showing the DGHOL database after the switchover completes](./images/switchover-08.png)
 
     > **Note:** If you get an error indicating that the failover failed and you need to open an SR, try again and enter the sys password correctly.
 
@@ -95,14 +95,14 @@ We can conclude from the previous outputs which database is PRIMARY and which is
     <copy>connect / as sysdba</copy>
     <copy>Select name, db_unique_name, database_role from v$database;</copy>
     ````
-  ![](./images/new-standby.png)
+  ![Screenshot of cloud shell showing the former primary now being a standby](./images/new-standby.png)
 
 1. Do the same in the **second browser tab** :
     ````
     <copy>connect / as sysdba</copy>
     <copy>Select name, db_unique_name, database_role from v$database;</copy>
     ````
-  ![](./images/new-primary.png)
+  ![Screenshot of cloud shell showing the former standby now being the primary database](./images/new-primary.png)
 
   We can conclude that the Database that was PRIMARY is now PHYSICAL STANDBY, and vice versa.
 

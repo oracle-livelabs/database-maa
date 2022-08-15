@@ -29,21 +29,25 @@ For more information on Oracle Clusterware visit http://www.oracle.com/goto/clus
 3.  Start Cloud Shell in each.  Maximize both Cloud Shell instances.
 
     *Note:* You can also use Putty or MAC Cygwin if you chose those formats in the earlier lab.  
-    ![](./images/start-cloudshell.png " ")
+    ![Connect to CloudShell](./images/start-cloudshell.png " ")
 
 4.  Connect to node 1 as the *opc* user (you identified the IP address of node 1 in the Build DB System lab).
 
     ```
+    <copy>
     ssh -i ~/.ssh/sshkeyname opc@<<Node 1 Public IP Address>>
+    </copy>
     ```
-    ![](./images/racnode1-login.png " ")
+    ![SSH to node-1](./images/racnode1-login.png " ")
 
 5. Repeat this step for node 2.
 
     ```
+    <copy>
     ssh -i ~/.ssh/sshkeyname opc@<<Node 2 Public IP Address>>
+    </copy>
     ```
-    ![](./images/racnode2-login.png " ")
+    ![SSH to node-2](./images/racnode2-login.png " ")
 
 6. On both nodes, switch to the oracle user and check to see what's running.  Run this command on *both nodes*.
 
@@ -54,8 +58,8 @@ For more information on Oracle Clusterware visit http://www.oracle.com/goto/clus
     ps -ef | grep lsnr
     </copy>
     ```
-    ![](./images/racnode2-login.png " ")
-    ![](./images/step1-num6.png " ")
+    ![Assume oracle user](./images/racnode2-login.png " ")
+    ![Identify OS PID](./images/step1-num6.png " ")
 
 7. Monitor the **crsd.trc** on each node as the *oracle* user. The **crsd.trc** file is located in the $ADR\_BASE/diag/crs/*nodename*/crs/trace directory. In earlier versions of Grid Infrastructure the logfiles were located under CRS\_HOME/log/<nodename>/crs (these directory structures still exist in the installation)
 
@@ -64,7 +68,7 @@ For more information on Oracle Clusterware visit http://www.oracle.com/goto/clus
     tail -f /u01/app/grid/diag/crs/`hostname -s`/crs/trace/crsd.trc
     </copy>
     ```
-    ![](./images/lab3-step7.png " ")
+    ![Examine log file contents](./images/lab3-step7.png " ")
 
 
 8. Examine the network settings as the *opc* user.  Type exit to switch back to the opc user on *both nodes*.
@@ -80,7 +84,7 @@ For more information on Oracle Clusterware visit http://www.oracle.com/goto/clus
 
 9.  Inspect the output on both nodes.
 
-    ![](./images/racnode1-ifconfig.png " ")
+    ![Inspect network configuration](./images/racnode1-ifconfig.png " ")
 
 
 10. The **ifconfig** command shows all of the network interfaces configured and running. The **flags** entry will show whether the interface is UP, BROADCASTing, and whether in MULTICAST or not. The **inet** entry shows the IP address of each interface.
@@ -97,7 +101,7 @@ For more information on Oracle Clusterware visit http://www.oracle.com/goto/clus
     ```
     *No error message means this is successful.*
 
-    ![](./images/racnode1-ms4-down.png " ")
+    ![Shutdown Interconnect](./images/racnode1-ms4-down.png " ")
 
 12. Look at the ifconfig command again by running the command below on node 1.
 
@@ -109,7 +113,7 @@ For more information on Oracle Clusterware visit http://www.oracle.com/goto/clus
 
 13. The output returned should be similar to.  Inspect the output.
 
-     ![](./images/racnode1-ifconfig-1.png " ")
+     ![Examine network configuration](./images/racnode1-ifconfig-1.png " ")
 
 14. Note that **ens4** is no longer UP.
 
@@ -124,7 +128,7 @@ For more information on Oracle Clusterware visit http://www.oracle.com/goto/clus
     sudo ifconfig -a
     </copy>
     ```
-     ![](./images/racnode2-ifconfig.png " ")
+     ![Examine network configuration](./images/racnode2-ifconfig.png " ")
 
 17.  Explore the result.
 
@@ -134,12 +138,12 @@ For more information on Oracle Clusterware visit http://www.oracle.com/goto/clus
 2. Switch to the oracle user
 3. The **crsd.trc** files that you are using **tail** to examine on node1 will begin to get errors related to the network interface and one of the nodes will be removed from the cluster. CLUSTER FENCING will take place.  See an example below.
 
-     ![](./images/step2-num3.png " ")
+     ![Examine log contents](./images/step2-num3.png " ")
 
 
 4. During cluster fencing messages similar to the following will be seen:
 
-     ![](./images/step3-num4.png " ")
+     ![Examine log contents](./images/step3-num4.png " ")
 
 5. Will the same node always be evicted? is it always the node on which the interface was removed? Can this be influenced in any way?
 
@@ -150,7 +154,7 @@ For more information on Oracle Clusterware visit http://www.oracle.com/goto/clus
     /u01/app/19.0.0.0/grid/bin//crsctl status server
     </copy>
     ```
-    ![](./images/racnode1-crsctl.png " ")
+    ![Example of Communication Error](./images/racnode1-crsctl.png " ")
 
 
 7. Only one node should be online
@@ -160,7 +164,7 @@ For more information on Oracle Clusterware visit http://www.oracle.com/goto/clus
     /u01/app/19.0.0.0/grid/bin//crsctl status server
     </copy>
     ```
-    ![](./images/racnode2-crsctl.png " ")
+    ![Node status output](./images/racnode2-crsctl.png " ")
 
 8. Examine the network adapters on the running node
 
@@ -169,7 +173,7 @@ For more information on Oracle Clusterware visit http://www.oracle.com/goto/clus
     sudo ip addr show
     </copy>
     ```
-    ![](./images/racnode2-ipaddr.png " ")
+    ![Examine network configuration](./images/racnode2-ipaddr.png " ")
 
 All of the virtual IP addresses will be present on the running node as ens3\:1 to en3\:5   
 
@@ -193,7 +197,7 @@ Can you connect an application client to a VIP (a host-vip) when it is running o
     sudo ifconfig -a
     </copy>
     ```
-    ![](./images/step3-num4.png " ")
+    ![Examine network configuration](./images/step3-num4.png " ")
 
 2. A status command will show both nodes running
 
@@ -212,11 +216,11 @@ Can you connect an application client to a VIP (a host-vip) when it is running o
     STATE=ONLINE
     ```
 
-    ![](./images/step3-num4-1.png " ")
+    ![Examine node status](./images/step3-num4-1.png " ")
 
 You may now *proceed to the next lab*.  
 
 ## Acknowledgements
 * **Authors** - Troy Anthony, Anil Nair
 * **Contributors** - Kay Malcolm
-* **Last Updated By/Date** - Madhusudhan Rao, Apr 2022
+* **Last Updated By/Date** - Troy Anthony, August 2022

@@ -39,14 +39,14 @@ The benefits of parallel execution can be observed in DSS and data warehouse env
 2.  Start Cloud Shell
 
     *Note:* You can also use Putty or MAC Cygwin if you chose those formats in the earlier lab.  
-    ![](../clusterware/images/start-cloudshell.png " ")
+    ![open CloudShell](../clusterware/images/start-cloudshell.png " ")
 
 3.  Connect to node 1 as the *opc* user (you identified the IP address of node 1 in the Build DB System lab).
 
     ````
     ssh -i ~/.ssh/sshkeyname opc@<<Node 1 Public IP Address>>
     ````
-    ![](../clusterware/images/racnode1-login.png " ")
+    ![SSH to node-1](../clusterware/images/racnode1-login.png " ")
 
 4.  Switch to the oracle user and connect to the pluggable database, **PDB1** as SYSDBA.  *Replace the welcome password with your database password.*
 
@@ -68,7 +68,7 @@ The benefits of parallel execution can be observed in DSS and data warehouse env
     sudo su - oracle
     </copy>
     ````
-    ![](./images/dba-sh-grid.png " ")
+    ![Add DBA privileges](./images/dba-sh-grid.png " ")
 
 
 ## Task 2: Run a parallel query operation
@@ -80,7 +80,7 @@ The benefits of parallel execution can be observed in DSS and data warehouse env
     crsctl stat res -t
     </copy>
     ````
-    ![](./images/testy-node1.png " ")
+    ![Examine resource status](./images/testy-node1.png " ")
 
 2.  According to the output, our service is still running on node 2.  Let's relocate it.  If your service is already running on node 1 you can skip this step.  Run this as the *grid* user on **node 1** replacing the dbname with your dbname.  (You can find it in the output from the command above).  Run crsctl stat again to see if it moved the service.
 
@@ -91,8 +91,8 @@ The benefits of parallel execution can be observed in DSS and data warehouse env
 
     </copy>
     ````
-    ![](./images/relocate.png " ")
-    ![](./images/testy-node2.png " ")
+    ![Relocate Database Service](./images/relocate.png " ")
+    ![Examine resource status](./images/testy-node2.png " ")
 
 3. Connect to this service as the SH user. Connect on **node 1**.
 
@@ -102,8 +102,8 @@ The benefits of parallel execution can be observed in DSS and data warehouse env
     sqlplus sh/W3lc0m3#W3lc0m3#@//racnode-scan.tfexsubdbsys.tfexvcndbsys.oraclevcn.com/testy.tfexsubdbsys.tfexvcndbsys.oraclevcn.com
     ````
 
-    ![](./images/ll-num3.png " ")
-    ![](./images/ll-num3-1.png " ")
+    ![Examine resource status](./images/ll-num3.png " ")
+    ![Open SQL*Plus session](./images/ll-num3-1.png " ")
 
 4. Show your connection details
 
@@ -118,11 +118,11 @@ The benefits of parallel execution can be observed in DSS and data warehouse env
     select sid, username, program, service_name from v$session where username='SH';
     </copy>
     ````
-    ![](./images/ll-num4.png " ")
+    ![SELECT from V$SESSION](./images/ll-num4.png " ")
 
 5. Enable tracing and use a HINT to force parallel execution of a SQL query.  Use the client ID of *racpx01*.
 
-    ![](./images/pq-1.png " " )
+    ![Disable client tracing](./images/pq-1.png " " )
 
     ````
     <copy>
@@ -136,7 +136,7 @@ The benefits of parallel execution can be observed in DSS and data warehouse env
     exec dbms_monitor.client_id_trace_disable(client_id=>'racpx01');    
     </copy>
     ````
-    ![](./images/ll-num6.png " ")
+    ![Select data from table](./images/ll-num6.png " ")
 6. Look for the trace files to see which node the PX (parallel execution processes) ran on
 
     ````
@@ -148,7 +148,7 @@ The benefits of parallel execution can be observed in DSS and data warehouse env
     ````
     The diagnostic_dest will be displayed.
 
-    ![](./images/ll-num7.png " ")
+    ![Identify diagnostic dump destination](./images/ll-num7.png " ")
 
 7.  From the operating system, search for trace files containing the client identifier set above, racpx01
 
@@ -157,7 +157,7 @@ The benefits of parallel execution can be observed in DSS and data warehouse env
     ls -altr /u01/app/oracle/diag/rdbms/atfdbvm_replacename/aTFdbVm1/trace/*racpx01*.trc
     </copy>
     ````
-    ![](./images/ll-num7-1.png " ")
+    ![List log file names](./images/ll-num7-1.png " ")
 
     QUESTION:  Were any parallel execution processes started on node2? Look in the /u01/app/oracle/diag/rdbms/atfdbvm_replacename/aTFdbVm2/trace directory
 
@@ -178,7 +178,7 @@ The benefits of parallel execution can be observed in DSS and data warehouse env
     set linesize 100
     select sid, username, program, service_name from v$session where username='SH';
     ````
-    ![](./images/ll-num9.png " ")
+    ![Select from v$SESSION](./images/ll-num9.png " ")
 
 10. Choose a new trace file identifier and run the SELECT statement again using *racpx05* as the identifier.  So now that you have relocated the service, let's see where the trace files are created, node 1 or node 2?
 
@@ -194,14 +194,14 @@ The benefits of parallel execution can be observed in DSS and data warehouse env
     exec dbms_monitor.client_id_trace_disable(client_id=>'racpx05');
     </copy>
     ````  
-    ![](./images/ll-num10-1.png " ")
+    ![Enable tracing and select data](./images/ll-num10-1.png " ")
 11. Where are the trace files located now?  If you answered node 2, you are correct!  On node 1, only the racpx01 files exist.
 
-    ![](./images/ll-num7-1.png " ")
+    ![Locate log files](./images/ll-num7-1.png " ")
 
 12. On racnode2, the racpx05 files exist.
 
-    ![](./images/ll-num12.png " " )
+    ![List log file names](./images/ll-num12.png " " )
 
 In Oracle RAC systems, the service placement of a specific service controls parallel execution. Specifically, parallel processes run on the nodes on which the service is configured. By default, Oracle Database runs parallel processes only on an instance that offers the service used to connect to the database. This does not affect other parallel operations such as parallel recovery or the processing of GV$ queries.
 
@@ -210,4 +210,4 @@ You may now *proceed to the next lab*.
 ## Acknowledgements
 * **Authors** - Troy Anthony, Anil Nair
 * **Contributors** - Kay Malcolm, Kamryn Vinson
-* **Last Updated By/Date** - Kamryn Vinson, March 2021
+* **Last Updated By/Date** - Troy Anthony, August 2022

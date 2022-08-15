@@ -23,29 +23,31 @@ Watch the video below for an overview of the SQL and PL/SQL Sequences lab
 2.  Start Cloud Shell
 
     *Note:* You can also use Putty or MAC Cygwin if you chose those formats in the earlier lab.  
-    ![](../clusterware/images/start-cloudshell.png " ")
+    ![Connect to CloudShell](../clusterware/images/start-cloudshell.png " ")
 
 3.  Connect to **node 1** as the *opc* user (you identified the IP address of node 1 in the Build DB System lab).
 
-    ````
+    ```
+    <copy>
     ssh -i ~/.ssh/sshkeyname opc@<<Node 1 Public IP Address>>
-    ````
-    ![](../clusterware/images/racnode1-login.png " ")
+    </copy>
+    ```
+    ![SSH to node-1](../clusterware/images/racnode1-login.png " ")
 
 4.  Connect to the pluggable database, **PDB1** as SYSDBA.  Replace the password below with the password you used to provision your system.
 
-    ````
+    ```
     <copy>
     sudo su - oracle
     srvctl config scan
     sqlplus sys/W3lc0m3#W3lc0m3#@//<PutScanNameHere>/pdb1.pub.racdblab.oraclevcn.com as sysdba
     </copy>
-    ````
-    ![](./images/seq-step1-num4.png " ")
+    ```
+    ![Open SQL*Plus session](./images/seq-step1-num4.png " ")
 
 5. Build the **runstats** package by pasting this in your sql prompt
 
-    ````
+    ```
     <copy>
     create global temporary table run_stats
     ( runid varchar2(15),
@@ -158,9 +160,9 @@ Watch the video below for an overview of the SQL and PL/SQL Sequences lab
     end;
     /
     </copy>
-    ````
+    ```
 
-    ![](./images/seq-step1-num4.png " ")
+    ![Connected to SQL*Plus](./images/seq-step1-num4.png " ")
 
 ## Task 2: Sequence Test
 
@@ -168,25 +170,25 @@ Watch the video below for an overview of the SQL and PL/SQL Sequences lab
 
 2. You should still be connected as the *sys* user on **node 1**.  If you disconnected, connect to **node 1** as the *opc* user and switch to the *oracle* user.  *Remember to replace the password as you did in Step 1.*
 
-    ````
+    ```
     <copy>
     sudo su - oracle
     sqlplus sys/W3lc0m3#W3lc0m3#@//<PutHostNameHere>:1521/unisrv.pub.racdblab.oraclevcn.com as sysdba
     </copy>
-    ````
+    ```
 3. Connect to **node 2** as the *opc* user and switch to the *oracle* user.  *Remember to replace the password as you did in Step 1.*
 
-    ````
+    ```
     <copy>
     sudo su - oracle
     sqlplus sys/W3lc0m3#W3lc0m3#@//<PutHostNameHere>:1521/unisrv.pub.racdblab.oraclevcn.com as sysdba
     </copy>
-    ````
-    ![](./images/sqlplus-node2.png " ")
+    ```
+    ![SQL*Plus session on node-2](./images/sqlplus-node2.png " ")
 
 4. Create the following SEQUENCES on *one* **node 1**
 
-    ````
+    ```
     <copy>
     create table SEQTEST (seqid varchar2(30), highval number);
     insert into SEQTEST values ('MYTABLE', 1);
@@ -197,12 +199,12 @@ Watch the video below for an overview of the SQL and PL/SQL Sequences lab
     create sequence SEQTEST_NO_C NOORDER CACHE 100;
     set serveroutput on;
     </copy>
-    ````
-    ![](./images/create-seq.png " ")
+    ```
+    ![Create Oracle Sequence](./images/create-seq.png " ")
 
 5. On **node 1** run the following statements 2 or 3 times in the sqlplus window you are still logged into.
 
-    ````
+    ```
     <copy>
     exec runstats_pkg.rs_start;
     DECLARE myval number;
@@ -227,19 +229,19 @@ Watch the video below for an overview of the SQL and PL/SQL Sequences lab
     /
     exec runstats_pkg.rs_stop;
     </copy>
-    ````
+    ```
 
 6. The runstats results will show similar to:
-    ````
+    ```
     SQL> Run1 ran in 502 hsecs
          Run2 ran in 502 hsecs
          run 1 ran in 100% of the time
-    ````
+    ```
 Deduct 500 hsecs from this value to account for the 0.5 seconds in DBMS_LOCK.sleep
 
 4. Create some contention on node 2
 Start an anonymous PL/SQL block that retrieves a value every half second.
-    ````
+    ```
     <copy>
     DECLARE myval number;
     BEGIN
@@ -256,20 +258,20 @@ Start an anonymous PL/SQL block that retrieves a value every half second.
     END;
     /
     </copy>
-    ````
+    ```
 
 5. Repeat step 3 on node 1 and observe the run statistics.
 Contention plays a part.
-    ````
+    ```
     SQL> Run1 ran in 6312 hsecs
          Run2 ran in 501 hsecs
          run 1 ran in 1259.88% of the time
-    ````
+    ```
 Notice the difference between operations that use sequence that CACHE versus NOCACHE, ORDER versus NOORDER and combinations of these.
 
 6. Perform more tests, comparing different types of sequences. What conclusions can you draw about sequences? Does caching matter for ORDERed sequences?
 
-    ````
+    ```
     <copy>
     DECLARE myval number;
     BEGIN
@@ -294,11 +296,11 @@ Notice the difference between operations that use sequence that CACHE versus NOC
     /
     exec runstats_pkg.rs_stop;
     </copy>
-    ````
+    ```
 You may now *proceed to the next lab*.  
 
 
 ## Acknowledgements
 * **Authors** - Troy Anthony, Anil Nair
 * **Contributors** - Kay Malcolm, Kamryn Vinson
-* **Last Updated By/Date** - Kamryn Vinson, March 2021
+* **Last Updated By/Date** - Troy Anthony, August 2022

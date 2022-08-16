@@ -18,17 +18,17 @@ You will be using Terraform to create your database environment.
 
 3.  Open up the hamburger menu in the left hand corner.  Choose **Resource Manager > Stacks**.   Choose the compartment from your email, click the  **Create Stack** button
 
-    ![](./images/cloud-homepage.png " ")
+    ![Cloud console page](./images/cloud-homepage.png " ")
 
-    ![](./images/resource.png " ")
+    ![Cloud menu Resource Stack](./images/resource.png " ")
 
-    ![](./images/choosecompartment.png " ")
+    ![Set compartment](./images/choosecompartment.png " ")
 
-    ![](./images/createstackpage.png " ")
+    ![Edit Resource Stack](./images/createstackpage.png " ")
 
 4.  Select **My Configuration**, choose the **.ZIP FILE** button, click the **Browse** link and select the zip file (db_system_rac_tf.zip) that you downloaded. Click **Select**.
 
-    ![](./images/zip-file.png " ")
+    ![Edit ZIP file name](./images/zip-file.png " ")
 
 
     Enter the following information and accept all the defaults
@@ -63,7 +63,7 @@ You will be using Terraform to create your database environment.
 
 7.  Click **Next**.
 
-    ![](./images/createstack3.png " ")
+    ![Edit Resrouce Stack](./images/createstack3.png " ")
 
     Enter the following information. Some information may already be pre-populated.  Do not change the pre-populated info.  You will be updating Public Subnet, Display Name, AD (Availability Domain) and SSH Key.
 
@@ -77,11 +77,11 @@ You will be using Terraform to create your database environment.
 
 8. Click **Next**.
 
-    ![](./images/createstack4.png " ")
+    ![Create Resource Stack](./images/createstack4.png " ")
 
 9.  Your stack has now been created!  Now to create your environment.  If you get an error about an invalid DNS label, go back to your Display Name, please do not enter ANY special characters or spaces.  It will fail.
 
-    ![](./images/stackcreated.png " ")
+    ![Confirmed Resource Stack created](./images/stackcreated.png " ")
 
 
 
@@ -90,16 +90,16 @@ When using Resource Manager to deploy an environment, execute a terraform **plan
 
 1.  [OPTIONAL]Click **Terraform Actions** -> **Plan** to validate your configuration.  This takes about a minute, please be patient.
 
-    ![](./images/terraformactions.png " ")
+    ![Select PLAN option](./images/terraformactions.png " ")
 
-    ![](./images/planjob.png " ")
+    ![PLAN job running](./images/planjob.png " ")
 
-    ![](./images/planjob1.png " ")
+    ![PLAN job completed](./images/planjob1.png " ")
 
 2.  At the top of your page, click on **Stack Details**.  Click the button, **Terraform Actions** -> **Apply**.  This will create your instance and install Oracle 19c.
-    ![](./images/applyjob1.png " ")
+    ![Apply Terraform script](./images/applyjob1.png " ")
 
-    ![](./images/applyjob2.png " ")
+    ![APPLY job running](./images/applyjob2.png " ")
 
 3.  Once this job succeeds, your environment is created!  Time to login to your instance to finish the configuration.
 
@@ -120,7 +120,7 @@ NOTE:  You cannot connect while on VPN or in the Oracle office on clear-corporat
     ````
     ssh -i ~/.ssh/optionskey opc@<Your Compute Instance Public IP Address>
     ````
-    ![](./images/ssh-first-time.png " ")
+    ![SSH to node-1](./images/ssh-first-time.png " ")
 
 3.  Continue to [Step 5b-Run the Setup Scripts](#Step:  5b-run-the-setup-scripts)
 
@@ -131,11 +131,11 @@ NOTE:  You cannot connect while on VPN or in the Oracle office on clear-corporat
     ````
     ssh -i ~/.ssh/optionskey opc@<Your Compute Instance Public IP Address>
     ````
-    ![](./images/ssh-first-time.png " ")
+    ![SSH to node-1](./images/ssh-first-time.png " ")
 
 2.  Enter a name for the session and click **Save**.
 
-    ![](./images/putty-setup.png " ")
+    ![Save PUTTY configuration](./images/putty-setup.png " ")
 
 3. Click **Connection** > **Data** in the left navigation pane and set the Auto-login username to root.
 
@@ -143,7 +143,7 @@ NOTE:  You cannot connect while on VPN or in the Oracle office on clear-corporat
 
 5. Navigate to the location where you saved your SSH private key file, select the file, and click Open.  NOTE:  You cannot connect while on VPN or in the Oracle office on clear-corporate (choose clear-internet).
 
-    ![](./images/putty-auth.png " ")
+    ![Add private key](./images/putty-auth.png " ")
 
 6. The file path for the SSH private key file now displays in the Private key file for authentication field.
 
@@ -200,4 +200,4 @@ Congratulations!  Now you have the environment to run the RAC labs.
 ## Acknowledgements
 
 - **Author** - Troy Anthony, DB Product Management
-- **Last Updated By/Date** - Troy Anthony, August 2020
+- **Last Updated By/Date** - Troy Anthony, August 2022

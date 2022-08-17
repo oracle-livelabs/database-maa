@@ -51,26 +51,26 @@ Watch the video below for a quick walk through of the lab.
 
 1.  To start the Oracle Cloud Shell, go to your Cloud console and click the Cloud Shell icon at the top right of the page.  If you get a policy error, ensure you have chosen the correct compartment you were assigned in the earlier task.
 
-	![Select Oracle Cloud Shell](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/cloudshellopen.png " ")
+	![Select Oracle Cloud Shell](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-local/images/cloudshellopen.png " ")
 
     ![Oracle Cloud Shell](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/cloudshellsetup.png " ")
 
     ![Navigation Menu of Oracle Cloud Shell](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/cloudshell.png " ")
 
 2. Download the private key for the Oracle Database World LiveLab using the below command in the Cloud Shell.
-    ````
+    ```
     <copy>wget http://bit.ly/cloudshellkey</copy>
-    ````
+    ```
 
 
 3. Change the permission of the private key to `0600` and connect to the primary host as `opc`, using the public IP address that you have noted down earlier.
-    ````
+    ```
     <copy>chmod 600 cloudshellkey</copy>
-    ````
+    ```
     Replace `cloudshellkey` with the name of your private key file.
-    ````
+    ```
     <copy>ssh -i cloudshellkey opc@IP_ADDRESS</copy>
-    ````
+    ```
     Replace `cloudshellkey` with the name of your private key file, and `IP_ADDRESS` with the real public IP address.
 
 5. Once finished run the command below to check to see if your ssh key was uploaded.  Move it into your .ssh directory, and change the permissions on the file.
@@ -202,4 +202,4 @@ On Windows, you can use PuTTY as an SSH client. PuTTY enables Windows users to c
 
 * **Author** - Rene Fontcha, Master Principal Platform Specialist, NA Technology
 * **Contributors** - Kay Malcolm, Product Manager, Database Product Management
-* **Last Updated By/Date** - Kay Malcolm, October 2021
+* **Last Updated By/Date** - Troy Anthony, August 2022

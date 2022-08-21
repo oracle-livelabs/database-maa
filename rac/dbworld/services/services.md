@@ -132,8 +132,7 @@ user/password@**//hostname:port/servicename**  EZConnect does not support all se
     <copy>
     lsnrctl services
     </copy>
-    ```    
-
+    ```
     ![Use LSNRCTL to View Registered Services](./images/lsnrctl-node1.png " ")
     ![Use LSNRCTL to View Registered Services](./images/lsnrctl-node2.png " ")
 
@@ -289,7 +288,7 @@ If it is not running start this service
 
     ```
     Service unisrv is running on instance(s) racKPEMW1,racKPEMW2
-    ```    
+    ```
     ![Start the Uniform Service UNISRV](./images/lab6-step3-num1.png " ")
 
 2. Look at the entry for this server in the **lsnrctl service LISTENER_SCAN2** output. Note that any of the SCAN listeners can be used here.  Run this on **node 2** as the *oracle* user
@@ -529,7 +528,7 @@ If it is not running start this service
             (ADDRESS_LIST =(LOAD_BALANCE=on)
                (ADDRESS = (PROTOCOL = TCP)(HOST=secondary-scan)(PORT=1521)))
             (CONNECT_DATA=(SERVICE_NAME = gold-cloud)))
-    ```    
+    ```
 
     This is showing how a RAC and Data Guard environment would be specified. The assumption is that both the PRIMARY and SECONDARY sites are clustered environments, hence specifying a SCAN ADDRESS for each one.
 

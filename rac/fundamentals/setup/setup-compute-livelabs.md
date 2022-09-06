@@ -29,19 +29,19 @@ Watch the video below for an overview of the Build a DB System lab
 
 7.  From the hamburger menu, select **Bare Metal, VM, and Exadata** in the Oracle Database category.
 
-  ![](https://oracle-livelabs.github.io/common//images/console/database-dbcs.png " ")
+  ![Oracle Cloud DBCS Page](https://oracle-livelabs.github.io/common//images/console/database-dbcs.png " ")
 
 8.  Select the compartment you were assigned in LiveLabs and identify your database system from your My Reservations page. Click on the database system name to see the details.
 
-  ![](./images/setup-compute-2.png " ")
+  ![Select DB System](./images/setup-compute-2.png " ")
 
 9. Explore the DB Systems home page.  On the left hand side, scroll down to view the Resources section.  Click Nodes.
 
-  ![](./images/setup-compute-3.png " ")
+  ![Examine DB System](./images/setup-compute-3.png " ")
 
 10. Locate your two nodes and jot down their public IP addresses.
 
-  ![](./images/setup-compute-4.png " ")
+  ![Confirm node IP Addresses](./images/setup-compute-4.png " ")
 
 11. Now that you have your IP address select the method of connecting. Choose the environment where you created your ssh-key in the previous lab (Generate SSH Keys) and select one of the following steps. If you choose to use Oracle Cloud Shell, you will need to copy your SSH Private to the cloud shell and set the proper permissions, otherwise, choose the platform that matches your local environment.
 
@@ -58,24 +58,24 @@ Your options are:
 
 1.  To start the Oracle Cloud Shell, go to your Cloud console and click the Cloud Shell icon at the top right of the page.
 
-	![](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/cloudshellopen.png " ")
+	![Open CloudShell](./images/cloudshelllogin.png " ")
 
-    ![](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/cloudshellsetup.png " ")
+    ![CloudShell initialising](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/cloudshellsetup.png " ")
 
-    ![](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/cloudshell.png " ")
+    ![CloudShell opened](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/cloudshell.png " ")
 
 2.  Click on the Cloud Shell hamburger icon and select **Upload** to upload your private key
 
-    ![](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/upload-key.png " ")
+    ![Upload Private Key to CloudShell](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/upload-key.png " ")
 
 3.  To connect to the compute instance that was created for you, you will need to load your private key.  This is the key that does *not* have a .pub file at the end.  Locate that file on your machine and click **Upload** to process it.
 
-    ![](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/upload-key-select.png " ")
+    ![Upload Private Key to CloudShell](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/upload-key-select.png " ")
 
 4. Be patient while the key file uploads to your Cloud Shell directory
-    ![](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/upload-key-select-2.png " ")
+    ![Uploading Private Key to CloudShell](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/upload-key-select-2.png " ")
 
-    ![](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/upload-key-select-3.png " ")
+    ![Uploaded Private Key to CloudShell](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/upload-key-select-3.png " ")
 
 5. Once finished run the command below to check to see if your ssh key was uploaded.  Move it into your .ssh directory, and change the permissions on the file.
 
@@ -85,21 +85,25 @@ Your options are:
     </copy>
     ```
     ```nohighlight
+    <copy>
     mkdir ~/.ssh
     mv <<keyname>> ~/.ssh
     chmod 600 ~/.ssh/<<keyname>>
     ls ~/.ssh
     cd ~
+    </copy>
     ```
 
-    ![](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/upload-key-finished.png " ")
+    ![Set permissions on private key](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/upload-key-finished.png " ")
 
 6.  Using one of the Public IP addresses, enter the command below to login as the *opc* user and verify connection to your nodes.
 
     ```nohighlight
+    <copy>
     ssh -i ~/.ssh/<sshkeyname> opc@<Your Node Public IP Address>
+    </copy>
     ```
-    ![](./images/em-mac-linux-ssh-login.png " ")
+    ![SSH to node-1](./images/em-mac-linux-ssh-login.png " ")
 
 3.  When prompted, answer **yes** to continue connecting.
 4.  Repeat step 2 for your 2nd node.
@@ -111,16 +115,20 @@ Your options are:
 1.  Using one of the Public IP addresses, open up a terminal (MAC) or cygwin emulator as the opc user.  Enter yes when prompted.
 
     ```
+    <copy>
     ssh -i ~/.ssh/<sshkeyname> opc@<Your Public IP Address - node1>
+    </copy>
     ```
-    ![](./images/em-mac-linux-ssh-login.png " ")
+    ![SSH to node-1](./images/em-mac-linux-ssh-login.png " ")
 
 2. You can also log in to the **Public IP Address of node2**
 
     ```
+    <copy>
     ssh -i ~/.ssh/<sshkeyname> opc@<Your Public IP Address - node2>
+    </copy>
     ```
-    ![](./images/em-mac-linux-ssh-login.png " ")
+    ![SSH to node-2](./images/em-mac-linux-ssh-login.png " ")
 
 3. After successfully logging in, you may [proceed to the next lab](#next).
 
@@ -137,7 +145,7 @@ On Windows, you can use PuTTY as an SSH client. PuTTY enables Windows users to c
     - Port: _22_
     - Connection type: _SSH_
 
-  ![](images/7c9e4d803ae849daa227b6684705964c.jpg " ")
+  ![Connect using PUTTY](images/7c9e4d803ae849daa227b6684705964c.jpg " ")
 
 ### **Configuring Automatic Login**
 
@@ -145,14 +153,14 @@ On Windows, you can use PuTTY as an SSH client. PuTTY enables Windows users to c
 
 2.  Enter your auto-login username. Enter **opc**.
 
-  ![](images/36164be0029033be6d65f883bbf31713.jpg " ")
+  ![Configure PUTTY for AutoLogin](images/36164be0029033be6d65f883bbf31713.jpg " ")
 
 ### **Adding Your Private Key**
 
 1.  In the category section, **Click** Auth.
 2.  **Click** browse and find the private key file that matches your VM’s public key. This private key should have a .ppk extension for PuTTy to work.
 
-  ![](images/df56bc989ad85f9bfad17ddb6ed6038e.jpg " ")
+  ![Add Private Key to PUTTY config](images/df56bc989ad85f9bfad17ddb6ed6038e.jpg " ")
 
 3.  To save all your settings, in the category section, **Click** session.
 4.  In the saved sessions section, name your session, for example ( EM13C-ABC ) and **Click** Save.
@@ -166,7 +174,7 @@ On Windows, you can use PuTTY as an SSH client. PuTTY enables Windows users to c
     - Port: _22_
     - Connection type: _SSH_
 
-  ![](images/7c9e4d803ae849daa227b6684705964c.jpg " ")
+  ![Savee PUTTY configuration](images/7c9e4d803ae849daa227b6684705964c.jpg " ")
 
 You may now [proceed to the next lab](#next).
 
@@ -207,4 +215,4 @@ To use PuTTYgen to convert a key into .ppk format, complete the following steps:
 
 * **Author** - Rene Fontcha, Master Principal Platform Specialist, NA Technology
 * **Contributors** - Kay Malcolm, Product Manager, Database Product Management
-* **Last Updated By/Date** - Madhusudhan Rao, Apr 2022
+* **Last Updated By/Date** - Troy Anthony, August 2022

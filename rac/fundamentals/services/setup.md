@@ -11,7 +11,7 @@ This lab will show you how to setup your database schemas for the subsequent lab
 Watch the video below for an overview of the Install Sample Schema lab
 [](youtube:rUIxZjy9HQg)
 
-## Task: Install Sample Data
+## Task 1: Install Sample Data
 
 In this step, you will install a selection of the Oracle Database Sample Schemas.  For more information on these schemas, please review the Schema agreement at the end of this lab.
 
@@ -24,74 +24,76 @@ Copy the following commands into your terminal. These commands download the file
 2.  Start Cloud Shell
 
     *Note:* You can also use Putty or MAC Cygwin if you chose those formats in the earlier lab.  
-    ![](../clusterware/images/start-cloudshell.png " ")
+    ![Start CloudShell](../clusterware/images/start-cloudshell.png " ")
 
 3.  Connect to node 1 as the *opc* user (you identified the IP address of node 1 in the Build DB System lab).
 
-    ````
+    ```
+    <copy>
     ssh -i ~/.ssh/sshkeyname opc@<<Node 1 Public IP Address>>
-    ````
-    ![](../clusterware/images/racnode1-login.png " ")
+    </copy>
+    ```
+    ![Login to node-1](../clusterware/images/racnode1-login.png " ")
 
 4.  Switch to the oracle user and set the Oracle database environment
 
-    ````
+    ```
     <copy>
     sudo su - oracle
     </copy>
-    ````
+    ```
 
     When connected as *oracle*
 
-    ````
+    ```
     <copy>
     . oraenv
     </copy>
-    ````
+    ```
 
     Note: If you are running in Windows using putty, ensure your Session Timeout is set to greater than 0.
 
 5.  Get the Database sample schemas and unzip them. Then set the path in the scripts.
 
-    ````
+    ```
     <copy>
     wget https://github.com/oracle/db-sample-schemas/archive/v19c.zip
     unzip v19c.zip
     cd db-sample-schemas-19c
     perl -p -i.bak -e 's#__SUB__CWD__#'$(pwd)'#g' *.sql */*.sql */*.dat
     </copy>
-    ````
+    ```
 
-    ![](./images/install-schema-zip.png " " )
+    ![Edit Sample Schema script](./images/install-schema-zip.png " " )
 
 6.  Login using `SQL*Plus` as the **oracle** user.  
 
-    ````
+    ```
     <copy>
     sqlplus system/W3lcom3#W3lcom3#@localhost:1521/pdb1.pub.racdblab.oraclevcn.com
     </copy>
-    ````
-    ![](./images/start-sqlplus.png " ")
+    ```
+    ![Start SQL*Plus](./images/start-sqlplus.png " ")
 
 7.  Install the Sample Schemas by running the script below.
 
-    ````
+    ```
     <copy>
     @mksample W3lcom3#W3lcom3# W3lcom3#W3lcom3# W3lcom3#W3lcom3# W3lcom3#W3lcom3# W3lcom3#W3lcom3# W3lcom3#W3lcom3# W3lcom3#W3lcom3# W3lcom3#W3lcom3# users temp /home/oracle/db-sample-schemas-19c/ localhost:1521/pdb1.pub.racdblab.oraclevcn.com
     </copy>
-    ````
+    ```
 
-    ![](./images/schemas-created.png " " )
+    ![Install Sample Schema](./images/schemas-created.png " " )
 
 8. Exit SQL Plus and exit the oracle user to return to the opc user.
 
     ```
-    <copy>exit
+    <copy>
     exit
     </copy>
     ```
 
-    ![](images/return-to-opc.png)
+    ![Exit oracle user](images/return-to-opc.png)
 
 Congratulations! Now you have the environment to run the labs.
 
@@ -115,4 +117,4 @@ The above copyright notice and this permission notice shall be included in all c
 
 - **Author** - Troy Anthony, DB Product Management
 - **Contributors** - Anoosha Pilli, Anoosha Pilli, Kay Malcolm
-- **Last Updated By/Date** - Troy Anthony, July 2021
+- **Last Updated By/Date** - Troy Anthony, August 2022

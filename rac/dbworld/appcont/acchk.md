@@ -30,20 +30,20 @@ The Application Continuity Protection Check (ACCHK) utility provides protection 
 
     Connect to the PDB, *pdb1* as the *sys* user
 
-    ````
+    ```
     <copy>
     sudo su - oracle
     sqlplus sys/W3lc0m3#W3lc0m3#@//<REPLACE SCAN NAME>/pdb1.<REPLACE DOMAIN NAME> as SYSDBA
     </copy>
-    ````
+    ```
 
     Build the ACCHK views
 
-    ````
+    ```
     <copy>
     EXECUTE DBMS_APP_CONT_ADMIN.acchk_views;
     </copy>
-    ````
+    ```
 
     ![Build ACCHK Views](./images/build_acchk_views.png " ")
 
@@ -53,11 +53,11 @@ The Application Continuity Protection Check (ACCHK) utility provides protection 
 
     As the SYS user enable ACCHK
 
-    ````
+    ```
     <copy>
     execute dbms_app_cont_admin.acchk_set(true);
     </copy>
-    ````
+    ```
 
     ![Enable ACCHK](./images/enable_acchk.png " ")
 
@@ -71,25 +71,25 @@ The Application Continuity Protection Check (ACCHK) utility provides protection 
 
     Use ACDEMO
 
-    ````
+    ```
     <copy>
     sudo su - oracle
     cd acdemo
     ./runtacreplay  
     </copy>
-    ````
+    ```
 
     ![Run the ACDEMO application](./images/runtacreplay.png " ")
 
 4. Generate the acchk report from within SQL\*Plus
 
-    ````
+    ```
     <copy>
     set serveroutput on
     set lines 200
     EXECUTE dbms_app_cont_report.acchk_report(dbms_app_cont_report.FULL);
     </copy>
-    ````
+    ```
 
     ![Generate the ACCHK Report](./images/acchk_report-2a.png " ")
 
@@ -104,41 +104,43 @@ The Application Continuity Protection Check (ACCHK) utility provides protection 
 
     You can examine the file *ac\_replay.properties* to show the configuration:
 
-    ````
+    ```
     <copy>
     sudo su - oracle
     cd acdemo
     cat ac_replay.properties
     </copy>
-    ````
+    ```
 
     ![Examine JDBC Property File](./images/ac_replay_properties.png " ")
 
 6. Ensure ACCHK is enabled
 
-    ````
+    ```
     <copy>
     sqplus sys/W3lc0m3#W3lc0m3#@//<REPLACE SCAN NAME>/pdb1.<REPLACE DOMAIN NAME> as SYSDBA
     </copy>
-    ````
+    ```
 
     Note: In Oracle Database 19c you must enable ACCHK on the instance(s) that the service your application will connect to is running (or all instances to be sure).
 
     As the SYS user in SQL\*Plus run the following command:
 
-    ````
+    ```
+    <copy>
     execute dbms_app_cont_admin.acchk_set(true);
-    ````
+    </copy>
+    ```
 
     Run the *runreplay* script from the operating system:
 
-    ````
+    ```
     <copy>
     sudo su - oracle
     cd /home/oracle/acdemo
     runreplay
     </copy>
-    ````
+    ```
 
     The acchk report can be either **FULL** or **SUMMARY**. The report is produced per PDB per SERVICE
 
@@ -152,13 +154,13 @@ The Application Continuity Protection Check (ACCHK) utility provides protection 
 
     The reason why a call is not protected is shown in each case, for example:
 
-    ````
+    ```
     Event Type       Error Code              Program               Module               Action        SQL_ID   Call              Total
     ---------------- ---------- -------------------- -------------------- -------------------- ------------- --------------- ----------
     DISABLE           41406     JDBC Thin Client     JDBC Thin Client                                          Session State O    51043
     DISABLE           41409     JDBC Thin Client     JDBC Thin Client                                                COMMIT         615
     NEVER_ENABLED     41462     JDBC Thin Client                                                                                      4
-    ````
+    ```
 
     A commit causes AC to disable. With TAC we will re-enable on the next call, with AC it is on the next request. The acdemo application does not perform actions after the commit.
 
@@ -174,21 +176,21 @@ The Application Continuity Protection Check (ACCHK) utility provides protection 
 
     In the LiveLabs systems ORACLE_BASE is set to /u01/app/oracle
 
-    ````
+    ```
     <copy>
     cd $ORACLE_BASE/diag/rdbms/<REPLACE DB NAME>/<REPLACE INSTANCE NAME>/trace
     rm <REPLACE INSTANCE NAME>_ora_*.trc
     rm <REPLACE INSTANCE NAME>_ora_*.trm
     </copy>
-    ````
+    ```
 
     For example
 
-    ````
+    ```
     cd /u01/app/oracle/diag/rdbms/rackpemw_iad1pc/racKPEMW2/trace
     rm racKPEMW2_ora_*.trc
     rm racKPEMW2_ora_*.trm
-    ````
+    ```
 
 You may now *proceed to the next lab*.  
 
@@ -199,4 +201,4 @@ Currently no issues reported
 ## Acknowledgements
 * **Authors** - Troy Anthony
 * **Contributors** - Kay Malcolm
-* **Last Updated By/Date** - Troy Anthony, September 2021
+* **Last Updated By/Date** - Troy Anthony, August 2022

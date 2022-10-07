@@ -3,6 +3,8 @@
 ## Introduction
 In this lab, we will see how Active Data Guard Automatic Block media recovery works.
 
+[Video explaining the basics of automatic block recovery](youtube:WFoTNPgKll4)
+
 Block corruptions are a common source of database outages. A database block is
 corrupt when its content has changed from what Oracle Database expects to find. If
 not prevented or repaired, block corruption can bring down the database and possibly
@@ -16,9 +18,8 @@ Estimated Lab Time: 40 Minutes
 
 Watch the video below for a quick walk through of the lab.
 
-[](youtube:05IR37v7kg8)
+[Video showing the steps to demonstrate automatic block recovery](youtube:05IR37v7kg8)
 
-05IR37v7kg8
 ### Objectives
 - Setup your environment
 - Corrupt the datafile
@@ -46,14 +47,14 @@ You will also need the two browser tabs with Cloud Shell connected to the **prim
   wget https://oracle-livelabs.github.io/database-maa/19c-adg-fundamentals/media-recovery/scripts/03-abmr.sql </copy>
   ````
 
-  ![](./images/abmr-wget.png)  
+  ![Screenshot of the cloud shell showing the download of the scripts on the server](./images/abmr-wget.png)  
 
 2. On the same tab, tail the alert log:
 
     ````
     <copy> tail -f  /u01/app/oracle/diag/rdbms/${ORACLE_UNQNAME,,}/${ORACLE_SID}/trace/alert_${ORACLE_SID}.log</copy>
     ````
-  ![](./images/abmr-alert-primary.png)  
+  ![Screenshot of the cloud shell showing the alert log of the primary database](./images/abmr-alert-primary.png)  
 
 ## Task 2: Setup the environment
 
@@ -62,7 +63,7 @@ You will also need the two browser tabs with Cloud Shell connected to the **prim
     ````
     <copy>alter session set container=mypdb;</copy>
     ````
-  ![](./images/abmr-connect-primary.png)  
+  ![Screenshot of the cloud shell showing a connection to the primary database](./images/abmr-connect-primary.png)  
 
 
 1. Run the `01-abmr.sql` script.
@@ -135,7 +136,7 @@ You will also need the two browser tabs with Cloud Shell connected to the **prim
   SQL>
   ````
 
-In this example, you will need to remember the number 11.
+In this example, you will need to remember the number **11**.
 
 ## Task 3: Corrupt the datafile
 1. In the same session, execute script `02-abmr.sql`.
@@ -186,12 +187,12 @@ By accessing the table, Oracle will need to read the data. This demo database is
 
     The corrupted block has not generated any error to the user session. In the alert log from the primary database we notice that the automated block media recovery took place.
 
-    ![](./images/abmr-alert-recovery.png)  
+    ![Screenshot of the cloud shell showing the recovery happening automatically in the alert log](./images/abmr-alert-recovery.png)  
 
 ## Task 5: Cleanup
 
 To clean this excercise, just drop the tablespace.
-1. In the sqlplus window, use this command:
+1. In the sqlplus window still connected to the PDB, use this command:
 
     ````
     SQL> <copy>drop tablespace corruptiontest including contents and datafiles;</copy>
@@ -206,6 +207,6 @@ You have now seen Active Data Guard Automatic Block media recovery working. You 
 
 ## Acknowledgements
 
-- **Author** - Pieter Van Puymbroeck, Product Manager Data Guard, Active Data Guard and Flashback Technologies
+- **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn, Ludovico Caldara, Suraj Ramesh
-- **Last Updated By/Date** -  Ludovico Caldara, October 2021
+- **Last Updated By/Date** -  Ludovico Caldara, July 2022

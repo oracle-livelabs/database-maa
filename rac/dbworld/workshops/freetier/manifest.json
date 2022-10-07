@@ -23,27 +23,22 @@
             "filename": "../../setup/setup-compute.md"
         },
         {
-            "title": "Lab 3: Install Sample schema",
-            "description": "This lab walks you through installing the sample schema.",
-            "filename": "../../services/setup.md"
-        },
-        {
-            "title": "Lab 4: Install Sample clients",
+            "title": "Lab 3: Install Sample clients",
             "description": "This lab walks you through installing two simple clients.",
             "filename": "../../clients/install-clients.md"
         },
         {
-            "title": "Lab 5: Services",
+            "title": "Lab 4: Services",
             "description": "This lab walks you through some of the characteristics of database services.",
             "filename": "../../services/services.md"
         },
         {
-            "title": "Lab 6: Application Continuity",
+            "title": "Lab 5: Application Continuity",
             "description": "This lab walks you through how TAC operates.",
             "filename": "../../appcont/appcont.md"
         },
         {
-            "title": "Lab 7: ACCHK - verifying protection levels",
+            "title": "Lab 6: ACCHK - verifying protection levels",
             "description": "This lab walks you through verifying your AC protection with ACCHK.",
             "filename": "../../appcont/acchk.md"
         },

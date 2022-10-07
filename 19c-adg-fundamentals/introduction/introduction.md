@@ -14,7 +14,7 @@ It accomplishes this by providing the management, monitoring, and automation sof
 
 This workshop focuses on **Creating Active Data Guard 19c in Oracle Cloud Infrastructure using Database Cloud Service Systems (DBCS)**.
 
-![](./images/architecture-overview.png)
+![Architecture of Active Data Guard showing one primary database and one standby database.](./images/architecture-overview.png)
 
 Estimated Workshop Time: 2 Hours
 
@@ -42,6 +42,6 @@ The following is intended to outline our general product direction. It is intend
 
 ## Acknowledgements
 
-- **Author** - Pieter Van Puymbroeck, Product Manager Data Guard, Active Data Guard and Flashback Technologies
+- **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn, Kamryn Vinson
-- **Last Updated By/Date** -  Suraj Ramesh,September 2021
+- **Last Updated By/Date** -  Ludovico Caldara,July 2022

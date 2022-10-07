@@ -7,13 +7,13 @@ Estimated Lab Time: 20 Minutes
 
 Watch the video below for a quick walk through of the lab.
 
-[](youtube:nvTV9UxRkMo)
+[Video demonstrating how to perform DML redirection](youtube:nvTV9UxRkMo)
 
 ### Enable Active Data Guard DML Redirection
 
 Oracle Active Data Guard 19c DML Redirection is a new feature which allow you to perform occasional DML using a read only standby database.
 
-![](./images/dml-redirect.jpeg)
+![Diagram showing the flow between standby and primary to achieve DML redirection](./images/dml-redirect.jpeg)
 
 The DML Redirection process breaks down in 5 steps:
 
@@ -48,7 +48,7 @@ So we will create a common user in the Database to learn about this feature.
     ````
     <copy>Select name, db_unique_name, database_role from v$database;</copy>
     ````
-    ![](../connect-db/images/connect-primary.png)
+    ![Screenshot of cloud console showing a connection to the primary database](../connect-db/images/connect-primary.png)
 
 2. Then use following query to create a common user in all the pdbs.
 
@@ -67,7 +67,7 @@ So we will create a common user in the Database to learn about this feature.
     ````
     <copy>select username from dba_users where username like '%HOL%';</copy>
     ````
-    ![](./images/dml-redirect-create-user.png)
+    ![Screenshot of cloud shell showing a the steps executed so far](./images/dml-redirect-create-user.png)
 
 
 ## Task 2: Enable the system for ADG DML Redirect
@@ -88,10 +88,10 @@ You can use following alter system command to enable this parameter.
 <copy>alter system set adg_redirect_dml=true scope=both;</copy>
 ````
 On the primary:
-![](./images/dml-redirect-set-param-primary.png)
+![Screenshot of cloud shell showing the parameter change on the primary](./images/dml-redirect-set-param-primary.png)
 
 On the standby:
-![](./images/dml-redirect-set-param-standby.png)
+![Screenshot of cloud shell showing the parameter change on the standby](./images/dml-redirect-set-param-standby.png)
 
 At this point, the databases are enabled for Active Data Guard DML redirection.
 
@@ -113,10 +113,10 @@ At this point, the databases are enabled for Active Data Guard DML redirection.
     ````
     <copy>create table DMLTable (id number);</copy>
     ````
-    ![](./images/dml-redirect-create-table.png)
+    ![Screenshot of cloud shell showing the table creation on the primary](./images/dml-redirect-create-table.png)
 
 8. Describe the table on the **standby** with the `desc DMLTable` command.
-    ![](./images/dml-redirect-desc-table.png)
+    ![Screenshot of cloud shell showing the table on the standby](./images/dml-redirect-desc-table.png)
 
 
 ## Task 4: Use DML Redirection
@@ -129,7 +129,7 @@ At this point, the databases are enabled for Active Data Guard DML redirection.
 
 2. and of course do not forget to `commit;`.
 
-    ![](./images/dml-redirect-insert-commit.png)
+    ![Screenshot of cloud shell showing a transaction being executed on the standby thanks to the DML redirection](./images/dml-redirect-insert-commit.png)
 
     You will notice that it is slower than an insert on the primary. This is expected because the DML redirection transparently creates a database link and use it to execute the insert on the primary.
 
@@ -139,13 +139,13 @@ At this point, the databases are enabled for Active Data Guard DML redirection.
     <copy>select * from DMLTable;</copy>
     ````
 
-    ![](./images/dml-redirect-select-table.png)
+    ![Screenshot of cloud shell showing the transaction outcome on the primary](./images/dml-redirect-select-table.png)
 
 
 You have now successfully used Active Data Guard DML Redirection. You may now [proceed to the next lab](#next).
 
 ## Acknowledgements
 
-- **Author** - Pieter Van Puymbroeck, Product Manager Data Guard, Active Data Guard and Flashback Technologies
-- **Contributors** - Robert Pastijn, Ludovico Caldara, Suraj Ramesh
-- **Last Updated By/Date** -  Ludovico Caldara, October 2021
+- **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
+- **Contributors** - Robert Pastijn, Suraj Ramesh
+- **Last Updated By/Date** -  Ludovico Caldara, July 2022

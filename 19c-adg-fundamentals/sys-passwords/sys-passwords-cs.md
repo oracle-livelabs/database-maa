@@ -14,7 +14,7 @@ Estimated Lab Time: 15 Minutes
 
 Watch the video below for a quick walk through of the lab.
 
-[](youtube:IXDzG0qkutY)
+[Video showing how to change the SYS password in the OCI console](youtube:IXDzG0qkutY)
 
 ### Objectives
 - Change the SYS password
@@ -24,18 +24,15 @@ Watch the video below for a quick walk through of the lab.
 
 1. Navigate to the DGHOL primary database following using the below path
 
-    Overview
-    Bare Metal, VM and Exadata
-    DB Systems (choose ADGHOLAD1)
-    DB System Details
+    Overview -> Oracle Base Database (VM, BM) -> DB Systems (choose ADGHOLAD1)
 
 2. At the bottom of the page, click the DGHOL database.
 
-    ![](./images/sys-01.png)
+    ![Screenshot of the OCI console showing the primary database details](./images/sys-01.png)
 
 3. Click on the drop down button **More Actions** and click **Manage Passwords**.
 
-    ![](./images/sys-02.png)
+    ![Screenshot of the OCI console showing where to click to manage the passwords](./images/sys-02.png)
 
 4. Enter the new SYS password. Keep in mind that the Password must be 9 to 30 characters and contain at least 2 uppercase, 2 lowercase, 2 special, and 2 numeric characters. The special characters must be _, #, or -.
 
@@ -43,7 +40,7 @@ Watch the video below for a quick walk through of the lab.
 
     And click **Apply**
 
-    ![](./images/sys-03.png)
+    ![Screenshot of the OCI console showing the dialog to change the SYS password](./images/sys-03.png)
 
 ## Task 2: Verify
 
@@ -62,11 +59,11 @@ Watch the video below for a quick walk through of the lab.
  Replace `SERVICE_NAME` with the full name you have noted down before.
  You should be able to connect using the new password  **WelC0me1##**
 
-![](./images/standby-password.png)
+![Screenshot of the cloud shell showing a successful connection with the new password on the standby database](./images/standby-password.png)
 
 
 ## Acknowledgements
 
-- **Author** - Pieter Van Puymbroeck, Product Manager Data Guard, Active Data Guard and Flashback Technologies
+- **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn, Ludovico Caldara, Suraj Ramesh
-- **Last Updated By/Date** -  Ludovico Caldara, October 2021
+- **Last Updated By/Date** -  Ludovico Caldara, July 2022

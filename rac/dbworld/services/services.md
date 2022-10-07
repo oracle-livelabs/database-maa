@@ -43,27 +43,27 @@ You should have already identified your database name and instance name.  Each p
 
 4.  Connect to node 1 as the *opc* user (you identified the IP address of node 1 in the Build DB System lab).
 
-    ````
+    ```
     ssh -i ~/.ssh/sshkeyname opc@<Node 1 Public IP Address>
-    ````
+    ```
     ![Use SSH to Connect as the OPC User](./images/racnode1-login.png " ")
 
 5. Repeat this step for node 2.
 
-    ````
+    ```
     ssh -i ~/.ssh/sshkeyname opc@<Node 2 Public IP Address>
     ps -ef | grep pmon
-    ````
+    ```
     ![Use SSH to Connect as the OPC USer](./images/racnode2-login.png " ")  
 
 6. Run the command to determine your database name and additional information about your cluster on **node 1**.  Run this as the *grid* user.
 
-    ````
+    ```
     <copy>
     sudo su - grid
     crsctl stat res -t
     </copy>
-    ````
+    ```
     ![Examine Cluster Resources](./images/crsctl-1.png " ")
 
     ![Examine Cluster Resources](./images/crsctl-2.png " ")
@@ -76,11 +76,11 @@ You should have already identified your database name and instance name.  Each p
     ![Validate Service is Running](./images/testy-crsctl.png " ")
 9. Exit from the grid user
 
-    ````
+    ```
     <copy>
     exit
     </copy>
-````
+```
 
 ## Task 2:  Create a service
 
@@ -92,13 +92,13 @@ user/password@**//hostname:port/servicename**  EZConnect does not support all se
 
     *Note:* Remember to replace all instances of *aTFdbVm_replacename* with the database name you identified in Step 1.
 
-    ````
+    ```
     <copy>
     sudo su - oracle
     srvctl add service -d <REPLACE DATABASE NAME> -s svctest -preferred <REPLACE INSTANCE NAME 1> -available <REPLACE INSTANCE NAME 2> -pdb pdb1
     srvctl start service -d <REPLACE DATABASE NAME> -s svctest
     </copy>
-    ````
+    ```
 
     ![Add a Database Service](./images/lab6-step1-num6.png " ")
 
@@ -106,11 +106,11 @@ user/password@**//hostname:port/servicename**  EZConnect does not support all se
 
     The Oracle Listener runs from the Grid Home. You will assume the *grid* identity to use lsnrctl
 
-    ````
+    ```
     <copy>
     srvctl status service -d <REPLACE DATABASE NAME> -s svctest
     </copy>
-    ````
+    ```
 
     ![Examine Database Service Status](./images/lab6-step1-num7.png " ")
 
@@ -118,22 +118,21 @@ user/password@**//hostname:port/servicename**  EZConnect does not support all se
 
     If you are still running as the oracle user, exit to *opc* and then *su* to *grid*.
 
-    ````
+    ```
     <copy>
     exit
     su - grid
     export ORACLE_HOME=/u01/app/19.0.0.0/grid
     </copy>
-    ````
+    ```
 
     As the grid user
 
-    ````
+    ```
     <copy>
     lsnrctl services
     </copy>
-    ````    
-
+    ```
     ![Use LSNRCTL to View Registered Services](./images/lsnrctl-node1.png " ")
     ![Use LSNRCTL to View Registered Services](./images/lsnrctl-node2.png " ")
 
@@ -142,11 +141,11 @@ user/password@**//hostname:port/servicename**  EZConnect does not support all se
 
 4.  Any of the SCAN listeners will show where the service is offered. Note that SCAN Listeners run from the GI HOME so you have to change the ORACLE_HOME environment variable to view the information about the SCAN Listeners.  Run the lsnrctl command below on **node 2** as the *grid* user.
 
-    ````
+    ```
     <copy>
     $ORACLE_HOME/bin/lsnrctl service LISTENER_SCAN2
     </copy>
-    ````
+    ```
     ![Use LSNRCTL to View Registered Services](./images/scan-node2.png " ")
 
 5. Repeat the same command on **node 1** as well.
@@ -160,21 +159,21 @@ user/password@**//hostname:port/servicename**  EZConnect does not support all se
 
     If you are still running as the *grid* user, exit to *opc* and then *su* to *oracle*
 
-    ````
+    ```
     <copy>
     exit
     sudo su - oracle
     export ORACLE_HOME=/u01/app/19.0.0.0/grid
     </copy>
-    ````
+    ```
 
     As the *oracle* user
 
-    ````
+    ```
     <copy>
     ps -ef | grep ora_smon
     </copy>
-    ````
+    ```
     This will show the SMON process id of your database  
     ![Identify Process ID of SMON](./images/lab6-step2-num1.png " ")
     ![Identify Process ID of SMON and Pass to KILL -9 Function](./images/lab6-step2-num1-1.png " ")
@@ -182,19 +181,19 @@ user/password@**//hostname:port/servicename**  EZConnect does not support all se
 
 2. In this example the process ID is 585689, which I can pass to the **kill -9 <process id>** command.  Identify your process id and issue the kill command as the *oracle* user
 
-    ````
+    ```
     kill -9 ######
-    ````
+    ```
 
     This will cause the instance to fail, any connections to the database on this instance would be lost. The CRS component of Grid Infrastructure would detect the instance failure, and immediately start the service on an **available** instance (based on the service definition). CRS would then restart the database instance.
 
 3. Rerun the *srvctl status service* command and notice that the service has failed over to the other instance:
 
-    ````
+    ```
     <copy>
     srvctl status service -d <REPLACE DATABASE NAME> -s svctest
     </copy>
-    ````
+    ```
 
     Depending on where your service was running beforehand, you will notice something similar to
 
@@ -202,47 +201,47 @@ user/password@**//hostname:port/servicename**  EZConnect does not support all se
 
 4. Manually relocate the service. Open a connection (with SQL*Plus) to the instance where the service is running. Use the SCAN address and the domain qualified service name in the format:
 
-    ````
+    ```
     sqlplus user/password@//<REPLACE SCAN NAME>/svctest.<DOMAIN NAME>
-    ````
+    ```
 
 5. To get the SCAN address run the following command
 
-    ````
+    ```
     <copy>
     srvctl config scan
     </copy>
-    ````  
+    ```  
 
 6. Connect through sqlplus and replace the scan address name and the password with the password you chose for your cluster.
     **Note:** The service domain name will be the same domain as the SCAN Address
 
-    ````
+    ```
     <copy>
     sqlplus sys/W3lc0m3#W3lc0m3#@//<REPLACE SCAN NAME>/svctest.pub.racdblab.oraclevcn.com as sysdba
     </copy>
-    ````
+    ```
 
     ![Connect Using SQLPLUS](./images/lab6-step2-num5-2.png " ")
 
 
 6. Using a different cloud shell window (connected to either node) open a SQL*Plus connection as SYS to the PDB associated with this service
 
-    ````
+    ```
     <copy>
     sqlplus sys/W3lc0m3#W3lc0m3#@//<REPLACE SCAN NAME>/pdb1.pub.racdblab.oraclevcn.com as sysdba
     </copy>
-    ````
+    ```
     and run the following SQL statement
 
-    ````
+    ```
     <copy>
     set wrap off
     col service_name format  a20
     select inst_id, service_name, count(*) from gv$session where service_name = 'svctest' group by inst_id, service_name;
     exit
     </copy>
-    ````
+    ```
     This statement will show you the instance this service is running and the number of open connections on this service.
 
     ![Examine V$SESSION for Connected Sessions](./images/lab6-step2-num6.png " ")
@@ -251,24 +250,24 @@ user/password@**//hostname:port/servicename**  EZConnect does not support all se
 7. Relocate the service using srvctl.  Execute the command on **node 2**
    **Note:** The oldinst is the instance the service is currently running on, newinst is the instance you will relocate to
 
-    ````
+    ```
     <copy>
      srvctl relocate service -d <REPLACE DATABASE NAME> -s svctest -oldinst <REPLACE INSTANCE NAME 2> -newinst <REPLACE INSTANCE NAME 1>
     </copy>
-    ````
+    ```
     which will move the service from one instance to another:
 
     ![Relocate a Database Service](./images/lab6-step3-num7.png " ")
 
     Re-examine the v$session information:
 
-    ````
+    ```
 
     SQL> /
     INST_ID     SERVICE_NAME         COUNT(*)
     ---------- -------------------- ----------
        2         svctest                1
-    ````
+    ```
     It will still show connected sessions to the instance that no longer offers the service.
 
     The relocate service command will not disconnect active sessions unless a force option (**-force**) is specified. A stop service command will allow a drain timeout to be specified to allow applications to complete their work during the drain interval.
@@ -280,26 +279,26 @@ This exercise will demonstrate connection load balancing and why it is important
 
 1. Examine the uniform service, named *unisrv*, that is **available** on both instances of your RAC database.  Execute this on **node 1**
 
-    ````
+    ```
     <copy>
     srvctl status service -d <REPLACE DATABASE NAME> -s unisrv
     </copy>
-    ````
+    ```
 If it is not running start this service
 
-    ````
+    ```
     Service unisrv is running on instance(s) racKPEMW1,racKPEMW2
-    ````    
+    ```
     ![Start the Uniform Service UNISRV](./images/lab6-step3-num1.png " ")
 
 2. Look at the entry for this server in the **lsnrctl service LISTENER_SCAN2** output. Note that any of the SCAN listeners can be used here.  Run this on **node 2** as the *oracle* user
 
-    ````
+    ```
     <copy>
     export ORACLE_HOME=/u01/app/19.0.0.0/grid
     $ORACLE_HOME/bin/lsnrctl service LISTENER_SCAN2
     </copy>
-    ````
+    ```
 
     where you will see similar to:
 
@@ -309,12 +308,12 @@ If it is not running start this service
 
 3. Set your oracle environment and edit your tnsnames.ora file (in $ORACLE_HOME/network/admin wherever you are running your client connections from).
 
-    ````
+    ```
     . oraenv
     <<Press enter>>
     /u01/app/oracle/product/19.0.0.0/dbhome_1
     vi $ORACLE_HOME/network/admin/tnsnames.ora
-    ````
+    ```
 
     ![Set Environment Variables](./images/oraenv.png " ")
 
@@ -327,7 +326,7 @@ If it is not running start this service
 
     **Note:** In CLBTEST the HOST is the SCAN NAME (not including the \<\>)
               In CLBTEST_LOCAL each HOST is the *VIP* name or IP address of the VIPs registered on Node-1 and Node-2 in your cluster
-    ````
+    ```
     <copy>
     CLBTEST = (DESCRIPTION =
        (ADDRESS = (PROTOCOL = TCP)(HOST = <REPLACE SCAN NAME>)(PORT = 1521))
@@ -352,44 +351,44 @@ If it is not running start this service
         (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = unisrv.pub.racdblab.oraclevcn.com)))    
 
     </copy>
-    ````
+    ```
 
     ![Add Connection Aliases to TNSNAMES.ORA File](./images/tnsnames-2.png " ")
 
     To run a client from either node, create an identical *tnsnames.ora* file on each node.
 
 5. Run the command to get your scan name
-    ````
+    ```
     <copy>
     srvctl config scan
     </copy>
-    ````
+    ```
 
 6. Run the nslookup command, on either node, followed by your scan name
 
-    ````
+    ```
     <copy>
     nslookup <REPLACE SCAN NAME>
     </copy>
-    ````
+    ```
     ![use NSLOOKUP to Translate an IP Address](./images/nslookup.png " ")
 
 7. Run the ping command on either node
 
-    ````
+    ```
     <copy>
     ping <REPLACE SCAN NAME> -c 2
     </copy>
-    ````
+    ```
     ![Run the PING Command](./images/ping.png " ")
 
 8. Use the CLBTEST alias to connect
 
-    ````
+    ```
     <copy>
     $ORACLE_HOME/bin/sqlplus hr/W3lc0m3#W3lc0m3#@CLBTEST
     </copy>
-    ````
+    ```
 
 9. Create 10 connections using the alias CLBTEST and look at where the connections were established
 
@@ -397,23 +396,23 @@ If it is not running start this service
 
     For example:
 
-    ````
+    ```
     $ORACLE_HOME/bin/sqlplus hr/W3lc0m3#W3lc0m3#@CLBTEST
     SQL> host
     os-prompt>  $ORACLE_HOME/bin/sqlplus hr/W3lc0m3#W3lc0m3#@CLBTEST
     SQL> host
-    ````
+    ```
 
     Examine where the sessions have been created by executing the following SQL from a session connected as **SYS**
 
-    ````
+    ```
     SQL> select inst_id, service_name, count(*) from gv$session where service_name = 'unisrv' group by inst_id, service_name;
 
     INST_ID SERVICE_NAME             COUNT(*)
     ---------- -------------------- ----------
         1     unisrv                   5
         2     unisrv                   5
-    ````
+    ```
 
     ![Examine GV$SESSION for Connected Sessions](./images/sqlplus-1.png " ")
 
@@ -423,74 +422,74 @@ If it is not running start this service
 
 10. Now do the same with the CLBTEST-LOCAL alias (close the first sessions as it will make it easier to illustrate what happens)
 
-    ````  
+    ```  
     INST_ID     SERVICE_NAME          COUNT(*)
     ---------- -------------------- ----------
          1      unisrv                   8
          2      unisrv                   2
-    ````
+    ```
 
     Note that you can create multiple connections with the command:
-    ````
+    ```
     <copy>
     a=160
     while [ $a -gt 0 ]; do
     sqlplus hr/W3lc0m3#W3lc0m3#@CLBTEST-LOCAL & a=$((a-1));
     done
     </copy>
-    ````
+    ```
     This will spawn 160 sqlplus sessions - and the distribution may be similar to:
-    ````  
+    ```  
     INST_ID     SERVICE_NAME          COUNT(*)
     ---------- -------------------- ----------
          1      unisrv                   85
          2      unisrv                   75
-    ````
+    ```
 
     To remove the sqlplus sessions enter the following commands:
 
-    ````
+    ```
     <copy>
     killall sqlplus
     while true; do
     fg;
     done
     </copy>
-    ````
+    ```
     Enter <ctrl-C> (the control-c command) when you see the following message scrolling on the screen:
 
-    ````
+    ```
     -bash: fg: current: no such job
     -bash: fg: current: no such job
     -bash: fg: current: no such job
     -bash: fg: current: no such job
     ^C
-    ````
+    ```
 
     This second case illustrates client-side load balancing. The TNS alias defined, through the use of FAILOVER=ON, instructs an address to be selected at random from the available ADDRESS entries. There is no guarantee of connection balancing. If you disable load balancing \(LOAD_BALANCE=OFF\), then the addresses will be tried sequentially until one succeeds. In the case where all instances are available all connections will go to the first ADDRESS in the list if client-side load balancing were disabled:
 
-    ````
+    ```
     INST_ID    SERVICE_NAME           COUNT(*)
     ---------- -------------------- ----------
       1         unisrv                   10
-    ````
+    ```
 11. What if an instance is not available?  Shutdown one of the instances with srvctl - specify \"-f\" as you want to forcibly close services if any are running.
 
-    ````
+    ```
     <copy>
     srvctl stop instance -d <REPLACE DATABASE NAME> -i aTFdbVm2 -f
     exit
     </copy>
-    ````
+    ```
 
 12. Attempt to use the CLBTEST-LOCAL alias to connect as the *oracle* user on **node 1**.  Remember to replace the password with the database password you chose when you provisioned the instance. If the ADDRESS to the instance you just stopped is chosen, you will see the following:
 
-    ````
+    ```
     <copy>sudo su - oracle</copy>
-    ````
+    ```
 
 
-    ````
+    ```
     [oracle@racnode1 ~]$ $ORACLE_HOME/bin/sqlplus hr/W3lc0m3#W3lc0m3#@CLBTEST-LOCAL
     SQL*Plus: Release 19.0.0.0.0 - Production on Mon Aug 24 08:34:32 2020
     Version 19.7.0.0.0
@@ -499,14 +498,14 @@ If it is not running start this service
     ERROR:
     ORA-12514: TNS:listener does not currently know of service requested in connect descriptor
     Enter user-name:
-    ````
+    ```
     This address could be repeatedly tried \(it is a random access\)
 
     **Note:** If you use CLBTEST-NODE1 or CLBTEST-NODE2 you will force the connection to a Node Listener. Choosing the listener where the instance was stopped is guaranteed to fail.
 
     The CLBTEST alias uses the SCAN address and will only send requests to the available instances
 
-    ````
+    ```
     [oracle@racnode1 ~]$ $ORACLE_HOME/bin/sqlplus sh/W3lc0m3#W3lc0m3#@CLBTEST
     SQL*Plus: Release 19.0.0.0.0 - Production on Mon Aug 24 08:38:56 2020
     Version 19.7.0.0.0
@@ -517,10 +516,10 @@ If it is not running start this service
     Oracle Database 19c EE Extreme Perf Release 19.0.0.0.0 - Production
     Version 19.7.0.0.0
     SQL>
-    ````
+    ```
 13. The recommended connect string for all Oracle Drivers of version 12.2 or later is:
 
-    ````
+    ```
     Alias (or URL) =
        (DESCRIPTION =
             (CONNECT_TIMEOUT=90)(RETRY_COUNT=20)(RETRY_DELAY=3)(TRANSPORT_CONNECT_TIMEOUT=3)
@@ -529,7 +528,7 @@ If it is not running start this service
             (ADDRESS_LIST =(LOAD_BALANCE=on)
                (ADDRESS = (PROTOCOL = TCP)(HOST=secondary-scan)(PORT=1521)))
             (CONNECT_DATA=(SERVICE_NAME = gold-cloud)))
-    ````    
+    ```
 
     This is showing how a RAC and Data Guard environment would be specified. The assumption is that both the PRIMARY and SECONDARY sites are clustered environments, hence specifying a SCAN ADDRESS for each one.
 
@@ -537,13 +536,13 @@ If it is not running start this service
 
 14.  Update your tnsnames.ora file to specify a configuration similar to that below. This connect string will be used in later labs
 
-    ````
+    ```
     <copy>
     vi /u01/app/oracle/product/19.0.0.0/dbhome_1/network/admin/tnsnames.ora
     </copy>
-    ````
+    ```
 
-    ````
+    ```
     <copy>
     RECSRV=(DESCRIPTION =
      (CONNECT_TIMEOUT=90)(RETRY_COUNT=20)(RETRY_DELAY=3)(TRANSPORT_CONNECT_TIMEOUT=3)
@@ -551,7 +550,7 @@ If it is not running start this service
      (ADDRESS = (PROTOCOL = TCP)(HOST=<REPLACE SCAN NAME>)(PORT=1521)))
      (CONNECT_DATA=(SERVICE_NAME = <REPLACE SERVICE NAME>.pub.racdblab.oraclevcn.com)))
     </copy>
-    ````
+    ```
 
     ![Add an Alias to TNSNAMES.ORA File](./images/tnsnames-3.png " ")
 
@@ -559,11 +558,11 @@ If it is not running start this service
 
 16. Restart the instance you stopped earlier
 
-    ````
+    ```
     <copy>
     srvctl start instance -d <REPLACE DATABASE NAME> -i aTFdbVm2
     </copy>
-    ````
+    ```
 
 ## Task 5 The difference between connection load balancing and runtime load Balancing
 
@@ -575,37 +574,37 @@ The acdemo application is a simple Java application that uses the Universal conn
 
 1. Examine the lbtest.properties file
 
-    ````
+    ```
     <copy>
     sudo su - oracle
     cd /home/oracle/acdemo
     ls -al lbtest.properties
     </copy>
-    ````
-    ````
+    ```
+    ```
     $ ls -al /home/oracle/acdemo/lbtest.properties
        -rw-r--r-- 1 oracle oinstall 980 Sep  7 05:41 /home/oracle/acdemo/lbtest.properties
-    ````
-    ````
+    ```
+    ```
     <copy>
     more /home/oracle/acdemo/lbtest.properties
     </copy>
-    ````
+    ```
     ![Examine JDBC Property File](./images/lbtest-properties.png " ")  
 
     You can see that the application will use the service *unisrv* to connect to the database. And will establish 20 connections. We are using the SCAN address in the URL, so with no modification we should see a balanced number of connections on each instance.
 
 2. The unisrv service is configured as a uniform service (available on all instances).
 
-    ````
+    ```
     <copy>
     srvctl config service -d <REPLACE DB NAME> -s unisrv
     </copy>
-    ````
+    ```
 
     This should show both instances in the PREFERRED list if successful
 
-    ````
+    ```
     Service name: unisrv
 
     <some values removed>
@@ -613,24 +612,24 @@ The acdemo application is a simple Java application that uses the Universal conn
     Service is enabled
     Preferred instances: racKPEMW1,racKPEMW2
     Available instances:
-    ````  
+    ```  
 
     Check that the service is running on both instances
 
-    ````
+    ```
     <copy>
     srvctl status service -d <REPLACE DB NAME> -s unisrv
     </copy>
-    ````
+    ```
 
 3. Ensure you are connected as the *oracle* user and then start the acdemo application using the runlbtest script.
 
-    ````
+    ```
     <copy>
     cd /home/oracle/acdemo
     ./runlbtest
     </copy>
-    ````
+    ```
 
     ![Run the RUNLBTEST Script](./images/runlbtest.png " ")      
 
@@ -638,29 +637,29 @@ The acdemo application is a simple Java application that uses the Universal conn
 
 4. Look at the connection distribution by opening a SQL\*Plus connection, on either node, to the PDB associated with this service
 
-    ````
+    ```
     sqlplus system/W3lc0m3#W3lc0m3#@//<REPLACE SCAN NAME>/pdb1.pub.racdblab.oraclevcn.com as sysdba
-    ````
+    ```
 
     and run the following SQL statement
 
-    ````
+    ```
     <copy>
     set wrap off
     col service_name format  a20
     select inst_id, service_name, count(*) from gv$session where service_name = 'unisrv' group by inst_id, service_name;
     </copy>
-    ````
+    ```
 
     This statement will show you the instance this service is running and the number of open connections on this service.
     It should be relatively even
 
-    ````
+    ```
     INST_ID    SERVICE_NAME           COUNT
     ---------- -------------------- ----------
     1      unisrv                    10
     2      unisrv                    10
-    ````
+    ```
 
     The UCP pool manager will be handing these connections to worker threads as they need them. There are algorithms that influence this, such as those related to affinity (where you were connected before) or time-based (when your thread last requested a connection) but generally the connections are handed out equally (for connections on each instance and so forth)
 
@@ -668,26 +667,26 @@ The acdemo application is a simple Java application that uses the Universal conn
 
     If you look at the current response time for acdemo it is fairly equal - probably 5-6 ms per request.
 
-    ````
+    ```
     39 borrowed, 0 pending, 0ms getConnection wait, TotalBorrowed 71989, avg response time from db 5ms
     40 borrowed, 0 pending, 0ms getConnection wait, TotalBorrowed 73685, avg response time from db 6ms
     42 borrowed, 0 pending, 0ms getConnection wait, TotalBorrowed 74535, avg response time from db 6ms
     37 borrowed, 0 pending, 0ms getConnection wait, TotalBorrowed 75376, avg response time from db 5ms
     41 borrowed, 0 pending, 0ms getConnection wait, TotalBorrowed 75376, avg response time from db 5ms
     37 borrowed, 0 pending, 0ms getConnection wait, TotalBorrowed 75376, avg response time from db 5ms
-    ````
+    ```
 
     Consume CPU on one node with a database-external program. Download the CPU\_HOG utility to the opposite Node from where you are running the acdemo application. If, for example acdemo runs on Node-1, then download CPU\_HOG to Node-2.
 
-    ````
+    ```
     <copy>
     cd /home/oracle
     wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/iMYwjIGTOrUvs4FQqoKY7ie7os3Ybocg1wob-G18rAneuZP-F__z_XoXUKB6hhIt/n/oradbclouducm/b/LiveLabTemp/o/cpuhog.zip
     </copy>
-    ````
+    ```
     Unzip the utility and set the execution bit (\+x)
 
-    ````
+    ```
     <copy>
     cd /home/oracle
     mkdir /home/oracle/cpu_hog
@@ -695,42 +694,42 @@ The acdemo application is a simple Java application that uses the Universal conn
     unzip ../cpuhog.zip
     chmod +x atm_cpuload_st.pl primes
     </copy>
-    ````
+    ```
 
     Start the CPU\_HOG utility, specifying a target load of 90%
 
-    ````
+    ```
     <copy>
     cd /home/oracle/cpu_hog
     atm_cpuload_st.pl 90
     </copy>
-    ````
+    ```
 
     ![CPUHOG Program Running](./images/cpu_hog_running.png " ")
 
     You should see some acdemo requests getting longer (they will periodically jump to 15 - 20 ms, a significant change) - this is because the threads are using connections on the overloaded node
 
-    ````
+    ```
     39 borrowed, 0 pending, 0ms getConnection wait, TotalBorrowed 71989, avg response time from db 38ms
     40 borrowed, 0 pending, 0ms getConnection wait, TotalBorrowed 73685, avg response time from db 39ms
     42 borrowed, 0 pending, 0ms getConnection wait, TotalBorrowed 74535, avg response time from db 40ms
     37 borrowed, 0 pending, 0ms getConnection wait, TotalBorrowed 75376, avg response time from db 47ms
     41 borrowed, 0 pending, 0ms getConnection wait, TotalBorrowed 75376, avg response time from db 47ms
     37 borrowed, 0 pending, 0ms getConnection wait, TotalBorrowed 75376, avg response time from db 40ms
-    ````
+    ```
 
 6. Enable runtime load balancing on the unisrv service
 
-    ````
+    ```
     <copy>
     srvctl modify service -d <REPLACE DB NAME> -s unisrv -rlbgoal SERVICE_TIME
     </copy>
-    ````
+    ```
     Confirm the config
 
-    ````
+    ```
     srvctl config service -d <REPLACE DB NAME> -s unisrv
-    ````
+    ```
 
     ![Database Service Configuration](./images/unisrv_config_rlb.png " ")
 
@@ -739,15 +738,15 @@ The acdemo application is a simple Java application that uses the Universal conn
 
     Examine the RLB statistics
 
-    ````
+    ```
     <copy>
     sqlplus sys/W3lc0m3#W3lc0m3#@//<REPLACE SCAN NAME>/pdb1.pub.racdblab.oraclevcn.com as sysdba
     </copy>
-    ````
+    ```
 
     Enter the following in to SQL\*plus
 
-    ````
+    ```
     <copy>
     set colsep '|' pages 60 space 2 lines 132 num 8 verify off feedback off
     col user_data heading "Service Metrics" format A80 wrap
@@ -759,12 +758,12 @@ The acdemo application is a simple Java application that uses the Universal conn
     WHERE ENQ_TIME >= (select max(ENQ_TIME)- 60/1440/60 from SYS.SYS$SERVICE_METRICS_TAB )
     ORDER BY 1;
     </copy>
-    ````
+    ```
 
 
     You will see something similar to:
 
-    ````
+    ```
     ENQ_TIME  Service Metrics
     --------  --------------------------------------------------------------------------------
 
@@ -787,17 +786,17 @@ The acdemo application is a simple Java application that uses the Universal conn
             1pc service=noac.pub.racdblab.oraclevcn.com { {instance=racKPEMW2 percent=11 fla
             g=GOOD aff=TRUE}{instance=racKPEMW1 percent=89 flag=GOOD aff=TRUE} } timestamp=2
             021-09-07 10:04:37')
-    ````
+    ```
 
     The ratio of percent:percent for the instances will trend towards more work guided away from the Node where CPU\_HOG is running, as shown above
 
-    ````
+    ```
     racKPEMW1 percent - racKPEMW1 percent
         49                   51
         75                   25
         84                   16
         89                   11
-    ````
+    ```
 
     The connections are still distributed approximately 50:50 but the pool directs a greater quantity of work towards the instance(s) offering the best quality of service.
 
@@ -806,4 +805,4 @@ You may now *proceed to the next lab*.
 ## Acknowledgements
 * **Authors** - Troy Anthony, Anil Nair
 * **Contributors** - Kay Malcolm, Kamryn Vinson
-* **Last Updated By/Date** - Troy Anthony, September 2021
+* **Last Updated By/Date** - Troy Anthony, August 2022

@@ -7,7 +7,7 @@
             "description": "This lab walks you through the steps to understand a RAC database and Grid Infrastructure",
             "filename": "../../intro/intro.md"
         },  {
-            "title": "Getting Started",
+            "title": "Get Started",
             "filename": "https://oracle-livelabs.github.io/common//labs/cloud-login/cloud-login-livelabs2.md"
         },
         {

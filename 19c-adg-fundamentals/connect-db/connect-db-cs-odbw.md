@@ -32,7 +32,7 @@ Watch the video below for a quick walk through of the lab.
 
 </if>
 
-1. Click the name of the primary database (`ADGHOLAD1`).
+4. Click the name of the primary database (`ADGHOLAD1`).
 
   ![Screenshot of OCI Console showing how to navigate to the next step](images/db-systems-livelabs.png)
 
@@ -47,22 +47,35 @@ Watch the video below for a quick walk through of the lab.
 
   The Cloud Shell opens after a few seconds and shows the **prompt**.
 
-7. Download the private key for the Oracle Database World LiveLab using the below command in the Cloud Shell.
+6. Download the private key for the Oracle Cloud World LiveLab using the below command in the Cloud Shell.
     ````
-    <copy>wget http://bit.ly/cloudshellkey</copy>
+    <copy>wget http://bit.ly/ocw22-ssh</copy>
     ````
 
+7. Unzip the archive:
+    ```
+    <copy>unzip ocw22-ssh</copy>
+    ```
 
-8. Change the permission of the private key to `0600` and connect to the primary host as `opc`, using the public IP address that you have noted down earlier.
-    ````
-    <copy>chmod 600 cloudshellkey</copy>
-    ````
-    Replace `cloudshellkey` with the name of your private key file.
-    ````
-    <copy>ssh -i cloudshellkey opc@IP_ADDRESS</copy>
-    ````
-    Replace `cloudshellkey` with the name of your private key file, and `IP_ADDRESS` with the real public IP address.
+   *Please note: The file does not have a file extension!*
 
+   You will find the following files:
+
+      * ocw2022_rsa (privayte key)
+      * ocw2022_rsa.pub (public key)
+      * ocw2022-putty.ppk (private key in Putty format - for Windows only)
+
+
+8. Change the permission of the private key `ocw2022_rsa` to `0600` and connect to the primary host as `opc`, using the public IP address that you have noted down earlier.
+    ````
+    <copy>chmod 600 ocw2022_rsa</copy>
+    ````
+
+    ````
+    <copy>ssh -i ocw2022_rsa opc@IP_ADDRESS</copy>
+    ````
+
+    Replace `IP_ADDRESS` with the real public IP address.
 
 
 9. You should be connected to the primary database host. You can become **oracle** with `sudo su - oracle` and connect to the instance with the command `sqlplus / as sysdba` and execute a query:
@@ -99,9 +112,9 @@ Watch the video below for a quick walk through of the lab.
 
   Connect to the standby host as `opc`, using the public IP address that you have noted down earlier.
     ````
-    <copy>ssh -i cloudshellkey opc@IP_ADDRESS2</copy>
+    <copy>ssh -i ocw2022_rsa opc@IP_ADDRESS2</copy>
     ````
-    Replace `cloudshellkey` with the name of your private key file, and `IP_ADDRESS2` with the public IP address of the standby database host.
+    Replace `IP_ADDRESS2` with the public IP address of the standby database host.
 
 9. You should be connected to the standby database host. You can become **oracle** using `sudo su - oracle` and connect to the instance with the command `sqlplus / as sysdba` and execute a query:
 

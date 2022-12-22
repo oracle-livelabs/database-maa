@@ -1,100 +1,91 @@
-# Introduction
+Get started - register Free Tier account
+Introduction
+Before you get started, you will need an Oracle Cloud account. This lab walks you through the steps of getting an Oracle Cloud Free Tier account and signing in.
 
-## About this workshop
+Estimated Time: 5 minutes
 
-This workshop covers step-by-step guide for migrating On-Premise Oracle Databases to Oracle Co-Managed databases using ZDM's Physical Online Methodology.
+Existing Cloud Accounts
+If you already have access to an Oracle Cloud account, skip to Task 2 to sign in to your cloud tenancy.
 
-Estimated Time: 3 hours
+Objectives
+Create an Oracle Cloud Free Tier account
+Sign in to your account
+Prerequisites
+A valid email address
+Ability to receive SMS text verification (only if your email isn't recognized)
+Note: Interfaces in the following screenshots may look different from the interfaces you will see.
+Collapse All Tasks
+Task 1: Create Your Free Trial Account
+If you already have a cloud account, skip to Task 2.
 
+1. Open up a web browser to access the Oracle Cloud account registration form at oracle.com/cloud/free.
 
-### About Zero Downtime Migration
+You will be presented with a registration page.
+./images/registration.png
 
-Oracle Zero Downtime Migration (ZDM) is the Oracle Maximum Availability Architecture (MAA)-recommended solution to migrate Oracle Databases to the Oracle Cloud. ZDM's inherent design keeps the migration process as straightforward as possible and ensures the most negligible impact on production workloads. The Source Database to be migrated can be on-premises, deployed on Oracle Public Cloud Gen 1 or Oracle Cloud Infrastructure. The Target Database deployment can be in a Database Cloud Service on Oracle Cloud Infrastructure (Oracle Cloud Infrastructure) Virtual Machine, Exadata Cloud Service, Exadata Cloud at Customer, or Autonomous Database. ZDM automates the entire migration process, reducing the chance of human errors. ZDM leverages Oracle Database-integrated high availability (HA) technologies such as Oracle Data Guard and GoldenGate and follows all MAA best practices that ensure no significant downtime of production environments. Oracle ZDM supports both Physical and Logical Migration workflows. 
+2. Enter the following information to create your Oracle Cloud Free Tier account.
 
-Oracle ZDM supports Oracle Database versions 11.2.0.4, 12.1.02, 12.2.0.1, 18c, 19c & 21c. ZDM’s physical migration workflow requires the source and target databases to be in the same database release.  Starting with ZDM 21.1, the Logical Migration workflow supports cross-version migration, thus providing an in-flight upgrade while migrating to the Oracle Cloud.
+Choose your Country
+Enter your Name and Email
+Use hCaptcha to verify your identity
+3. Once you have entered a valid email address, select the Verify my email button. The screen will appear as follows after you select the button:
+./images/verify-email.png
 
-Oracle ZDM allows the source database to be a non-CDB or a container database (CDB) with one or more Pluggable Databases (PDBs). Starting with release 21.1, Oracle ZDM allows non-CDB Databases to be migrated to Pluggable Databases on the fly, allowing for total conversion and adding more versatility to the migration workflow. 
+4. Go to your email. You will see an account validation email from Oracle in your inbox. The email will be similar to the following:
+./images/verification-mail.png
 
-The Zero Downtime Migration software offers a command line interface that you install and run on a host that you provision. The server where the Zero Downtime Migration software is installed is called the Zero Downtime Migration service host. You can run one or more database migration jobs from the Zero Downtime Migration service host.
+5. Click Verify email.
 
+Enter the following information to create your Oracle Cloud Free Tier account.
 
+Choose a Password
+Enter your Company Name
+Your Cloud Account Name will generate automatically based on your inputs. You can change that name by entering a new value. Remember what you wrote. You'll need this name later to sign in.
+Choose a Home Region. Your Home Region cannot be changed once you sign-up.
+Note: Based on the current design of the workshop and resource availability, it is recommended not to use the London region for this workshop at this time.
+. Click Continue
+./images/account-info.png
+7. Enter your address information. Choose your country and enter a phone number. Click Continue.
+./images/free-tier-address.png
 
-### Migration Paths
-ZDM supports on-premises databases to be migrated to a variety of Oracle Cloud Database Services and the Exadata Database Machine On-Premises:  
-*	Oracle Database Cloud Service	(Bare Metal & Virtual Machine)
-*	Oracle Exadata Cloud Service
-*	Oracle Exadata Cloud at Customer
-*	Oracle Autonomous Database - Oracle Autonomous Transaction Processing  (Dedicated and Shared)
-* Oracle Autonomous Database - Oracle Autonomous Data Warehouse (Dedicated and Shared)
+8. Click the Add payment verification method button.
+./images/free-tier-payment-1.png
 
+9. Choose the verification method. In this case, click the Credit Card button. Enter your information and payment details.
 
-### Migration Workflows
+Note: This is a free credit promotion account. You will not be charged unless you elect to upgrade the account.
+./images/free-tier-payment-2.png
 
-#### Physical Offline Migration
-ZDM physical offline migration leverages Oracle Recovery Manager and migrates the database using a backup and restore methodology. Customers can use this method when migrating to Oracle Database Cloud Services Virtual Machines, Exadata Cloud Service, Exadata Cloud at Customer and Exadata Database Machine On-Premises. 
+10. Once your payment verification is complete, review and accept the agreement by clicking the check box. Click the Start my free trial button.
 
-![Zero Downtime Migration Physical Offline Workflow Step-by-Step high level description](./images/physical-offline-workflow.png " ")
+./images/free-tier-agreement.png
 
+11. Your account is provisioning and should be available soon! You might want to log out as you wait for your account to be provisioned. You'll receive an email from Oracle notifying you that provisioning is complete, with your cloud account and username.
 
-#### Physical Online Migration
-ZDM physical online migration leverages Oracle Recovery Manager and Oracle Data Guard. Customers should use this method when a highly available migration and minimizing any possible impact is a priority. Customers can use this method to migrate to Oracle Database Cloud Services Virtual Machines, Exadata Cloud Service, Exadata Cloud at Customer and Exadata Database Machine On-Premises.
+Task 2: Sign in to Your Account
+Please note that while your tenancy is initially created, you will only see a direct login. Once your tenancy is fully provisioned, you will see the screens as described below.
 
-![Zero Downtime Migration Physical Online Workflow Step-by-Step high level description](./images/physical-online-workflow.png " ")
+1. Go to cloud.oracle.com. Enter your Cloud Account Name and click Next. This is the name you chose while creating your account in the previous section. It's NOT your email address. If you've forgotten the name, see the confirmation email.
 
+./images/cloud-oracle.png
 
-#### Logical Offline Migration with Backup Location
-ZDM logical offline migration with Data Pump and Backup Location offers customers a simple yet efficient method to migrate their databases to the Oracle Cloud. The backup location can be the Object Storage for Oracle Cloud Infrastructure migrations and NFS or the Recovery Appliance for Exadata Cloud at Customer.
+2. Click Continue to sign in using the "oraclecloudidentityservice".
 
-![Zero Downtime Migration Logical Offline with Backup Location Workflow Step-by-Step high level description](./images/logical-offline-backup-workflow.png " ")
+./images/cloud-login-tenant-single-sigon.png
 
-#### Logical Offline Migration with Database Links
-ZDM offline logical migration can also leverage Database Links to establish a direct connection between the source database and the target database in the Oracle Cloud, thus eliminating the need for a backup location. This methodology is recommended only for Databases smaller than 100Gb.
+When you sign up for an Oracle Cloud account, a user is created for you in Oracle Identity Cloud Service with the username and password you selected. You can use this single sign-on option to sign in to Oracle Cloud Infrastructure and then navigate to other Oracle Cloud services without re-authenticating. This user has administrator privileges for all the Oracle Cloud services included with your account.
 
-![Zero Downtime Migration Logical Offline with Database Links Workflow Step-by-Step high level description](./images/logical-offline-dblinks-workflow.png " ")
+3. Enter your Cloud Account credentials and click Sign In. Your username is your email address. The password is what you chose when you signed up for an account.
 
-#### Logical Online Migration with Database Links
-Oracle ZDM leverages a GoldenGate hub that will help synchronize both the source and target database while providing a highly available migration. Database Links are used for a direct connection between source and database target while the instantiation of the target database is done by using Data Pump.
+./images/oci-signin-single-signon.png
 
-![Zero Downtime Migration Logical Online with Database Links Workflow Step-by-Step high level description](./images/logical-online-dblinks-workflow.png " ")
+4. You are now signed in to Oracle Cloud!
 
-#### Logical Online Migration with Backup Location
-Customers can also leverage a designated backup location instead of using a direct Database Link between the source and the target database. Migration to Oracle Cloud Infrastructure-based databases will use the Object Store, whereas migrations to Exadata Cloud at Customer can choose between an external NFS filer or the Recovery Appliance as a backup location.
+./images/home-page.png
 
-![Zero Downtime Migration Logical Online with Backup Location Workflow Step-by-Step high level description](./images/logical-online-backup-workflow.png " ")
+You may now proceed to the next lab.
 
-
-For more information on Oracle Zero Downtime Migration please visit ZDM's [product website](www.oracle.com/goto/zdm).
-
-
-### Objectives
-
-In this lab, you will:
-* Learn about Oracle Zero Downtime Migration Fundamentals
-* Install and Setup ZDM
-* Configure Credential and Authentication Requirements for the Migration
-* Source Database Configuration
-* Target Database Configuration
-* Provision and Deploy a ZDM GoldenGate Hub
-* Response File Configuration
-* Databasde Migration
-
-### Prerequisites
-This workshop requires an Oracle Cloud account.
-
-
-Please *proceed to the next lab*.
-
-
-## Learn More
-
-* [Oracle Zero Downtime Migration - Product Page](http://www.oracle.com/goto/zdm)
-* [Oracle Zero Downtime Migration - Product Documentation](https://docs.oracle.com/en/database/oracle/zero-downtime-migration/)
-* [Oracle Zero Downtime Migration - Logical Migration Step by Step Guide](https://www.oracle.com/a/tech/docs/oracle-zdm-logical-migration-step-by-step-guide.pdf)
-* [Oracle Zero Downtime Migration - Physical Migration Step by Step Guide](https://www.oracle.com/a/tech/docs/oracle-zdm-step-by-step-guide.pdf)
-
-
-
-## Acknowledgements
-* **Author** - Ricardo Gonzalez, Senior Principal Product Manager, Oracle Cloud Database Migration
-* **Contributors** - LiveLabs Team, ZDM Development Team
-* **Last Updated By/Date** - Ricardo Gonzalez, January 2022
+Acknowledgements
+Created By/Date - Kay Malcolm, Database Product Management, Database Product Management, March 2020
+Contributors - John Peach, Kamryn Vinson, Rene Fontcha, Arabella Yao
+Last Updated By - Arabella Yao, Product Manager, Database Product Management, Dec 2022

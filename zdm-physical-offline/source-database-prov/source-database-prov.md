@@ -10,8 +10,7 @@ In this task we will create a new VCN which will be used to host Source Database
 1. Login to your Oracle Cloud Console.
 
 2. Click the Navigation Menu in the upper left, navigate to Networking and then select Virtual Cloud Networks
-
-!(./images/Task1-Navigate.png " ")
+   (./images/Task1-Navigate.png " ")
 
 3. Click on "Start VCN Wizard"
 

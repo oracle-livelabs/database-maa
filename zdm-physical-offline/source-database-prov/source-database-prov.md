@@ -75,15 +75,11 @@ Once details are entered , Click on Next
 
      ![ss7](./images/shape.png " ")
 
-    Under Networking , select choices to reflect the below details
+ 8. Under Networking , Make choices to reflect the below details
 
-    VCN Name : ZDM-VCN
+     ![ss8](./images/Compute3.png " ")
 
-    Subnet Name : Pubic Subnet-ZDM-VCN
-
-    ![ss8](./images/Compute3.png " ")
-
-    Under Add SSH Keys
+ 9. Under Add SSH Keys
 
     Browse and provide the ssh key generated earlier.
 

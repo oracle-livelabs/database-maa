@@ -11,33 +11,33 @@ In this task we will create a new VCN which will be used to host Source Database
 
 2. Click the Navigation Menu in the upper left, navigate to Networking and then select Virtual Cloud Networks
    
-   ![screenshot1](./images/task1navigate.png " ")
+![ss1](./images/task1navigate.png " ")
  
 3. Click on "Start VCN Wizard"
 
-![screenshot2](./images/Task1_VCNWizard.png " ")
+![ss2](./images/Task1_VCNWizard.png " ")
 
 4. In the new small window , Select the "Create VCN with Internet Connectivity" and then click on "Start VCN Wizard"
 
-./images/Task1-VCNWizard2.png
+![ss3](./images/Task1_VCNWizard2.png " ")
 
 5. In new window , under Basic information specify name of VCN as ZDM-VCN and select appropritate compartment.
 
-./images/Task1-VCNWizard3.png
+![ss4](./images/Task1-VCNWizard3.png " ")
 
 6. Under Configure VCN and Subnets , enter details as shown in image below.
 
-./images/Task1-VCNWizard4.png
+![ss5](./images/Task1-VCNWizard4.png " ")
 
 Once details are entered , Click on Next
 
 7. On the next screen , Click on Create
 
-./images/Task1-VCNWizard5.png
+![ss6](./images/Task1-VCNWizard5.png " ")
 
 8. This will take few seconds and you will receive a screen similar to the one below after completion.
 
-./images/Task1-VCNWizard6.png
+![ss7](./images/Task1-VCNWizard6.png " ")
 
 
 

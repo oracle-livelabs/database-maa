@@ -10,8 +10,10 @@ In this task we will create a new VCN which will be used to host Source Database
 1. Login to your Oracle Cloud Console.
 
 2. Click the Navigation Menu in the upper left, navigate to Networking and then select Virtual Cloud Networks
-   (./images/task1navigate.png " ")
+   
+   ![screenshot] (./images/task1navigate.png " ")
 
+ 
 3. Click on "Start VCN Wizard"
 
 ./images/Task1-VCNWizard.png
@@ -115,3 +117,6 @@ Click on "Create" to start the compute provisioning.
 * **Author** - Ricardo Gonzalez, Senior Principal Product Manager, Oracle Cloud Database Migration
 * **Contributors** - LiveLabs Team, ZDM Development Team
 * **Last Updated By/Date** - Ricardo Gonzalez, January 2022
+
+
+[def]: ./images/task1navigate.png

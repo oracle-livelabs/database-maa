@@ -89,6 +89,11 @@ Once details are entered , Click on Next
 
     ![ss9](./images/Compute5.png " ")
 
+11. In Few minutes , Compute instance with database will be provisioned and running as below.
+    ![ss10](./images/prov_final.png)
+
+12. Take a note of the Public IP address of the Compute Instance.
+
 
 
 

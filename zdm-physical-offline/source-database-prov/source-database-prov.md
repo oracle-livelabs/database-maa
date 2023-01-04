@@ -15,29 +15,29 @@ In this task we will create a new VCN which will be used to host Source Database
  
 3. Click on "Start VCN Wizard"
 
-![ss2](./images/Task1_VCNWizard.png " ")
+     ![ss2](./images/Task1_VCNWizard.png " ")
 
 4. In the new small window , Select the "Create VCN with Internet Connectivity" and then click on "Start VCN Wizard"
 
-![ss3](./images/Task1_VCNWizard2.png " ")
+     ![ss3](./images/Task1_VCNWizard2.png " ")
 
 5. In new window , under Basic information specify name of VCN as ZDM-VCN and select appropritate compartment.
 
-![ss4](./images/Task1_VCNWizard3.png " ")
+     ![ss4](./images/Task1_VCNWizard3.png " ")
 
 6. Under Configure VCN and Subnets , enter details as shown in image below.
 
-![ss5](./images/Task1_VCNWizard4.png " ")
+     ![ss5](./images/Task1_VCNWizard4.png " ")
 
 Once details are entered , Click on Next
 
 7. On the next screen , Click on Create
 
-![ss6](./images/Task1_VCNWizard5.png " ")
+     ![ss6](./images/Task1_VCNWizard5.png " ")
 
 8. This will take few seconds and you will receive a screen similar to the one below after completion.
 
-![ss7](./images/Task1_VCNWizard6.png " ")
+     ![ss7](./images/Task1_VCNWizard6.png " ")
 
 
 
@@ -47,55 +47,51 @@ Once details are entered , Click on Next
 
 2. Click the Navigation Menu in the upper left, navigate to Marketplace and then select All Applications.
 
-![ss1](./images/Navigate.png " ")
+     ![ss1](./images/Navigate.png " ")
 
 3. Type "Oracle Database" in search bar.
 
-![ss2](./images/oracledb.png " ")
+     ![ss2](./images/oracledb.png " ")
 
 4. Click on the listed "Oracle Database (Single Instance) Image
 
-![ss3](./images/oracleimage.png " ")
+     ![ss3](./images/oracleimage.png " ")
 
 5. Select an Oracle Database version which is latest ( You will same latest version on OL7 and OL8)
     
    We have choosen OL7 since we would like to match the target OS as close as possible.
 
-![ss4](./images/dbver.png " ")
+     ![ss4](./images/dbver.png " ")
 
 6. Ensure to select the correct compartment in your tenancy and then click on "Launch Instance"
 
-![ss5](./images/launch.png " ")
+     ![ss5](./images/launch.png " ")
 
 7. On the Create compute instance page , Please update Name for Compute.
 
-![ss6](./images/Compute1.png " ")
+     ![ss6](./images/Compute1.png " ")
 
 You can leave the Image and Shape as Default.
 
-![ss7](./images/shape.png " ")
+     ![ss7](./images/shape.png " ")
 
-Under Networking , Populate details as below.
+Under Networking , select choices to reflect the below details
 
 VCN Name : ZDM-VCN
 
-Subnet Name : Pub-ZDM-VCN
+Subnet Name : Pubic Subnet-ZDM-VCN
 
-CIDR Block : 10.30.0.0/16
-
-![ss8](./images/Compute3.png " ")
+    ![ss8](./images/Compute3.png " ")
 
 Under Add SSH Keys
 
 Browse and provide the ssh key generated earlier.
 
-![ss9](./images/Compute4.png " ")
-
-Yes , that's it we are ready to provision the Source Databse instance.
+    ![ss9](./images/Compute4.png " ")
 
 Click on "Create" to start the compute provisioning.
 
-./images/Compute5.png
+     ![ss9](./images/Compute5.png " ")
 
 
 

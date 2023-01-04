@@ -71,27 +71,27 @@ Once details are entered , Click on Next
 
      ![ss6](./images/Compute1.png " ")
 
-You can leave the Image and Shape as Default.
+    You can leave the Image and Shape as Default.
 
      ![ss7](./images/shape.png " ")
 
-Under Networking , select choices to reflect the below details
+    Under Networking , select choices to reflect the below details
 
-VCN Name : ZDM-VCN
+    VCN Name : ZDM-VCN
 
-Subnet Name : Pubic Subnet-ZDM-VCN
+    Subnet Name : Pubic Subnet-ZDM-VCN
 
     ![ss8](./images/Compute3.png " ")
 
-Under Add SSH Keys
+    Under Add SSH Keys
 
-Browse and provide the ssh key generated earlier.
+    Browse and provide the ssh key generated earlier.
 
     ![ss9](./images/Compute4.png " ")
 
-Click on "Create" to start the compute provisioning.
+    Click on "Create" to start the compute provisioning.
 
-     ![ss9](./images/Compute5.png " ")
+    ![ss9](./images/Compute5.png " ")
 
 
 

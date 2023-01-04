@@ -41,39 +41,39 @@ Once details are entered , Click on Next
 
 
 
-## Task 1 - Provision Source Database.
+## Task 2 - Provision Source Database.
 
 1. Login to your Oracle Cloud Console.
 
 2. Click the Navigation Menu in the upper left, navigate to Marketplace and then select All Applications.
 
-./images/Navigate.png
+![ss1](./images/Navigate.png " ")
 
 3. Type "Oracle Database" in search bar.
 
-./images/oracledb.png
+![ss2](./images/oracledb.png " ")
 
 4. Click on the listed "Oracle Database (Single Instance) Image
 
-./images/oracleimage.png
+![ss3](./images/oracleimage.png " ")
 
 5. Select an Oracle Database version which is latest ( You will same latest version on OL7 and OL8)
     
    We have choosen OL7 since we would like to match the target OS as close as possible.
 
-./images/dbver.png
+![ss4](./images/dbver.png " ")
 
 6. Ensure to select the correct compartment in your tenancy and then click on "Launch Instance"
 
-./images/
+![ss5](./images/launch.png " ")
 
 7. On the Create compute instance page , Please update Name for Compute.
 
-./images/Compute1.png
+![ss6](./images/Compute1.png " ")
 
 You can leave the Image and Shape as Default.
 
-./images/shape.png
+![ss7](./images/shape.png " ")
 
 Under Networking , Populate details as below.
 
@@ -83,13 +83,13 @@ Subnet Name : Pub-ZDM-VCN
 
 CIDR Block : 10.30.0.0/16
 
-./images/Compute3.png
+![ss8](./images/Compute3.png " ")
 
 Under Add SSH Keys
 
 Browse and provide the ssh key generated earlier.
 
-./images/Compute4.png
+![ss9](./images/Compute4.png " ")
 
 Yes , that's it we are ready to provision the Source Databse instance.
 

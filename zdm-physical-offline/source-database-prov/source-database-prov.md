@@ -85,7 +85,7 @@ Once details are entered , Click on Next
 
     ![ss9](./images/Compute4.png " ")
 
-    Click on "Create" to start the compute provisioning.
+10. Click on "Create" to start the compute provisioning.
 
     ![ss9](./images/Compute5.png " ")
 
@@ -105,7 +105,7 @@ Once details are entered , Click on Next
 
 
 ## Acknowledgements
-* **Author** - Ricardo Gonzalez, Senior Principal Product Manager, Oracle Cloud Database Migration
+* **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
 * **Contributors** - LiveLabs Team, ZDM Development Team
 * **Last Updated By/Date** - Ricardo Gonzalez, January 2022
 

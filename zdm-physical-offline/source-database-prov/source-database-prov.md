@@ -11,12 +11,11 @@ In this task we will create a new VCN which will be used to host Source Database
 
 2. Click the Navigation Menu in the upper left, navigate to Networking and then select Virtual Cloud Networks
    
-   ![screenshot](./images/task1navigate.png " ")
-
+   ![screenshot1](./images/task1navigate.png " ")
  
 3. Click on "Start VCN Wizard"
 
-![screenshot](./images/Task1-VCNWizard.png " ")
+![screenshot2](./images/Task1-VCNWizard.png " ")
 
 4. In the new small window , Select the "Create VCN with Internet Connectivity" and then click on "Start VCN Wizard"
 

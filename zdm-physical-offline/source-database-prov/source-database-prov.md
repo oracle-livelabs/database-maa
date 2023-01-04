@@ -15,7 +15,7 @@ In this task we will create a new VCN which will be used to host Source Database
  
 3. Click on "Start VCN Wizard"
 
-![screenshot2](./images/Task1-VCNWizard.png " ")
+![screenshot2](./images/Task1_VCNWizard.png " ")
 
 4. In the new small window , Select the "Create VCN with Internet Connectivity" and then click on "Start VCN Wizard"
 

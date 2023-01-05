@@ -99,6 +99,10 @@ Estimated Time: 30 mins
 
    ![ss12](./images/prov-final.png)
 
+   This step is going to take an hour , however you can proceed to next lab while DB System is being provisioned.
+
+   
+
 
 
 

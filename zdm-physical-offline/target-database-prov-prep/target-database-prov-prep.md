@@ -6,7 +6,7 @@ In this lab, you will connect to your source database as system database adminis
 Estimated Time: 30 mins
 
 
-1. Login to the Source Database Node using the Public IP
+**1. Login to the Source Database Node using the Public IP**
 
    Username to login : opc 
 

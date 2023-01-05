@@ -30,10 +30,14 @@ ZDM supports on-premises databases to be migrated to a variety of Oracle Cloud D
 
 ### Migration Workflows
 
+(./images/physical-offline-workflow.png " ")
+
 #### Physical Offline Migration
 ZDM physical offline migration leverages Oracle Recovery Manager and migrates the database using a backup and restore methodology. Customers can use this method when migrating to Oracle Database Cloud Services Virtual Machines, Exadata Cloud Service, Exadata Cloud at Customer and Exadata Database Machine On-Premises. 
 
 ![Zero Downtime Migration Physical Offline Workflow Step-by-Step high level description](./images/physical-offline-workflow.png " ")
+
+
 
 
 #### Physical Online Migration

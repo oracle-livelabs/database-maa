@@ -63,41 +63,41 @@ Estimated Time: 30 mins
 
 **11. Provide Database Name.**
 
-      Provide Database Name as "ORCL" and DB Unique name suffix as "T"
+   Provide Database Name as "ORCL" and DB Unique name suffix as "T"
 
-      ![ss8](./images/dbname.png)
+   ![ss8](./images/dbname.png)
 
 **12. Select Database version.**
 
-      Click on the Change Database Image and select "Display all available versions" to see all versions.
+   Click on the Change Database Image and select "Display all available versions" to see all versions.
 
-      Select the database version which is in the same major version as source database and minor version higher than or same as source database.
+   Select the database version which is in the same major version as source database and minor version higher than or same as source database.
 
-      ![ss9](./images/dbver.png)
+   ![ss9](./images/dbver.png)
 
 **13. Provide SYS password.**
 
-      Enter SYS password of your choice.
+   Enter SYS password of your choice.
 
-      ![ss10](./images/sys.png)
+   ![ss10](./images/sys.png)
 
 **14. Select database workload type.**
 
-      In this lab , leave it to the Default.
+   In this lab , leave it to the Default.
 
 **15. Disable Database Backups.**
 
-      Uncheck the box to disable Database backups.
+   Uncheck the box to disable Database backups.
 
-      We don't need automatic backups until we complete the database migration.
+   We don't need automatic backups until we complete the database migration.
 
-      ![ss11](./images/backup.png)
+   ![ss11](./images/backup.png)
 
 **16. Start DB System Provisioning**
 
-      Click on the Create DB System to initiate the DB system provisioning.
+   Click on the Create DB System to initiate the DB system provisioning.
 
-      ![ss12](./images/prov-final.png)
+   ![ss12](./images/prov-final.png)
 
 
 

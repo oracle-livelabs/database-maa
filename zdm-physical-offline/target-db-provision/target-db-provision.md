@@ -18,15 +18,15 @@ Estimated Time: 30 mins
 
 **3. Provide Name of the DB System and select proper compartment.**
 
-    Provide DB System name as "ZDM-Target-DB" and ensure you have selected correct compartment for the DB system.
+   Provide DB System name as "ZDM-Target-DB" and ensure you have selected correct compartment for the DB system.
     
-    ![ss3](./images/dbsystemname.png)
+   ![ss3](./images/dbsystemname.png)
 
 **4.  Modify the shape of the DB System**
 
-      Click on the Change Shape and ensure to select AMD Flex with 1 OCPU.
+   Click on the Change Shape and ensure to select AMD Flex with 1 OCPU.
 
-      ![ss4](./images/shape.png)
+   ![ss4](./images/shape.png)
 
 **5.  Configure Database Edition.**
 

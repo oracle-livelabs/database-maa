@@ -1,6 +1,6 @@
 # Collect Information required for Target Database Provisioning
 
-In this lab, you will connect to your source database as system database administrator, collect the necessary information required to provision target database.
+In this lab, you will connect to your source database as system database administrator and collect the necessary information required to provision target database.
 
 
 Estimated Time: 30 mins
@@ -56,11 +56,11 @@ Estimated Time: 30 mins
 
     Execute the below query after connecting to database using sqlplus.
 
-    select banner from v$version;
+    "select banner from v$version".
 
     You will receive an output similar to the one below which will have the Database Edition.
 
-    ![ss2](./images/banner.png)
+   ![ss2](./images/banner.png)
 
 **6. Check Database characterset.**
    

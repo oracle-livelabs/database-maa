@@ -1,12 +1,10 @@
-# Source Database Configuration
+# Collect Information required for Target Database Provisioning
 
-In this lab, you will connect to your source database as system database administrator, collect the necessary information required to provision target databasr and also perform necessary steps to ensure source database has been configured correctly for Physical Offline Migration.
+In this lab, you will connect to your source database as system database administrator, collect the necessary information required to provision target database.
 
 
 Estimated Time: 30 mins
 
-
-## Task 1 - Collect Source Database Properties required for Target Database Creation.
 
 1. Login to the Source Database Node using the Public IP
 
@@ -23,6 +21,7 @@ Estimated Time: 30 mins
    Please use similar commnads in case above command doesn't work for you.
 
    You will get a output similar to the one below.
+
    ![ss1](./images/osver.png)
 
    Please note that Physical Offline Migration will work only for source databases with Linux based Operating System.
@@ -62,13 +61,22 @@ Estimated Time: 30 mins
     You will receive an output similar to the one below which will have the Database Edition.
 
     ![ss2](./images/banner.png)
-    
+
 5. Check Database Characterset
    
+   Run the below query to identify the database character set and national characterset.
 
+   select PARAMETER,VALUE from nls_database_parameters where parameter like '%NLS%CHARACTERSET';
 
-    
+   In your ouput NLS_CHARACTERSET is the database characterser and NLS_NCHAR_CHARACTERSET is the National Characterset.
 
+   Sample output is shown below.
+
+   ![ss3](./images/charset.png)
+
+6. Check enryption algorithm under sqlnet.ora
+
+   Check the sqlnet.ora to identify any encryption algoritham mentioned.
 
 
 

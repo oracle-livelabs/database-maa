@@ -6,13 +6,13 @@ In this lab, you will connect to your source database as system database adminis
 Estimated Time: 30 mins
 
 
-**1. Login to the Source Database Node using the Public IP**
+**1. Login to the Source Database system using the Public IP.**
 
    Username to login : opc 
 
    Use the private key generated earlier.
 
-2. Check the OS version of the Source Database.
+**2. Check the OS version of the Source Database.**
 
    Execute the below command after login in as opc.
    
@@ -26,7 +26,7 @@ Estimated Time: 30 mins
 
    Please note that Physical Offline Migration will work only for source databases with Linux based Operating System.
 
-3. Set the Operating System environment to connect to your database.
+**3. Set the Operating System environment to connect to your database.**
 
     Switch user to Oracle
 
@@ -38,7 +38,7 @@ Estimated Time: 30 mins
     
     Enter ORCL when asked for ORACLE_SID and then press enter    --> Enter your DB name if that is different in case of on premise.
 
-3.  Check the database version of the Source Database.
+**4.  Check the database version of the Source Database.**
 
     In this livelab we have used Oracle Marketplace image for which we know the version that we have selected.
 
@@ -48,7 +48,7 @@ Estimated Time: 30 mins
 
     check for the latest patches to determine the exact database version.
 
-4.  Check the Database Edition of the Source Database.
+**5.  Check the Database Edition of the Source Database.**
 
     In this livelab we have used Oracle Marketplace image for which we know the Edition that we have selected.
 
@@ -62,7 +62,7 @@ Estimated Time: 30 mins
 
     ![ss2](./images/banner.png)
 
-5. Check Database Characterset
+**6. Check Database characterset.**
    
    Run the below query to identify the database character set and national characterset.
 
@@ -74,7 +74,7 @@ Estimated Time: 30 mins
 
    ![ss3](./images/charset.png)
 
-6. Check enryption algorithm under sqlnet.ora
+**7. Check enryption algorithm under sqlnet.ora.**
 
    Check the sqlnet.ora to identify any encryption algoritham mentioned.
 

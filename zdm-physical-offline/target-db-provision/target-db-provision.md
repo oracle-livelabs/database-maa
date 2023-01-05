@@ -8,13 +8,13 @@ Estimated Time: 30 mins
 
 **1. Navigate to Oracle Base Database in Oracle Console.**
 
-     Navigate to the upper left and click on Oracle Database and then select "Oracle Base Database (VM. BM) as shown below.
+   Navigate to the upper left and click on Oracle Database and then select "Oracle Base Database (VM. BM) as shown below.
 
-     ![ss1](./images/nav.png)
+   ![ss1](./images/nav.png)
 
 **2. Click on the "Create DB System".**
     
-     ![ss2](./images/createdb.png)
+   ![ss2](./images/createdb.png)
 
 **3. Provide Name of the DB System and select proper compartment.**
 

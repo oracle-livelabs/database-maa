@@ -153,8 +153,6 @@ Continue to step 4 only if you need to configure an auto-login keystore, otherwi
 
    ![ss4](./images/tde_autologin.png)
 
-
-
    5. Copy the keystore files to the second Oracle RAC node.
 
       This is not applicable for the Source Database used in this lab.
@@ -168,9 +166,7 @@ Continue to step 4 only if you need to configure an auto-login keystore, otherwi
       /u01/app/oracle/product/19c/dbhome_1/network/admin/ew*
       /u01/app/oracle/product/19c/dbhome_1/network/admin/cw*
 
-   
-
-    6. Snapshot controlfile for RAC Database.
+   6. Snapshot controlfile for RAC Database.
 
       This is not applicable for the source database that we have configured , However if you have RAC Source Database then follow below steps.
 

@@ -93,11 +93,20 @@ Estimated Time: 30 mins
 
    ![ss11](./images/backup.png)
 
+**16. Select Database Charactetset.**
+
+   Click on show advanced options.
+
+   Ensure that you have selected same database and national characterset as the source database.
+
+   Sample output is shown below.
+
+   ![ss12](./images/charset.png)
 **16. Start DB System Provisioning**
 
    Click on the Create DB System to initiate the DB system provisioning.
 
-   ![ss12](./images/prov-final.png)
+   ![ss13](./images/prov-final.png)
 
    This step is going to take an hour , however you can proceed to next lab while DB System is being provisioned.
 

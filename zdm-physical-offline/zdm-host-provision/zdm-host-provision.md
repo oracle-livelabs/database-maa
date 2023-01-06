@@ -5,9 +5,11 @@ In this lab, you will provision a compute instance to use as ZDM host and also c
 
 Estimated Time: 30 mins
 
+$$
 ```console
 Task 1
 ```
+$$
 
 **1. Navigate to Oracle Base Database in Oracle Console.**
 

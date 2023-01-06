@@ -5,7 +5,7 @@ In this lab, you will provision a compute instance to use as ZDM host and also c
 
 Estimated Time: 30 mins
 
-##**<details><summary>Task 1</summary>**
+**<details><summary>Task 1</summary>**
 <p>
 
 1. Navigate to Compute instance in Oracle Console.

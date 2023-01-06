@@ -98,12 +98,12 @@ Estimated Time: 30 mins
    ```console
    SQL> ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password container = ALL;
       keystore altered.
-```
+   ```
    For a non-CDB environment, run the following command.
    ```console
    SQL> ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password;
    keystore altered.
-```
+   ```
    c. Create and activate the master encryption key.
 
 

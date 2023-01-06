@@ -5,9 +5,8 @@ In this lab, you will configure source database for Physical Offline Migration.
 
 Estimated Time: 30 mins
 
-**<details><summary>Task 1 - Provision ZDM Compute Instance </summary>**
+**<details><summary>Task 1 - Configure Source Database </summary>**
 <p>
-
 
 1. Login to Source Database Server.
 

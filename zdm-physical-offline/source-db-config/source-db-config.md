@@ -1,6 +1,6 @@
-# ZDM Host Provisioning and Configuration
+# Source Database Configuration
 
-In this lab, you will provision a compute instance to use as ZDM host and also configure ZDM software on it.
+In this lab, you will configure source database for Physical Offline Migration.
 
 
 Estimated Time: 30 mins
@@ -8,7 +8,89 @@ Estimated Time: 30 mins
 **<details><summary>Task 1 - Provision ZDM Compute Instance </summary>**
 <p>
 
-1. Navigate to Compute instance in Oracle Console.
+
+1. Login to Source Database Server.
+
+   Login to Source Dataabse server using Public IP and ssh key.
+
+2. Set the environment for the database.
+
+   Switch user to Oracle
+
+   sudo su - oracle
+
+   Set the environment to connect to your database.
+
+   Type . oraenv and press enter 
+    
+   Enter ORCL when asked for ORACLE_SID and then press enter    --> Enter your DB name if that is different in case of on premise.
+
+   
+3. Check whether Source Database is using spfile.
+
+   Run "show parameter spfile" in database.
+
+   If you get a similar output as below which means spfile is configured, if this is not the case then please configure spfile using Oracle Docs.
+
+   ![ss1](./images/spfile.png)
+
+4. Ensure System time of Source Database, Target Database and ZDM host are in sync.
+
+   Type "date" across Source Database , Target Database and ZDM host simultaneously and see whether they show the same time.
+
+   It is recommended to have same time across all system but it is not mandatory.
+
+   Please use NTP in case you need to adjust time.
+
+5. Check the compatible parameter on Source Database.
+
+   Execute "show parameter compatible" on Source and Target Database and ensure they are set to same value.
+
+   If you find that compatible parameter on Target Database can't be modified since it is already on the maximum possible value then you can change the compatoible parameter in source database.
+
+   Please note that changing compatible parameter can't be reversed unlesss you restore the entire database backup, so plan accordingly.
+
+6. Enable Database Archivelog mode.
+
+   Source Database must be running in ARCHIVELOG mode.
+
+   See https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/zero-downtime-migration/21.3/zdmug&id=ADMIN-GUID-C12EA833-4717-430A-8919-5AEA747087B9 if you need help.
+
+7. Configure TDE Wallet.
+
+   For Oracle Database 12c Release 2 and later, if the source database does not have Transparent Data Encryption (TDE) enabled, then it is mandatory that you configure the TDE wallet before migration begins. You need not encrypt the data in the source database; the data is encrypted at target using the wallet setup in the source database. The WALLET_TYPE can be AUTOLOGIN (preferred) or PASSWORD based.
+
+   Ensure that the wallet STATUS is OPEN and WALLET_TYPE is AUTOLOGIN (For an AUTOLOGIN wallet type), or WALLET_TYPE is PASSWORD (For a PASSWORD based wallet type). For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
+
+   a. Let's check the status of encryption in our Source Database.
+
+   Execute below sql.
+
+   SELECT * FROM v$encryption_wallet;
+
+   In the source database that you configured in the lab , TDE is not setup and the below query output shows that.
+
+   ![ss2](./images/tde.png)
+
+   Follow the below steps to enable TDE.
+
+   a. Set ENCRYPTION_WALLET_LOCATION in the $ORACLE_HOME/network/admin/sqlnet.ora file.
+
+      Insert the below line in sqlnet.ora (Ensure to update the correct ORACLE_HOME for you)
+
+      ENCRYPTION_WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY=/u01/app/oracle/product/19c/dbhome_1/network/admin/)))
+
+      For an Oracle RAC instance, also set ENCRYPTION_WALLET_LOCATION in the second Oracle RAC node.
+
+   ```console
+   b.
+```. Create and configure the keystore.
+
+      
+
+5. 
+
+   
 
    Click the Navigation Menu in the upper left, navigate to Compute and then select Instances.
 

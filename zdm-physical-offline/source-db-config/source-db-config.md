@@ -90,7 +90,7 @@ Estimated Time: 30 mins
    $ sqlplus "/as sysdba"
    SQL> ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin'
    identified by password;
-```
+   ```
    b. Open the keystore.
 
    For a CDB environment (Source Database in this lab is CDB ), run the following command.
@@ -104,6 +104,8 @@ Estimated Time: 30 mins
    SQL> ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password;
    keystore altered.
 ```
+   c. Create and activate the master encryption key.
+
 
       
 

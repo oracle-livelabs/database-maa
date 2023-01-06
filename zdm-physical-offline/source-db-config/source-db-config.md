@@ -80,6 +80,7 @@ Estimated Time: 30 mins
       ENCRYPTION_WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY=/u01/app/oracle/product/19c/dbhome_1/network/admin/)))
 
       For an Oracle RAC instance, also set ENCRYPTION_WALLET_LOCATION in the second Oracle RAC node.
+   
    b. Create and configure the keystore.
    ```console
    $ sqlplus "/as sysdba"

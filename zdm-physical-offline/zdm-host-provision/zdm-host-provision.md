@@ -1,10 +1,13 @@
-# Collect Information required for Target Database Provisioning
+# ZDM Host Provisioning and Configuration
 
-In this lab, you will provision an Oracle Base Database VM to use as the target database system.
+In this lab, you will provision a compute instance to use as ZDM host and also configure ZDM software on it.
 
 
 Estimated Time: 30 mins
 
+```console
+Task 1
+```
 
 **1. Navigate to Oracle Base Database in Oracle Console.**
 

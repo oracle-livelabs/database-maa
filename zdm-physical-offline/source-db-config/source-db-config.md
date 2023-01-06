@@ -61,7 +61,7 @@ Estimated Time: 30 mins
 
    Ensure that the wallet STATUS is OPEN and WALLET_TYPE is AUTOLOGIN (For an AUTOLOGIN wallet type), or WALLET_TYPE is PASSWORD (For a PASSWORD based wallet type). For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
 
-   a. Let's check the status of encryption in our Source Database.
+   1. Let's check the status of encryption in our Source Database.
 
    Execute below sql.
 
@@ -73,7 +73,7 @@ Estimated Time: 30 mins
 
    Follow the below steps to enable TDE.
 
-   a. Set ENCRYPTION_WALLET_LOCATION in the $ORACLE_HOME/network/admin/sqlnet.ora file.
+   2. Set ENCRYPTION_WALLET_LOCATION in the $ORACLE_HOME/network/admin/sqlnet.ora file.
 
       Insert the below line in sqlnet.ora (Ensure to update the correct ORACLE_HOME for you)
 
@@ -81,11 +81,28 @@ Estimated Time: 30 mins
 
       For an Oracle RAC instance, also set ENCRYPTION_WALLET_LOCATION in the second Oracle RAC node.
    
-   b. Create and configure the keystore.
+   3. Create and configure the keystore.
+
+   a. Connect to the database and create the keystore.
+
+   Modify the sql to update your ORACLE_HOME before executing.
    ```console
    $ sqlplus "/as sysdba"
    SQL> ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin'
    identified by password;
+```
+   b. Open the keystore.
+
+   For a CDB environment (Source Database in this lab is CDB ), run the following command.
+
+   ```console
+   SQL> ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password container = ALL;
+      keystore altered.
+```
+   For a non-CDB environment, run the following command.
+   ```console
+   SQL> ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password;
+   keystore altered.
 ```
 
       

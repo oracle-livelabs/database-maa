@@ -249,7 +249,8 @@ Estimated Time: 30 mins
 
    ![ss6](./images/ssh_login.png)
 
-
+</p>
+</details>
 Please *proceed to the next lab*.
 
 

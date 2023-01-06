@@ -12,6 +12,8 @@ Estimated Time: 30 mins
 
    Click the Navigation Menu in the upper left, navigate to Compute and then select Instances.
 
+   ![ss](./images/nav.png)
+
 2. Select Compartment.
 
    Select the appropriate compart on the left side of the console.

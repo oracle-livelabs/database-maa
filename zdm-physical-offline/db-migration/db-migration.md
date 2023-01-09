@@ -17,75 +17,88 @@ Estimated Time: 30 mins
    Switch user to "zdmuser" using below command.
 
    sudo su - zdmuser
-
       
-3. Check whether Target Database is using spfile.
+3. Prepare a response file.
 
-   Run "show parameter spfile" in database.
+   Below is sample response file in which you need to update the HOST.
 
-   If you get a similar output as below which means spfile is configured, if this is not the case then please configure spfile using Oracle Docs.
-
-   ![ss1](./images/spfile.png)
-
-4. Verify Time Zone version.
-
-   The target placeholder database must have a time zone file version that is the same or higher than the source database. If that is not the case, then the time zone file should be upgraded in the target placeholder database.
-
-   To check the current time zone version, query the V$TIMEZONE_FILE view as shown here, and upgrade the time zone file if necessary.
    ```console
-   SELECT * FROM v$timezone_file;
-   ```   
-   Sample output is shown below.
-   
-   ![ss2](./images/timezone.png)
-
-5. Verify TDE Wallet Folder.
-
-   Verify that the TDE wallet folder exists, and ensure that the wallet STATUS is OPEN and WALLET_TYPE is AUTOLOGIN (For an auto-login wallet type), or WALLET_TYPE is PASSWORD (For a password-based wallet). For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
-
-   Execute the below SQL.
-   ```console
-   set lines 120
-   col WRL_PARAMETER for a50
-   select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;   
+   TGT_DB_UNIQUE_NAME=ORCL_T
+   MIGRATION_METHOD=OFFLINE_PHYSICAL
+   DATA_TRANSFER_MEDIUM=OSS
+   HOST=https://swiftobjectstorage.uk-london-1.oraclecloud.com/v1/xxxxxxxxx
+   OPC_CONTAINER=ZDM-Physical
+   PLATFORM_TYPE=VMDB
+   SHUTDOWN_SRC=TRUE
    ```
-   Sample output is shown below.
 
-   ![ss3](./images/tde.png)
+   Use below method to prepare HOST value.
 
-6. Check Disk Group Size.
+   Use the below format.
 
-   Check the size of the disk groups and usage on the target database (ASM disk groups or ACFS file systems) and make sure adequate storage is provisioned and available on the target database servers.
+   https://swiftobjectstorage.<region_name>.oraclecloud.com/v1/<objectstorage_namespace>
 
-   In this lab you can ignone this since we have taken care of this step while proviosioning the Target Database.
+   Replace region_name and objectstorage_namespace with your corresponding values.
 
-7. Check connections.
-
-   Verify that port 22 on the target servers in the Oracle Cloud Infrastructure, Exadata Cloud Service, or Exadata Cloud at Customer environment are open and not blocked by a firewall.
-
-   We had already checked this by doing ssh from ZDM host in earlier lab.
-
-8. Capture RMAN SHOW ALL command
-
-    Capture output so that you can compare RMAN settings after the migration, then reset any changed RMAN configuration settings to ensure that the backup works without any issues.
-
-9. Ensure System time of Target Database, Source Database and ZDM host are in sync (Optional Step)
-
-   Type "date" across Source Database , Target Database and ZDM host simultaneously and see whether they show the same time.
-
-   It is recommended to have same time across all system but it is not mandatory.
-
-   Please use NTP in case you need to adjust time.
-
-10. Check encryption algorithm in SQLNET.ORA (Optional Step)
-
-    Ensure that encryption algorithm specificed in sqlnet.ora in Target Database Oracle Home is same as Source Database Home.
-
-    This is not mandatory for Physical Offline Migration , However it is recommended.
-
+   Save the contents to physical_offline.rsp file under /home/zdmuser.
 
 </p>
 </details>
+
+**<details><summary>Task 2 - Start a Migration Evaluation </summary>**
+<p>
+
+1. Login to ZDM Service Host and switch to zdmuer.
+
+2. Check the status of ZDM service.
+
+   Export ZDM_HOME=/home/zdmuser/zdmhome
+
+   $ZDM_HOME/bin/zdmservice status
+
+   if the running shows as false then use below command to start ZDM.
+
+   $ZDM_HOME/bin/zdmservice start
+
+3. Prepare command for Physical Offline Migration Evaluation.
+
+   Use the below sample command for ZDM Migration Evaluation and update it as per your details.
+
+   ```console
+   $ZDM_HOME/bin/zdmcli migrate database  -sourcesid ORCL  -sourcenode zdm-source-db  -srcauth zdmauth  -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key  -srcarg3 sudo_location:/bin/sudo  -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxxx.xxxxx@oracle.com"  -rsp /home/zdmuser/physical_offline.rsp  -tgtauth zdmauth  -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key  -tgtarg3 sudo_location:/usr/bin/sudo -eval
+   ```
+
+   Please note that -backupuser is the Oracle Cloud tenancy user for which we have generated Auth Token in earlier Lab.
+
+   -srcargg2 identity_file is the location of private ssh key file which can be used to login to Source.
+   -tgtarg2 identity_file is the location of private ssh key file which can be used to login to Target.
+
+4. Perform Migration Evaluation.
+
+   Once you have updated the Evaluation command then proceed to execute the command as below.
+
+   ![ss1](./images/evaluation.png)
+
+   Please provide the SYS password of Source Database and Auth token when asked.
+
+   Also note down the Migration Job ID.
+
+5. Monotor the Migration Evaluation.
+
+   Check the status of Migration Evaluation using below command.
+
+   $ZDM_HOME/bin/zdmcli query job -jobid 1
+
+   here 1 is the jobid.
+
+   You will receive a similar ouput as below.
+
+   ![ss2](./images/evaluation_status.png)
+
+   Continue execute the status command until all phases have been completed with status "PRECHECK_PASSED"
+
+
+
 Please *proceed to the next lab*.
 
 

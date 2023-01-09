@@ -37,6 +37,12 @@ Estimated Time: 30 mins
 
    ![ss4](./images/create2.png)
 
+5. Collect the Object Storage NameSpace.
+
+   Check the Namespace details under the Object Storage Bucket.
+
+   ![ss5](./images/namespace.png)
+
 </p>
 </details> 
 

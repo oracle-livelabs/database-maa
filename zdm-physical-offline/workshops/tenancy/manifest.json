@@ -42,12 +42,12 @@
         },
 
         {
-            "title": "Lab 8: Configure the response file",
-            "filename": "../../response-file/response-file.md"
+            "title": "Lab 8: Creation of Object Storage Bucket and Auth Token",
+            "filename": "../../object-storage-token/object-storage-token.md"
         },
         {
             "title": "Lab 9: Migrate your database",
-            "filename": "../../migration/migration.md"
+            "filename": "../../db-migration/db-migration.md"
         },
         {
             "title": "Need Help?",

@@ -5,6 +5,8 @@ In this lab, you will connect to your source database as system database adminis
 
 Estimated Time: 30 mins
 
+**<details><summary>Task 1 - Collect Source Database Details </summary>**
+<p>
 
 **1. Login to the Source Database system using the Public IP.**
 
@@ -77,6 +79,55 @@ Estimated Time: 30 mins
 **7. Check enryption algorithm under sqlnet.ora.**
 
    Check the sqlnet.ora to identify any encryption algoritham mentioned.
+
+**8. Generate patch inventory ouput.**
+
+     execute "opatch lsinventory" as oracle user in Source Database Server.
+
+**9. Download the above patch out on the local Desktop.**
+
+</p>
+</details>
+
+**<details><summary>Task 2 - Prepare Database Software Image for Target </summary>**
+<p>
+
+1. Navigate to Oracle Base Database.
+
+   Click the Navigation Menu in the upper left, navigate to Oracle Database and then select Oracle Base Database.
+
+   ![ss1](./images/nav.png)
+
+2. Click on Database Software Images
+
+   Select the appropriate compartment and then Click on Database Software Image under Resources.
+
+   ![ss2](./images/image.png)
+
+3. Click "Create Database software image"
+
+   Enter Display Name as "DBImage-Source-DB" as below.
+
+   ![ss3](./images/name.png)
+
+4. Configure Database Software Image
+
+   Select Database Version as "19c"
+
+   Select PSU as 19.16.0.0
+
+   Upload Oracle Home Patch inventory ouput generated in Task 1 as below.
+
+   ![ss4](./images/config.png)
+
+5. Create Database Software Image.
+
+   Click on "Create Database software image" to create DB Image.
+
+</p>
+</details>
+
+   
 
 
 

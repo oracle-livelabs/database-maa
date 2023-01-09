@@ -5,6 +5,14 @@ In this lab, you will provision an Oracle Base Database VM to use as the target 
 
 Estimated Time: 30 mins
 
+You must create a placeholder target database before beginning a migration to the target environment. The following prerequisites must be met on the target database before you begin the Zero Downtime Migration process.
+
+The placeholder target database is overwritten during migration, but it retains the overall configuration.
+
+For this release of Zero Downtime Migration , only Grid Infrastructure-based database services are supported as targets. For example, an LVM-based instance or an instance created in compute node without Grid Infrastructure are not supported targets.
+
+For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder database must be created using Control Plane, not Grid Infrastructure Database Services before database migration begins.
+
 
 **1. Navigate to Oracle Base Database in Oracle Console.**
 
@@ -24,9 +32,15 @@ Estimated Time: 30 mins
 
 **4.  Modify the shape of the DB System**
 
+   When you create the database from the console, ensure that your chosen shape can accommodate the source database, plus any future sizing requirements. A good guideline is to use a shape similar to or larger in size than source database.
+
+   For this lab we will use AMD Flex with 1 OCPU.
+
    Click on the Change Shape and ensure to select AMD Flex with 1 OCPU.
 
    ![ss4](./images/shape.png)
+
+
 
 **5.  Configure Database Edition.**
 
@@ -63,9 +77,19 @@ Estimated Time: 30 mins
 
 **11. Provide Database Name.**
 
+   If the target database is Exadata Cloud Service or Exadata Cloud at Customer, then the database DB_NAME should be the same as the source database DB_NAME.
+
+   If the target database is Oracle Cloud Infrastructure, then the database DB_NAME can be the same as or different from the source database DB_NAME.
+
+   Our Target Database is Oracle Base Database and we can specify a same or different name for DB_NAME. 
+
+   We will keep the same DB_NAME for this lab.
+
    Provide Database Name as "ORCL" and DB Unique name suffix as "T"
 
    ![ss8](./images/dbname.png)
+
+
 
 **12. Select Database version.**
 
@@ -77,7 +101,7 @@ Estimated Time: 30 mins
 
 **13. Provide SYS password.**
 
-   Enter SYS password of your choice.
+   Enter SYS password which is same as the SYS password of the Source Database.
 
    ![ss10](./images/sys.png)
 

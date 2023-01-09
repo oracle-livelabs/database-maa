@@ -42,7 +42,7 @@ Estimated Time: 30 mins
    To check the current time zone version, query the V$TIMEZONE_FILE view as shown here, and upgrade the time zone file if necessary.
    ```console
    SELECT * FROM v$timezone_file;
-   ```
+   ```   
    Sample output is shown below.
    ![ss2](./images/timezone.png)
 

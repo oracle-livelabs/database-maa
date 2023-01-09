@@ -37,15 +37,14 @@ Estimated Time: 30 mins
 
 4. Verify Time Zone version.
 
-  The target placeholder database must have a time zone file version that is the same or higher than the source database. If that is not the case, then the time zone file should be upgraded in the target placeholder database.
+   The target placeholder database must have a time zone file version that is the same or higher than the source database. If that is not the case, then the time zone file should be upgraded in the target placeholder database.
 
-  To check the current time zone version, query the V$TIMEZONE_FILE view as shown here, and upgrade the time zone file if necessary.
-  ```console
-  SELECT * FROM v$timezone_file;
-  ```
-
-  Sample output is shown below.
-  ![ss2](./images/timezone.png)
+   To check the current time zone version, query the V$TIMEZONE_FILE view as shown here, and upgrade the time zone file if necessary.
+   ```console
+   SELECT * FROM v$timezone_file;
+   ```
+   Sample output is shown below.
+   ![ss2](./images/timezone.png)
 
 5. Verify TDE Wallet Folder.
 
@@ -87,9 +86,9 @@ Estimated Time: 30 mins
 
 10. Check encryption algorithm in SQLNET.ORA (Optional Step)
 
-   Ensure that encryption algorithm specificed in sqlnet.ora in Target Database Oracle Home is same as Source Database Home.
+    Ensure that encryption algorithm specificed in sqlnet.ora in Target Database Oracle Home is same as Source Database Home.
 
-   This is not mandatory for Physical Offline Migration , However it is recommended.
+    This is not mandatory for Physical Offline Migration , However it is recommended.
 
 
 </p>

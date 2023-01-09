@@ -44,6 +44,7 @@ Estimated Time: 30 mins
    SELECT * FROM v$timezone_file;
    ```   
    Sample output is shown below.
+   
    ![ss2](./images/timezone.png)
 
 5. Verify TDE Wallet Folder.

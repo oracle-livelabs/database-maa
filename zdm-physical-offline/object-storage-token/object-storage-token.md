@@ -1,4 +1,4 @@
-# Creation on Object Stroage Bucket and Auth Token.
+# Creation of Object Stroage Bucket and Auth Token.
 
 In this lab, you will create an object storage bucket and also create a token for authentication.
 
@@ -72,6 +72,7 @@ We need an Auth token for the Oracle Cloud Tenancy user which will be used by ZD
 
 </p>
 </details>
+
 Please *proceed to the next lab*.
 
 

@@ -17,28 +17,28 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/generate-ssh-key-cloud-shell/generate-ssh-keys-cloud-shell.md"
         },
         {
-            "title": "Lab 2: Setup a compute instance and source database",
-            "filename": "https://oracle-livelabs.github.io/common/labs/setup-compute/setup-19c-freetier.md"
+            "title": "Lab 2: Provision Source Database",
+            "filename": "../../source-database-prov/source-database-prov.md"
         },
         {
-            "title": "Lab 3: Configure the Source Database",
-            "filename": "../../source-database-config/source-database-config.md"
+            "title": "Lab 3: Target Database Provisioning Preparation",
+            "filename": "../../target-database-prov-prep/target-database-prov-prep.md"
         },
         {
-            "title": "Lab 4: Provision the target database",
-            "filename": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/H0jETEY29lR15UAGcmx9SltmVXgR8aZPHHSp-DeFi4hkpAFJ4xG9s-ClwdYELqDE/n/c4u02/b/adb/o/shared/adb-provision/adb-provision-conditional.md"
+            "title": "Lab 4: Provision Target Database",
+            "filename": "../../target-db-provision/target-db-prov.md"
         },
         {
-            "title": "Lab 5: Configure the GoldenGate hub",
-            "filename": "../../goldengate-hub/goldengate-hub.md"
+            "title": "Lab 5: Provision and Configure ZDM Host",
+            "filename": "../../zdm-host-provision/zdm-host-provision.md"
         },
         {
-            "title": "Lab 6: Configure the ZDM environment",
-            "filename": "../../host-environment/host-environment.md"
+            "title": "Lab 6: Source Database Prerequisites",
+            "filename": "../../source-db-prereq/source-db-prereq.md"
         },
         {
-            "title": "Lab 7: Configure token authentication, credentials and object storage",
-            "filename": "../../credentials/credentials.md"
+            "title": "Lab 7: Target Database Prerequistes",
+            "filename": "../../target-db-prereq/target-db-prereq.md"
         },
 
         {

@@ -1,8 +1,8 @@
-# Source Database Prerequsites
+# Source Database Prerequisites
 
 In this lab, you will check source database to identify whether it meets prerequistes for Physical Database Migration.
 
-Whenever required you will do the necessary modification in source database to meet the prerequisites.
+Whenever required please do the necessary modification in source database to meet the prerequisites.
 
 
 Estimated Time: 30 mins
@@ -187,7 +187,7 @@ Continue to step 4 only if you need to configure an auto-login keystore, otherwi
       If the source database is deployed using Oracle Grid Infrastructure and the database is not registered using SRVCTL, then you must register the database before the migration.
 
       This is not applicable for the Source Database used in this lab since it is not using Grid Infrastructure.
-      
+
 11. RMAN Backup Strategy
 
       To preserve the source database Recovery Time Objective (RTO) and Recovery Point Objective (RPO) during the migration, the existing RMAN backup strategy should be maintained.

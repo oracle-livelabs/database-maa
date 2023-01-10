@@ -84,7 +84,7 @@ Once details are entered , Click on Next
 
  9. Under Add SSH Keys
 
-    Browse and provide the ssh key generated earlier.
+    Browse and provide the public ssh key generated earlier.
 
     ![ss9](./images/Compute4.png " ")
 
@@ -92,7 +92,7 @@ Once details are entered , Click on Next
 
     ![ss9](./images/Compute5.png " ")
 
-11. In Few minutes , Compute instance with database will be provisioned and running as below.
+11. In few minutes , Compute instance with database will be provisioned and running as below.
     ![ss10](./images/prov_final.png)
 
 12. Take a note of the Public IP address of the Compute Instance which will used in later labs to access the Source Database System.

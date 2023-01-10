@@ -4,7 +4,8 @@ In this lab, you will provision a new Virtual Cloud Network and also provision S
 
 Estimated Time: 30 mins
 
-## Task 1 - Create new Virtual Cloud Network
+**<details><summary>Task 1 - Create Virtual Cloud Network </summary>**
+<p>
 
 In this task we will create a new Virtual Cloud Network which will be used to host Source Database Compute , Target Database System and ZDM Service Host.
 
@@ -40,10 +41,11 @@ Once details are entered , Click on Next
 
      ![ss7](./images/Task1_VCNWizard6.png " ")
 
+</p>
+</details>
 
-
-## Task 2 - Provision Source Database.
-
+**<details><summary>Task 2 - Provision Source Database. </summary>**
+<p>
 1. Login to your Oracle Cloud Console.
 
 2. Click the Navigation Menu in the upper left, navigate to Marketplace and then select All Applications.
@@ -95,25 +97,9 @@ Once details are entered , Click on Next
 
 12. Take a note of the Public IP address of the Compute Instance which will used in later labs to access the Source Database System.
 
-
-
-
-
-
-
-## Learn More
-
-* [Oracle Zero Downtime Migration - Product Page](http://www.oracle.com/goto/zdm)
-* [Oracle Zero Downtime Migration - Product Documentation](https://docs.oracle.com/en/database/oracle/zero-downtime-migration/)
-* [Oracle Zero Downtime Migration - Logical Migration Step by Step Guide](https://www.oracle.com/a/tech/docs/oracle-zdm-logical-migration-step-by-step-guide.pdf)
-* [Oracle Zero Downtime Migration - Physical Migration Step by Step Guide](https://www.oracle.com/a/tech/docs/oracle-zdm-step-by-step-guide.pdf)
-
-
+</p>
+</details>
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Contributors** - LiveLabs Team, ZDM Development Team
-* **Last Updated By/Date** - Ricardo Gonzalez, January 2022
-
-
-[def]: ./images/task1navigate.png
+* **Last Updated By/Date** - Amalraj Puthenchira, January 2023

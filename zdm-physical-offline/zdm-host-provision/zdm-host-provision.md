@@ -75,11 +75,11 @@ Estimated Time: 30 mins
 
 2. Expand the root FS
 
-Execute below command as opc and press y and Enter when asked.
+   Execute below command as opc and press y and Enter when asked.
 
-sudo /usr/libexec/oci-growfs
+   sudo /usr/libexec/oci-growfs
 
-You will see an output similar to the one below.
+   You will see an output similar to the one below.
 
 ![ss2](./images/fs.png)
 

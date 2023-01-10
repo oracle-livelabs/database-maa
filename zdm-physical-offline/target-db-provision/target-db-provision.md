@@ -40,7 +40,7 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
 
    ![ss4](./images/ocpu.png)
 
-    Click on Select a Shape , your final selection will appear as below.
+   Click on Select a Shape , your final selection will appear as below.
 
    ![ss5](./images/shape.png)
 
@@ -67,9 +67,9 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
 
 **9. Specify the Network Information.**
 
-   Select ZDM-VCN as VCN and Public Subnet-ZDM-VCN as Client Subnet.
+     Select ZDM-VCN as VCN and Public Subnet-ZDM-VCN as Client Subnet.
 
-   Provide zdm-target-db as Hostname Prefix.
+     Provide zdm-target-db as Hostname Prefix.
 
    ![ss8](./images/network.png)
 

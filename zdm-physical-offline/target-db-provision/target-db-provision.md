@@ -144,7 +144,6 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
    This step is going to take an hour , however you can proceed to next lab while DB System is being provisioned.
 
  
-
 Please *proceed to the next lab*.
 
 

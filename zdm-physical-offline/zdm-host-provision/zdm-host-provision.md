@@ -1,6 +1,6 @@
 # ZDM Host Provisioning and Configuration
 
-In this lab, you will provision a compute instance to use as ZDM host and also configure ZDM software on it.
+In this lab, you will provision a compute instance to use as ZDM servive host and also configure ZDM software on it.
 
 
 Estimated Time: 30 mins
@@ -32,7 +32,7 @@ Estimated Time: 30 mins
 
 5. Leave the Placement section as it is.
 
-6. Select correct image
+6. Select correct image.
 
    Under Image and Shape , click on Change image
 
@@ -61,7 +61,7 @@ Estimated Time: 30 mins
    ![ss8](./images/boot.png)
 10. Click on Create to start the provisioning of Compute.
 
-    In less than few minutes ZDM compute host will be provisioned.
+   In less than few minutes ZDM compute host will be provisioned.
 
 </p>
 </details>
@@ -71,66 +71,67 @@ Estimated Time: 30 mins
 
 1. Login to ZDM host using the Public IP and ssh key file.
 
-![ss1](./images/ip.png)
+   ![ss1](./images/ip.png)
 
 2. Expand the root FS
 
-   Execute below command as opc and press y and Enter when asked.
+Execute below command as opc and press y and Enter when asked.
 
-   sudo /usr/libexec/oci-growfs
+sudo /usr/libexec/oci-growfs
 
-   You will see an output similar to the one below.
+You will see an output similar to the one below.
 
 ![ss2](./images/fs.png)
 
 3. Check the existence of required packages for ZDM.
 
-   ZDM software requires below packages to be installed.
+ZDM software requires below packages to be installed.
 
-   glibc-devel
+glibc-devel
 
-   expect
+expect
 
-   unzip
+unzip
 
-   libaio
+libaio
 
-   oraclelinux-developer-release-el7
+oraclelinux-developer-release-el7
 
-   Execute the below command to identify already installed packages.
+Execute the below command to identify already installed packages.
+```console
+yum list installed glibc-devel expect unzip libaio oraclelinux-developer-release-e17
+```
+You will receive an output similar to the one below which shows glibc-devel, libaio , oraclelinux-developer-release-e17 and unzip are alraady installed.
 
-   yum list installed glibc-devel expect unzip libaio oraclelinux-developer-release-e17
-
-   You will receive an output similar to the one below which shows glibc=devel, libaio and expect are alraady installed.
-
-   ![ss3](./images/pkg_preinstalled.png)
+![ss3](./images/pkg_preinstalled.png)
 
 4. Install missing packages
 
-   We have seen that expect package is missing as per previous step output.
+We have seen that expect package is missing as per previous step output.
 
-   Install the missing packakges using commands below.
+Install the missing packages using commands below.
 
-   sudo yum install -y expect
+sudo yum install -y expect
 
-   Sample output is shown below.
+Sample output is shown below.
 
 ![ss4](./images/expect.png)
 
 5. Create User, Group and Directories required for ZDM.
 
-   Switch to root user.
+   Switch to root user using below command.
 
    sudo su -
 
    Execute below commands.
-
+   ```console
    groupadd zdm
    useradd -g zdm zdmuser
    mkdir -p /home/zdmuser/zdminstall
    mkdir /home/zdmuser/zdmhome
    mkdir /home/zdmuser/zdmbase
    chown -R zdmuser:zdm /home/zdmuser
+   ```
 6. Download ZDM software 
 
    Download the ZDM software from below URL.
@@ -145,7 +146,7 @@ Estimated Time: 30 mins
 
 8. Unzip the ZDM software
 
-   Switch user to "zdmuser"
+   Switch user to "zdmuser" using below command.
 
    sudo su - zdmuser
    
@@ -157,7 +158,7 @@ Estimated Time: 30 mins
 
 9. Install ZDM software
 
-   Change directory to ZDM unzipped location
+   Change directory to ZDM unzipped location using below command.
 
    cd /tmp/zdm21.3
    
@@ -173,7 +174,7 @@ Estimated Time: 30 mins
 
 10. Start ZDM service
 
-    Navigate to ZDM Home 
+    Navigate to ZDM Home using below command.
 
     cd /home/zdmuser/zdmhome/bin
 
@@ -201,11 +202,13 @@ Estimated Time: 30 mins
 **<details><summary>Task 3 - Configure connectivity from ZDM host to Source and Target DB sytem </summary>**
 <p>
 
-1. Add Source and Target Database Details
+1. Add Source and Target Database Details.
 
    We have to first collect Source and Target Private IP and FQDN from the console.
 
    a. Navigate to Source Database Compute instance.
+
+   Click the Navigation Menu in the upper left, navigate to Compute and then select Instances.
 
    ![ss1](./images/nav_compute.png)
 
@@ -219,13 +222,13 @@ Estimated Time: 30 mins
 
    ![ss3](./images/nav_target_db.png)
 
-   Click on ZDM-Target-DB
+   Click on zdm-target-DB
 
    Click on Nodes under Resources section and note down the private IP and FQDN.
 
    ![ss4](./images/Target_IP.png)
    
-   c. Edit /etc/hosts in ZDM host to add Source and Target Database System IP and FQDN details collected in previous steps.
+   c. Edit /etc/hosts in ZDM host to add Source and Target Database System private IP and FQDN details collected in previous steps.
 
    Sample output after editing is shown below.
 
@@ -233,7 +236,7 @@ Estimated Time: 30 mins
 
 2. Copy the SSH private key to ZDM host
 
-   Copy the ssh private key generated in earlier step to ZDM host under zdmuer home.
+   Copy the ssh private key generated in earlier lab to ZDM host under zdmuser home (/home/zdmuser)
 
    Change the permission of private key as below.
 
@@ -247,13 +250,14 @@ Estimated Time: 30 mins
 
    ssh -i <key_file_name> opc@zdm-target-db
 
-   You will be able to login to Source and Target if the connectivity is sucessful as shown below.
+   if the connectivity is sucessful then you will be able to login to source and target as shown below.
 
    ![ss6](./images/ssh_login.png)
 
 </p>
 </details>
-Please *proceed to the next lab*.
+
+Please [proceed to the next lab](#next).
 
 
 

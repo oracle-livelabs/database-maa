@@ -46,36 +46,36 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
 
 **5. Configure storage.**
 
-   Leave this section as the Default.
+   Leave this section as the default.
 
 **6. Configure Database Edition.**
 
-     Under Configure the DB system , ensure to select "Enterprise Edition" which is the same edition as our Source DB system.
+   Under Configure the DB system , ensure to select "Enterprise Edition" which is the same edition as our Source DB system.
 
    ![ss6](./images/edition.png)
 
    
-**6. Upload SSH Keys.**
+**7. Upload SSH Keys.**
    
-     Under Add SSH Keys , upload the SSH Public key generated earlier.
+   Under Add SSH Keys , upload the SSH Public key generated earlier.
 
    ![ss7](./images/ssh.png)
 
 **8. Select the appropriate License Type.**
 
-     Select appropriate License Type for you.
+   Select appropriate License Type for you.
 
 **9. Specify the Network Information.**
 
-     Select ZDM-VCN as VCN and Public Subnet-ZDM-VCN as Client Subnet.
+   Select ZDM-VCN as VCN and Public Subnet-ZDM-VCN as Client Subnet.
 
-     Provide zdm-target-db as Hostname Prefix.
+   Provide zdm-target-db as Hostname Prefix.
 
    ![ss8](./images/network.png)
 
 **10. Click Next**
 
-      Click Next to go to the next page.
+   Click Next to go to the next page.
 
 **11. Provide Database Name.**
 
@@ -90,8 +90,6 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
    Provide Database Name as "ORCL" and DB Unique name suffix as "T"
 
    ![ss9](./images/dbname.png)
-
-
 
 **12. Select Database Image.**
 
@@ -111,7 +109,7 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
 
 **14. Select database workload type.**
 
-   In this lab , leave it to the Default.
+   In this lab , leave it to the default.
 
 **15. Disable Database Backups.**
 
@@ -137,7 +135,7 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
 
    ![ss12](./images/charset.png)
 
-**16. Start DB System Provisioning**
+**17. Start DB System Provisioning**
 
    Click on the Create DB System to initiate the DB system provisioning.
 
@@ -145,13 +143,7 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
 
    This step is going to take an hour , however you can proceed to next lab while DB System is being provisioned.
 
-   
-
-
-
-
-
-
+ 
 
 Please *proceed to the next lab*.
 

@@ -95,11 +95,11 @@ Estimated Time: 30 mins
 
    i. Connect to the database and create the keystore.
 
-      Modify the sql to update your Source Database ORACLE_HOME and your TDE password before executing.
-      ```console
-      ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin' identified by password;
-      ```
-      ii. Open the keystore.
+   Modify the sql to update your Source Database ORACLE_HOME and your TDE password before executing.
+   ```console
+   ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin' identified by password;
+   ```
+   ii. Open the keystore.
 
       For a CDB environment (Source Database in this lab is CDB ), run the following command (ensure to update password).
 

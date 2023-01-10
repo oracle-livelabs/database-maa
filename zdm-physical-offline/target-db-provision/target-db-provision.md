@@ -85,9 +85,9 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
 
    Our Target Database is Oracle Base Database and we can specify a same or different name for DB_NAME. 
 
-   We will keep the same DB_NAME for this lab.
+   We will keep the same DB_NAME as Source Database for this lab.
 
-   Provide Database Name as "ORCL" and DB Unique name suffix as "T"
+   Provide "Database name" as "ORCL" and "Database unique name suffix" as "T"
 
    ![ss9](./images/dbname.png)
 
@@ -144,7 +144,10 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
    This step is going to take an hour , however you can proceed to next lab while DB System is being provisioned.
 
  
-Please *proceed to the next lab*.
+Please [proceed to the next lab](#next).
 
+## Acknowledgements
+* **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
+* **Last Updated By/Date** - Amalraj Puthenchira, January 2023
 
 

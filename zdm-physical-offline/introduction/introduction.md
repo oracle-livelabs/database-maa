@@ -2,7 +2,7 @@
 
 ## About this workshop
 
-This workshop covers step-by-step guide for migrating On-Premise Oracle Databases to Oracle Co-Managed databases using ZDM's Physical Online Methodology.
+This workshop covers step-by-step guide for migrating On-Premise Oracle Databases to Oracle Co-Managed databases using ZDM's Physical Offline Methodology.
 
 Estimated Time: 3 hours
 
@@ -30,7 +30,6 @@ ZDM supports on-premises databases to be migrated to a variety of Oracle Cloud D
 
 ### Migration Workflows
 
-(./images/physical-offline-workflow.png " ")
 
 #### Physical Offline Migration
 ZDM physical offline migration leverages Oracle Recovery Manager and migrates the database using a backup and restore methodology. Customers can use this method when migrating to Oracle Database Cloud Services Virtual Machines, Exadata Cloud Service, Exadata Cloud at Customer and Exadata Database Machine On-Premises. 
@@ -67,20 +66,22 @@ Customers can also leverage a designated backup location instead of using a dire
 ![Zero Downtime Migration Logical Online with Backup Location Workflow Step-by-Step high level description](./images/logical-online-backup-workflow.png " ")
 
 
-For more information on Oracle Zero Downtime Migration please visit ZDM's [product website](www.oracle.com/goto/zdm).
+For more information on Oracle Zero Downtime Migration please visit ZDM's [product website](http://www.oracle.com/goto/zdm).
 
 
 ### Objectives
 
-In this lab, you will:
+In this lab, you will perform below :
+
 * Learn about Oracle Zero Downtime Migration Fundamentals
-* Install and Setup ZDM
-* Configure Credential and Authentication Requirements for the Migration
-* Source Database Configuration
-* Target Database Configuration
-* Provision and Deploy a ZDM GoldenGate Hub
+* Provision Source Database in OCI.
+* Provision Target Database in OCI.
+* Provision ZDM Service Host.
+* Source Database Configuration.
+* Target Database Configuration.
+* Configure ZDM Service.
 * Response File Configuration
-* Databasde Migration
+* Database Migration
 
 ### Prerequisites
 This workshop requires an Oracle Cloud account.
@@ -101,4 +102,4 @@ Please *proceed to the next lab*.
 ## Acknowledgements
 * **Author** - Ricardo Gonzalez, Senior Principal Product Manager, Oracle Cloud Database Migration
 * **Contributors** - LiveLabs Team, ZDM Development Team
-* **Last Updated By/Date** - Ricardo Gonzalez, January 2022
+* **Last Updated By/Date** - Amalraj Puthenchira , Cloud Data Management Specialist , January 2023

@@ -105,7 +105,7 @@ Estimated Time: 30 mins
 
    ![ss3](./images/pkg_preinstalled.png)
 
-4. Install missing packages
+4. Install missing packages.
 
    We have seen that expect package is missing as per previous step output.
 
@@ -132,7 +132,7 @@ Estimated Time: 30 mins
    mkdir /home/zdmuser/zdmbase
    chown -R zdmuser:zdm /home/zdmuser
    ```
-6. Download ZDM software 
+6. Download ZDM software.
 
    Download the ZDM software from below URL.
 
@@ -144,7 +144,7 @@ Estimated Time: 30 mins
 
    Ensure that all users can read the .zip file.
 
-8. Unzip the ZDM software
+8. Unzip the ZDM software.
 
    Switch user to "zdmuser" using below command.
 
@@ -156,23 +156,23 @@ Estimated Time: 30 mins
 
    It will be /tmp/zdm21.3 for ZDM 21.3
 
-9. Install ZDM software
+9. Install ZDM software.
 
    Change directory to ZDM unzipped location using below command.
 
    cd /tmp/zdm21.3
    
    Execute the below command to install ZDM software.
-
+   ```console
    ./zdminstall.sh setup oraclehome=/home/zdmuser/zdmhome oraclebase=/home/zdmuser/zdmbase ziploc=/tmp/zdm21.3/zdm_home.zip -zdm
-
+   ```
    This will take couple of minutes.
 
-   You will see output as below when it has completed ZDM service setup.
+   You will see output as below when ZDM service setup has been completed.
 
    ![ss5](./images/zdmservice.png)
 
-10. Start ZDM service
+10. Start ZDM service.
 
     Navigate to ZDM Home using below command.
 
@@ -199,10 +199,10 @@ Estimated Time: 30 mins
 </p>
 </details>
 
-**<details><summary>Task 3 - Configure connectivity from ZDM host to Source and Target DB sytem </summary>**
+**<details><summary>Task 3 - Configure SSH connectivity from ZDM host to Source and Target DB system </summary>**
 <p>
 
-1. Add Source and Target Database Details.
+1. Add Source and Target Database IP and FQDN Details to /etc/hosts.
 
    We have to first collect Source and Target Private IP and FQDN from the console.
 

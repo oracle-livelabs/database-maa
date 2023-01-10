@@ -63,7 +63,7 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
 
 **8. Select the appropriate License Type.**
 
-   Select appropriate License Type for you.
+   Select appropriate License Type applicable for you.
 
 **9. Specify the Network Information.**
 

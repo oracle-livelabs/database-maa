@@ -93,7 +93,7 @@ Estimated Time: 30 mins
    
    b. Create and configure the keystore.
 
-      i. Connect to the database and create the keystore.
+   i. Connect to the database and create the keystore.
 
       Modify the sql to update your Source Database ORACLE_HOME and your TDE password before executing.
       ```console

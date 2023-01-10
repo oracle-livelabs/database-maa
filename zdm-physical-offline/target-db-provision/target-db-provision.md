@@ -3,7 +3,7 @@
 In this lab, you will provision an Oracle Base Database VM to use as the Target Database System.
 
 
-Estimated Time: 30 mins
+Estimated Time: 15 minutes
 
 You must create a placeholder target database before beginning a migration to the target environment. 
 

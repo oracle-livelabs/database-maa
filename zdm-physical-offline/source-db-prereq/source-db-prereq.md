@@ -54,7 +54,7 @@ Estimated Time: 30 mins
 
    Please note that changing compatible parameter can't be reversed unlesss you restore the entire database backup, so plan accordingly.
 
-6. Enable Database Archivelog mode.
+**6. Enable Database Archivelog mode.**
 
    Source Database must be running in ARCHIVELOG mode.
 
@@ -65,13 +65,13 @@ Estimated Time: 30 mins
    See https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/zero-downtime-migration/21.3/zdmug&id=ADMIN-GUID-C12EA833-4717-430A-8919-5AEA747087B9 if you need help.
 
 
-7. Configure TDE Wallet.
+**7. Configure TDE Wallet.**
 
    For Oracle Database 12c Release 2 and later, if the source database does not have Transparent Data Encryption (TDE) enabled, then it is mandatory that you configure the TDE wallet before migration begins. You need not encrypt the data in the source database; the data is encrypted at target using the wallet setup in the source database. The WALLET_TYPE can be AUTOLOGIN (preferred) or PASSWORD based.
 
    Ensure that the wallet STATUS is OPEN and WALLET_TYPE is AUTOLOGIN (For an AUTOLOGIN wallet type), or WALLET_TYPE is PASSWORD (For a PASSWORD based wallet type). For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
 
-   1. Let's check the status of encryption in our Source Database.
+   Let's check the status of encryption in our Source Database.
 
    Execute below sql.
    ```console
@@ -83,7 +83,7 @@ Estimated Time: 30 mins
 
    Follow the below steps to enable TDE.
 
-   2. Set ENCRYPTION_WALLET_LOCATION in the $ORACLE_HOME/network/admin/sqlnet.ora file.
+   a . Set ENCRYPTION_WALLET_LOCATION in the $ORACLE_HOME/network/admin/sqlnet.ora file.
 
       Insert the below line in sqlnet.ora (Ensure to update the correct ORACLE_HOME for you)
 
@@ -91,17 +91,17 @@ Estimated Time: 30 mins
 
       For an Oracle RAC instance, also set ENCRYPTION_WALLET_LOCATION in the second Oracle RAC node.
    
-   3. Create and configure the keystore.
+   b. Create and configure the keystore.
 
-   a. Connect to the database and create the keystore.
+   i. Connect to the database and create the keystore.
 
-   Modify the sql to update your ORACLE_HOME before executing.
+   Modify the sql to update your Source Database ORACLE_HOME and your TDE password before executing.
    ```console
    ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin' identified by password;
    ```
-   b. Open the keystore.
+   ii. Open the keystore.
 
-   For a CDB environment (Source Database in this lab is CDB ), run the following command.
+   For a CDB environment (Source Database in this lab is CDB ), run the following command (ensure to update password).
 
    ```console
    ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password container = ALL;
@@ -110,7 +110,7 @@ Estimated Time: 30 mins
    ```console
    ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password;
    ```
-   c. Create and activate the master encryption key.
+   iii. Create and activate the master encryption key.
 
    For a CDB environment, run the following command.
 
@@ -122,7 +122,7 @@ Estimated Time: 30 mins
     ```console
    ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup;
    ```
-   d. Query V$ENCRYPTION_KEYS to get the keystore status, keystore type, and keystore location.
+   iv. Query V$ENCRYPTION_KEYS to get the keystore status, keystore type, and keystore location.
 
    ```console
    select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
@@ -131,19 +131,20 @@ Estimated Time: 30 mins
 
    ![ss3](./images/tde_password.png)
 
-Continue to step 4 only if you need to configure an auto-login keystore, otherwise skip to step 5.
-   4. For an auto-login keystore only, complete the keystore configuration.
+   We will use an auto-login keystore in this lab and we will follow below additional steps.
    
-   a. Create the auto-login keystore.
+   c. For an auto-login keystore.
+   
+   i. Create the auto-login keystore.
 
    ```console
    ADMINISTER KEY MANAGEMENT CREATE AUTO_LOGIN KEYSTORE FROM KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin/' IDENTIFIED BY password;
    ```
-   b. Close the password-based keystore.
+   ii. Close the password-based keystore.
    ```console
    ADMINISTER KEY MANAGEMENT SET KEYSTORE CLOSE IDENTIFIED BY password;
    ```
-   c. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
+   iii. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
    ```console
    SELECT * FROM v$encryption_wallet;
    ```
@@ -153,7 +154,7 @@ Continue to step 4 only if you need to configure an auto-login keystore, otherwi
 
    ![ss4](./images/tde_autologin.png)
 
-   5. Copy the keystore files to the second Oracle RAC node.
+   d. Copy the keystore files to the second Oracle RAC node.
 
       This is not applicable for the Source Database used in this lab.
 
@@ -166,7 +167,7 @@ Continue to step 4 only if you need to configure an auto-login keystore, otherwi
       /u01/app/oracle/product/19c/dbhome_1/network/admin/ew*
       /u01/app/oracle/product/19c/dbhome_1/network/admin/cw*
 
-8. Snapshot controlfile for RAC Database.
+**8. Snapshot controlfile for RAC Database.**
 
       This is not applicable for the source database that we have configured , However if you have RAC Source Database then follow below steps.
 
@@ -176,20 +177,20 @@ Continue to step 4 only if you need to configure an auto-login keystore, otherwi
       $ rman target /  
       RMAN> CONFIGURE SNAPSHOT CONTROLFILE NAME TO '+DATA/db_name/snapcf_db_name.f';
       ```
-9. Controlfile auto backup
+**9. Controlfile auto backup.**
 
       If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
 
       ```console
       RMAN> CONFIGURE CONTROLFILE AUTOBACKUP ON;
       ```
-10. Register Database with srvctl
+**10. Register Database with srvctl.**
 
       If the source database is deployed using Oracle Grid Infrastructure and the database is not registered using SRVCTL, then you must register the database before the migration.
 
       This is not applicable for the Source Database used in this lab since it is not using Grid Infrastructure.
 
-11. RMAN Backup Strategy
+**11. RMAN Backup Strategy.**
 
       To preserve the source database Recovery Time Objective (RTO) and Recovery Point Objective (RPO) during the migration, the existing RMAN backup strategy should be maintained.
 

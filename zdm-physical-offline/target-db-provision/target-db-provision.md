@@ -24,7 +24,7 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
     
    ![ss2](./images/createdb.png)
 
-**3. Provide Name of the DB System and select proper compartment.**
+**3. Provide Name of the DB System and select compartment.**
 
    Provide DB System name as "zdm-target-db" and ensure you have selected correct compartment for the DB system.
     

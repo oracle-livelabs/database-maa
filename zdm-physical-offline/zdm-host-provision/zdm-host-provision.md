@@ -85,37 +85,37 @@ Estimated Time: 30 mins
 
 3. Check the existence of required packages for ZDM.
 
-ZDM software requires below packages to be installed.
+   ZDM software requires below packages to be installed.
 
-glibc-devel
+   glibc-devel
 
-expect
+   expect
 
-unzip
+   unzip
 
-libaio
+   libaio
 
-oraclelinux-developer-release-el7
+   oraclelinux-developer-release-el7
 
-Execute the below command to identify already installed packages.
-```console
-yum list installed glibc-devel expect unzip libaio oraclelinux-developer-release-e17
-```
-You will receive an output similar to the one below which shows glibc-devel, libaio , oraclelinux-developer-release-e17 and unzip are alraady installed.
+   Execute the below command to identify already installed packages.
+   ```console
+   yum list installed glibc-devel expect unzip libaio oraclelinux-developer-release-e17
+   ```
+   You will receive an output similar to the one below which shows glibc-devel, libaio , oraclelinux-developer-release-e17 and unzip are alraady installed.
 
-![ss3](./images/pkg_preinstalled.png)
+   ![ss3](./images/pkg_preinstalled.png)
 
 4. Install missing packages
 
-We have seen that expect package is missing as per previous step output.
+   We have seen that expect package is missing as per previous step output.
 
-Install the missing packages using commands below.
+   Install the missing packages using commands below.
 
-sudo yum install -y expect
+   sudo yum install -y expect
 
-Sample output is shown below.
+   Sample output is shown below.
 
-![ss4](./images/expect.png)
+   ![ss4](./images/expect.png)
 
 5. Create User, Group and Directories required for ZDM.
 

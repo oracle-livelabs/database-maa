@@ -87,7 +87,7 @@ In this lab, you will perform below :
 This workshop requires an Oracle Cloud account.
 
 
-Please *Proceed to Next Lab1@command:workbench.action.url.www.google.com*
+You may now [proceed to the next lab](#https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md).
 
 
 ## Learn More

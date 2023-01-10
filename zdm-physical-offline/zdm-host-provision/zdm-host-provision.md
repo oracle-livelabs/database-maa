@@ -81,7 +81,7 @@ Estimated Time: 30 mins
 
    You will see an output similar to the one below.
 
-![ss2](./images/fs.png)
+   ![ss2](./images/fs.png)
 
 3. Check the existence of required packages for ZDM.
 

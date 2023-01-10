@@ -2,19 +2,19 @@
 
 In this lab, you will check source database to identify whether it meets prerequistes for Physical Database Migration.
 
-Whenever required please do the necessary modification in source database to meet the prerequisites.
+Whenever required you can do necessary modification in source database to meet the prerequisites.
 
 
 Estimated Time: 30 mins
 
 
-1. Login to Source Database Server.
+**1. Login to Source Database Server.**
 
-   Login to Source Database server using Public IP and ssh key.
+   Login to Source Database Server using Public IP and ssh key.
 
-2. Set the environment for the database.
+**2. Set the environment for the database.**
 
-   Switch user to Oracle using below command.
+   Switch user to "oracle" using below command.
 
    sudo su - oracle
 
@@ -24,7 +24,7 @@ Estimated Time: 30 mins
     
    Enter ORCL when asked for ORACLE_SID and then press enter    --> Enter your DB name if that is different in case of on premise.
 
-3. Check whether Source Database is using spfile.
+**3. Check whether Source Database is using spfile.**
 
    Connect to Source Database using sqlplus.
 
@@ -34,7 +34,7 @@ Estimated Time: 30 mins
 
    ![ss1](./images/spfile.png)
 
-4. Ensure System time of Source Database, Target Database and ZDM host are in sync.
+**4. Ensure System time of Source Database, Target Database and ZDM host are in sync.**
 
    Type "date" across Source Database , Target Database and ZDM host simultaneously and see whether they show the same time.
 
@@ -42,7 +42,7 @@ Estimated Time: 30 mins
 
    Please use NTP in case you need to adjust time.
 
-5. Check the compatible parameter on Source Database.
+**5. Check the compatible parameter on Source Database.**
 
    In this livelab compatible parameter on both source and Target have already been set to 19.0.0 , so no action is required.
 
@@ -58,11 +58,12 @@ Estimated Time: 30 mins
 
    Source Database must be running in ARCHIVELOG mode.
 
-   See https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/zero-downtime-migration/21.3/zdmug&id=ADMIN-GUID-C12EA833-4717-430A-8919-5AEA747087B9 if you need help.
-
    Source Database we have configured in this lab is not running in ARCHIVELOG mode . 
 
-   Please follow above document and make database in ARCHIVELOG mode.
+   Please follow below document and make database in ARCHIVELOG mode.
+
+   See https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/zero-downtime-migration/21.3/zdmug&id=ADMIN-GUID-C12EA833-4717-430A-8919-5AEA747087B9 if you need help.
+
 
 7. Configure TDE Wallet.
 

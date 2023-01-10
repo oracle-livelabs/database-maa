@@ -1,11 +1,12 @@
 # Source Database Provisioning
 
-In this lab, you will provision a source database using Oracle Marketplace image available in Oracle Cloud Infrastructure.
+In this lab, you will provision a new Virtual Cloud Network and also provision Source Database using Oracle Marketplace image available in Oracle Cloud Infrastructure.
 
 Estimated Time: 30 mins
+
 ## Task 1 - Create new Virtual Cloud Network
 
-In this task we will create a new VCN which will be used to host Source Database Compute , Target DB systema and ZDM Service Host.
+In this task we will create a new Virtual Cloud Network which will be used to host Source Database Compute , Target Database System and ZDM Service Host.
 
 1. Login to your Oracle Cloud Console.
 
@@ -27,7 +28,7 @@ In this task we will create a new VCN which will be used to host Source Database
 
 6. Under Configure VCN and Subnets , enter details as shown in image below.
 
-     ![ss5](./images/Task1_VCNWizard4.png " ")
+     ![ss5](./images/Task1_VCNWizard44.png " ")
 
 Once details are entered , Click on Next
 
@@ -57,9 +58,9 @@ Once details are entered , Click on Next
 
      ![ss3](./images/oracleimage.png " ")
 
-5. Select an Oracle Database version which is latest ( You will same latest version on OL7 and OL8)
+5. Select an Oracle Database version which is latest ( There will be one on OL7 and one on OL8)
     
-   We have choosen OL7 since we would like to match the target OS as close as possible.
+   We have choosen OL7 since our Target Database DB systems have Oracle Linux 7.
 
      ![ss4](./images/dbver.png " ")
 

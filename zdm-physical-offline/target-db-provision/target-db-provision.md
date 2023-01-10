@@ -26,7 +26,7 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
 
 **3. Provide Name of the DB System and select proper compartment.**
 
-   Provide DB System name as "ZDM-Target-DB" and ensure you have selected correct compartment for the DB system.
+   Provide DB System name as "zdm-target-db" and ensure you have selected correct compartment for the DB system.
     
    ![ss3](./images/systemname.png)
 
@@ -40,24 +40,24 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
 
    ![ss4](./images/ocpu.png)
 
-   Click on Select a Shape , your final selection will appear as below.
+    Click on Select a Shape , your final selection will appear as below.
 
    ![ss5](./images/shape.png)
 
 **5. Configure storage.**
 
-     Leave this section as the Default.
+   Leave this section as the Default.
 
 **6. Configure Database Edition.**
 
-   Under Configure the DB system , ensure to select "Enterprise Edition" which is the same edition as our Source DB system.
+     Under Configure the DB system , ensure to select "Enterprise Edition" which is the same edition as our Source DB system.
 
    ![ss6](./images/edition.png)
 
    
 **6. Upload SSH Keys.**
    
-   Under Add SSH Keys , upload the SSH Public key generated earlier.
+     Under Add SSH Keys , upload the SSH Public key generated earlier.
 
    ![ss7](./images/ssh.png)
 
@@ -136,7 +136,7 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
    Sample output is shown below.
 
    ![ss12](./images/charset.png)
-   
+
 **16. Start DB System Provisioning**
 
    Click on the Create DB System to initiate the DB system provisioning.

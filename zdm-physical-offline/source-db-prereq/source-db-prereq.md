@@ -111,92 +111,87 @@ Estimated Time: 30 mins
    ```
    iii. Create and activate the master encryption key.
 
-     For a CDB environment, run the following command.
+   For a CDB environment, run the following command.
+   ```console
+   ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup container = ALL;
+   ```
+   For a non-CDB environment, run the following command.
+   ```console
+   ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup;
+   ```
+   iv. Query V$ENCRYPTION_KEYS to get the keystore status, keystore type, and keystore location.
+   ```console
+   select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
+   ```
+   The configuration of a password-based keystore is complete at this stage, and the keystore is enabled with status OPEN and WALLET_TYPE is shown as PASSWORD in the query output below.
+   ![ss3](./images/tde_password.png)
 
-     ```console
-     ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup container = ALL;
-      ```
-     For a non-CDB environment, run the following command.
-
-     ```console
-     ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup;
-     ```
-     iv. Query V$ENCRYPTION_KEYS to get the keystore status, keystore type, and keystore location.
-     ```console
-     select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
-     ```
-     The configuration of a password-based keystore is complete at this stage, and the keystore is enabled with status OPEN and WALLET_TYPE is shown as PASSWORD in the query output below.
-
-     ![ss3](./images/tde_password.png)
-
-     We will use an auto-login keystore in this lab and we will follow below additional steps to enable auto-login keystore.
+   We will use an auto-login keystore in this lab and we will follow below additional steps to enable auto-login keystore.
    
    c. For an auto-login keystore.
    
-      i. Create the auto-login keystore.
+   i. Create the auto-login keystore.
 
-      ```console
-      ADMINISTER KEY MANAGEMENT CREATE AUTO_LOGIN KEYSTORE FROM KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin/' IDENTIFIED BY password;
-      ```
-      ii. Close the password-based keystore.
-      ```console
-      ADMINISTER KEY MANAGEMENT SET KEYSTORE CLOSE IDENTIFIED BY password;
-      ```
-      iii. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
-      ```console
-      SELECT * FROM v$encryption_wallet;
-      ```
-      In the query output, verify that the TDE keystore STATUS is OPEN and WALLET_TYPE set to AUTOLOGIN, otherwise the auto-login keystore is not set up correctly.
-
-      Sample output is shown below.
-
+   ```console
+   ADMINISTER KEY MANAGEMENT CREATE AUTO_LOGIN KEYSTORE FROM KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin/' IDENTIFIED BY password;
+   ```
+   ii. Close the password-based keystore.
+   ```console
+   ADMINISTER KEY MANAGEMENT SET KEYSTORE CLOSE IDENTIFIED BY password;
+   ```
+   iii. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
+   ```console
+   SELECT * FROM v$encryption_wallet;
+   ```
+   In the query output, verify that the TDE keystore STATUS is OPEN and WALLET_TYPE set to AUTOLOGIN, otherwise the auto-login keystore is not set up correctly.
+   Sample output is shown below.
    ![ss4](./images/tde_autologin.png)
 
    d. Copy the keystore files to the second Oracle RAC node.
 
-      This is not applicable for the Source Database used in this lab.
+   This is not applicable for the Source Database used in this lab.
 
-      However follow the below steps in case you have RAC Source Database.
+   However follow the below steps in case you have RAC Source Database.
 
-      If you configured the keystore in a shared file system for Oracle RAC then no action is required.
+   If you configured the keystore in a shared file system for Oracle RAC then no action is required.
 
-      If you are enabling TDE for Oracle RAC database without shared access to the keystore, copy the following files to the same location on second node.
+   If you are enabling TDE for Oracle RAC database without shared access to the keystore, copy the following files to the same location on second node.
 
-      /u01/app/oracle/product/19c/dbhome_1/network/admin/ew*
-      /u01/app/oracle/product/19c/dbhome_1/network/admin/cw*
+   /u01/app/oracle/product/19c/dbhome_1/network/admin/ew*
+   /u01/app/oracle/product/19c/dbhome_1/network/admin/cw*
 
 **8. Snapshot controlfile for RAC Database.**
 
-      This is not applicable for the source database that we have configured , However if you have RAC Source Database then follow below steps.
+   This is not applicable for the source database that we have configured , However if you have RAC Source Database then follow below steps.
 
-      If the source is an Oracle RAC database, and SNAPSHOT CONTROLFILE is not on a shared location, configure SNAPSHOT CONTROLFILE to point to a shared location on all Oracle RAC nodes to avoid the ORA-00245 error during backups to Oracle Object Store.
+   If the source is an Oracle RAC database, and SNAPSHOT CONTROLFILE is not on a shared location, configure SNAPSHOT CONTROLFILE to point to a shared location on all Oracle RAC nodes to avoid the ORA-00245 error during backups to Oracle Object Store.
 
-      ```console
-      $ rman target /  
-      RMAN> CONFIGURE SNAPSHOT CONTROLFILE NAME TO '+DATA/db_name/snapcf_db_name.f';
-      ```
+   ```console
+   $ rman target /  
+   RMAN> CONFIGURE SNAPSHOT CONTROLFILE NAME TO '+DATA/db_name/snapcf_db_name.f';
+   ```
 **9. Controlfile auto backup.**
 
-      If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
+   If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
 
-      ```console
-      RMAN> CONFIGURE CONTROLFILE AUTOBACKUP ON;
-      ```
+   ```console
+   RMAN> CONFIGURE CONTROLFILE AUTOBACKUP ON;
+   ```
 **10. Register Database with srvctl.**
 
-      If the source database is deployed using Oracle Grid Infrastructure and the database is not registered using SRVCTL, then you must register the database before the migration.
+   If the source database is deployed using Oracle Grid Infrastructure and the database is not registered using SRVCTL, then you must register the database before the migration.
 
-      This is not applicable for the Source Database used in this lab since it is not using Grid Infrastructure.
+   This is not applicable for the Source Database used in this lab since it is not using Grid Infrastructure.
 
 **11. RMAN Backup Strategy.**
 
-      To preserve the source database Recovery Time Objective (RTO) and Recovery Point Objective (RPO) during the migration, the existing RMAN backup strategy should be maintained.
+   To preserve the source database Recovery Time Objective (RTO) and Recovery Point Objective (RPO) during the migration, the existing RMAN backup strategy should be maintained.
 
-      During the migration a dual backup strategy will be in place; the existing backup strategy and the strategy used by Zero Downtime Migration.
+   During the migration a dual backup strategy will be in place; the existing backup strategy and the strategy used by Zero Downtime Migration.
 
-      Avoid having two RMAN backup jobs running simultaneously (the existing one and the one initiated by Zero Downtime Migration).
+   Avoid having two RMAN backup jobs running simultaneously (the existing one and the one initiated by Zero Downtime Migration).
 
-      If archive logs were to be deleted on the source database, and these archive logs are needed by Zero Downtime Migration to synchronize the target cloud database, then these files should be restored so that Zero Downtime Migration can continue the migration process.
+   If archive logs were to be deleted on the source database, and these archive logs are needed by Zero Downtime Migration to synchronize the target cloud database, then these files should be restored so that Zero Downtime Migration can continue the migration process.
 
 
 Please *proceed to the next lab*.

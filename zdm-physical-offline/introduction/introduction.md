@@ -80,14 +80,14 @@ In this lab, you will perform below :
 * Source Database Configuration.
 * Target Database Configuration.
 * Configure ZDM Service.
-* Response File Configuration
-* Database Migration
+* Response File Configuration.
+* Database Migration.
 
 ### Prerequisites
 This workshop requires an Oracle Cloud account.
 
 
-Please *proceed to the next lab*.
+Please *proceed to the next lab -https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md*.
 
 
 ## Learn More

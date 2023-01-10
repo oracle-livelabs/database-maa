@@ -14,13 +14,13 @@ Estimated Time: 30 mins
 
    Use the private key generated earlier.
 
-**2. Check the OS version of the Source Database.**
+**2. Check the Opearating System version of the Source Database.**
 
    Execute the below command after login in as opc.
    
    cat /etc/os-release
 
-   Please use similar commnads in case above command doesn't work for you.
+   Please use similar commnads in case above command doesn't work for you ( in case you have selected different Source Database System than the one specified in Lab 2)
 
    You will get a output similar to the one below.
 
@@ -28,9 +28,9 @@ Estimated Time: 30 mins
 
    Please note that Physical Offline Migration will work only for source databases with Linux based Operating System.
 
-**3. Set the Operating System environment to connect to your database.**
+**3. Set the Database environment to connect to your database.**
 
-    Switch user to Oracle
+    Switch user to Oracle using command below.
 
     sudo su - oracle
 
@@ -42,17 +42,17 @@ Estimated Time: 30 mins
 
 **4.  Check the database version of the Source Database.**
 
-    In this livelab we have used Oracle Marketplace image for which we know the version that we have selected.
+    In this livelab we have used Oracle Marketplace image for which you know the version that you have selected.
 
     However , In case you would like to know the database version with latest patches then please use the below command
     
-    Execute 'opatch lsinventory'
+    Execute 'opatch lsinventory' command as Oracle user.
 
     check for the latest patches to determine the exact database version.
 
 **5.  Check the Database Edition of the Source Database.**
 
-    In this livelab we have used Oracle Marketplace image for which we know the Edition that we have selected.
+    In this livelab we have used Oracle Marketplace image for which uses Oracle Database Enterprise Edition.
 
     However in case you would like know the Database Edition for your on premise Database then refer the below steps.
 
@@ -84,12 +84,14 @@ Estimated Time: 30 mins
 
      execute "opatch lsinventory" as oracle user in Source Database Server.
 
-**9. Download the above patch out on the local Desktop.**
+**9. Download the above patch out to the local Desktop.**
+
+     We will require this file in the Next Lab.
 
 </p>
 </details>
 
-**<details><summary>Task 2 - Prepare Database Software Image for Target </summary>**
+**<details><summary>Task 2 - Prepare Database Software Image for Target Database</summary>**
 <p>
 
 1. Navigate to Oracle Base Database.
@@ -98,23 +100,23 @@ Estimated Time: 30 mins
 
    ![ss1](./images/nav.png)
 
-2. Click on Database Software Images
+2. Click on Database Software Images.
 
    Select the appropriate compartment and then Click on Database Software Image under Resources.
 
    ![ss2](./images/image.png)
 
-3. Click "Create Database software image"
+3. Click "Create Database software image".
 
    Enter Display Name as "DBImage-Source-DB" as below.
 
    ![ss3](./images/name.png)
 
-4. Configure Database Software Image
+4. Configure Database Software Image.
 
-   Select Database Version as "19c"
+   Select Database Version as "19c"   (Same as the Major Version of your Source Database)
 
-   Select PSU as 19.16.0.0
+   Select PSU as 19.16.0.0 ( In case you have selected different version for Source ,then select that version )
 
    Upload Oracle Home Patch inventory ouput generated in Task 1 as below.
 
@@ -129,12 +131,7 @@ Estimated Time: 30 mins
 </p>
 </details>
 
-   
-
-
-
-
-Please *proceed to the next lab*.
+Please [proceed to the next lab](#next).
 
 
 

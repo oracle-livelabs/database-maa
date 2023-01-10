@@ -71,7 +71,7 @@ Estimated Time: 30 mins
 
    Ensure that the wallet STATUS is OPEN and WALLET_TYPE is AUTOLOGIN (For an AUTOLOGIN wallet type), or WALLET_TYPE is PASSWORD (For a PASSWORD based wallet type). For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
 
-   Let's check the status of encryption in our Source Database.
+   Let's check the status of encryption in your Source Database.
 
    Execute below sql.
    ```console
@@ -85,72 +85,71 @@ Estimated Time: 30 mins
 
    a . Set ENCRYPTION_WALLET_LOCATION in the $ORACLE_HOME/network/admin/sqlnet.ora file.
 
-      Insert the below line in sqlnet.ora (Ensure to update the correct ORACLE_HOME for you)
+   Insert the below line in sqlnet.ora (Ensure to update the correct ORACLE_HOME for you)
 
-      ENCRYPTION_WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY=/u01/app/oracle/product/19c/dbhome_1/network/admin/)))
+   ENCRYPTION_WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY=/u01/app/oracle/product/19c/dbhome_1/network/admin/)))
 
-      For an Oracle RAC instance, also set ENCRYPTION_WALLET_LOCATION in the second Oracle RAC node.
+   For an Oracle RAC instance, also set ENCRYPTION_WALLET_LOCATION in the second Oracle RAC node.
    
    b. Create and configure the keystore.
 
-   i. Connect to the database and create the keystore.
+      i. Connect to the database and create the keystore.
 
-   Modify the sql to update your Source Database ORACLE_HOME and your TDE password before executing.
-   ```console
-   ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin' identified by password;
-   ```
-   ii. Open the keystore.
+      Modify the sql to update your Source Database ORACLE_HOME and your TDE password before executing.
+      ```console
+      ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin' identified by password;
+      ```
+      ii. Open the keystore.
 
-   For a CDB environment (Source Database in this lab is CDB ), run the following command (ensure to update password).
+      For a CDB environment (Source Database in this lab is CDB ), run the following command (ensure to update password).
 
-   ```console
-   ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password container = ALL;
-   ```
-   For a non-CDB environment, run the following command.
-   ```console
-   ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password;
-   ```
-   iii. Create and activate the master encryption key.
+      ```console
+      ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password container = ALL;
+      ```
+      For a non-CDB environment, run the following command.
+      ```console
+      ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password;
+      ```
+     iii. Create and activate the master encryption key.
 
-   For a CDB environment, run the following command.
+     For a CDB environment, run the following command.
 
-   ```console
-   ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup container = ALL;
-    ```
-   For a non-CDB environment, run the following command.
+     ```console
+     ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup container = ALL;
+      ```
+     For a non-CDB environment, run the following command.
 
-    ```console
-   ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup;
-   ```
-   iv. Query V$ENCRYPTION_KEYS to get the keystore status, keystore type, and keystore location.
+     ```console
+     ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup;
+     ```
+     iv. Query V$ENCRYPTION_KEYS to get the keystore status, keystore type, and keystore location.
+     ```console
+     select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
+     ```
+     The configuration of a password-based keystore is complete at this stage, and the keystore is enabled with status OPEN and WALLET_TYPE is shown as PASSWORD in the query output below.
 
-   ```console
-   select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
-   ```
-   The configuration of a password-based keystore is complete at this stage, and the keystore is enabled with status OPEN and WALLET_TYPE is shown as PASSWORD in the query output below.
+     ![ss3](./images/tde_password.png)
 
-   ![ss3](./images/tde_password.png)
-
-   We will use an auto-login keystore in this lab and we will follow below additional steps.
+     We will use an auto-login keystore in this lab and we will follow below additional steps to enable auto-login keystore.
    
    c. For an auto-login keystore.
    
-   i. Create the auto-login keystore.
+      i. Create the auto-login keystore.
 
-   ```console
-   ADMINISTER KEY MANAGEMENT CREATE AUTO_LOGIN KEYSTORE FROM KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin/' IDENTIFIED BY password;
-   ```
-   ii. Close the password-based keystore.
-   ```console
-   ADMINISTER KEY MANAGEMENT SET KEYSTORE CLOSE IDENTIFIED BY password;
-   ```
-   iii. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
-   ```console
-   SELECT * FROM v$encryption_wallet;
-   ```
-   In the query output, verify that the TDE keystore STATUS is OPEN and WALLET_TYPE set to AUTOLOGIN, otherwise the auto-login keystore is not set up correctly.
+      ```console
+      ADMINISTER KEY MANAGEMENT CREATE AUTO_LOGIN KEYSTORE FROM KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin/' IDENTIFIED BY password;
+      ```
+      ii. Close the password-based keystore.
+      ```console
+      ADMINISTER KEY MANAGEMENT SET KEYSTORE CLOSE IDENTIFIED BY password;
+      ```
+      iii. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
+      ```console
+      SELECT * FROM v$encryption_wallet;
+      ```
+      In the query output, verify that the TDE keystore STATUS is OPEN and WALLET_TYPE set to AUTOLOGIN, otherwise the auto-login keystore is not set up correctly.
 
-   Sample output is shown below.
+      Sample output is shown below.
 
    ![ss4](./images/tde_autologin.png)
 

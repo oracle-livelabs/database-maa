@@ -1,11 +1,11 @@
-# Collect Information required for Target Database Provisioning
+# Target Database Provisioning
 
-In this lab, you will provision an Oracle Base Database VM to use as the target database system.
+In this lab, you will provision an Oracle Base Database VM to use as the Target Database System.
 
 
 Estimated Time: 30 mins
 
-You must create a placeholder target database before beginning a migration to the target environment. The following prerequisites must be met on the target database before you begin the Zero Downtime Migration process.
+You must create a placeholder target database before beginning a migration to the target environment. 
 
 The placeholder target database is overwritten during migration, but it retains the overall configuration.
 
@@ -16,7 +16,7 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
 
 **1. Navigate to Oracle Base Database in Oracle Console.**
 
-   Navigate to the upper left and click on Oracle Database and then select "Oracle Base Database (VM. BM) as shown below.
+   Click the Navigation Menu in the upper left, navigate to Oracle Database and then select "Oracle Base Database (VM. BM)" as shown below.
 
    ![ss1](./images/nav.png)
 
@@ -28,48 +28,50 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
 
    Provide DB System name as "ZDM-Target-DB" and ensure you have selected correct compartment for the DB system.
     
-   ![ss3](./images/dbsystemname.png)
+   ![ss3](./images/systemname.png)
 
-**4.  Modify the shape of the DB System**
+**4.  Modify the shape of the DB System.**
 
    When you create the database from the console, ensure that your chosen shape can accommodate the source database, plus any future sizing requirements. A good guideline is to use a shape similar to or larger in size than source database.
 
    For this lab we will use AMD Flex with 1 OCPU.
 
-   Click on the Change Shape and ensure to select AMD Flex with 1 OCPU.
+   Click on the Change Shape and reduce the number of OCPU per node to 1 as below.
 
-   ![ss4](./images/shape.png)
+   ![ss4](./images/ocpu.png)
 
+   Click on Select a Shape , your final selection will appear as below.
 
+   ![ss5](./images/shape.png)
 
-**5.  Configure Database Edition.**
+**5. Configure storage.**
 
-    Under Configure the DB system , ensure to select "Enterprise Edition" which is the same edition as our Source DB system.
+     Leave this section as the Default.
 
-   ![ss5](./images/edition.png)
+**6. Configure Database Edition.**
+
+   Under Configure the DB system , ensure to select "Enterprise Edition" which is the same edition as our Source DB system.
+
+   ![ss6](./images/edition.png)
 
    
 **6. Upload SSH Keys.**
    
-   Under Add SSH Keys , upload the SSH Keys generated earlier.
+   Under Add SSH Keys , upload the SSH Public key generated earlier.
 
-   ![ss6](./images/ssh.png)
-
-**7. Check enryption algorithm under sqlnet.ora.**
-
-   Check the sqlnet.ora to identify any encryption algoritham mentioned.
+   ![ss7](./images/ssh.png)
 
 **8. Select the appropriate License Type.**
 
-    Select appropriate license Type for you.
+     Select appropriate License Type for you.
 
 **9. Specify the Network Information.**
 
-     Select ZDM-VCN as VCN and Public Subnet-ZDM-VCN as Client Subnet.
+   Select ZDM-VCN as VCN and Public Subnet-ZDM-VCN as Client Subnet.
 
-     Provide zdm-target-db as Hostname Prefix.
+   Provide zdm-target-db as Hostname Prefix.
 
-     ![ss7](./images/network.png)
+   ![ss8](./images/network.png)
 
 **10. Click Next**
 
@@ -87,17 +89,19 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
 
    Provide Database Name as "ORCL" and DB Unique name suffix as "T"
 
-   ![ss8](./images/dbname.png)
+   ![ss9](./images/dbname.png)
 
 
 
-**12. Select Database version.**
+**12. Select Database Image.**
 
-   Click on the Change Database Image and select "Display all available versions" to see all versions.
+   Click on the Change Database Image and select "Custom Database Software Images " as below.
 
-   Select the database version which is in the same major version as source database and minor version higher than or same as source database.
+   ![ss10](./images/custom.png)
 
-   ![ss9](./images/dbver.png)
+   Select the appropriate compartment and Select DB Image created in earlier lab as below.
+
+   ![ss11](./images/dbimage.png)
 
 **13. Provide SYS password.**
 
@@ -111,7 +115,7 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
 
 **15. Disable Database Backups.**
 
-   Uncheck the box to disable Database backups.
+   Uncheck the "Enable automatic bakcups" box to disable Database backups.
 
    We don't need automatic backups until we complete the database migration.
 
@@ -123,9 +127,16 @@ For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder
 
    Ensure that you have selected same database and national characterset as the source database.
 
+   In this Lab Source database has below Database and National Characterset.
+
+   Database Characterset : AL32UTF8
+
+   National Characterset : AL16UTF16
+
    Sample output is shown below.
 
    ![ss12](./images/charset.png)
+   
 **16. Start DB System Provisioning**
 
    Click on the Create DB System to initiate the DB system provisioning.

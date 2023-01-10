@@ -1,4 +1,4 @@
-# Collect Information required for Target Database Provisioning
+# Target Database Provisioning Preparation
 
 In this lab, you will connect to your source database as system database administrator and collect the necessary information required to provision target database.
 
@@ -123,6 +123,8 @@ Estimated Time: 30 mins
 5. Create Database Software Image.
 
    Click on "Create Database software image" to create DB Image.
+
+   This will take some time , please proceed to next Lab.
 
 </p>
 </details>

@@ -101,16 +101,15 @@ Estimated Time: 30 mins
    ```
    ii. Open the keystore.
 
-      For a CDB environment (Source Database in this lab is CDB ), run the following command (ensure to update password).
-
-      ```console
-      ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password container = ALL;
-      ```
-      For a non-CDB environment, run the following command.
-      ```console
-      ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password;
-      ```
-     iii. Create and activate the master encryption key.
+   For a CDB environment (Source Database in this lab is CDB ), run the following command (ensure to update password).
+   ```console
+   ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password container = ALL;
+   ```
+   For a non-CDB environment, run the following command.
+   ```console
+   ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password;
+   ```
+   iii. Create and activate the master encryption key.
 
      For a CDB environment, run the following command.
 

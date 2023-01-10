@@ -30,11 +30,11 @@ Estimated Time: 15 minutes
 
 **3. Set the Database environment to connect to your database.**
 
-   Switch user to Oracle using command below.
+   Switch user to Oracle using below command.
 
    sudo su - oracle
 
-   Set the environment to connect to your database.
+   Set the environment to connect to your database using below command.
 
    Type . oraenv and press enter 
     
@@ -52,13 +52,13 @@ Estimated Time: 15 minutes
 
 **5.  Check the Database Edition of the Source Database.**
 
-   In this livelab we have used Oracle Marketplace image for which uses Oracle Database Enterprise Edition.
+   In this livelab we have used Oracle Marketplace image for Source Database which uses Oracle Database Enterprise Edition.
 
    However in case you would like know the Database Edition for your on premise Database then refer the below steps.
 
    Execute the below query after connecting to database using sqlplus.
    ```console
-   "select banner from v$version".
+   select banner from v$version;
    ```
    You will receive an output similar to the one below which will have the Database Edition.
 
@@ -78,13 +78,13 @@ Estimated Time: 15 minutes
 
 **7. Check enryption algorithm under sqlnet.ora.**
 
-   Check the sqlnet.ora to identify any encryption algoritham mentioned.
+   Check the sqlnet.ora to identify any encryption algorithm mentioned.
 
 **8. Generate patch inventory ouput.**
 
 execute "opatch lsinventory" as oracle user in Source Database Server.
 
-**9. Download the above patch out to the Local Desktop.**
+**9. Download inventory output to the Local Desktop.**
 
 We will require this file in the Next Lab.
 
@@ -102,7 +102,7 @@ We will require this file in the Next Lab.
 
 2. Click on Database Software Images.
 
-   Select the appropriate compartment and then Click on Database Software Image under Resources.
+   Select the appropriate compartment and then click on "Database software images" under Resources.
 
    ![ss2](./images/image.png)
 
@@ -114,9 +114,9 @@ We will require this file in the Next Lab.
 
 4. Configure Database Software Image.
 
-   Select Database Version as "19c"   (Same as the Major Version of your Source Database)
+   Select database version as "19c"   (Same as the Major Version of your Source Database)
 
-   Select PSU as 19.16.0.0 ( In case you have selected different version for Source ,then select that version )
+   Select PSU as 19.16.0.0 ( In case you have selected different version for Source Database in Lab 2 ,then select that version )
 
    Upload Oracle Home Patch inventory ouput generated in Task 1 as below.
 

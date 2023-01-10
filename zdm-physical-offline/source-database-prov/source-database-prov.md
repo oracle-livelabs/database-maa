@@ -70,7 +70,7 @@ Once details are entered , Click on Next
 
      ![ss5](./images/launch.png " ")
 
-7. On the Create compute instance page , Please update Name for Compute.
+7. On the Create compute instance page , Please update Name for Compute as ZDM-Source-DB.
 
      ![ss6](./images/Compute1.png " ")
 

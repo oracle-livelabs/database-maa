@@ -55,11 +55,13 @@ Estimated Time: 30 mins
 **<details><summary>Task 2 - Start a Migration Evaluation </summary>**
 <p>
 
-**1. Login to ZDM Service Host and switch to zdmuser.**
+**1. Login to ZDM Service Host.**
+
+     Login to ZDM service host and switch the user to "zdmuser".
 
 **2. Check the status of ZDM service.**
 
-   Export ZDM_HOME=/home/zdmuser/zdmhome
+   export ZDM_HOME=/home/zdmuser/zdmhome
 
    $ZDM_HOME/bin/zdmservice status
 

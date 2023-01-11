@@ -81,7 +81,7 @@ Once details are entered , Click on Next
 
 6. Ensure to select the correct compartment in your tenancy and then click on "Launch Instance"
 
-   ![Image showing selection for compartment](./images/compartment.png" ")
+   ![Image showing selection for compartment](./images/compartment.png)
 
 7. On the Create compute instance page , Please update Name for Compute as ZDM-Source-DB.
 

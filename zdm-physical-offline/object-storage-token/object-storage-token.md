@@ -25,7 +25,7 @@ Estimated Time: 30 mins
 
    ![ss2](./images/Compartment.png)
 
-4. Create Bucket
+4. Create Bucket.
 
    Click on "Create Bucket"
 
@@ -33,7 +33,7 @@ Estimated Time: 30 mins
 
    Enter Bucket Name as "ZDM-Physical"
 
-   Leave all the defaults and click on "Create"
+   Leave all the defaults and click on "Create".
 
    ![ss4](./images/create2.png)
 
@@ -52,15 +52,14 @@ Estimated Time: 30 mins
 We need an Auth token for the Oracle Cloud Tenancy user which will be used by ZDM to read and write from Object Storage.
 
 1. Login to Oracle Cloud Console.
-
    
 2. Navigate to User Profile.
 
-    Click the Profile on the upper right corner of Oracle Cloud Console and then select username which is logged in as below.
+   Click the Profile on the upper right corner of Oracle Cloud Console and then select username which is logged in as below.
 
-    ![ss1](./images/profile.png)
+   ![ss1](./images/profile.png)
 
-3. Navigate to Resource
+3. Navigate to Resource.
 
    Navigate to Resource on the Left and click on Auth Tokens.
 
@@ -74,12 +73,12 @@ We need an Auth token for the Oracle Cloud Tenancy user which will be used by ZD
 
 5. Copy the Generated Token.
 
-   Copy the generated token since it is required later in this lab.
+   Copy the generated token since it is required later for migration.
 
 </p>
 </details>
 
-Please *proceed to the next lab*.
+Please [proceed to the next lab](#next).
 
 
 

@@ -20,7 +20,7 @@ Estimated Time: 30 mins
       
 3. Prepare a response file.
 
-   Below is sample response file in which you can use for ZDM Physical Offline Migration.
+   Below is sample response file which you can use for ZDM Physical Offline Migration.
 
    Please note that this response file uses Oracle Object Storage to keep the Source Database Backup and the Target Database is Oracle Base Database(specified as VMDB).
 
@@ -35,7 +35,7 @@ Estimated Time: 30 mins
    PLATFORM_TYPE=VMDB
    SHUTDOWN_SRC=TRUE
    ```
-   Please note that we have updated values for all parameters except for HOST which is specifci for your environment. 
+   Please note that we have updated values for all parameters except for HOST which is specific for your environment. 
 
    Use below method to prepare HOST value.
 
@@ -44,6 +44,8 @@ Estimated Time: 30 mins
    https://swiftobjectstorage.<region_name>.oraclecloud.com/v1/<objectstorage_namespace>
 
    Replace region_name and objectstorage_namespace with your corresponding values.
+
+   objectstorage_namespace values for your environment are collected in Lab 8 Task 1.
 
    Save the contents to physical_offline.rsp file under /home/zdmuser.
 
@@ -107,7 +109,7 @@ Estimated Time: 30 mins
 
 
 
-Please *proceed to the next lab*.
+Please [proceed to the next lab](#next).
 
 
 

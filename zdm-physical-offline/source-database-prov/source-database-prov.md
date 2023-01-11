@@ -61,7 +61,7 @@ Once details are entered , Click on Next
 </p>
 </details>
 
-**<details><summary>Task 2 - Provision Source Database. </summary>**
+<details><summary>Task 2 - Provision Source Database. </summary>
 <p>
 1. Login to your Oracle Cloud Console.
 

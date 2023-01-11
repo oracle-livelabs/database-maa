@@ -1,6 +1,6 @@
 # Database Migration
 
-In this lab, you will prepare a response file for migration , evaluate a migration and finally perform the actual migration.
+In this lab, you will prepare a response file for Database Migration , Evaluate a Database Migration and finally perform the actual Database Migration.
 
 
 Estimated Time: 30 mins
@@ -47,7 +47,7 @@ Estimated Time: 30 mins
 
    objectstorage_namespace values for your environment are collected in Lab 8 Task 1.
 
-   Save the contents to physical_offline.rsp file under /home/zdmuser.
+   Save the response file as physical_offline.rsp file under /home/zdmuser.
 
 </p>
 </details>
@@ -55,19 +55,19 @@ Estimated Time: 30 mins
 **<details><summary>Task 2 - Start a Migration Evaluation </summary>**
 <p>
 
-1. Login to ZDM Service Host and switch to zdmuser.
+**1. Login to ZDM Service Host and switch to zdmuser.**
 
-2. Check the status of ZDM service.
+**2. Check the status of ZDM service.**
 
    Export ZDM_HOME=/home/zdmuser/zdmhome
 
    $ZDM_HOME/bin/zdmservice status
 
-   if the running shows as false then use below command to start ZDM.
+   if the "running" shows as false then use below command to start ZDM.
 
    $ZDM_HOME/bin/zdmservice start
 
-3. Prepare command for Physical Offline Migration Evaluation.
+**3. Prepare command for Physical Offline Migration Evaluation.**
 
    Use the below sample command for ZDM Migration Evaluation and update it as per your environment.
 
@@ -77,38 +77,55 @@ Estimated Time: 30 mins
    Below is a brief description of the flags used in above command.
 
    -backupuser             -->  Oracle Cloud tenancy user for which we have generated Auth Token in earlier Lab.
+
    -srcargg2 identity_file -->  location of private ssh key file which can be used to login to Source Database Server.
+
    -tgtarg2 identity_file  -->  location of private ssh key file which can be used to login to Target Database Server.
+
    -sourcenode             --> Host Name of Source Database server.
+
    -targetnode             --> Host Name of Target Database Server.
+
    -rsp                    --> Location of response file for migration.
 
-4. Perform Migration Evaluation.
+**4. Perform Migration Evaluation.**
 
-   Once you have updated the Evaluation command then proceed to execute the command as below.
+   Once you have updated the evaluation command then proceed to execute the command as below.
 
-   ![ss1](./images/evaluation.png)
+   ![ss1](./images/eval_start.png)
 
    Please provide the SYS password of Source Database and Auth token when asked.
 
-   Also note down the Migration Job ID.
+   Also note down the Migration Job ID which is 3 in this case.
 
-5. Monotor the Migration Evaluation.
+**5. Monitor the Migration Evaluation.**
 
    Check the status of Migration Evaluation using below command.
 
-   $ZDM_HOME/bin/zdmcli query job -jobid 1
+   $ZDM_HOME/bin/zdmcli query job -jobid 3
 
-   here 1 is the jobid.
+   here 3 is the jobid.
 
    You will receive a similar ouput as below.
 
-   ![ss2](./images/evaluation_status.png)
+   ![ss2](./images/eval_status.png)
 
-   Continue execute the status command until all phases have been completed with status "PRECHECK_PASSED"
+   Continue execute the status command until all phases have been completed with status "PRECHECK_PASSED" as shown below.
+
+   ![ss3](./images/eval_final.png)
+
+**<details><summary>Task 3 - Start Database Migration </summary>**
+<p>
 
 
+**1. Create user and table in Source Database.
 
+   We will create a user called HR01 and a table called emp under PDB called ORCLPDB in the Source Database.
+
+   a. Login to Source Database Server.
+
+      Login to Source Database using Public IP and ssh key.
+   b. 
 Please [proceed to the next lab](#next).
 
 

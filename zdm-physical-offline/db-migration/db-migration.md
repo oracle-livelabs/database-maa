@@ -125,62 +125,63 @@ Estimated Time: 30 mins
 
 **1. Create HR01.EMP table in Source Database.**
 
-   We will create a user called HR01 and a table called emp under PDB called ORCLPDB in the Source Database.
+   We will create a user called "HR01" and a table called "EMP" under PDB called ORCLPDB in the Source Database.
 
    This is to enable us to perform a quick check on the success of Database Migration.
 
    a. Login to Source Database Server.
 
-      Login to Source Database using Public IP and ssh key.
+   Login to Source Database using Public IP and ssh key.
 
    b. Login to ORCLPDB.
 
-      Login to CDB using sqlplus and then switch to ORCLPDB using below command.
+   Login to CDB using sqlplus and then switch to ORCLPDB using below command.
 
-      alter session set container=ORCLPDB;
+   alter session set container=ORCLPDB;
 
-      Execute below statements
-      ```console
-      create user hr01 identified by "password";
-      grant resource , connect to hr01;
-      alter user hr01 quota unlimited on users;
-      create table hr01.emp(ename varchar2(20),eno number);
-      insert into hr01.emp values('Alpha',1);
-      insert into hr01.emp values('Beta',2);
-      commit;
-      ```
+   Execute below statements
+   ```console
+   create user hr01 identified by "password";
+   grant resource , connect to hr01;
+   alter user hr01 quota unlimited on users;
+   create table hr01.emp(ename varchar2(20),eno number);
+   insert into hr01.emp values('Alpha',1);
+   insert into hr01.emp values('Beta',2);
+   commit;
+   ```
+
    c. Verify the data in HR01.EMP table.
 
-      Execute below statement when you are in ORCLPDB.
-      ```console
-      select * from hr01.emp;
-      ```
+   Execute below statement when you are in ORCLPDB.
+   ```console
+   select * from hr01.emp;
+   ```
 
-      You will receive the below output.
+   You will receive the below output.
 
-      ![ss1](./images/source_select.png)
+   ![ss1](./images/source_select.png)
 
-**2. Verify User Data in Target Database.**
+**2. Verify HR01.EMP table in Target Database.**
 
-     We know that there is no HR01.EMP table in Target Database , However let's verify it.
+   We know that there is no HR01.EMP table in Target Database , However let's verify it.
 
-     a. Connect to Target Database Server.
+   a. Connect to Target Database Server.
 
-        Connect to Target Database Server using Public IP and ssh key.
+   Connect to Target Database Server using Public IP and ssh key.
 
-     b. Connect to ORCL_PDB1.
+   b. Connect to ORCL_PDB1.
 
-        Connect to CDB using sqlplus and switch to ORCL_PDB1 using below command.
+   Connect to CDB using sqlplus and switch to ORCL_PDB1 using below command.
 
-        alter session set container=ORCL_PDB1;
+   alter session set container=ORCL_PDB1;
 
-     c. Verify existence of HR01.EMP table.
+   c. Verify existence of HR01.EMP table.
 
-      ```console
-      select * from hr01.emp;
-      ```
+   ```console
+   select * from hr01.emp;
+   ```
 
-      You will receive an output similar to the one below indicating that HR01.EMP table doesn't exist in Target Database.
+   You will receive an output similar to the one below indicating that HR01.EMP table doesn't exist in Target Database which is expected.
 
    ![ss2](./images/target_sel_before_migration.png)
 

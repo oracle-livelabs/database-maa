@@ -114,6 +114,7 @@ Once details are entered , Click on Next
 
 </details>
 
-## Acknowledgements
+<details><summary>##Acknowledgements</summary>
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
 * **Last Updated By/Date** - Amalraj Puthenchira, January 2023
+</details>

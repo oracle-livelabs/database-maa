@@ -1,4 +1,4 @@
-# Creation of Object Stroage Bucket and Auth Token.
+# Creation of Object Storage Bucket and Auth Token.
 
 In this lab, you will create an object storage bucket and also create a token for authentication.
 

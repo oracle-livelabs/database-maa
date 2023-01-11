@@ -40,7 +40,6 @@
             "title": "Lab 7: Target Database Prerequistes",
             "filename": "../../target-db-prereq/target-db-prereq.md"
         },
-
         {
             "title": "Lab 8: Creation of Object Storage Bucket and Auth Token",
             "filename": "../../object-storage-token/object-storage-token.md"
@@ -48,11 +47,6 @@
         {
             "title": "Lab 9: Migrate your database",
             "filename": "../../db-migration/db-migration.md"
-        },
-        {
-            "title": "Need Help?",
-            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-            "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
         }
     ]
 }

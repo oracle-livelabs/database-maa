@@ -1,6 +1,6 @@
 # Database Migration
 
-In this lab, you will check prepare a response file for migration , evaluate a migration and finally perfrom the actual migration.
+In this lab, you will prepare a response file for migration , evaluate a migration and finally perform the actual migration.
 
 
 Estimated Time: 30 mins
@@ -20,7 +20,11 @@ Estimated Time: 30 mins
       
 3. Prepare a response file.
 
-   Below is sample response file in which you need to update the HOST.
+   Below is sample response file in which you can use for ZDM Physical Offline Migration.
+
+   Please note that this response file uses Oracle Object Storage to keep the Source Database Backup and the Target Database is Oracle Base Database(specified as VMDB).
+
+   
 
    ```console
    TGT_DB_UNIQUE_NAME=ORCL_T
@@ -31,6 +35,7 @@ Estimated Time: 30 mins
    PLATFORM_TYPE=VMDB
    SHUTDOWN_SRC=TRUE
    ```
+   Please note that we have updated values for all parameters except for HOST which is specifci for your environment. 
 
    Use below method to prepare HOST value.
 
@@ -48,7 +53,7 @@ Estimated Time: 30 mins
 **<details><summary>Task 2 - Start a Migration Evaluation </summary>**
 <p>
 
-1. Login to ZDM Service Host and switch to zdmuer.
+1. Login to ZDM Service Host and switch to zdmuser.
 
 2. Check the status of ZDM service.
 
@@ -62,16 +67,19 @@ Estimated Time: 30 mins
 
 3. Prepare command for Physical Offline Migration Evaluation.
 
-   Use the below sample command for ZDM Migration Evaluation and update it as per your details.
+   Use the below sample command for ZDM Migration Evaluation and update it as per your environment.
 
    ```console
    $ZDM_HOME/bin/zdmcli migrate database  -sourcesid ORCL  -sourcenode zdm-source-db  -srcauth zdmauth  -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key  -srcarg3 sudo_location:/bin/sudo  -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxxx.xxxxx@oracle.com"  -rsp /home/zdmuser/physical_offline.rsp  -tgtauth zdmauth  -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key  -tgtarg3 sudo_location:/usr/bin/sudo -eval
    ```
+   Below is a brief description of the flags used in above command.
 
-   Please note that -backupuser is the Oracle Cloud tenancy user for which we have generated Auth Token in earlier Lab.
-
-   -srcargg2 identity_file is the location of private ssh key file which can be used to login to Source.
-   -tgtarg2 identity_file is the location of private ssh key file which can be used to login to Target.
+   -backupuser             -->  Oracle Cloud tenancy user for which we have generated Auth Token in earlier Lab.
+   -srcargg2 identity_file -->  location of private ssh key file which can be used to login to Source Database Server.
+   -tgtarg2 identity_file  -->  location of private ssh key file which can be used to login to Target Database Server.
+   -sourcenode             --> Host Name of Source Database server.
+   -targetnode             --> Host Name of Target Database Server.
+   -rsp                    --> Location of response file for migration.
 
 4. Perform Migration Evaluation.
 

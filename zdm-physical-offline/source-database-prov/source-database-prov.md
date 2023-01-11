@@ -21,8 +21,8 @@ This lab assumes you have :
 
 * This is the "fold" -below items are collapsed by default*     
 
-**<details><summary>Task 1 : Create Virtual Cloud Network </summary>**
-<p>
+## Task 1 : Create Virtual Cloud Network
+
 
 In this task we will create a new Virtual Cloud Network which will be used to host Source Database Compute , Target Database System and ZDM Service Host.
 

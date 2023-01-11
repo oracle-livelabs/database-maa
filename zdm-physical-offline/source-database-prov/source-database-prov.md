@@ -19,7 +19,7 @@ This lab assumes you have :
 
 * All previous labs have been successfully completed.
 
-* This is the "fold" -below items are collapsed by default*     
+*This is the "fold" -below items are collapsed by default*     
 
 <details><summary>Task 1 : Create Virtual Cloud Network </summary>
 
@@ -59,7 +59,7 @@ Once details are entered , Click on Next
 
 </details>
 
-<details><summary>Task 2 : Provision Source Database. </summary>
+<details><summary>Task 2 : Provision source database </summary>
 
 1. Login to your Oracle Cloud Console.
 

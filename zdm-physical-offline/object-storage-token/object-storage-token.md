@@ -10,8 +10,6 @@ Estimated Time: 30 mins
 
 1. Login to Oracle Cloud Console.
 
-   Login to Oracle Cloud Console.
-
 2. Navigate to Object Storage.
 
    Click the Navigation Menu in the upper left, navigate to Storage and then select Buckets.

@@ -57,7 +57,7 @@ Estimated Time: 30 mins
 
 **1. Login to ZDM Service Host.**
 
-     Login to ZDM service host and switch the user to "zdmuser".
+   Login to ZDM service host and switch the user to "zdmuser".
 
 **2. Check the status of ZDM service.**
 
@@ -71,7 +71,7 @@ Estimated Time: 30 mins
 
 **3. Prepare command for Physical Offline Migration Evaluation.**
 
-   Use the below sample command for ZDM Migration Evaluation and update it as per your environment.
+   Use the below sample command for ZDM Database Migration Evaluation and update it as per your environment.
 
    ```console
    $ZDM_HOME/bin/zdmcli migrate database  -sourcesid ORCL  -sourcenode zdm-source-db  -srcauth zdmauth  -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key  -srcarg3 sudo_location:/bin/sudo  -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxxx.xxxxx@oracle.com"  -rsp /home/zdmuser/physical_offline.rsp  -tgtauth zdmauth  -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key  -tgtarg3 sudo_location:/usr/bin/sudo -eval
@@ -90,7 +90,7 @@ Estimated Time: 30 mins
 
    -rsp                    --> Location of response file for migration.
 
-**4. Perform Migration Evaluation.**
+**4. Perform Database Migration Evaluation.**
 
    Once you have updated the evaluation command then proceed to execute the command as below.
 
@@ -100,9 +100,9 @@ Estimated Time: 30 mins
 
    Also note down the Migration Job ID which is 3 in this case.
 
-**5. Monitor the Migration Evaluation.**
+**5. Monitor the Database Migration Evaluation.**
 
-   Check the status of Migration Evaluation using below command.
+   Check the status of Database Migration Evaluation using below command.
 
    $ZDM_HOME/bin/zdmcli query job -jobid 3
 
@@ -112,7 +112,7 @@ Estimated Time: 30 mins
 
    ![ss2](./images/eval_status.png)
 
-   Continue execute the status command until all phases have been completed with status "PRECHECK_PASSED" as shown below.
+   Continue to execute the status command until all phases have been completed with status "PRECHECK_PASSED" as shown below.
 
    ![ss3](./images/eval_final.png)
 

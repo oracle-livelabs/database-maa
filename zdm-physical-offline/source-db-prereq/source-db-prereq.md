@@ -1,8 +1,8 @@
 # Source Database Prerequisites
 
-In this lab, you will check source database to identify whether it meets prerequistes for Physical Offline Database Migration.
+In this lab, you will check source database to identify whether it meets prerequistes for ZDM Physical Offline Database Migration.
 
-Whenever required you can do necessary modification in source database to meet the prerequisites.
+Whenever required you will be provided with steps or guidence to make necessary modification in source database to meet the prerequisites.
 
 
 Estimated Time: 30 mins
@@ -34,15 +34,7 @@ Estimated Time: 30 mins
 
    ![ss1](./images/spfile.png)
 
-**4. Ensure System time of Source Database, Target Database and ZDM host are in sync.**
-
-   Type "date" across Source Database , Target Database and ZDM host simultaneously and see whether they show the same time.
-
-   It is recommended to have same time across all system but it is not mandatory.
-
-   Please use NTP in case you need to adjust time.
-
-**5. Check the compatible parameter on Source Database.**
+**4. Check the compatible parameter on Source Database.**
 
    In this livelab compatible parameter on both source and Target have already been set to 19.0.0 , so no action is required.
 
@@ -54,7 +46,7 @@ Estimated Time: 30 mins
 
    Please note that changing compatible parameter can't be reversed unlesss you restore the entire database backup, so plan accordingly.
 
-**6. Enable Database Archivelog mode.**
+**5. Enable Database Archivelog mode.**
 
    Source Database must be running in ARCHIVELOG mode.
 
@@ -65,7 +57,7 @@ Estimated Time: 30 mins
    See https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/zero-downtime-migration/21.3/zdmug&id=ADMIN-GUID-C12EA833-4717-430A-8919-5AEA747087B9 if you need help.
 
 
-**7. Configure TDE Wallet.**
+**6. Configure TDE Wallet.**
 
    For Oracle Database 12c Release 2 and later, if the source database does not have Transparent Data Encryption (TDE) enabled, then it is mandatory that you configure the TDE wallet before migration begins. You need not encrypt the data in the source database; the data is encrypted at target using the wallet setup in the source database. The WALLET_TYPE can be AUTOLOGIN (preferred) or PASSWORD based.
 
@@ -121,17 +113,18 @@ Estimated Time: 30 mins
    ```
    iv. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
    ```console
+   col WRL_PARAMETER for a55
+   set lines 150
    select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
-   
    ```
 
-   You will see that keystore is enabled with status OPEN and WALLET_TYPE is shown as PASSWORD in the query output belowwhich means configuration of password-based keystore is complete at this stage.
+   You will see that keystore is enabled with status OPEN and WALLET_TYPE as PASSWORD in the query output below which means configuration of password-based keystore is complete at this stage.
 
    ![ss3](./images/tde_password.png)
 
-   We will use an auto-login keystore in this lab and for that we need complete additional steps as mentioned below.
+   We will use an auto-login keystore in this lab and for that we need to complete additional steps as mentioned below.
    
-   **c. For an auto-login keystore.**
+   **c. Creation of auto-login keystore.**
    
    i. Create the auto-login keystore.
 
@@ -169,9 +162,10 @@ Estimated Time: 30 mins
    If you are enabling TDE for Oracle RAC database without shared access to the keystore, copy the following files to the same location on second node.
 
    /u01/app/oracle/product/19c/dbhome_1/network/admin/ew*
+
    /u01/app/oracle/product/19c/dbhome_1/network/admin/cw*
 
-**8. Snapshot controlfile for RAC Database.**
+**7. Snapshot controlfile for RAC Database.**
 
    This is not applicable for the Source Satabase that you have provisioned in this lab, However if you have RAC Source Database then follow below steps.
 
@@ -181,7 +175,7 @@ Estimated Time: 30 mins
    $ rman target /  
    RMAN> CONFIGURE SNAPSHOT CONTROLFILE NAME TO '+DATA/db_name/snapcf_db_name.f';
    ```
-**9. Controlfile auto backup.**
+**8. Controlfile auto backup.**
 
    Source Database you have configured in this lab has controlfile autobackup on by default.
 
@@ -190,13 +184,13 @@ Estimated Time: 30 mins
    ```console
    RMAN> CONFIGURE CONTROLFILE AUTOBACKUP ON;
    ```
-**10. Register database with srvctl.**
+**9. Register database with srvctl.**
 
    If the source database is deployed using Oracle Grid Infrastructure and the database is not registered using SRVCTL, then you must register the database before the migration.
 
    This is not applicable for the Source Database provisioned in this lab since it is not using Grid Infrastructure.
 
-**11. RMAN backup strategy.**
+**10. RMAN backup strategy.**
 
    To preserve the source database Recovery Time Objective (RTO) and Recovery Point Objective (RPO) during the migration, the existing RMAN backup strategy should be maintained.
 
@@ -208,6 +202,13 @@ Estimated Time: 30 mins
 
    Thre is no existing RMAN backup strategy for the source database that we have configured in this lab , so this can be ignored.
 
+**11. Ensure System time of Source Database, Target Database and ZDM host are in sync.** (Optional Step)
+
+   Type "date" across Source Database , Target Database and ZDM host simultaneously and see whether they show the same time.
+
+   It is recommended to have same time across all system but it is not mandatory.
+
+   Please use NTP in case you need to adjust time.
 
 Please *proceed to the next lab*.
 

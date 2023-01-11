@@ -203,6 +203,10 @@ Estimated Time: 30 mins
    
    **c. Execute Database Migration as below.**
 
+   Execute below command to start the Database Migration.
+
+   $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxx.xxxx@xxxcle.com" -rsp /home/zdmuser/physical_offline.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
+
    ![ss3](./images/mig_start.png)
 
    Please provide the SYS password of Source Database and Auth token when asked.

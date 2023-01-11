@@ -85,15 +85,15 @@ Once details are entered , Click on Next
 
 7. On the Create compute instance page , Please update Name for Compute as ZDM-Source-DB.
 
-     ![Image showing Compute instance Name Prompt](./images/compute_name_prompt.png" ")
+   ![Image showing Compute instance Name Prompt](./images/compute_name_prompt.png" ")
 
     You can leave the Image and Shape as Default.
 
-     ![Image showing compute mage and shape](./images/image_shape.png" ")
+   ![Image showing compute mage and shape](./images/image_shape.png" ")
 
  8. Under Networking , Make choices to reflect the below details
 
-     ![Image showing Network selection](./images/network_details.png " ")
+    ![Image showing Network selection](./images/network_details.png " ")
 
  9. Under Add SSH Keys
 

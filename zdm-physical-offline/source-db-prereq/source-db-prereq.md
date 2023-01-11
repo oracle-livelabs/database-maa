@@ -5,7 +5,7 @@ In this lab, you will check source database to identify whether it meets prerequ
 Whenever required you will be provided with steps or guidance to make necessary modification in source database to meet the prerequisites.
 
 
-Estimated Time: 30 mins
+Estimated Time: 15 minutes
 
 
 **1. Login to Source Database Server.**

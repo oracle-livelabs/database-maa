@@ -287,6 +287,7 @@ We will require this file in Task 2.
 
 </details>
 </p>
+
 Please [proceed to the next lab](#next).
 
 ## Acknowledgements

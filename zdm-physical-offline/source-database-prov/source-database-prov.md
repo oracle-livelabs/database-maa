@@ -39,7 +39,7 @@ In this task we will create a new Virtual Cloud Network which will be used to ho
 
 5. In new window , under Basic information specify name of VCN as ZDM-VCN and select appropritate compartment.
 
-   ![Image showing VCN Name prompt](./images/vcn_name_prompt.png" ")
+![Image showing VCN Name prompt](./images/vcn_name_prompt.png" ")
 
 6. Under Configure VCN and Subnets , enter details as shown in image below.
 

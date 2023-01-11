@@ -118,14 +118,104 @@ Estimated Time: 30 mins
 <p>
 
 
-**1. Create user and table in Source Database.
+**1. Create HR01.EMP table in Source Database.**
 
    We will create a user called HR01 and a table called emp under PDB called ORCLPDB in the Source Database.
+
+   This is to enable us to perform a quick check on the success of Database Migration.
 
    a. Login to Source Database Server.
 
       Login to Source Database using Public IP and ssh key.
-   b. 
+
+   b. Login to ORCLPDB.
+
+      Login to CDB using sqlplus and then switch to ORCLPDB using below command.
+
+      alter session set container=ORCLPDB;
+
+      Execute below statements
+      ```console
+      create user hr01 identified by "password";
+      grant resource , connect to hr01;
+      alter user hr01 quota unlimited on users;
+      create table hr01.emp(ename varchar2(20),eno number);
+      insert into hr01.emp values('Alpha',1);
+      insert into hr01.emp values('Beta',2);
+      commit;
+      ```
+   c. Verify the data in HR01.EMP table.
+
+      Execute below statement when you are in ORCLPDB.
+      ```console
+      select * from hr01.emp;
+      ```
+
+      You will receive the below output.
+
+      ![ss1](./images/source_select.png)
+
+**2. Verify User Data in Target Database.**
+
+     We know that there is no HR01.EMP table in Target Database , However let's verify it.
+
+     a. Connect to Target Database Server.
+
+        Connect to Target Database Server using Public IP and ssh key.
+
+     b. Connect to ORCL_PDB1.
+
+        Connect to CDB using sqlplus and switch to ORCL_PDB1 using below command.
+
+        alter session set container=ORCL_PDB1;
+
+     c. Verify existence of HR01.EMP table.
+
+      ```console
+      select * from hr01.emp;
+      ```
+
+      You will receive an output similar to the one below indicating that HR01.EMP table doesn't exist in Target Database.
+
+   ![ss2](./images/target_sel_before_migration.png)
+
+**3. Start the Database Migration**
+
+   We are now good to start the Database Migration.
+
+   We can use the same command used for Database Migration Evaluation except that "-eval" flag is not required.
+
+   **a. Login to ZDM Service Host.**
+
+   Login to ZDM Service Host using Public IP and ssh key.
+
+   **b. Switch user to zdmuser.**
+
+   Switch user to "zdmuser" using below command.
+
+   sudo su - zdmuser
+   
+   **c. Execute Database Migration as below.**
+
+   ![ss3](./images/mig_start.png)
+
+   Please provide the SYS password of Source Database and Auth token when asked.
+
+   Also note down the Migration Job ID which is 4 in this case.
+   
+   **d. Monitor the Database Migration using below command.**
+
+   $ZDM_HOME/bin/zdmcli query job -jobid 4
+
+   You can see the JOB_TYPE is MIGRATE instead of EVAL for the Database Migration Evaluation.
+      
+   Continue to monitor the status until all phases have been completed with "COMPLETED" status as shown below.
+
+**<details><summary>Task 3 - Start Database Migration </summary>**
+<p>
+
+
+
 Please [proceed to the next lab](#next).
 
 

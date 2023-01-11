@@ -122,7 +122,6 @@ Estimated Time: 30 mins
 **<details><summary>Task 3 - Start Database Migration </summary>**
 <p>
 
-
 **1. Create HR01.EMP table in Source Database.**
 
    We will create a user called "HR01" and a table called "EMP" under PDB called ORCLPDB in the Source Database.
@@ -223,8 +222,32 @@ Estimated Time: 30 mins
 
    ![ss4](./images/mig_final.png)
 
-**<details><summary>Task 3 - Start Database Migration </summary>**
-<p>
+**4. Verify the Database Migration.**
+
+   ZDM has completed the Database Migration as seen in the previous ouput.
+
+   Let's verify the HR01.EMP table in Target.
+
+   a. Connect to Target Database Server.
+
+   Connect to Target Database Server using Public IP and ssh key.
+
+   b. Connect to ORCLPDB.
+
+   Connect to CDB using sqlplus and switch to ORCLPDB using below command.
+
+   alter session set container=ORCLPDB;
+
+   c. Verify existence of HR01.EMP table.
+
+   ```console
+   select * from hr01.emp;
+   ```
+   You will receive below output which means Database Migration has been successfully completed.
+   ![ss5](./images/target_sel_after_mig.png)
+
+</p>
+</details>
 
 
 

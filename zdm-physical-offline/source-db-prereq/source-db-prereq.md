@@ -1,6 +1,6 @@
 # Source Database Prerequisites
 
-In this lab, you will check source database to identify whether it meets prerequistes for Physical Database Migration.
+In this lab, you will check source database to identify whether it meets prerequistes for Physical Offline Database Migration.
 
 Whenever required you can do necessary modification in source database to meet the prerequisites.
 
@@ -8,7 +8,7 @@ Whenever required you can do necessary modification in source database to meet t
 Estimated Time: 30 mins
 
 
-**1. Login to Source Database Server.**
+**##1. Login to Source Database Server.**
 
    Login to Source Database Server using Public IP and ssh key.
 

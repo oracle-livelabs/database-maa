@@ -7,9 +7,6 @@ Whenever required you will be provided with steps or guidance to make necessary 
 
 Estimated Time: 30 mins
 
-**<details><summary>Task 1 - Target Database Prerequisite Check</summary>**
-<p>
-
 **1. Login to Target Database Server.**
 
    Login to Target Database server using Public IP and ssh key.
@@ -97,10 +94,7 @@ Estimated Time: 30 mins
 
     This is not mandatory for Physical Offline Migration , However it is recommended.
 
-
-</p>
-</details>
-Please *proceed to the next lab*.
+Please [proceed to the next lab](#next).
 
 
 

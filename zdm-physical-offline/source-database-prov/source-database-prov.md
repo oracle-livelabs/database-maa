@@ -21,8 +21,6 @@ This lab assumes you have :
 
 *This is the "fold" -below items are collapsed by default*     
 
-<details><summary>Expand All Tasks </summary>
-
 <details><summary>Task 1 : Create Virtual Cloud Network </summary>
 
 In this task we will create a new Virtual Cloud Network which will be used to host Source Database Compute , Target Database System and ZDM Service Host.
@@ -114,7 +112,6 @@ Once details are entered , Click on Next
 
 12. Take a note of the Public IP address of the Compute Instance which will used in later labs to access the Source Database System.
 
-</details>
 </details>
 
 <details><summary>Acknowledgements</summary>

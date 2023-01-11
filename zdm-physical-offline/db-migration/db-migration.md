@@ -114,6 +114,9 @@ Estimated Time: 30 mins
 
    ![ss3](./images/eval_final.png)
 
+</p>
+</details>
+
 **<details><summary>Task 3 - Start Database Migration </summary>**
 <p>
 

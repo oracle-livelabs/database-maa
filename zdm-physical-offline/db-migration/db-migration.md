@@ -252,7 +252,5 @@ Estimated Time: 30 mins
 Congratulations ! , You have successfully completed ZDM Physical Offline Migration Lab.
 
 
-Please [proceed to the next lab](#next).
-
 
 

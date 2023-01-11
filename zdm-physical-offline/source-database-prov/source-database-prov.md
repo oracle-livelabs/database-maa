@@ -19,8 +19,6 @@ This lab assumes you have :
 
 * All previous labs have been successfully completed.
 
-*This is the "fold" -below items are collapsed by default*     
-
 <details><summary>Task 1 : Create Virtual Cloud Network </summary>
 
 In this task we will create a new Virtual Cloud Network which will be used to host Source Database Compute , Target Database System and ZDM Service Host.
@@ -29,33 +27,33 @@ In this task we will create a new Virtual Cloud Network which will be used to ho
 
 2. Click the Navigation Menu in the upper left, navigate to Networking and then select Virtual Cloud Networks
    
-     ![ss1](./images/task1navigate.png " ")
+![Pic showing navigation to VCN](./images/navigate_to_vcn.png " ")
  
 3. Click on "Start VCN Wizard"
 
-     ![ss2](./images/Task1_VCNWizard.png " ")
+![Pic showing Start VCN Wizard](./images/start_vcn_wizard.png " ")
 
 4. In the new small window , Select the "Create VCN with Internet Connectivity" and then click on "Start VCN Wizard"
 
-     ![ss3](./images/Task1_VCNWizard2.png " ")
+     ![Pic showing VCN options for creation](./images/vcn_create_options.png " ")
 
 5. In new window , under Basic information specify name of VCN as ZDM-VCN and select appropritate compartment.
 
-     ![ss4](./images/Task1_VCNWizard3.png " ")
+     ![Pic showing VCN Name prompt](./images/vcn_name_prompt.png" ")
 
 6. Under Configure VCN and Subnets , enter details as shown in image below.
 
-     ![ss5](./images/Task1_VCNWizard44.png " ")
+     ![Pic showing VCN and Subnet CIDR](./images/vcn_cidr_info.png " ")
 
 Once details are entered , Click on Next
 
 7. On the next screen , Click on Create
 
-     ![ss6](./images/Task1_VCNWizard5.png " ")
+     ![Image showing VCN creation options selected](./images/vcn_summary.png " ")
 
 8. This will take few seconds and you will receive a screen similar to the one below after completion.
 
-     ![ss7](./images/Task1_VCNWizard6.png " ")
+     ![ss7](./images/vcn_creation_summary.png " ")
 
 </details>
 

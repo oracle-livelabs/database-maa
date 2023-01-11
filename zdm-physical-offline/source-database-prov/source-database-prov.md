@@ -53,7 +53,7 @@ Once details are entered , Click on Next
 
 8. This will take few seconds and you will receive a screen similar to the one below after completion.
 
-   ![ss7](./images/vcn_creation_summary.png " ")
+   ![Image showing VCN summary after creation](./images/vcn_creation_summary.png " ")
 
 </details>
 
@@ -63,50 +63,50 @@ Once details are entered , Click on Next
 
 2. Click the Navigation Menu in the upper left, navigate to Marketplace and then select All Applications.
 
-     ![ss1](./images/Navigate.png " ")
+     ![Image showing navigation to Marketplace](./images/navigate_2_marketplace.png " ")
 
 3. Type "Oracle Database" in search bar.
 
-     ![ss2](./images/oracledb.png " ")
+     ![Image showing search bar for Marketplace](./images/search_marketplace.png " ")
 
 4. Click on the listed "Oracle Database (Single Instance) Image
 
-     ![ss3](./images/oracleimage.png " ")
+     ![Image showing Oracle Database Marketplace Image](./images/oracle_database_image.png " ")
 
 5. Select an Oracle Database version which is latest ( There will be one on OL7 and one on OL8)
     
    We have choosen OL7 since our Target Database DB systems have Oracle Linux 7.
 
-     ![ss4](./images/dbver.png " ")
+     ![Image showing available Marketplace Database Images](./images/db_image_options.png " ")
 
 6. Ensure to select the correct compartment in your tenancy and then click on "Launch Instance"
 
-     ![ss5](./images/launch.png " ")
+     ![Image showing selection for compartment](./images/compartment.png" ")
 
 7. On the Create compute instance page , Please update Name for Compute as ZDM-Source-DB.
 
-     ![ss6](./images/Compute1.png " ")
+     ![Image showing Compute instance Name Prompt](./images/compute_name_prompt.png" ")
 
     You can leave the Image and Shape as Default.
 
-     ![ss7](./images/shape.png " ")
+     ![Image showing compute mage and shape](./images/image_shape.png" ")
 
  8. Under Networking , Make choices to reflect the below details
 
-     ![ss8](./images/Compute3.png " ")
+     ![Image showing Network selection](./images/network_details.png " ")
 
  9. Under Add SSH Keys
 
     Browse and provide the public ssh key generated earlier.
 
-    ![ss9](./images/Compute4.png " ")
+    ![Image showing SSK key details](./images/ssh_key_upload.png " ")
 
 10. Click on "Create" to start the compute provisioning.
 
-    ![ss9](./images/Compute5.png " ")
+    ![Image showing final page for compute creation](./images/compute_creation.png " ")
 
 11. In few minutes , Compute instance with database will be provisioned and running as below.
-    ![ss10](./images/prov_final.png)
+    ![Image showing provisioned compute instance](./images/prov_final.png)
 
 12. Take a note of the Public IP address of the Compute Instance which will used in later labs to access the Source Database System.
 

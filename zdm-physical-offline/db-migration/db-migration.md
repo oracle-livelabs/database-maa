@@ -43,9 +43,9 @@ Estimated Time: 30 mins
 
    https://swiftobjectstorage.<region_name>.oraclecloud.com/v1/<objectstorage_namespace>
 
-   Replace region_name and objectstorage_namespace with your corresponding values.
+   Replace "region_name" and "objectstorage_namespace" with your corresponding values.
 
-   objectstorage_namespace values for your environment are collected in Lab 8 Task 1.
+   "objectstorage_namespace" values for your environment  was collected in Lab 8 Task 1.
 
    Save the response file as physical_offline.rsp file under /home/zdmuser.
 

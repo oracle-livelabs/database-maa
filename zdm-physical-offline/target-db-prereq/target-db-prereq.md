@@ -48,9 +48,9 @@ Estimated Time: 30 mins
 
 **5. Verify TDE Wallet Folder.**
 
-   Target Database provisioned in this lab has TDE enabled by default.
+   All Oracle PaaS Databases in OCI have TDE enabled by default including the one that we have used in this lab.
 
-   You can use the below procedure to check TDE status.
+   However , if You used any IaaS database as Target Database then use the below procedure to check TDE status.
 
    Verify that the TDE wallet folder exists, and ensure that the wallet STATUS is OPEN and WALLET_TYPE is AUTOLOGIN (For an auto-login wallet type), or WALLET_TYPE is PASSWORD (For a password-based wallet). For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
 
@@ -68,7 +68,7 @@ Estimated Time: 30 mins
 
    Check the size of the disk groups and usage on the target database (ASM disk groups or ACFS file systems) and make sure adequate storage is provisioned and available on the target database servers.
 
-   In this lab you can ignone this since the size of source database is less than 10 GB and we have allocated the minimum of 256 GB for Target Database.
+  You can ignone this step in this lab since the size of Source Database configured is less than 10 GB and we have allocated the minimum of 256 GB for Target Database.
 
 **7. Check connections.**
 
@@ -78,7 +78,7 @@ Estimated Time: 30 mins
 
 **8. Capture RMAN SHOW ALL command.**
 
-    Capture "SHOW ALL" RMAN output so that you can compare RMAN settings after the migration, then reset any changed RMAN configuration settings to ensure that the backup works without any issues.
+   Capture "SHOW ALL" RMAN output so that you can compare RMAN settings after the migration, then reset any changed RMAN configuration settings to ensure that the backup works without any issues.
 
 **9. Ensure System time of Target Database, Source Database and ZDM host are in sync (Optional Step).**
 
@@ -90,9 +90,9 @@ Estimated Time: 30 mins
 
 **10. Check encryption algorithm in SQLNET.ORA (Optional Step).**
 
-    Ensure that encryption algorithm specificed in sqlnet.ora in Target Database Oracle Home is same as Source Database Home.
+   Ensure that encryption algorithm specificed in sqlnet.ora in Target Database Oracle Home is same as Source Database Home.
 
-    This is not mandatory for Physical Offline Migration , However it is recommended.
+   This is not mandatory for ZDM Physical Offline Migration , However it is recommended.
 
 Please [proceed to the next lab](#next).
 

@@ -83,7 +83,7 @@ Estimated Time: 30 mins
 
    Follow the below steps to enable TDE.
 
-   a . Set ENCRYPTION_WALLET_LOCATION in the $ORACLE_HOME/network/admin/sqlnet.ora file.
+   ##a . Set ENCRYPTION_WALLET_LOCATION in the $ORACLE_HOME/network/admin/sqlnet.ora file.
 
    Insert the below line in sqlnet.ora (Ensure to update the correct ORACLE_HOME of your Source Database).   
 
@@ -91,7 +91,7 @@ Estimated Time: 30 mins
 
    For an Oracle RAC instance, also set ENCRYPTION_WALLET_LOCATION in the second Oracle RAC node (Not applicable for the source database provisioned in this lab)
    
-   b. Create and configure the keystore.
+   **b. Create and configure the keystore.**
 
    i. Connect to the database and create the keystore.
 

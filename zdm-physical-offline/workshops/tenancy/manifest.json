@@ -1,7 +1,7 @@
 {
     "workshoptitle": "Zero Downtime Migration: Physical Offline Migration to Co-Managed Databases in OCI",
 
-    "help": "livelabs-help-db_us@oracle.com",
+    "help": "amalraj.puthenchira@oracle.com",
     "tutorials": [
         {
             "title": "Introduction",
@@ -17,7 +17,7 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/generate-ssh-key-cloud-shell/generate-ssh-keys-cloud-shell.md"
         },
         {
-            "title": "Lab 2: Provision Source Database",
+            "title": "Lab 2: Provision source database",
             "filename": "../../source-database-prov/source-database-prov.md"
         },
         {

@@ -1,10 +1,27 @@
-# Source Database Provisioning
+# Lab 2 : Provision source database
 
-In this lab, you will provision a new Virtual Cloud Network and also provision Source Database using Oracle Marketplace image available in Oracle Cloud Infrastructure.
+## introduction
 
 Estimated Time: 30 mins
 
-**<details><summary>Task 1 - Create Virtual Cloud Network </summary>**
+## Objectives
+
+In this lab
+
+* You will provision a Virtual Cloud Network.
+* You will provision source database using Oracle Marketplace image available in Oracle Cloud Infrastructure.
+
+## Prerequisites
+
+This lab assumes you have :
+
+* Oracle Cloud Account
+
+* All previous labs have been successfully completed.
+
+* This is the "fold" - below items are collapsed by default*     
+
+**<details><summary>Task 1 : Create Virtual Cloud Network </summary>**
 <p>
 
 In this task we will create a new Virtual Cloud Network which will be used to host Source Database Compute , Target Database System and ZDM Service Host.

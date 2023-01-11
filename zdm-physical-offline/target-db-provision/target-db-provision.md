@@ -32,13 +32,14 @@ This lab assumes you have :
 
 <details><summary>Task 1 : Collect Source Database details </summary>
 
+
 **1. Login to the Source Database system using the Public IP.**
 
    Username to login : opc 
 
    Use the private key generated earlier.
 
-**2. Check the Opearating System version of the Source Database.**
+**2. Check the Operating System version of the Source Database.**
 
    Execute the below command after login in as opc.
    
@@ -86,7 +87,7 @@ This lab assumes you have :
    ```
    You will receive an output similar to the one below which will have the Database Edition.
 
-   ![Image showing Database Edition of Source database](./images/banner.png)
+   ![Image showing Database Edition of Source database](./images/database_edition.png)
 
 **6. Check Database characterset.**
    
@@ -153,7 +154,7 @@ We will require this file in Task 2.
 </details>
 
 <details><summary>Task 3 : Provision Target Database </summary>
-
+<p>
 **1. Navigate to Oracle Base Database in Oracle Console.**
 
    Click the Navigation Menu in the upper left, navigate to Oracle Database and then select "Oracle Base Database (VM. BM)" as shown below.
@@ -284,7 +285,7 @@ We will require this file in Task 2.
    This step is going to take an hour , however you can proceed to next lab while DB System is being provisioned.
 
 </details>
-
+</p>
 Please [proceed to the next lab](#next).
 
 ## Acknowledgements

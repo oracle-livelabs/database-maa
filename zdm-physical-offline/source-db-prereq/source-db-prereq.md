@@ -8,7 +8,7 @@ Whenever required you can do necessary modification in source database to meet t
 Estimated Time: 30 mins
 
 
-**##1. Login to Source Database Server.**
+**1. Login to Source Database Server.**
 
    Login to Source Database Server using Public IP and ssh key.
 
@@ -46,7 +46,7 @@ Estimated Time: 30 mins
 
    In this livelab compatible parameter on both source and Target have already been set to 19.0.0 , so no action is required.
 
-   Please follow below procedure in case you are referring this lab for migrating your on premise database to OCI.
+   However in case you have provisioned Oracle Database Version other than 19c for Source and Target Database then use the below procedure.
 
    Execute "show parameter compatible" on Source and Target Database and ensure they are set to same value.
 
@@ -58,9 +58,9 @@ Estimated Time: 30 mins
 
    Source Database must be running in ARCHIVELOG mode.
 
-   Source Database we have configured in this lab is not running in ARCHIVELOG mode . 
+   Source Database we have provisioned in this livelab is not running in ARCHIVELOG mode . 
 
-   Please follow below document and make database in ARCHIVELOG mode.
+   Please follow below document and enable ARCHIVELOG mode.
 
    See https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/zero-downtime-migration/21.3/zdmug&id=ADMIN-GUID-C12EA833-4717-430A-8919-5AEA747087B9 if you need help.
 
@@ -85,11 +85,11 @@ Estimated Time: 30 mins
 
    a . Set ENCRYPTION_WALLET_LOCATION in the $ORACLE_HOME/network/admin/sqlnet.ora file.
 
-   Insert the below line in sqlnet.ora (Ensure to update the correct ORACLE_HOME for you)
+   Insert the below line in sqlnet.ora (Ensure to update the correct ORACLE_HOME of your Source Database).   
 
    ENCRYPTION_WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY=/u01/app/oracle/product/19c/dbhome_1/network/admin/)))
 
-   For an Oracle RAC instance, also set ENCRYPTION_WALLET_LOCATION in the second Oracle RAC node.
+   For an Oracle RAC instance, also set ENCRYPTION_WALLET_LOCATION in the second Oracle RAC node (Not applicable for the source database provisioned in this lab)
    
    b. Create and configure the keystore.
 

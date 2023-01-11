@@ -61,8 +61,8 @@ Once details are entered , Click on Next
 </p>
 </details>
 
-<details><summary>Task 2 - Provision Source Database. </summary>
-<p>
+<details><summary>Task 2 : Provision Source Database. </summary>
+
 1. Login to your Oracle Cloud Console.
 
 2. Click the Navigation Menu in the upper left, navigate to Marketplace and then select All Applications.
@@ -114,7 +114,6 @@ Once details are entered , Click on Next
 
 12. Take a note of the Public IP address of the Compute Instance which will used in later labs to access the Source Database System.
 
-</p>
 </details>
 
 ## Acknowledgements

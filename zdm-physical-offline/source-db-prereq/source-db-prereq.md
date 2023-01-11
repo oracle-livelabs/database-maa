@@ -2,7 +2,7 @@
 
 In this lab, you will check source database to identify whether it meets prerequistes for ZDM Physical Offline Database Migration.
 
-Whenever required you will be provided with steps or guidence to make necessary modification in source database to meet the prerequisites.
+Whenever required you will be provided with steps or guidance to make necessary modification in source database to meet the prerequisites.
 
 
 Estimated Time: 30 mins
@@ -192,6 +192,10 @@ Estimated Time: 30 mins
 
 **10. RMAN backup strategy.**
 
+   There is no existing RMAN backup strategy for the source database that we have configured in this lab , so this can be ignored.
+
+   However if your source database has existing RMAN backups then follow below procedure.
+
    To preserve the source database Recovery Time Objective (RTO) and Recovery Point Objective (RPO) during the migration, the existing RMAN backup strategy should be maintained.
 
    During the migration a dual backup strategy will be in place; the existing backup strategy and the strategy used by Zero Downtime Migration.
@@ -200,9 +204,8 @@ Estimated Time: 30 mins
 
    If archive logs were to be deleted on the source database, and these archive logs are needed by Zero Downtime Migration to synchronize the target cloud database, then these files should be restored so that Zero Downtime Migration can continue the migration process.
 
-   Thre is no existing RMAN backup strategy for the source database that we have configured in this lab , so this can be ignored.
-
-**11. Ensure System time of Source Database, Target Database and ZDM host are in sync.** (Optional Step)
+   
+**11. Ensure System time of Source Database, Target Database and ZDM host are in sync(Optional Step).** 
 
    Type "date" across Source Database , Target Database and ZDM host simultaneously and see whether they show the same time.
 
@@ -210,7 +213,7 @@ Estimated Time: 30 mins
 
    Please use NTP in case you need to adjust time.
 
-Please *proceed to the next lab*.
+Please [proceed to the next lab](#next).
 
 
 

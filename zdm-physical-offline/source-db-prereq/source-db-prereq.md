@@ -83,7 +83,7 @@ Estimated Time: 30 mins
 
    Follow the below steps to enable TDE.
 
-   ##a . Set ENCRYPTION_WALLET_LOCATION in the $ORACLE_HOME/network/admin/sqlnet.ora file.
+   **a . Set ENCRYPTION_WALLET_LOCATION in the $ORACLE_HOME/network/admin/sqlnet.ora file.**
 
    Insert the below line in sqlnet.ora (Ensure to update the correct ORACLE_HOME of your Source Database).   
 
@@ -95,13 +95,13 @@ Estimated Time: 30 mins
 
    i. Connect to the database and create the keystore.
 
-   Modify the sql to update your Source Database ORACLE_HOME and your TDE password before executing.
+   Modify the below sql to update your Source Database ORACLE_HOME and TDE password before executing.
    ```console
    ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin' identified by password;
    ```
    ii. Open the keystore.
 
-   For a CDB environment (Source Database in this lab is CDB ), run the following command (ensure to update password).
+   For a CDB environment (Source Database in this lab is CDB ),  run the following command (ensure to update password).
    ```console
    ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password container = ALL;
    ```
@@ -111,7 +111,7 @@ Estimated Time: 30 mins
    ```
    iii. Create and activate the master encryption key.
 
-   For a CDB environment, run the following command.
+   For a CDB environment, run the following command (ensure to update the password)
    ```console
    ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup container = ALL;
    ```
@@ -119,35 +119,46 @@ Estimated Time: 30 mins
    ```console
    ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup;
    ```
-   iv. Query V$ENCRYPTION_KEYS to get the keystore status, keystore type, and keystore location.
+   iv. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
    ```console
    select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
+   
    ```
-   The configuration of a password-based keystore is complete at this stage, and the keystore is enabled with status OPEN and WALLET_TYPE is shown as PASSWORD in the query output below.
+
+   You will see that keystore is enabled with status OPEN and WALLET_TYPE is shown as PASSWORD in the query output belowwhich means configuration of password-based keystore is complete at this stage.
+
    ![ss3](./images/tde_password.png)
 
-   We will use an auto-login keystore in this lab and we will follow below additional steps to enable auto-login keystore.
+   We will use an auto-login keystore in this lab and for that we need complete additional steps as mentioned below.
    
-   c. For an auto-login keystore.
+   **c. For an auto-login keystore.**
    
    i. Create the auto-login keystore.
+
+   Execute below statement after replacing ORACLE_HOME and password for your environment.
 
    ```console
    ADMINISTER KEY MANAGEMENT CREATE AUTO_LOGIN KEYSTORE FROM KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin/' IDENTIFIED BY password;
    ```
    ii. Close the password-based keystore.
+
+   Execute the below statement after replacing password to close the password-based keystore created earlier.
    ```console
    ADMINISTER KEY MANAGEMENT SET KEYSTORE CLOSE IDENTIFIED BY password;
    ```
    iii. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
+
+   Execute below statement
    ```console
-   SELECT * FROM v$encryption_wallet;
+   col WRL_PARAMETER for a55
+   set lines 150
+   select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
    ```
    In the query output, verify that the TDE keystore STATUS is OPEN and WALLET_TYPE set to AUTOLOGIN, otherwise the auto-login keystore is not set up correctly.
    Sample output is shown below.
    ![ss4](./images/tde_autologin.png)
 
-   d. Copy the keystore files to the second Oracle RAC node.
+   **d. Copy the keystore files to the second Oracle RAC node.**
 
    This is not applicable for the Source Database used in this lab.
 
@@ -162,7 +173,7 @@ Estimated Time: 30 mins
 
 **8. Snapshot controlfile for RAC Database.**
 
-   This is not applicable for the source database that we have configured , However if you have RAC Source Database then follow below steps.
+   This is not applicable for the Source Satabase that you have provisioned in this lab, However if you have RAC Source Database then follow below steps.
 
    If the source is an Oracle RAC database, and SNAPSHOT CONTROLFILE is not on a shared location, configure SNAPSHOT CONTROLFILE to point to a shared location on all Oracle RAC nodes to avoid the ORA-00245 error during backups to Oracle Object Store.
 
@@ -172,18 +183,20 @@ Estimated Time: 30 mins
    ```
 **9. Controlfile auto backup.**
 
+   Source Database you have configured in this lab has controlfile autobackup on by default.
+
    If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
 
    ```console
    RMAN> CONFIGURE CONTROLFILE AUTOBACKUP ON;
    ```
-**10. Register Database with srvctl.**
+**10. Register database with srvctl.**
 
    If the source database is deployed using Oracle Grid Infrastructure and the database is not registered using SRVCTL, then you must register the database before the migration.
 
-   This is not applicable for the Source Database used in this lab since it is not using Grid Infrastructure.
+   This is not applicable for the Source Database provisioned in this lab since it is not using Grid Infrastructure.
 
-**11. RMAN Backup Strategy.**
+**11. RMAN backup strategy.**
 
    To preserve the source database Recovery Time Objective (RTO) and Recovery Point Objective (RPO) during the migration, the existing RMAN backup strategy should be maintained.
 
@@ -192,6 +205,8 @@ Estimated Time: 30 mins
    Avoid having two RMAN backup jobs running simultaneously (the existing one and the one initiated by Zero Downtime Migration).
 
    If archive logs were to be deleted on the source database, and these archive logs are needed by Zero Downtime Migration to synchronize the target cloud database, then these files should be restored so that Zero Downtime Migration can continue the migration process.
+
+   Thre is no existing RMAN backup strategy for the source database that we have configured in this lab , so this can be ignored.
 
 
 Please *proceed to the next lab*.

@@ -155,6 +155,7 @@ We will require this file in Task 2.
 
 <details><summary>Task 3 : Provision Target Database </summary>
 <p>
+
 **1. Navigate to Oracle Base Database in Oracle Console.**
 
    Click the Navigation Menu in the upper left, navigate to Oracle Database and then select "Oracle Base Database (VM. BM)" as shown below.

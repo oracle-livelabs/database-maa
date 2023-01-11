@@ -65,11 +65,11 @@ We need an Auth token for the Oracle Cloud Tenancy user which will be used by ZD
 
 4. Create Auth Token.
 
-   Click on Generate Token , Provide a Description for Token and Click on Generate Token as below.
+   Click on Generate Token , provide a description for Token and click on Generate Token as below.
 
    ![ss3](./images/authtoken2.png)
 
-5. Copy the Generated Token.
+5. Copy the generated Token.
 
    Copy the generated token since it is required later for migration.
 

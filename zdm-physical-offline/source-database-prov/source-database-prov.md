@@ -27,33 +27,33 @@ In this task we will create a new Virtual Cloud Network which will be used to ho
 
 2. Click the Navigation Menu in the upper left, navigate to Networking and then select Virtual Cloud Networks
    
-![Pic showing navigation to VCN](./images/navigate_to_vcn.png " ")
+   ![Image showing navigation to VCN](./images/navigate_to_vcn.png " ")
  
 3. Click on "Start VCN Wizard"
 
-![Pic showing Start VCN Wizard](./images/start_vcn_wizard.png " ")
+   ![Image showing Start VCN Wizard](./images/start_vcn_wizard.png " ")
 
 4. In the new small window , Select the "Create VCN with Internet Connectivity" and then click on "Start VCN Wizard"
 
-     ![Pic showing VCN options for creation](./images/vcn_create_options.png " ")
+   ![Image showing VCN options for creation](./images/vcn_create_options.png " ")
 
 5. In new window , under Basic information specify name of VCN as ZDM-VCN and select appropritate compartment.
 
-     ![Pic showing VCN Name prompt](./images/vcn_name_prompt.png" ")
+   ![Image showing VCN Name prompt](./images/vcn_name_prompt.png" ")
 
 6. Under Configure VCN and Subnets , enter details as shown in image below.
 
-     ![Pic showing VCN and Subnet CIDR](./images/vcn_cidr_info.png " ")
+   ![Image showing VCN and Subnet CIDR](./images/vcn_cidr_info.png " ")
 
 Once details are entered , Click on Next
 
 7. On the next screen , Click on Create
 
-     ![Image showing VCN creation options selected](./images/vcn_summary.png " ")
+   ![Image showing VCN creation options selected](./images/vcn_summary.png " ")
 
 8. This will take few seconds and you will receive a screen similar to the one below after completion.
 
-     ![ss7](./images/vcn_creation_summary.png " ")
+   ![ss7](./images/vcn_creation_summary.png " ")
 
 </details>
 

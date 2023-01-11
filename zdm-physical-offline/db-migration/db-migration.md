@@ -8,17 +8,17 @@ Estimated Time: 30 mins
 **<details><summary>Task 1 - Prepare Response File </summary>**
 <p>
 
-1. Login to ZDM Service Host.
+**1. Login to ZDM Service Host.**
 
    Login to ZDM Service Host using Public IP and ssh key.
 
-2. Switch user to zdmuser
+**2. Switch user to zdmuser.**
 
    Switch user to "zdmuser" using below command.
 
    sudo su - zdmuser
       
-3. Prepare a response file.
+**3. Prepare a response file.**
 
    Below is sample response file which you can use for ZDM Physical Offline Migration.
 

@@ -3,7 +3,7 @@
 In this lab, you will create an object storage bucket and also a Auth token for authentication.
 
 
-Estimated Time: 30 mins
+Estimated Time: 10 minutes
 
 **<details><summary>Task 1 - Create Object Storage Bucket </summary>**
 <p>

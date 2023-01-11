@@ -213,9 +213,11 @@ Estimated Time: 30 mins
 
    $ZDM_HOME/bin/zdmcli query job -jobid 4
 
-   You can see the JOB_TYPE is MIGRATE instead of EVAL for the Database Migration Evaluation.
+   You can see the JOB_TYPE is MIGRATE which is different from the JOB_TYPE (EVAL)for the Database Migration Evaluation.
       
    Continue to monitor the status until all phases have been completed with "COMPLETED" status as shown below.
+
+   ![ss4](./images/mig_final.png)
 
 **<details><summary>Task 3 - Start Database Migration </summary>**
 <p>

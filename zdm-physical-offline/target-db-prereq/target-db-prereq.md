@@ -50,7 +50,7 @@ Estimated Time: 30 mins
 
    All Oracle PaaS Databases in OCI have TDE enabled by default including the one that we have used in this lab.
 
-   However , if You used any IaaS database as Target Database then use the below procedure to check TDE status.
+   However , if you have used any IaaS database as Target Database then use the below procedure to check TDE status.
 
    Verify that the TDE wallet folder exists, and ensure that the wallet STATUS is OPEN and WALLET_TYPE is AUTOLOGIN (For an auto-login wallet type), or WALLET_TYPE is PASSWORD (For a password-based wallet). For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
 

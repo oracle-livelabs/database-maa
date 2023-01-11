@@ -1,17 +1,17 @@
 # Lab 2 : Provision source database
 
-## introduction
+## Introduction
 
 Estimated Time: 30 mins
 
-## Objectives
+### Objectives
 
 In this lab
 
 * You will provision a Virtual Cloud Network.
 * You will provision source database using Oracle Marketplace image available in Oracle Cloud Infrastructure.
 
-## Prerequisites
+### Prerequisites
 
 This lab assumes you have :
 
@@ -19,7 +19,7 @@ This lab assumes you have :
 
 * All previous labs have been successfully completed.
 
-* This is the "fold" - below items are collapsed by default*     
+* This is the "fold" -below items are collapsed by default*     
 
 **<details><summary>Task 1 : Create Virtual Cloud Network </summary>**
 <p>

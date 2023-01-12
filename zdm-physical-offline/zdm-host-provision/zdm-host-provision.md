@@ -19,8 +19,6 @@ This lab assumes you have :
 
 * All previous labs have been successfully completed.
 
-
-
 ## Task 1 : Provision ZDM Compute Instance
 
 1. Navigate to compute instance in Oracle Console.

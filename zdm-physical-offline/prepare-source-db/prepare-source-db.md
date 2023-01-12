@@ -226,6 +226,8 @@ This lab assumes you have :
 
    Please use NTP in case you need to adjust time.
 
+You have successfully completed source database preparation steps.
+
 You may please [proceed to the next lab](#next).
 
 

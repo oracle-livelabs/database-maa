@@ -1,16 +1,33 @@
-# Database Migration
+# Lab 8 : Migrate database
 
-In this lab, you will prepare a response file for Database Migration , Evaluate a Database Migration and finally perform the actual Database Migration.
-
+## Introduction
 
 Estimated Time: 30 mins
 
-**<details><summary>Task 1 - Prepare Response File </summary>**
+### Objectives
+
+In this lab
+
+* You will prepare a response file for database migration.
+
+* You will evaluate a database migration.
+
+* You will perform the actual database migration.
+
+### Prerequisites
+
+This lab assumes you have :
+
+* Oracle Cloud Account
+
+* All previous labs have been successfully completed.
+
+<details><summary>Task 1 : Prepare Response File </summary>
 <p>
 
-**1. Login to ZDM Service Host.**
+**1. Login to ZDM service host.**
 
-   Login to ZDM Service Host using Public IP and ssh key.
+   Login to ZDM service host using Public IP and ssh key.
 
 **2. Switch user to zdmuser.**
 
@@ -49,13 +66,15 @@ Estimated Time: 30 mins
 
    Save the response file as physical_offline.rsp file under /home/zdmuser.
 
+   Please note that you can prepare your own response file if required to satisfy your requirements.
+
 </p>
 </details>
 
-**<details><summary>Task 2 - Start a Migration Evaluation </summary>**
+<details><summary>Task 2 - Start a Migration Evaluation </summary>
 <p>
 
-**1. Login to ZDM Service Host.**
+**1. Login to ZDM service host.**
 
    Login to ZDM service host and switch the user to "zdmuser".
 
@@ -71,7 +90,7 @@ Estimated Time: 30 mins
 
 **3. Prepare command for Physical Offline Migration Evaluation.**
 
-   Use the below sample command for ZDM Database Migration Evaluation and update it as per your environment.
+   Use the below sample command for ZDM database migration evaluation and update it as per your environment.
 
    ```console
    $ZDM_HOME/bin/zdmcli migrate database  -sourcesid ORCL  -sourcenode zdm-source-db  -srcauth zdmauth  -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key  -srcarg3 sudo_location:/bin/sudo  -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxxx.xxxxx@oracle.com"  -rsp /home/zdmuser/physical_offline.rsp  -tgtauth zdmauth  -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key  -tgtarg3 sudo_location:/usr/bin/sudo -eval

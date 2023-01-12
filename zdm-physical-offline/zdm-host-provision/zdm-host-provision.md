@@ -1,4 +1,4 @@
-# Provision and configure ZDM service host
+# Lab 4 : Provision and configure ZDM service host
 
 ## Introduction
 

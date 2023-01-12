@@ -1,4 +1,4 @@
-# Prepare target database
+# Lab 6 : Prepare target database
 
 ## Introduction
 

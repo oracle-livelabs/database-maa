@@ -21,8 +21,7 @@ This lab assumes you have :
 
 *This is the "fold" - below items are collapsed by default*
 
-<details><summary>Task 1 : Provision ZDM Compute Instance </summary>
-<p>
+## Task 1 : Provision ZDM Compute Instance
 
 1. Navigate to compute instance in Oracle Console.
 
@@ -81,11 +80,7 @@ This lab assumes you have :
 
 We have successfully provisioned a compute instance for ZDM , please proceed to next task.
 
-</p>
-</details>
-
-<details><summary>Task 2 : Configure ZDM Service </summary>
-<p>
+## Task 2 : Configure ZDM Service
 
 1. Login to ZDM host using the Public IP and ssh key file.
 
@@ -214,11 +209,7 @@ We have successfully provisioned a compute instance for ZDM , please proceed to 
 
 We have successfuly installed ZDM software , please proceed to next task.
 
-</p>
-</details>
-
-<details><summary>Task 3 : Configure SSH connectivity from ZDM host to source and target DB system </summary>
-<p>
+## Task 3 : Configure SSH connectivity from ZDM host to source and target DB system
 
 1. Add Source and Target Database IP and FQDN Details to /etc/hosts.
 
@@ -271,9 +262,6 @@ We have successfuly installed ZDM software , please proceed to next task.
    if the connectivity is sucessful then you will be able to login to source and target as shown below.
 
    ![Image showing successful ssh connectivity from zdm to source](./images/ssh_source_login.png)
-
-</p>
-</details>
 
 You may now **proceed to the next lab**.
 

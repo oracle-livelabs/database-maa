@@ -29,8 +29,8 @@
             "filename": "../../zdm-host-provision/zdm-host-provision.md"
         },
         {
-            "title": "Lab 5: Source Database Prerequisites",
-            "filename": "../../source-db-prereq/source-db-prereq.md"
+            "title": "Lab 5: Prepare source database",
+            "filename": "../../prepare-source-db/prepare-source-db.md"
         },
         {
             "title": "Lab 6: Target Database Prerequistes",

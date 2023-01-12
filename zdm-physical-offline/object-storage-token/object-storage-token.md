@@ -35,7 +35,7 @@ This lab assumes you have :
 
    Select appropriate compartment on the left side.
 
-![Image showing compartment selection](./images/compartment.png)
+   ![Image showing compartment selection](./images/compartment.png)
 
 4. Create Bucket.
 
@@ -67,13 +67,13 @@ We need an Auth token for the Oracle Cloud Tenancy user which will be used by ZD
    
 2. Navigate to User Profile.
 
-   Click the Profile on the upper right corner of Oracle Cloud Console and then select username which is logged in as below.
+   Click the user profile on the upper right corner of Oracle Cloud Console and then select username which is logged in as below.
 
    ![Image showing navigation to user profile](./images/user_profile.png)
 
 3. Navigate to Resource.
 
-   Navigate to Resource on the Left and click on Auth Tokens.
+   Navigate to Resource on the left and click on Auth Tokens.
 
    ![Image showing Auth Token under resources](./images/resources_auth_token.png)
 

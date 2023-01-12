@@ -112,6 +112,8 @@ Once details are entered , Click on Next
 
 </details>
 
+You may now **proceed to the next lab**.
+
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
 * **Last Updated By/Date** - Amalraj Puthenchira, January 2023

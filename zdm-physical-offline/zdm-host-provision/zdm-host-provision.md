@@ -274,7 +274,12 @@ We have successfuly installed ZDM software , please proceed to next task.
 </p>
 </details>
 
-You may [proceed to the next lab](#next).
+You mayplease[proceed to the next lab](#next).
+
+<details><summary>Acknowledgements</summary>
+* **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
+* **Last Updated By/Date** - Amalraj Puthenchira, January 2023
+</details>
 
 
 

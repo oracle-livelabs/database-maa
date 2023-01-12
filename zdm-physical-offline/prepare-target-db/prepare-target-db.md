@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Estimated Time: 30 mins
+Estimated Time: 10 minutes
 
 ### Objectives
 

@@ -10,7 +10,7 @@ For this release of Zero Downtime Migration , only Grid Infrastructure-based dat
 
 For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder database must be created using Control Plane, not Grid Infrastructure Database Services before database migration begins.
 
-Estimated Time: 15 minutes
+Estimated Time: 30 minutes
 
 ### Objectives
 

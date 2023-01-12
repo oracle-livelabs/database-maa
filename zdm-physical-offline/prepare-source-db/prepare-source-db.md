@@ -228,7 +228,7 @@ This lab assumes you have :
 
 You have successfully completed source database preparation steps.
 
-You may please [proceed to the next lab](#next).
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering

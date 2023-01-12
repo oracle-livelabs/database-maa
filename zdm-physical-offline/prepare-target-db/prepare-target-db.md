@@ -109,7 +109,7 @@ This lab assumes you have :
 
    This is not mandatory for ZDM Physical Offline Migration , However it is recommended.
 
-You may please [proceed to the next lab](#next).
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering

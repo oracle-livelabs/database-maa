@@ -133,7 +133,7 @@ This lab assumes you have :
 
 **1. Create HR01.EMP table in source database.**
 
-   We will create a user called "HR01" and a table called "EMP" under PDB called ORCLPDB in the Source Database.
+   We will create a user called "HR01" and a table called "EMP" under PDB called ORCLPDB in the source database.
 
    This is to enable us to perform a quick check on the success of database migration.
 
@@ -229,7 +229,7 @@ This lab assumes you have :
 
    ![Image showing interim migration status](./images/mig_status.png)
 
-   You can see the JOB_TYPE is MIGRATE which is different from the JOB_TYPE (EVAL)for the Database Migration Evaluation.
+   You can see the JOB_TYPE is MIGRATE which is different from the JOB_TYPE (EVAL)for the database migration evaluation.
       
    Continue to monitor the status until all phases have been completed with "COMPLETED" status as shown below.
 
@@ -237,7 +237,7 @@ This lab assumes you have :
 
 **4. Verify the database migration.**
 
-   ZDM has completed the database migration as seen in the previous ouput.
+   ZDM has completed the database migration as seen in the previous output.
 
    Let's verify the HR01.EMP table in target database.
 

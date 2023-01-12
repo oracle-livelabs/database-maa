@@ -42,7 +42,7 @@
         },
         {
             "title": "Lab 8: Migrate database",
-            "filename": "../../db-migration/db-migration.md"
+            "filename": "../../migrate-db/migrate-db.md"
         }
     ]
 }

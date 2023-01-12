@@ -1,8 +1,8 @@
-# Provision and configure ZDM Service Host
+# Provision and configure ZDM service host
 
 ## Introduction
 
-Estimated Time: 30 mins
+Estimated Time: 30 minutes
 
 ### Objectives
 

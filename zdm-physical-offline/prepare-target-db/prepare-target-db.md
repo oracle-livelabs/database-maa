@@ -21,6 +21,7 @@ This lab assumes you have :
 
 * All previous labs have been successfully completed.
 
+## Task 1 : Prepare target database
 
 **1. Login to target database server.**
 

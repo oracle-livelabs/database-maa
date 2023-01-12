@@ -22,8 +22,7 @@ This lab assumes you have :
 
 * All previous labs have been successfully completed.
 
-<details><summary>Task 1 : Prepare response file </summary>
-<p>
+## Task 1 : Prepare response file
 
 **1. Login to ZDM service host.**
 
@@ -66,11 +65,7 @@ This lab assumes you have :
 
    Please note that you can prepare your own response file if required to satisfy your requirements.
 
-</p>
-</details>
-
-<details><summary>Task 2 : Start database migration evaluation </summary>
-<p>
+## Task 2 : Start database migration evaluation
 
 **1. Login to ZDM service host.**
 
@@ -125,11 +120,7 @@ This lab assumes you have :
 
    ![Image showing final status of migration evaluation](./images/eval_final.png)
 
-</p>
-</details>
-
-<details><summary>Task 3 : Start database migration </summary>
-<p>
+## Task 3 : Start database migration
 
 **1. Create HR01.EMP table in source database.**
 
@@ -258,9 +249,6 @@ This lab assumes you have :
    ```
    If you receive similar output as below which means database migration has been successfully completed.
    ![Image showing select output from target after migration](./images/target_sel_after_mig.png)
-
-</p>
-</details>
 
 Congratulations ! , You have successfully completed ZDM Physical Offline Migration Lab.
 

@@ -19,7 +19,7 @@ This lab assumes you have :
 
 * All previous labs have been successfully completed.
 
-<details><summary>Task 1 : Create Virtual Cloud Network </summary>
+## Task 1 : Create Virtual Cloud Network
 
 In this task we will create a new Virtual Cloud Network which will be used to host Source Database Compute , Target Database System and ZDM Service Host.
 
@@ -55,9 +55,8 @@ Once details are entered , Click on Next
 
    ![Image showing VCN summary after creation](./images/vcn_creation_summary.png " ")
 
-</details>
 
-<details><summary>Task 2 : Provision source database </summary>
+## Task 2 : Provision source database
 
 1. Login to your Oracle Cloud Console.
 
@@ -109,8 +108,6 @@ Once details are entered , Click on Next
     ![Image showing provisioned compute instance](./images/prov_final.png)
 
 12. Take a note of the Public IP address of the Compute Instance which will used in later labs to access the Source Database System.
-
-</details>
 
 You may now **proceed to the next lab**.
 

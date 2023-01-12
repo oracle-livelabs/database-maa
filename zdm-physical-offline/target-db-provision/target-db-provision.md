@@ -30,8 +30,7 @@ This lab assumes you have :
 
 * All previous labs have been successfully completed.
 
-<details><summary>Task 1 : Collect Source Database details </summary>
-<p>
+## Task 1 : Collect Source Database details
 
 **1. Login to the source database system using the Public IP.**
 
@@ -112,10 +111,8 @@ execute "opatch lsinventory" as oracle user in source satabase server.
 **9. Download inventory output to the local desktop.**
 
 We will require this file in Task 2.
-</p>
-</details>
 
-<details><summary>Task 2 : Prepare Database Software Image for Target Database</summary>
+## Task 2 : Prepare Database Software Image for Target Database
 
 1. Navigate to Oracle Base Database.
 
@@ -151,10 +148,7 @@ We will require this file in Task 2.
 
    Please wait for the completion of this task before proceeding to the next task.
 
-</details>
-
-<details><summary>Task 3 : Provision Target Database </summary>
-<p>
+## Task 3 : Provision Target Database
 
 **1. Navigate to Oracle Base Database in Oracle Console.**
 
@@ -284,9 +278,6 @@ We will require this file in Task 2.
    ![Image showing the option to start the provisioning](./images/prov-final.png)
 
    This step is going to take an hour , however you can proceed to next lab while DB System is being provisioned.
-
-</details>
-</p>
 
 You may now **proceed to the next lab**.
 

@@ -20,6 +20,7 @@ This lab assumes you have :
 
 * All previous labs have been successfully completed.
 
+## Task 1 : Prepare source database
 
 **1. Login to source database server.**
 

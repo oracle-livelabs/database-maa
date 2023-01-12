@@ -20,8 +20,7 @@ This lab assumes you have :
 
 * All previous labs have been successfully completed.
 
-<details><summary>Task 1 : Create Object Storage Bucket </summary>
-<p>
+## Task 1 : Create Object Storage Bucket
 
 1. Login to Oracle Cloud Console.
 
@@ -55,11 +54,7 @@ This lab assumes you have :
 
    ![Image showing object storage namespace](./images/namespace.png)
 
-</p>
-</details> 
-
-<details><summary>Task 2 : Create Auth Token </summary>
-<p>
+## Task 2 : Create Auth Token
 
 We need an Auth token for the Oracle Cloud Tenancy user which will be used by ZDM to read and write from Object Storage Bucket.
 
@@ -87,9 +82,6 @@ We need an Auth token for the Oracle Cloud Tenancy user which will be used by ZD
 
    Copy the generated token since it is required later for migration.
 
-</p>
-</details>
-
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
@@ -98,5 +90,3 @@ You may now **proceed to the next lab**.
 
 
 
-
-[def]: ./images/compartment.png

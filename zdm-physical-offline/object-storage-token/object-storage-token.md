@@ -97,3 +97,6 @@ You may please [proceed to the next lab](#next).
 * **Last Updated By/Date** - Amalraj Puthenchira, January 2023
 
 
+
+
+[def]: ./images/compartment.png

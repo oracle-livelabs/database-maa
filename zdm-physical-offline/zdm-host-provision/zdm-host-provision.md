@@ -19,7 +19,7 @@ This lab assumes you have :
 
 * All previous labs have been successfully completed.
 
-*This is the "fold" - below items are collapsed by default*
+
 
 ## Task 1 : Provision ZDM Compute Instance
 

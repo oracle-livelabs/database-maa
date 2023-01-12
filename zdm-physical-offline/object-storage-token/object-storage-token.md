@@ -35,7 +35,7 @@ This lab assumes you have :
 
    Select appropriate compartment on the left side.
 
-   ![Image showing compartment selection](./images/compartment.png)
+   ![Image showing compartment selection](./images/compartment. " ")
 
 4. Create Bucket.
 

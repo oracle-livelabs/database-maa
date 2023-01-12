@@ -1,34 +1,49 @@
-# ZDM Host Provisioning and Configuration
+# Provision and configure ZDM Service Host
 
-In this lab, you will provision a compute instance to use as ZDM servive host and also configure ZDM software on it.
-
+## Introduction
 
 Estimated Time: 30 mins
 
-**<details><summary>Task 1 - Provision ZDM Compute Instance </summary>**
+### Objectives
+
+In this lab
+
+* You will provision a compute instance to use as ZDM servive host.
+* You will configure ZDM software on the compute instance.
+
+### Prerequisites
+
+This lab assumes you have :
+
+* Oracle Cloud Account
+
+* All previous labs have been successfully completed.
+
+
+<details><summary>Task 1 : Provision ZDM Compute Instance </summary>
 <p>
 
-1. Navigate to Compute instance in Oracle Console.
+1. Navigate to compute instance in Oracle Console.
 
    Click the Navigation Menu in the upper left, navigate to Compute and then select Instances.
 
-   ![ss](./images/nav.png)
+   ![Image showing navigation to compute instance](./images/navigate_2_compute.png)
 
 2. Select Compartment.
 
-   Select the appropriate compart on the left side of the console.
+   Select the appropriate compartment on the left side of the console.
 
-   ![ss1](./images/comp.png)
+   ![Image showing the selection of compartment](./images/compartment.png)
 
 3. Click on "Create Instance"
 
-   ![ss2](./images/Start.png)
+   ![Image showing option to create compute instance](./images/create_instance.png)
 
 4. Enter Name for Compute
 
    Enter zdm-host as Name for Compute and select appropriate compartment if it is not already done.
 
-   ![ss3](./images/host.png)
+   ![Image showing the name to be entered for compute](./images/compute_name.png)
 
 5. Leave the Placement section as it is.
 
@@ -36,29 +51,29 @@ Estimated Time: 30 mins
 
    Under Image and Shape , click on Change image
 
-   ![ss4](./images/image1.png)
+   ![Image showing the option to change the image for compute](./images/os_image.png)
 
    Select Oracle Linux 7.9 and click on "Select Image"
 
-   ![ss5](./images/image2.png)
+   ![Image showing the OS image selected for compute](./images/os_selected.png)
 
-7. Select VCN and Subnet
+7. Select VCN and Subnet.
 
    Under Networking , Select ZDM-VCN as VCN and Public Subnet-ZDM-VCN as Subnet.
 
-   ![ss6](./images/network.png)
+   ![Image showing network selected](./images/network.png)
 
-8. Upload SSH Keys
+8. Upload SSH Keys.
 
    Under Add SSH Keys , upload the public ssh key generated earlier.
 
-   ![ss7](./images/ssh.png)
+   ![Image showing option to upload ssh kesy](./images/ssh.png)
 
-9. Specify custom boot volume
+9. Specify custom boot volume.
 
    Under boot volume , select "Specify a custom boot volume size" and specify 150.
 
-   ![ss8](./images/boot.png)
+   ![Image showing custom boot volume size](./images/boot.png)
 10. Click on Create to start the provisioning of Compute.
 
    In less than few minutes ZDM compute host will be provisioned.
@@ -66,12 +81,12 @@ Estimated Time: 30 mins
 </p>
 </details>
 
-**<details><summary>Task 2 - Configure ZDM Service </summary>**
+<details><summary>Task 2 : Configure ZDM Service </summary>
 <p>
 
 1. Login to ZDM host using the Public IP and ssh key file.
 
-   ![ss1](./images/ip.png)
+   ![Image showing Public IP for ZDM host ](./images/ip.png)
 
 2. Expand the root FS
 
@@ -81,7 +96,7 @@ Estimated Time: 30 mins
 
    You will see an output similar to the one below.
 
-   ![ss2](./images/fs.png)
+   ![Image showing command to expand root FS](./images/expand_fs.png)
 
 3. Check the existence of required packages for ZDM.
 
@@ -103,7 +118,7 @@ Estimated Time: 30 mins
    ```
    You will receive an output similar to the one below which shows glibc-devel, libaio , oraclelinux-developer-release-e17 and unzip are alraady installed.
 
-   ![ss3](./images/pkg_preinstalled.png)
+   ![Image showing pre installed packages for ZDM ](./images/pkg_preinstalled.png)
 
 4. Install missing packages.
 
@@ -115,7 +130,7 @@ Estimated Time: 30 mins
 
    Sample output is shown below.
 
-   ![ss4](./images/expect.png)
+   ![Image showing installation of expect package](./images/expect_install.png)
 
 5. Create User, Group and Directories required for ZDM.
 
@@ -170,7 +185,7 @@ Estimated Time: 30 mins
 
    You will see output as below when ZDM service setup has been completed.
 
-   ![ss5](./images/zdmservice.png)
+   ![Image showing ZDM service setup completion](./images/zdmservice.png)
 
 10. Start ZDM service.
 
@@ -184,7 +199,7 @@ Estimated Time: 30 mins
 
     You will receive similar output as below once ZDM has been successfully started.
 
-    ![ss6](./images/service_start.png)
+    ![Image showing successful start of ZDM service](./images/zdm_service_start.png)
 
 11. Check ZDM service status.
 
@@ -194,45 +209,45 @@ Estimated Time: 30 mins
 
     Sample output is given below.
 
-    ![ss7](./images/service_status.png)
+    ![Image showing ZDM service status](./images/zdm_service_status.png)
 
 </p>
 </details>
 
-**<details><summary>Task 3 - Configure SSH connectivity from ZDM host to Source and Target DB system </summary>**
+<details><summary>Task 3 : Configure SSH connectivity from ZDM host to source and target DB system </summary>
 <p>
 
 1. Add Source and Target Database IP and FQDN Details to /etc/hosts.
 
-   We have to first collect Source and Target Private IP and FQDN from the console.
+   We have to first collect source and target Private IP and FQDN from the console.
 
-   a. Navigate to Source Database Compute instance.
+   a. Navigate to source database compute instance.
 
    Click the Navigation Menu in the upper left, navigate to Compute and then select Instances.
 
-   ![ss1](./images/nav_compute.png)
+   ![Image showing navigation to compute instance](./images/nav_compute.png)
 
    Click on the ZDM-Source-DB compute host.
 
    Note down the private IP and FQDN under Primary VNIC section.
 
-   ![ss2](./images/VNIC.png)
+   ![Image showing private ip and  of source](./images/source_ip_fqdn.png)
 
    b. Navigate to Target Database System as below.
 
-   ![ss3](./images/nav_target_db.png)
+   ![Image showing navigation to Oracle Base Database](./images/navigate_oracle_base.png)
 
    Click on zdm-target-DB
 
    Click on Nodes under Resources section and note down the private IP and FQDN.
 
-   ![ss4](./images/Target_IP.png)
+   ![Image showing private ip and fqdn of target database](./images/target_ip_fqdn.png)
    
    c. Edit /etc/hosts in ZDM host to add Source and Target Database System private IP and FQDN details collected in previous steps.
 
    Sample output after editing is shown below.
 
-   ![ss5](./images/zdm_etc.png)
+   ![Image showing contents of hosts file](./images/etc_host.png)
 
 2. Copy the SSH private key to ZDM host
 
@@ -252,7 +267,7 @@ Estimated Time: 30 mins
 
    if the connectivity is sucessful then you will be able to login to source and target as shown below.
 
-   ![ss6](./images/ssh_login.png)
+   ![Image showing successful ssh connectivity from zdm to source](./images/ssh_source_login.png)
 
 </p>
 </details>

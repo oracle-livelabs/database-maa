@@ -33,8 +33,8 @@
             "filename": "../../prepare-source-db/prepare-source-db.md"
         },
         {
-            "title": "Lab 6: Target Database Prerequistes",
-            "filename": "../../target-db-prereq/target-db-prereq.md"
+            "title": "Lab 6: Prepare target database",
+            "filename": "../../prepare-target-db/prepare-target-db.md"
         },
         {
             "title": "Lab 7: Creation of Object Storage Bucket and Auth Token",

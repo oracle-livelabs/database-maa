@@ -1,15 +1,30 @@
-# Target Database Prerequisites
+# Prepare target database
 
-In this lab, you will check Target database to identify whether it meets prerequistes for ZDM Physical Offline Database Migration.
-
-Whenever required you will be provided with steps or guidance to make necessary modification in Target Database to meet the prerequisites.
-
+## Introduction
 
 Estimated Time: 30 mins
 
+### Objectives
+
+In this lab
+
+* You will check target database to identify whether it meets prerequistes for ZDM Physical Offline Database Migration.
+
+* You will perform necessary steps to modify target database when required so that it meets the migration prerequisites.
+
+
+### Prerequisites
+
+This lab assumes you have :
+
+* Oracle Cloud Account
+
+* All previous labs have been successfully completed.
+
+
 **1. Login to Target Database Server.**
 
-   Login to Target Database server using Public IP and ssh key.
+   Login to target database server using Public IP and ssh key.
 
 **2. Set the environment for the database.**
 
@@ -24,15 +39,15 @@ Estimated Time: 30 mins
    Enter ORCL when asked for ORACLE_SID and then press enter    --> Enter your DB name if that is different than the one used in this lab.
 
    
-**3. Check whether Target Database is using spfile.**
+**3. Check whether target database is using spfile.**
 
    Run "show parameter spfile" in database.
 
    If you get a similar output as below which means spfile is configured, if this is not the case then please configure spfile using Oracle Docs.
 
-   ![ss1](./images/spfile.png)
+   ![Image showing ouput of spfile check](./images/spfile.png)
 
-**4. Verify Time Zone version.**
+**4. Verify time zone version.**
 
    The target placeholder database must have a time zone file version that is the same or higher than the source database. 
    
@@ -48,9 +63,9 @@ Estimated Time: 30 mins
 
 **5. Verify TDE Wallet Folder.**
 
-   All Oracle PaaS Databases in OCI have TDE enabled by default including the one that we have used in this lab.
+   All Oracle PaaS databases in OCI have TDE enabled by default including the one that we have used in this lab.
 
-   However , if you have used any IaaS database as Target Database then use the below procedure to check TDE status.
+   However , if you have used any IaaS database as target Database then use the below procedure to check TDE status.
 
    Verify that the TDE wallet folder exists, and ensure that the wallet STATUS is OPEN and WALLET_TYPE is AUTOLOGIN (For an auto-login wallet type), or WALLET_TYPE is PASSWORD (For a password-based wallet). For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
 
@@ -62,7 +77,7 @@ Estimated Time: 30 mins
    ```
    Sample output is shown below.
 
-   ![ss3](./images/tde.png)
+   ![Image showing TDE status of target database](./images/target_tde_status.png)
 
 **6. Check Disk Group Size.**
 
@@ -80,9 +95,9 @@ Estimated Time: 30 mins
 
    Capture "SHOW ALL" RMAN output so that you can compare RMAN settings after the migration, then reset any changed RMAN configuration settings to ensure that the backup works without any issues.
 
-**9. Ensure System time of Target Database, Source Database and ZDM host are in sync (Optional Step).**
+**9. Ensure system time of target database, source database and ZDM host are in sync (Optional Step).**
 
-   Type "date" across Source Database , Target Database and ZDM host simultaneously and see whether they show the same time.
+   Type "date" across source database , target database and ZDM host simultaneously and see whether they show the same time.
 
    It is recommended to have same time across all system but it is not mandatory.
 
@@ -90,11 +105,13 @@ Estimated Time: 30 mins
 
 **10. Check encryption algorithm in SQLNET.ORA (Optional Step).**
 
-   Ensure that encryption algorithm specificed in sqlnet.ora in Target Database Oracle Home is same as Source Database Home.
+   Ensure that encryption algorithm specificed in sqlnet.ora in target database Oracle Home is same as source database Home.
 
    This is not mandatory for ZDM Physical Offline Migration , However it is recommended.
 
-Please [proceed to the next lab](#next).
+You may please [proceed to the next lab](#next).
 
-
+## Acknowledgements
+* **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
+* **Last Updated By/Date** - Amalraj Puthenchira, January 2023
 

@@ -27,7 +27,7 @@ This lab assumes you have :
 
 2. Navigate to Object Storage.
 
-   Click the Navigation Menu in the upper left, navigate to Storage and then select Buckets.
+   Click the navigation Menu in the upper left, navigate to Storage and then select Buckets.
 
    ![Image showing navigation to object storage bucket](./images/navigation_to_oss.png)
 
@@ -40,11 +40,11 @@ This lab assumes you have :
 
 4. Create Bucket.
 
-   Click on "Create Bucket"
+   Click on "Create Bucket".
 
    ![Image showing create bucket option](./images/create_bucket.png)
 
-   Enter Bucket Name as "ZDM-Physical"
+   Enter Bucket Name as "ZDM-Physical".
 
    Leave all the defaults and click on "Create".
 

@@ -31,7 +31,7 @@ This lab assumes you have :
 * All previous labs have been successfully completed.
 
 <details><summary>Task 1 : Collect Source Database details </summary>
-
+<p>
 
 **1. Login to the Source Database system using the Public IP.**
 
@@ -112,7 +112,7 @@ execute "opatch lsinventory" as oracle user in Source Database Server.
 **9. Download inventory output to the Local Desktop.**
 
 We will require this file in Task 2.
-
+</p>
 </details>
 
 <details><summary>Task 2 : Prepare Database Software Image for Target Database</summary>

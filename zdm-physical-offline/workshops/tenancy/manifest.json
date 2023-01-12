@@ -21,31 +21,27 @@
             "filename": "../../source-database-prov/source-database-prov.md"
         },
         {
-            "title": "Lab 3: Target database provision prerequisites",
-            "filename": "../../target-database-prov-prep/target-database-prov-prep.md"
-        },
-        {
-            "title": "Lab 4: Provision Target Database",
+            "title": "Lab 3: Provision target database",
             "filename": "../../target-db-provision/target-db-prov.md"
         },
         {
-            "title": "Lab 5: Provision and Configure ZDM Host",
+            "title": "Lab 4: Provision and configure ZDM service Host",
             "filename": "../../zdm-host-provision/zdm-host-provision.md"
         },
         {
-            "title": "Lab 6: Source Database Prerequisites",
+            "title": "Lab 5: Source Database Prerequisites",
             "filename": "../../source-db-prereq/source-db-prereq.md"
         },
         {
-            "title": "Lab 7: Target Database Prerequistes",
+            "title": "Lab 6: Target Database Prerequistes",
             "filename": "../../target-db-prereq/target-db-prereq.md"
         },
         {
-            "title": "Lab 8: Creation of Object Storage Bucket and Auth Token",
+            "title": "Lab 7: Creation of Object Storage Bucket and Auth Token",
             "filename": "../../object-storage-token/object-storage-token.md"
         },
         {
-            "title": "Lab 9: Migrate your database",
+            "title": "Lab 8: Migrate your database",
             "filename": "../../db-migration/db-migration.md"
         }
     ]

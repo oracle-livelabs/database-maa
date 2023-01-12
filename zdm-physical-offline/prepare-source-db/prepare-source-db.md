@@ -1,16 +1,29 @@
-# Source Database Prerequisites
+# Prepare source database
 
-In this lab, you will check source database to identify whether it meets prerequistes for ZDM Physical Offline Database Migration.
+## Introduction
 
-Whenever required you will be provided with steps or guidance to make necessary modification in source database to meet the prerequisites.
+Estimated Time: 15 mins
+
+### Objectives
+
+In this lab
+
+* You will check source database to identify whether it meets prerequistes for ZDM Physical Offline Database Migration.
+
+* You will perform necessary steps to modifify source database when required so that it meets the migration prerequisites.
+
+### Prerequisites
+
+This lab assumes you have :
+
+* Oracle Cloud Account
+
+* All previous labs have been successfully completed.
 
 
-Estimated Time: 15 minutes
+**1. Login to source database server.**
 
-
-**1. Login to Source Database Server.**
-
-   Login to Source Database Server using Public IP and ssh key.
+   Login to source database Server using Public IP and ssh key.
 
 **2. Set the environment for the database.**
 
@@ -32,7 +45,7 @@ Estimated Time: 15 minutes
 
    If you get a similar output as below which means spfile is configured, if this is not the case then please configure spfile using Oracle Docs.
 
-   ![ss1](./images/spfile.png)
+   ![Image showing output of spfile check](./images/spfile.png)
 
 **4. Check the compatible parameter on Source Database.**
 
@@ -46,11 +59,11 @@ Estimated Time: 15 minutes
 
    Please note that changing compatible parameter can't be reversed unlesss you restore the entire database backup, so plan accordingly.
 
-**5. Enable Database Archivelog mode.**
+**5. Enable database archivelog mode.**
 
-   Source Database must be running in ARCHIVELOG mode.
+   Source database must be running in ARCHIVELOG mode.
 
-   Source Database we have provisioned in this livelab is not running in ARCHIVELOG mode . 
+   Source database we have provisioned in this livelab is not running in ARCHIVELOG mode . 
 
    Please follow below document and enable ARCHIVELOG mode.
 
@@ -63,7 +76,7 @@ Estimated Time: 15 minutes
 
    Ensure that the wallet STATUS is OPEN and WALLET_TYPE is AUTOLOGIN (For an AUTOLOGIN wallet type), or WALLET_TYPE is PASSWORD (For a PASSWORD based wallet type). For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
 
-   Let's check the status of encryption in your Source Database.
+   Let's check the status of encryption in your source database.
 
    Execute below sql.
    ```console
@@ -71,7 +84,7 @@ Estimated Time: 15 minutes
    ```
    In the source database that you configured in this lab , TDE is not setup and the below query output shows that.
 
-   ![ss2](./images/tde.png)
+   ![Image showing TDE status of source database](./images/source_tde_status.png)
 
    Follow the below steps to enable TDE.
 
@@ -120,7 +133,7 @@ Estimated Time: 15 minutes
 
    You will see that keystore is enabled with status OPEN and WALLET_TYPE as PASSWORD in the query output below which means configuration of password-based keystore is complete at this stage.
 
-   ![ss3](./images/tde_password.png)
+   ![Image showing status of password based keystore](images/tde_password.png)
 
    We will use an auto-login keystore in this lab and for that we need to complete additional steps as mentioned below.
    
@@ -149,7 +162,7 @@ Estimated Time: 15 minutes
    ```
    In the query output, verify that the TDE keystore STATUS is OPEN and WALLET_TYPE set to AUTOLOGIN, otherwise the auto-login keystore is not set up correctly.
    Sample output is shown below.
-   ![ss4](./images/tde_autologin.png)
+   ![Image showing auto login keystore status](./images/tde_autologin.png)
 
    **d. Copy the keystore files to the second Oracle RAC node.**
 
@@ -213,7 +226,7 @@ Estimated Time: 15 minutes
 
    Please use NTP in case you need to adjust time.
 
-Please [proceed to the next lab](#next).
+You may please [proceed to the next lab](#next).
 
 
 

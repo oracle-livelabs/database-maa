@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Estimated Time: 15 mins
+Estimated Time: 15 minutes
 
 ### Objectives
 
@@ -10,7 +10,7 @@ In this lab
 
 * You will check source database to identify whether it meets prerequistes for ZDM Physical Offline Database Migration.
 
-* You will perform necessary steps to modifify source database when required so that it meets the migration prerequisites.
+* You will perform necessary steps to modify source database when required so that it meets the migration prerequisites.
 
 ### Prerequisites
 
@@ -23,7 +23,7 @@ This lab assumes you have :
 
 **1. Login to source database server.**
 
-   Login to source database Server using Public IP and ssh key.
+   Login to source database server using Public IP and ssh key.
 
 **2. Set the environment for the database.**
 
@@ -37,9 +37,9 @@ This lab assumes you have :
     
    Enter ORCL when asked for ORACLE_SID and then press enter    --> Enter your DB name if that is different in case of on premise.
 
-**3. Check whether Source Database is using spfile.**
+**3. Check whether source database is using spfile.**
 
-   Connect to Source Database using sqlplus.
+   Connect to source database using sqlplus.
 
    Execute "show parameter spfile"
 
@@ -47,23 +47,23 @@ This lab assumes you have :
 
    ![Image showing output of spfile check](./images/spfile.png)
 
-**4. Check the compatible parameter on Source Database.**
+**4. Check the compatible parameter on source database.**
 
-   In this livelab compatible parameter on both source and Target have already been set to 19.0.0 , so no action is required.
+   In this livelab compatible parameter on both source and target database have already been set to 19.0.0 , so no action is required.
 
-   However in case you have provisioned Oracle Database Version other than 19c for Source and Target Database then use the below procedure.
+   However in case you have provisioned Oracle Database Version other than 19c for source and target database then use the below procedure.
 
-   Execute "show parameter compatible" on Source and Target Database and ensure they are set to same value.
+   Execute "show parameter compatible" on source and target database and ensure they are set to same value.
 
-   If you find that compatible parameter on Target Database can't be modified since it is already on the maximum possible value then you can change the compatible parameter in source database.
+   If you find that compatible parameter on target database can't be modified since it is already on the maximum possible value then you can change the compatible parameter in source database.
 
    Please note that changing compatible parameter can't be reversed unlesss you restore the entire database backup, so plan accordingly.
 
 **5. Enable database archivelog mode.**
 
-   Source database must be running in ARCHIVELOG mode.
+   This migration requires source database must be running in ARCHIVELOG mode.
 
-   Source database we have provisioned in this livelab is not running in ARCHIVELOG mode . 
+   However source database we have provisioned in this livelab is not running in ARCHIVELOG mode by default. 
 
    Please follow below document and enable ARCHIVELOG mode.
 
@@ -90,7 +90,7 @@ This lab assumes you have :
 
    **a . Set ENCRYPTION_WALLET_LOCATION in the $ORACLE_HOME/network/admin/sqlnet.ora file.**
 
-   Insert the below line in sqlnet.ora (Ensure to update the correct ORACLE_HOME of your Source Database).   
+   Insert the below line in sqlnet.ora (Ensure to update the correct ORACLE_HOME of your source database).   
 
    ENCRYPTION_WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY=/u01/app/oracle/product/19c/dbhome_1/network/admin/)))
 
@@ -100,13 +100,13 @@ This lab assumes you have :
 
    i. Connect to the database and create the keystore.
 
-   Modify the below sql to update your Source Database ORACLE_HOME and TDE password before executing.
+   Modify the below sql to update your source database ORACLE_HOME and TDE password before executing.
    ```console
    ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin' identified by password;
    ```
    ii. Open the keystore.
 
-   For a CDB environment (Source Database in this lab is CDB ),  run the following command (ensure to update password).
+   For a CDB environment (source database in this lab is CDB ),  run the following command (ensure to update password).
    ```console
    ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password container = ALL;
    ```
@@ -166,9 +166,9 @@ This lab assumes you have :
 
    **d. Copy the keystore files to the second Oracle RAC node.**
 
-   This is not applicable for the Source Database used in this lab.
+   This is not applicable for the source database used in this lab.
 
-   However follow the below steps in case you have RAC Source Database.
+   However follow the below steps in case you have RAC source database.
 
    If you configured the keystore in a shared file system for Oracle RAC then no action is required.
 
@@ -180,7 +180,7 @@ This lab assumes you have :
 
 **7. Snapshot controlfile for RAC Database.**
 
-   This is not applicable for the Source Satabase that you have provisioned in this lab, However if you have RAC Source Database then follow below steps.
+   This is not applicable for the source database that you have provisioned in this lab, However if you have RAC source database then follow below steps.
 
    If the source is an Oracle RAC database, and SNAPSHOT CONTROLFILE is not on a shared location, configure SNAPSHOT CONTROLFILE to point to a shared location on all Oracle RAC nodes to avoid the ORA-00245 error during backups to Oracle Object Store.
 
@@ -190,7 +190,7 @@ This lab assumes you have :
    ```
 **8. Controlfile auto backup.**
 
-   Source Database you have configured in this lab has controlfile autobackup on by default.
+   Source database you have configured in this lab has controlfile autobackup on by default.
 
    If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
 
@@ -201,7 +201,7 @@ This lab assumes you have :
 
    If the source database is deployed using Oracle Grid Infrastructure and the database is not registered using SRVCTL, then you must register the database before the migration.
 
-   This is not applicable for the Source Database provisioned in this lab since it is not using Grid Infrastructure.
+   This is not applicable for the source database provisioned in this lab since it is not using Grid Infrastructure.
 
 **10. RMAN backup strategy.**
 
@@ -218,9 +218,9 @@ This lab assumes you have :
    If archive logs were to be deleted on the source database, and these archive logs are needed by Zero Downtime Migration to synchronize the target cloud database, then these files should be restored so that Zero Downtime Migration can continue the migration process.
 
    
-**11. Ensure System time of Source Database, Target Database and ZDM host are in sync(Optional Step).** 
+**11. Ensure system time of source database, target database and ZDM host are in sync(Optional Step).** 
 
-   Type "date" across Source Database , Target Database and ZDM host simultaneously and see whether they show the same time.
+   Type "date" across source database , target database and ZDM host simultaneously and see whether they show the same time.
 
    It is recommended to have same time across all system but it is not mandatory.
 

@@ -37,7 +37,7 @@
             "filename": "../../prepare-target-db/prepare-target-db.md"
         },
         {
-            "title": "Lab 7: Creation of Object Storage Bucket and Auth Token",
+            "title": "Lab 7: Create Object Storage Bucket and Auth Token",
             "filename": "../../object-storage-token/object-storage-token.md"
         },
         {

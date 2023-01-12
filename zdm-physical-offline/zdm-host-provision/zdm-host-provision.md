@@ -274,7 +274,7 @@ We have successfuly installed ZDM software , please proceed to next task.
 </p>
 </details>
 
-Please [proceed to the next lab](#next).
+You may [proceed to the next lab](#next).
 
 
 

@@ -51,7 +51,7 @@ This lab assumes you have :
 
    ![Image showing output of command to check OS version ](./images/os_version.png)
 
-   Please note that Physical Offline Migration will work only for source databases with Linux based Operating System.
+   Please note that ZDM Physical Offline Migration will work only for source databases with Linux based Operating System.
 
 **3. Set the database environment to connect to your database.**
 
@@ -99,7 +99,7 @@ This lab assumes you have :
 
    Sample output is shown below.
 
-   ![ss3](./images/database_edition.png)
+   ![Image showing database and national character set in database](./images/db_charset.png)
 
 **7. Check enryption algorithm under sqlnet.ora.**
 
@@ -143,7 +143,7 @@ We will require this file in Task 2.
 
    Upload Oracle Home patch inventory ouput generated in Task 1 as below.
 
-   ![Image ](./images/db_version_info.png)
+   ![Image showing database version selected for Image ](./images/db_version_info.png)
 
 5. Create database software image.
 
@@ -160,7 +160,7 @@ We will require this file in Task 2.
 
    Click the navigation menu in the upper left, navigate to Oracle Database and then select "Oracle Base Database (VM. BM)" as shown below.
 
-   ![ss1](./images/navigate_to_database.png)
+   ![Image showing navigation to Oracle Database](./images/navigate_to_database.png)
 
 **2. Click on the "Create DB System".**
     
@@ -261,7 +261,7 @@ We will require this file in Task 2.
 
    ![Image showing the option to disable database backups](./images/backup.png)
 
-**16. Select Database Charactetset.**
+**16. Select database charactetset.**
 
    Click on show advanced options.
 
@@ -277,7 +277,7 @@ We will require this file in Task 2.
 
    ![Image showing the database characterset selected](./images/charset.png)
 
-**17. Start DB System provisioning**
+**17. Start DB System provisioning.**
 
    Click on the Create DB System to initiate the DB system provisioning.
 

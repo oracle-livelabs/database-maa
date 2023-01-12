@@ -41,7 +41,7 @@ This lab assumes you have :
 
 4. Enter Name for Compute
 
-   Enter zdm-host as Name for Compute and select appropriate compartment if it is not already done.
+   Enter "zdm-host" as name for compute and select appropriate compartment if it is not already done.
 
    ![Image showing the name to be entered for compute](./images/compute_name.png)
 
@@ -78,6 +78,8 @@ This lab assumes you have :
 
    In less than few minutes ZDM compute host will be provisioned.
 
+We have successfully provisioned a compute instance for ZDM , please proceed to next task.
+
 </p>
 </details>
 
@@ -90,7 +92,7 @@ This lab assumes you have :
 
 2. Expand the root FS
 
-   Execute below command as opc and press y and Enter when asked.
+   Execute below command as "opc" user and press y and Enter when asked.
 
    sudo /usr/libexec/oci-growfs
 
@@ -122,9 +124,9 @@ This lab assumes you have :
 
 4. Install missing packages.
 
-   We have seen that expect package is missing as per previous step output.
+   We have seen that "expect" package is missing as per previous step output.
 
-   Install the missing packages using commands below.
+   Install the "expect" package using commands below.
 
    sudo yum install -y expect
 
@@ -132,9 +134,9 @@ This lab assumes you have :
 
    ![Image showing installation of expect package](./images/expect_install.png)
 
-5. Create User, Group and Directories required for ZDM.
+5. Create user, group and directories required for ZDM.
 
-   Switch to root user using below command.
+   Switch to "root" user using below command.
 
    sudo su -
 
@@ -167,9 +169,7 @@ This lab assumes you have :
    
    Unzip the ZDM software under /tmp directory.
 
-   notedown the path of unzipped folder.
-
-   It will be /tmp/zdm21.3 for ZDM 21.3
+   Notedown the path of unzipped folder. It will be /tmp/zdm21.3 for ZDM 21.3
 
 9. Install ZDM software.
 
@@ -189,7 +189,7 @@ This lab assumes you have :
 
 10. Start ZDM service.
 
-    Navigate to ZDM Home using below command.
+    Navigate using below command.
 
     cd /home/zdmuser/zdmhome/bin
 
@@ -210,6 +210,8 @@ This lab assumes you have :
     Sample output is given below.
 
     ![Image showing ZDM service status](./images/zdm_service_status.png)
+
+We have successfuly installed ZDM software , please proceed to next task.
 
 </p>
 </details>

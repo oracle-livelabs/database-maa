@@ -33,19 +33,19 @@ This lab assumes you have :
 <details><summary>Task 1 : Collect Source Database details </summary>
 <p>
 
-**1. Login to the Source Database system using the Public IP.**
+**1. Login to the source database system using the Public IP.**
 
    Username to login : opc 
 
    Use the private key generated earlier.
 
-**2. Check the Operating System version of the Source Database.**
+**2. Check the Operating System version of the source database.**
 
    Execute the below command after login in as opc.
    
    cat /etc/os-release
 
-   Please use similar commnads in case above command doesn't work for you ( in case you have selected different Source Database System than the one specified in Lab 2)
+   Please use similar commnads in case above command doesn't work for you ( in case you have selected different source database System than the one specified in Lab 2)
 
    You will get a output similar to the one below.
 
@@ -53,9 +53,9 @@ This lab assumes you have :
 
    Please note that Physical Offline Migration will work only for source databases with Linux based Operating System.
 
-**3. Set the Database environment to connect to your database.**
+**3. Set the database environment to connect to your database.**
 
-   Switch user to Oracle using below command.
+   Switch user to "oracle" using below command.
 
    sudo su - oracle
 
@@ -65,19 +65,19 @@ This lab assumes you have :
     
    Enter ORCL when asked for ORACLE_SID and then press enter    --> Enter your DB name if that is different in case of on premise.
 
-**4.  Check the database version of the Source Database.**
+**4.  Check the database version of the source database.**
 
-   In this livelab we have used Oracle Marketplace image for which you know the version that you have selected.
+   In this livelab we have used Oracle Marketplace image for source database for which you know the version that you have selected.
 
    However , In case you would like to know the database version with latest patches then please use the below command
     
-   Execute 'opatch lsinventory' command as Oracle user.
+   Execute 'opatch lsinventory' command as oracle user.
 
    check for the output to determine the exact database version.
 
-**5.  Check the Database Edition of the Source Database.**
+**5.  Check the database edition of the source database.**
 
-   In this livelab we have used Oracle Marketplace image for Source Database which uses Oracle Database Enterprise Edition.
+   In this livelab we have used Oracle Marketplace image for source Database which uses Oracle Database Enterprise Edition.
 
    However in case you would like know the Database Edition for your on premise Database then refer the below steps.
 
@@ -89,13 +89,13 @@ This lab assumes you have :
 
    ![Image showing Database Edition of Source database](./images/database_edition.png)
 
-**6. Check Database characterset.**
+**6. Check database characterset.**
    
    Run the below query to identify the database character set and national characterset.
    ```console
    select PARAMETER,VALUE from nls_database_parameters where parameter like '%NLS%CHARACTERSET';
    ```
-   In your ouput NLS_CHARACTERSET is the database characterser and NLS_NCHAR_CHARACTERSET is the National Characterset.
+   In your ouput NLS_CHARACTERSET is the database Characterset and NLS_NCHAR_CHARACTERSET is the National Characterset.
 
    Sample output is shown below.
 
@@ -107,9 +107,9 @@ This lab assumes you have :
 
 **8. Generate patch inventory ouput.**
 
-execute "opatch lsinventory" as oracle user in Source Database Server.
+execute "opatch lsinventory" as oracle user in source satabase server.
 
-**9. Download inventory output to the Local Desktop.**
+**9. Download inventory output to the local desktop.**
 
 We will require this file in Task 2.
 </p>
@@ -119,11 +119,11 @@ We will require this file in Task 2.
 
 1. Navigate to Oracle Base Database.
 
-   Click the Navigation Menu in the upper left, navigate to Oracle Database and then select Oracle Base Database.
+   Click the navigation menu in the upper left, navigate to Oracle Database and then select Oracle Base Database.
 
    ![Image showing navigation to Oracle Base Database](./images/navigate_to_database.png)
 
-2. Click on Database Software Images.
+2. Click on Database software images.
 
    Select the appropriate compartment and then click on "Database software images" under Resources.
 
@@ -131,25 +131,25 @@ We will require this file in Task 2.
 
 3. Click "Create Database software image".
 
-   Enter Display Name as "DBImage-Source-DB" as below.
+   Enter Display name as "DBImage-Source-DB" as below.
 
    ![Image showing Database Software Image Name ](./images/database_image_name.png)
 
-4. Configure Database Software Image.
+4. Configure database software image.
 
-   Select database version as "19c"   (Same as the Major Version of your Source Database)
+   Select database version as "19c"   (Same as the major version of your source database)
 
-   Select PSU as 19.16.0.0 ( In case you have selected different version for Source Database in Lab 2 ,then select that version )
+   Select PSU as 19.16.0.0 ( In case you have selected different version for source database in Lab 2 ,then select that version )
 
-   Upload Oracle Home Patch inventory ouput generated in Task 1 as below.
+   Upload Oracle Home patch inventory ouput generated in Task 1 as below.
 
    ![Image ](./images/db_version_info.png)
 
-5. Create Database Software Image.
+5. Create database software image.
 
    Click on "Create Database software image" to create DB Image.
 
-   This will take some time , please proceed to next Lab.
+   Please wait for the completion of this task before proceeding to the next task.
 
 </details>
 
@@ -158,7 +158,7 @@ We will require this file in Task 2.
 
 **1. Navigate to Oracle Base Database in Oracle Console.**
 
-   Click the Navigation Menu in the upper left, navigate to Oracle Database and then select "Oracle Base Database (VM. BM)" as shown below.
+   Click the navigation menu in the upper left, navigate to Oracle Database and then select "Oracle Base Database (VM. BM)" as shown below.
 
    ![ss1](./images/navigate_to_database.png)
 
@@ -190,7 +190,7 @@ We will require this file in Task 2.
 
    Leave this section as the default.
 
-**6. Configure Database Edition.**
+**6. Configure database edition.**
 
    Under Configure the DB system , ensure to select "Enterprise Edition" which is the same edition as our Source DB system.
 
@@ -199,7 +199,7 @@ We will require this file in Task 2.
    
 **7. Upload SSH Keys.**
    
-   Under Add SSH Keys , upload the SSH Public key generated earlier.
+   Under Add SSH keys , upload the SSH Public key generated earlier.
 
    ![Image showing option to upload SSH key](./images/ssh.png)
 
@@ -207,7 +207,7 @@ We will require this file in Task 2.
 
    Select appropriate License Type applicable for you.
 
-**9. Specify the Network Information.**
+**9. Specify the network information.**
 
    Select ZDM-VCN as VCN and Public Subnet-ZDM-VCN as Client Subnet.
 
@@ -219,15 +219,15 @@ We will require this file in Task 2.
 
    Click Next to go to the next page.
 
-**11. Provide Database Name.**
+**11. Provide database name.**
 
    If the target database is Exadata Cloud Service or Exadata Cloud at Customer, then the database DB_NAME should be the same as the source database DB_NAME.
 
    If the target database is Oracle Cloud Infrastructure, then the database DB_NAME can be the same as or different from the source database DB_NAME.
 
-   Our Target Database is Oracle Base Database and we can specify a same or different name for DB_NAME. 
+   Our target database is Oracle Base Database and we can specify a same or different name for DB_NAME. 
 
-   We will keep the same DB_NAME as Source Database for this lab.
+   We will keep the same DB_NAME as source database for this lab.
 
    Provide "Database name" as "ORCL" and "Database unique name suffix" as "T"
 
@@ -239,13 +239,13 @@ We will require this file in Task 2.
 
    ![Image showing selection of Database Software Image](./images/custom.png)
 
-   Select the appropriate compartment and Select DB Image created in earlier lab as below.
+   Select the appropriate compartment and select DB Image created in earlier lab as below.
 
    ![Image showing custom software images created earlier](./images/dbimage.png)
 
 **13. Provide SYS password.**
 
-   Enter SYS password which is same as the SYS password of the Source Database.
+   Enter SYS password which is same as the SYS password of the source database.
 
    ![Image showing the provision to enter SYS password](./images/sys.png)
 
@@ -253,7 +253,7 @@ We will require this file in Task 2.
 
    In this lab , leave it to the default.
 
-**15. Disable Database Backups.**
+**15. Disable database backups.**
 
    Uncheck the "Enable automatic bakcups" box to disable Database backups.
 
@@ -267,7 +267,7 @@ We will require this file in Task 2.
 
    Ensure that you have selected same database and national characterset as the source database.
 
-   In this Lab Source database has below Database and National Characterset.
+   In this lab source database has below Database and National Characterset.
 
    Database Characterset : AL32UTF8
 
@@ -277,7 +277,7 @@ We will require this file in Task 2.
 
    ![Image showing the database characterset selected](./images/charset.png)
 
-**17. Start DB System Provisioning**
+**17. Start DB System provisioning**
 
    Click on the Create DB System to initiate the DB system provisioning.
 

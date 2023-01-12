@@ -274,7 +274,7 @@ We have successfuly installed ZDM software , please proceed to next task.
 </p>
 </details>
 
-You may please [proceed to the next lab](#next).
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering

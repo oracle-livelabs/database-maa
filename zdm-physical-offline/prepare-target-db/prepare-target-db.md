@@ -22,7 +22,7 @@ This lab assumes you have :
 * All previous labs have been successfully completed.
 
 
-**1. Login to Target Database Server.**
+**1. Login to target database server.**
 
    Login to target database server using Public IP and ssh key.
 
@@ -67,8 +67,6 @@ This lab assumes you have :
 
    However , if you have used any IaaS database as target Database then use the below procedure to check TDE status.
 
-   Verify that the TDE wallet folder exists, and ensure that the wallet STATUS is OPEN and WALLET_TYPE is AUTOLOGIN (For an auto-login wallet type), or WALLET_TYPE is PASSWORD (For a password-based wallet). For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
-
    Execute the below SQL.
    ```console
    set lines 120
@@ -79,17 +77,19 @@ This lab assumes you have :
 
    ![Image showing TDE status of target database](./images/target_tde_status.png)
 
-**6. Check Disk Group Size.**
+    Verify that the TDE wallet folder exists, and ensure that the wallet STATUS is OPEN and WALLET_TYPE is AUTOLOGIN (For an auto-login wallet type), or WALLET_TYPE is PASSWORD (For a password-based wallet). For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
 
-   Check the size of the disk groups and usage on the target database (ASM disk groups or ACFS file systems) and make sure adequate storage is provisioned and available on the target database servers.
+**6. Check disk group size.**
 
-  You can ignone this step in this lab since the size of Source Database configured is less than 10 GB and we have allocated the minimum of 256 GB for Target Database.
+   Check the size of the disk groups and usage on the target database (ASM disk groups or ACFS file systems) and make sure adequate storage is provisioned and available on the target database server.
+
+  You can ignone this step in this lab since the size of source database configured in this lab is less than 10 GB and we have allocated the minimum of 256 GB for target database.
 
 **7. Check connections.**
 
    Verify that port 22 on the target servers in the Oracle Cloud Infrastructure, Exadata Cloud Service, or Exadata Cloud at Customer environment are open and not blocked by a firewall.
 
-   We had already checked this by doing ssh from ZDM host in earlier lab (ZDM Host Provisioning and Configuration)
+   We had already checked this by doing ssh from ZDM host in earlier lab (Provision and configure ZDM service host).
 
 **8. Capture RMAN SHOW ALL command.**
 
@@ -103,9 +103,9 @@ This lab assumes you have :
 
    Please use NTP in case you need to adjust time.
 
-**10. Check encryption algorithm in SQLNET.ORA (Optional Step).**
+**10. Check encryption algorithm in sqlnet.ora (Optional Step).**
 
-   Ensure that encryption algorithm specificed in sqlnet.ora in target database Oracle Home is same as source database Home.
+   Ensure that encryption algorithm specificed in sqlnet.ora in target database Oracle Home is same as source database Oracle Home.
 
    This is not mandatory for ZDM Physical Offline Migration , However it is recommended.
 

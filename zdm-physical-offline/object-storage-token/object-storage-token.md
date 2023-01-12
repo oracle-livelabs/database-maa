@@ -31,7 +31,6 @@ This lab assumes you have :
 
    ![Image showing navigation to object storage bucket](./images/navigation_to_oss.png)
 
-      
 3. Select the Compartment.
 
    Select appropriate compartment on the left side.

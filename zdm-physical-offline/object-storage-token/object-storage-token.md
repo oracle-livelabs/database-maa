@@ -90,7 +90,7 @@ We need an Auth token for the Oracle Cloud Tenancy user which will be used by ZD
 </p>
 </details>
 
-You may please [proceed to the next lab](#next).
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering

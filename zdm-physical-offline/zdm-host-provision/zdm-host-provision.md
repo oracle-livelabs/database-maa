@@ -23,7 +23,7 @@ This lab assumes you have :
 
 1. Navigate to compute instance in Oracle Console.
 
-   Click the Navigation Menu in the upper left, navigate to Compute and then select Instances.
+   Click the navigation Menu in the upper left, navigate to Compute and then select Instances.
 
    ![Image showing navigation to compute instance](./images/navigate_2_compute.png)
 
@@ -33,31 +33,31 @@ This lab assumes you have :
 
    ![Image showing the selection of compartment](./images/compartment.png)
 
-3. Click on "Create Instance"
+3. Click on "Create Instance".
 
    ![Image showing option to create compute instance](./images/create_instance.png)
 
-4. Enter Name for Compute
+4. Enter name for compute.
 
    Enter "zdm-host" as name for compute and select appropriate compartment if it is not already done.
 
    ![Image showing the name to be entered for compute](./images/compute_name.png)
 
-5. Leave the Placement section as it is.
+5. Leave the "Placement" section as it is.
 
 6. Select correct image.
 
-   Under Image and Shape , click on Change image
+   Under Image and Shape , click on "Change image".
 
    ![Image showing the option to change the image for compute](./images/os_image.png)
 
-   Select Oracle Linux 7.9 and click on "Select Image"
+   Select "Oracle Linux 7.9" and click on "Select Image"
 
    ![Image showing the OS image selected for compute](./images/os_selected.png)
 
 7. Select VCN and Subnet.
 
-   Under Networking , Select ZDM-VCN as VCN and Public Subnet-ZDM-VCN as Subnet.
+   Under Networking , Select "ZDM-VCN" as VCN and "Public Subnet-ZDM-VCN" as subnet.
 
    ![Image showing network selected](./images/network.png)
 
@@ -72,11 +72,9 @@ This lab assumes you have :
    Under boot volume , select "Specify a custom boot volume size" and specify 150.
 
    ![Image showing custom boot volume size](./images/boot.png)
-10. Click on Create to start the provisioning of Compute.
+10. Click on "Create" to start the provisioning of compute.
 
-   In less than few minutes ZDM compute host will be provisioned.
-
-We have successfully provisioned a compute instance for ZDM , please proceed to next task.
+   In less than few minutes ZDM compute instance will be provisioned.
 
 ## Task 2 : Configure ZDM Service
 
@@ -163,7 +161,7 @@ We have successfully provisioned a compute instance for ZDM , please proceed to 
    
    Unzip the ZDM software under /tmp directory.
 
-   Notedown the path of unzipped folder. It will be /tmp/zdm21.3 for ZDM 21.3
+   Notedown the path of unzipped folder , it will be "/tmp/zdm21.3" for ZDM 21.3.
 
 9. Install ZDM software.
 
@@ -209,7 +207,7 @@ We have successfuly installed ZDM software , please proceed to next task.
 
 ## Task 3 : Configure SSH connectivity from ZDM host to source and target DB system
 
-1. Add Source and Target Database IP and FQDN Details to /etc/hosts.
+1. Add source and target database IP and FQDN Details to /etc/hosts.
 
    We have to first collect source and target Private IP and FQDN from the console.
 
@@ -219,31 +217,31 @@ We have successfuly installed ZDM software , please proceed to next task.
 
    ![Image showing navigation to compute instance](./images/nav_compute.png)
 
-   Click on the ZDM-Source-DB compute host.
+   Click on the "ZDM-Source-DB" compute host.
 
    Note down the private IP and FQDN under Primary VNIC section.
 
    ![Image showing private ip and  of source](./images/source_ip_fqdn.png)
 
-   b. Navigate to Target Database System as below.
+   b. Navigate to target database system as below.
 
    ![Image showing navigation to Oracle Base Database](./images/navigate_oracle_base.png)
 
-   Click on zdm-target-DB
+   Click on "zdm-target-DB".
 
-   Click on Nodes under Resources section and note down the private IP and FQDN.
+   Click on "Nodes" under "Resources" section and note down the private IP and FQDN.
 
    ![Image showing private ip and fqdn of target database](./images/target_ip_fqdn.png)
    
-   c. Edit /etc/hosts in ZDM host to add Source and Target Database System private IP and FQDN details collected in previous steps.
+   c. Edit /etc/hosts in ZDM host to add source and target database system private IP and FQDN details collected in previous steps.
 
    Sample output after editing is shown below.
 
    ![Image showing contents of hosts file](./images/etc_host.png)
 
-2. Copy the SSH private key to ZDM host
+2. Copy the private SSH key to ZDM host.
 
-   Copy the ssh private key generated in earlier lab to ZDM host under zdmuser home (/home/zdmuser)
+   Copy the SSH private key generated in earlier lab to ZDM host under zdmuser home (/home/zdmuser).
 
    Change the permission of private key as below.
 

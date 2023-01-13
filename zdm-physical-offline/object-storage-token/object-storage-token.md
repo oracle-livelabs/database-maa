@@ -26,7 +26,7 @@ This lab assumes you have :
 
 2. Navigate to Object Storage.
 
-   Click the navigation Menu in the upper left, navigate to Storage and then select Buckets.
+   Click the navigation menu in the upper left, navigate to Storage and then select Buckets.
 
    ![Image showing navigation to object storage bucket](./images/navigation_to_oss.png)
 
@@ -50,9 +50,11 @@ This lab assumes you have :
 
 5. Collect the Object Storage NameSpace.
 
-   Check the Namespace details under the Object Storage Bucket.
+   Check the "Namespace" details under the Object Storage Bucket.
 
-   ![Image showing object storage namespace](./images/namespace.png)
+   ![Image showing object storage namespace](./images/namespace.png).
+
+   Please note down the "Namespace" since it will be required in next lab.
 
 ## Task 2 : Create Auth Token
 
@@ -60,27 +62,27 @@ We need an Auth token for the Oracle Cloud Tenancy user which will be used by ZD
 
 1. Login to Oracle Cloud Console.
    
-2. Navigate to User Profile.
+2. Navigate to user profile.
 
    Click the user profile on the upper right corner of Oracle Cloud Console and then select username which is logged in as below.
 
    ![Image showing navigation to user profile](./images/user_profile.png)
 
-3. Navigate to Resource.
+3. Navigate to "Resource".
 
-   Navigate to Resource on the left and click on Auth Tokens.
+   Navigate to "Resource" on the left and click on "Auth Tokens".
 
    ![Image showing Auth Token under resources](./images/resources_auth_token.png)
 
 4. Create Auth Token.
 
-   Click on Generate Token , provide a description for Token and click on Generate Token as below.
+   Click on "Generate Token" , provide a description for Token and click on "Generate Token" as shown below.
 
    ![Image showing description for auth token](./images/authtoken_description.png)
 
 5. Copy the generated Token.
 
-   Copy the generated token since it is required later for migration.
+   Copy the generated token since it is required later for migration steps in next lab.
 
 You may now **proceed to the next lab**.
 

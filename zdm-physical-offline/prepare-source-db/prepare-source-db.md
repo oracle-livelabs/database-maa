@@ -42,9 +42,9 @@ This lab assumes you have :
 
    Connect to source database using sqlplus.
 
-   Execute "show parameter spfile"
+   Execute "show parameter spfile".
 
-   If you get a similar output as below which means spfile is configured, if this is not the case then please configure spfile using Oracle Docs.
+   If you get a similar output as below which means spfile is configured, if this is not the case then please configure spfile using Oracle Documents.
 
    ![Image showing output of spfile check](./images/spfile.png)
 
@@ -52,13 +52,13 @@ This lab assumes you have :
 
    In this livelab compatible parameter on both source and target database have already been set to 19.0.0 , so no action is required.
 
-   However in case you have provisioned Oracle Database Version other than 19c for source and target database then use the below procedure.
+   However in case you have provisioned source and target database using any other method not used in this lab , then use the below procedure.
 
    Execute "show parameter compatible" on source and target database and ensure they are set to same value.
 
    If you find that compatible parameter on target database can't be modified since it is already on the maximum possible value then you can change the compatible parameter in source database.
 
-   Please note that changing compatible parameter can't be reversed unlesss you restore the entire database backup, so plan accordingly.
+   Please note that changing compatible parameter can't be reversed unlesss you restore the entire database backup, so plan accordingly for your production source databases.
 
 **5. Enable database archivelog mode.**
 
@@ -68,14 +68,16 @@ This lab assumes you have :
 
    Please follow below document and enable ARCHIVELOG mode.
 
-   See https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/zero-downtime-migration/21.3/zdmug&id=ADMIN-GUID-C12EA833-4717-430A-8919-5AEA747087B9 if you need help.
+   See https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/zero-downtime-migration/21.3/zdmug&id=ADMIN-GUID-C12EA833-4717-430A-8919-5AEA747087B9.
 
 
 **6. Configure TDE Wallet.**
 
    For Oracle Database 12c Release 2 and later, if the source database does not have Transparent Data Encryption (TDE) enabled, then it is mandatory that you configure the TDE wallet before migration begins. You need not encrypt the data in the source database; the data is encrypted at target using the wallet setup in the source database. The WALLET_TYPE can be AUTOLOGIN (preferred) or PASSWORD based.
 
-   Ensure that the wallet STATUS is OPEN and WALLET_TYPE is AUTOLOGIN (For an AUTOLOGIN wallet type), or WALLET_TYPE is PASSWORD (For a PASSWORD based wallet type). For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
+   Ensure that the wallet STATUS is OPEN and "WALLET_TYPE" is AUTOLOGIN (For an AUTOLOGIN wallet type), or "WALLET_TYPE" is PASSWORD (For a PASSWORD based wallet type). 
+   
+   For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
 
    Let's check the status of encryption in your source database.
 
@@ -89,13 +91,13 @@ This lab assumes you have :
 
    Follow the below steps to enable TDE.
 
-   **a . Set ENCRYPTION_WALLET_LOCATION in the $ORACLE_HOME/network/admin/sqlnet.ora file.**
+   **a . Set "ENCRYPTION_WALLET_LOCATION" in the $ORACLE_HOME/network/admin/sqlnet.ora file.**
 
    Insert the below line in sqlnet.ora (Ensure to update the correct ORACLE_HOME of your source database).   
-
+   ```text
    ENCRYPTION_WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY=/u01/app/oracle/product/19c/dbhome_1/network/admin/)))
-
-   For an Oracle RAC instance, also set ENCRYPTION_WALLET_LOCATION in the second Oracle RAC node (Not applicable for the source database provisioned in this lab)
+   ```
+   For an Oracle RAC instance, also set "ENCRYPTION_WALLET_LOCATION" in the second Oracle RAC node (Not applicable for the source database provisioned in this lab)
    
    **b. Create and configure the keystore.**
 
@@ -223,7 +225,7 @@ This lab assumes you have :
 
    Type "date" across source database , target database and ZDM host simultaneously and see whether they show the same time.
 
-   It is recommended to have same time across all system but it is not mandatory.
+   It is recommended to have same time across all systems but it is not mandatory.
 
    Please use NTP in case you need to adjust time.
 

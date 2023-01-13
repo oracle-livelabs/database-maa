@@ -21,19 +21,19 @@ This lab assumes you have :
 
 ## Task 1 : Create Virtual Cloud Network
 
-In this task we will create a new Virtual Cloud Network which will be used to host Source Database Compute , Target Database System and ZDM Service Host.
+In this task we will create a new Virtual Cloud Network which will be used to host source database dompute , target database system and ZDM service host.
 
 1. Login to your Oracle Cloud Console.
 
-2. Click the Navigation Menu in the upper left, navigate to Networking and then select Virtual Cloud Networks
+2. Click the Navigation Menu in the upper left, navigate to Networking and then select Virtual Cloud Networks.
    
    ![Image showing navigation to VCN](./images/navigate_to_vcn.png " ")
  
-3. Click on "Start VCN Wizard"
+3. Click on "Start VCN Wizard".
 
    ![Image showing Start VCN Wizard](./images/start_vcn_wizard.png " ")
 
-4. In the new small window , Select the "Create VCN with Internet Connectivity" and then click on "Start VCN Wizard"
+4. In the new small window , Select the "Create VCN with Internet Connectivity" and then click on "Start VCN Wizard".
 
    ![Image showing VCN options for creation](./images/vcn_create_options.png " ")
 
@@ -47,7 +47,7 @@ In this task we will create a new Virtual Cloud Network which will be used to ho
 
 Once details are entered , Click on Next
 
-7. On the next screen , Click on Create
+7. On the next screen , click on Create.
 
    ![Image showing VCN creation options selected](./images/vcn_summary.png " ")
 
@@ -60,7 +60,7 @@ Once details are entered , Click on Next
 
 1. Login to your Oracle Cloud Console.
 
-2. Click the Navigation Menu in the upper left, navigate to Marketplace and then select All Applications.
+2. Click the navigation menu in the upper left, navigate to Marketplace and then select All Applications.
 
      ![Image showing navigation to Marketplace](./images/navigate_2_marketplace.png " ")
 
@@ -68,33 +68,33 @@ Once details are entered , Click on Next
 
      ![Image showing search bar for Marketplace](./images/search_marketplace.png " ")
 
-4. Click on the listed "Oracle Database (Single Instance) Image
+4. Click on the listed "Oracle Database (Single Instance) Image.
 
      ![Image showing Oracle Database Marketplace Image](./images/oracle_database_image.png " ")
 
-5. Select an Oracle Database version which is latest ( There will be one on OL7 and one on OL8)
+5. Select an Oracle Database version which is latest ( There will be one on OL7 and one on OL8).
     
-   We have choosen OL7 since our Target Database DB systems have Oracle Linux 7.
+   We have choosen OL7 since our Target DB systems are on Oracle Linux 7.
 
      ![Image showing available Marketplace Database Images](./images/db_image_options.png " ")
 
-6. Ensure to select the correct compartment in your tenancy and then click on "Launch Instance"
+6. Ensure to select the correct compartment in your tenancy and then click on "Launch Instance".
 
    ![Image showing selection for compartment](./images/compartment.png)
 
-7. On the Create compute instance page , Please update Name for Compute as ZDM-Source-DB.
+7. On the Create compute instance page , Please update Name for compute as "ZDM-Source-DB".
 
    ![Image showing Compute instance Name Prompt](./images/compute_name_prompt.png)
 
-    You can leave the Image and Shape as Default.
+    You can leave the Image and Shape as default.
 
    ![Image showing compute mage and shape](./images/image_shape.png)
 
- 8. Under Networking , Make choices to reflect the below details
+ 8. Under Networking , make choices to reflect the below details.
 
     ![Image showing Network selection](./images/network_details.png " ")
 
- 9. Under Add SSH Keys
+ 9. Under Add SSH Keys.
 
     Browse and provide the public ssh key generated earlier.
 
@@ -107,7 +107,7 @@ Once details are entered , Click on Next
 11. In few minutes , Compute instance with database will be provisioned and running as below.
     ![Image showing provisioned compute instance](./images/prov_final.png)
 
-12. Take a note of the Public IP address of the Compute Instance which will used in later labs to access the Source Database System.
+12. Take a note of the Public IP address of the Compute Instance which will used in later labs to access the source database system.
 
 You may now **proceed to the next lab**.
 

@@ -55,7 +55,7 @@ This lab assumes you have :
 
    Use the below format.
 
-   https://swiftobjectstorage.<region_name>.oraclecloud.com/v1/<objectstorage_namespace>
+   "https://swiftobjectstorage.<region_name>.oraclecloud.com/v1/<objectstorage_namespace>".
 
    Replace "region_name" and "objectstorage_namespace" with your corresponding values.
 
@@ -77,7 +77,7 @@ This lab assumes you have :
 
    $ZDM_HOME/bin/zdmservice status
 
-   if the "running" shows as false then use below command to start ZDM.
+   if the "running" shows as "false" then use below command to start ZDM.
 
    $ZDM_HOME/bin/zdmservice start
 
@@ -86,7 +86,7 @@ This lab assumes you have :
    Use the below sample command for ZDM database migration evaluation and update it as per your environment.
 
    ```console
-   $ZDM_HOME/bin/zdmcli migrate database  -sourcesid ORCL  -sourcenode zdm-source-db  -srcauth zdmauth  -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key  -srcarg3 sudo_location:/bin/sudo  -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxxx.xxxxx@oracle.com"  -rsp /home/zdmuser/physical_offline.rsp  -tgtauth zdmauth  -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key  -tgtarg3 sudo_location:/usr/bin/sudo -eval
+   $ZDM_HOME/bin/zdmcli migrate database  -sourcesid ORCL  -sourcenode zdm-source-db  -srcauth zdmauth  -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key  -srcarg3 sudo_location:/bin/sudo  -targetnode zdm-target-db  -backupuser "xxxxxxxx/xxxxxx.xxxxx@xxxxx.com"  -rsp /home/zdmuser/physical_offline.rsp  -tgtauth zdmauth  -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key  -tgtarg3 sudo_location:/usr/bin/sudo -eval
    ```
   
   Please refer below document to know more about the parameters used in migration command.
@@ -203,9 +203,9 @@ This lab assumes you have :
    **c. Execute database migration as below.**
 
    Execute below command to start the database migration.
-
+   ```console
    $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxx.xxxx@xxxcle.com" -rsp /home/zdmuser/physical_offline.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
-
+   ```
    ![Image showing the command to start database migration](./images/mig_start.png)
 
    Please provide the SYS password of source database and Auth token when asked.
@@ -220,7 +220,7 @@ This lab assumes you have :
 
    ![Image showing interim migration status](./images/mig_status.png)
 
-   You can see the JOB_TYPE is MIGRATE which is different from the JOB_TYPE (EVAL)for the database migration evaluation.
+   You can see the "JOB_TYPE" is "MIGRATE" which is different from the "JOB_TYPE" (EVAL)for the database migration evaluation.
       
    Continue to monitor the status until all phases have been completed with "COMPLETED" status as shown below.
 
@@ -250,7 +250,7 @@ This lab assumes you have :
    If you receive similar output as below which means database migration has been successfully completed.
    ![Image showing select output from target after migration](./images/target_sel_after_mig.png)
 
-Congratulations ! , You have successfully completed ZDM Physical Offline Migration Lab.
+Congrats ! , you have successfully completed ZDM Physical Offline Migration Lab.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering

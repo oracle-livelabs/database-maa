@@ -82,7 +82,7 @@ This lab assumes you have :
 
    ![Image showing Public IP for ZDM host ](./images/ip.png)
 
-2. Expand the root FS
+2. Expand the root FS.
 
    Execute below command as "opc" user and press y and Enter when asked.
 

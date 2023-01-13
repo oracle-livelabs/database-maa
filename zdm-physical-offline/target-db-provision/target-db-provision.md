@@ -99,7 +99,7 @@ This lab assumes you have :
    select PARAMETER,VALUE from nls_database_parameters where parameter like '%NLS%CHARACTERSET';
    </copy>
    ```
-   In your output "NLS_CHARACTERSET" is the database characterset and "NLS_NCHAR_CHARACTERSET" is the national characterset.
+   In your output 'NLS_CHARACTERSET' is the database characterset and 'NLS_NCHAR_CHARACTERSET' is the national characterset.
 
    Sample output is shown below.
 
@@ -220,13 +220,13 @@ We will require this file in Task 2.
 
 **11. Provide database name.**
 
-   If the target database is Exadata Cloud Service or Exadata Cloud at Customer, then the database "DB_NAME" should be the same as the source database "DB_NAME".
+   If the target database is Exadata Cloud Service or Exadata Cloud at Customer, then the database &lt;DB_NAME&gt; should be the same as the source database &lt;DB_NAME&gt;.
 
-   If the target database is Oracle Cloud Infrastructure, then the database "DB_NAME" can be the same as or different from the source database "DB_NAME".
+   If the target database is Oracle Cloud Infrastructure, then the database &lt;DB_NAME&gt; can be the same as or different from the source database &lt;DB_NAME&gt;.
 
    Our target database is "Oracle Base Database VM" and we can specify a same or different name for DB_NAME. 
 
-   We will keep the same "DB_NAME" as source database for this lab.
+   We will keep the same &lt;DB_NAME&gt; as source database for this lab.
 
    Provide "Database name" as "ORCL" and "Database unique name suffix" as "T"
 

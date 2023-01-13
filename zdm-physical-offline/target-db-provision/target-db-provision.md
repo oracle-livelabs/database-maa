@@ -99,7 +99,7 @@ This lab assumes you have :
    select PARAMETER,VALUE from nls_database_parameters where parameter like '%NLS%CHARACTERSET';
    </copy>
    ```
-   In your output 'NLS_CHARACTERSET' is the database characterset and 'NLS_NCHAR_CHARACTERSET' is the national characterset.
+   In your output NLS\_CHARACTERSET is the database characterset and NLS\_NCHAR\_CHARACTERSET is the national characterset.
 
    Sample output is shown below.
 

@@ -108,7 +108,9 @@ This lab assumes you have :
 
    Execute the below command to identify already installed packages.
    ```console
-   yum list installed glibc-devel expect unzip libaio oraclelinux-developer-release-e17
+   <copy>
+   yum list installed glibc-devel expect unzip libaio oraclelinux-developer-release-
+   </copy>
    ```
    You will receive an output similar to the one below which shows glibc-devel, libaio , oraclelinux-developer-release-e17 and unzip are alraady installed.
 
@@ -134,12 +136,14 @@ This lab assumes you have :
 
    Execute below commands.
    ```console
+   <copy>
    groupadd zdm
    useradd -g zdm zdmuser
    mkdir -p /home/zdmuser/zdminstall
    mkdir /home/zdmuser/zdmhome
    mkdir /home/zdmuser/zdmbase
-   chown -R zdmuser:zdm /home/zdmuser
+   chown -R zdmuser:zdm /home/
+   </copy>
    ```
 6. Download ZDM software.
 
@@ -171,7 +175,9 @@ This lab assumes you have :
    
    Execute the below command to install ZDM software.
    ```console
+   <copy>
    ./zdminstall.sh setup oraclehome=/home/zdmuser/zdmhome oraclebase=/home/zdmuser/zdmbase ziploc=/tmp/zdm21.3/zdm_home.zip -zdm
+   </copy>
    ```
    This will take couple of minutes.
 

@@ -66,7 +66,7 @@ We need an Auth token for the Oracle Cloud Tenancy user which will be used by ZD
 
    Click the user profile on the upper right corner of Oracle Cloud Console and then select username which is logged in as below.
 
-   ![Image showing navigation to user profile](./images/user_profile.png)
+   ![Image showing navigation to user profile](./images/user-profile.png)
 
 3. Navigate to "Resource".
 

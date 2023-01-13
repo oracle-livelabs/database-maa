@@ -88,7 +88,9 @@ This lab assumes you have :
    Use the below sample command for ZDM database migration evaluation and update it as per your environment.
 
    ```console
+   <copy>
    $ZDM_HOME/bin/zdmcli migrate database  -sourcesid ORCL  -sourcenode zdm-source-db  -srcauth zdmauth  -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key  -srcarg3 sudo_location:/bin/sudo  -targetnode zdm-target-db  -backupuser "xxxxxxxx/xxxxxx.xxxxx@xxxxx.com"  -rsp /home/zdmuser/physical_offline.rsp  -tgtauth zdmauth  -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key  -tgtarg3 sudo_location:/usr/bin/sudo -eval
+   </copy>
    ```
   
   Please refer below document to know more about the parameters used in migration command.
@@ -142,6 +144,7 @@ This lab assumes you have :
 
    Execute below statements
    ```console
+   <copy>
    create user hr01 identified by "password";
    grant resource , connect to hr01;
    alter user hr01 quota unlimited on users;
@@ -149,13 +152,16 @@ This lab assumes you have :
    insert into hr01.emp values('Alpha',1);
    insert into hr01.emp values('Beta',2);
    commit;
+   </copy>
    ```
 
    c. Verify the data in HR01.EMP table.
 
    Execute below statement when you are in ORCLPDB.
    ```console
+   <copy>
    select * from hr01.emp;
+   </copy>
    ```
 
    You will receive the below output.
@@ -179,7 +185,9 @@ This lab assumes you have :
    c. Verify existence of HR01.EMP table.
 
    ```console
+   <copy>
    select * from hr01.emp;
+   </copy>
    ```
 
    You will receive an output similar to the one below indicating that HR01.EMP table doesn't exist in target database which is expected.
@@ -206,7 +214,9 @@ This lab assumes you have :
 
    Execute below command to start the database migration.
    ```console
+   <copy>
    $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxx.xxxx@xxxcle.com" -rsp /home/zdmuser/physical_offline.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
+   </copy>
    ```
    ![Image showing the command to start database migration](./images/migration-start.png)
 
@@ -247,7 +257,9 @@ This lab assumes you have :
    c. Verify existence of HR01.EMP table.
 
    ```console
+   <copy>
    select * from hr01.emp;
+   </copy>
    ```
    If you receive similar output as below which means database migration has been successfully completed.
    ![Image showing select output from target after migration](./images/target-select-after-migration.png)

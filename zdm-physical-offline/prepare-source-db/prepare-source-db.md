@@ -83,7 +83,9 @@ This lab assumes you have :
 
    Execute below sql.
    ```console
+   <copy>
    SELECT * FROM v$encryption_wallet;
+   </copy>
    ```
    In the source database that you configured in this lab , TDE is not setup and the below query output shows that.
 
@@ -95,7 +97,9 @@ This lab assumes you have :
 
    Insert the below line in sqlnet.ora (Ensure to update the correct ORACLE_HOME of your source database).   
    ```text
+   <copy>
    ENCRYPTION_WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY=/u01/app/oracle/product/19c/dbhome_1/network/admin/)))
+   </copy>
    ```
    For an Oracle RAC instance, also set "ENCRYPTION_WALLET_LOCATION" in the second Oracle RAC node (Not applicable for the source database provisioned in this lab)
    
@@ -105,33 +109,45 @@ This lab assumes you have :
 
    Modify the below sql to update your source database ORACLE_HOME and TDE password before executing.
    ```console
+   <copy>
    ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin' identified by password;
+   </copy>
    ```
    ii. Open the keystore.
 
    For a CDB environment (source database in this lab is CDB ),  run the following command (ensure to update password).
    ```console
+   <copy>
    ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password container = ALL;
+   </copy>
    ```
    For a non-CDB environment, run the following command.
    ```console
+   <copy>
    ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password;
+   </copy>
    ```
    iii. Create and activate the master encryption key.
 
    For a CDB environment, run the following command (ensure to update the password)
    ```console
+   <copy>
    ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup container = ALL;
+   </copy>
    ```
    For a non-CDB environment, run the following command.
    ```console
+   <copy>
    ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup;
+   </copy>
    ```
    iv. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
    ```console
+   <copy>
    col WRL_PARAMETER for a55
    set lines 150
    select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
+   </copy>
    ```
 
    You will see that keystore is enabled with status OPEN and WALLET_TYPE as PASSWORD in the query output below which means configuration of password-based keystore is complete at this stage.
@@ -147,21 +163,27 @@ This lab assumes you have :
    Execute below statement after replacing ORACLE_HOME and password for your environment.
 
    ```console
+   <copy>
    ADMINISTER KEY MANAGEMENT CREATE AUTO_LOGIN KEYSTORE FROM KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin/' IDENTIFIED BY password;
+   </copy>
    ```
    ii. Close the password-based keystore.
 
    Execute the below statement after replacing password to close the password-based keystore created earlier.
    ```console
+   <copy>
    ADMINISTER KEY MANAGEMENT SET KEYSTORE CLOSE IDENTIFIED BY password;
+   </copy>
    ```
    iii. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
 
    Execute below statement
    ```console
+   <copy>
    col WRL_PARAMETER for a55
    set lines 150
    select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
+   </copy>
    ```
    In the query output, verify that the TDE keystore STATUS is OPEN and WALLET_TYPE set to AUTOLOGIN, otherwise the auto-login keystore is not set up correctly.
    Sample output is shown below.
@@ -187,9 +209,11 @@ This lab assumes you have :
 
    If the source is an Oracle RAC database, and SNAPSHOT CONTROLFILE is not on a shared location, configure SNAPSHOT CONTROLFILE to point to a shared location on all Oracle RAC nodes to avoid the ORA-00245 error during backups to Oracle Object Store.
 
-   ```console
+   ```
+   <copy>
    $ rman target /  
    RMAN> CONFIGURE SNAPSHOT CONTROLFILE NAME TO '+DATA/db_name/snapcf_db_name.f';
+   </copy>
    ```
 **8. Controlfile auto backup.**
 
@@ -198,7 +222,9 @@ This lab assumes you have :
    If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
 
    ```console
+   <copy>
    RMAN> CONFIGURE CONTROLFILE AUTOBACKUP ON;
+   </copy>
    ```
 **9. Register database with srvctl.**
 

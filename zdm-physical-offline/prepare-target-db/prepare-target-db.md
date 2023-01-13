@@ -56,7 +56,9 @@ This lab assumes you have :
 
    To check the current time zone version, query the V$TIMEZONE_FILE view as shown here, and upgrade the time zone file if necessary.
    ```console
+   <copy>
    SELECT * FROM v$timezone_file;
+   </copy>
    ```   
    Sample output is shown below.
    
@@ -70,9 +72,11 @@ This lab assumes you have :
 
    Execute the below SQL.
    ```console
+   <copy>
    set lines 120
    col WRL_PARAMETER for a50
-   select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;   
+   select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
+   </copy>   
    ```
    Sample output is shown below.
 

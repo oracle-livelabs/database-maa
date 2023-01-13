@@ -43,7 +43,9 @@ This lab assumes you have :
    Execute the below command after login in as "opc" user.
    
    ```text
+   <copy>
    cat /etc/os-release
+   </copy>
    ```
    Please use similar commnads in case above command doesn't work for you ( in case you have selected different source database system than the one specified in Lab 2).
 
@@ -81,7 +83,9 @@ This lab assumes you have :
 
    Execute the below query after connecting to database using sqlplus.
    ```console
+   <copy>
    select banner from v$version;
+   </copy>
    ```
    You will receive an output similar to the one below which will have the Database Edition.
 
@@ -91,7 +95,9 @@ This lab assumes you have :
    
    Run the below query to identify the database character set and national characterset.
    ```console
+   <copy>
    select PARAMETER,VALUE from nls_database_parameters where parameter like '%NLS%CHARACTERSET';
+   </copy>
    ```
    In your output "NLS_CHARACTERSET" is the database characterset and "NLS_NCHAR_CHARACTERSET" is the national characterset.
 

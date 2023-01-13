@@ -40,7 +40,8 @@ This lab assumes you have :
 
    Please note that this response file uses Oracle Object Storage to keep the source database backup and the target database is Oracle Base Database(specified as VMDB).
 
-   ```console <copy>
+   ```console 
+   <copy>
    TGT_DB_UNIQUE_NAME=ORCL_T
    MIGRATION_METHOD=OFFLINE_PHYSICAL
    DATA_TRANSFER_MEDIUM=OSS
@@ -48,6 +49,7 @@ This lab assumes you have :
    OPC_CONTAINER=ZDM-Physical
    PLATFORM_TYPE=VMDB
    SHUTDOWN_SRC=TRUE
+   </copy>
    ```
    Please note that above response file has already been updated for this lab except for HOST which is specific for your environment. 
 

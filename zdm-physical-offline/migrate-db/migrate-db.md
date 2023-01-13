@@ -40,7 +40,7 @@ This lab assumes you have :
 
    Please note that this response file uses Oracle Object Storage to keep the source database backup and the target database is Oracle Base Database(specified as VMDB).
 
-   ```console
+   ```console <copy>
    TGT_DB_UNIQUE_NAME=ORCL_T
    MIGRATION_METHOD=OFFLINE_PHYSICAL
    DATA_TRANSFER_MEDIUM=OSS

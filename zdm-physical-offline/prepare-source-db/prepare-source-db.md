@@ -36,7 +36,7 @@ This lab assumes you have :
 
    Type . oraenv and press enter 
     
-   Enter ORCL when asked for ORACLE_SID and then press enter    --> Enter your DB name if that is different in case of on premise.
+   Enter ORCL when asked for ORACLE\_SID and then press enter    --> Enter your DB name if that is different in case of on premise.
 
 **3. Check whether source database is using spfile.**
 
@@ -75,7 +75,7 @@ This lab assumes you have :
 
    For Oracle Database 12c Release 2 and later, if the source database does not have Transparent Data Encryption (TDE) enabled, then it is mandatory that you configure the TDE wallet before migration begins. You need not encrypt the data in the source database; the data is encrypted at target using the wallet setup in the source database. The WALLET_TYPE can be AUTOLOGIN (preferred) or PASSWORD based.
 
-   Ensure that the wallet STATUS is OPEN and "WALLET_TYPE" is AUTOLOGIN (For an AUTOLOGIN wallet type), or "WALLET_TYPE" is PASSWORD (For a PASSWORD based wallet type). 
+   Ensure that the wallet STATUS is OPEN and WALLET\_TYPE is AUTOLOGIN (For an AUTOLOGIN wallet type), or WALLET\_TYPE is PASSWORD (For a PASSWORD based wallet type). 
    
    For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
 
@@ -93,7 +93,7 @@ This lab assumes you have :
 
    Follow the below steps to enable TDE.
 
-   **a . Set "ENCRYPTION_WALLET_LOCATION" in the $ORACLE_HOME/network/admin/sqlnet.ora file.**
+   **a . Set "ENCRYPTION\_WALLET\_LOCATION" in the $ORACLE_HOME/network/admin/sqlnet.ora file.**
 
    Insert the below line in sqlnet.ora (Ensure to update the correct ORACLE_HOME of your source database).   
    ```text

@@ -57,13 +57,13 @@ This lab assumes you have :
 
    Use the below format.
 
-   "https://swiftobjectstorage.&lt:region_name&gt:.oraclecloud.com/v1/&lt:objectstorage_namespace&gt:".
+   "https://swiftobjectstorage.&lt:region\_name&gt:.oraclecloud.com/v1/&lt:objectstorage\_namespace&gt:".
 
-   Replace "region_name" and "objectstorage_namespace" with your corresponding values.
+   Replace "region\_name" and "objectstorage\_namespace" with your corresponding values.
 
-   "objectstorage_namespace" values for your environment  was collected in Lab 7 Task 1.
+   "objectstorage\_namespace" values for your environment  was collected in Lab 7 Task 1.
 
-   Save the contents to a file named as "physical_offline.rsp" file under /home/zdmuser.
+   Save the contents to a file named as "physical\_offline.rsp" file under /home/zdmuser.
 
    Please note that you can prepare your own response file if required to satisfy your requirements.
 
@@ -232,7 +232,7 @@ This lab assumes you have :
 
    ![Image showing interim migration status](./images/migration-status.png)
 
-   You can see the "JOB_TYPE" is "MIGRATE" which is different from the "JOB_TYPE" (EVAL)for the database migration evaluation.
+   You can see the "JOB\_TYPE" is "MIGRATE" which is different from the "JOB\_TYPE" (EVAL)for the database migration evaluation.
       
    Continue to monitor the status until all phases have been completed with "COMPLETED" status as shown below.
 

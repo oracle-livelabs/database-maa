@@ -105,7 +105,7 @@ This lab assumes you have :
 
    ![Image showing database and national character set in database](./images/database-characterset.png)
 
-**7. Check enryption algorithm under sqlnet.ora.**
+**7. Check encryption algorithm under sqlnet.ora.**
 
    Check the sqlnet.ora to identify any encryption algorithm mentioned.
 
@@ -220,13 +220,13 @@ We will require this file in Task 2.
 
 **11. Provide database name.**
 
-   If the target database is Exadata Cloud Service or Exadata Cloud at Customer, then the database &lt;DB_NAME&gt; should be the same as the source database &lt;DB_NAME&gt;.
+   If the target database is Exadata Cloud Service or Exadata Cloud at Customer, then the database DB\_NAME should be the same as the source database DB\_NAME.
 
-   If the target database is Oracle Cloud Infrastructure, then the database &lt;DB_NAME&gt; can be the same as or different from the source database &lt;DB_NAME&gt;.
+   If the target database is Oracle Cloud Infrastructure, then the database DB\_NAME can be the same as or different from the source database DB\_NAME.
 
-   Our target database is "Oracle Base Database VM" and we can specify a same or different name for DB_NAME. 
+   Our target database is "Oracle Base Database VM" and we can specify a same or different name for DB\_NAME. 
 
-   We will keep the same &lt;DB_NAME&gt; as source database for this lab.
+   We will keep the same DB\_NAME as source database for this lab.
 
    Provide "Database name" as "ORCL" and "Database unique name suffix" as "T"
 

@@ -18,7 +18,7 @@
         },
         {
             "title": "Lab 2: Provision source database",
-            "filename": "../../source-database-prov/source-database-prov.md"
+            "filename": "../../source-db-provision/source-db-provision.md"
         },
         {
             "title": "Lab 3: Provision target database",
@@ -43,6 +43,10 @@
         {
             "title": "Lab 8: Migrate database",
             "filename": "../../migrate-db/migrate-db.md"
+        },
+        {
+            "title": "Need Help?",
+            "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
         }
     ]
 }

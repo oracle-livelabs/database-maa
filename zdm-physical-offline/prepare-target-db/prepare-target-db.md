@@ -1,4 +1,4 @@
-# Lab 6 : Prepare target database
+# Prepare target database
 
 ## Introduction
 
@@ -21,7 +21,7 @@ This lab assumes you have :
 
 * All previous labs have been successfully completed.
 
-## Task 1 : Prepare target database
+## Task 1 : Prepare Target Database
 
 **1. Login to target database server.**
 
@@ -60,7 +60,7 @@ This lab assumes you have :
    ```   
    Sample output is shown below.
    
-   ![ss2](./images/timezone.png)
+   ![Image showing timezone version](./images/timezone.png)
 
 **5. Verify TDE Wallet Folder.**
 
@@ -76,7 +76,7 @@ This lab assumes you have :
    ```
    Sample output is shown below.
 
-   ![Image showing TDE status of target database](./images/target_tde_status.png)
+   ![Image showing TDE status of target database](./images/target-tde-status.png)
 
    Verify that the TDE wallet folder exists, and ensure that the wallet STATUS is OPEN and WALLET_TYPE is AUTOLOGIN (For an auto-login wallet type), or WALLET_TYPE is PASSWORD (For a password-based wallet). 
    

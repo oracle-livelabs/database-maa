@@ -1,4 +1,4 @@
-# Lab 5 : Prepare source database
+# Prepare source database
 
 ## Introduction
 
@@ -20,7 +20,7 @@ This lab assumes you have :
 
 * All previous labs have been successfully completed.
 
-## Task 1 : Prepare source database
+## Task 1 : Prepare Source Database
 
 **1. Login to source database server.**
 
@@ -87,7 +87,7 @@ This lab assumes you have :
    ```
    In the source database that you configured in this lab , TDE is not setup and the below query output shows that.
 
-   ![Image showing TDE status of source database](./images/source_tde_status.png)
+   ![Image showing TDE status of source database](./images/source-tde-status.png)
 
    Follow the below steps to enable TDE.
 
@@ -136,7 +136,7 @@ This lab assumes you have :
 
    You will see that keystore is enabled with status OPEN and WALLET_TYPE as PASSWORD in the query output below which means configuration of password-based keystore is complete at this stage.
 
-   ![Image showing status of password based keystore](images/tde_password.png)
+   ![Image showing status of password based keystore](images/tde-password.png)
 
    We will use an auto-login keystore in this lab and for that we need to complete additional steps as mentioned below.
    
@@ -165,7 +165,7 @@ This lab assumes you have :
    ```
    In the query output, verify that the TDE keystore STATUS is OPEN and WALLET_TYPE set to AUTOLOGIN, otherwise the auto-login keystore is not set up correctly.
    Sample output is shown below.
-   ![Image showing auto login keystore status](./images/tde_autologin.png)
+   ![Image showing auto login keystore status](./images/tde-autologin.png)
 
    **d. Copy the keystore files to the second Oracle RAC node.**
 

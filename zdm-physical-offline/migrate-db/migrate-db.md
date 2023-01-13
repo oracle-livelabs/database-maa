@@ -1,4 +1,4 @@
-# Lab 8 : Migrate database
+# Migrate database
 
 ## Introduction
 
@@ -22,7 +22,7 @@ This lab assumes you have :
 
 * All previous labs have been successfully completed.
 
-## Task 1 : Prepare response file
+## Task 1 : Prepare Response File
 
 **1. Login to ZDM service host.**
 
@@ -55,7 +55,7 @@ This lab assumes you have :
 
    Use the below format.
 
-   "https://swiftobjectstorage.<region_name>.oraclecloud.com/v1/<objectstorage_namespace>".
+   "https://swiftobjectstorage.&lt:region_name&gt:.oraclecloud.com/v1/&lt:objectstorage_namespace&gt:".
 
    Replace "region_name" and "objectstorage_namespace" with your corresponding values.
 
@@ -65,7 +65,7 @@ This lab assumes you have :
 
    Please note that you can prepare your own response file if required to satisfy your requirements.
 
-## Task 2 : Start database migration evaluation
+## Task 2 : Start Database Migration Evaluation
 
 **1. Login to ZDM service host.**
 
@@ -98,7 +98,7 @@ This lab assumes you have :
 
    Once you have updated the evaluation command then proceed to execute the command as below.
 
-   ![Image showing execution of migration evaluation command](./images/eval_start.png)
+   ![Image showing execution of migration evaluation command](./images/evaluation-start.png)
 
    Please provide the SYS password of source database and Auth token when asked.
 
@@ -114,13 +114,13 @@ This lab assumes you have :
 
    You will receive a similar ouput as below.
 
-   ![Image showing intermediate status of migration evaluation](./images/eval_status.png)
+   ![Image showing intermediate status of migration evaluation](./images/evaluation-status.png)
 
    Continue to execute the status command until all phases have been completed with status "PRECHECK_PASSED" as shown below.
 
-   ![Image showing final status of migration evaluation](./images/eval_final.png)
+   ![Image showing final status of migration evaluation](./images/evaluation-final.png)
 
-## Task 3 : Start database migration
+## Task 3 : Start Database Migration
 
 **1. Create HR01.EMP table in source database.**
 
@@ -158,7 +158,7 @@ This lab assumes you have :
 
    You will receive the below output.
 
-   ![Image showing output of select statement from source database](./images/source_select.png)
+   ![Image showing output of select statement from source database](./images/source-select.png)
 
 **2. Verify HR01.EMP table in target database.**
 
@@ -182,7 +182,7 @@ This lab assumes you have :
 
    You will receive an output similar to the one below indicating that HR01.EMP table doesn't exist in target database which is expected.
 
-   ![Image showing select statement output from target before migration](./images/target_sel_before_migration.png)
+   ![Image showing select statement output from target before migration](./images/target-select-before-migration.png)
 
 **3. Start the database migration**
 
@@ -206,7 +206,7 @@ This lab assumes you have :
    ```console
    $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxx.xxxx@xxxcle.com" -rsp /home/zdmuser/physical_offline.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
    ```
-   ![Image showing the command to start database migration](./images/mig_start.png)
+   ![Image showing the command to start database migration](./images/migration-start.png)
 
    Please provide the SYS password of source database and Auth token when asked.
 
@@ -218,13 +218,13 @@ This lab assumes you have :
 
    You will get a output similar to below.
 
-   ![Image showing interim migration status](./images/mig_status.png)
+   ![Image showing interim migration status](./images/migration-status.png)
 
    You can see the "JOB_TYPE" is "MIGRATE" which is different from the "JOB_TYPE" (EVAL)for the database migration evaluation.
       
    Continue to monitor the status until all phases have been completed with "COMPLETED" status as shown below.
 
-   ![Image showing final status of migration](./images/mig_final.png)
+   ![Image showing final status of migration](./images/migration-final.png)
 
 **4. Verify the database migration.**
 
@@ -248,7 +248,7 @@ This lab assumes you have :
    select * from hr01.emp;
    ```
    If you receive similar output as below which means database migration has been successfully completed.
-   ![Image showing select output from target after migration](./images/target_sel_after_mig.png)
+   ![Image showing select output from target after migration](./images/target-select-after-migration.png)
 
 Congrats ! , you have successfully completed ZDM Physical Offline Migration Lab.
 

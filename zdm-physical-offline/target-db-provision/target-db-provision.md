@@ -1,4 +1,4 @@
-# Lab 3 : Provision target database
+# Provision target database
 
 ## Introduction
 
@@ -30,7 +30,7 @@ This lab assumes you have :
 
 * All previous labs have been successfully completed.
 
-## Task 1 : Collect source database details
+## Task 1 : Collect Source Database Details
 
 **1. Login to the source database system using the Public IP.**
 
@@ -49,7 +49,7 @@ This lab assumes you have :
 
    You will get a output similar to the one below.
 
-   ![Image showing output of command to check OS version ](./images/os_version.png)
+   ![Image showing output of command to check OS version ](./images/os-version.png)
 
 **3. Set the database environment to connect to your database.**
 
@@ -85,7 +85,7 @@ This lab assumes you have :
    ```
    You will receive an output similar to the one below which will have the Database Edition.
 
-   ![Image showing Database Edition of Source database](./images/database_edition.png)
+   ![Image showing Database Edition of Source database](./images/database-edition.png)
 
 **6. Check database characterset.**
    
@@ -97,7 +97,7 @@ This lab assumes you have :
 
    Sample output is shown below.
 
-   ![Image showing database and national character set in database](./images/db_charset.png)
+   ![Image showing database and national character set in database](./images/database-characterset.png)
 
 **7. Check enryption algorithm under sqlnet.ora.**
 
@@ -111,13 +111,13 @@ Execute "opatch lsinventory" as oracle user in source satabase server.
 
 We will require this file in Task 2.
 
-## Task 2 : Prepare database software image for target database
+## Task 2 : Prepare Database Software Image for Target Database
 
 1. Navigate to Oracle Base Database.
 
    Click the navigation menu in the upper left, navigate to Oracle Database and then select Oracle Base Database.
 
-   ![Image showing navigation to Oracle Base Database](./images/navigate_to_database.png)
+   ![Image showing navigation to Oracle Base Database](./images/navigate-to-database.png)
 
 2. Click on Database software images.
 
@@ -129,7 +129,7 @@ We will require this file in Task 2.
 
    Enter Display name as "DBImage-Source-DB" as below.
 
-   ![Image showing Database Software Image Name ](./images/database_image_name.png)
+   ![Image showing Database Software Image Name ](./images/database-image-name.png)
 
 4. Configure database software image.
 
@@ -139,7 +139,7 @@ We will require this file in Task 2.
 
    Upload Oracle Home patch inventory ouput generated in Task 1 as below.
 
-   ![Image showing database version selected for Image ](./images/db_version_info.png)
+   ![Image showing database version selected for Image ](./images/db-version-info.png)
 
 5. Create database software image.
 
@@ -153,7 +153,7 @@ We will require this file in Task 2.
 
    Click the navigation menu in the upper left, navigate to Oracle Database and then select "Oracle Base Database (VM. BM)" as shown below.
 
-   ![Image showing navigation to Oracle Database](./images/navigate_to_database.png)
+   ![Image showing navigation to Oracle Database](./images/navigate-to-database.png)
 
 **2. Click on the "Create DB System".**
     
@@ -163,7 +163,7 @@ We will require this file in Task 2.
 
    Provide DB System name as "zdm-target-db" and ensure you have selected correct compartment for the DB system.
     
-   ![Image showing the updated DB system name](./images/db_system_name.png)
+   ![Image showing the updated DB system name](./images/db-system-name.png)
 
 **4.  Modify the shape of the DB System.**
 
@@ -240,7 +240,7 @@ We will require this file in Task 2.
 
    Enter SYS password which is same as the SYS password of the source database.
 
-   ![Image showing the provision to enter SYS password](./images/sys.png)
+   ![Image showing the provision to enter SYS password](./images/sys-password.png)
 
 **14. Select database workload type.**
 
@@ -252,7 +252,7 @@ We will require this file in Task 2.
 
    We don't need automatic backups until we complete the database migration.
 
-   ![Image showing the option to disable database backups](./images/backup.png)
+   ![Image showing the option to disable database backups](./images/disable-backup.png)
 
 **16. Select database charactetset.**
 
@@ -268,7 +268,7 @@ We will require this file in Task 2.
 
    Sample output is shown below.
 
-   ![Image showing the database characterset selected](./images/charset.png)
+   ![Image showing the database characterset selected](./images/db-characterset.png)
 
 **17. Start DB System provisioning.**
 

@@ -74,10 +74,9 @@ For more information on Oracle Zero Downtime Migration please visit ZDM's [produ
 In this lab, you will perform below :
 
 * Learn about Oracle Zero Downtime Migration Fundamentals.
-* Create Oracle Cloud Account.
-* Create ssh keys.
-* Provision source database in OCI.
-* Provision target database in OCI.
+* Create SSH keys.
+* Provision source database.
+* Provision target database.
 * Provision and configure ZDM service host.
 * Prepare source database.
 * Prepare target database.

@@ -1,4 +1,4 @@
-# Lab 7 : Create Object Storage Bucket and Auth Token.
+# Create Object Storage Bucket and Auth Token.
 
 ## Introduction
 
@@ -28,25 +28,25 @@ This lab assumes you have :
 
    Click the navigation menu in the upper left, navigate to Storage and then select Buckets.
 
-   ![Image showing navigation to object storage bucket](./images/navigation_to_oss.png)
+   ![Image showing navigation to object storage bucket](./images/navigation-to-oss.png)
 
 3. Select the Compartment.
 
    Select appropriate compartment on the left side.
 
-   ![compartment selected](./images/bucket_compartment.png)
+   ![Image showing compartment selected](./images/bucket-compartment.png)
 
 4. Create Bucket.
 
    Click on "Create Bucket".
 
-   ![Image showing create bucket option](./images/create_bucket.png)
+   ![Image showing create bucket option](./images/create-bucket.png)
 
    Enter Bucket Name as "ZDM-Physical".
 
    Leave all the defaults and click on "Create".
 
-   ![Image showing bucket name and create option](./images/create_bucket_final.png)
+   ![Image showing bucket name and create option](./images/create-bucket-final.png)
 
 5. Collect the Object Storage NameSpace.
 
@@ -72,13 +72,13 @@ We need an Auth token for the Oracle Cloud Tenancy user which will be used by ZD
 
    Navigate to "Resource" on the left and click on "Auth Tokens".
 
-   ![Image showing Auth Token under resources](./images/resources_auth_token.png)
+   ![Image showing Auth Token under resources](./images/resources-auth-token.png)
 
 4. Create Auth Token.
 
    Click on "Generate Token" , provide a description for Token and click on "Generate Token" as shown below.
 
-   ![Image showing description for auth token](./images/authtoken_description.png)
+   ![Image showing description for auth token](./images/authtoken-description.png)
 
 5. Copy the generated Token.
 

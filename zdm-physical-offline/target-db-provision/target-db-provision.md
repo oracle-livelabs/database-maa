@@ -224,7 +224,7 @@ In this lab
 
    We will keep the same **DB\_NAME** as source database for this lab.
 
-   Provide *Database* name as **ORCL** and *Database unique name suffix* as **T**
+   Provide **Database** name as **ORCL** and **Database unique name suffix** as **T**.
 
    ![Image showing the Database Name entered](./images/dbname.png)
 

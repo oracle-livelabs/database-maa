@@ -38,16 +38,16 @@ In this lab
 
    Execute the below command after login in as "opc" user.
    
-   ```text
-   <copy>
-   cat /etc/os-release
-   </copy>
-   ```
-   Please use similar commands in case above command doesn't work for you ( in case you have selected different source database system than the one specified in Lab 2).
+     ```text
+     <copy>
+     cat /etc/os-release
+     </copy>
+     ```
+     Please use similar commands in case above command doesn't work for you ( in case you have selected different source database system than the one specified in Lab 2).
 
-   You will get an output similar to the one below.
+     You will get an output similar to the one below.
 
-   ![Image showing output of command to check OS version ](./images/os-version.png)
+     ![Image showing output of command to check OS version ](./images/os-version.png)
 
 3. Set the database environment to connect to your database.
 

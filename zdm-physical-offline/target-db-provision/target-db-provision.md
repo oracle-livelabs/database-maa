@@ -6,7 +6,7 @@ You must create a placeholder target database before beginning a migration to th
 
 The placeholder target database is overwritten during migration, but it retains the overall configuration.
 
-For this release of Zero Downtime Migration (21.3) , only Grid Infrastructure-based database services are supported as targets. For example, an LVM-based instance or an instance created in compute node without Grid Infrastructure are not supported targets.
+Please note for the release of Zero Downtime Migration (21.3) , only Grid Infrastructure-based database services are supported as targets. For example, an LVM-based instance or an instance created in compute node without Grid Infrastructure are not supported targets.
 
 You must use the control plane for the creation of a target placeholder database on Exadata Cloud Service and Exadata Cloud at Customer.
 
@@ -57,9 +57,9 @@ In this lab
 
    Set the environment to connect to your database using below command.
 
-   Type . oraenv and press **Enter**.
+   Type **. oraenv** and press **Enter**.
     
-   Enter **ORCL** when asked for **ORACLE_SID** and then press **Enter**    --> Enter your DB name if that is different in case of on- premise database.
+   Enter **ORCL** when asked for **ORACLE_SID** and then press **Enter** .   --> Enter your database name if that is different in case of on-premises database.
 
 4. Check the database version of the source database.
 
@@ -75,7 +75,7 @@ In this lab
 
    In this livelab you have used Oracle Marketplace image for source database which uses Oracle Database Enterprise Edition.
 
-   However , in case you would like know the database edition for your on-premise database then refer the below steps.
+   However , in case you would like know the database edition for your on-premises database then refer the below steps.
 
    Execute the below query after connecting to database using sqlplus.
      ```console
@@ -111,13 +111,13 @@ In this lab
 
 9. Download inventory output to the local desktop.
 
-We will require this file in Task 2.
+   We will require this file in Task 2.
 
 ## Task 2 : Prepare Database Software Image for Target Database
 
 1. Navigate to Oracle Base Database.
 
-   Click the **Navigation Menu** in the upper left, navigate to **Oracle Database** and then select **Oracle Base Database**.
+   Click the **Navigation Menu** in the upper left, navigate to **Oracle Database** and then select **Oracle Base Database (VM,BM)**.
 
    ![Image showing navigation to Oracle Base Database](./images/navigate-to-database.png)
 
@@ -139,7 +139,7 @@ We will require this file in Task 2.
 
    Select PSU as **19.16.0.0** ( If you have selected a different version for the source database in the previous lab, you need to provide that version here).
 
-   Upload Oracle Home patch inventory ouput generated in Task 1 as below.
+   Upload Oracle Home patch inventory output generated in Task 1 as below.
 
    ![Image showing database version selected for Image ](./images/db-version-info.png)
 
@@ -153,7 +153,7 @@ We will require this file in Task 2.
 
 1. Navigate to Oracle Base Database in Oracle Cloud Console.
 
-   Click the **Navigation menu** in the upper left, navigate to **Oracle Database** and then select **Oracle Base Database (VM. BM)** as shown below.
+   Click the **Navigation Menu** in the upper left, navigate to **Oracle Database** and then select **Oracle Base Database (VM,BM)** as shown below.
 
    ![Image showing navigation to Oracle Database](./images/navigate-to-database.png)
 
@@ -171,13 +171,13 @@ We will require this file in Task 2.
 
    When you create the database from the console, ensure that your chosen shape can accommodate the source database, plus any future sizing requirements. A good guideline is to use a shape similar to or larger in size than source database.
 
-   For this lab we will use AMD Flex with 1 OCPU.
+   For this lab we will use **AMD Flex** with 1 OCPU.
 
-   Click on the Change Shape and reduce the number of OCPU per node to 1 as below.
+   Click on **Change Shape** and reduce the number of OCPU per node to 1 as below.
 
    ![Image showing the option to reduce the OCPU](./images/ocpu.png)
 
-   Click on Select a Shape , your final selection will appear as below.
+   Click on **Select a Shape** , your final selection will appear as below.
 
    ![Image showing final selection of DB System Shape](./images/shape.png)
 
@@ -194,7 +194,7 @@ We will require this file in Task 2.
    
 7. Upload SSH Keys.
    
-   Under Add SSH keys , upload the SSH Public key generated earlier.
+   Under **Add SSH keys** , upload the SSH Public key generated earlier.
 
    ![Image showing option to upload SSH key](./images/ssh.png)
 
@@ -204,9 +204,9 @@ We will require this file in Task 2.
 
 9. Specify the network information.
 
-   Select **ZDM-VCN** as VCN and **Public Subnet-ZDM-VCN** as Client subnet.
+   Select **ZDM-VCN** as Virtual Cloud Network and **Public Subnet-ZDM-VCN** as Client subnet.
 
-   Provide **zdm-target-db** as Hostname Prefix.
+   Provide **zdm-target-db** as Hostname prefix.
 
    ![Image showing the Network select for DB system](./images/network.png)
 
@@ -216,7 +216,7 @@ We will require this file in Task 2.
 
 11. Provide database name.
 
-   If the target database is Exadata Cloud Service or Exadata Cloud at Customer, then the database **DB\_NAME** should be the same as the source database **DB\_NAME**.
+   If the target database is Exadata Cloud Service or Exadata Cloud at Customer, then target database **DB\_NAME** should be the same as the source database **DB\_NAME**.
 
    If the target database is Oracle Cloud Infrastructure, then the database **DB\_NAME** can be the same as or different from the source database **DB\_NAME**.
 
@@ -224,13 +224,13 @@ We will require this file in Task 2.
 
    We will keep the same **DB\_NAME** as source database for this lab.
 
-   Provide **Database name** as **ORCL** and **Database unique name suffix** as **T**
+   Provide *Database* name as **ORCL** and *Database unique name suffix* as **T**
 
    ![Image showing the Database Name entered](./images/dbname.png)
 
 12. Select Database Image.
 
-   Click on the Change Database Image and select "Custom Database Software Images " as below.
+   Click on **Change Database Image** and select **Custom Database Software Images** as below.
 
    ![Image showing selection of Database Software Image](./images/custom.png)
 
@@ -250,7 +250,7 @@ We will require this file in Task 2.
 
 15. Disable database backups.
 
-   Uncheck the "Enable automatic backups" box to disable database backups.
+   Uncheck the **Enable automatic backups** box to disable database backups.
 
    We don't need automatic backups until we complete the database migration.
 
@@ -258,7 +258,7 @@ We will require this file in Task 2.
 
 16. Select database charactetset.
 
-   Click on show advanced options.
+   Click on **show advanced** options.
 
    Ensure that you have selected same database and national characterset as the source database.
 
@@ -274,7 +274,7 @@ We will require this file in Task 2.
 
 17. Start DB System provisioning.
 
-   Click on the Create DB System to initiate the DB system provisioning.
+   Click on the **Create DB System** to initiate the DB system provisioning.
 
    ![Image showing the option to start the provisioning](./images/prov-final.png)
 

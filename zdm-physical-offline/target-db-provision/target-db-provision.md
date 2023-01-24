@@ -28,15 +28,15 @@ In this lab
 
 ## Task 1 : Collect Source Database Details
 
-* 1.Login to the source database system using the Public IP. *
+1.Login to the source database system using the Public IP.
 
 Username to login : opc 
 
 Use the private SSH key generated earlier.
 
-* 2. Check the Operating System version of the source database. *
+2. Check the Operating System version of the source database.
 
-   Execute the below command after login in as "opc" user.
+Execute the below command after login in as "opc" user.
    
    ```text
    <copy>
@@ -49,7 +49,7 @@ Use the private SSH key generated earlier.
 
    ![Image showing output of command to check OS version ](./images/os-version.png)
 
-* 3. Set the database environment to connect to your database.
+3. Set the database environment to connect to your database.
 
    Switch user to "oracle" using below command.
 

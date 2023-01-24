@@ -28,15 +28,15 @@ In this lab
 
 ## Task 1 : Collect Source Database Details
 
-1.Login to the source database system using the Public IP.
+1. Login to the source database system using the Public IP.
 
-Username to login : opc 
+   Username to login : opc 
 
-Use the private SSH key generated earlier.
+   Use the private SSH key generated earlier.
 
 2. Check the Operating System version of the source database.
 
-Execute the below command after login in as "opc" user.
+   Execute the below command after login in as "opc" user.
    
    ```text
    <copy>
@@ -61,7 +61,7 @@ Execute the below command after login in as "opc" user.
     
    Enter ORCL when asked for ORACLE_SID and then press "Enter"    --> Enter your DB name if that is different in case of on premise.
 
-4.  Check the database version of the source database.
+4. Check the database version of the source database.
 
    In this livelab we have used Oracle Marketplace image for source database for which you know the version that you have selected.
 
@@ -71,7 +71,7 @@ Execute the below command after login in as "opc" user.
 
    check for the output to determine the exact database version.
 
-5.  Check the database edition of the source database.
+5. Check the database edition of the source database.
 
    In this livelab we have used Oracle Marketplace image for source database which uses Oracle Database Enterprise Edition.
 

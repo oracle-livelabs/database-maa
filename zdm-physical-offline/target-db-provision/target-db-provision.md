@@ -30,13 +30,13 @@ In this lab
 
 1. Login to the source database system using the Public IP.
 
-   Username to login : opc 
+   Username to login : **opc** 
 
    Use the private SSH key generated earlier.
 
 2. Check the Operating System version of the source database.
 
-   Execute the below command after login in as "opc" user.
+   Execute the below command after login in as **opc** user.
    
      ```text
      <copy>
@@ -51,15 +51,15 @@ In this lab
 
 3. Set the database environment to connect to your database.
 
-   Switch user to "oracle" using below command.
+   Switch user to **oracle** using below command.
 
-   sudo su - oracle
+   **sudo su - oracle**
 
    Set the environment to connect to your database using below command.
 
-   Type . oraenv and press "Enter".
+   Type . oraenv and press **Enter**.
     
-   Enter ORCL when asked for ORACLE_SID and then press "Enter"    --> Enter your DB name if that is different in case of on premise.
+   Enter **ORCL** when asked for **ORACLE_SID** and then press **Enter**    --> Enter your DB name if that is different in case of on- premise database.
 
 4. Check the database version of the source database.
 
@@ -67,47 +67,47 @@ In this lab
 
    However , in case you would like to know the database version with latest patches then please use the below command.
     
-   Execute 'opatch lsinventory' command as oracle user.
+   Execute **opatch lsinventory** command as **oracle** user.
 
    check for the output to determine the exact database version.
 
 5. Check the database edition of the source database.
 
-   In this livelab we have used Oracle Marketplace image for source database which uses Oracle Database Enterprise Edition.
+   In this livelab you have used Oracle Marketplace image for source database which uses Oracle Database Enterprise Edition.
 
-   However , in case you would like know the database edition for your on premise database then refer the below steps.
+   However , in case you would like know the database edition for your on-premise database then refer the below steps.
 
    Execute the below query after connecting to database using sqlplus.
-   ```console
-   <copy>
-   select banner from v$version;
-   </copy>
-   ```
-   You will receive an output similar to the one below which will have the Database Edition.
+     ```console
+     <copy>
+     select banner from v$version;
+     </copy>
+      ```
+     You will receive an output similar to the one below which will have the Database Edition.
 
-   ![Image showing Database Edition of Source database](./images/database-edition.png)
+     ![Image showing Database Edition of Source database](./images/database-edition.png)
 
 6. Check database characterset.
    
    Run the below query to identify the database character set and national characterset.
-   ```console
-   <copy>
-   select PARAMETER,VALUE from nls_database_parameters where parameter like '%NLS%CHARACTERSET';
-   </copy>
-   ```
-   In your output NLS\_CHARACTERSET is the database characterset and NLS\_NCHAR\_CHARACTERSET is the national characterset.
+     ```console
+     <copy>
+     select PARAMETER,VALUE from nls_database_parameters where parameter like '%NLS%CHARACTERSET';
+     </copy>
+      ```
+     In your output **NLS\_CHARACTERSET** is the database characterset and **NLS\_NCHAR\_CHARACTERSET** is the national characterset.
 
-   Sample output is shown below.
+     Sample output is shown below.
 
-   ![Image showing database and national character set in database](./images/database-characterset.png)
+     ![Image showing database and national character set in database](./images/database-characterset.png)
 
 7. Check encryption algorithm under sqlnet.ora.
 
-   Check the sqlnet.ora to identify any encryption algorithm mentioned.
+   Check the **sqlnet.ora** to identify any encryption algorithm mentioned.
 
 8. Generate patch inventory ouput.
 
-Execute "opatch lsinventory" as oracle user in source database server.
+   Execute **opatch lsinventory** as **oracle** user in source database server.
 
 9. Download inventory output to the local desktop.
 
@@ -117,27 +117,27 @@ We will require this file in Task 2.
 
 1. Navigate to Oracle Base Database.
 
-   Click the navigation menu in the upper left, navigate to Oracle Database and then select Oracle Base Database.
+   Click the **Navigation Menu** in the upper left, navigate to **Oracle Database** and then select **Oracle Base Database**.
 
    ![Image showing navigation to Oracle Base Database](./images/navigate-to-database.png)
 
-2. Click on Database software images.
+2. Click on **Database software images**.
 
-   Select the appropriate compartment and then click on "Database software images" under Resources.
+   Select the appropriate compartment and then click on **Database software images** under **Resources**.
 
    ![Image showing compartment selection ](./images/compartment.png)
 
-3. Click "Create Database software image".
+3. Click **Create Database software image**.
 
-   Enter Display name as "DBImage-Source-DB" as below.
+   Enter Display name as **DBImage-Source-DB** as below.
 
    ![Image showing Database Software Image Name ](./images/database-image-name.png)
 
 4. Configure database software image.
 
-   Select database version as "19c"   (same as the major version of your source database).
+   Select database version as **19c**   (same as the major version of your source database).
 
-   Select PSU as 19.16.0.0 ( If you have selected a different version for the source database in the previous lab, you need to provide that version here).
+   Select PSU as **19.16.0.0** ( If you have selected a different version for the source database in the previous lab, you need to provide that version here).
 
    Upload Oracle Home patch inventory ouput generated in Task 1 as below.
 
@@ -145,7 +145,7 @@ We will require this file in Task 2.
 
 5. Create database software image.
 
-   Click on "Create Database software image" to create DB Image.
+   Click on **Create Database software image** to create DB Image.
 
    Please wait for the completion of this task before proceeding to the next task.
 
@@ -153,7 +153,7 @@ We will require this file in Task 2.
 
 1. Navigate to Oracle Base Database in Oracle Cloud Console.
 
-   Click the navigation menu in the upper left, navigate to Oracle Database and then select "Oracle Base Database (VM. BM)" as shown below.
+   Click the **Navigation menu** in the upper left, navigate to **Oracle Database** and then select **Oracle Base Database (VM. BM)** as shown below.
 
    ![Image showing navigation to Oracle Database](./images/navigate-to-database.png)
 
@@ -163,7 +163,7 @@ We will require this file in Task 2.
 
 3. Provide name of the DB System and select compartment.
 
-   Provide DB System name as "zdm-target-db" and ensure you have selected correct compartment for the DB system.
+   Provide DB System name as **zdm-target-db** and ensure you have selected correct compartment for the DB system.
     
    ![Image showing the updated DB system name](./images/db-system-name.png)
 
@@ -187,7 +187,7 @@ We will require this file in Task 2.
 
 6. Configure database edition.
 
-   Under "Configure the DB system" , ensure to select "Enterprise Edition" which is the same edition as our source database.
+   Under **Configure the DB system** , ensure to select **Enterprise Edition** which is the same edition as our source database.
 
    ![Image showing the selection for Database Edition](./images/edition.png)
 
@@ -204,27 +204,27 @@ We will require this file in Task 2.
 
 9. Specify the network information.
 
-   Select "ZDM-VCN" as VCN and "Public Subnet-ZDM-VCN" as Client subnet.
+   Select **ZDM-VCN** as VCN and **Public Subnet-ZDM-VCN** as Client subnet.
 
-   Provide "zdm-target-db" as Hostname Prefix.
+   Provide **zdm-target-db** as Hostname Prefix.
 
    ![Image showing the Network select for DB system](./images/network.png)
 
 10. Click Next
 
-   Click Next to go to the next page.
+   Click **Next** to go to the next page.
 
 11. Provide database name.
 
-   If the target database is Exadata Cloud Service or Exadata Cloud at Customer, then the database DB\_NAME should be the same as the source database DB\_NAME.
+   If the target database is Exadata Cloud Service or Exadata Cloud at Customer, then the database **DB\_NAME** should be the same as the source database **DB\_NAME**.
 
-   If the target database is Oracle Cloud Infrastructure, then the database DB\_NAME can be the same as or different from the source database DB\_NAME.
+   If the target database is Oracle Cloud Infrastructure, then the database **DB\_NAME** can be the same as or different from the source database **DB\_NAME**.
 
-   Our target database is "Oracle Base Database VM" and we can specify a same or different name for DB\_NAME. 
+   Our target database is **Oracle Base Database VM** and we can specify a same or different name for **DB\_NAME**. 
 
-   We will keep the same DB\_NAME as source database for this lab.
+   We will keep the same **DB\_NAME** as source database for this lab.
 
-   Provide "Database name" as "ORCL" and "Database unique name suffix" as "T"
+   Provide **Database name** as **ORCL** and **Database unique name suffix** as **T**
 
    ![Image showing the Database Name entered](./images/dbname.png)
 

@@ -8,7 +8,7 @@ The placeholder target database is overwritten during migration, but it retains 
 
 For this release of Zero Downtime Migration (21.3) , only Grid Infrastructure-based database services are supported as targets. For example, an LVM-based instance or an instance created in compute node without Grid Infrastructure are not supported targets.
 
-For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder database must be created using Control Plane not using any other methods.
+You must use the control plane for the creation of a target placeholder database on Exadata Cloud Service and Exadata Cloud at Customer.
 
 Estimated Time: 30 minutes
 
@@ -16,17 +16,13 @@ Estimated Time: 30 minutes
 
 In this lab
 
-* You will collect some information from source database which is necessary for target database provisioning.
+* You will collect some information from source database which is required for target database provisioning.
 
 * You will prepare a database software image for target database.
 
 * You will provision an Oracle Base Database VM to use as the target database system.
 
 ### Prerequisites
-
-This lab assumes you have :
-
-* Oracle Cloud Account.
 
 * All previous labs have been successfully completed.
 

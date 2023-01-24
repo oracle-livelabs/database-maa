@@ -264,7 +264,7 @@ This lab assumes you have :
    If you receive similar output as below which means database migration has been successfully completed.
    ![Image showing select output from target after migration](./images/target-select-after-migration.png)
 
-Congrats ! , you have successfully completed ZDM Physical Offline Migration Lab.
+   Congrats, you have completed ZDM Physical Offline Migration Lab.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering

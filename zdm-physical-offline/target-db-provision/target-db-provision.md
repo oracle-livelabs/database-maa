@@ -8,7 +8,7 @@ The placeholder target database is overwritten during migration, but it retains 
 
 For this release of Zero Downtime Migration (21.3) , only Grid Infrastructure-based database services are supported as targets. For example, an LVM-based instance or an instance created in compute node without Grid Infrastructure are not supported targets.
 
-For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder database must be created using Control Plane, not Grid Infrastructure Database Services before database migration begins.
+For Exadata Cloud Service and Exadata Cloud at Customer targets, the placeholder database must be created using Control Plane not using any other methods.
 
 Estimated Time: 30 minutes
 
@@ -32,13 +32,13 @@ This lab assumes you have :
 
 ## Task 1 : Collect Source Database Details
 
-**1. Login to the source database system using the Public IP.**
+1. Login to the source database system using the Public IP.
 
    Username to login : opc 
 
    Use the private SSH key generated earlier.
 
-**2. Check the Operating System version of the source database.**
+2. Check the Operating System version of the source database.
 
    Execute the below command after login in as "opc" user.
    
@@ -47,13 +47,13 @@ This lab assumes you have :
    cat /etc/os-release
    </copy>
    ```
-   Please use similar commnads in case above command doesn't work for you ( in case you have selected different source database system than the one specified in Lab 2).
+   Please use similar commands in case above command doesn't work for you ( in case you have selected different source database system than the one specified in Lab 2).
 
-   You will get a output similar to the one below.
+   You will get an output similar to the one below.
 
    ![Image showing output of command to check OS version ](./images/os-version.png)
 
-**3. Set the database environment to connect to your database.**
+3. Set the database environment to connect to your database.
 
    Switch user to "oracle" using below command.
 
@@ -65,7 +65,7 @@ This lab assumes you have :
     
    Enter ORCL when asked for ORACLE_SID and then press "Enter"    --> Enter your DB name if that is different in case of on premise.
 
-**4.  Check the database version of the source database.**
+4.  Check the database version of the source database.
 
    In this livelab we have used Oracle Marketplace image for source database for which you know the version that you have selected.
 
@@ -75,7 +75,7 @@ This lab assumes you have :
 
    check for the output to determine the exact database version.
 
-**5.  Check the database edition of the source database.**
+5.  Check the database edition of the source database.
 
    In this livelab we have used Oracle Marketplace image for source database which uses Oracle Database Enterprise Edition.
 
@@ -91,7 +91,7 @@ This lab assumes you have :
 
    ![Image showing Database Edition of Source database](./images/database-edition.png)
 
-**6. Check database characterset.**
+6. Check database characterset.
    
    Run the below query to identify the database character set and national characterset.
    ```console
@@ -105,15 +105,15 @@ This lab assumes you have :
 
    ![Image showing database and national character set in database](./images/database-characterset.png)
 
-**7. Check encryption algorithm under sqlnet.ora.**
+7. Check encryption algorithm under sqlnet.ora.
 
    Check the sqlnet.ora to identify any encryption algorithm mentioned.
 
-**8. Generate patch inventory ouput.**
+8. Generate patch inventory ouput.
 
-Execute "opatch lsinventory" as oracle user in source satabase server.
+Execute "opatch lsinventory" as oracle user in source database server.
 
-**9. Download inventory output to the local desktop.**
+9. Download inventory output to the local desktop.
 
 We will require this file in Task 2.
 
@@ -141,7 +141,7 @@ We will require this file in Task 2.
 
    Select database version as "19c"   (same as the major version of your source database).
 
-   Select PSU as 19.16.0.0 ( In case you have selected different version for source database in Lab 2 ,then select that version ).
+   Select PSU as 19.16.0.0 ( If you have selected a different version for the source database in the previous lab, you need to provide that version here).
 
    Upload Oracle Home patch inventory ouput generated in Task 1 as below.
 
@@ -155,23 +155,23 @@ We will require this file in Task 2.
 
 ## Task 3 : Provision Target Database
 
-**1. Navigate to Oracle Base Database in Oracle Cloud Console.**
+1. Navigate to Oracle Base Database in Oracle Cloud Console.
 
    Click the navigation menu in the upper left, navigate to Oracle Database and then select "Oracle Base Database (VM. BM)" as shown below.
 
    ![Image showing navigation to Oracle Database](./images/navigate-to-database.png)
 
-**2. Click on the "Create DB System".**
+2. Click on  **Create DB System**.
     
    ![Image showing Create DB system option](./images/createdb.png)
 
-**3. Provide name of the DB System and select compartment.**
+3. Provide name of the DB System and select compartment.
 
    Provide DB System name as "zdm-target-db" and ensure you have selected correct compartment for the DB system.
     
    ![Image showing the updated DB system name](./images/db-system-name.png)
 
-**4.  Modify the shape of the DB System.**
+4.  Modify the shape of the DB System.
 
    When you create the database from the console, ensure that your chosen shape can accommodate the source database, plus any future sizing requirements. A good guideline is to use a shape similar to or larger in size than source database.
 
@@ -185,28 +185,28 @@ We will require this file in Task 2.
 
    ![Image showing final selection of DB System Shape](./images/shape.png)
 
-**5. Configure storage.**
+5. Configure storage.
 
    Leave this section as the default.
 
-**6. Configure database edition.**
+6. Configure database edition.
 
    Under "Configure the DB system" , ensure to select "Enterprise Edition" which is the same edition as our source database.
 
    ![Image showing the selection for Database Edition](./images/edition.png)
 
    
-**7. Upload SSH Keys.**
+7. Upload SSH Keys.
    
    Under Add SSH keys , upload the SSH Public key generated earlier.
 
    ![Image showing option to upload SSH key](./images/ssh.png)
 
-**8. Select the appropriate License Type.**
+8. Select the appropriate License Type.
 
    Select appropriate license type applicable for you.
 
-**9. Specify the network information.**
+9. Specify the network information.
 
    Select "ZDM-VCN" as VCN and "Public Subnet-ZDM-VCN" as Client subnet.
 
@@ -214,11 +214,11 @@ We will require this file in Task 2.
 
    ![Image showing the Network select for DB system](./images/network.png)
 
-**10. Click Next**
+10. Click Next
 
    Click Next to go to the next page.
 
-**11. Provide database name.**
+11. Provide database name.
 
    If the target database is Exadata Cloud Service or Exadata Cloud at Customer, then the database DB\_NAME should be the same as the source database DB\_NAME.
 
@@ -232,7 +232,7 @@ We will require this file in Task 2.
 
    ![Image showing the Database Name entered](./images/dbname.png)
 
-**12. Select Database Image.**
+12. Select Database Image.
 
    Click on the Change Database Image and select "Custom Database Software Images " as below.
 
@@ -242,25 +242,25 @@ We will require this file in Task 2.
 
    ![Image showing custom software images created earlier](./images/dbimage.png)
 
-**13. Provide SYS password.**
+13. Provide SYS password.
 
    Enter SYS password which is same as the SYS password of the source database.
 
    ![Image showing the provision to enter SYS password](./images/sys-password.png)
 
-**14. Select database workload type.**
+14. Select database workload type.
 
    In this lab , leave it to the default.
 
-**15. Disable database backups.**
+15. Disable database backups.
 
-   Uncheck the "Enable automatic bakcups" box to disable Database backups.
+   Uncheck the "Enable automatic backups" box to disable database backups.
 
    We don't need automatic backups until we complete the database migration.
 
    ![Image showing the option to disable database backups](./images/disable-backup.png)
 
-**16. Select database charactetset.**
+16. Select database charactetset.
 
    Click on show advanced options.
 
@@ -276,13 +276,13 @@ We will require this file in Task 2.
 
    ![Image showing the database characterset selected](./images/db-characterset.png)
 
-**17. Start DB System provisioning.**
+17. Start DB System provisioning.
 
    Click on the Create DB System to initiate the DB system provisioning.
 
    ![Image showing the option to start the provisioning](./images/prov-final.png)
 
-   This step is going to take upto 1 hour , however you can proceed to next lab while DB System is being provisioned.
+   This step is going to take up to 1 hour , however you can proceed to next lab while DB System is being provisioned.
 
 You may now **proceed to the next lab**.
 

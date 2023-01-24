@@ -28,13 +28,13 @@ In this lab
 
 ## Task 1 : Collect Source Database Details
 
-* 1.Login to the source database system using the Public IP.++
+* 1.Login to the source database system using the Public IP. *
 
-   Username to login : opc 
+Username to login : opc 
 
-   Use the private SSH key generated earlier.
+Use the private SSH key generated earlier.
 
-* 2. Check the Operating System version of the source database.
+* 2. Check the Operating System version of the source database. *
 
    Execute the below command after login in as "opc" user.
    

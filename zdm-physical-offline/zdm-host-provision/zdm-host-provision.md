@@ -165,13 +165,13 @@ This lab assumes you have :
    
    Unzip the ZDM software under /tmp directory.
 
-   Notedown the path of unzipped folder , it will be "/tmp/zdm21.3" for ZDM 21.3.
+   Notedown the path of unzipped folder , it will be "/tmp/zdm21.x" for ZDM 21.x , Please note this is a generic placeholder name, please use the latest version available.
 
 9. Install ZDM software.
 
    Change directory to ZDM unzipped location using below command.
 
-   cd /tmp/zdm21.3
+   cd /tmp/zdm21.x
    
    Execute the below command to install ZDM software.
    ```console

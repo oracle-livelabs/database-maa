@@ -49,7 +49,7 @@ In this lab
 
    ![Image showing output of command to check OS version ](./images/os-version.png)
 
-3. Set the database environment to connect to your database.
+* 3. Set the database environment to connect to your database.
 
    Switch user to "oracle" using below command.
 

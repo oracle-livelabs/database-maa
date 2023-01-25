@@ -50,7 +50,7 @@ In this lab
 
    If you see that spfile is not in use, then use the below link to configure spfile for your database.
 
-   https://docs.oracle.com/cd/E18283_01/server.112/e17120/create006.htm%23i1009989
+   https://docs.oracle.com/cd/E18283_01/server.112/e17120/create006.htm#i1009989
 
 4. Verify time zone version.
 
@@ -64,8 +64,7 @@ In this lab
      SELECT * FROM v$timezone_file;
      </copy>
      ```   
-     Sample output is shown below.
-   
+     Sample output is shown below.   
      ![Image showing timezone version](./images/timezone.png)
 
 5. Verify TDE Wallet Folder.
@@ -90,6 +89,8 @@ In this lab
    
      For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
 
+     If the query output is not as per the above recommendation,  please do the needful to enable TDE in the target database.
+
 6. Check disk group size.
    
    Please ignore this step if you have provisioned the target database as per the instructions in this lab.
@@ -102,13 +103,13 @@ In this lab
 
    Verify that port 22 on the target servers in the Oracle Cloud Infrastructure, Exadata Cloud Service, or Exadata Cloud at Customer environment are open and not blocked by a firewall.
 
-   We had already checked this by doing ssh from ZDM host in earlier lab (Provision and configure ZDM service host).
+   We had already verified this in earlier lab (Provision and configure ZDM service host).
 
 8. Capture RMAN SHOW ALL command.
 
    Capture output of RMAN **SHOW ALL** command so that you can compare RMAN settings after the migration, then reset any changed RMAN configuration settings to ensure that the backup works without any issues.
 
-9. Ensure system time of target database, source database and ZDM host are in sync (Optional Step).
+9. Ensure system time of target database, source database and ZDM host are in sync (optional step).
 
    Execute **date** command across source database , target database and ZDM host simultaneously and see whether they show the same time.
 
@@ -116,11 +117,13 @@ In this lab
 
    Please use NTP in case you need to adjust time.
 
-10. Check encryption algorithm in sqlnet.ora (Optional Step).
+10. Check encryption algorithm in sqlnet.ora (optional step).
 
    Ensure that encryption algorithm specificed in sqlnet.ora in target database Oracle Home is same as source database Oracle Home.
 
    This is not mandatory for ZDM Physical Offline Migration , however it is recommended.
+
+You have successfully completed target database preparation steps.
 
 You may now **proceed to the next lab**.
 

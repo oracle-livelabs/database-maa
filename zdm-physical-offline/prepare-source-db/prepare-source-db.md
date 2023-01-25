@@ -36,13 +36,21 @@ In this lab
 
 3. Check whether source database is using spfile.
 
+   Please ignore this step if you have provisioned the source database as per the instructions in this lab.
+
+   Follow the below steps for the source databases that you have provisioned using steps not mentioned in this livelab.
+
    Connect to source database using sqlplus.
 
    Execute **show parameter spfile**.
 
-   If you get a similar output as below which means spfile is configured, if this is not the case then please configure spfile using Oracle Documents.
+   If you get a similar output as below which means spfile is configured., if this is not the case then please configure spfile using Oracle Documentation.
 
    ![Image showing output of spfile check](./images/spfile.png)
+
+   Please use the below link if you need help configuring spfile for your database.
+
+   https://docs.oracle.com/cd/E18283_01/server.112/e17120/create006.htm%23i1009989
 
 4. Check the compatible parameter on source database.
 
@@ -189,7 +197,7 @@ In this lab
 
       This is not applicable for the source database used in this lab.
 
-      However follow the below steps in case you have RAC source database.
+      However follow the below steps in case your have source database is RAC enabled.
 
       If you configured the keystore in a shared file system for Oracle RAC then no action is required.
 
@@ -201,27 +209,27 @@ In this lab
 
 7. Snapshot controlfile for RAC Database.
 
-   This is not applicable for the source database that you have provisioned in this lab, However if you have RAC source database then follow below steps.
+   This is not applicable for the source database that you have provisioned in this lab, However if your source is an Oracle RAC database then follow below steps.
 
    If the source is an Oracle RAC database, and SNAPSHOT CONTROLFILE is not on a shared location, configure SNAPSHOT CONTROLFILE to point to a shared location on all Oracle RAC nodes to avoid the ORA-00245 error during backups to Oracle Object Store.
 
-   ```text
-   <copy>
-   $ rman target /  
-   RMAN> CONFIGURE SNAPSHOT CONTROLFILE NAME TO '+DATA/db_name/snapcf_db_name.f';
-   </copy>
-   ```
+     ```text
+     <copy>
+     $ rman target /  
+     RMAN> CONFIGURE SNAPSHOT CONTROLFILE NAME TO '+DATA/db_name/snapcf_db_name.f';
+     </copy>
+     ```
 8. Controlfile auto backup.
 
    Source database you have configured in this lab has controlfile autobackup on by default.
 
    If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
 
-   ```console
-   <copy>
-   RMAN> CONFIGURE CONTROLFILE AUTOBACKUP ON;
-   </copy>
-   ```
+     ```text
+     <copy>
+     RMAN> CONFIGURE CONTROLFILE AUTOBACKUP ON;
+     </copy>
+     ```
 9. Register database with srvctl.
 
    If the source database is deployed using Oracle Grid Infrastructure and the database is not registered using SRVCTL, then you must register the database before the migration.
@@ -230,7 +238,7 @@ In this lab
 
 10. RMAN backup strategy.
 
-   There is no existing RMAN backup strategy for the source database that we have configured in this lab , so this can be ignored.
+   There is no existing RMAN backup strategy for the source database that we have configured in this lab , so this step can be ignored for this lab.
 
    However if your source database has existing RMAN backups then follow below procedure.
 
@@ -243,9 +251,9 @@ In this lab
    If archive logs were to be deleted on the source database, and these archive logs are needed by Zero Downtime Migration to synchronize the target cloud database, then these files should be restored so that Zero Downtime Migration can continue the migration process.
 
    
-11. Ensure system time of source database, target database and ZDM host are in sync(Optional Step). 
+11. Ensure system time of source database, target database, and ZDM host are in sync (optional step). 
 
-   Type "date" across source database , target database and ZDM host simultaneously and see whether they show the same time.
+   Execute **date** command across source database , target database and ZDM host simultaneously and see whether they show the same time.
 
    It is recommended to have same time across all systems but it is not mandatory.
 

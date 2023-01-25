@@ -59,17 +59,17 @@ In this lab
 
    Type **. oraenv** and press **Enter**.
     
-   Enter **ORCL** when asked for **ORACLE_SID** and then press **Enter** .   --> Enter your database name if that is different in case of on-premises database.
+   Enter **ORCL** when asked for **ORACLE_SID** and then press **Enter** .   --> Enter your database name if that is different in case of an on-premises database.
 
 4. Check the database version of the source database.
 
-   In this livelab we have used Oracle Marketplace image for source database for which you know the version that you have selected.
+   In this livelab you have used Oracle Marketplace image for source database for which you know the version that you have selected.
 
    However , in case you would like to know the database version with latest patches then please use the below command.
     
    Execute **opatch lsinventory** command as **oracle** user.
 
-   check for the output to determine the exact database version.
+   Check for the output to determine the exact database version.
 
 5. Check the database edition of the source database.
 
@@ -95,7 +95,7 @@ In this lab
      select PARAMETER,VALUE from nls_database_parameters where parameter like '%NLS%CHARACTERSET';
      </copy>
       ```
-     In your output **NLS\_CHARACTERSET** is the database characterset and **NLS\_NCHAR\_CHARACTERSET** is the national characterset.
+     In the query output **NLS\_CHARACTERSET** is the database characterset and **NLS\_NCHAR\_CHARACTERSET** is the national characterset.
 
      Sample output is shown below.
 
@@ -137,7 +137,7 @@ In this lab
 
    Select database version as **19c**   (same as the major version of your source database).
 
-   Select PSU as **19.16.0.0** ( If you have selected a different version for the source database in the previous lab, you need to provide that version here).
+   Select PSU as **19.16.0.0** ( If you have selected a different version for the source database in the previous lab, please provide that version here).
 
    Upload Oracle Home patch inventory output generated in Task 1 as below.
 

@@ -38,17 +38,17 @@ In this lab
 
    Please ignore this step if you have provisioned the source database as per the instructions in this lab.
 
-   Follow the below steps for the source databases that you have provisioned using steps not mentioned in this livelab.
+   Follow the below steps for the source database that you have provisioned using steps not mentioned in this livelab.
 
    Connect to source database using sqlplus.
 
    Execute **show parameter spfile**.
 
-   If you get a similar output as below which means spfile is configured., if this is not the case then please configure spfile using Oracle Documentation.
+   If you get a similar output as below,  it means spfile is in use.
 
    ![Image showing output of spfile check](./images/spfile.png)
 
-   Please use the below link if you need help configuring spfile for your database.
+   If you see that spfile is not in use, then use the below link to configure spfile for your database.
 
    https://docs.oracle.com/cd/E18283_01/server.112/e17120/create006.htm%23i1009989
 

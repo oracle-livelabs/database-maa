@@ -120,7 +120,7 @@ In this lab
 
    Ensure that encryption algorithm specificed in sqlnet.ora in target database Oracle Home is same as source database Oracle Home.
 
-   This is not mandatory for ZDM Physical Offline Migration , However it is recommended.
+   This is not mandatory for ZDM Physical Offline Migration , however it is recommended.
 
 You may now **proceed to the next lab**.
 

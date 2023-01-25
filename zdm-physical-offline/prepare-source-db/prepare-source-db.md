@@ -89,7 +89,7 @@ In this lab
 
      Follow the below steps to enable TDE.
 
-   a . Set "ENCRYPTION\_WALLET\_LOCATION" in the $ORACLE_HOME/network/admin/sqlnet.ora file.
+   a . Set **ENCRYPTION\_WALLET\_LOCATION** in the $ORACLE_HOME/network/admin/sqlnet.ora file.
 
        Insert the below line in sqlnet.ora (Ensure to update the correct ORACLE_HOME of your source database).   
        ```text
@@ -97,9 +97,9 @@ In this lab
        ENCRYPTION_WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY=/u01/app/oracle/product/19c/dbhome_1/network/admin/)))
        </copy>
        ```
-      For an Oracle RAC instance, also set "ENCRYPTION_WALLET_LOCATION" in the second Oracle RAC node (Not applicable for the source database provisioned in this lab)
+      For an Oracle RAC instance, also set **ENCRYPTION\_WALLET\_LOCATION** in the second Oracle RAC node (Not applicable for the source database provisioned in this lab)
    
-   b. Create and configure the keystore.**
+   b. Create and configure the keystore.
 
       i. Connect to the database and create the keystore.
 
@@ -117,101 +117,101 @@ In this lab
       ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password container = ALL;
       </copy>
       ```
-   For a non-CDB environment, run the following command.
-   ```console
-   <copy>
-   ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password;
-   </copy>
-   ```
-   iii. Create and activate the master encryption key.
+      For a non-CDB environment, run the following command.
+      ```text
+      <copy>
+      ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password;
+      </copy>
+      ```
+      iii. Create and activate the master encryption key.
 
-   For a CDB environment, run the following command (ensure to update the password)
-   ```console
-   <copy>
-   ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup container = ALL;
-   </copy>
-   ```
-   For a non-CDB environment, run the following command.
-   ```console
-   <copy>
-   ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup;
-   </copy>
-   ```
-   iv. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
-   ```console
-   <copy>
-   col WRL_PARAMETER for a55
-   set lines 150
-   select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
-   </copy>
-   ```
+      For a CDB environment, run the following command (ensure to update the password)
+      ```text
+      <copy>
+      ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup container = ALL;
+      </copy>
+      ```
+      For a non-CDB environment, run the following command.
+      ```text
+      <copy>
+      ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup;
+      </copy>
+      ```
+      iv. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
+      ```text
+      <copy>
+      col WRL_PARAMETER for a55
+      set lines 150
+      select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
+      </copy>
+      ```
 
-   You will see that keystore is enabled with status OPEN and WALLET_TYPE as PASSWORD in the query output below which means configuration of password-based keystore is complete at this stage.
+      You will see that keystore is enabled with status OPEN and WALLET_TYPE as PASSWORD in the query output below which means configuration of password-based keystore is complete at this stage.
 
-   ![Image showing status of password based keystore](images/tde-password.png)
+      ![Image showing status of password based keystore](images/tde-password.png)
 
-   We will use an auto-login keystore in this lab and for that we need to complete additional steps as mentioned below.
+      We will use an auto-login keystore in this lab and for that we need to complete additional steps as mentioned below.
    
-   **c. Creation of auto-login keystore.**
+   c. Creation of auto-login keystore.
    
-   i. Create the auto-login keystore.
+      i. Create the auto-login keystore.
 
-   Execute below statement after replacing ORACLE_HOME and password for your environment.
+      Execute below statement after replacing ORACLE_HOME and password for your environment.
 
-   ```console
-   <copy>
-   ADMINISTER KEY MANAGEMENT CREATE AUTO_LOGIN KEYSTORE FROM KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin/' IDENTIFIED BY password;
-   </copy>
-   ```
-   ii. Close the password-based keystore.
+      ```text
+      <copy>
+      ADMINISTER KEY MANAGEMENT CREATE AUTO_LOGIN KEYSTORE FROM KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin/' IDENTIFIED BY password;
+      </copy>
+      ```
+      ii. Close the password-based keystore.
 
-   Execute the below statement after replacing password to close the password-based keystore created earlier.
-   ```console
-   <copy>
-   ADMINISTER KEY MANAGEMENT SET KEYSTORE CLOSE IDENTIFIED BY password;
-   </copy>
-   ```
-   iii. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
+      Execute the below statement after replacing password to close the password-based keystore created earlier.
+      ```text
+      <copy>
+      ADMINISTER KEY MANAGEMENT SET KEYSTORE CLOSE IDENTIFIED BY password;
+      </copy>
+      ```
+     iii. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
 
-   Execute below statement
-   ```console
-   <copy>
-   col WRL_PARAMETER for a55
-   set lines 150
-   select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
-   </copy>
-   ```
-   In the query output, verify that the TDE keystore STATUS is OPEN and WALLET_TYPE set to AUTOLOGIN, otherwise the auto-login keystore is not set up correctly.
-   Sample output is shown below.
-   ![Image showing auto login keystore status](./images/tde-autologin.png)
+     Execute below statement
+     ```text
+     <copy>
+     col WRL_PARAMETER for a55
+     set lines 150
+     select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
+     </copy>
+     ```
+     In the query output, verify that the TDE keystore STATUS is OPEN and WALLET_TYPE set to AUTOLOGIN, otherwise the auto-login keystore is not set up correctly.
+     Sample output is shown below.
+     ![Image showing auto login keystore status](./images/tde-autologin.png)
 
-   **d. Copy the keystore files to the second Oracle RAC node.**
+   d. Copy the keystore files to the second Oracle RAC node.
 
-   This is not applicable for the source database used in this lab.
+      This is not applicable for the source database used in this lab.
 
-   However follow the below steps in case you have RAC source database.
+      However follow the below steps in case you have RAC source database.
 
-   If you configured the keystore in a shared file system for Oracle RAC then no action is required.
+      If you configured the keystore in a shared file system for Oracle RAC then no action is required.
 
-   If you are enabling TDE for Oracle RAC database without shared access to the keystore, copy the following files to the same location on second node.
+      If you are enabling TDE for Oracle RAC database without shared access to the keystore, copy the following files to the same location on second node.
 
-   /u01/app/oracle/product/19c/dbhome_1/network/admin/ew*
+      /u01/app/oracle/product/19c/dbhome_1/network/admin/ew*
 
-   /u01/app/oracle/product/19c/dbhome_1/network/admin/cw*
+      /u01/app/oracle/product/19c/dbhome_1/network/admin/cw*
 
-**7. Snapshot controlfile for RAC Database.**
+7. Snapshot controlfile for RAC Database.
 
    This is not applicable for the source database that you have provisioned in this lab, However if you have RAC source database then follow below steps.
 
    If the source is an Oracle RAC database, and SNAPSHOT CONTROLFILE is not on a shared location, configure SNAPSHOT CONTROLFILE to point to a shared location on all Oracle RAC nodes to avoid the ORA-00245 error during backups to Oracle Object Store.
 
-   ```
+   ```text
    <copy>
    $ rman target /  
    RMAN> CONFIGURE SNAPSHOT CONTROLFILE NAME TO '+DATA/db_name/snapcf_db_name.f';
    </copy>
    ```
-**8. Controlfile auto backup.**
+8. Controlfile auto backup.
 
    Source database you have configured in this lab has controlfile autobackup on by default.
 
@@ -222,13 +222,13 @@ In this lab
    RMAN> CONFIGURE CONTROLFILE AUTOBACKUP ON;
    </copy>
    ```
-**9. Register database with srvctl.**
+9. Register database with srvctl.
 
    If the source database is deployed using Oracle Grid Infrastructure and the database is not registered using SRVCTL, then you must register the database before the migration.
 
    This is not applicable for the source database provisioned in this lab since it is not using Grid Infrastructure.
 
-**10. RMAN backup strategy.**
+10. RMAN backup strategy.
 
    There is no existing RMAN backup strategy for the source database that we have configured in this lab , so this can be ignored.
 
@@ -243,7 +243,7 @@ In this lab
    If archive logs were to be deleted on the source database, and these archive logs are needed by Zero Downtime Migration to synchronize the target cloud database, then these files should be restored so that Zero Downtime Migration can continue the migration process.
 
    
-**11. Ensure system time of source database, target database and ZDM host are in sync(Optional Step).** 
+11. Ensure system time of source database, target database and ZDM host are in sync(Optional Step). 
 
    Type "date" across source database , target database and ZDM host simultaneously and see whether they show the same time.
 

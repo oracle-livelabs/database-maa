@@ -50,9 +50,9 @@ In this lab
 
    TGT\_DB\_UNIQUE\_NAME - Value of target database DB\_UNIQUE\_NAME (ORCL\_T is the one for this lab).
 
-   MIGRATION\_METHOD - Specifies the migration method used (OFFLINE\_PHYSICAL is used this lab).
+   MIGRATION\_METHOD - Specifies the migration method used (OFFLINE\_PHYSICAL is used in this lab).
 
-   DATA\_TRANSFER\_MEDIUM - Specifies the media used for source database backup (Object Storage Service is used for this lab).
+   DATA\_TRANSFER\_MEDIUM - Specifies the media used for source database backup (Object Storage Service is used in this lab).
 
    HOST - Specifies the cloud storage REST endpoint URL to access Oracle Cloud Object Storage ( Please refer later steps to prepare this).
 
@@ -117,11 +117,13 @@ In this lab
 
    -srcauth    - Specify the plug-in-name to access the source database server.
 
-   This lab is using **zdmauth** which requires below arguments.
+     This lab is using **zdmauth** which requires below arguments.
 
-    -srcarg1 user:source_database_server_login_user_name 
-    -srcarg2 identity_file:ZDM_installed_user_private_key_file_location 
-    -srcarg3 sudo_location:sudo_location
+     -srcarg1 user:source\_database\_server\_login\_user_name
+
+     -srcarg2 identity\_file:ZDM\_installed\_user\_private\_key\_file\_location
+
+     -srcarg3 sudo\_location:sudo\_location
                  
    -targetnode - Host name of the target database server.
 
@@ -131,11 +133,13 @@ In this lab
 
    -tgtauth    - Specify the plug-in-name to access target database server.
 
-                 This lab is using **zdmauth** which requires below arguments.
+     This lab is using **zdmauth** which requires below arguments.
 
-                 -tgtarg1 user:target_database_server_login_user_name
-                 -tgtarg2 identity_file:ZDM_installed_user_private_key_file_location  
-                 -tgtarg3 sudo_location:sudo_location
+     -tgtarg1 user:target_database_server_login_user_name
+
+     -tgtarg2 identity_file:ZDM_installed_user_private_key_file_location 
+
+     -tgtarg3 sudo_location:sudo_location
 
    -eval       - Evaluates the migration job without actually running the migration job against the source and target.
 
@@ -173,9 +177,9 @@ In this lab
 
 1. Create **HR01.EMP** table in source database.
 
-   We will create a user called **HR01** and a table called **EMP** under PDB called **ORCLPDB** in the source database.
+   You will create a user called **HR01** and a table called **EMP** under PDB called **ORCLPDB** in the source database.
 
-   This is to enable us to perform a quick check on the success of database migration.
+   This is to enable you to perform a quick check on the success of database migration.
 
    a. Login to source database server.
 

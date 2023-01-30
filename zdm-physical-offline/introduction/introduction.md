@@ -19,15 +19,39 @@ The Zero Downtime Migration software offers a command line interface that you in
 
 
 
-### Migration Paths
-ZDM supports on-premises databases to be migrated to a variety of Oracle Cloud Database Services and the Exadata Database Machine On-Premises:  
-*	Oracle Database Cloud Service	(Bare Metal & Virtual Machine)
-*	Oracle Exadata Cloud Service
-*	Oracle Exadata Cloud at Customer
-*	Oracle Autonomous Database - Oracle Autonomous Transaction Processing  (Dedicated and Shared)
-* Oracle Autonomous Database - Oracle Autonomous Data Warehouse (Dedicated and Shared)
+### Supported Physical Migration Paths
 
+Zero Downtime Migration supports the following physical migration paths.
 
+* On-premises Oracle Database to Oracle Cloud Infrastructure (either virtual machine or bare metal)
+* On-premises Oracle Database to Exadata Cloud Service
+* On-premises Oracle Database to Oracle Exadata Cloud at Customer
+* On-premises Oracle Database to On-Premises Exadata Database Machine
+* Oracle Cloud Infrastructure Classic Database to Oracle Cloud Infrastructure (either virtual machine or bare metal)
+* Oracle Cloud Infrastructure Database to a database in another Oracle Cloud Infrastructure region
+  For example, you can move a database from the phoenix commercial OCI region to the frankfurt or ashburn region.
+
+### Supported Logical Migration Targets
+
+Zero Downtime Migration supports logical database migration to the following target databases.
+
+* Oracle Autonomous Database Shared (Data Warehouse or Transaction Processing)
+* Oracle Autonomous Database Dedicated Infrastructure (Data Warehouse or Transaction Processing)
+* Oracle Autonomous Database on Exadata Cloud@Customer
+* Oracle Co-managed Database Systems:
+  Virtual Machine
+  Bare Metal
+  Exadata Cloud Service
+  Exadata Cloud at Customer
+* On premises Exadata Database Machine
+* Autonomous Database on Dedicated Infrastructure and Autonomous Database on Cloud@Customer with fractional OCPU allocation, where a   
+  fraction of OCPU is allocated per database service, instead of integer OCPU.
+
+  You can specify any predefined fractional service alias available; however, for Autonomous Transaction Processing workloads TP* services are preferred over LOW* services because LOW* is meant for low priority batch jobs.
+
+  * TP_TLS, TP, LOW_TLS, or LOW (for Autonomous Transaction Processing workloads)
+  * LOW_TLS or LOW (for Autonomous Data Warehouse workloads)
+  
 ### Migration Workflows
 
 

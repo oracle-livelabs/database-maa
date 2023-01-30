@@ -6,7 +6,7 @@ You must create a placeholder target database before beginning a migration to th
 
 The placeholder target database is overwritten during migration, but it retains the overall configuration.
 
-Please note for the release of Zero Downtime Migration (21.3) , only Grid Infrastructure-based database services are supported as targets. For example, an LVM-based instance or an instance created in compute node without Grid Infrastructure are not supported targets.
+Please note as of Zero Downtime Migration Release 21.3 , only Grid Infrastructure-based database services are supported as targets. For example, an LVM-based instance or an instance created in compute node without Grid Infrastructure are not supported targets.
 
 You must use the control plane for the creation of a target placeholder database on Exadata Cloud Service and Exadata Cloud at Customer.
 
@@ -59,13 +59,13 @@ In this lab
 
    Type **. oraenv** and press **Enter**.
     
-   Enter **ORCL** when asked for **ORACLE_SID** and then press **Enter** .   --> Enter your database name if that is different in case of an on-premises database.
+   Enter **ORCL** when asked for **ORACLE_SID** and then press **Enter** .   --> Enter your **ORACLE\_SID** if that is different in case of an on-premises database.
 
 4. Check the database version of the source database.
 
-   In this livelab you have used Oracle Marketplace image for source database for which you know the version that you have selected.
+   Please check the source database version that was selected while provisioning the source database using Marketplace Image in Lab 2.
 
-   However , in case you would like to know the database version with latest patches then please use the below command.
+   In case you would like know the database version for your on-premises database then refer the below steps.
     
    Execute **opatch lsinventory** command as **oracle** user.
 
@@ -73,9 +73,9 @@ In this lab
 
 5. Check the database edition of the source database.
 
-   In this livelab you have used Oracle Marketplace image for source database which uses Oracle Database Enterprise Edition.
+   Your source database is in **Enterprise Edition** since the Oracle Marketplace Image used in previous lab provisions Enterprise Edition database.
 
-   However , in case you would like know the database edition for your on-premises database then refer the below steps.
+   In case you would like know the database edition for your on-premises database then refer the below steps.
 
    Execute the below query after connecting to database using sqlplus.
      ```console

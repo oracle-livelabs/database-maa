@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Estimated Time: 30 minutes
+Estimated Time: 40 minutes
 
 ### Objectives
 
@@ -253,7 +253,7 @@ In this lab
 
    Change the permission of private key as below.
 
-   chmod 600 **key_file_name**
+   chmod 600 **key\_file\_name**
 
 3. Verify SSH connectivity from ZDM to Source and Target DB system.
 

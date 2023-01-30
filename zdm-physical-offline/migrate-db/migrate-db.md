@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Estimated Time: 30 mins
+Estimated Time: 45 minutes
 
 ### Objectives
 
@@ -315,7 +315,8 @@ In this lab
    If you receive similar output as below which means database migration has been successfully completed.
    ![Image showing select output from target after migration](./images/target-select-after-migration.png)
 
-   Congrats, you have completed ZDM Physical Offline Migration Live Lab.
+
+Congrats, you have completed ZDM Physical Offline Migration Live Lab.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering

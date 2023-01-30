@@ -97,7 +97,7 @@ In this lab
 
    **$ZDM_HOME/bin/zdmservice status**
 
-   If the **running** shows as **false** then use below command to start ZDM.
+   If you the **running** as **false** in the command ouptut then use below command to start ZDM.
 
    **$ZDM_HOME/bin/zdmservice start**
 
@@ -157,7 +157,7 @@ In this lab
 
    Check the status of database migration evaluation using below command.
 
-   $ZDM_HOME/bin/zdmcli query job -jobid 3
+   **$ZDM_HOME/bin/zdmcli query job -jobid 3**
 
    here 3 is the jobid.
 
@@ -165,7 +165,7 @@ In this lab
 
    ![Image showing intermediate status of migration evaluation](./images/evaluation-status.png)
 
-   Continue to execute the status command until all phases have been completed with status "PRECHECK_PASSED" as shown below.
+   Continue to execute the status command until all phases have been completed with status **PRECHECK_PASSED** as shown below.
 
    ![Image showing final status of migration evaluation](./images/evaluation-final.png)
 
@@ -185,7 +185,7 @@ In this lab
 
    Login to CDB using sqlplus and then switch to ORCLPDB using below command.
 
-   alter session set container=ORCLPDB;
+   **alter session set container=ORCLPDB;**
 
    Execute below statements
     ```text
@@ -241,9 +241,9 @@ In this lab
 
 3. Start the database migration
 
-   We are now good to start the database migration.
+   You are now good to start the database migration.
 
-   We will use the same command used for database migration evaluation except that **-eval** flag is not required.
+   You will use the same command used for database migration evaluation except that **-eval** flag is not required.
 
    a. Login to ZDM service host.
 
@@ -258,11 +258,11 @@ In this lab
    c. Execute database migration as below.
 
    Execute below command to start the database migration.
-   ```console
-   <copy>
-   $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxx.xxxx@xxxcle.com" -rsp /home/zdmuser/physical_offline.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
-   </copy>
-   ```
+    ```text
+    <copy>
+    $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxx.xxxx@xxxcle.com" -rsp /home/zdmuser/physical_offline.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
+    </copy>
+    ```
    ![Image showing the command to start database migration](./images/migration-start.png)
 
    Please provide the SYS password of source database and Auth token when asked.
@@ -277,7 +277,7 @@ In this lab
 
    ![Image showing interim migration status](./images/migration-status.png)
 
-   You can see the **JOB\_TYPE** is **MIGRATE** which is different from **JOB\_TYPE** (EVAL) for the database migration evaluation.
+   You will see the **JOB\_TYPE** is **MIGRATE** which is different from **JOB\_TYPE** (EVAL) for the database migration evaluation.
       
    Continue to monitor the status until all phases have been completed with **COMPLETED** status as shown below.
 
@@ -297,7 +297,7 @@ In this lab
 
    Connect to CDB using sqlplus and switch to ORCLPDB using below command.
 
-   alter session set container=ORCLPDB;
+   **alter session set container=ORCLPDB;**
 
    c. Verify existence of HR01.EMP table.
 

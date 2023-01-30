@@ -159,7 +159,7 @@ In this lab
 
    **$ZDM_HOME/bin/zdmcli query job -jobid 3**
 
-   here 3 is the jobid.
+   Here 3 is the jobid.
 
    You will receive a similar ouput as below.
 

@@ -70,7 +70,7 @@ In this lab
 
    Use the below format.
 
-   **https://swiftobjectstorage.&lt:region\_name&gt:.oraclecloud.com/v1/&lt:objectstorage\_namespace&gt:**
+   **https://swiftobjectstorage.&ltregion\_name&gt.oraclecloud.com/v1/&ltobjectstorage\_namespace&gt**
 
    Replace **region\_name** and **objectstorage\_namespace** with your corresponding values.
 
@@ -97,7 +97,9 @@ In this lab
 
    **$ZDM_HOME/bin/zdmservice status**
 
-   If you see **running** as **false** in the command ouptut then use below command to start ZDM.
+   If the above command output shows **running** as **false**, then the ZDM service is down.
+   
+   Please use the below command to start the ZDM service.
 
    **$ZDM_HOME/bin/zdmservice start**
 
@@ -117,13 +119,13 @@ In this lab
 
    -srcauth    - Specify the plug-in-name to access the source database server.
 
-     This lab is using **zdmauth** which requires below arguments.
+      This lab is using **zdmauth** which requires below arguments.
 
-     -srcarg1 user:source\_database\_server\_login\_user_name
+     -srcarg1 user:**source\_database\_server\_login\_user_name**
 
-     -srcarg2 identity\_file:ZDM\_installed\_user\_private\_key\_file\_location
+     -srcarg2 identity\_file:**ZDM\_installed\_user\_private\_key\_file\_location**
 
-     -srcarg3 sudo\_location:sudo\_location
+     -srcarg3 sudo\_location:**sudo\_location**
                  
    -targetnode - Host name of the target database server.
 
@@ -133,23 +135,23 @@ In this lab
 
    -tgtauth    - Specify the plug-in-name to access target database server.
 
-     This lab is using **zdmauth** which requires below arguments.
+      This lab is using **zdmauth** which requires below arguments.
 
-     -tgtarg1 user:target_database_server_login_user_name
+     -tgtarg1 user:**target\_database\_server\_login\_user_name**
 
-     -tgtarg2 identity_file:ZDM_installed_user_private_key_file_location 
+     -tgtarg2 identity_file:**ZDM\_installed\_user\_private\_key\_file\_location 
 
-     -tgtarg3 sudo_location:sudo_location
+     -tgtarg3 sudo_location:**sudo\_location**
 
-   -eval       - Evaluates the migration job without actually running the migration job against the source and target.
+    -eval       - Evaluates the migration job without actually running the migration job against the source and target.
 
-   Please refer below document to know more about the parameters used in migration command.
+     Please refer below document to know more about the parameters used in migration command.
 
-   https://docs.oracle.com/en/database/oracle/zero-downtime-migration/index.html
+     https://docs.oracle.com/en/database/oracle/zero-downtime-migration/index.html
 
 4. Perform database migration evaluation.
 
-   Once you have updated the evaluation command then proceed to execute the command as below.
+   Please proceed with the migration evaluation once you have the command updated for your environment.
 
    ![Image showing execution of migration evaluation command](./images/evaluation-start.png)
 
@@ -213,7 +215,7 @@ In this lab
     </copy>
     ```
 
-    You will receive the below output.
+    You will receive the below output which shows that there are 2 rows in HR01.EMP table.
 
     ![Image showing output of select statement from source database](./images/source-select.png)
 
@@ -229,7 +231,7 @@ In this lab
 
    Connect to CDB using sqlplus and switch to ORCL_PDB1 using below command.
 
-   alter session set container=ORCL_PDB1;
+   **alter session set container=ORCL_PDB1;**
 
    c. Verify existence of HR01.EMP table.
 
@@ -271,7 +273,7 @@ In this lab
 
    Please provide the SYS password of source database and Auth token when asked.
 
-   Also note down the Migration Job ID which is 4 in this case.
+   Also note down the migration job ID which is 4 in this case.
    
    d. Monitor the database migration using below command.
 

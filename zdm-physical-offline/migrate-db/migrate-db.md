@@ -16,89 +16,134 @@ In this lab
 
 ### Prerequisites
 
-This lab assumes you have :
-
-* Oracle Cloud Account
-
 * All previous labs have been successfully completed.
 
 ## Task 1 : Prepare Response File
 
-**1. Login to ZDM service host.**
+1. Login to ZDM service host.
 
    Login to ZDM service host using Public IP and ssh key.
 
-**2. Switch user to zdmuser.**
+2. Switch user to **zdmuser**.
 
-   Switch user to "zdmuser" using below command.
+   Switch user to **zdmuser** using below command.
 
-   sudo su - zdmuser
+   **sudo su - zdmuser**
       
-**3. Prepare a response file.**
+3. Prepare a response file.
 
-   Below is sample response file which you can use for ZDM Physical Offline Migration.
+   Below is a sample response file which you can use for ZDM Physical Offline Migration.
+   
+    ```text 
+    <copy>
+    TGT_DB_UNIQUE_NAME=ORCL_T
+    MIGRATION_METHOD=OFFLINE_PHYSICAL
+    DATA_TRANSFER_MEDIUM=OSS
+    HOST=https://swiftobjectstorage.uk-london-1.oraclecloud.com/v1/xxxxxxxxx
+    OPC_CONTAINER=ZDM-Physical
+    PLATFORM_TYPE=VMDB
+    SHUTDOWN_SRC=TRUE
+    </copy>
+    ```
 
-   Please note that this response file uses Oracle Object Storage to keep the source database backup and the target database is Oracle Base Database(specified as VMDB).
+   Below is a brief description of the parameters used in the above response file.
 
-   ```console 
-   <copy>
-   TGT_DB_UNIQUE_NAME=ORCL_T
-   MIGRATION_METHOD=OFFLINE_PHYSICAL
-   DATA_TRANSFER_MEDIUM=OSS
-   HOST=https://swiftobjectstorage.uk-london-1.oraclecloud.com/v1/xxxxxxxxx
-   OPC_CONTAINER=ZDM-Physical
-   PLATFORM_TYPE=VMDB
-   SHUTDOWN_SRC=TRUE
-   </copy>
-   ```
-   Please note that above response file has already been updated for this lab except for HOST which is specific for your environment. 
+   TGT_DB_UNIQUE_NAME - Value of target database DB_UNIQUE_NAME (ORCL_T is the one for this lab).
 
-   Use below method to prepare HOST value.
+   MIGRATION_METHOD - Specifies the migration method used (OFFLINE_PHYSICAL is used this lab).
+
+   DATA_TRANSFER_MEDIUM - Specifies the media used for source database backup (Object Storage Service is used for this lab).
+
+   HOST - Specifies the cloud storage REST endpoint URL to access Oracle Cloud Object Storage ( Please refer later steps to prepare this).
+
+   OPC_CONTAINER - Specifies the Object Storage Bucket used for source database backup.
+
+   PLATFORM_TYPE - Specifies the target database platform (VMDB is used for this lab which indicates target platform is Oracle Cloud Infrastructure(OCI) virtual machine or bare metal).
+
+   SHUTDOWN_SRC - Specifies whether or not to shut down the source database after migration completes (TRUE indicates source database will be shutdown after migration).
+
+   Please refer response file section of below document for more details about each parameter.
+
+   https://docs.oracle.com/en/database/oracle/zero-downtime-migration/index.html
+
+   Use below method to prepare HOST value for your environment.
 
    Use the below format.
 
-   "https://swiftobjectstorage.&lt:region\_name&gt:.oraclecloud.com/v1/&lt:objectstorage\_namespace&gt:".
+   **https://swiftobjectstorage.&lt:region\_name&gt:.oraclecloud.com/v1/&lt:objectstorage\_namespace&gt:**.
 
-   Replace "region\_name" and "objectstorage\_namespace" with your corresponding values.
+   Replace **region\_name** and **objectstorage\_namespace** with your corresponding values.
 
-   "objectstorage\_namespace" values for your environment  was collected in Lab 7 Task 1.
+   **objectstorage\_namespace** value for your environment was collected in Lab 7 Task 1.
 
-   Save the contents to a file named as "physical\_offline.rsp" file under /home/zdmuser.
+   Save the response file parameters to a file named as **physical\_offline.rsp** under directory **/home/zdmuser**.
 
-   Please note that you can prepare your own response file if required to satisfy your requirements.
+   Please note that this lab is using minimal parameters for migration , however more flexibility and control can be achieved by using other available options in the response file section of the below document.
 
+   **https://docs.oracle.com/en/database/oracle/zero-downtime-migration/index.html**
+
+   
 ## Task 2 : Start Database Migration Evaluation
 
-**1. Login to ZDM service host.**
+1. Login to ZDM service host.
 
-   Login to ZDM service host and switch the user to "zdmuser".
+   Login to ZDM service host and switch the user to **zdmuser**.
 
-**2. Check the status of ZDM service.**
+2. Check the status of ZDM service.
 
-   export ZDM_HOME=/home/zdmuser/zdmhome
+   Execute below commands.
 
-   $ZDM_HOME/bin/zdmservice status
+   **export ZDM_HOME=/home/zdmuser/zdmhome**
 
-   if the "running" shows as "false" then use below command to start ZDM.
+   **$ZDM_HOME/bin/zdmservice status**
 
-   $ZDM_HOME/bin/zdmservice start
+   If the **running** shows as **false** then use below command to start ZDM.
 
-**3. Prepare command for ZDM Physical Offline Migration Evaluation.**
+   **$ZDM_HOME/bin/zdmservice start**
+
+3. Prepare command for ZDM Physical Offline Migration Evaluation.
 
    Use the below sample command for ZDM database migration evaluation and update it as per your environment.
 
-   ```console
-   <copy>
-   $ZDM_HOME/bin/zdmcli migrate database  -sourcesid ORCL  -sourcenode zdm-source-db  -srcauth zdmauth  -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key  -srcarg3 sudo_location:/bin/sudo  -targetnode zdm-target-db  -backupuser "xxxxxxxx/xxxxxx.xxxxx@xxxxx.com"  -rsp /home/zdmuser/physical_offline.rsp  -tgtauth zdmauth  -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key  -tgtarg3 sudo_location:/usr/bin/sudo -eval
-   </copy>
-   ```
+    ```text
+    <copy>
+    $ZDM_HOME/bin/zdmcli migrate database  -sourcesid ORCL  -sourcenode zdm-source-db  -srcauth zdmauth  -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key  -srcarg3 sudo_location:/bin/sudo  -targetnode zdm-target-db  -backupuser "xxxxxxxx/xxxxxx.xxxxx@xxxxx.com"  -rsp /home/zdmuser/physical_offline.rsp  -tgtauth zdmauth  -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key  -tgtarg3 sudo_location:/usr/bin/sudo -eval
+    </copy>
+    ```
   
-  Please refer below document to know more about the parameters used in migration command.
+   Below is a brief description of the parameters used in above command.
 
-  https://docs.oracle.com/en/database/oracle/zero-downtime-migration/21.3/zdmug/zero-downtime-migration-zdmcli-command-reference.html#GUID-37ABF830-2FC3-4F71-9132-DF05DCFABBB9
+   -sourcesid  - ORACLE_SID of the source single instance database without Grid Infrastructure.
 
+   -srcauth    - Specify the plug-in-name to access the source database server.
 
-**4. Perform database migration evaluation.**
+                 This lab is using **zdmauth** which requires below arguments.
+
+                 -srcarg1 user:source_database_server_login_user_name 
+                 -srcarg2 identity_file:ZDM_installed_user_private_key_file_location 
+                 -srcarg3 sudo_location:sudo_location
+                 
+   -targetnode - Host name of the target database server.
+
+   -backupuser - Name of the OCI tenancy user allowed to backup or restore the database.
+
+   -rsp        - Location of the Zero Downtime Migration response file.
+
+   -tgtauth    - Specify the plug-in-name to access target database server.
+
+                 This lab is using **zdmauth** which requires below arguments.
+
+                 -tgtarg1 user:target_database_server_login_user_name
+                 -tgtarg2 identity_file:ZDM_installed_user_private_key_file_location  
+                 -tgtarg3 sudo_location:sudo_location
+
+   -eval       - Evaluates the migration job without actually running the migration job against the source and target.
+
+   Please refer below document to know more about the parameters used in migration command.
+
+   **https://docs.oracle.com/en/database/oracle/zero-downtime-migration/index.html**
+
+4. Perform database migration evaluation.
 
    Once you have updated the evaluation command then proceed to execute the command as below.
 
@@ -108,7 +153,7 @@ This lab assumes you have :
 
    Also note down the Migration Job ID which is 3 in this case.
 
-**5. Monitor the database migration evaluation.**
+5. Monitor the database migration evaluation.
 
    Check the status of database migration evaluation using below command.
 
@@ -126,9 +171,9 @@ This lab assumes you have :
 
 ## Task 3 : Start Database Migration
 
-**1. Create HR01.EMP table in source database.**
+1. Create **HR01.EMP** table in source database.
 
-   We will create a user called "HR01" and a table called "EMP" under PDB called ORCLPDB in the source database.
+   We will create a user called **HR01** and a table called **EMP** under PDB called **ORCLPDB** in the source database.
 
    This is to enable us to perform a quick check on the success of database migration.
 
@@ -143,34 +188,34 @@ This lab assumes you have :
    alter session set container=ORCLPDB;
 
    Execute below statements
-   ```console
-   <copy>
-   create user hr01 identified by "password";
-   grant resource , connect to hr01;
-   alter user hr01 quota unlimited on users;
-   create table hr01.emp(ename varchar2(20),eno number);
-   insert into hr01.emp values('Alpha',1);
-   insert into hr01.emp values('Beta',2);
-   commit;
-   </copy>
-   ```
+    ```text
+    <copy>
+    create user hr01 identified by "password";
+    grant resource , connect to hr01;
+    alter user hr01 quota unlimited on users;
+    create table hr01.emp(ename varchar2(20),eno number);
+    insert into hr01.emp values('Alpha',1);
+    insert into hr01.emp values('Beta',2);
+    commit;
+    </copy>
+    ```
 
    c. Verify the data in HR01.EMP table.
 
    Execute below statement when you are in ORCLPDB.
-   ```console
-   <copy>
-   select * from hr01.emp;
-   </copy>
-   ```
+    ```text
+    <copy>
+    select * from hr01.emp;
+    </copy>
+    ```
 
-   You will receive the below output.
+    You will receive the below output.
 
-   ![Image showing output of select statement from source database](./images/source-select.png)
+    ![Image showing output of select statement from source database](./images/source-select.png)
 
-**2. Verify HR01.EMP table in target database.**
+2. Verify **HR01.EMP** table in target database.
 
-   We know that there is no HR01.EMP table in target database , However let's verify it.
+   There is no HR01.EMP table in target database , However let's verify it.
 
    a. Connect to target database server.
 
@@ -184,33 +229,33 @@ This lab assumes you have :
 
    c. Verify existence of HR01.EMP table.
 
-   ```console
-   <copy>
-   select * from hr01.emp;
-   </copy>
-   ```
+    ```text
+    <copy>
+    select * from hr01.emp;
+    </copy>
+    ```
 
    You will receive an output similar to the one below indicating that HR01.EMP table doesn't exist in target database which is expected.
 
    ![Image showing select statement output from target before migration](./images/target-select-before-migration.png)
 
-**3. Start the database migration**
+3. Start the database migration
 
    We are now good to start the database migration.
 
-   We can use the same command used for database migration evaluation except that "-eval" flag is not required.
+   We will use the same command used for database migration evaluation except that **-eval** flag is not required.
 
-   **a. Login to ZDM service host.**
+   a. Login to ZDM service host.
 
    Login to ZDM service host using Public IP and ssh key.
 
-   **b. Switch user to zdmuser.**
+   b. Switch user to zdmuser.
 
-   Switch user to "zdmuser" using below command.
+   Switch user to **zdmuser** using below command.
 
-   sudo su - zdmuser
+   **sudo su - zdmuser**
    
-   **c. Execute database migration as below.**
+   c. Execute database migration as below.
 
    Execute below command to start the database migration.
    ```console
@@ -224,25 +269,25 @@ This lab assumes you have :
 
    Also note down the Migration Job ID which is 4 in this case.
    
-   **d. Monitor the database migration using below command.**
+   d. Monitor the database migration using below command.
 
-   $ZDM_HOME/bin/zdmcli query job -jobid 4
+   **$ZDM_HOME/bin/zdmcli query job -jobid 4**
 
    You will get a output similar to below.
 
    ![Image showing interim migration status](./images/migration-status.png)
 
-   You can see the "JOB\_TYPE" is "MIGRATE" which is different from the "JOB\_TYPE" (EVAL)for the database migration evaluation.
+   You can see the **JOB\_TYPE** is **MIGRATE** which is different from **JOB\_TYPE** (EVAL) for the database migration evaluation.
       
-   Continue to monitor the status until all phases have been completed with "COMPLETED" status as shown below.
+   Continue to monitor the status until all phases have been completed with **COMPLETED** status as shown below.
 
    ![Image showing final status of migration](./images/migration-final.png)
 
-**4. Verify the database migration.**
+4. Verify the database migration.
 
    ZDM has completed the database migration as seen in the previous output.
 
-   Let's verify the HR01.EMP table in target database.
+   Let's verify the **HR01.EMP** table in target database.
 
    a. Connect to target database server.
 
@@ -256,15 +301,15 @@ This lab assumes you have :
 
    c. Verify existence of HR01.EMP table.
 
-   ```console
-   <copy>
-   select * from hr01.emp;
-   </copy>
-   ```
+    ```text
+    <copy>
+    select * from hr01.emp;
+    </copy>
+    ```
    If you receive similar output as below which means database migration has been successfully completed.
    ![Image showing select output from target after migration](./images/target-select-after-migration.png)
 
-   Congrats, you have completed ZDM Physical Offline Migration Lab.
+   Congrats, you have completed ZDM Physical Offline Migration Live Lab.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering

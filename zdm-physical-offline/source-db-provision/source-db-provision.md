@@ -105,6 +105,7 @@ In this lab
 
 12. Take a note of the Public IP address of the compute instance which will used in later labs to access the source database system.
 
+
 You may now **proceed to the next lab**.
 
 ## Acknowledgements

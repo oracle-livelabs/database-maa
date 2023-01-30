@@ -33,13 +33,13 @@ In this lab
 
    ![Image showing option to create compute instance](./images/create-instance.png)
 
-4. Enter name for compute.
+4. Enter **Name** for compute.
 
    Enter **zdm-host** as name for compute and select appropriate **compartment** if it is not already done.
 
    ![Image showing the name to be entered for compute](./images/compute-name.png)
 
-5. Leave the "Placement" section as it is.
+5. Leave the **Placement** section as it is.
 
 6. Select correct image.
 
@@ -59,7 +59,7 @@ In this lab
 
 8. Upload SSH Keys.
 
-   Under **Add SSH Keys** , upload the public ssh key generated earlier.
+   Under **Add SSH keys** , upload the public ssh key generated earlier.
 
    ![Image showing option to upload ssh kesy](./images/ssh.png)
 
@@ -70,7 +70,7 @@ In this lab
    ![Image showing custom boot volume size](./images/boot.png)
 10. Click on **Create** to start the provisioning of compute.
 
-    In less than few minutes ZDM compute instance will be provisioned.
+    In less than a few minutes ZDM compute instance will be provisioned.
 
 ## Task 2 : Configure ZDM Service
 
@@ -82,7 +82,7 @@ In this lab
 
    Execute below command as **opc** user and **press y and Enter** when asked.
 
-   sudo /usr/libexec/oci-growfs
+   **sudo /usr/libexec/oci-growfs**
 
    You will see an output similar to the one below.
 
@@ -253,7 +253,7 @@ In this lab
 
    Change the permission of private key as below.
 
-   chmod 600 <key_file_name>
+   chmod 600 **key_file_name**
 
 3. Verify SSH connectivity from ZDM to Source and Target DB system.
 

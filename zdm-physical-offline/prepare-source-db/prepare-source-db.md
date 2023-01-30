@@ -32,7 +32,7 @@ In this lab
 
    Type **. oraenv** and press **Enter**. 
     
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your DB name if that is different in case of an on premises-database).
+   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).
 
 3. Check whether source database is using spfile.
 
@@ -54,13 +54,7 @@ In this lab
 
 4. Check the compatible parameter on source database.
 
-   In this livelab compatible parameter on both source and target database have already been set to 19.0.0 , so no action is required.
-
-   However in case you have provisioned source and target database using any other method not used in this lab , then use the below procedure.
-
    Execute **show parameter compatible** on source and target database and ensure they are set to same value.
-
-   If you find that compatible parameter on target database can't be modified since it is already on the maximum possible value then you can change the compatible parameter in source database.
 
    Please note that changing compatible parameter can't be reversed unlesss you restore the entire database backup, so plan accordingly for your production source databases.
 
@@ -68,7 +62,7 @@ In this lab
 
    This migration requires source database must be running in ARCHIVELOG mode.
 
-   However source database we have provisioned in this livelab is not running in ARCHIVELOG mode by default. 
+   Source database we have provisioned in this livelab is not running in ARCHIVELOG mode by default. 
 
    Please follow below document and enable ARCHIVELOG mode.
 
@@ -78,9 +72,7 @@ In this lab
 6. Configure TDE Wallet.
 
    For Oracle Database 12c Release 2 and later, if the source database does not have Transparent Data Encryption (TDE) enabled, then it is mandatory that you configure the TDE wallet before migration begins. You need not encrypt the data in the source database; the data is encrypted at target using the wallet setup in the source database. The WALLET_TYPE can be AUTOLOGIN (preferred) or PASSWORD based.
-
-   Ensure that the wallet STATUS is OPEN and **WALLET\_TYPE** is **AUTOLOGIN** (For an AUTOLOGIN wallet type), or **WALLET\_TYPE** is **PASSWORD** (For a PASSWORD based wallet type). 
-   
+    
    For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
 
    Let's check the status of encryption in your source database.
@@ -158,7 +150,7 @@ In this lab
 
       ![Image showing status of password based keystore](images/tde-password.png)
 
-      We will use an auto-login keystore in this lab and for that we need to complete additional steps as mentioned below.
+      You will use an auto-login keystore in this lab and for that you need to complete additional steps as mentioned below.
    
    c. Creation of auto-login keystore.
    
@@ -197,7 +189,7 @@ In this lab
 
       This is not applicable for the source database used in this lab.
 
-      However follow the below steps in case your have source database is RAC enabled.
+      Follow the below steps in case your have source database is RAC enabled.
 
       If you configured the keystore in a shared file system for Oracle RAC then no action is required.
 
@@ -221,7 +213,7 @@ In this lab
      ```
 8. Controlfile auto backup.
 
-   Source database you have configured in this lab has controlfile autobackup on by default.
+   This step can be ignored fort he source database you have configured in this lab since it has controlfile autobackup on by default.
 
    If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
 
@@ -232,15 +224,15 @@ In this lab
      ```
 9. Register database with srvctl.
 
+   This step is not applicable for the source database provisioned in this lab since it is not using Grid Infrastructure.
+
    If the source database is deployed using Oracle Grid Infrastructure and the database is not registered using SRVCTL, then you must register the database before the migration.
-
-   This is not applicable for the source database provisioned in this lab since it is not using Grid Infrastructure.
-
+   
 10. RMAN backup strategy.
 
-   There is no existing RMAN backup strategy for the source database that we have configured in this lab , so this step can be ignored for this lab.
+   This step can be ignored for this lab since there is no existing RMAN backup strategy for the source database used in this lab.
 
-   However if your source database has existing RMAN backups then follow below procedure.
+   If your source database has existing RMAN backups then follow below procedure.
 
    To preserve the source database Recovery Time Objective (RTO) and Recovery Point Objective (RPO) during the migration, the existing RMAN backup strategy should be maintained.
 
@@ -259,7 +251,6 @@ In this lab
 
    Please use NTP in case you need to adjust time.
 
-You have successfully completed source database preparation steps.
 
 You may now **proceed to the next lab**.
 

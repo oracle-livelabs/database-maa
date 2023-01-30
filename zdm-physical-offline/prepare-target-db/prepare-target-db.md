@@ -33,7 +33,7 @@ In this lab
 
    Type **. oraenv** and press **Enter**. 
     
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your DB name if that is different than the one used in this lab).
+   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different than the one used in this lab).
 
    
 3. Check whether target database is using spfile.
@@ -122,8 +122,6 @@ In this lab
    Ensure that encryption algorithm specificed in sqlnet.ora in target database Oracle Home is same as source database Oracle Home.
 
    This is not mandatory for ZDM Physical Offline Migration , however it is recommended.
-
-You have successfully completed target database preparation steps.
 
 You may now **proceed to the next lab**.
 

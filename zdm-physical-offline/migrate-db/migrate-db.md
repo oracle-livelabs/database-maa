@@ -48,11 +48,11 @@ In this lab
 
    Below is a brief description of the parameters used in the above response file.
 
-   TGT_DB_UNIQUE_NAME - Value of target database DB_UNIQUE_NAME (ORCL_T is the one for this lab).
+   TGT\_DB\_UNIQUE\_NAME - Value of target database DB\_UNIQUE\_NAME (ORCL\_T is the one for this lab).
 
-   MIGRATION_METHOD - Specifies the migration method used (OFFLINE_PHYSICAL is used this lab).
+   MIGRATION\_METHOD - Specifies the migration method used (OFFLINE\_PHYSICAL is used this lab).
 
-   DATA_TRANSFER_MEDIUM - Specifies the media used for source database backup (Object Storage Service is used for this lab).
+   DATA\_TRANSFER\_MEDIUM - Specifies the media used for source database backup (Object Storage Service is used for this lab).
 
    HOST - Specifies the cloud storage REST endpoint URL to access Oracle Cloud Object Storage ( Please refer later steps to prepare this).
 
@@ -62,7 +62,7 @@ In this lab
 
    SHUTDOWN_SRC - Specifies whether or not to shut down the source database after migration completes (TRUE indicates source database will be shutdown after migration).
 
-   Please refer response file section of below document for more details about each parameter.
+   Please refer below document for more details about each parameter.
 
    https://docs.oracle.com/en/database/oracle/zero-downtime-migration/index.html
 
@@ -70,7 +70,7 @@ In this lab
 
    Use the below format.
 
-   **https://swiftobjectstorage.&lt:region\_name&gt:.oraclecloud.com/v1/&lt:objectstorage\_namespace&gt:**.
+   **https://swiftobjectstorage.&lt:region\_name&gt:.oraclecloud.com/v1/&lt:objectstorage\_namespace&gt:**
 
    Replace **region\_name** and **objectstorage\_namespace** with your corresponding values.
 
@@ -78,9 +78,9 @@ In this lab
 
    Save the response file parameters to a file named as **physical\_offline.rsp** under directory **/home/zdmuser**.
 
-   Please note that this lab is using minimal parameters for migration , however more flexibility and control can be achieved by using other available options in the response file section of the below document.
+   Please note that this lab is using minimal parameters for migration , however more flexibility and control can be achieved by using other available options in the below document.
 
-   **https://docs.oracle.com/en/database/oracle/zero-downtime-migration/index.html**
+   https://docs.oracle.com/en/database/oracle/zero-downtime-migration/index.html
 
    
 ## Task 2 : Start Database Migration Evaluation
@@ -97,7 +97,7 @@ In this lab
 
    **$ZDM_HOME/bin/zdmservice status**
 
-   If you the **running** as **false** in the command ouptut then use below command to start ZDM.
+   If you see **running** as **false** in the command ouptut then use below command to start ZDM.
 
    **$ZDM_HOME/bin/zdmservice start**
 
@@ -117,11 +117,11 @@ In this lab
 
    -srcauth    - Specify the plug-in-name to access the source database server.
 
-                 This lab is using **zdmauth** which requires below arguments.
+   This lab is using **zdmauth** which requires below arguments.
 
-                 -srcarg1 user:source_database_server_login_user_name 
-                 -srcarg2 identity_file:ZDM_installed_user_private_key_file_location 
-                 -srcarg3 sudo_location:sudo_location
+    -srcarg1 user:source_database_server_login_user_name 
+    -srcarg2 identity_file:ZDM_installed_user_private_key_file_location 
+    -srcarg3 sudo_location:sudo_location
                  
    -targetnode - Host name of the target database server.
 
@@ -141,7 +141,7 @@ In this lab
 
    Please refer below document to know more about the parameters used in migration command.
 
-   **https://docs.oracle.com/en/database/oracle/zero-downtime-migration/index.html**
+   https://docs.oracle.com/en/database/oracle/zero-downtime-migration/index.html
 
 4. Perform database migration evaluation.
 
@@ -151,7 +151,7 @@ In this lab
 
    Please provide the SYS password of source database and Auth token when asked.
 
-   Also note down the Migration Job ID which is 3 in this case.
+   Also note down the migration Job ID which is 3 in this case.
 
 5. Monitor the database migration evaluation.
 

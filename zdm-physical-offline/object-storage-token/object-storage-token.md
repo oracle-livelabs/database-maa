@@ -80,6 +80,7 @@ In this lab
 
    Copy the generated token since it is required later for migration steps in next lab.
 
+
 You may now **proceed to the next lab**.
 
 ## Acknowledgements

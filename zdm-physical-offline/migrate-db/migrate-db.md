@@ -97,7 +97,7 @@ In this lab
 
    **$ZDM_HOME/bin/zdmservice status**
 
-   If the above command output shows **running** as **false**, then the ZDM service is down.
+   If the above command output shows **Running** as **false**, then the ZDM service is down.
    
    Please use the below command to start the ZDM service.
 
@@ -121,11 +121,11 @@ In this lab
 
       This lab is using **zdmauth** which requires below arguments.
 
-     -srcarg1 user:**source\_database\_server\_login\_user_name**
+     -srcarg1 user:source\_database\_server\_login\_user_name
 
-     -srcarg2 identity\_file:**ZDM\_installed\_user\_private\_key\_file\_location**
+     -srcarg2 identity\_file:ZDM\_installed\_user\_private\_key\_file\_location
 
-     -srcarg3 sudo\_location:**sudo\_location**
+     -srcarg3 sudo\_location:sudo\_location
                  
    -targetnode - Host name of the target database server.
 
@@ -137,11 +137,11 @@ In this lab
 
       This lab is using **zdmauth** which requires below arguments.
 
-     -tgtarg1 user:**target\_database\_server\_login\_user_name**
+     -tgtarg1 user:target\_database\_server\_login\_user_name
 
-     -tgtarg2 identity_file:**ZDM\_installed\_user\_private\_key\_file\_location 
+     -tgtarg2 identity_file:ZDM\_installed\_user\_private\_key\_file\_location 
 
-     -tgtarg3 sudo_location:**sudo\_location**
+     -tgtarg3 sudo_location:sudo\_location
 
     -eval       - Evaluates the migration job without actually running the migration job against the source and target.
 
@@ -157,7 +157,7 @@ In this lab
 
    Please provide the SYS password of source database and Auth token when asked.
 
-   Also note down the migration Job ID which is 3 in this case.
+   Also note down the migration job ID which is 3 in this case.
 
 5. Monitor the database migration evaluation.
 

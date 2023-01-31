@@ -105,6 +105,8 @@ In this lab
 
 12. Take a note of the Public IP address of the compute instance which will used in later labs to access the source database system.
 
+13. Please refer the value of RACPASSWORD variable in file /u01/ocidb/params.ini for SYS,SYSTEM,PDBADMIN and SYSMAN password.
+
 
 You may now **proceed to the next lab**.
 

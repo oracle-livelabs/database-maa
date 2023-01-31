@@ -49,8 +49,8 @@ Zero Downtime Migration supports logical database migration to the following tar
 
   You can specify any predefined fractional service alias available; however, for Autonomous Transaction Processing workloads TP* services are preferred over LOW* services because LOW* is meant for low priority batch jobs.
 
-   * TP\_TLS, TP, LOW\_TLS, or LOW (for Autonomous Transaction Processing workloads)
-   * LOW\_TLS or LOW (for Autonomous Data Warehouse workloads)
+      * TP\_TLS, TP, LOW\_TLS, or LOW (for Autonomous Transaction Processing workloads)
+      * LOW\_TLS or LOW (for Autonomous Data Warehouse workloads)
   
 ### Migration Workflows
 

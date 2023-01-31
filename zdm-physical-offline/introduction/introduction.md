@@ -108,11 +108,8 @@ In this lab, you will perform below :
 * Migrate database.
 
 ### Prerequisites
+
 This workshop requires an Oracle Cloud account.
-
-
-You may now [proceed to the next lab](#next).
-
 
 ## Learn More
 

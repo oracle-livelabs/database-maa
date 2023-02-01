@@ -100,7 +100,7 @@ In this lab
    If you see similar output as below which shows **Running** as **false**, then the ZDM service is down.
 
    ![Image showing zdm servive status output](./images/zdm-service-status.png)
-   
+
    Please use the below command to start the ZDM service.
 
    **$ZDM_HOME/bin/zdmservice start**
@@ -187,64 +187,64 @@ In this lab
 
    a. Login to source database server.
 
-   Login to source database using Public IP and ssh key.
+      Login to source database using Public IP and ssh key.
 
-   b.Set the environment for the database.
+   b. Set the environment for the database.
 
-   Switch user to **oracle** using below command.
+      Switch user to **oracle** using below command.
 
-   **sudo su - oracle**
+      **sudo su - oracle**
 
-   Set the environment to connect to your database.
+      Set the environment to connect to your database.
 
-   Type **. oraenv** and press **Enter**. 
+      Type **. oraenv** and press **Enter**. 
     
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).    
+      Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).    
    
    c. Login to source pluggable database.
 
-   Login to CDB using sqlplus as shown below.
+      Login to CDB using sqlplus as shown below.
    
-   ![Image showing connection to CDB using sqlplus](./images/source-cdb-connection.png)   
+      ![Image showing connection to CDB using sqlplus](./images/source-cdb-connection.png)   
     
-   Switch to pluggable database ORCLPDB using below command. 
+      Switch to pluggable database ORCLPDB using below command. 
    
-   **alter session set container=ORCLPDB;**
+      **alter session set container=ORCLPDB;**
 
-   You will see similar output as below once you are switched to ORCLPDB pluggable database.
+      You will see similar output as below once you are switched to ORCLPDB pluggable database.
 
-   ![Image showing switching the connection to pdb](./images/pdb-connection.png)
+      ![Image showing switching the connection to pdb](./images/pdb-connection.png)
 
-   Execute below statements while you are connected to ORCLPDB.
+      Execute below statements while you are connected to ORCLPDB.
 
-    ```text
-    <copy>
-    create user hr01 identified by "password";
-    grant resource , connect to hr01;
-    alter user hr01 quota unlimited on users;
-    create table hr01.emp(ename varchar2(20),eno number);
-    insert into hr01.emp values('Alpha',1);
-    insert into hr01.emp values('Beta',2);
-    commit;
-    </copy>
-    ```
+       ```text
+       <copy>
+       create user hr01 identified by "password";
+       grant resource , connect to hr01;
+       alter user hr01 quota unlimited on users;
+       create table hr01.emp(ename varchar2(20),eno number);
+       insert into hr01.emp values('Alpha',1);
+       insert into hr01.emp values('Beta',2);
+       commit;
+       </copy>
+       ```
    
-   You will receive below output.
+      You will receive below output.
 
-   ![Image showing HR01 table creation ouput](./images/hr01-table-creation.png)
+      ![Image showing HR01 table creation ouput](./images/hr01-table-creation.png)
 
    d. Verify the data in HR01.EMP table.
 
-   Execute below statement when you are in ORCLPDB.
-    ```text
-    <copy>
-    select * from hr01.emp;
-    </copy>
-    ```
+      Execute below statement when you are in ORCLPDB.
+       ```text
+       <copy>
+       select * from hr01.emp;
+        </copy>
+       ```
 
-    You will receive the below output which shows that there are 2 rows in HR01.EMP table.
+      You will receive the below output which shows that there are 2 rows in HR01.EMP table.
 
-    ![Image showing output of select statement from source database](./images/source-select.png)
+      ![Image showing output of select statement from source database](./images/source-select.png)
 
 2. Verify **HR01.EMP** table in target database.
 
@@ -252,41 +252,41 @@ In this lab
 
    a. Connect to target database server.
 
-   Connect to target database server using Public IP and ssh key.
+      Connect to target database server using Public IP and ssh key.
 
-   b.Set the environment for the database.
+   b. Set the environment for the database.
 
-   Switch user to **oracle** using below command.
+      Switch user to **oracle** using below command.
 
-   **sudo su - oracle**
+      **sudo su - oracle**
 
-   Set the environment to connect to your database.
+      Set the environment to connect to your database.
 
-   Type **. oraenv** and press **Enter**. 
+      Type **. oraenv** and press **Enter**. 
     
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different).
+      Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different).
 
    c. Connect to target pluggable database.
 
-   Login to CDB using sqlplus as shown below.
+      Login to CDB using sqlplus as shown below.
    
-   ![Image showing connection to CDB using sqlplus](./images/target-cdb-connection.png)
+      ![Image showing connection to CDB using sqlplus](./images/target-cdb-connection.png)
 
-   Switch to pluggable database ORCL_PDB1 using below command. 
+      Switch to pluggable database ORCL_PDB1 using below command. 
    
-   **alter session set container=ORCL_PDB1;**
+      **alter session set container=ORCL_PDB1;**
 
    d. Verify existence of HR01.EMP table.
 
-    ```text
-    <copy>
-    select * from hr01.emp;
-    </copy>
-    ```
+       ```text
+       <copy>
+       select * from hr01.emp;
+       </copy>
+       ```
 
-   You will receive an output similar to the one below indicating that HR01.EMP table doesn't exist in target database which is expected.
+     You will receive an output similar to the one below indicating that HR01.EMP table doesn't exist in target database which is expected.
 
-   ![Image showing select statement output from target before migration](./images/target-select-before-migration.png)
+     ![Image showing select statement output from target before migration](./images/target-select-before-migration.png)
 
 3. Start the database migration
 
@@ -296,41 +296,41 @@ In this lab
 
    a. Login to ZDM service host.
 
-   Login to ZDM service host using Public IP and ssh key.
+      Login to ZDM service host using Public IP and ssh key.
 
    b. Switch user to zdmuser.
 
-   Switch user to **zdmuser** using below command.
+      Switch user to **zdmuser** using below command.
 
    **sudo su - zdmuser**
    
    c. Execute database migration as below.
 
-   Execute below command to start the database migration.
-    ```text
-    <copy>
-    $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxx.xxxx@xxxcle.com" -rsp /home/zdmuser/physical_offline.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
-    </copy>
-    ```
-   ![Image showing the command to start database migration](./images/migration-start.png)
+      Execute below command to start the database migration.
+       ```text
+       <copy>
+       $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxx.xxxx@xxxcle.com" -rsp /home/zdmuser/physical_offline.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
+       </copy>
+       ```
+      ![Image showing the command to start database migration](./images/migration-start.png)
 
-   Please provide the SYS password of source database and Auth token when asked.
+      Please provide the SYS password of source database and Auth token when asked.
 
-   Also note down the migration job ID which is 4 in this case.
+      Also note down the migration job ID which is 4 in this case.
    
    d. Monitor the database migration using below command.
 
-   **$ZDM_HOME/bin/zdmcli query job -jobid 4**
+      **$ZDM_HOME/bin/zdmcli query job -jobid 4**
 
-   You will get a output similar to below.
+      You will get a output similar to below.
 
-   ![Image showing interim migration status](./images/migration-status.png)
+      ![Image showing interim migration status](./images/migration-status.png)
 
-   You will see the **JOB\_TYPE** is **MIGRATE** which is different from **JOB\_TYPE** (EVAL) for the database migration evaluation.
+      You will see the **JOB\_TYPE** is **MIGRATE** which is different from **JOB\_TYPE** (EVAL) for the database migration evaluation.
       
-   Continue to monitor the status until all phases have been completed with **COMPLETED** status as shown below.
+      Continue to monitor the status until all phases have been completed with **COMPLETED** status as shown below.
 
-   ![Image showing final status of migration](./images/migration-final.png)
+      ![Image showing final status of migration](./images/migration-final.png)
 
 4. Verify the database migration.
 
@@ -340,39 +340,39 @@ In this lab
 
    a. Connect to target database server.
 
-   Connect to target database server using Public IP and ssh key.
+      Connect to target database server using Public IP and ssh key.
 
    b. Set the environment for the database.
 
-   Switch user to **oracle** using below command.
+      Switch user to **oracle** using below command.
 
-   **sudo su - oracle**
+      **sudo su - oracle**
 
-   Set the environment to connect to your database.
+      Set the environment to connect to your database.
 
-   Type **. oraenv** and press **Enter**. 
+      Type **. oraenv** and press **Enter**. 
     
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different).
+      Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different).
    
    c. Login to target pluggable database.
 
-   Login to CDB using sqlplus as shown below.
+      Login to CDB using sqlplus as shown below.
    
-   ![Image showing connection to CDB using sqlplus](./images/target-cdb-connection.png)   
+      ![Image showing connection to CDB using sqlplus](./images/target-cdb-connection.png)   
     
-   Switch to pluggable database ORCLPDB using below command. 
+      Switch to pluggable database ORCLPDB using below command. 
    
-   **alter session set container=ORCLPDB;**
+      **alter session set container=ORCLPDB;**
 
    d. Check for number of rows in HR01.EMP table.
 
-    ```text
-    <copy>
-    select * from hr01.emp;
-    </copy>
-    ```
-   If you receive similar output as below which means database migration has been successfully completed.
-   ![Image showing select output from target after migration](./images/target-select-after-migration.png)
+       ```text
+       <copy>
+       select * from hr01.emp;
+       </copy>
+       ```
+     If you receive similar output as below which means database migration has been successfully completed.
+     ![Image showing select output from target after migration](./images/target-select-after-migration.png)
 
 
 Congrats, you have completed ZDM Physical Offline Migration Live Lab.

@@ -97,8 +97,9 @@ In this lab
 
    **$ZDM_HOME/bin/zdmservice status**
 
-   If the above command output shows **Running** as **false**, then the ZDM service is down.
-   
+   If you see similar output as below which shows **Running** as **false**, then the ZDM service is down.
+
+   ![Image showing zdm servive status output](./images/zdm-service-status.png)
    Please use the below command to start the ZDM service.
 
    **$ZDM_HOME/bin/zdmservice start**
@@ -187,13 +188,34 @@ In this lab
 
    Login to source database using Public IP and ssh key.
 
-   b. Login to ORCLPDB.
+   b.Set the environment for the database.
 
-   Login to CDB using sqlplus and then switch to ORCLPDB using below command.
+   Switch user to **oracle** using below command.
 
+   **sudo su - oracle**
+
+   Set the environment to connect to your database.
+
+   Type **. oraenv** and press **Enter**. 
+    
+   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).    
+   
+   c. Login to source pluggable database.
+
+   Login to CDB using sqlplus as shown below.
+   
+   ![Image showing connection to CDB using sqlplus](./images/source-cdb-connection.png)   
+    
+   Switch to pluggable database ORCLPDB using below command. 
+   
    **alter session set container=ORCLPDB;**
 
-   Execute below statements
+   You will see similar output as below once you are switched to ORCLPDB pluggable database.
+
+   ![Image showing switching the connection to pdb](./images/pdb-connection.png)
+
+   Execute below statements while you are connected to ORCLPDB.
+
     ```text
     <copy>
     create user hr01 identified by "password";
@@ -205,8 +227,12 @@ In this lab
     commit;
     </copy>
     ```
+   
+   You will receive below output.
 
-   c. Verify the data in HR01.EMP table.
+   ![Image showing HR01 table creation ouput](./images/hr01-table-creation.png)
+
+   d. Verify the data in HR01.EMP table.
 
    Execute below statement when you are in ORCLPDB.
     ```text
@@ -227,13 +253,29 @@ In this lab
 
    Connect to target database server using Public IP and ssh key.
 
-   b. Connect to ORCL_PDB1.
+   b.Set the environment for the database.
 
-   Connect to CDB using sqlplus and switch to ORCL_PDB1 using below command.
+   Switch user to **oracle** using below command.
 
+   **sudo su - oracle**
+
+   Set the environment to connect to your database.
+
+   Type **. oraenv** and press **Enter**. 
+    
+   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different).
+
+   c. Connect to target pluggable database.
+
+   Login to CDB using sqlplus as shown below.
+   
+   ![Image showing connection to CDB using sqlplus](./images/target-cdb-connection.png)
+
+   Switch to pluggable database ORCL_PDB1 using below command. 
+   
    **alter session set container=ORCL_PDB1;**
 
-   c. Verify existence of HR01.EMP table.
+   d. Verify existence of HR01.EMP table.
 
     ```text
     <copy>
@@ -299,13 +341,29 @@ In this lab
 
    Connect to target database server using Public IP and ssh key.
 
-   b. Connect to ORCLPDB.
+   b. Set the environment for the database.
 
-   Connect to CDB using sqlplus and switch to ORCLPDB using below command.
+   Switch user to **oracle** using below command.
 
+   **sudo su - oracle**
+
+   Set the environment to connect to your database.
+
+   Type **. oraenv** and press **Enter**. 
+    
+   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different).
+   
+   c. Login to target pluggable database.
+
+   Login to CDB using sqlplus as shown below.
+   
+   ![Image showing connection to CDB using sqlplus](./images/target-cdb-connection.png)   
+    
+   Switch to pluggable database ORCLPDB using below command. 
+   
    **alter session set container=ORCLPDB;**
 
-   c. Verify existence of HR01.EMP table.
+   d. Check for number of rows in HR01.EMP table.
 
     ```text
     <copy>

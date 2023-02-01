@@ -100,6 +100,7 @@ In this lab
    If you see similar output as below which shows **Running** as **false**, then the ZDM service is down.
 
    ![Image showing zdm servive status output](./images/zdm-service-status.png)
+   
    Please use the below command to start the ZDM service.
 
    **$ZDM_HOME/bin/zdmservice start**

@@ -108,7 +108,7 @@ In this lab
 
    ![Image showing lsdg output from target database server](./images/target-db-lsdg.png)
 
-   Please note that the **Free_MB** in the output shows the available space in for a specific diskgroup which should be higher than the size of your source database.
+   Please note that the **Usable_file_MB** in the output shows the available space in for a specific diskgroup which should be higher than the size of your source database.
   
 7. Check connectivity.
 
@@ -126,7 +126,7 @@ In this lab
 
 9. Ensure system time of target database, source database and ZDM host are in sync (optional step).
 
-   Execute **date** command across source database , target database and ZDM host simultaneously and see whether they show the same time.
+   Execute **date** command across source , target and ZDM service host simultaneously and see whether they show the same time.
 
    Please find below sample output of **date** command from source , target and zdm service host.
 

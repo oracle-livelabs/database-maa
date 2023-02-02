@@ -189,9 +189,9 @@ In this lab
 
       Login to source database using Public IP and ssh key.
 
-   b. Set the environment for the database.
+   b. Login to source container database.
 
-      Switch user to **oracle** using below command.
+      Switch OS user to **oracle** using below command.
 
       **sudo su - oracle**
 
@@ -201,20 +201,22 @@ In this lab
     
       Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).    
    
-   c. Login to source pluggable database.
-
-      Login to CDB using sqlplus as shown below.
+      Login to container database (CDB) using sqlplus as shown below.
    
       ![Image showing connection to CDB using sqlplus](./images/source-cdb-connection.png)   
     
-      Switch to pluggable database ORCLPDB using below command. 
+   c. Switch to pluggable database ORCLPDB.
    
+      Execute below command to switch the session from container database to pluggable database.
+
       **alter session set container=ORCLPDB;**
 
-      You will see similar output as below once you have switched to ORCLPDB pluggable database.
+      You will see similar output as shown below.
 
       ![Image showing switching the connection to pdb](./images/pdb-connection.png)
 
+   d. Create user and table.
+    
       Execute below statements while you are connected to ORCLPDB.
 
        ```text
@@ -254,7 +256,7 @@ In this lab
 
       Connect to target database server using Public IP and ssh key.
 
-   b. Set the environment for the database.
+   b. Login to target container database.
 
       Switch user to **oracle** using below command.
 
@@ -266,17 +268,19 @@ In this lab
     
       Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different).
 
-   c. Connect to target pluggable database.
-
-      Login to CDB using sqlplus as shown below.
+      Login to container database(CDB) using sqlplus as shown below.
    
       ![Image showing connection to CDB using sqlplus](./images/target-cdb-connection.png)
+   
+   c. Switch to pluggable database ORCL_PDB1.
 
       Switch to pluggable database ORCL_PDB1 using below command. 
    
       **alter session set container=ORCL_PDB1;**
 
    d. Verify existence of HR01.EMP table.
+
+      Execute the below command in pluggable database.
 
        ```text
        <copy>
@@ -292,7 +296,7 @@ In this lab
 
    You are now good to start the database migration.
 
-   You will use the same command used for database migration evaluation except that **-eval** flag is not required.
+   You can use the same command used for database migration evaluation except that **-eval** flag is not required.
 
    a. Login to ZDM service host.
 
@@ -302,11 +306,12 @@ In this lab
 
       Switch user to **zdmuser** using below command.
 
-   **sudo su - zdmuser**
+      **sudo su - zdmuser**
    
-   c. Execute database migration as below.
+   c. Initiate database migration.
 
       Execute below command to start the database migration.
+
        ```text
        <copy>
        $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxx.xxxx@xxxcle.com" -rsp /home/zdmuser/physical_offline.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
@@ -344,7 +349,7 @@ In this lab
 
       Connect to target database server using Public IP and ssh key.
 
-   b. Set the environment for the database.
+   b. Login to target container database.
 
       Switch user to **oracle** using below command.
 
@@ -355,13 +360,13 @@ In this lab
       Type **. oraenv** and press **Enter**. 
     
       Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different).
-   
-   c. Login to target pluggable database.
 
-      Login to CDB using sqlplus as shown below.
+      Login to container database(CDB) using sqlplus as shown below.
    
-      ![Image showing connection to CDB using sqlplus](./images/target-cdb-connection.png)   
-    
+      ![Image showing connection to CDB using sqlplus](./images/target-cdb-connection.png)
+   
+   c. Switch to pluggable database ORCLPDB.
+
       Switch to pluggable database ORCLPDB using below command. 
    
       **alter session set container=ORCLPDB;**

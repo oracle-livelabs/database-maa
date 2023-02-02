@@ -23,7 +23,7 @@ In this lab
 
    Login to target database server using Public IP and ssh key.
 
-2. Set the environment for the database.
+2. Connect to the target database.
 
    Switch user to **oracle** using below command.
 
@@ -35,7 +35,9 @@ In this lab
     
    Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different than the one used in this lab).
 
-   Please find below sample ouput.
+   Use **sqlplus** to connect to the database after the environment has been set.
+
+   Please find below sample output showing the steps to connect to database.
 
    ![Image showing how to set the database environment](./images/target-cdb-connection.png)
    
@@ -45,7 +47,7 @@ In this lab
 
    Follow the below steps for the target database that you have provisioned using steps not mentioned in this livelab.
 
-   Execute **show parameter spfile** after connecting to database using SQLPLUS.
+   Execute **show parameter spfile** while you are in the sqlplus prompt.
 
    If you get a similar output as below,  it means spfile is in use.
 
@@ -74,7 +76,7 @@ In this lab
 
    Please ignore this step if you have provisioned the target database as per the instructions in this lab.
 
-   Follow the below steps for the target database that you have provisioned using steps not mentioned in this livelab.
+   Follow the below steps for the target database you have provisioned using steps not mentioned in this livelab.
 
    Execute the below SQL.
      ```text
@@ -101,14 +103,13 @@ In this lab
    Follow the below steps for the target database that you have provisioned using steps not mentioned in this livelab.
 
    Check the size of the target database ASM diskgroup or File System to make sure adequate storage is provisioned and available on the 
-   
    target database server.
 
-   Below is a sample output of lsdg (check diskgroup details) command.
+   Below is a sample output of lsdg (command to check diskgroup details) command.
 
    ![Image showing lsdg output from target database server](./images/target-db-lsdg.png)
 
-   Please note that the **Usable_file_MB** in the output shows the available space in for a specific diskgroup which should be higher than the size of your source database.
+   Please note that the **Usable\_file\_MB** in the output shows the available space for a specific diskgroup which should be higher than the size of your source database.
   
 7. Check connectivity.
 

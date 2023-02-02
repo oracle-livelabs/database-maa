@@ -123,11 +123,11 @@ In this lab
 
       This lab is using **zdmauth** which requires below arguments.
 
-     -srcarg1 user:source\_database\_server\_login\_user_name
+      * -srcarg1 user:source\_database\_server\_login\_user_name
 
-     -srcarg2 identity\_file:ZDM\_installed\_user\_private\_key\_file\_location
+      * -srcarg2 identity\_file:ZDM\_installed\_user\_private\_key\_file\_location
 
-     -srcarg3 sudo\_location:sudo\_location
+      * -srcarg3 sudo\_location:sudo\_location
                  
    -targetnode - Host name of the target database server.
 
@@ -139,11 +139,11 @@ In this lab
 
       This lab is using **zdmauth** which requires below arguments.
 
-     -tgtarg1 user:target\_database\_server\_login\_user_name
+      * -tgtarg1 user:target\_database\_server\_login\_user_name
 
-     -tgtarg2 identity_file:ZDM\_installed\_user\_private\_key\_file\_location 
+      * -tgtarg2 identity_file:ZDM\_installed\_user\_private\_key\_file\_location 
 
-     -tgtarg3 sudo_location:sudo\_location
+      * -tgtarg3 sudo_location:sudo\_location
 
     -eval       - Evaluates the migration job without actually running the migration job against the source and target.
 
@@ -211,7 +211,7 @@ In this lab
    
       **alter session set container=ORCLPDB;**
 
-      You will see similar output as below once you are switched to ORCLPDB pluggable database.
+      You will see similar output as below once you have switched to ORCLPDB pluggable database.
 
       ![Image showing switching the connection to pdb](./images/pdb-connection.png)
 
@@ -312,17 +312,19 @@ In this lab
        $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxx.xxxx@xxxcle.com" -rsp /home/zdmuser/physical_offline.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
        </copy>
        ```
-      ![Image showing the command to start database migration](./images/migration-start.png)
-
       Please provide the SYS password of source database and Auth token when asked.
 
-      Also note down the migration job ID which is 4 in this case.
+      You will receive an output similar to below one.
+
+      ![Image showing the command to start database migration](./images/migration-start.png)
+
+      Please note down the migration job ID which is 4 in this case.
    
    d. Monitor the database migration using below command.
 
       **$ZDM_HOME/bin/zdmcli query job -jobid 4**
 
-      You will get a output similar to below.
+      You will get an output similar to below.
 
       ![Image showing interim migration status](./images/migration-status.png)
 
@@ -365,6 +367,8 @@ In this lab
       **alter session set container=ORCLPDB;**
 
    d. Check for number of rows in HR01.EMP table.
+
+      Execute below SQL query.
 
        ```text
        <copy>

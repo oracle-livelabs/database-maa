@@ -1,7 +1,7 @@
 {
     "workshoptitle": "Zero Downtime Migration : Physical Offline Migration to Co-Managed Databases in OCI",
 
-    "help": "amalraj.puthenchira@oracle.com",
+    "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
             "title": "Introduction",

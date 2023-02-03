@@ -55,7 +55,7 @@ In this lab
 
    If you see that spfile is not in use, then use the below link to configure spfile for your database.
 
-   https://docs.oracle.com/cd/E18283_01/server.112/e17120/create006.htm#i1009989
+   https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/creating-and-configuring-an-oracle-database.html#GUID-1C90AAE6-1E89-47B9-B218-C2B0ED659B60
 
 4. Verify time zone version.
 
@@ -159,5 +159,5 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, January 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
 

@@ -388,7 +388,7 @@ Congrats, you have completed ZDM Physical Offline Migration Live Lab.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, January 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
 
 
 

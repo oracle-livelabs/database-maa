@@ -8,7 +8,7 @@ The placeholder target database is overwritten during migration, but it retains 
 
 Please note as of Zero Downtime Migration Release 21.3 , only Grid Infrastructure-based database services are supported as targets. For example, an LVM-based instance or an instance created in compute node without Grid Infrastructure are not supported targets.
 
-You must use the control plane for the creation of a target placeholder database on Exadata Cloud Service and Exadata Cloud at Customer.
+You must use the control plane for the creation of a target placeholder database on Exadata Database Service on Dedicated Infrastructure and Exadata Cloud at Customer.
 
 Estimated Time: 30 minutes
 
@@ -16,9 +16,9 @@ Estimated Time: 30 minutes
 
 In this lab
 
-* You will collect some information from source database which is required for target database provisioning.
+* You will collect some information from the source database that is required for target database provisioning.
 
-* You will prepare a database software image for target database.
+* You will prepare a database software image for the target database.
 
 * You will provision an Oracle Base Database VM to use as the target database system.
 
@@ -107,7 +107,7 @@ In this lab
 
 8. Generate patch inventory ouput.
 
-   Execute **opatch lsinventory** as **oracle** user in source database server.
+   Execute **opatch lsinventory** command as **oracle** user in source database server.
 
 9. Download inventory output to the local desktop.
 
@@ -216,9 +216,9 @@ In this lab
 
 11. Provide database name.
 
-   If the target database is Exadata Cloud Service or Exadata Cloud at Customer, then target database **DB\_NAME** should be the same as the source database **DB\_NAME**.
+   If the target database is in Exadata Database Service on Dedicated Infrastructure or Exadata Cloud at Customer, then the target database **DB\_NAME** should be the same as the source database **DB\_NAME**.
 
-   If the target database is Oracle Cloud Infrastructure, then the database **DB\_NAME** can be the same as or different from the source database **DB\_NAME**.
+   If the target database is Oracle Base Database VM , then the target **DB\_NAME** can be the same as or different from the source database **DB\_NAME**.
 
    Our target database is **Oracle Base Database VM** and we can specify a same or different name for **DB\_NAME**. 
 
@@ -284,6 +284,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, January 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
 
 

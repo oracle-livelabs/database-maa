@@ -8,7 +8,7 @@ Estimated Time: 15 minutes
 
 In this lab
 
-* You will provision a Virtual Cloud Network.
+* You will provision a Virtual Cloud Network in Oracle Cloud Infrastructure.
 * You will provision source database using Oracle Marketplace image available in Oracle Cloud Infrastructure.
 
 ### Prerequisites
@@ -103,11 +103,16 @@ In this lab
 11. In few minutes , compute instance with database will be provisioned and running as below.
     ![Image showing provisioned compute instance](./images/prov-final.png)
 
-12. Take a note of the Public IP address of the compute instance which will used in later labs to access the source database system.
+12. Take a note of the Public IP address of the compute instance which will used to login to source database system.
 
-13. Please refer the value of RACPASSWORD variable in file /u01/ocidb/params.ini for SYS,SYSTEM,PDBADMIN and SYSMAN password.
+13. Collect the value of SYS password.
 
+    Login to the source database server using the Public IP and private ssh key.
 
+    Please refer the value of RACPASSWORD variable in file /u01/ocidb/params.ini for SYS,SYSTEM,PDBADMIN and SYSMAN password.
+
+    
+    
 You may now **proceed to the next lab**.
 
 ## Acknowledgements

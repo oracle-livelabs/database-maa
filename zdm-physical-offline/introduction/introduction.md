@@ -2,7 +2,7 @@
 
 ## About this workshop
 
-This workshop covers step-by-step guide for migrating On-Premise Oracle Databases to Oracle Co-Managed databases using ZDM's Physical Offline Methodology.
+This workshop covers step-by-step guide for migrating On-premises Oracle Databases to Oracle Co-Managed databases using ZDM's Physical Offline Methodology.
 
 Estimated Time: 3 hours
 
@@ -23,34 +23,34 @@ The Zero Downtime Migration software offers a command line interface that you in
 
 Zero Downtime Migration supports the following physical migration paths.
 
-* On-premises Oracle Database to Oracle Cloud Infrastructure (either virtual machine or bare metal)
-* On-premises Oracle Database to Exadata Cloud Service
-* On-premises Oracle Database to Oracle Exadata Cloud at Customer
-* On-premises Oracle Database to On-Premises Exadata Database Machine
-* Oracle Cloud Infrastructure Classic Database to Oracle Cloud Infrastructure (either virtual machine or bare metal)
-* Oracle Cloud Infrastructure Database to a database in another Oracle Cloud Infrastructure region
+* On-premises Oracle Database to Oracle Cloud Infrastructure (either virtual machine or bare metal).
+* On-premises Oracle Database to Exadata Cloud Service.
+* On-premises Oracle Database to Oracle Exadata Cloud at Customer.
+* On-premises Oracle Database to On-Premises Exadata Database Machine.
+* Oracle Cloud Infrastructure Classic Database to Oracle Cloud Infrastructure (either virtual machine or bare metal).
+* Oracle Cloud Infrastructure Database to a database in another Oracle Cloud Infrastructure region.
   For example, you can move a database from the phoenix commercial OCI region to the frankfurt or ashburn region.
 
 ### Supported Logical Migration Targets
 
 Zero Downtime Migration supports logical database migration to the following target databases.
 
-* Oracle Autonomous Database Shared (Data Warehouse or Transaction Processing)
-* Oracle Autonomous Database Dedicated Infrastructure (Data Warehouse or Transaction Processing)
-* Oracle Autonomous Database on Exadata Cloud@Customer
+* Oracle Autonomous Database Shared (Data Warehouse or Transaction Processing).
+* Oracle Autonomous Database Dedicated Infrastructure (Data Warehouse or Transaction Processing).
+* Oracle Autonomous Database on Exadata Cloud@Customer.
 * Oracle Co-managed Database Systems:
   Virtual Machine
   Bare Metal
   Exadata Cloud Service
   Exadata Cloud at Customer
-* On premises Exadata Database Machine
+* On premises Exadata Database Machine.
 * Autonomous Database on Dedicated Infrastructure and Autonomous Database on Cloud@Customer with fractional OCPU allocation, where a   
   fraction of OCPU is allocated per database service, instead of integer OCPU.
 
   You can specify any predefined fractional service alias available; however, for Autonomous Transaction Processing workloads TP* services are preferred over LOW* services because LOW* is meant for low priority batch jobs.
 
-      * TP\_TLS, TP, LOW\_TLS, or LOW (for Autonomous Transaction Processing workloads)
-      * LOW\_TLS or LOW (for Autonomous Data Warehouse workloads)
+      * TP\_TLS, TP, LOW\_TLS, or LOW (for Autonomous Transaction Processing workloads).
+      * LOW\_TLS or LOW (for Autonomous Data Warehouse workloads).
   
 ### Migration Workflows
 
@@ -64,7 +64,7 @@ ZDM physical offline migration leverages Oracle Recovery Manager and migrates th
 
 
 #### Physical Online Migration
-ZDM physical online migration leverages Oracle Recovery Manager and Oracle Data Guard. Customers should use this method when a highly available migration and minimizing any possible impact is a priority. Customers can use this method to migrate to Oracle Database Cloud Services Virtual Machines, Exadata Cloud Service, Exadata Cloud at Customer and Exadata Database Machine On-Premises.
+ZDM physical online migration leverages Oracle Recovery Manager and Oracle Data Guard. Customers should use this method when a highly available migration and minimizing any possible impact is a priority. Customers can use this method to migrate to Oracle Base Database service, Oracle Exadata Database Service on Dedicated Infrastructure, Oracle Exadata Cloud at Customer and Exadata Database Machine On-Premises.
 
 ![Zero Downtime Migration Physical Online Workflow Step-by-Step high level description](./images/physical-online-workflow.png " ")
 
@@ -123,4 +123,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 * **Author** - Ricardo Gonzalez, Senior Principal Product Manager, Oracle Cloud Database Migration
 * **Contributors** - LiveLabs Team, ZDM Development Team
-* **Last Updated By/Date** - Amalraj Puthenchira , Cloud Data Management Specialist , January 2023
+* **Last Updated By/Date** - Amalraj Puthenchira , Cloud Data Management Specialist , February 2023

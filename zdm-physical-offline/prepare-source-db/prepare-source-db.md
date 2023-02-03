@@ -8,9 +8,9 @@ Estimated Time: 15 minutes
 
 In this lab
 
-* You will check source database to identify whether it meets the prerequistes for ZDM Physical Offline Database Migration.
+* You will check the source database to identify whether it meets the prerequisites for ZDM Physical Offline Database Migration.
 
-* You will perform necessary steps to modify source database when required so that it meets the migration prerequisites.
+* You will perform the necessary steps to modify the source database when required so that it meets the migration prerequisites.
 
 ### Prerequisites
 
@@ -50,7 +50,7 @@ In this lab
 
    If you see that spfile is not in use, then use the below link to configure spfile for your database.
 
-   https://docs.oracle.com/cd/E18283_01/server.112/e17120/create006.htm%23i1009989
+   https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/creating-and-configuring-an-oracle-database.html#GUID-1C90AAE6-1E89-47B9-B218-C2B0ED659B60
 
 4. Check the compatible parameter on source database.
 
@@ -60,13 +60,13 @@ In this lab
 
 5. Enable database archivelog mode.
 
-   This migration requires source database must be running in ARCHIVELOG mode.
+   This livelab requires source database must be running in ARCHIVELOG mode.
 
    Source database we have provisioned in this livelab is not running in ARCHIVELOG mode by default. 
 
    Please follow below document and enable ARCHIVELOG mode.
 
-   https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/zero-downtime-migration/21.3/zdmug&id=ADMIN-GUID-C12EA833-4717-430A-8919-5AEA747087B9.
+   https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-archived-redo-log-files.html#GUID-C12EA833-4717-430A-8919-5AEA747087B9
 
 
 6. Configure TDE Wallet.
@@ -256,6 +256,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, January 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
 
 

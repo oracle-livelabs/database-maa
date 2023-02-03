@@ -149,7 +149,7 @@ In this lab
 
 7. Upload ZDM software to ZDM host.
 
-   Upload the software to /tmp directory in ZDM host.
+   Upload the software(.zip file) to /tmp directory in ZDM host.
 
    Ensure that all users can read the .zip file.
 
@@ -161,11 +161,11 @@ In this lab
    
    Unzip the ZDM software under /tmp directory.
 
-   Note down the directory path of unzipped folder , it will be **/tmp/zdm21.x** for **ZDM 21.x** , Please note this is a generic placeholder name, please use the latest version available.
+   Note down the directory path of unzipped folder , it will be **/tmp/zdm21.x** for **ZDM 21.x** , Please note this is a generic placeholder name for ZDM software and make sure to use the latest version available.
 
 9. Install ZDM software.
 
-   Change directory to ZDM unzipped location using below command.
+   Change directory to ZDM software unzipped location using below command.
 
    cd /tmp/zdm21.x
    
@@ -271,7 +271,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, January 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
 
 
 

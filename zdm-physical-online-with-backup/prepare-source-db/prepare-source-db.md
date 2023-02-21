@@ -22,7 +22,11 @@ In this lab
 
    Login to source database server using Public IP and ssh key.
 
-2. Set the environment for the database.
+2. Establish connection to source database.
+
+   Most of the steps in thi lab requires sqlplus connection to source database.
+
+   Please follow below steps to establish connection to source database using sqlplus.
 
    Switch user to **oracle** using below command.
 
@@ -34,11 +38,17 @@ In this lab
     
    Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).
 
+   Type **sqlplus " \/as sysdba"**  and press Enter to connect to source database as SYS user.
+
+   Please find below snippet of the connection steps.
+
+   ![Image showing sqlplus connection to source cdb](./images/source-cdb-connection.png)
+
 3. Check whether source database is using spfile.
 
    Please ignore this step if you have provisioned the source database as per the instructions in this lab.
 
-   Follow the below steps for the source database that you have provisioned using steps not mentioned in this livelab.
+   Follow the below steps for the source database provisioned using steps not mentioned in this livelab.
 
    Connect to source database using sqlplus.
 

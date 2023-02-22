@@ -18,15 +18,13 @@ In this lab
 
 ## Task 1 : Prepare Source Database
 
-1. Login to source database server.
+1. Establish connection to source database.
 
-   Login to source database server using Public IP and ssh key.
-
-2. Establish connection to source database.
-
-   Most of the steps in thi lab requires sqlplus connection to source database.
+   Most of the steps in this lab requires a connection to source database.
 
    Please follow below steps to establish connection to source database using sqlplus.
+
+   Login to source database server using Public IP and ssh key.
 
    Switch user to **oracle** using below command.
 
@@ -44,35 +42,79 @@ In this lab
 
    ![Image showing sqlplus connection to source cdb](./images/source-cdb-connection.png)
 
-3. Check whether source database is using spfile.
+2. Establish connection to target database.
+
+   Login to target database server using Public IP and ssh key.
+
+   Switch user to **oracle** using below command.
+
+   **sudo su - oracle**
+
+   Set the environment to connect to your database.
+
+   Type **. oraenv** and press **Enter**. 
+    
+   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).
+
+   Type **sqlplus " /as sysdba"**  and press Enter to connect to target database as SYS user.
+
+   Please find below snippet of the connection steps.
+
+   ![Image showing sqlplus connection to target cdb](./images/target-cdb-connection.png)
+
+3. Check the **compatible** parameter on source database.
+
+   Execute below statement on the source database connection already established using step 1.
+
+   **show parameter compatible** 
+   
+   Below is the sample output.
+
+   ![Image showing output of compatible parameter check on source](./images/source-compatible.png)
+
+4. Check the **compatible** parameter on target database.
+
+   Execute below statement on the target database connection already established using step 2.
+
+   **show parameter compatible** 
+   
+   Below is the sample output.
+
+   ![Image showing output of compatible parameter check on target](./images/target-compatible.png)
+
+5. Ensure **compatible** parameter on source and target are set to same value.
+
+   Compare the source and target database compatible parameter values collected in steps 3 and 4.
+
+   Please proceed to the next step if the **compatible** parameter on the source and target has the same value.
+
+   Please match the compatible parameter on the source or target if there is a difference in the value.
+
+   Please note that changing compatible parameter can't be reversed unlesss you restore the entire database backup, so plan accordingly for your production source databases.
+
+6. Ensure source database is using spfile.
 
    Please ignore this step if you have provisioned the source database as per the instructions in this lab.
 
    Follow the below steps for the source database provisioned using steps not mentioned in this livelab.
 
-   Connect to source database using sqlplus.
+   Execute below statement using database connection already established in step 1.
 
-   Execute **show parameter spfile**.
+   **show parameter spfile**.
 
-   If you get a similar output as below,  it means spfile is in use.
+   If the above query output shows a value against the spfile parameter, it means the spfile is already in use.
+
+   Sample output with spfile in use is shown below.
 
    ![Image showing output of spfile check](./images/spfile.png)
 
-   If you see that spfile is not in use, then use the below link to configure spfile for your database.
+   If spfile is not in use, then use the below link to configure spfile for your database.
 
    https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/creating-and-configuring-an-oracle-database.html#GUID-1C90AAE6-1E89-47B9-B218-C2B0ED659B60
 
-4. Check the compatible parameter on source database.
-
-   Execute **show parameter compatible** on source and target database and ensure they are set to same value.
-
-   Please note that changing compatible parameter can't be reversed unlesss you restore the entire database backup, so plan accordingly for your production source databases.
-
 5. Enable database archivelog mode.
 
-   This livelab requires source database must be running in ARCHIVELOG mode.
-
-   Source database we have provisioned in this livelab is not running in ARCHIVELOG mode by default. 
+   The source database provisioned in this livelab is not running in ARCHIVELOG mode by default. However, it is a requirement for this livelab. 
 
    Please follow below document and enable ARCHIVELOG mode.
 
@@ -81,23 +123,29 @@ In this lab
 
 6. Configure TDE Wallet.
 
+   Please note down the below requirement in terms of TDE wallet.
+
    For Oracle Database 12c Release 2 and later, if the source database does not have Transparent Data Encryption (TDE) enabled, then it is mandatory that you configure the TDE wallet before migration begins. You need not encrypt the data in the source database; the data is encrypted at target using the wallet setup in the source database. The WALLET_TYPE can be AUTOLOGIN (preferred) or PASSWORD based.
     
    For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
 
-   Let's check the status of encryption in your source database.
+    
+   Please execute below query to check the status of TDE wallet in source database using connection established in step 1.
 
    Execute below sql.
      ```text
      <copy>
-     SELECT * FROM v$encryption_wallet;
+     select CON_ID,WALLET_TYPE,STATUS from v$encryption_wallet;
      </copy>
      ```
-     In the source database that you configured in this lab , TDE is not setup and the below query output shows that.
+   
+   You will see that WALLET\_TYPE is **UNKNOWN** and STATUS is **NOT AVAILABLE** which means TDE wallet is configured.
+
+   Sample query output is shown below.
 
      ![Image showing TDE status of source database](./images/source-tde-status.png)
 
-     Follow the below steps to enable TDE.
+   Please follow the below steps to enable TDE.
 
    a . Set **ENCRYPTION\_WALLET\_LOCATION** in the $ORACLE_HOME/network/admin/sqlnet.ora file.
 
@@ -108,7 +156,10 @@ In this lab
        </copy>
        ```
       For an Oracle RAC instance, also set **ENCRYPTION\_WALLET\_LOCATION** in the second Oracle RAC node (Not applicable for the source database provisioned in this lab)
-   
+
+      Below is sample output of the contents of sqlnet.ora after the required modification.
+
+      ![Image showing contents of sqlnet.ora in source database](./images/source-sqlnet.png)
    b. Create and configure the keystore.
 
       i. Connect to the database and create the keystore.
@@ -119,6 +170,10 @@ In this lab
       ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin' identified by password;
       </copy>
       ```
+      Below is sample output.
+
+      ![Image showing output of create keystore command](./images/source-create-keystore.png)
+
       ii. Open the keystore.
 
       For a CDB environment (source database in this lab is CDB ),  run the following command (ensure to update password).
@@ -133,6 +188,10 @@ In this lab
       ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password;
       </copy>
       ```
+      Below is sample output.
+
+      ![Image showing output of open keystore command](./images/source-open-keystore.png)
+
       iii. Create and activate the master encryption key.
 
       For a CDB environment, run the following command (ensure to update the password)
@@ -147,6 +206,10 @@ In this lab
       ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup;
       </copy>
       ```
+       Below is sample output.
+
+      ![Image showing output of activate keystore command](./images/source-activate-keystore.png)
+
       iv. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
       ```text
       <copy>
@@ -173,6 +236,11 @@ In this lab
       ADMINISTER KEY MANAGEMENT CREATE AUTO_LOGIN KEYSTORE FROM KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin/' IDENTIFIED BY password;
       </copy>
       ```
+
+      Below is sample output.
+
+      ![Image showing creation of auto login keystore](images/source-auto-login-keystore.png)
+
       ii. Close the password-based keystore.
 
       Execute the below statement after replacing password to close the password-based keystore created earlier.
@@ -181,6 +249,10 @@ In this lab
       ADMINISTER KEY MANAGEMENT SET KEYSTORE CLOSE IDENTIFIED BY password;
       </copy>
       ```
+      Below is sample output.
+
+      ![Image showing output of closure of password-based keystore](images/source-password-keystore-close.png)
+
      iii. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
 
      Execute below statement
@@ -223,15 +295,33 @@ In this lab
      ```
 8. Controlfile auto backup.
 
-   This step can be ignored fort he source database you have configured in this lab since it has controlfile autobackup on by default.
+   This step can be ignored for the source database you have configured in this lab since it has controlfile autobackup on by default.
 
-   If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
+   Connect to source database using RMAN and Execute below query to check the controlfile auto backup configuration.
+
+   ```text
+     <copy>
+     RMAN> show CONTROLFILE AUTOBACKUP;
+     </copy>
+     ```
+    Below is the sample output which shows AUTOBACKUP is ON.
+
+    ![Image showing controlfile autobackup status](./images/rman-controlfile-autobackup.png)
+
+    If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
+    
+    Connect to source database using RMAN and execute below query to enable controlfile autobackup.
 
      ```text
      <copy>
      RMAN> CONFIGURE CONTROLFILE AUTOBACKUP ON;
      </copy>
      ```
+     Below is sample output.
+   
+   ![Image showing output of controlfile autobackup on command](./images/rman-controlfile-autobackup-configure.png)
+
+
 9. Register database with srvctl.
 
    This step is not applicable for the source database provisioned in this lab since it is not using Grid Infrastructure.

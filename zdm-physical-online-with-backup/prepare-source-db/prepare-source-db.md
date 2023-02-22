@@ -36,7 +36,7 @@ In this lab
     
    Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).
 
-   Type **sqlplus " /as sysdba"**  and press Enter to connect to source database as SYS user.
+   Type **sqlplus " /as sysdba"**  and press **Enter** to connect to source database as SYS user.
 
    Please find below snippet of the connection steps.
 
@@ -56,7 +56,7 @@ In this lab
     
    Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).
 
-   Type **sqlplus " /as sysdba"**  and press Enter to connect to target database as SYS user.
+   Type **sqlplus " /as sysdba"**  and press **Enter** to connect to target database as SYS user.
 
    Please find below snippet of the connection steps.
 
@@ -80,7 +80,11 @@ In this lab
 
    Execute below statement on the target database connection already established using step 2.
 
-   **show parameter compatible** 
+   ```text
+     <copy>
+     show parameter compatible
+     </copy>
+     ```
    
    Below is the sample output.
 
@@ -92,7 +96,7 @@ In this lab
 
    Please proceed to the next step if the **compatible** parameter on the source and target has the same value.
 
-   Please match the compatible parameter on the source or target if there is a difference in the value.
+   If the values are different, then you need to modify them so that both values match.
 
    Please note that changing compatible parameter can't be reversed unlesss you restore the entire database backup, so plan accordingly for your production source databases.
 
@@ -104,9 +108,13 @@ In this lab
 
    Execute below statement using source database connection already established in step 1.
 
-   **show parameter spfile**.
+     ```text
+     <copy>
+     show parameter spfile
+     </copy>
+     ```
 
-   If the above query output shows a value against the spfile parameter, it means the spfile is already in use.
+   If the above query output shows a value for the spfile parameter, it means the spfile is already in use.
 
    Sample output with spfile in use is shown below.
 
@@ -118,9 +126,11 @@ In this lab
 
 5. Enable database archivelog mode.
 
-   The source database provisioned in this livelab is not running in ARCHIVELOG mode by default. However, it is a requirement for this livelab. 
+   The source database provisioned in this livelab is not running in ARCHIVELOG mode by default. 
+   
+   However, ARCHIVELOG mode is a requirement for this livelab. 
 
-   Please follow below document and enable ARCHIVELOG mode.
+   Please follow below document and enable ARCHIVELOG mode for source database.
 
    https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-archived-redo-log-files.html#GUID-C12EA833-4717-430A-8919-5AEA747087B9
 
@@ -143,13 +153,13 @@ In this lab
      </copy>
      ```
    
-   You will see that WALLET\_TYPE is **UNKNOWN** and STATUS is **NOT AVAILABLE** which means TDE wallet is configured.
+   You will see that WALLET\_TYPE is **UNKNOWN** and STATUS is **NOT\_AVAILABLE** which means TDE wallet is not configured.
 
    Sample query output is shown below.
 
      ![Image showing TDE status of source database](./images/source-tde-status.png)
 
-   Please follow the below steps to enable TDE.
+   Please follow the below steps to enable TDE wallet for the source database proviosioned in this lab.
 
    a . Set **ENCRYPTION\_WALLET\_LOCATION** in the $ORACLE_HOME/network/admin/sqlnet.ora file.
 
@@ -255,7 +265,7 @@ In this lab
       ```
       Below is sample output.
 
-      ![Image showing output of closure of password-based keystore](images/source-password-keystore-close.png)
+      ![Image showing output of closure of password-based keystore](images/source-pass-key-close.png)
 
      iii. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
 
@@ -268,18 +278,19 @@ In this lab
      </copy>
      ```
      In the query output, verify that the TDE keystore STATUS is OPEN and WALLET_TYPE set to AUTOLOGIN, otherwise the auto-login keystore is not set up correctly.
+     
      Sample output is shown below.
      ![Image showing auto login keystore status](./images/tde-autologin.png)
 
    d. Copy the keystore files to the second Oracle RAC node.
 
-      This is not applicable for the source database used in this lab.
+      This step does not apply to the source database you have provisioned in this lab.
 
-      Follow the below steps in case your have source database is RAC enabled.
+      You also don't have to take any action for an Oracle RAC source database configured with keystore on a shared file system.
 
-      If you configured the keystore in a shared file system for Oracle RAC then no action is required.
+      Follow the below additional step for enabling TDE for an Oracle RAC source database with out shared access to keystore.
 
-      If you are enabling TDE for Oracle RAC database without shared access to the keystore, copy the following files to the same location on second node.
+      Copy the following files from the RAC node where you enabled TDE (steps a,b and c) to the same location on other RAC node.
 
       /u01/app/oracle/product/19c/dbhome_1/network/admin/ew*
 
@@ -287,7 +298,9 @@ In this lab
 
 7. Snapshot controlfile for RAC Database.
 
-   This is not applicable for the source database that you have provisioned in this lab, However if your source is an Oracle RAC database then follow below steps.
+   This step does not apply to the source database you have provisioned in this lab.
+
+   Follow the below steps for a source database which is RAC enabled.
 
    If the source is an Oracle RAC database, and SNAPSHOT CONTROLFILE is not on a shared location, configure SNAPSHOT CONTROLFILE to point to a shared location on all Oracle RAC nodes to avoid the ORA-00245 error during backups to Oracle Object Store.
 
@@ -301,29 +314,29 @@ In this lab
 
    This step can be ignored for the source database you have configured in this lab since it has controlfile autobackup on by default.
 
-   Connect to source database using RMAN and Execute below query to check the controlfile auto backup configuration.
+   Connect to source database using RMAN and execute below query to check the controlfile auto backup configuration.
 
-   ```text
+    ```text
      <copy>
      RMAN> show CONTROLFILE AUTOBACKUP;
      </copy>
-     ```
-    Below is the sample output which shows AUTOBACKUP is ON.
+      ```
+     Below is the sample output which shows AUTOBACKUP is ON.
 
-    ![Image showing controlfile autobackup status](./images/rman-controlfile-autobackup.png)
+     ![Image showing controlfile autobackup status](./images/rman-controlfile-autobackup.png)
 
-    If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
+     If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
     
-    Connect to source database using RMAN and execute below query to enable controlfile autobackup.
+     Connect to source database using RMAN and execute below query to enable controlfile autobackup.
 
-     ```text
-     <copy>
-     RMAN> CONFIGURE CONTROLFILE AUTOBACKUP ON;
-     </copy>
-     ```
-     Below is sample output.
+      ```text
+      <copy>
+      RMAN> CONFIGURE CONTROLFILE AUTOBACKUP ON;
+      </copy>
+       ```
+      Below is sample output.
    
-   ![Image showing output of controlfile autobackup on command](./images/rman-controlfile-autobackup-configure.png)
+      ![Image showing output of controlfile autobackup on command](./images/rman-controlfile-autobackup-configure.png)
 
 
 9. Register database with srvctl.

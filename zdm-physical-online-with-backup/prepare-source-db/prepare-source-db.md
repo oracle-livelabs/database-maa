@@ -8,7 +8,7 @@ Estimated Time: 15 minutes
 
 In this lab
 
-* You will check the source database to identify whether it meets the prerequisites for ZDM Physical Offline Database Migration.
+* You will check the source database to ensure it meets ZDM Physical Online Database Migration prerequisites.
 
 * You will perform the necessary steps to modify the source database when required so that it meets the migration prerequisites.
 
@@ -36,7 +36,7 @@ In this lab
     
    Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).
 
-   Type **sqlplus " \/as sysdba"**  and press Enter to connect to source database as SYS user.
+   Type **sqlplus " /as sysdba"**  and press Enter to connect to source database as SYS user.
 
    Please find below snippet of the connection steps.
 
@@ -66,8 +66,12 @@ In this lab
 
    Execute below statement on the source database connection already established using step 1.
 
-   **show parameter compatible** 
-   
+    ```text
+     <copy>
+     show parameter compatible
+     </copy>
+     ```
+
    Below is the sample output.
 
    ![Image showing output of compatible parameter check on source](./images/source-compatible.png)
@@ -82,7 +86,7 @@ In this lab
 
    ![Image showing output of compatible parameter check on target](./images/target-compatible.png)
 
-5. Ensure **compatible** parameter on source and target are set to same value.
+5. Ensure **compatible** parameter on source and target database is set to same value.
 
    Compare the source and target database compatible parameter values collected in steps 3 and 4.
 
@@ -98,7 +102,7 @@ In this lab
 
    Follow the below steps for the source database provisioned using steps not mentioned in this livelab.
 
-   Execute below statement using database connection already established in step 1.
+   Execute below statement using source database connection already established in step 1.
 
    **show parameter spfile**.
 

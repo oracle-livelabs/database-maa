@@ -60,9 +60,9 @@ In this lab
 
    Please find below snippet of the connection steps.
 
-   ![Image showing sqlplus connection to target cdb](./images/target-cdb-connection.png)
+   ![Image showing sqlplus connection to target cdb](./images/target-cdb-conn.png)
 
-3. Check the **compatible** parameter on source database.
+3. Check the COMPATIBLE parameter on source database.
 
    Execute below statement on the source database connection already established using step 1.
 
@@ -76,37 +76,41 @@ In this lab
 
    ![Image showing output of compatible parameter check on source](./images/source-compatible.png)
 
-4. Check the **compatible** parameter on target database.
+4. Check the COMPATIBLE parameter on target database.
 
    Execute below statement on the target database connection already established using step 2.
 
-   ```text
-     <copy>
-     show parameter compatible
-     </copy>
-     ```
+    ```text
+      <copy>
+      show parameter compatible
+      </copy>
+      ```
    
-   Below is the sample output.
+    Below is the sample output.
 
-   ![Image showing output of compatible parameter check on target](./images/target-compatible.png)
+    ![Image showing output of compatible parameter check on target](./images/target-compatible.png)
 
-5. Ensure **compatible** parameter on source and target database is set to same value.
+5. Ensure COMPATIBLE parameter on source and target database is set to same value.
 
-   Compare the source and target database compatible parameter values collected in steps 3 and 4.
+   Compare the source and target database COMPATIBLE parameter values collected in steps 3 and 4.
 
-   Please proceed to the next step if the **compatible** parameter on the source and target has the same value.
+   Please proceed to the next step if the COMPATIBLE parameter on the source and target has the same value.
 
-   If the values are different, then you need to modify them so that both values match.
+   If the values are different, then you need to modify the COMPATIBLE parameter on source or target so that both values match.
 
-   Please note that changing compatible parameter can't be reversed unlesss you restore the entire database backup, so plan accordingly for your production source databases.
+   Refer below to understand more about COMPATIBLE parameter.
 
-6. Ensure source database is using spfile.
+   https://docs.oracle.com/en/database/oracle/oracle-database/21/upgrd/what-is-oracle-database-compatibility.html#GUID-26CB83FD-F2B3-4BD1-AF39-9C2DC90D698C
+
+   Please note that changing compatible parameter can't be reversed unless you restore the entire database backup, so plan accordingly for your production source databases.
+
+6. Ensure source database is using SPFILE.
 
    Please ignore this step if you have provisioned the source database as per the instructions in this lab.
 
    Follow the below steps for the source database provisioned using steps not mentioned in this livelab.
 
-   Execute below statement using source database connection already established in step 1.
+   Execute below statement using source database connection already established in step 1 to check whether SPFILE is in use.
 
      ```text
      <copy>
@@ -114,28 +118,28 @@ In this lab
      </copy>
      ```
 
-   If the above query output shows a value for the spfile parameter, it means the spfile is already in use.
+   If the above query output shows a value for the SPFILE parameter, it means the SPFILE is already in use.
 
-   Sample output with spfile in use is shown below.
+   Sample output with SPFILE in use is shown below.
 
    ![Image showing output of spfile check](./images/spfile.png)
 
-   If spfile is not in use, then use the below link to configure spfile for your database.
+   If SPFILE is not in use, then use the below link to configure SPFILE for your database.
 
    https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/creating-and-configuring-an-oracle-database.html#GUID-1C90AAE6-1E89-47B9-B218-C2B0ED659B60
 
-5. Enable database archivelog mode.
+7. Enable database ARCHIVELOG mode.
 
    The source database provisioned in this livelab is not running in ARCHIVELOG mode by default. 
    
-   However, ARCHIVELOG mode is a requirement for this livelab. 
+   However, source database must be running in ARCHIVELOG mode for this livelab. 
 
    Please follow below document and enable ARCHIVELOG mode for source database.
 
    https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/managing-archived-redo-log-files.html#GUID-C12EA833-4717-430A-8919-5AEA747087B9
 
 
-6. Configure TDE Wallet.
+8. Configure TDE Wallet on Oracle Database 12c Release 2 and later.
 
    Please note down the below requirement in terms of TDE wallet.
 
@@ -144,26 +148,26 @@ In this lab
    For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
 
     
-   Please execute below query to check the status of TDE wallet in source database using connection established in step 1.
+   Please execute below query to check the status of TDE wallet in source database (using connection established in step 1).
 
-   Execute below sql.
+   
      ```text
      <copy>
      select CON_ID,WALLET_TYPE,STATUS from v$encryption_wallet;
      </copy>
      ```
    
-   You will see that WALLET\_TYPE is **UNKNOWN** and STATUS is **NOT\_AVAILABLE** which means TDE wallet is not configured.
+   If the query output shows WALLET\_TYPE as **UNKNOWN** and STATUS as **NOT\_AVAILABLE**, then the TDE wallet is not configured.
 
    Sample query output is shown below.
 
      ![Image showing TDE status of source database](./images/source-tde-status.png)
 
-   Please follow the below steps to enable TDE wallet for the source database proviosioned in this lab.
+   Please follow the below steps to enable TDE wallet for the source database provisioned in this lab.
 
    a . Set **ENCRYPTION\_WALLET\_LOCATION** in the $ORACLE_HOME/network/admin/sqlnet.ora file.
 
-       Insert the below line in sqlnet.ora (Ensure to update the correct ORACLE_HOME of your source database).   
+       Insert the below line in sqlnet.ora (Replace the **DIRECTORY** path with your $ORACLE_HOME/network/admin path).   
        ```text
        <copy>
        ENCRYPTION_WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY=/u01/app/oracle/product/19c/dbhome_1/network/admin/)))
@@ -178,7 +182,7 @@ In this lab
 
       i. Connect to the database and create the keystore.
 
-      Modify the below sql to update your source database ORACLE_HOME and TDE password before executing.
+      Execute below query after modifying keystore location with your source database $ORACLE_HOME/network/admin path and TDE password.
       ```text
       <copy>
       ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin' identified by password;
@@ -233,17 +237,17 @@ In this lab
       </copy>
       ```
 
-      You will see that keystore is enabled with status OPEN and WALLET_TYPE as PASSWORD in the query output below which means configuration of password-based keystore is complete at this stage.
+      If the query output shows STATUS as OPEN and WALLET_TYPE as PASSWORD, it means the configuration of the password-based keystore is complete at this stage.
 
       ![Image showing status of password based keystore](images/tde-password.png)
 
-      You will use an auto-login keystore in this lab and for that you need to complete additional steps as mentioned below.
+      You will use an auto-login keystore in this lab which requires additional steps as mentioned below.
    
    c. Creation of auto-login keystore.
    
       i. Create the auto-login keystore.
 
-      Execute below statement after replacing ORACLE_HOME and password for your environment.
+      Execute below query after modifying keystore location with your source database $ORACLE_HOME/network/admin path and TDE password.
 
       ```text
       <copy>
@@ -257,15 +261,15 @@ In this lab
 
       ii. Close the password-based keystore.
 
-      Execute the below statement after replacing password to close the password-based keystore created earlier.
+      Execute the below statement after replacing PASSWORD with your TDE password to close the password-based keystore created earlier.
       ```text
       <copy>
-      ADMINISTER KEY MANAGEMENT SET KEYSTORE CLOSE IDENTIFIED BY password;
+      ADMINISTER KEY MANAGEMENT SET KEYSTORE CLOSE IDENTIFIED BY PASSWORD;
       </copy>
       ```
       Below is sample output.
 
-      ![Image showing output of closure of password-based keystore](images/source-pass-key-close.png)
+      ![Image showing output of password-based keystore close command](images/source-pass-key-close.png)
 
      iii. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
 
@@ -288,15 +292,93 @@ In this lab
 
       You also don't have to take any action for an Oracle RAC source database configured with keystore on a shared file system.
 
-      Follow the below additional step for enabling TDE for an Oracle RAC source database with out shared access to keystore.
+      Follow the below additional step for enabling TDE wallet for an Oracle RAC source database with out shared access to keystore.
 
-      Copy the following files from the RAC node where you enabled TDE (steps a,b and c) to the same location on other RAC node.
+      Copy the following files from the RAC node where you enabled TDE wallet (steps a,b and c) to the same location on other RAC node.
 
       /u01/app/oracle/product/19c/dbhome_1/network/admin/ew*
 
       /u01/app/oracle/product/19c/dbhome_1/network/admin/cw*
 
-7. Snapshot controlfile for RAC Database.
+9. Check connectivity
+
+   a. Verify that port 22 on the source database server allows incoming connections from the Zero Downtime Migration service host.
+
+      We have already verified this on lab 4 task 3 (ssh connectivity is done thorugh port 22).
+
+   b. Ensure that the scan listener ports (1521, for example) on the source database servers allow incoming connections from the target 
+       database servers and outgoing connections to the target database servers.
+
+      You will open the required port on VCN and the source database server for this lab using the steps mentioned below. 
+       
+      However, there might be additional components (like a firewall) that you need to consider for an on-premises database.
+
+      i. Allow incoming connection on required port in Virtual Cloud Network.
+
+      We have deployed source database , target database and ZDM service host into the same Public subnet in ZDM-VCN for the purpose of this lab.
+
+      Follow below steps to enable incoming connection on 1521 (For simplifying the task port is opened for all ips in the same subnet , however you can restrict as you wish)
+
+      Navigate to Virtual Cloud Network as below.
+
+      ![Image showing navigation to VCN in OCI ](./images/navigate-vcn.png)
+
+       Click on **ZDM-VCN** under the list of Virtual Cloud Network in your compartment as shown below.
+
+       ![Image showing list of VCN in OCI ](./images/vcn-list.png)
+
+       Click on **Public Subnet-ZDM-VCN** to navigate to Public Subnet as shon below.
+
+       ![Image showing list of subnet in ZDM-VCN ](./images/vcn-list.png)
+
+       Click on **Default Security List for ZDM-VCN** as shown below.
+
+      ![Image showing default security list of Public Subnet ](./images/vcn-list.png)
+
+      click on **Add Ingress Rules** as shown below.
+
+      ![Image showing option to add Ingress rules ](./images/add-ingress-rule.png)
+
+      Populate the rules as shown below.
+
+      ![Image showing option to add Ingress rules ](./images/add-ingress-rule.png)
+
+      Click on **Add Ingress Rules** to add the rule to Security list as shown below.
+
+      ![Image showing option to add Ingress rules ](./images/add-ingress-rule.png)
+
+      You have added necessary rule to allow incoming traffic on 1521.
+
+      ii. Allow incoming connection on required port in source database server.
+
+         Login to source database server.
+
+         Execute below command as **opc** user.
+           ```text
+            <copy>
+            sudo iptables -I INPUT -p tcp -m state --state NEW -m tcp -s 10.30.0.0/24 --dport 1521 -m comment --comment "Required for access to DB , Do not remove or modify." -j ACCEPT
+            </copy>
+             ```
+         
+         Sample output is shown below.
+      
+         ![Image showing option to add Ingress rules ](./images/add-ingress-rule.png)
+
+      iii. Verify connectivity from target database to source database server.
+
+           Login to target database server using Public IP and ssh key file.
+
+           Switch user to **oracle** using below command.
+
+           **sudo su - oracle**
+
+           Execute below command to check the connectivity on port 1521 (or whichever listener port )
+
+           tnsping <private_ip_of_source_db> 1521
+
+           if the command output shows **OK(x msec)** as shown below , it means connectivity is success on the port 1521 from target database server to source database server.
+ 
+10. Snapshot controlfile for RAC Database.
 
    This step does not apply to the source database you have provisioned in this lab.
 
@@ -304,17 +386,23 @@ In this lab
 
    If the source is an Oracle RAC database, and SNAPSHOT CONTROLFILE is not on a shared location, configure SNAPSHOT CONTROLFILE to point to a shared location on all Oracle RAC nodes to avoid the ORA-00245 error during backups to Oracle Object Store.
 
+   For example, if the database is deployed on ASM storage, use the below command to configure snapshot controlfile.
+
      ```text
      <copy>
      $ rman target /  
      RMAN> CONFIGURE SNAPSHOT CONTROLFILE NAME TO '+DATA/db_name/snapcf_db_name.f';
      </copy>
      ```
-8. Controlfile auto backup.
+     If the database is deployed on an ACFS file system, specify the shared ACFS location in the above command.
 
-   This step can be ignored for the source database you have configured in this lab since it has controlfile autobackup on by default.
+11. Configure RMAN to automatically backup control file.
 
-   Connect to source database using RMAN and execute below query to check the controlfile auto backup configuration.
+   Ignore this step for the source database you have configured in this lab since it has controlfile AUTOBACKUP ON by default.
+
+   Follow the below steps for the source database configured using steps mentioned not in this lab.
+
+   Connect to source database using RMAN and execute below query to check the controlfile AUTOBACKUP configuration.
 
     ```text
      <copy>
@@ -323,7 +411,7 @@ In this lab
       ```
      Below is the sample output which shows AUTOBACKUP is ON.
 
-     ![Image showing controlfile autobackup status](./images/rman-controlfile-autobackup.png)
+     ![Image showing controlfile autobackup status](./images/rman-control-autobkp.png)
 
      If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
     
@@ -339,17 +427,17 @@ In this lab
       ![Image showing output of controlfile autobackup on command](./images/rman-controlfile-autobackup-configure.png)
 
 
-9. Register database with srvctl.
+12. Register database with srvctl.
 
-   This step is not applicable for the source database provisioned in this lab since it is not using Grid Infrastructure.
+   Ignore this step for the source database provisioned in this lab since it is not using Grid Infrastructure.
 
    If the source database is deployed using Oracle Grid Infrastructure and the database is not registered using SRVCTL, then you must register the database before the migration.
    
-10. RMAN backup strategy.
+13. Maintain RMAN backup strategy.
 
    This step can be ignored for this lab since there is no existing RMAN backup strategy for the source database used in this lab.
 
-   If your source database has existing RMAN backups then follow below procedure.
+   Follow the below procedure if your source database has an existing RMAN backup strategy.
 
    To preserve the source database Recovery Time Objective (RTO) and Recovery Point Objective (RPO) during the migration, the existing RMAN backup strategy should be maintained.
 
@@ -360,13 +448,11 @@ In this lab
    If archive logs were to be deleted on the source database, and these archive logs are needed by Zero Downtime Migration to synchronize the target cloud database, then these files should be restored so that Zero Downtime Migration can continue the migration process.
 
    
-11. Ensure system time of source database, target database, and ZDM host are in sync (optional step). 
+14. Ensure system time of the ZDM service host and source database server should be in sync with your Oracle Cloud Infrastructure target.
 
-   Execute **date** command across source database , target database and ZDM host simultaneously and see whether they show the same time.
+    If the time on any of these systems varies beyond 6 minutes from the time on OCI, it should be adjusted. You can use ntp time check to synchronize the time if NTP is configured. If NTP is not configured, then it is recommended that you configure it. If configuring NTP is not an option, then you need to correct the time manually to ensure it is in sync with OCI time.
 
-   It is recommended to have same time across all systems but it is not mandatory.
-
-   Please use NTP in case you need to adjust time.
+   Procedure to check this is covered as part of next lab.
 
 
 You may now **proceed to the next lab**.

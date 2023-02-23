@@ -173,11 +173,14 @@ In this lab
        ENCRYPTION_WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY=/u01/app/oracle/product/19c/dbhome_1/network/admin/)))
        </copy>
        ```
-      For an Oracle RAC instance, also set **ENCRYPTION\_WALLET\_LOCATION** in the second Oracle RAC node (Not applicable for the source database provisioned in this lab)
 
       Below is sample output of the contents of sqlnet.ora after the required modification.
 
       ![Image showing contents of sqlnet.ora in source database](./images/source-sqlnet.png)
+
+      For an Oracle RAC instance, also set **ENCRYPTION\_WALLET\_LOCATION** in the second Oracle RAC node (Not applicable for the source database provisioned in this lab)
+
+      
    b. Create and configure the keystore.
 
       i. Connect to the database and create the keystore.
@@ -300,7 +303,7 @@ In this lab
 
       /u01/app/oracle/product/19c/dbhome_1/network/admin/cw*
 
-9. Check connectivity
+9. Check connectivity from ZDM service host and target database server.
 
    a. Verify that port 22 on the source database server allows incoming connections from the Zero Downtime Migration service host.
 
@@ -317,9 +320,9 @@ In this lab
 
       We have deployed source database , target database and ZDM service host into the same Public subnet in ZDM-VCN for the purpose of this lab.
 
-      Follow below steps to enable incoming connection on 1521 (For simplifying the task port is opened for all ips in the same subnet , however you can restrict as you wish)
+      Follow below steps to enable incoming connection on 1521 (For simplicity of the task port is opened for all IPs in the same subnet , however you can restrict as you wish).
 
-      Navigate to Virtual Cloud Network as below.
+      Click the Navigation Menu in the upper left, navigate to Networking and then select Virtual Cloud Networks as shown below.
 
       ![Image showing navigation to VCN in OCI ](./images/navigate-vcn.png)
 

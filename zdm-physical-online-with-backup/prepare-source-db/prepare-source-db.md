@@ -197,7 +197,7 @@ In this lab
 
       ii. Open the keystore.
 
-      For a CDB environment (source database in this lab is CDB ),  run the following command (ensure to update password).
+      For a CDB environment (source database in this lab is CDB ),  run the following command after updating with your password.
       ```text
       <copy>
       ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password container = ALL;
@@ -215,7 +215,7 @@ In this lab
 
       iii. Create and activate the master encryption key.
 
-      For a CDB environment, run the following command (ensure to update the password)
+      For a CDB environment, run the following command (ensure to update the password).
       ```text
       <copy>
       ADMINISTER KEY MANAGEMENT SET KEY IDENTIFIED BY password with backup container = ALL;
@@ -320,9 +320,9 @@ In this lab
 
       We have deployed source database , target database and ZDM service host into the same Public subnet in ZDM-VCN for the purpose of this lab.
 
-      Follow below steps to enable incoming connection on 1521 (For simplicity of the task port is opened for all IPs in the same subnet , however you can restrict as you wish).
+      Follow below steps to enable incoming connection on 1521 (For simplicity , you will open port for all IPs in the same subnet , however you can restrict as you wish).
 
-      Click the Navigation Menu in the upper left, navigate to Networking and then select Virtual Cloud Networks as shown below.
+      Click the **Navigation Menu** in the upper left, navigate to **Networking** and then select **Virtual Cloud Networks** as shown below.
 
       ![Image showing navigation to VCN in OCI ](./images/navigate-vcn.png)
 
@@ -330,17 +330,17 @@ In this lab
 
        ![Image showing list of VCN in OCI ](./images/vcn-list.png)
 
-       Click on **Public Subnet-ZDM-VCN** to navigate to Public Subnet as shon below.
+       Click on **Public Subnet-ZDM-VCN** to navigate to Public Subnet as shown below.
 
-       ![Image showing list of subnet in ZDM-VCN ](./images/vcn-list.png)
+       ![Image showing list of subnet in ZDM-VCN ](./images/subnet-list.png)
 
        Click on **Default Security List for ZDM-VCN** as shown below.
 
-      ![Image showing default security list of Public Subnet ](./images/vcn-list.png)
+      ![Image showing default security list of Public Subnet ](./images/click-default-sl.png)
 
-      click on **Add Ingress Rules** as shown below.
+      click on **Add Ingress Rules** to bring up a window for adding rules as shown below.
 
-      ![Image showing option to add Ingress rules ](./images/add-ingress-rule.png)
+      ![Image showing option to add Ingress rules ](./images/click-add-ingress.png)
 
       Populate the rules as shown below.
 
@@ -348,13 +348,13 @@ In this lab
 
       Click on **Add Ingress Rules** to add the rule to Security list as shown below.
 
-      ![Image showing option to add Ingress rules ](./images/add-ingress-rule.png)
+      ![Image showing option to add Ingress rules ](./images/add-ingress-rule-final.png)
 
       You have added necessary rule to allow incoming traffic on 1521.
 
       ii. Allow incoming connection on required port in source database server.
 
-         Login to source database server.
+      Login to source database server.
 
          Execute below command as **opc** user.
            ```text
@@ -363,23 +363,25 @@ In this lab
             </copy>
              ```
          
-         Sample output is shown below.
+      Sample output is shown below.
       
-         ![Image showing option to add Ingress rules ](./images/add-ingress-rule.png)
+      ![Image showing option to add Ingress rules ](./images/ip-tables-update.png)
 
       iii. Verify connectivity from target database to source database server.
 
-           Login to target database server using Public IP and ssh key file.
+      Login to target database server using Public IP and ssh key file.
 
-           Switch user to **oracle** using below command.
+      Switch user to **oracle** using below command.
 
-           **sudo su - oracle**
+      **sudo su - oracle**
 
-           Execute below command to check the connectivity on port 1521 (or whichever listener port )
+      Execute below command to check the connectivity on port 1521 (or whichever listener port )
 
-           tnsping <private_ip_of_source_db> 1521
+      tnsping <private_ip_of_source_db> 1521
 
-           if the command output shows **OK(x msec)** as shown below , it means connectivity is success on the port 1521 from target database server to source database server.
+      if the command output shows **OK(x msec)** as shown below , it means connectivity is success on the port 1521 from target database server to source database server.
+
+      ![Image showing output of tnsping from target to source database server ](./images/ip-tables-update.png)
  
 10. Snapshot controlfile for RAC Database.
 

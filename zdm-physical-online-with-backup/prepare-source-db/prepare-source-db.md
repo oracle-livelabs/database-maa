@@ -167,7 +167,8 @@ In this lab
 
    a . Set **ENCRYPTION\_WALLET\_LOCATION** in the $ORACLE_HOME/network/admin/sqlnet.ora file.
 
-       Insert the below line in sqlnet.ora (Replace the **DIRECTORY** path with your $ORACLE_HOME/network/admin path).   
+       Insert the below line in sqlnet.ora (Replace the **/u01/app/oracle/product/19c/dbhome_1/network/admin/** path with your $ORACLE_HOME/network/admin path).   
+       
        ```text
        <copy>
        ENCRYPTION_WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY=/u01/app/oracle/product/19c/dbhome_1/network/admin/)))
@@ -185,7 +186,8 @@ In this lab
 
       i. Connect to the database and create the keystore.
 
-      Execute below query after modifying keystore location with your source database $ORACLE_HOME/network/admin path and TDE password.
+      Execute the below query after modifying the keystore location (same as the encryption wallet location provided in step a) and the TDE password.
+
       ```text
       <copy>
       ADMINISTER KEY MANAGEMENT CREATE KEYSTORE '/u01/app/oracle/product/19c/dbhome_1/network/admin' identified by password;
@@ -250,7 +252,7 @@ In this lab
    
       i. Create the auto-login keystore.
 
-      Execute below query after modifying keystore location with your source database $ORACLE_HOME/network/admin path and TDE password.
+      Execute below query after modifying keystore location (same as the keystore location specified in step b) and TDE password.
 
       ```text
       <copy>
@@ -264,7 +266,7 @@ In this lab
 
       ii. Close the password-based keystore.
 
-      Execute the below statement after replacing PASSWORD with your TDE password to close the password-based keystore created earlier.
+      Execute the below statement after replacing PASSWORD with your TDE password.
       ```text
       <copy>
       ADMINISTER KEY MANAGEMENT SET KEYSTORE CLOSE IDENTIFIED BY PASSWORD;
@@ -276,7 +278,7 @@ In this lab
 
      iii. Query V$ENCRYPTION_WALLET to get the keystore status, keystore type, and keystore location.
 
-     Execute below statement
+     Execute below statement.
      ```text
      <copy>
      col WRL_PARAMETER for a55
@@ -284,7 +286,7 @@ In this lab
      select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
      </copy>
      ```
-     In the query output, verify that the TDE keystore STATUS is OPEN and WALLET_TYPE set to AUTOLOGIN, otherwise the auto-login keystore is not set up correctly.
+     In the query output, verify that the TDE keystore STATUS is OPEN and WALLET_TYPE is AUTOLOGIN, otherwise the auto-login keystore is not set up correctly.
      
      Sample output is shown below.
      ![Image showing auto login keystore status](./images/tde-autologin.png)
@@ -307,81 +309,81 @@ In this lab
 
    a. Verify that port 22 on the source database server allows incoming connections from the Zero Downtime Migration service host.
 
-      We have already verified this on lab 4 task 3 (ssh connectivity is done thorugh port 22).
+   We have already verified this on lab 4 task 3 (ssh connectivity is done thorugh port 22).
 
    b. Ensure that the scan listener ports (1521, for example) on the source database servers allow incoming connections from the target 
        database servers and outgoing connections to the target database servers.
 
-      You will open the required port on VCN and the source database server for this lab using the steps mentioned below. 
+   You will open the required port on VCN and the source database server for this lab using the steps mentioned below. 
        
-      However, there might be additional components (like a firewall) that you need to consider for an on-premises database.
+   However, there might be additional components (like a firewall) that you need to consider for an on-premises database.
 
-      i. Allow incoming connection on required port in Virtual Cloud Network.
+   i. Allow incoming connection on required port in Virtual Cloud Network.
 
-      We have deployed source database , target database and ZDM service host into the same Public subnet in ZDM-VCN for the purpose of this lab.
+   We have deployed source database , target database and ZDM service host into the same Public subnet in ZDM-VCN for the purpose of this lab.
 
-      Follow below steps to enable incoming connection on 1521 (For simplicity , you will open port for all IPs in the same subnet , however you can restrict as you wish).
+   Follow below steps to enable incoming connection on 1521 (For simplicity , you will open port for all IPs in the same subnet , however you can restrict as you wish).
 
-      Click the **Navigation Menu** in the upper left, navigate to **Networking** and then select **Virtual Cloud Networks** as shown below.
+   Click the **Navigation Menu** in the upper left, navigate to **Networking** and then select **Virtual Cloud Networks** as shown below.
 
-      ![Image showing navigation to VCN in OCI ](./images/navigate-vcn.png)
+   ![Image showing navigation to VCN in OCI ](./images/navigate-vcn.png)
 
-       Click on **ZDM-VCN** under the list of Virtual Cloud Network in your compartment as shown below.
+   Click on **ZDM-VCN** under the list of Virtual Cloud Network in your compartment as shown below.
 
-       ![Image showing list of VCN in OCI ](./images/vcn-list.png)
+   ![Image showing list of VCN in OCI ](./images/vcn-list.png)
 
-       Click on **Public Subnet-ZDM-VCN** to navigate to Public Subnet as shown below.
+   Click on **Public Subnet-ZDM-VCN** to navigate to Public Subnet as shown below.
 
-       ![Image showing list of subnet in ZDM-VCN ](./images/subnet-list.png)
+   ![Image showing list of subnet in ZDM-VCN ](./images/subnet-list.png)
 
-       Click on **Default Security List for ZDM-VCN** as shown below.
+   Click on **Default Security List for ZDM-VCN** as shown below.
 
-      ![Image showing default security list of Public Subnet ](./images/click-default-sl.png)
+   ![Image showing default security list of Public Subnet ](./images/click-default-sl.png)
 
-      click on **Add Ingress Rules** to bring up a window for adding rules as shown below.
+   Click on **Add Ingress Rules** to bring up a window for adding rules as shown below.
 
-      ![Image showing option to add Ingress rules ](./images/click-add-ingress.png)
+   ![Image showing option to add Ingress rules ](./images/click-add-ingress.png)
 
-      Populate the rules as shown below.
+   Populate the rules as shown below.
 
-      ![Image showing option to add Ingress rules ](./images/add-ingress-rule.png)
+   ![Image showing option to add Ingress rules ](./images/add-ingress-rule.png)
 
-      Click on **Add Ingress Rules** to add the rule to Security list as shown below.
+   Click on **Add Ingress Rules** to add the rule to Security list as shown below.
 
-      ![Image showing option to add Ingress rules ](./images/add-ingress-rule-final.png)
+   ![Image showing option to add Ingress rules ](./images/add-ingress-rule-final.png)
 
-      You have added necessary rule to allow incoming traffic on 1521.
+   You have added necessary rule to allow incoming traffic on 1521.
 
-      ii. Allow incoming connection on required port in source database server.
+   ii. Allow incoming connection on required port in source database server.
 
-      Login to source database server.
+   Login to source database server.
 
-         Execute below command as **opc** user.
-           ```text
-            <copy>
-            sudo iptables -I INPUT -p tcp -m state --state NEW -m tcp -s 10.30.0.0/24 --dport 1521 -m comment --comment "Required for access to DB , Do not remove or modify." -j ACCEPT
-            </copy>
-             ```
+   Execute below command as **opc** user.
+    ```text
+    <copy>
+    sudo iptables -I INPUT -p tcp -m state --state NEW -m tcp -s 10.30.0.0/24 --dport 1521 -m comment --comment "Required for access to DB , Do not remove or modify." -j ACCEPT
+    </copy>
+     ```
          
-      Sample output is shown below.
+   Sample output is shown below.
       
-      ![Image showing option to add Ingress rules ](./images/ip-tables-update.png)
+   ![Image showing option to add Ingress rules ](./images/ip-tables-update.png)
 
-      iii. Verify connectivity from target database to source database server.
+   iii. Verify connectivity from target database to source database server.
 
-      Login to target database server using Public IP and ssh key file.
+   Login to target database server using Public IP and ssh key file.
 
-      Switch user to **oracle** using below command.
+   Switch user to **oracle** using below command.
 
-      **sudo su - oracle**
+   **sudo su - oracle**
 
-      Execute below command to check the connectivity on port 1521 (or whichever listener port )
+   Execute below command to check the connectivity on port 1521 (or whichever listener port )
 
-      tnsping <private_ip_of_source_db> 1521
+   tnsping <private_ip_of_source_db> 1521
 
-      if the command output shows **OK(x msec)** as shown below , it means connectivity is success on the port 1521 from target database server to source database server.
+   if the command output shows **OK(x msec)** as shown below , it means connectivity is success on the port 1521 from target database server to source database server.
 
-      ![Image showing output of tnsping from target to source database server ](./images/ip-tables-update.png)
+   ![Image showing output of tnsping from target to source database server ](./images/target-to-source-tnsping.png)
  
 10. Snapshot controlfile for RAC Database.
 
@@ -403,7 +405,7 @@ In this lab
 
 11. Configure RMAN to automatically backup control file.
 
-   Ignore this step for the source database you have configured in this lab since it has controlfile AUTOBACKUP ON by default.
+   Ignore this step for the source database you have configured in this lab since it has automatic controlfile backup already configured.
 
    Follow the below steps for the source database configured using steps mentioned not in this lab.
 

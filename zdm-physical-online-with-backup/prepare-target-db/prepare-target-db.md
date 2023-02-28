@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Estimated Time: 10 minutes
+Estimated Time: 20 minutes
 
 ### Objectives
 
@@ -20,28 +20,28 @@ In this lab
 ## Task 1 : Prepare Target Database
 
 1. Establish connection to target database.
+   
+   Please follow below steps to establish connection to target database using sqlplus.
 
    Login to target database server using Public IP and ssh key.
 
-   Switch user to oracle using below command.
+   Switch user to **oracle** using below command.
 
-   sudo su - oracle
+   **sudo su - oracle**
 
    Set the environment to connect to your database.
 
-   Type . oraenv and press Enter.
+   Type **. oraenv** and press **Enter**.
 
-   Enter ORCL when asked for ORACLE_SID and then press Enter (Enter your ORACLE_SID if that is different in case of an on premises-database).
+   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).
 
-   Type sqlplus " /as sysdba" and press Enter to connect to target database as SYS user.
+   Type **sqlplus " /as sysdba"** and press **Enter** to connect to target database as SYS user.
 
    Please find below snippet of the connection steps.
 
    ![Image showing how to set the database environment](./images/target-cdb-connection.png)
 
 2. Establish connection to source database.
-
-   Most of the steps in this lab requires a connection to source database.
 
    Please follow below steps to establish connection to source database using sqlplus.
 
@@ -63,9 +63,9 @@ In this lab
 
    ![Image showing sqlplus connection to source cdb](./images/source-cdb-connection.png)
 
-3. Verify time zone version.
+3. Ensure the target timezone version is same or higher than the source.
 
-   You need to ensure that the target placeholder database must have a time zone file version that is the same or higher than the source database. 
+  Please ensure that the target placeholder database has a time zone file version that is the same or higher than the source database. 
    
    If that is not the case, then the time zone file has to be upgraded in the target placeholder database.
 
@@ -81,7 +81,7 @@ In this lab
      </copy>
      ```   
      Sample output is shown below.   
-     ![Image showing timezone version](./images/timezone.png)
+     ![Image showing timezone version of source database](./images/source-timezone.png)
 
    ii. Check the timezone of target database server.
 
@@ -93,7 +93,7 @@ In this lab
      </copy>
      ```   
      Sample output is shown below.   
-     ![Image showing timezone version](./images/timezone.png)
+     ![Image showing timezone version of target database](./images/target-timezone.png)
    
    iii. Ensure timezone of target database sever is same or higher than source database.
 
@@ -101,7 +101,7 @@ In this lab
 
    For e.g
 
-   The source and Target database timezone are 38 in the above sample output, which means no further action is to be taken.
+   The source and Target database timezone are 32 in the above sample output, which means no further action is to be taken.
    
    If the target timezone version is lower than the source database, follow the below document to do the timezone upgrade for an Oracle 19c target database.
 
@@ -113,7 +113,7 @@ In this lab
 
    Follow the below steps for the target database provisioned using steps not mentioned in this livelab.
 
-   Execute below statement using source database connection already established in step 1 to check whether SPFILE is in use.
+   Execute below statement using target database connection already established in step 1.
 
      ```text
      <copy>
@@ -135,7 +135,9 @@ In this lab
 
    Please ignore this step if you have provisioned the target database as per the instructions in this lab.
 
-   Follow the below steps for the target database you have provisioned using steps not mentioned in this livelab.
+   You can also ignore this step if your target database is a co-managed database in OCI.
+
+   Follow the below steps for 
 
    Execute the below SQL.
      ```text
@@ -159,9 +161,9 @@ In this lab
    
    You can ignore this step if you have provisioned the source and target database as per the instructions in this lab.
 
-   Follow the below steps for the target database that you have provisioned using steps not mentioned in this livelab.
+   Please follow the below steps if you have provisioned the target database using methods not mentioned in this lab.
 
-   Check the size of the target database ASM diskgroup or File System intended to keep the database files to make sure adequate storage is provisioned and available on the target database server.
+   Check the size of the target database ASM diskgroup (or File System) where you plan to keep the database files to ensure adequate storage has been provisioned and available on the target database server.
 
    Below is a sample output of lsdg (command to check diskgroup details) command which can be used to check the free space of an ASM diskgroup.
 
@@ -171,13 +173,15 @@ In this lab
   
 7. Check connectivity.
 
-   Verify that ports 22 and 1521 (or the configured database listener port) on the target servers in the Oracle Cloud Infrastructure, Exadata Cloud Service, or Exadata Cloud at Customer environment are open and not blocked by a firewall.
+   Verify that ports 22 and 1521 (or the configured database listener port) on the target database server in the Oracle Cloud Infrastructure are open and not blocked by a firewall for connectivity from the ZDM service host and source database server.
 
-   a. Verify that port 22 on the target database server allows incoming connections from the Zero Downtime Migration service host.
+   a. Configure connectivity between ZDM service host and target database server.
+   
+   Please note that port 22 allows incoming connection from all IPs on a Public Subnet in OCI by default, so no action is required on VCN for this step.
 
-   We have already verified this on lab 4 task 3 (ssh connectivity is done thorugh port 22).
+   We have already verified the connectivity from ZDM service host on lab 4 task 3 (ssh connectivity is done thorugh port 22).
 
-   b. Configuring connectivity between source and target database servers.
+   b. Configure connectivity between source and target database servers.
 
    You have two options for configuring connectivity between the source and target database servers: SQL*Net connectivity using SCAN or SSH.
    
@@ -189,7 +193,7 @@ In this lab
 
    You have deployed source database , target database and ZDM service host into the same Public subnet in ZDM-VCN for the purpose of this lab.
 
-   Port 1521 was opened on the VCN subnet level as part of Lab 5 step 9b, so no further action is required to allow incoming connection on port 1521 on the VCN level.
+   Port 1521 was opened on the Public subnet level as part of Lab 5 step 9b, so no further action is required to allow incoming connection on port 1521 on the subnet level.
 
    ii. Allow incoming connection on port 1521 in target database server.
 
@@ -207,7 +211,7 @@ In this lab
 
    Execute below command to check the connectivity on port 1521 (or whichever listener port )
 
-   tnsping <scan_ip_of_target_db>:1521
+   tnsping **scan_ip_of_target_db**:**1521**
 
    if the command output shows **OK(x msec)** as shown below , it means SQL*Net connectivity is succesful on the port 1521 from source database to target database server.
 
@@ -239,8 +243,7 @@ In this lab
    
    If NTP is not configured, then it is recommended that you configure it. If configuring NTP is not an option, then you need to correct the time manually to ensure it is in sync with OCI target database server time.
 
-   Please use NTP in case you need to adjust time.
-
+  
 10. Check encryption algorithm in sqlnet.ora (optional step).
 
    Ensure that encryption algorithm specificed in sqlnet.ora in target database Oracle Home is same as source database Oracle Home.

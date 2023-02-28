@@ -392,7 +392,7 @@ In this lab
 
    Execute below command to check the connectivity on port 1521 (or whichever listener port )
 
-   tnsping **target_scan_name**:1521
+   tnsping **target\_db\_scan\_name**:1521
 
    if the command output shows **OK(x msec)** as shown below , it means SQL*Net connectivity is successful from source database to target database server.
 
@@ -402,7 +402,7 @@ In this lab
 
    i. Login to source database server.
 
-   Execute below command as **opc** user to remove port restriction on iptables.
+   Execute below command as **opc** user to remove restriction on iptables.
 
     ```text
     <copy>
@@ -416,11 +416,13 @@ In this lab
 
    ii. Modify target database server **/etc/hosts** file.
 
-   Open the **/etc/hosts** file for editing using **sudo vi /etc/hosts** command as opc user.
+   Open **/etc/hosts** file for editing by running below command as **opc** user.
+   
+   **sudo vi /etc/hosts**
 
-   insert source database private IP and FQDN (collected in Lab 3 task 3) to /etc/hosts file and save it.
+   Insert source database private IP and FQDN (collected in Lab 3 task 3) to /etc/hosts file and save it.
 
-   Below is sample contents of **etc/hosts** file after modification.
+   Below is sample contents of **/etc/hosts** file after modification.
 
    ![Image showing option contents of target database etc/hosts file ](./images/target-db-etc-hosts.png)
 
@@ -434,7 +436,7 @@ In this lab
 
    Execute below command to check the connectivity on port 1521 (or whichever listener port )
 
-   tnsping **source_host_name**:1521
+   tnsping **source\_host\_name**:1521
 
    if the command output shows **OK(x msec)** as shown below , it means connectivity is success on the port 1521 from target database server to source database server.
 
@@ -487,7 +489,6 @@ In this lab
       Below is sample output.
    
       ![Image showing output of controlfile autobackup on command](./images/rman-controlfile-autobackup-configure.png)
-
 
 12. Register database with srvctl.
 

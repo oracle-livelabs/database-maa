@@ -37,7 +37,7 @@ In this lab
     ```text 
     <copy>
     TGT_DB_UNIQUE_NAME=ORCL_T
-    MIGRATION_METHOD=OFFLINE_PHYSICAL
+    MIGRATION_METHOD=ONLINE_PHYSICAL
     DATA_TRANSFER_MEDIUM=OSS
     HOST=https://swiftobjectstorage.uk-london-1.oraclecloud.com/v1/xxxxxxxxx
     OPC_CONTAINER=ZDM-Physical
@@ -50,7 +50,7 @@ In this lab
 
    TGT\_DB\_UNIQUE\_NAME - Value of target database DB\_UNIQUE\_NAME (ORCL\_T is the one for this lab).
 
-   MIGRATION\_METHOD - Specifies the migration method used (OFFLINE\_PHYSICAL is used in this lab).
+   MIGRATION\_METHOD - Specifies the migration method used (ONLINE\_PHYSICAL is used in this lab).
 
    DATA\_TRANSFER\_MEDIUM - Specifies the media used for source database backup (Object Storage Service is used in this lab).
 
@@ -76,7 +76,7 @@ In this lab
 
    **objectstorage\_namespace** value for your environment was collected in Lab 7 Task 1.
 
-   Save the response file parameters to a file named as **physical\_offline.rsp** under directory **/home/zdmuser**.
+   Save the response file parameters to a file named as **physical\_online.rsp** under directory **/home/zdmuser**.
 
    Please note that this lab is using minimal parameters for migration , however more flexibility and control can be achieved by using other available options in the below document.
 
@@ -87,7 +87,11 @@ In this lab
 
 1. Login to ZDM service host.
 
-   Login to ZDM service host and switch the user to **zdmuser**.
+   Login to ZDM service host using Public IP and private key file.
+
+   Switch user to **zdmuser** using below command.
+
+   **sudo su - zdmuser**
 
 2. Check the status of ZDM service.
 
@@ -111,7 +115,7 @@ In this lab
 
     ```text
     <copy>
-    $ZDM_HOME/bin/zdmcli migrate database  -sourcesid ORCL  -sourcenode zdm-source-db  -srcauth zdmauth  -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key  -srcarg3 sudo_location:/bin/sudo  -targetnode zdm-target-db  -backupuser "xxxxxxxx/xxxxxx.xxxxx@xxxxx.com"  -rsp /home/zdmuser/physical_offline.rsp  -tgtauth zdmauth  -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key  -tgtarg3 sudo_location:/usr/bin/sudo -eval
+    $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db -srcauth zdmauth -srcarg1 user:opc -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db -backupuser "xxxxxxxx/xxxxxx.xxxxx@xxxxx.com" -rsp /home/zdmuser/physical_online.rsp -tgtauth zdmauth -tgtarg1 user:opc -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo -eval
     </copy>
     ```
   
@@ -153,9 +157,9 @@ In this lab
 
 4. Perform database migration evaluation.
 
-   Please proceed with the migration evaluation once you have the command updated for your environment.
+   Please proceed with the migration evaluation once you have the command given in step 3 updated for your environment.
 
-   ![Image showing execution of migration evaluation command](./images/evaluation-start.png)
+   ![Image showing execution of migration evaluation command](./images/mig-eval-start.png)
 
    Please provide the SYS password of source database and Auth token when asked.
 
@@ -384,7 +388,7 @@ In this lab
      ![Image showing select output from target after migration](./images/target-select-after-migration.png)
 
 
-Congrats, you have completed ZDM Physical Offline Migration Live Lab.
+Congrats, you have completed ZDM Physical Online Migration Live Lab.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering

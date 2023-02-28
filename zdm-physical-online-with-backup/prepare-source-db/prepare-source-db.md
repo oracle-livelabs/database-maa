@@ -305,24 +305,25 @@ In this lab
 
       /u01/app/oracle/product/19c/dbhome_1/network/admin/cw*
 
-9. Check connectivity from ZDM service host and target database server.
+9. Check connectivity.
 
-   a. Verify that port 22 on the source database server allows incoming connections from the Zero Downtime Migration service host.
+   This livelab requires below connectivity for source database.
+   
+   * SSH connectivity from ZDM service host to source database server.
+   * SQL*Net connectivity from source to target database server.
+   * SQL*Net connectivity from target to source database server.
 
-   We have already verified this on lab 4 task 3 (ssh connectivity is done thorugh port 22).
+   Please follow below steps to enable required connectivity for source database.
 
-   b. Ensure that the scan listener ports (1521, for example) on the source database servers allow incoming connections from the target 
-       database servers and outgoing connections to the target database servers.
-
-   You will open the required port on VCN and the source database server for this lab using the steps mentioned below. 
-       
-   However, there might be additional components (like a firewall) that you need to consider for an on-premises database.
-
-   i. Allow incoming connection on required port in Virtual Cloud Network.
+   a. Allow incoming connection on required ports in Virtual Cloud Network.
 
    We have deployed source database , target database and ZDM service host into the same Public subnet in ZDM-VCN for the purpose of this lab.
 
-   Follow below steps to enable incoming connection on 1521 (For simplicity , you will open port for all IPs in the same subnet , however you can restrict as you wish).
+   We need to ensure that incoming connection on port 22 and 1521 are not blocked on VCN level.
+
+   No action needs to be taken for port 22 since it is already open by default for the public subnet configured in this lab.
+
+   Follow below steps to enable incoming connection on 1521 (For simplicity , you will open port for all IPs in the Public subnet , however you can restrict as you wish).
 
    Click the **Navigation Menu** in the upper left, navigate to **Networking** and then select **Virtual Cloud Networks** as shown below.
 
@@ -354,11 +355,60 @@ In this lab
 
    You have added necessary rule to allow incoming traffic on 1521.
 
-   ii. Allow incoming connection on required port in source database server.
+   b. Configure connectivity from ZDM service host.
 
-   Login to source database server.
+   We have already verified this on lab 4 task 3 (ssh connectivity is done thorugh port 22).
 
-   Execute below command as **opc** user.
+   c. Configure connectivity from source database server to target database server.
+
+   We are using SQL*Net connectivity for this lab which requires SCAN name of target database server resolvable from source database server.
+
+   Please follow below steps to enable SQL*Net connectivity from source to target.
+
+   i. Collet the target database server SCAN name.
+
+   Login to target database server using Public IP and ssh key file.
+
+   Display the contents of  **/etc/hosts** file as shown below.
+
+   ![Image showing target database server etc-hosts file contents ](./images/target-etc-hosts.png)
+
+   Copy the highlighted line related to target database SCAN FQDN and IP.
+
+   ii. Modify source database server **/etc/hosts** file.
+
+   Login to source database server using Public IP and ssh key file.
+
+   Open the /etc/hosts file for editing using **sudo vi /etc/hosts** command as opc user.
+
+   insert the target database SCAN FQDN and IP copied in previous step to /etc/hosts and save the file.
+
+   Below is sample contents on **/etc/hosts** file after modification.
+
+   ![Image showing source database server etc-hosts file contents ](./images/source-etc-hosts.png)
+
+   iii. Verify connectivity from source database to target database server.
+
+   Execute the below steps on source database server.
+
+   Switch user to **oracle** using below command.
+
+   **sudo su - oracle**
+
+   Execute below command to check the connectivity on port 1521 (or whichever listener port )
+
+   tnsping **target_scan_name**:1521
+
+   if the command output shows **OK(x msec)** as shown below , it means SQL*Net connectivity is successful from source database to target database server.
+
+   ![Image showing output of tnsping from source to target database server ](./images/source-to-target-tns.png)
+   
+   d. Configure connectivity from target database server to source database server.
+
+   i. Login to source database server.
+
+   Execute below command as **opc** user to remove port restriction on iptables.
+
     ```text
     <copy>
     sudo iptables -I INPUT -p tcp -m state --state NEW -m tcp -s 10.30.0.0/24 --dport 1521 -m comment --comment "Required for access to DB , Do not remove or modify." -j ACCEPT
@@ -368,6 +418,16 @@ In this lab
    Sample output is shown below.
       
    ![Image showing option to add Ingress rules ](./images/ip-tables-update.png)
+
+   ii. Modify target database server **/etc/hosts** file.
+
+   Open the **/etc/hosts** file for editing using **sudo vi /etc/hosts** command as opc user.
+
+   insert source database private IP and FQDN (collected in Lab 3 task 3) to /etc/hosts file and save it.
+
+   Below is sample contents of **etc/hosts** file after modification.
+
+   ![Image showing option contents of target database etc/hosts file ](./images/target-db-etc-hosts.png)
 
    iii. Verify connectivity from target database to source database server.
 
@@ -379,7 +439,7 @@ In this lab
 
    Execute below command to check the connectivity on port 1521 (or whichever listener port )
 
-   tnsping <private_ip_of_source_db> 1521
+   tnsping **source_host_name**:1521
 
    if the command output shows **OK(x msec)** as shown below , it means connectivity is success on the port 1521 from target database server to source database server.
 

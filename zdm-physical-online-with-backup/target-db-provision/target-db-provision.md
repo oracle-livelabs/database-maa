@@ -34,7 +34,7 @@ In this lab
 
    Username to login : **opc** 
 
-   Execute the below command after login in as **opc** user.
+   Execute the below command after logged in as **opc** user.
    
      ```text
      <copy>
@@ -71,23 +71,14 @@ In this lab
 
    ![Image showing sqlplus connection to source cdb](./images/source-cdb-connection.png)
 
-3. Check the database version of the source database.
-
-   Please check the source database version that was selected while provisioning the source database using Marketplace Image in Lab 2.
-
-   In case you would like know the database version for your on-premises database then refer the below steps.
-    
-   Execute **opatch lsinventory** command as **oracle** user.
-
-   Check for the output to determine the exact database version.
-
-5. Check the database edition of the source database.
+3. Check the database edition of the source database.
 
    The source database provisioned in this lab is an **Enterprise Edition** database since the Oracle Marketplace Image used for source database provisioning creates an Enterprise Edition database.
 
    In case you would like know the database edition for your on-premises database then refer the below steps.
 
-   Execute the below query after connecting to database using sqlplus.
+   Execute the below query after connecting to source database using connection established in step 2.
+
      ```console
      <copy>
      select banner from v$version;
@@ -99,7 +90,7 @@ In this lab
 
 6. Check database characterset.
    
-   Run the below query to identify the database character set and national characterset.
+   Execute the below query after connecting to source database using connection established in step 2.
      ```console
      <copy>
      select PARAMETER,VALUE from nls_database_parameters where parameter like '%NLS%CHARACTERSET';
@@ -113,15 +104,24 @@ In this lab
 
 7. Check encryption algorithm under sqlnet.ora.
 
-   Check the **sqlnet.ora** to identify any encryption algorithm mentioned.
+   Check the **sqlnet.ora** file in source database server to identify any encryption algorithm mentioned.
 
-8. Generate patch inventory ouput.
+8. Generate patch inventory output.
 
-   Execute **opatch lsinventory** command as **oracle** user in source database server.
+   Execute below steps after login to source database system.
 
-9. Download inventory output to the local desktop.
+   Switch user to **oracle** using below command.
 
-   We will require this file in Task 2.
+   **sudo su - oracle**
+
+   Execute **opatch lsinventory** command.
+
+   Below is sample trimmed output of the above command.
+
+   ![Image showing database and national character set in database](./images/source-db-lsinventory.png)
+
+   Download the Lsinventory output file (location is shown in the output) to local desktop.
+
 
 ## Task 2 : Prepare Database Software Image for Target Database
 
@@ -147,7 +147,7 @@ In this lab
 
    Select database version as **19c**   (same as the major version of your source database).
 
-   Select PSU as **19.16.0.0** ( If you have selected a different version for the source database in the previous lab, please provide that version here).
+   Select PSU as **19.16.0.0** ( If you have selected a different version for the source database in Lab 2, please provide that version here).
 
    Upload Oracle Home patch inventory output generated in Task 1 as below.
 

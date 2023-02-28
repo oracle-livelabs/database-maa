@@ -74,6 +74,8 @@ In this lab
 
      ![Image showing available Marketplace Database Images](./images/db-image-options.png " ")
 
+   Please make a note of the exact database version with Release Update since it will be required in next Lab.
+
 6. Ensure to select the correct compartment in your tenancy and then click on **Launch Instance**.
 
    ![Image showing selection for compartment](./images/compartment.png)

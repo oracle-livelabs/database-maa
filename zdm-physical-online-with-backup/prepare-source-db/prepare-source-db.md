@@ -305,23 +305,20 @@ In this lab
 
       /u01/app/oracle/product/19c/dbhome_1/network/admin/cw*
 
-9. Check connectivity.
+9. Check SQL*Net connectivity.
 
-   This livelab requires below connectivity for source database.
+   This livelab requires below SQL*Net connectivity for source database.
    
-   * SSH connectivity from ZDM service host to source database server.
-   * SQL*Net connectivity from source to target database server.
-   * SQL*Net connectivity from target to source database server.
+   SQL*Net connectivity from source to target database server.
+   SQL*Net connectivity from target to source database server.
 
-   Please follow below steps to enable required connectivity for source database.
+   Please follow below steps to enable required SQL*NEt connectivity for source database.
 
-   a. Allow incoming connection on required ports in Virtual Cloud Network.
+   a. Allow incoming connection on required port in Virtual Cloud Network.
 
    We have deployed source database , target database and ZDM service host into the same Public subnet in ZDM-VCN for the purpose of this lab.
 
-   We need to ensure that incoming connection on port 22 and 1521 are not blocked on VCN level.
-
-   No action needs to be taken for port 22 since it is already open by default for the public subnet configured in this lab.
+   We need to ensure that incoming connection on port 1521(or the configured listener port) are not blocked on VCN level.
 
    Follow below steps to enable incoming connection on 1521 (For simplicity , you will open port for all IPs in the Public subnet , however you can restrict as you wish).
 
@@ -355,11 +352,7 @@ In this lab
 
    You have added necessary rule to allow incoming traffic on 1521.
 
-   b. Configure connectivity from ZDM service host.
-
-   We have already verified this on lab 4 task 3 (ssh connectivity is done thorugh port 22).
-
-   c. Configure connectivity from source database server to target database server.
+   b. Configure connectivity from source database server to target database server.
 
    We are using SQL*Net connectivity for this lab which requires SCAN name of target database server resolvable from source database server.
 
@@ -379,11 +372,13 @@ In this lab
 
    Login to source database server using Public IP and ssh key file.
 
-   Open the /etc/hosts file for editing using **sudo vi /etc/hosts** command as opc user.
+   Open **/etc/hosts** file for editing by running below command as **opc** user.
+   
+   **sudo vi /etc/hosts**
 
    insert the target database SCAN FQDN and IP copied in previous step to /etc/hosts and save the file.
 
-   Below is sample contents on **/etc/hosts** file after modification.
+   Below is sample contents of **/etc/hosts** file after modification.
 
    ![Image showing source database server etc-hosts file contents ](./images/source-etc-hosts.png)
 

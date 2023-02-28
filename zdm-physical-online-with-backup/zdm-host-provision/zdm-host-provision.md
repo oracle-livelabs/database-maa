@@ -209,11 +209,25 @@ In this lab
 
 ## Task 3 : Configure SSH Connectivity from ZDM Host to Source and Target DB System
 
-1. Add source and target database IP and FQDN Details to /etc/hosts.
+Please follow the below steps to enable SSH connectivity from ZDM service host to Source and Target DB system.
 
-   You have to first collect source and target Private IP and FQDN from the console.
+1. Allow incoming connection on port 22 in Source and Target database subnet.
 
-   a. Navigate to source database compute instance.
+   We have deployed source database , target database and ZDM service host into the same Public subnet for the purpose of this lab.
+
+   We need to ensure that incoming connection on port 22 is not blocked on Subnet level.
+
+   No action needs to be taken for this lab since port 22 is already open by default for the Public subnet configured in this lab.
+
+   However you may need to take care of opening the port for an on-premises database system.
+
+2. Enable Source and Target hostname resolution from ZDM service host.
+
+   You can enable Source and Target resolution by adding the respective Database System IP and FQDN Details to **/etc/hosts** file.
+
+   Please follow below steps.
+
+   a. Collect Source Database System details.
 
    Click the **Navigation Menu** in the upper left, navigate to **Compute** and then select **Instances**.
 
@@ -225,7 +239,7 @@ In this lab
 
    ![Image showing private ip and  of source](./images/source-ip-fqdn.png)
 
-   b. Navigate to target database system as below.
+   b. Collect Target Database System details.
 
    Click the **Navigation Menu** in the upper left, navigate to **Oracle Database** and then select **Oracle Base Database (VM,BM)**.
 
@@ -237,15 +251,19 @@ In this lab
 
    ![Image showing private ip and fqdn of target database](./images/target-ip-fqdn.png)
    
-   c. Edit /etc/hosts in ZDM host to add source and target database system private IP and FQDN details collected in previous steps.
+   c. Modify **/etc/hosts** file  in ZDM service host.
+
+   Open the /etc/hosts file for editing using **sudo vi /etc/hosts** command as opc user.
+   
+   Insert Source and Target database system private IP and FQDN details to **/etc/hosts** file and save it.
 
    Sample output after editing is shown below.
 
    ![Image showing contents of hosts file](./images/etc-host.png)
 
-2. Copy the private SSH key to ZDM host.
+3. Copy the private SSH key to ZDM host.
 
-   Copy the SSH private key generated in earlier lab to ZDM host under zdmuser home (/home/zdmuser).
+   Copy the SSH private key generated in earlier lab to ZDM service host under zdmuser home (/home/zdmuser).
 
    Please note that you are using same private key and public key pair for source database compute , target DB System and ZDM host in this lab.
 
@@ -255,17 +273,24 @@ In this lab
 
    chmod 600 **key\_file\_name**
 
-3. Verify SSH connectivity from ZDM to Source and Target DB system.
+4. Verify SSH connectivity from ZDM servive host to Source and Target DB system.
 
-   Execute the below command to test the ssh connectivity.
+   i. Execute the below command to test the ssh connectivity from ZDM service host to source database system.
 
    **ssh -i <key_file_name> opc@zdm-source-db**
 
-   **ssh -i <key_file_name> opc@zdm-target-db**
-
-   if the connectivity is sucessful then you will be able to login to source and target as shown below.
+   if the connectivity is sucessful then you will be able to login to Source DB system as shown below.
 
    ![Image showing successful ssh connectivity from zdm to source](./images/ssh-source-login.png)
+
+   ii. Execute the below command to test the ssh connectivity from ZDM service host to Target database system.
+
+   **ssh -i <key_file_name> opc@zdm-target-db**
+
+   if the connectivity is sucessful then you will be able to login target as shown below.
+
+   ![Image showing successful ssh connectivity from zdm to target](./images/ssh-target-login.png)
+
 
 You may now **proceed to the next lab**.
 

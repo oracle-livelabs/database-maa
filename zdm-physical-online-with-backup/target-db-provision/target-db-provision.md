@@ -28,13 +28,11 @@ In this lab
 
 ## Task 1 : Collect Source Database Details
 
-1. Login to the source database system using the Public IP.
+1. Check the Operating System version of the source database.
+
+   Login to the source database system using the Public IP and privte SSH key.
 
    Username to login : **opc** 
-
-   Use the private SSH key generated earlier.
-
-2. Check the Operating System version of the source database.
 
    Execute the below command after login in as **opc** user.
    
@@ -43,25 +41,37 @@ In this lab
      cat /etc/os-release
      </copy>
      ```
-     Please use similar commands in case above command doesn't work for you ( in case you have selected different source database system than the one specified in Lab 2).
+     Please use similar commands in case above command doesn't work for you ( in case you have a different source database platform than the one specified in Lab 2).
 
      You will get an output similar to the one below.
 
      ![Image showing output of command to check OS version ](./images/os-version.png)
 
-3. Set the database environment to connect to your database.
+2. Establish connection to source database.
+
+   Please follow below steps to establish connection to source database using sqlplus.
+
+   Login to source database server using Public IP and ssh key.
+
+   Username to login : **opc** 
 
    Switch user to **oracle** using below command.
 
    **sudo su - oracle**
 
-   Set the environment to connect to your database using below command.
+   Set the environment to connect to your database.
 
-   Type **. oraenv** and press **Enter**.
+   Type **. oraenv** and press **Enter**. 
     
-   Enter **ORCL** when asked for **ORACLE_SID** and then press **Enter** .   --> Enter your **ORACLE\_SID** if that is different in case of an on-premises database.
+   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).
 
-4. Check the database version of the source database.
+   Type **sqlplus " /as sysdba"**  and press **Enter** to connect to source database as SYS user.
+
+   Please find below snippet of the connection steps.
+
+   ![Image showing sqlplus connection to source cdb](./images/source-cdb-connection.png)
+
+3. Check the database version of the source database.
 
    Please check the source database version that was selected while provisioning the source database using Marketplace Image in Lab 2.
 
@@ -73,7 +83,7 @@ In this lab
 
 5. Check the database edition of the source database.
 
-   Your source database is in **Enterprise Edition** since the Oracle Marketplace Image used in previous lab provisions Enterprise Edition database.
+   The source database provisioned in this lab is an **Enterprise Edition** database since the Oracle Marketplace Image used for source database provisioning creates an Enterprise Edition database.
 
    In case you would like know the database edition for your on-premises database then refer the below steps.
 

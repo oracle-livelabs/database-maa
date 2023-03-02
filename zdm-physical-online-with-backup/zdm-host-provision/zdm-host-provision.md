@@ -209,7 +209,7 @@ In this lab
 
 ## Task 3 : Configure SSH Connectivity from ZDM Host to Source and Target DB System
 
-Please follow the below steps to enable SSH connectivity from ZDM service host to Source and Target DB system.
+   Please follow the below steps to enable SSH connectivity from ZDM service host to Source and Target DB system.
 
 1. Allow incoming connection on port 22 for Source and Target database subnet.
 
@@ -219,11 +219,11 @@ Please follow the below steps to enable SSH connectivity from ZDM service host t
 
    No action needs to be taken for this lab since port 22 is already open by default for the Public subnet configured in this lab.
 
-   However you may need to take care of opening the port 22 for an on-premises database system.
+   However, you may need to take care of opening port 22 if your source and target deployment is different compared to the one specified in this lab.
 
 2. Enable Source and Target hostname resolution from ZDM service host.
 
-   You can enable Source and Target resolution by adding the respective Database System IP and FQDN Details to **/etc/hosts** file.
+   You can enable Source and Target hostname resolution by adding the correspnding Database System IP and FQDN Details to **/etc/hosts** file in ZDM service host.
 
    Please follow below steps.
 
@@ -233,7 +233,9 @@ Please follow the below steps to enable SSH connectivity from ZDM service host t
 
    ![Image showing navigation to compute instance](./images/navigate-to-compute.png)
 
-   Click on the **ZDM-Source-DB** compute host.
+   Click on the **ZDM-Source-DB** compute host as shown below.
+
+   ![Image showing list of compute instances](./images/compute-list.png)
 
    Note down the **Private IP** and **Internal FQDN** under Primary VNIC section.
 
@@ -279,7 +281,7 @@ Please follow the below steps to enable SSH connectivity from ZDM service host t
 
    **ssh -i <key_file_name> opc@zdm-source-db**
 
-   if the connectivity is sucessful then you will be able to login to Source DB system as shown below.
+   You will be logged in to the Source DB system if the connectivity is successful as shown below.
 
    ![Image showing successful ssh connectivity from zdm to source](./images/ssh-source-login.png)
 
@@ -287,7 +289,7 @@ Please follow the below steps to enable SSH connectivity from ZDM service host t
 
    **ssh -i <key_file_name> opc@zdm-target-db**
 
-   if the connectivity is sucessful then you will be able to login target as shown below.
+   You will be logged in to the Target DB system if the connectivity is successful as shown below.
 
    ![Image showing successful ssh connectivity from zdm to target](./images/ssh-target-login.png)
 

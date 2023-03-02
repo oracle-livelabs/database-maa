@@ -167,7 +167,7 @@ In this lab
 
    a . Set **ENCRYPTION\_WALLET\_LOCATION** in the $ORACLE_HOME/network/admin/sqlnet.ora file.
 
-       Insert the below line in sqlnet.ora (Replace the **/u01/app/oracle/product/19c/dbhome_1/network/admin/** path with your $ORACLE_HOME/network/admin path).   
+       Insert the below line in sqlnet.ora (Replace the **/u01/app/oracle/product/19c/dbhome\_1/network/admin/** path with your $ORACLE\_HOME/network/admin path).   
        
        ```text
        <copy>
@@ -307,12 +307,12 @@ In this lab
 
 9. Check SQL*Net connectivity.
 
-   This livelab requires below SQL*Net connectivity for source database.
+   This livelab requires below SQL*Net connectivity.
    
-   SQL*Net connectivity from source to target database server.
-   SQL*Net connectivity from target to source database server.
+   SQL\*Net connectivity from source to target database server.
+   SQL\*Net connectivity from target to source database server.
 
-   Please follow below steps to enable required SQL*NEt connectivity for source database.
+   Please follow below steps to enable required SQL\*Net connectivity.
 
    a. Allow incoming connection on required port in Virtual Cloud Network.
 
@@ -376,7 +376,7 @@ In this lab
    
    **sudo vi /etc/hosts**
 
-   insert the target database SCAN FQDN and IP copied in previous step to /etc/hosts and save the file.
+   Insert the Target database SCAN FQDN and IP copied in previous step to /etc/hosts and save the file.
 
    Below is sample contents of **/etc/hosts** file after modification.
 
@@ -400,7 +400,9 @@ In this lab
    
    d. Configure connectivity from target database server to source database server.
 
-   i. Login to source database server.
+   i. Remove retrictions on iptbles.
+
+   Login to source database server.
 
    Execute below command as **opc** user to remove restriction on iptables.
 
@@ -414,7 +416,9 @@ In this lab
       
    ![Image showing option to add Ingress rules ](./images/ip-tables-update.png)
 
-   ii. Modify target database server **/etc/hosts** file.
+   ii. Modify Target database server **/etc/hosts** file.
+
+   Login to Target database server.
 
    Open **/etc/hosts** file for editing by running below command as **opc** user.
    

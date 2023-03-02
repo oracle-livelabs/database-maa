@@ -88,7 +88,7 @@ In this lab
 
      ![Image showing Database Edition of Source database](./images/database-edition.png)
 
-6. Check database characterset.
+4. Check database characterset.
    
    Execute the below query after connecting to source database using connection established in step 2.
      ```console
@@ -102,11 +102,11 @@ In this lab
 
      ![Image showing database and national character set in database](./images/database-characterset.png)
 
-7. Check encryption algorithm under sqlnet.ora.
+5. Check encryption algorithm under sqlnet.ora.
 
    Check the **sqlnet.ora** file in source database server to identify any encryption algorithm mentioned.
 
-8. Generate patch inventory output.
+6. Generate patch inventory output.
 
    Execute below steps after logged into the source database system.
 
@@ -199,14 +199,20 @@ In this lab
 
    ![Image showing the option to reduce the OCPU](./images/click-select-a-shape.png)
 
-   
-   , your final selection will appear as below.
+   Your final selection will appear as below.
 
    ![Image showing final selection of DB System Shape](./images/shape.png)
 
 5. Configure storage.
 
-   Leave this section as the default.
+   Click on Change Storage as shown below.
+
+   ![Image showing option to change storage](./images/click-change-storage.png)
+
+   Please select **Grid Infrastructure** and **Balanced** option and click on **save changes** as shown below.
+
+   ![Image showing option to change storage](./images/storage-selection.png)
+
 
 6. Configure database edition.
 
@@ -214,7 +220,8 @@ In this lab
 
    ![Image showing the selection for Database Edition](./images/edition.png)
 
-   
+   Please note that Physical Online Migration uses Data Guard which requires Enterprise Edition Source and Target Databases.
+
 7. Upload SSH Keys.
    
    Under **Add SSH keys** , upload the SSH Public key generated earlier.
@@ -235,17 +242,15 @@ In this lab
 
 10. Click Next
 
-   Click **Next** to go to the next page.
+    Click **Next** to go to the next page.
 
 11. Provide database name.
 
-   If the target database is in Exadata Database Service on Dedicated Infrastructure or Exadata Cloud at Customer, then the target database **DB\_NAME** should be the same as the source database **DB\_NAME**.
+   If the target database is Exadata Database Service on Dedicated Infrastructure or Exadata Cloud at Customer, then the target database **DB\_NAME** should be the same as the source database **DB\_NAME**.
 
    If the target database is Oracle Base Database VM , then the target **DB\_NAME** can be the same as or different from the source database **DB\_NAME**.
 
-   Our target database is **Oracle Base Database VM** and we can specify a same or different name for **DB\_NAME**. 
-
-   We will keep the same **DB\_NAME** as source database for this lab.
+   Our target database is **Oracle Base Database VM** and will keep the same **DB\_NAME** as source database for this lab.
 
    Provide **Database** name as **ORCL** and **Database unique name suffix** as **T**.
 

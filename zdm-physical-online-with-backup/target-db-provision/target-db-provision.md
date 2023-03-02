@@ -16,7 +16,7 @@ Estimated Time: 30 minutes
 
 In this lab
 
-* You will collect some information from the source database that is required for target database provisioning.
+* You will collect information from the source database required for target database provisioning.
 
 * You will prepare a database software image for the target database.
 
@@ -69,7 +69,7 @@ In this lab
 
    Please find below snippet of the connection steps.
 
-   ![Image showing sqlplus connection to source cdb](./images/source-cdb-connection.png)
+    ![Image showing sqlplus connection to source cdb](./images/source-cdb-connection.png)
 
 3. Check the database edition of the source database.
 
@@ -108,7 +108,7 @@ In this lab
 
 8. Generate patch inventory output.
 
-   Execute below steps after login to source database system.
+   Execute below steps after logged into the source database system.
 
    Switch user to **oracle** using below command.
 
@@ -149,7 +149,7 @@ In this lab
 
    Select PSU as **19.16.0.0** ( If you have selected a different version for the source database in Lab 2, please provide that version here).
 
-   Upload Oracle Home patch inventory output generated in Task 1 as below.
+   Upload Oracle Home patch inventory output generated in Task 1 step 6 as below.
 
    ![Image showing database version selected for Image ](./images/db-version-info.png)
 
@@ -177,17 +177,30 @@ In this lab
     
    ![Image showing the updated DB system name](./images/db-system-name.png)
 
+4. Availability Domain and Shape selection.
+
+   Leave Availability Domain and Shape as to thier default values.
+
 4.  Modify the shape of the DB System.
 
    When you create the database from the console, ensure that your chosen shape can accommodate the source database, plus any future sizing requirements. A good guideline is to use a shape similar to or larger in size than source database.
 
    For this lab we will use **AMD Flex** with 1 OCPU.
 
-   Click on **Change Shape** and reduce the number of OCPU per node to 1 as below.
+   Click on **Change Shape** as shown below.
 
-   ![Image showing the option to reduce the OCPU](./images/ocpu.png)
+   ![Image showing the option to change shape](./images/click-change-shape.png)
 
-   Click on **Select a Shape** , your final selection will appear as below.
+   Ensure that AMD is selected in new screen and reduce **Number of OCPU per Node** to 1 as shown below.
+
+   ![Image showing the option to reduce the OCPU](./images/ocpu-selection.png)
+
+   Click on **Select a Shape** as shown below.
+
+   ![Image showing the option to reduce the OCPU](./images/click-select-a-shape.png)
+
+   
+   , your final selection will appear as below.
 
    ![Image showing final selection of DB System Shape](./images/shape.png)
 

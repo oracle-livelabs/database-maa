@@ -211,15 +211,15 @@ In this lab
 
 Please follow the below steps to enable SSH connectivity from ZDM service host to Source and Target DB system.
 
-1. Allow incoming connection on port 22 in Source and Target database subnet.
+1. Allow incoming connection on port 22 for Source and Target database subnet.
 
-   We have deployed source database , target database and ZDM service host into the same Public subnet for the purpose of this lab.
+   You have deployed source database , target database and ZDM service host into the same Public subnet for the purpose of this lab.
 
-   We need to ensure that incoming connection on port 22 is not blocked on Subnet level.
+   You need to ensure that incoming connection on port 22 is not blocked on Subnet level.
 
    No action needs to be taken for this lab since port 22 is already open by default for the Public subnet configured in this lab.
 
-   However you may need to take care of opening the port for an on-premises database system.
+   However you may need to take care of opening the port 22 for an on-premises database system.
 
 2. Enable Source and Target hostname resolution from ZDM service host.
 

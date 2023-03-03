@@ -204,7 +204,7 @@ The __GOLDENGATEHUB COMPUTEID__ parameter specifies the Oracle Cloud Identifier 
 GOLDENGATEHUB_ALLOWSELFSIGNEDCERTIFICATE=TRUE
 ```
 
-The __GOLDENGATEHUB ALLOWSELFSIGNEDCERTIFICATE__ parameter indicates that ZDM can trust the self-signed HTPPS certificate. This parameter must be set to TRIE.
+The __GOLDENGATEHUB ALLOWSELFSIGNEDCERTIFICATE__ parameter indicates that ZDM can trust the self-signed HTPPS certificate. This parameter must be set to TRUE.
 
 
 &nbsp;
@@ -343,6 +343,7 @@ The __DATAPUMPSETTINGS EXPORTDIRECTORYOBJECT PATH__ parameter specifies the dire
     GOLDENGATEHUB_SOURCEDEPLOYMENTNAME=Marketplace
     GOLDENGATEHUB_TARGETDEPLOYMENTNAME=Marketplace
     GOLDENGATEHUB_COMPUTEID=<UPDATE>
+    GOLDENGATEHUB_ALLOWSELFSIGNEDCERTIFICATE=TRUE
 
 
 

@@ -200,6 +200,13 @@ GOLDENGATEHUB_COMPUTEID=ocid1.instance
 The __GOLDENGATEHUB COMPUTEID__ parameter specifies the Oracle Cloud Identifier of the VM where the GoldenGate Microservices are deployed. In the following task, when preparing the response file, instructions on where to find this parameter will be provided.
 
 
+```
+GOLDENGATEHUB_ALLOWSELFSIGNEDCERTIFICATE=TRUE
+```
+
+The __GOLDENGATEHUB ALLOWSELFSIGNEDCERTIFICATE__ parameter indicates that ZDM can trust the self-signed HTPPS certificate. This parameter must be set to TRUE.
+
+
 &nbsp;
 
 __Data Pump and OSS Related Parameters__
@@ -336,6 +343,7 @@ The __DATAPUMPSETTINGS EXPORTDIRECTORYOBJECT PATH__ parameter specifies the dire
     GOLDENGATEHUB_SOURCEDEPLOYMENTNAME=Marketplace
     GOLDENGATEHUB_TARGETDEPLOYMENTNAME=Marketplace
     GOLDENGATEHUB_COMPUTEID=<UPDATE>
+    GOLDENGATEHUB_ALLOWSELFSIGNEDCERTIFICATE=TRUE
 
 
 
@@ -396,4 +404,4 @@ Please *proceed to the next lab*.
 * **Author** - Ricardo Gonzalez, Senior Principal Product Manager, Oracle Cloud Database Migration
 - **Contributors** - Zachary Talke, Solutions Engineer, NA Tech Solution Engineering
 * **Contributors** - LiveLabs Team, ZDM Development Team
-* **Last Updated By/Date** - Ricardo Gonzalez, January 2022
+* **Last Updated By/Date** - Ricardo Gonzalez, March 2023

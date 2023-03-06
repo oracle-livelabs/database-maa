@@ -183,7 +183,7 @@ In this lab, you will:
     ---------------------------------------
     Running: true
     Tranferport:
-    Conn String: jdbc:mysql://localhost:8897/
+    Conn String: jdbc:MySQL://localhost:8897/
     RMI port: 8895
     HTTP port: 8896
     Wallet path: /home/zdmuser/zdmbase/crsdata/zdmhost/security

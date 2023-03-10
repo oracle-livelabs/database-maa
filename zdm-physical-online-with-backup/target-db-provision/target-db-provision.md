@@ -69,7 +69,7 @@ In this lab
 
    Please find below snippet of the connection steps.
 
-    ![Image showing sqlplus connection to source cdb](./images/source-cdb-connection.png)
+   ![Image showing sqlplus connection to source cdb](./images/source-cdb-connection.png)
 
 3. Check the database edition of the source database.
 

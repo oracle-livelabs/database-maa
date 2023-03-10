@@ -65,7 +65,7 @@ In this lab
 
 3. Ensure the target timezone version is same or higher than the source.
 
-  Please ensure that the target placeholder database has a time zone file version that is the same or higher than the source database. 
+   Please ensure that the target placeholder database has a time zone file version that is the same or higher than the source database. 
    
    If that is not the case, then the time zone file has to be upgraded in the target placeholder database.
 
@@ -85,7 +85,7 @@ In this lab
 
    ii. Check the timezone of target database server.
 
-   Execute below query using the source database connection established using step 2.
+   Execute below query using the target database connection established using step 1.
    
     ```text
      <copy>
@@ -173,49 +173,13 @@ In this lab
   
 7. Check connectivity.
 
-   Verify that ports 22 and 1521 (or the configured database listener port) on the target database server in the Oracle Cloud Infrastructure are open and not blocked by a firewall for connectivity from the ZDM service host and source database server.
+   This livelab requires below SQL*Net connectivity.
 
-   a. Configure connectivity between ZDM service host and target database server.
-   
-   Please note that port 22 allows incoming connection from all IPs on a Public Subnet in OCI by default, so no action is required on VCN for this step.
+    SQL*Net connectivity from source to target database server. 
+    
+    SQL*Net connectivity from target to source database server.
 
-   We have already verified the connectivity from ZDM service host on lab 4 task 3 (ssh connectivity is done thorugh port 22).
-
-   b. Configure connectivity between source and target database servers.
-
-   You have two options for configuring connectivity between the source and target database servers: SQL*Net connectivity using SCAN or SSH.
-   
-   You will be using SQL*Net connectivity using SCAN IP for this lab.
-
-   Please follow the below steps to enable SQL*Net connectivity from the source database to target database server on port 1521 (or the configured database listener port) and SCAN IP.
-   
-   i. Allow incoming connection on port 1521 (or the configured database listener port) in Virtual Cloud Network.
-
-   You have deployed source database , target database and ZDM service host into the same Public subnet in ZDM-VCN for the purpose of this lab.
-
-   Port 1521 was opened on the Public subnet level as part of Lab 5 step 9b, so no further action is required to allow incoming connection on port 1521 on the subnet level.
-
-   ii. Allow incoming connection on port 1521 in target database server.
-
-   There is no specific action required for the target database provisioned in this lab.
-
-   You might need to do additional steps for a target database provisioned using steps not mentioned in this lab.
-
-   iii. Check the SQL*Net connectivity from source to target.
-
-   Login to source database server using Public IP and ssh key file.
-
-   Switch user to **oracle** using below command.
-
-   **sudo su - oracle**
-
-   Execute below command to check the connectivity on port 1521 (or whichever listener port )
-
-   tnsping **scan_ip_of_target_db**:**1521**
-
-   if the command output shows **OK(x msec)** as shown below , it means SQL*Net connectivity is succesful on the port 1521 from source database to target database server.
-
-   ![Image showing output of tnsping from source to target database server ](./images/source-to-target-tns.png)    
+   We have already done the needful to configure this connectivity in previous lab (Lab 5).    
 
 8. Capture RMAN SHOW ALL command.
 
@@ -225,7 +189,7 @@ In this lab
 
    ![Image showing RMAN SHOW ALL output from target database server](./images/rman-show-all.png)
 
-9. Ensure system time of the ZDM service host and source database server should be in sync with your Oracle Cloud Infrastructure target.
+9. Ensure system time of the ZDM service host and source database server are in sync with your Oracle Cloud Infrastructure target.
 
    Execute **date** command across source , target and ZDM service host simultaneously and see whether they show the same time.
 
@@ -239,7 +203,7 @@ In this lab
 
    If the time on any of the systems (source and ZDM service host) varies beyond 6 minutes from the time on OCI target database , it should be adjusted. 
    
-   You can use ntp time check to synchronize the time if NTP is configured. 
+   You can use NTP to synchronize the time if NTP is configured. 
    
    If NTP is not configured, then it is recommended that you configure it. If configuring NTP is not an option, then you need to correct the time manually to ensure it is in sync with OCI target database server time.
 

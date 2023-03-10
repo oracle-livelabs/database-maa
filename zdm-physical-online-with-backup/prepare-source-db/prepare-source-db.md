@@ -179,7 +179,7 @@ In this lab
 
       ![Image showing contents of sqlnet.ora in source database](./images/source-sqlnet.png)
 
-      For an Oracle RAC instance, also set **ENCRYPTION\_WALLET\_LOCATION** in the second Oracle RAC node (Not applicable for the source database provisioned in this lab)
+      For an Oracle RAC instance, also set **ENCRYPTION\_WALLET\_LOCATION** in the second Oracle RAC node (Not applicable for the source database provisioned in this lab).
 
       
    b. Create and configure the keystore.
@@ -310,6 +310,7 @@ In this lab
    This livelab requires below SQL*Net connectivity.
    
    SQL\*Net connectivity from source to target database server.
+   
    SQL\*Net connectivity from target to source database server.
 
    Please follow below steps to enable required SQL\*Net connectivity.
@@ -424,7 +425,7 @@ In this lab
    
    **sudo vi /etc/hosts**
 
-   Insert source database private IP and FQDN (collected in Lab 3 task 3) to /etc/hosts file and save it.
+   Insert source database private IP and FQDN (collected in Lab 3 task 3 step 2) to /etc/hosts file and save it.
 
    Below is sample contents of **/etc/hosts** file after modification.
 
@@ -442,7 +443,7 @@ In this lab
 
    tnsping **source\_host\_name**:1521
 
-   if the command output shows **OK(x msec)** as shown below , it means connectivity is success on the port 1521 from target database server to source database server.
+   If the command output shows **OK(x msec)** as shown below , it means connectivity is success on the port 1521 from target database server to source database server.
 
    ![Image showing output of tnsping from target to source database server ](./images/target-to-source-tnsping.png)
  
@@ -526,6 +527,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, March 2023
 
 

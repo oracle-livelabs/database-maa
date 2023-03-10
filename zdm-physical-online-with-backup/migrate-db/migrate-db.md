@@ -163,15 +163,15 @@ In this lab
 
    Please provide the SYS password of source database and Auth token when asked.
 
-   Also note down the migration job ID which is 3 in this case.
+   Also note down the migration job ID which is 7 in this case.
 
 5. Monitor the database migration evaluation.
 
    Check the status of database migration evaluation using below command.
 
-   **$ZDM_HOME/bin/zdmcli query job -jobid 3**
+   **$ZDM_HOME/bin/zdmcli query job -jobid 7**
 
-   Here 3 is the jobid.
+   Here 7 is the jobid.
 
    You will receive a similar ouput as below.
 
@@ -327,7 +327,7 @@ In this lab
 
       ![Image showing the command to start database migration](./images/migration-start.png)
 
-      Please note down the migration job ID which is 4 in this case.
+      Please note down the migration job ID which is 9 in this case.
    
    d. Monitor the database migration using below command.
 

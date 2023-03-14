@@ -4,7 +4,7 @@
 
 This workshop covers a step-by-step guide for migrating On-premises Oracle Databases to Oracle Co-Managed databases using ZDM's Physical Online workflow with the backup location. 
 
-Estimated Time: 3 hours
+Estimated Time: 3 hours 30 minutes
 
 
 ### About Zero Downtime Migration

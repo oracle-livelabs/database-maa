@@ -22,7 +22,7 @@ In this lab
 
    Most of the steps in this lab requires a connection to source database.
 
-   Please follow below steps to establish connection to source database using sqlplus.
+   Please follow below steps to establish connection to source database using SQLPLUS.
 
    Login to source database server using Public IP and ssh key.
 
@@ -34,9 +34,9 @@ In this lab
 
    Type **. oraenv** and press **Enter**. 
     
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).
+   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different from ORCL).
 
-   Type **sqlplus " /as sysdba"**  and press **Enter** to connect to source database as SYS user.
+   Type **sqlplus "/as sysdba"**  and press **Enter** to connect to source database as SYS user.
 
    Please find below snippet of the connection steps.
 
@@ -54,9 +54,9 @@ In this lab
 
    Type **. oraenv** and press **Enter**. 
     
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).
+   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different from ORCL).
 
-   Type **sqlplus " /as sysdba"**  and press **Enter** to connect to target database as SYS user.
+   Type **sqlplus "/as sysdba"**  and press **Enter** to connect to target database as SYS user.
 
    Please find below snippet of the connection steps.
 
@@ -110,7 +110,7 @@ In this lab
 
    Follow the below steps for the source database provisioned using steps not mentioned in this livelab.
 
-   Execute below statement using source database connection already established in step 1 to check whether SPFILE is in use.
+   Execute below statement using source database connection (established using step 1) to check whether SPFILE is in use.
 
      ```text
      <copy>
@@ -184,9 +184,11 @@ In this lab
       
    b. Create and configure the keystore.
 
-      i. Connect to the database and create the keystore.
+      Connect to source database (refer step 1 if required) for all below steps.
 
-      Execute the below query after modifying the keystore location (same as the encryption wallet location provided in step a) and the TDE password.
+      i. Create the keystore.      
+     
+      Execute the below command after modifying the keystore location (same as the encryption wallet location provided in step a) and the TDE password.
 
       ```text
       <copy>
@@ -317,9 +319,9 @@ In this lab
 
    a. Allow incoming connection on required port in Virtual Cloud Network.
 
-   We have deployed source database , target database and ZDM service host into the same Public subnet in ZDM-VCN for the purpose of this lab.
+   You have deployed source database , target database and ZDM service host into the same Public subnet in ZDM-VCN for the purpose of this lab.
 
-   We need to ensure that incoming connection on port 1521(or the configured listener port) are not blocked on VCN level.
+   You need to ensure that incoming connection on port 1521(or the configured listener port) are not blocked on VCN level.
 
    Follow below steps to enable incoming connection on 1521 (For simplicity , you will open port for all IPs in the Public subnet , however you can restrict as you wish).
 
@@ -399,7 +401,7 @@ In this lab
 
    ![Image showing output of tnsping from source to target database server ](./images/source-to-target-tns.png)
    
-   d. Configure connectivity from target database server to source database server.
+   c. Configure connectivity from target database server to source database server.
 
    i. Remove retrictions on iptbles.
 
@@ -516,11 +518,11 @@ In this lab
    If archive logs were to be deleted on the source database, and these archive logs are needed by Zero Downtime Migration to synchronize the target cloud database, then these files should be restored so that Zero Downtime Migration can continue the migration process.
 
    
-14. Ensure system time of the ZDM service host and source database server should be in sync with your Oracle Cloud Infrastructure target.
+14. Ensure system time of the ZDM service host and source database server  are in sync with your Oracle Cloud Infrastructure target.
 
     If the time on any of these systems varies beyond 6 minutes from the time on OCI, it should be adjusted. You can use ntp time check to synchronize the time if NTP is configured. If NTP is not configured, then it is recommended that you configure it. If configuring NTP is not an option, then you need to correct the time manually to ensure it is in sync with OCI time.
 
-   Procedure to check this is covered as part of next lab.
+    Steps to check and compare time is mentioned in next Lab.
 
 
 You may now **proceed to the next lab**.

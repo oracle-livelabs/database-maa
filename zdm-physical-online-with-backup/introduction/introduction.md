@@ -45,6 +45,7 @@ Zero Downtime Migration supports logical database migration to the following tar
   Exadata Cloud at Customer
 * On premises Exadata Database Machine.
 * Autonomous Database on Dedicated Infrastructure and Autonomous Database on Cloud@Customer with fractional OCPU allocation, where a   
+  
   fraction of OCPU is allocated per database service, instead of integer OCPU.
 
   You can specify any predefined fractional service alias available; however, for Autonomous Transaction Processing workloads TP* services are preferred over LOW* services because LOW* is meant for low priority batch jobs.

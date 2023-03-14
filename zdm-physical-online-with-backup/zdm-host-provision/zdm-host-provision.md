@@ -59,7 +59,7 @@ In this lab
 
 8. Upload SSH Keys.
 
-   Under **Add SSH keys** , upload the public ssh key generated earlier.
+   Under **Add SSH keys** , upload the public ssh key generated in Lab 1.
 
    ![Image showing option to upload ssh kesy](./images/ssh.png)
 
@@ -105,7 +105,7 @@ In this lab
    Execute the below command to identify already installed packages.
      ```text
      <copy>
-     yum list installed glibc-devel expect unzip libaio oraclelinux-developer-release-
+     yum list installed glibc-devel expect unzip libaio oraclelinux-developer-release-e17
      </copy>
      ```
      You will receive an output similar to the one below which shows glibc-devel, libaio , oraclelinux-developer-release-e17 and unzip are alraady installed.
@@ -114,7 +114,7 @@ In this lab
 
 4. Install missing packages.
 
-   We have seen that **expect** package is missing as per previous step output.
+   We have seen that **expect** package is missing as per output of previous step.
 
    Install the **expect** package using commands below.
 
@@ -265,7 +265,7 @@ In this lab
 
 3. Copy the private SSH key to ZDM host.
 
-   Copy the SSH private key generated in earlier lab to ZDM service host under zdmuser home (/home/zdmuser).
+   Copy the SSH private key generated in lab 1 to ZDM service host under **zdmuser** home (/home/zdmuser).
 
    Please note that you are using same private key and public key pair for source database compute , target DB System and ZDM host in this lab.
 
@@ -279,7 +279,7 @@ In this lab
 
    i. Execute the below command to test the ssh connectivity from ZDM service host to source database system.
 
-   **ssh -i <key_file_name> opc@zdm-source-db**
+   **ssh -i key\_file\_name opc@zdm-source-db**
 
    You will be logged in to the Source DB system if the connectivity is successful as shown below.
 
@@ -287,7 +287,7 @@ In this lab
 
    ii. Execute the below command to test the ssh connectivity from ZDM service host to Target database system.
 
-   **ssh -i <key_file_name> opc@zdm-target-db**
+   **ssh -i key\_file\_name opc@zdm-target-db**
 
    You will be logged in to the Target DB system if the connectivity is successful as shown below.
 
@@ -298,7 +298,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, March 2023
 
 
 

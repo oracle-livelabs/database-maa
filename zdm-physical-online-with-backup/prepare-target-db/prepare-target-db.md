@@ -8,7 +8,7 @@ Estimated Time: 20 minutes
 
 In this lab
 
-* You will check target database to identify whether it meets prerequistes for ZDM Physical Offline Database Migration.
+* You will check the target database to ensure it meets ZDM Physical Online Database Migration prerequisites.
 
 * You will perform necessary steps to modify target database when required so that it meets the migration prerequisites.
 
@@ -21,7 +21,7 @@ In this lab
 
 1. Establish connection to target database.
    
-   Please follow below steps to establish connection to target database using sqlplus.
+   Please follow below steps to establish connection to target database using SQLPLUS.
 
    Login to target database server using Public IP and ssh key.
 
@@ -33,9 +33,9 @@ In this lab
 
    Type **. oraenv** and press **Enter**.
 
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).
+   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different from ORCL).
 
-   Type **sqlplus " /as sysdba"** and press **Enter** to connect to target database as SYS user.
+   Type **sqlplus "/as sysdba"** and press **Enter** to connect to target database as SYS user.
 
    Please find below snippet of the connection steps.
 
@@ -43,7 +43,7 @@ In this lab
 
 2. Establish connection to source database.
 
-   Please follow below steps to establish connection to source database using sqlplus.
+   Please follow below steps to establish connection to source database using SQLPLUS.
 
    Login to source database server using Public IP and ssh key.
 
@@ -55,9 +55,9 @@ In this lab
 
    Type **. oraenv** and press **Enter**. 
     
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).
+   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different from ORCL).
 
-   Type **sqlplus " /as sysdba"**  and press **Enter** to connect to source database as SYS user.
+   Type **sqlplus "/as sysdba"**  and press **Enter** to connect to source database as SYS user.
 
    Please find below snippet of the connection steps.
 
@@ -135,9 +135,7 @@ In this lab
 
    Please ignore this step if you have provisioned the target database as per the instructions in this lab.
 
-   You can also ignore this step if your target database is a co-managed database in OCI.
-
-   Follow the below steps for 
+   Please follow the below steps if you have provisioned the target database using methods not mentioned in this lab.
 
    Execute the below SQL.
      ```text
@@ -224,11 +222,13 @@ In this lab
    
 11. For Oracle RAC targets
    
+   You can ignore this step if you have provisioned the target database as per the instructions in this lab.
+
    If the target is an Oracle RAC database, then verify that SSH connectivity without a passphrase is set up between the Oracle RAC servers for the oracle user.
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, March 2023
 

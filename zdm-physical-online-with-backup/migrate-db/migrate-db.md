@@ -32,7 +32,7 @@ In this lab
       
 3. Prepare a response file.
 
-   Below is a sample response file which you can use for ZDM Physical Offline Migration.
+   Below is a sample response file which you can use for ZDM Physical Online Migration.
    
     ```text 
     <copy>
@@ -135,7 +135,7 @@ In this lab
                  
    -targetnode - Host name of the target database server.
 
-   -backupuser - Name of the OCI tenancy user allowed to backup or restore the database.
+   -backupuser - Name of the OCI tenancy user having the object storage bucket used for migration.
 
    -rsp        - Location of the Zero Downtime Migration response file.
 
@@ -203,7 +203,7 @@ In this lab
 
       Type **. oraenv** and press **Enter**. 
     
-      Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).    
+      Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different from ORCL).    
    
       Login to container database (CDB) using sqlplus as shown below.
    
@@ -331,7 +331,7 @@ In this lab
    
    d. Monitor the database migration using below command.
 
-      **$ZDM_HOME/bin/zdmcli query job -jobid 4**
+      **$ZDM_HOME/bin/zdmcli query job -jobid 9**
 
       You will get an output similar to below.
 
@@ -392,7 +392,7 @@ Congrats, you have completed ZDM Physical Online Migration Live Lab.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, March 2023
 
 
 

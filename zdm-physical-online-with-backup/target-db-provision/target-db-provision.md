@@ -2,13 +2,13 @@
 
 ## Introduction
 
-You must create a placeholder target database before beginning a migration to the target environment. 
+You create a placeholder target database before the start of the migration to the target environment. 
 
-The placeholder target database is overwritten during migration, but it retains the overall configuration.
+The placeholder target database gets overwritten during migration, but it retains the overall configuration.
 
 Please note as of Zero Downtime Migration Release 21.3 , only Grid Infrastructure-based database services are supported as targets. For example, an LVM-based instance or an instance created in compute node without Grid Infrastructure are not supported targets.
 
-You must use the control plane for the creation of a target placeholder database on Exadata Database Service on Dedicated Infrastructure and Exadata Cloud at Customer.
+You shouold use the control plane for the creation of a target placeholder database on Exadata Database Service on Dedicated Infrastructure and Exadata Cloud at Customer.
 
 Estimated Time: 30 minutes
 
@@ -30,7 +30,7 @@ In this lab
 
 1. Check the Operating System version of the source database.
 
-   Login to the source database system using the Public IP and privte SSH key.
+   Login to the source database compute using the Public IP and privte SSH key.
 
    Username to login : **opc** 
 
@@ -49,9 +49,9 @@ In this lab
 
 2. Establish connection to source database.
 
-   Please follow below steps to establish connection to source database using sqlplus.
+   Please follow below steps to establish connection to source database using SQLPLUS.
 
-   Login to source database server using Public IP and ssh key.
+   Login to source database compute using Public IP and ssh key.
 
    Username to login : **opc** 
 
@@ -63,9 +63,9 @@ In this lab
 
    Type **. oraenv** and press **Enter**. 
     
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).
+   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID in case if it is different).
 
-   Type **sqlplus " /as sysdba"**  and press **Enter** to connect to source database as SYS user.
+   Type **sqlplus "/as sysdba"**  and press **Enter** to connect to source database as SYS user.
 
    Please find below snippet of the connection steps.
 
@@ -102,9 +102,9 @@ In this lab
 
      ![Image showing database and national character set in database](./images/database-characterset.png)
 
-5. Check encryption algorithm under sqlnet.ora.
+5. Check encryption algorithm.
 
-   Check the **sqlnet.ora** file in source database server to identify any encryption algorithm mentioned.
+   Check the **$ORACLE\_HOME\network\admin\sqlnet.ora** file in source database server to identify any encryption algorithm mentioned.
 
 6. Generate patch inventory output.
 
@@ -181,7 +181,7 @@ In this lab
 
    Leave Availability Domain and Shape as to thier default values.
 
-4.  Modify the shape of the DB System.
+5.  Modify the shape of the DB System.
 
    When you create the database from the console, ensure that your chosen shape can accommodate the source database, plus any future sizing requirements. A good guideline is to use a shape similar to or larger in size than source database.
 
@@ -203,18 +203,18 @@ In this lab
 
    ![Image showing final selection of DB System Shape](./images/shape.png)
 
-5. Configure storage.
+6. Configure storage.
 
    Click on Change Storage as shown below.
 
    ![Image showing option to change storage](./images/click-change-storage.png)
 
-   Please select **Grid Infrastructure** and **Balanced** option and click on **save changes** as shown below.
+   Please select **Grid Infrastructure** and **Balanced** option and click on **Save changes** as shown below.
 
    ![Image showing option to change storage](./images/storage-selection.png)
 
 
-6. Configure database edition.
+7. Configure database edition.
 
    Under **Configure the DB system** , ensure to select **Enterprise Edition** which is the same edition as our source database.
 
@@ -222,17 +222,17 @@ In this lab
 
    Please note that Physical Online Migration uses Data Guard which requires Enterprise Edition Source and Target Databases.
 
-7. Upload SSH Keys.
+8. Upload SSH Keys.
    
-   Under **Add SSH keys** , upload the SSH Public key generated earlier.
+   Under **Add SSH keys** , upload the SSH Public key generated in Lab 1.
 
    ![Image showing option to upload SSH key](./images/ssh.png)
 
-8. Select the appropriate License Type.
+9. Select the appropriate License Type.
 
    Select appropriate license type applicable for you.
 
-9. Specify the network information.
+10. Specify the network information.
 
    Select **ZDM-VCN** as Virtual Cloud Network and **Public Subnet-ZDM-VCN** as Client subnet.
 
@@ -240,51 +240,51 @@ In this lab
 
    ![Image showing the Network select for DB system](./images/network.png)
 
-10. Click Next
+11. Click Next
 
     Click **Next** to go to the next page.
 
-11. Provide database name.
+12. Provide database name.
 
    If the target database is Exadata Database Service on Dedicated Infrastructure or Exadata Cloud at Customer, then the target database **DB\_NAME** should be the same as the source database **DB\_NAME**.
 
    If the target database is Oracle Base Database VM , then the target **DB\_NAME** can be the same as or different from the source database **DB\_NAME**.
 
-   Our target database is **Oracle Base Database VM** and will keep the same **DB\_NAME** as source database for this lab.
+   Your target database is **Oracle Base Database VM** for this lab and you can keep the same **DB\_NAME** as source database for this lab.
 
-   Provide **Database** name as **ORCL** and **Database unique name suffix** as **T**.
+   Provide **Database name** as **ORCL** and **Database unique name suffix** as **T**.
 
    ![Image showing the Database Name entered](./images/dbname.png)
 
-12. Select Database Image.
+13. Select Database Image.
 
    Click on **Change Database Image** and select **Custom Database Software Images** as below.
 
    ![Image showing selection of Database Software Image](./images/custom.png)
 
-   Select the appropriate compartment and select DB Image created in earlier lab as below.
+   Select the appropriate compartment and select DB Image created in previous task as below.
 
    ![Image showing custom software images created earlier](./images/dbimage.png)
 
-13. Provide SYS password.
+14. Provide SYS password.
 
    Enter SYS password which is same as the SYS password of the source database.
 
    ![Image showing the provision to enter SYS password](./images/sys-password.png)
 
-14. Select database workload type.
+15. Select database workload type.
 
    In this lab , leave it to the default.
 
-15. Disable database backups.
+16. Disable database backups.
 
    Uncheck the **Enable automatic backups** box to disable database backups.
 
-   We don't need automatic backups until we complete the database migration.
+   You don't need automatic backups until you complete the database migration.
 
    ![Image showing the option to disable database backups](./images/disable-backup.png)
 
-16. Select database charactetset.
+17. Select database charactetset.
 
    Click on **show advanced** options.
 
@@ -300,7 +300,7 @@ In this lab
 
    ![Image showing the database characterset selected](./images/db-characterset.png)
 
-17. Start DB System provisioning.
+18. Start DB System provisioning.
 
    Click on the **Create DB System** to initiate the DB system provisioning.
 
@@ -312,6 +312,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, March 2023
 
 

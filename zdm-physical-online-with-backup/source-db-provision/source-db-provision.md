@@ -17,7 +17,7 @@ In this lab
 
 ## Task 1 : Create Virtual Cloud Network
 
-   In this task we will create a new Virtual Cloud Network which will be used to host source database compute , target database system and ZDM service host.
+   In this task you will create a new Virtual Cloud Network which will be used to host source database compute , target database system and ZDM service host.
 
 1. Login to your Oracle Cloud Console.
 
@@ -33,7 +33,7 @@ In this lab
 
    ![Image showing VCN options for creation](./images/vcn-create-options.png " ")
 
-5. In new window , under **Basic information** specify name of VCN as **ZDM-VCN** and select appropritate compartment.
+5. In new window , under **Basic information** specify VCN Name as **ZDM-VCN** and select appropritate compartment.
 
    ![Image showing VCN Name prompt](./images/vcn-name-prompt.png)
 
@@ -70,7 +70,7 @@ In this lab
 
 5. Select an Oracle Database version which is latest ( There will be one on OL7 and one on OL8).
     
-   We have choosen OL7 since our Target DB system will be on Oracle Linux 7.
+   Please choose database on Oracle Linux 7 since your Target DB system will be on Oracle Linux 7 for this lab.
 
      ![Image showing available Marketplace Database Images](./images/db-image-options.png " ")
 
@@ -88,13 +88,13 @@ In this lab
 
    ![Image showing compute mage and shape](./images/image-shape.png)
 
- 8. Under **Networking** , make choices to reflect the below details.
+ 8. Under **Networking** , please enter details as shown below.
 
     ![Image showing Network selection](./images/network-details.png " ")
 
  9. Under **Add SSH keys**.
 
-    Browse and provide the public ssh key generated earlier.
+    Browse and provide the public ssh key generated in Lab 1.
 
     ![Image showing SSK key details](./images/ssh-key-upload.png " ")
 
@@ -119,5 +119,5 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, March 2023
 

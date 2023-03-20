@@ -345,7 +345,7 @@ In this lab
 
    ![Image showing option to add Ingress rules ](./images/click-add-ingress.png)
 
-   Populate the rules as shown below.
+   Populate the rules as shown below , Please enter the source CIDR same as the Public Subnet CIDR for this lab.
 
    ![Image showing option to add Ingress rules ](./images/add-ingress-rule.png)
 

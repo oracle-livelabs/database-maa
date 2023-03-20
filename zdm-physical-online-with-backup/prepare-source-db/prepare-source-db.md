@@ -407,7 +407,7 @@ In this lab
 
    Login to source database server.
 
-   Execute below command as **opc** user to remove restriction on iptables after replacing the **Target Database subnet CIDR block**
+   Execute below command as **opc** user to remove restriction on iptables after replacing the **Target Database subnet CIDR block** which is same as Public Subnet CIDR for this Lab.
 
     ```text
     <copy>

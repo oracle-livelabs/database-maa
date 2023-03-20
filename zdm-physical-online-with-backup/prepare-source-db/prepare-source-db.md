@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Estimated Time: 15 minutes
+Estimated Time: 30 minutes
 
 ### Objectives
 
@@ -407,11 +407,11 @@ In this lab
 
    Login to source database server.
 
-   Execute below command as **opc** user to remove restriction on iptables.
+   Execute below command as **opc** user to remove restriction on iptables after replacing the **Target Database subnet CIDR block**
 
     ```text
     <copy>
-    sudo iptables -I INPUT -p tcp -m state --state NEW -m tcp -s 10.30.0.0/24 --dport 1521 -m comment --comment "Required for access to DB , Do not remove or modify." -j ACCEPT
+    sudo iptables -I INPUT -p tcp -m state --state NEW -m tcp -s <target database subnet CIDR> --dport 1521 -m comment --comment "Required for access to DB , Do not remove or modify." -j ACCEPT
     </copy>
      ```
          

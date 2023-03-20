@@ -109,7 +109,7 @@ In this lab
 
    **$ZDM_HOME/bin/zdmservice start**
 
-3. Prepare command for ZDM Physical Offline Migration Evaluation.
+3. Prepare command for ZDM Physical Online Migration Evaluation.
 
    Use the below sample command for ZDM database migration evaluation and update it as per your environment.
 
@@ -318,7 +318,7 @@ In this lab
 
        ```text
        <copy>
-       $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxx.xxxx@xxxcle.com" -rsp /home/zdmuser/physical_offline.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
+       $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db  -backupuser "xxxxxxxxxxxxxx/xxxxx.xxxx@xxxcle.com" -rsp /home/zdmuser/physical_online.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
        </copy>
        ```
       Please provide the SYS password of source database and Auth token when asked.

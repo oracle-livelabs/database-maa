@@ -172,7 +172,7 @@ In this lab
    Execute the below command to install ZDM software.
      ```text
      <copy>
-     ./zdminstall.sh setup oraclehome=/home/zdmuser/zdmhome oraclebase=/home/zdmuser/zdmbase ziploc=/tmp/zdm21.3/zdm_home.zip -zdm
+     ./zdminstall.sh setup oraclehome=/home/zdmuser/zdmhome oraclebase=/home/zdmuser/zdmbase ziploc=/tmp/zdm21.x/zdm_home.zip -zdm
      </copy>
      ```
      This will take couple of minutes.

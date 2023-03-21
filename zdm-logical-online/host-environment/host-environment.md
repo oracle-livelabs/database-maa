@@ -97,23 +97,9 @@ In this lab, you will:
 
 3. Bear in mind you must be signed in to perform a download, please proceed to sign if you have not done so. Once signed in, click on Download, Accept the Licensing terms and download the ZDM binaries to your Desktop
 
-    ![Screenshot of ZDM Download Menu](./images/download-link.png)
-
-    ![Screenshot of ZDM's Oracle License Agreement](./images/accept-terms.png)
-
-
 4. Go back to your Cloud Shell environment and click on the navigation menu on the top left of Cloud Shell and click on the __Upload__ option, an upload window will appear
 
-    ![Screenshot of Cloud Shell navigation Menu - Upload Option](./images/navigation-menu-upload.png)
-
-    ![Screenshot of Cloud Shell Upload Window](./images/upload-pane.png)
-
-
 5. Click on __select from your computer__, select the recently ZDM downloaded binaries and click __Upload__
-
-
-    ![Screenshot of Cloud Shell select file window](./images/zdm-file.png)
-
 
 6. Upon finalizing the upload process, click on __Hide__, then exit the opc user:
 
@@ -149,26 +135,26 @@ In this lab, you will:
     ```
 
 
-10. Cd to the /tmp folder, copy the zdm binaries to the zdmdownload file and, unzip the files and cd to the unziped directory. Bear in mind that at the time of creation of this workshop ZDM's current version was 21.2, if a newer version is available, please change the commands from 21.2 to the current version so that the unzip proceeds correctly: 
+10. Cd to the /tmp folder, copy the zdm binaries to the zdmdownload file and, unzip the files and cd to the unziped directory. Bear in mind that you must update the __zdm.x__ below to the current version and specific name of the downloaded zdm binaries. 
 
      ```
     <copy>
     cd /tmp
-    cp zdm21.2.zip /u01/app/zdmdownload
+    cp zdm.x.zip /u01/app/zdmdownload
     cd /u01/app/zdmdownload
-    unzip zdm21.2.zip
-    cd zdm21.2
+    unzip zdm.x.zip
+    cd zdm.x
     </copy>
     ```
 
 
-11. Run the install and start the service.
+11. Run the install and start the service. Bear in mind that you must update the __zdm.x__ below to the current version and specific name of the downloaded zdm binaries. 
 
     Install ZDM:
 
     ```
     <copy>
-    ./zdminstall.sh setup oraclehome=/u01/app/zdmhome oraclebase=/u01/app/zdmbase ziploc=/u01/app/zdmdownload/zdm21.2/zdm_home.zip -zdm
+    ./zdminstall.sh setup oraclehome=/u01/app/zdmhome oraclebase=/u01/app/zdmbase ziploc=/u01/app/zdmdownload/zdm.x/zdm_home.zip -zdm
     </copy>
     ```
 
@@ -188,7 +174,20 @@ In this lab, you will:
     </copy>
     ```
 
-    ![Screenshot of ZDM Service Status](./images/check-status.png)
+    It should look like the output below:
+
+    ```
+    [zdmuser@zdmhost zdm]$ $ZDM_HOME/bin/zdmservice status
+    ---------------------------------------
+    Service Status
+    ---------------------------------------
+    Running: true
+    Tranferport:
+    Conn String: jdbc:MySQL://localhost:8897/
+    RMI port: 8895
+    HTTP port: 8896
+    Wallet path: /home/zdmuser/zdmbase/crsdata/zdmhost/security
+    ```
 
 ## Task 4: Generating API Keys
 1. As 'zdmuser' go to 'zdmhome' directory.
@@ -538,4 +537,4 @@ Please *proceed to the next lab*.
 * **Author** - Zachary Talke, Solutions Engineer, NA Tech Solution Engineering
 - **Contributors** - Ricardo Gonzalez, Senior Principal Product Manager, Oracle Cloud Database Migration
 * **Contributors** - LiveLabs Team, ZDM Development Team
-* **Last Updated By/Date** - Ricardo Gonzalez, January 2022
+* **Last Updated By/Date** - Ricardo Gonzalez, March 2023

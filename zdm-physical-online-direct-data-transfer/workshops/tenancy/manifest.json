@@ -1,0 +1,52 @@
+{
+    "workshoptitle": "Zero Downtime Migration: Physical Online Migration with Backup Location to Co-Managed Databases in OCI",
+
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+            "title": "Get Started",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Create SSH keys",
+            "filename": "https://oracle-livelabs.github.io/common/labs/generate-ssh-key-cloud-shell/generate-ssh-keys-cloud-shell.md"
+        },
+        {
+            "title": "Lab 2: Provision source database",
+            "filename": "../../source-db-provision/source-db-provision.md"
+        },
+        {
+            "title": "Lab 3: Provision target database",
+            "filename": "../../target-db-provision/target-db-provision.md"
+        },
+        {
+            "title": "Lab 4: Provision and configure ZDM service host",
+            "filename": "../../zdm-host-provision/zdm-host-provision.md"
+        },
+        {
+            "title": "Lab 5: Prepare source database",
+            "filename": "../../prepare-source-db/prepare-source-db.md"
+        },
+        {
+            "title": "Lab 6: Prepare target database",
+            "filename": "../../prepare-target-db/prepare-target-db.md"
+        },
+        {
+            "title": "Lab 7: Create Object Storage Bucket and Auth Token",
+            "filename": "../../object-storage-token/object-storage-token.md"
+        },
+        {
+            "title": "Lab 8: Migrate database",
+            "filename": "../../migrate-db/migrate-db.md"
+        },
+        {
+            "title": "Need Help?",
+            "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

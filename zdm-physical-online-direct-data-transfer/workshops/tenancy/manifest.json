@@ -36,12 +36,8 @@
             "title": "Lab 6: Prepare target database",
             "filename": "../../prepare-target-db/prepare-target-db.md"
         },
-        {
-            "title": "Lab 7: Create Object Storage Bucket and Auth Token",
-            "filename": "../../object-storage-token/object-storage-token.md"
-        },
-        {
-            "title": "Lab 8: Migrate database",
+         {
+            "title": "Lab 7: Migrate database",
             "filename": "../../migrate-db/migrate-db.md"
         },
         {

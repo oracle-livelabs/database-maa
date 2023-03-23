@@ -38,11 +38,12 @@ In this lab
     <copy>
     TGT_DB_UNIQUE_NAME=ORCL_T
     MIGRATION_METHOD=ONLINE_PHYSICAL
-    DATA_TRANSFER_MEDIUM=OSS
-    HOST=https://swiftobjectstorage.uk-london-1.oraclecloud.com/v1/xxxxxxxxx
-    OPC_CONTAINER=ZDM-Physical
+    DATA_TRANSFER_MEDIUM=DIRECT
+    ZDM_RMAN_DIRECT_METHOD=RESTORE_FROM_SERVICE
+    ZDM_SRC_DB_RESTORE_SERVICE_NAME=ORCL
     PLATFORM_TYPE=VMDB
     SHUTDOWN_SRC=TRUE
+
     </copy>
     ```
 
@@ -52,11 +53,13 @@ In this lab
 
    MIGRATION\_METHOD - Specifies the migration method used (ONLINE\_PHYSICAL is used in this lab).
 
-   DATA\_TRANSFER\_MEDIUM - Specifies the media used for source database backup (Object Storage Service is used in this lab).
+   DATA\_TRANSFER\_MEDIUM - Specifies the media used for source database backup (DIRECT Data Trasfer is used in this lab).
 
-   HOST - Specifies the cloud storage REST endpoint URL to access Oracle Cloud Object Storage ( Please refer later steps to prepare this).
+   DM\_RMAN\_DIRECT\_METHOD - specifies the RMAN method (restore from service or active duplicate) to use when 
+   DATA\_TRANSFER\_MEDIUM=DIRECT data transfer method is specified. We are using RESTORE_FROM_SERVICE in this lab.
 
-   OPC_CONTAINER - Specifies the Object Storage Bucket used for source database backup.
+   ZDM_SRC_DB_RESTORE_SERVICE_NAME - specifies the fully qualified name of the service on the source database to be used for an online 
+   physical migration
 
    PLATFORM_TYPE - Specifies the target database platform (VMDB is used for this lab which indicates target platform is Oracle Cloud Infrastructure(OCI) virtual machine or bare metal).
 
@@ -65,16 +68,6 @@ In this lab
    Please refer below document for more details about each parameter.
 
    https://docs.oracle.com/en/database/oracle/zero-downtime-migration/index.html
-
-   Use below method to prepare HOST value for your environment.
-
-   Use the below format.
-
-   **https://swiftobjectstorage.&ltregion\_name&gt.oraclecloud.com/v1/&ltobjectstorage\_namespace&gt**
-
-   Replace **region\_name** and **objectstorage\_namespace** with your corresponding values.
-
-   **objectstorage\_namespace** value for your environment was collected in Lab 7 Task 1.
 
    Save the response file parameters to a file named as **physical\_online.rsp** under directory **/home/zdmuser**.
 
@@ -115,7 +108,7 @@ In this lab
 
     ```text
     <copy>
-    $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db -srcauth zdmauth -srcarg1 user:opc -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db -backupuser "xxxxxxxx/xxxxxx.xxxxx@xxxxx.com" -rsp /home/zdmuser/physical_online.rsp -tgtauth zdmauth -tgtarg1 user:opc -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo -eval
+    $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db -srcauth zdmauth -srcarg1 user:opc -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db -rsp /home/zdmuser/physical_online.rsp -tgtauth zdmauth -tgtarg1 user:opc -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo -eval
     </copy>
     ```
   
@@ -134,8 +127,6 @@ In this lab
       * -srcarg3 sudo\_location:sudo\_location
                  
    -targetnode - Host name of the target database server.
-
-   -backupuser - Name of the OCI tenancy user having the object storage bucket used for migration.
 
    -rsp        - Location of the Zero Downtime Migration response file.
 
@@ -161,25 +152,25 @@ In this lab
 
    ![Image showing execution of migration evaluation command](./images/mig-eval-start.png)
 
-   Please provide the SYS password of source database and Auth token when asked.
+   Please provide the SYS password of source database when asked.
 
-   Also note down the migration job ID which is 8 in this case.
+   Also note down the migration job ID which is 24 in this case.
 
 5. Monitor the database migration evaluation.
 
    Check the status of database migration evaluation using below command.
 
-   **$ZDM_HOME/bin/zdmcli query job -jobid 8**
+   **$ZDM_HOME/bin/zdmcli query job -jobid 24**
 
-   Here 8 is the jobid.
+   Here 24 is the jobid.
 
    You will receive a similar ouput as below.
 
-   ![Image showing intermediate status of migration evaluation](./images/evaluation-status.png)
+   ![Image showing intermediate status of migration evaluation](./images/mig-eval-status.png)
 
    Continue to execute the status command until all phases have been completed with status **PRECHECK_PASSED** as shown below.
 
-   ![Image showing final status of migration evaluation](./images/evaluation-final.png)
+   ![Image showing final status of migration evaluation](./images/mig_eval_final.png)
 
 ## Task 3 : Start Database Migration
 
@@ -318,10 +309,10 @@ In this lab
 
        ```text
        <copy>
-       $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db  -backupuser "xxxxxxxxxxxxxx/xxxxx.xxxx@xxxcle.com" -rsp /home/zdmuser/physical_online.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
+       $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db -rsp /home/zdmuser/physical_online.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
        </copy>
        ```
-      Please provide the SYS password of source database and Auth token when asked.
+      Please provide the SYS password of source database when asked.
 
       You will receive an output similar to below one.
 

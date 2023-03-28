@@ -56,10 +56,9 @@ In this lab
    DATA\_TRANSFER\_MEDIUM - Specifies the media used for source database backup (DIRECT Data Trasfer is used in this lab).
 
    DM\_RMAN\_DIRECT\_METHOD - specifies the RMAN method (restore from service or active duplicate) to use when 
-   DATA\_TRANSFER\_MEDIUM=DIRECT data transfer method is specified. We are using RESTORE_FROM_SERVICE in this lab.
+   DATA\_TRANSFER\_MEDIUM=DIRECT data transfer method is specified. We are using RESTORE\_FROM\_SERVICE in this lab.
 
-   ZDM_SRC_DB_RESTORE_SERVICE_NAME - specifies the fully qualified name of the service on the source database to be used for an online 
-   physical migration
+   ZDM\_SRC\_DB\_RESTORE\_SERVICE\_NAME - specifies the fully qualified name of the service on the source database to be used for an online physical migration
 
    PLATFORM_TYPE - Specifies the target database platform (VMDB is used for this lab which indicates target platform is Oracle Cloud Infrastructure(OCI) virtual machine or bare metal).
 
@@ -318,11 +317,11 @@ In this lab
 
       ![Image showing the command to start database migration](./images/migration-start.png)
 
-      Please note down the migration job ID which is 9 in this case.
+      Please note down the migration job ID which is 25 in this case.
    
    d. Monitor the database migration using below command.
 
-      **$ZDM_HOME/bin/zdmcli query job -jobid 9**
+      **$ZDM_HOME/bin/zdmcli query job -jobid 25**
 
       You will get an output similar to below.
 

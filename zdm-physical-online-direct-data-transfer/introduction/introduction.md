@@ -4,7 +4,7 @@
 
 This workshop will consist of a step by step physical online migration using RMAN to backup/restore the source/target database and Oracle Data Guard for Database Synchronization.
 
-Estimated Time: 3 hours
+Estimated Time: 3 hours 30 minutes
 
 
 ### About Zero Downtime Migration

@@ -32,7 +32,7 @@ In this lab
       
 3. Prepare a response file.
 
-   Below is a sample response file which you can use for ZDM Physical Online Migration.
+   Below is a sample response file which you can use for ZDM Physical Online Migration with Direct Data Transfer.
    
     ```text 
     <copy>

@@ -83,7 +83,7 @@ In this lab
 
 4. Check database characterset.
    
-   Execute the below query after connecting to source database using connection established in step 3.
+   Execute the below query after connecting to source database using connection established in step 2.
      ```console
      <copy>
      select PARAMETER,VALUE from nls_database_parameters where parameter like '%NLS%CHARACTERSET';
@@ -141,13 +141,13 @@ In this lab
 
    ![Image showing compartment selection ](./images/click-create-db-image.png)
 
-3. Enter Display Image Name.
+4. Enter Display Image Name.
 
    Enter Display name as **Source-DB-Image** and select appropriate compartment as below.
 
    ![Image showing Database Software Image Name ](./images/database-image-name.png)
 
-4. Configure database software image.
+5. Configure database software image.
 
    Select database version as **19c**   (same as the major version of your source database).
 
@@ -157,7 +157,7 @@ In this lab
 
    ![Image showing database version selected for Image ](./images/db-version-info.png)
 
-5. Create database software image.
+6. Create database software image.
 
    Click on **Create Database software image** to create DB Image as shown below.
 
@@ -235,7 +235,7 @@ In this lab
 
 9. Specify the network and hostname information.
 
-   Select **ZDM-VCN** as Virtual Cloud Network and **Public Subnet-ZDM-VCN** as Client subnet.
+   Select **ZDM-VCN** as Virtual Cloud Network and **public subnet-ZDM-VCN** as Client subnet.
 
    Provide **zdm-target-db** as Hostname prefix.
 
@@ -243,7 +243,7 @@ In this lab
 
 10. Click Next
 
-    Leave the **Diagnostic collection** section to default and Click **Next** to go to the next page as shown below.
+    Leave the **Diagnostics collection** section to default and Click **Next** to go to the next page as shown below.
 
     ![Image showing the diagnostic collection setting and option to go to next screen](./images/diag-collection.png)
 
@@ -291,7 +291,7 @@ In this lab
 
    We don't need automatic backups until we complete the database migration.
 
-   ![Image showing the option to disable database backups](./images/disable-backup.png)
+   ![Image showing the option to disable database backups](./images/disable-db-backup.png)
 
 16. Select database charactetset.
 

@@ -37,15 +37,15 @@ In this lab
 
    ![Image showing VCN Name prompt](./images/vcn-name-prompt.png)
 
-6. Under **Configure VCN ** , enter details as shown in image below.
+6. Under **Configure VCN** , enter details as shown in image below.
 
    ![Image showing VCN CIDR](./images/vcn-cidr-info.png " ")
    
-7. Under **Configure public subnet ** , enter details as shown in image below.
+7. Under **Configure public subnet** , enter details as shown in image below.
 
    ![Image showing public subnet CIDR](./images/public-subnet-cidr.png " ")
 
-8. Under **Configure private subnet ** , enter details as shown in image below.
+8. Under **Configure private subnet** , enter details as shown in image below.
 
    ![Image showing private subnet CIDR](./images/private-subnet-cidr.png " ")
 
@@ -84,7 +84,7 @@ In this lab
 
 6. Ensure to select the correct compartment in your tenancy and then click on **Launch Instance**.
 
-   ![Image showing selection for compartment](./images/compartment.png)
+   ![Image showing selection for compartment and option to Launch instance](./images/launch-instance.png)
 
 7. On the **Create compute instance** page , Please update **Name** for compute as **zdm-source-db**.
 

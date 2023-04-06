@@ -313,7 +313,7 @@ In this lab
 
    Click on the **Create DB System** to initiate the DB system provisioning.
 
-   ![Image showing the option to start the provisioning](./images/prov-final.png)
+   ![Image showing the option to start the provisioning](./images/db-prov-final.png)
 
    This step is going to take up to 1 hour , however you can proceed to next lab while DB System is being provisioned.
 

@@ -23,33 +23,31 @@ In this lab
 
    ![Image showing navigation to compute instance](./images/navigate-to-compute.png)
 
-2. Select **Compartment**.
-
-   Select the appropriate compartment on the left side of the console.
-
-   ![Image showing the selection of compartment](./images/compartment.png)
-
-3. Click on **Create Instance**.
+2. Click on **Create Instance**.
 
    ![Image showing option to create compute instance](./images/create-instance.png)
 
-4. Enter **Name** for compute.
+3. Enter **Name** for compute.
 
-   Enter **zdm-host** as name for compute and select appropriate **compartment** if it is not already done.
+   Enter **zdm-host** as name for compute and select appropriate **compartment**.
 
    ![Image showing the name to be entered for compute](./images/compute-name.png)
 
-5. Leave the **Placement** section as it is.
+4. Placement and Security settings.
 
-6. Select correct image.
+   Leave the **Placement** and **Security** section to the default values as below.
+
+   ![Image showing the default setting for Placement and Security](./images/placement-security.png)
+
+5. Select correct image.
 
    Under **Image and Shape** , click on **Change image**.
 
-   ![Image showing the option to change the image for compute](./images/os-image.png)
+   ![Image showing the option to change the image for compute](./images/click-change-image.png)
 
    Select **Oracle Linux 7.9** and click on **Select Image**
 
-   ![Image showing the OS image selected for compute](./images/os-selected.png)
+   ![Image showing the OS image selected for compute](./images/selected-image.png)
 
 7. Select VCN and Subnet.
 
@@ -61,16 +59,25 @@ In this lab
 
    Under **Add SSH keys** , upload the public ssh key generated earlier.
 
-   ![Image showing option to upload ssh kesy](./images/ssh.png)
+   ![Image showing option to upload ssh kesy](./images/add-ssh-keys.png)
 
 9. Specify custom boot volume.
 
-   Under **Boot volume** , select **Specify a custom boot volume size** and specify 150.
+   Under **Boot volume** , select **Specify a custom boot volume size** and specify 100.
 
    ![Image showing custom boot volume size](./images/boot.png)
-10. Click on **Create** to start the provisioning of compute.
 
-    In less than a few minutes ZDM compute instance will be provisioned.
+10. Click on **Create**.
+
+   Click on **Create** to start the provisioning of compute as shown below.
+
+   ![Image showing option to start the provisioniong](./images/click-create.png)
+
+   In less than a few minutes ZDM compute instance will be provisioned as shown below.
+
+   ![Image showing proviosned compute intance](./images/compute-prov.png)
+
+   Please note down the Public IP of the compute.
 
 ## Task 2 : Configure ZDM Service
 

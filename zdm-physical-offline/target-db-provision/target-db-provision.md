@@ -6,7 +6,7 @@ You must create a placeholder target database before beginning a migration to th
 
 The placeholder target database is overwritten during migration, but it retains the overall configuration.
 
-Please note as of Zero Downtime Migration Release 21.3 , only Grid Infrastructure-based database services are supported as targets. For example, an LVM-based instance or an instance created in compute node without Grid Infrastructure are not supported targets.
+Please note as of Zero Downtime Migration Release 21.4 , only Grid Infrastructure-based database services are supported as targets. For example, an LVM-based instance or an instance created in compute node without Grid Infrastructure are not supported targets.
 
 You must use the control plane for the creation of a target placeholder database on Exadata Database Service on Dedicated Infrastructure and Exadata Cloud at Customer.
 
@@ -16,7 +16,7 @@ Estimated Time: 30 minutes
 
 In this lab
 
-* You will collect some information from the source database that is required for target database provisioning.
+* You will collect information from the source database required for target database provisioning.
 
 * You will prepare a database software image for the target database.
 
@@ -67,7 +67,7 @@ In this lab
 
 3. Check the database edition of the source database.
 
-   Your source database is in **Enterprise Edition** since the Oracle Marketplace Image used in previous lab provisions Enterprise Edition database.
+   Your source database is an **Enterprise Edition** database since the Oracle Marketplace Image used in previous lab provisions Enterprise Edition database.
 
    In case you would like know the database edition for your on-premises database then refer the below steps.
 
@@ -183,7 +183,7 @@ In this lab
     
    ![Image showing the updated DB system name](./images/db-system-name.png)
 
-   You can leave the Availability Domain to default value.
+   You can leave the **Availability Domain** to default value.
 
 4.  Configure the shape of the DB System.
 

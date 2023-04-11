@@ -53,7 +53,7 @@ In this lab
 
    Under **Networking** , Select **ZDM-VCN** as VCN and **Public Subnet-ZDM-VCN** as subnet.
 
-   ![Image showing network selected](./images/network.png)
+   ![Image showing network selected](./images/network-selection.png)
 
 8. Upload SSH Keys.
 
@@ -83,8 +83,7 @@ In this lab
 
 1. Login to ZDM host using the Public IP and ssh key file.
 
-   ![Image showing Public IP for ZDM host ](./images/ip.png)
-
+   
 2. Expand the root FS.
 
    Execute below command as **opc** user and **press y and Enter** when asked.

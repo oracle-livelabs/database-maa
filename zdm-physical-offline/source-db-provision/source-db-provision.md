@@ -62,6 +62,8 @@ In this lab
 
 ## Task 2 : Provision Source Database
 
+Please note that you will be provisioning source database in a Public subnet for this livelab , however it is recommended to keep your actual databases in a private subnet for better security.
+
 1. Login to your Oracle Cloud Console.
 
 2. Click the **Navigation Menu** in the upper left, navigate to **Marketplace** and then select **All Applications**.
@@ -120,7 +122,7 @@ In this lab
 
     ![Image showing provisioned compute instance](./images/compute-after-prov.png)
 
-12. Take a note of the Public IP address of the compute instance which will used to login to source database system.
+12. Take a note of the Public IP address of the compute instance which will be used to login to source database system.
 
 13. Collect the value of SYS password.
 

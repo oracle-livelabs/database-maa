@@ -219,7 +219,7 @@ In this lab
 
 6. Configure database edition.
 
-   Under **Configure the DB system** , ensure to select **Enterprise Edition** which is the same edition as our source database.
+   Under **Configure the DB system** , ensure to select **Enterprise Edition** which is the same edition as your source database.
 
    ![Image showing the selection for Database Edition](./images/edition.png)
    

@@ -190,7 +190,7 @@ In this lab
 
       i. Create the keystore.      
      
-      Execute the below command after modifying the keystore location (same as the encryption wallet location provided in step a) and the TDE password.
+      Execute the below command after modifying the keystore location (same as the encryption wallet location provided in step a) and the password.
 
       ```text
       <copy>
@@ -256,7 +256,7 @@ In this lab
    
       i. Create the auto-login keystore.
 
-      Execute below query after modifying keystore location (same as the keystore location specified in step b) and TDE password.
+      Execute below query after modifying keystore location (same as the keystore location specified in step b) and password.
 
       ```text
       <copy>

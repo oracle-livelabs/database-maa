@@ -59,14 +59,16 @@ For more information on Oracle Zero Downtime Migration please visit ZDM's [produ
 ### Objectives
 
 In this lab, you will:
-* Learn about Oracle Zero Downtime Migration Fundamentals
-* Install and Setup ZDM
-* Configure Credential and Authentication Requirements for the Migration
-* Source Database Configuration
-* Target Database Configuration
-* Provision and Deploy a ZDM GoldenGate Hub
-* Response File Configuration
-* Databasde Migration
+
+* Learn about Oracle Zero Downtime Migration Fundamentals.
+* Create SSH keys.
+* Provision source database.
+* Provision target database.
+* Provision and configure ZDM service host.
+* Prepare source database.
+* Prepare target database.
+* Create Object Storage Bucket and Auth Token.
+* Migrate database.
 
 ### Prerequisites
 This workshop requires an Oracle Cloud account.

@@ -78,7 +78,7 @@ In this lab
 
 5. Select an Oracle Database version which is latest ( There will be one on OL7 and one on OL8).
     
-   We have choosen OL7 since our Target DB system will be on Oracle Linux 7.
+   We have choosen latest database version on OL7(Oracle Linux 7)  since our Target DB system will be on Oracle Linux 7.
 
      ![Image showing available Marketplace Database Images](./images/db-image-options.png " ")
 

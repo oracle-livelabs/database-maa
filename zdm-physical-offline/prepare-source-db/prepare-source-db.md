@@ -106,9 +106,11 @@ In this lab
 
 6. Ensure source database is using SPFILE.
 
-   Please ignore this step if you have provisioned the source database as per the instructions in this lab.
+   Please note that this is no longer a requirement for Physical Offline Migration from ZDM 21.4 version.
 
-   Follow the below steps for the source database provisioned using steps not mentioned in this livelab.
+   You can also ignore this step if you have provisioned the source database as per the instructions in this lab.
+
+   Follow the below steps for all the scenarios not mentioned above.
 
    Execute below statement using source database connection (established using step 1) to check whether SPFILE is in use.
 
@@ -268,7 +270,7 @@ In this lab
 
       ii. Close the password-based keystore.
 
-      Execute the below statement after replacing PASSWORD with your TDE password.
+      Execute the below statement after replacing PASSWORD with your password.
       ```text
       <copy>
       ADMINISTER KEY MANAGEMENT SET KEYSTORE CLOSE IDENTIFIED BY PASSWORD;
@@ -315,7 +317,7 @@ In this lab
 
    If the source is an Oracle RAC database, and SNAPSHOT CONTROLFILE is not on a shared location, configure SNAPSHOT CONTROLFILE to point to a shared location on all Oracle RAC nodes to avoid the ORA-00245 error during backups to Oracle Object Store.
 
-   For example, if the database is deployed on ASM storage, use the below command to configure snapshot controlfile.
+   For example, if the database is deployed on ASM storage, use similar commnas as below to configure snapshot controlfile.
 
      ```text
      <copy>
@@ -353,7 +355,7 @@ In this lab
        ```
       Below is sample output.
    
-      ![Image showing output of controlfile autobackup on command](./images/rman-controlfile-autobackup-configure.png)
+      ![Image showing output of controlfile autobackup on command](./images/rman-controlfile-autobkp-config.png)
 
 11. Register database with srvctl.
 
@@ -378,7 +380,7 @@ In this lab
    
 13. Ensure system time of the ZDM service host and source database server are in sync with your Oracle Cloud Infrastructure target    
 
-   If the time on any of these systems varies beyond 6 minutes from the time on OCI, it is recommended to be be adjusted. You can use ntp time check to synchronize the time if NTP is configured. If NTP is not configured, then it is recommended that you configure it. If configuring NTP is not an option, then you need to correct the time manually to ensure it is in sync with OCI time.
+   If the time on any of these systems varies beyond 6 minutes from the time on OCI, it is recommended to be adjusted. You can use ntp time check to synchronize the time if NTP is configured. If NTP is not configured, then it is recommended that you configure it. If configuring NTP is not an option, then you need to correct the time manually to ensure it is in sync with OCI time.
 
     Steps to check and compare time is mentioned in next Lab.
 

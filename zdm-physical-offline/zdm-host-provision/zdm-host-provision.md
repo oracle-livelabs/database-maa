@@ -94,60 +94,32 @@ In this lab
 
    ![Image showing command to expand root FS](./images/expand-fs.png)
 
-3. Check the existence of required packages for ZDM.
+3. Install the required packages for ZDM.
 
-   ZDM software requires below packages to be installed.
-
-   glibc-devel
-
-   expect
-
-   unzip
-
-   libaio
-
-   oraclelinux-developer-release-el7
-
-   Execute the below command to identify already installed packages.
+   Execute the below command to install required packakges.
      ```text
      <copy>
-     yum list installed glibc-devel expect unzip libaio oraclelinux-developer-release-
+     sudo yum install oraclelinux-developer-release-el8 libnsl perl unzip glibc-devel expect libaio ncurses-compat-libs ncurses-devel numactl-libs openssl mlocate bind-utils
      </copy>
      ```
-     You will receive an output similar to the one below which shows glibc-devel, libaio , oraclelinux-developer-release-e17 and unzip are alraady installed.
+     
+     Enter y when asked as shown below.
 
-     ![Image showing pre installed packages for ZDM ](./images/preinstalled-package.png)
+     ![Image showing package installation confirmation screen ](./images/zdm-package-confirm.png)
 
-4. Install missing packages.
+     You will receive an output similar to the one below at the end of package installation.
 
-   We have seen that **expect** package is missing as per previous step output.
+     ![Image showing the output of command to install packages for ZDM ](./images/zdm-pkg-install-end.png)
 
-   Install the **expect** package using commands below.
-
-   **sudo yum install -y expect**
-
-   Sample output is shown below.
-
-   ![Image showing installation of expect package](./images/expect-install.png)
-
-5. Create user, group and directories required for ZDM.
-
-   Switch to **root** user using below command.
-
-   **sudo su -**
+4. Create user, group and directories required for ZDM.
 
    Execute below commands.
      ```text
      <copy>
-     groupadd zdm
-     useradd -g zdm zdmuser
-     mkdir -p /home/zdmuser/zdminstall
-     mkdir /home/zdmuser/zdmhome
-     mkdir /home/zdmuser/zdmbase
-     chown -R zdmuser:zdm /home/
+     mkdir -p /home/opc/zdm
      </copy>
      ```
-6. Download ZDM software.
+5. Download ZDM software.
 
    Download the ZDM software from below URL.
 
@@ -155,25 +127,27 @@ In this lab
 
 7. Upload ZDM software to ZDM host.
 
-   Upload the software(.zip file) to /tmp directory in ZDM host.
+   Upload the software(.zip file) to /home/opc directory in ZDM host.
 
    Ensure that all users can read the .zip file.
 
 8. Unzip the ZDM software.
 
-   Switch user to **zdmuser** using below command.
+   Unzip the ZDM software under /home/opc directory using below command.
 
-   **sudo su - zdmuser**
-   
-   Unzip the ZDM software under /tmp directory.
+   **unzip zdm\_zip\_file\_name**
 
-   Note down the directory path of unzipped folder , it will be **/tmp/zdm21.x** for **ZDM 21.x** , Please note this is a generic placeholder name for ZDM software and make sure to use the latest version available.
+   sample ouput of unzip command is shown below.
+
+   ![Image showing the output of unzip command ](./images)
+
+   Note down the directory path of unzipped folder , it will be **/home/opc/zdm21.x** for **ZDM 21.x** , Please note this is a generic placeholder name for ZDM software and make sure to use the latest version available.
 
 9. Install ZDM software.
 
    Change directory to ZDM software unzipped location using below command.
 
-   cd /tmp/zdm21.x
+   cd /home/opc/zdm21.x
    
    Execute the below command to install ZDM software.
      ```text
@@ -181,17 +155,36 @@ In this lab
      ./zdminstall.sh setup oraclehome=/home/zdmuser/zdmhome oraclebase=/home/zdmuser/zdmbase ziploc=/tmp/zdm21.3/zdm_home.zip -zdm
      </copy>
      ```
-     This will take couple of minutes.
+
+     Sample output of command is shown below.
+
+     ![Image showing ZDM installation command output ](./images/zdm-install-cmd-output.png)
+
+     ZDM installation will take couple of minutes.
 
      You will see output as below when ZDM service setup has been completed.
 
-     ![Image showing ZDM service setup completion](./images/zdmservice.png)
+     ![Image showing ZDM service setup completion](./images/zdm-install-cmd-ouput-final.png)
+
+10. Verify the installed version.
+
+    Navigate using below command.
+
+    **cd /home/opc/zdm/home/bin**
+
+    Execute below command to check the installed version.
+
+    **./zdmcli -build**
+
+    You will receive similar output as below.
+
+    ![Image showing ZDM installed version](./images/zdm-installed-version.png)
 
 10. Start ZDM service.
 
     Navigate using below command.
 
-    **cd /home/zdmuser/zdmhome/bin**
+    **cd /home/opc/zdm/home/bin**
 
     Execute below command to start ZDM.
 
@@ -298,6 +291,10 @@ In this lab
    You will be logged in to the Target DB system if the connectivity is successful as shown below.
 
    ![Image showing successful ssh connectivity from zdm to target](./images/ssh-target-login.png)
+
+5. Enable persistent contens for **/etc/hosts**.
+
+   
 
 You may now **proceed to the next lab**.
 

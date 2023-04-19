@@ -20,75 +20,76 @@ In this lab
 
 1. Establish connection to source database.
 
-   Most of the steps in this lab requires a connection to source database.
+  Most of the steps in this lab requires a connection to source database.
 
-   Please follow below steps to establish connection to source database using SQLPLUS.
+  Please follow below steps to establish connection to source database using SQLPLUS.
 
-   Login to source database server using Public IP and ssh key.
+  Login to source database server using Public IP and ssh key.
 
-   Switch user to **oracle** using below command.
+  Switch user to **oracle** using below command.
 
-   **sudo su - oracle**
+  **sudo su - oracle**
 
-   Set the environment to connect to your database.
+  Set the environment to connect to your database.
 
-   Type **. oraenv** and press **Enter**. 
+  Type **. oraenv** and press **Enter**. 
     
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different from ORCL).
+  Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different from ORCL).
 
-   Type **sqlplus "/as sysdba"**  and press **Enter** to connect to source database as SYS user.
+  Type **sqlplus "/as sysdba"**  and press **Enter** to connect to source database as SYS user.
 
-   Please find below snippet of the connection steps.
+  Please find below snippet of the connection steps.
 
-   ![Image showing sqlplus connection to source cdb](./images/source-cdb-connection.png)
+  ![Image showing sqlplus connection to source cdb](./images/source-cdb-connection.png)
 
 2. Establish connection to target database.
 
-   Login to target database server using Public IP and ssh key.
+  Login to target database server using Public IP and ssh key.
 
-   Switch user to **oracle** using below command.
+  Switch user to **oracle** using below command.
 
-   **sudo su - oracle**
+  **sudo su - oracle**
 
-   Set the environment to connect to your database.
+  Set the environment to connect to your database.
 
-   Type **. oraenv** and press **Enter**. 
+  Type **. oraenv** and press **Enter**. 
     
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different from ORCL).
+  Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different from ORCL).
 
-   Type **sqlplus "/as sysdba"**  and press **Enter** to connect to target database as SYS user.
+  Type **sqlplus "/as sysdba"**  and press **Enter** to connect to target database as SYS user.
 
-   Please find below snippet of the connection steps.
+  Please find below snippet of the connection steps.
 
-   ![Image showing sqlplus connection to target cdb](./images/target-cdb-conn.png)
+  ![Image showing sqlplus connection to target cdb](./images/target-cdb-conn.png)
 
 3. Check the COMPATIBLE parameter on source database.
 
-   Execute below statement on the source database connection already established using step 1.
+  Execute below statement on the source database connection already established using step 1.
 
-     ``text
-     <copy>
-     show parameter compatible
-     </copy>
-     ```
+    ```text
+    <copy>
+    show parameter compatible
+    </copy>
+    ```
 
-   Below is the sample output.
+  Below is the sample output.
 
-   ![Image showing output of compatible parameter check on source](./images/source-compatible.png)
+  ![Image showing output of compatible parameter check on source](./images/source-compatible.png)
 
 4. Check the COMPATIBLE parameter on target database.
 
-   Execute below statement on the target database connection already established using step 2.
-
-     ```text
-     <copy>
-     show parameter compatible
-     </copy>
-     ```
    
-   Below is the sample output.
+  Execute below statement on the target database connection already established using step 2.
 
-   ![Image showing output of compatible parameter check on target](./images/target-compatible.png)
+    ```text
+    <copy>
+    show parameter compatible
+    </copy>
+    ```
+   
+  Below is the sample output.
+
+  ![Image showing output of compatible parameter check on target](./images/target-compatible.png)
 
 5. Ensure COMPATIBLE parameter on source and target database is set to same value.
 

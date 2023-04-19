@@ -75,11 +75,11 @@ In this lab
 
    Execute below query using the source database connection established using step 2.
    
-   ```text
-   <copy>
-   SELECT * FROM v$timezone_file;
-   </copy>
-   ```   
+     ```text
+     <copy>
+     SELECT * FROM v$timezone_file;
+     </copy>
+     ```   
    Sample output is shown below.   
    ![Image showing timezone version of source database](./images/source-timezone.png)
 
@@ -87,11 +87,11 @@ In this lab
 
    Execute below query using the target database connection established using step 1.
    
-   ```text
-   <copy>
-   SELECT * FROM v$timezone_file;
-   </copy>
-   ```   
+     ```text
+     <copy>
+     SELECT * FROM v$timezone_file;
+     </copy>
+     ```   
    Sample output is shown below.   
    ![Image showing timezone version of target database](./images/target-timezone.png)
    
@@ -115,11 +115,11 @@ In this lab
 
    Execute below statement using target database connection already established in step 1.
 
-   ```text
-   <copy>
-   show parameter spfile
-   </copy>
-   ```
+     ```text
+     <copy>
+     show parameter spfile
+     </copy>
+     ```
 
    If the above query output shows a value for the SPFILE parameter, it means the SPFILE is already in use.
 
@@ -138,13 +138,15 @@ In this lab
    Please follow the below steps if you have provisioned the target database using methods not mentioned in this lab.
 
    Execute the below SQL.
-   ```text
-   <copy>
-   set lines 120
-   col WRL_PARAMETER for a50
-   select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
-   </copy>   
-   ```
+
+     ```text
+     <copy>
+     set lines 120
+     col WRL_PARAMETER for a50
+     select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
+     </copy>   
+     ```
+
    Sample output is shown below.
 
    ![Image showing TDE status of target database](./images/target-tde-status.png)
@@ -204,7 +206,6 @@ In this lab
    You can use NTP to synchronize the time if NTP is configured. 
    
    If NTP is not configured, then it is recommended that you configure it. If configuring NTP is not an option, then you need to correct the time manually to ensure it is in sync with OCI target database server time.
-
   
 10. Check encryption algorithm in sqlnet.ora (optional step).
 

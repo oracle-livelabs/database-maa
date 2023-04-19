@@ -169,7 +169,7 @@ In this lab
 
    Continue to execute the status command until all phases have been completed with status **PRECHECK_PASSED** as shown below.
 
-   ![Image showing final status of migration evaluation](./images/mig_eval_final.png)
+   ![Image showing final status of migration evaluation](./images/mig-eval-final.png)
 
 ## Task 3 : Start Database Migration
 
@@ -213,17 +213,17 @@ In this lab
     
    Execute below statements while you are connected to ORCLPDB.
 
-   ```text
-   <copy>
-   create user hr01 identified by "password";
-   grant resource , connect to hr01;
-   alter user hr01 quota unlimited on users;
-   create table hr01.emp(ename varchar2(20),eno number);
-   insert into hr01.emp values('Alpha',1);
-   insert into hr01.emp values('Beta',2);
-   commit;
-   </copy>
-   ```
+     ```text
+     <copy>
+     create user hr01 identified by "password";
+     grant resource , connect to hr01;
+     alter user hr01 quota unlimited on users;
+     create table hr01.emp(ename varchar2(20),eno number);
+     insert into hr01.emp values('Alpha',1);
+     insert into hr01.emp values('Beta',2);
+     commit;
+     </copy>
+     ```
    
    You will receive below output.
 
@@ -232,11 +232,12 @@ In this lab
    d. Verify the data in HR01.EMP table.
 
    Execute below statement when you are in ORCLPDB.
-   ```text
-   <copy>
-   select * from hr01.emp;
-   </copy>
-   ```
+   
+     ```text
+     <copy>
+     select * from hr01.emp;
+     </copy>
+     ```
 
    You will receive the below output which shows that there are 2 rows in HR01.EMP table.
 
@@ -276,11 +277,11 @@ In this lab
 
    Execute the below command in pluggable database.
 
-   ```text
-   <copy>
-   select * from hr01.emp;
-   </copy>
-   ```
+     ```text
+     <copy>
+     select * from hr01.emp;
+     </copy>
+     ```
 
    You will receive an output similar to the one below indicating that HR01.EMP table doesn't exist in target database which is expected.
 
@@ -306,11 +307,11 @@ In this lab
 
    Execute below command to start the database migration.
 
-   ```text
-   <copy>
-   $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db -rsp /home/zdmuser/physical_online.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
-   </copy>
-   ```
+     ```text
+     <copy>
+     $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db -rsp /home/zdmuser/physical_online.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
+     </copy>
+     ```
    Please provide the SYS password of source database when asked.
 
    You will receive an output similar to below one.
@@ -369,11 +370,11 @@ In this lab
 
    Execute below SQL query.
 
-   ```text
-   <copy>
-   select * from hr01.emp;
-   </copy>
-   ```
+     ```text
+     <copy>
+     select * from hr01.emp;
+     </copy>
+     ```
    If you receive similar output as below which means database migration has been successfully completed.
    
    ![Image showing select output from target after migration](./images/target-select-after-migration.png)

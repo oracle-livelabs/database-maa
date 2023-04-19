@@ -36,11 +36,12 @@ In this lab
 
    Execute the below command after logged in as **opc** user.
    
-   ```text
-   <copy>
-   cat /etc/os-release
-   </copy>
+    ```text
+    <copy>
+    cat /etc/os-release
+    </copy>
     ```
+   
    Please use similar commands in case above command doesn't work for you ( in case you have a different source database platform than the one specified in Lab 2).
 
    You will get an output similar to the one below.

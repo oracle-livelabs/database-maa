@@ -68,9 +68,10 @@ In this lab
    Under **Boot volume** , select **Specify a custom boot volume size** and specify 150.
 
    ![Image showing custom boot volume size](./images/boot.png)
+   
 10. Click on **Create** to start the provisioning of compute.
 
-    In less than a few minutes ZDM compute instance will be provisioned.
+   In less than a few minutes ZDM compute instance will be provisioned.
 
 ## Task 2 : Configure ZDM Service
 

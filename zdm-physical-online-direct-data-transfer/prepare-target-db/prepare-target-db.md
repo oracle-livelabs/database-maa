@@ -75,25 +75,25 @@ In this lab
 
    Execute below query using the source database connection established using step 2.
    
-    ```text
-     <copy>
-     SELECT * FROM v$timezone_file;
-     </copy>
-     ```   
-     Sample output is shown below.   
-     ![Image showing timezone version of source database](./images/source-timezone.png)
+   ```text
+   <copy>
+   SELECT * FROM v$timezone_file;
+   </copy>
+   ```   
+   Sample output is shown below.   
+   ![Image showing timezone version of source database](./images/source-timezone.png)
 
    ii. Check the timezone of target database server.
 
    Execute below query using the target database connection established using step 1.
    
-    ```text
-     <copy>
-     SELECT * FROM v$timezone_file;
-     </copy>
-     ```   
-     Sample output is shown below.   
-     ![Image showing timezone version of target database](./images/target-timezone.png)
+   ```text
+   <copy>
+   SELECT * FROM v$timezone_file;
+   </copy>
+   ```   
+   Sample output is shown below.   
+   ![Image showing timezone version of target database](./images/target-timezone.png)
    
    iii. Ensure timezone of target database sever is same or higher than source database.
 
@@ -115,11 +115,11 @@ In this lab
 
    Execute below statement using target database connection already established in step 1.
 
-     ```text
-     <copy>
-     show parameter spfile
-     </copy>
-     ```
+   ```text
+   <copy>
+   show parameter spfile
+   </copy>
+   ```
 
    If the above query output shows a value for the SPFILE parameter, it means the SPFILE is already in use.
 
@@ -138,22 +138,22 @@ In this lab
    Please follow the below steps if you have provisioned the target database using methods not mentioned in this lab.
 
    Execute the below SQL.
-     ```text
-     <copy>
-     set lines 120
-     col WRL_PARAMETER for a50
-     select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
-     </copy>   
-     ```
-     Sample output is shown below.
+   ```text
+   <copy>
+   set lines 120
+   col WRL_PARAMETER for a50
+   select WRL_TYPE,WRL_PARAMETER,STATUS,WALLET_TYPE from v$encryption_wallet;
+   </copy>   
+   ```
+   Sample output is shown below.
 
-     ![Image showing TDE status of target database](./images/target-tde-status.png)
+   ![Image showing TDE status of target database](./images/target-tde-status.png)
 
-     Verify that the TDE wallet folder(value of WRL\_PARAMETER in the above output) exists, and ensure that the wallet STATUS is OPEN and WALLET\_TYPE is AUTOLOGIN (For an auto-login wallet type), or WALLET\_TYPE is PASSWORD (For a password-based wallet). 
+   Verify that the TDE wallet folder(value of WRL\_PARAMETER in the above output) exists, and ensure that the wallet STATUS is OPEN and WALLET\_TYPE is AUTOLOGIN (For an auto-login wallet type), or WALLET\_TYPE is PASSWORD (For a password-based wallet). 
    
-     For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
+   For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
 
-     If the query output is not as per the above recommendation,  please do the needful to enable TDE in the target database.
+   If the query output is not as per the above recommendation,  please do the needful to enable TDE in the target database.
 
 6. Check available free space in target database server.
    
@@ -173,9 +173,9 @@ In this lab
 
    This livelab requires below SQL*Net connectivity.
 
-    SQL*Net connectivity from source to target database server. 
+   SQL*Net connectivity from source to target database server. 
     
-    SQL*Net connectivity from target to source database server.
+   SQL*Net connectivity from target to source database server.
 
    We have already done the needful to configure this connectivity in previous lab (Lab 5).    
 

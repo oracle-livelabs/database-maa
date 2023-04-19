@@ -66,11 +66,11 @@ In this lab
 
    Execute below statement on the source database connection already established using step 1.
 
-    ```text
-     <copy>
-     show parameter compatible
-     </copy>
-     ```
+   ```text
+   <copy>
+   show parameter compatible
+   </copy>
+   ```
 
    Below is the sample output.
 
@@ -80,11 +80,11 @@ In this lab
 
    Execute below statement on the target database connection already established using step 2.
 
-    ```text
-      <copy>
-      show parameter compatible
-      </copy>
-      ```
+   ```text
+   <copy>
+   show parameter compatible
+   </copy>
+   ```
    
     Below is the sample output.
 
@@ -112,11 +112,11 @@ In this lab
 
    Execute below statement using source database connection (established using step 1) to check whether SPFILE is in use.
 
-     ```text
-     <copy>
-     show parameter spfile
-     </copy>
-     ```
+   ```text
+   <copy>
+   show parameter spfile
+   </copy>
+   ```
 
    If the above query output shows a value for the SPFILE parameter, it means the SPFILE is already in use.
 
@@ -146,34 +146,33 @@ In this lab
    For Oracle Database 12c Release 2 and later, if the source database does not have Transparent Data Encryption (TDE) enabled, then it is mandatory that you configure the TDE wallet before migration begins. You need not encrypt the data in the source database; the data is encrypted at target using the wallet setup in the source database. The WALLET_TYPE can be AUTOLOGIN (preferred) or PASSWORD based.
     
    For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
-
     
    Please execute below query to check the status of TDE wallet in source database (using connection established in step 1).
 
    
-     ```text
-     <copy>
-     select CON_ID,WALLET_TYPE,STATUS from v$encryption_wallet;
-     </copy>
-     ```
+   ```text
+   <copy>
+   select CON_ID,WALLET_TYPE,STATUS from v$encryption_wallet;
+   </copy>
+   ```
    
    If the query output shows WALLET\_TYPE as **UNKNOWN** and STATUS as **NOT\_AVAILABLE**, then the TDE wallet is not configured.
 
    Sample query output is shown below.
 
-     ![Image showing TDE status of source database](./images/source-tde-status.png)
+   ![Image showing TDE status of source database](./images/source-tde-status.png)
 
    Please follow the below steps to enable TDE wallet for the source database provisioned in this lab.
 
-   a . Set **ENCRYPTION\_WALLET\_LOCATION** in the $ORACLE_HOME/network/admin/sqlnet.ora file.
+   a. Set **ENCRYPTION\_WALLET\_LOCATION** in the $ORACLE_HOME/network/admin/sqlnet.ora file.
 
-       Insert the below line in sqlnet.ora (Replace the **/u01/app/oracle/product/19c/dbhome\_1/network/admin/** path with your $ORACLE\_HOME/network/admin path).   
+   Insert the below line in sqlnet.ora (Replace the **/u01/app/oracle/product/19c/dbhome\_1/network/admin/** path with your $ORACLE\_HOME/network/admin path).   
        
-       ```text
-       <copy>
-       ENCRYPTION_WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY=/u01/app/oracle/product/19c/dbhome_1/network/admin/)))
-       </copy>
-       ```
+   ```text
+   <copy>
+   ENCRYPTION_WALLET_LOCATION=(SOURCE=(METHOD=FILE)(METHOD_DATA=(DIRECTORY=/u01/app/oracle/product/19c/dbhome_1/network/admin/)))
+   </copy>
+   ```
 
       Below is sample output of the contents of sqlnet.ora after the required modification.
 
@@ -202,6 +201,7 @@ In this lab
       ii. Open the keystore.
 
       For a CDB environment (source database in this lab is CDB ),  run the following command after updating with your password.
+
       ```text
       <copy>
       ADMINISTER KEY MANAGEMENT SET KEYSTORE OPEN IDENTIFIED BY password container = ALL;
@@ -459,13 +459,13 @@ In this lab
 
    For example, if the database is deployed on ASM storage, use the below command to configure snapshot controlfile.
 
-     ```text
-     <copy>
-     $ rman target /  
-     RMAN> CONFIGURE SNAPSHOT CONTROLFILE NAME TO '+DATA/db_name/snapcf_db_name.f';
-     </copy>
-     ```
-     If the database is deployed on an ACFS file system, specify the shared ACFS location in the above command.
+   ```text
+   <copy>
+   $ rman target /  
+   RMAN> CONFIGURE SNAPSHOT CONTROLFILE NAME TO '+DATA/db_name/snapcf_db_name.f';
+   </copy>
+   ```
+   If the database is deployed on an ACFS file system, specify the shared ACFS location in the above command.
 
 11. Configure RMAN to automatically backup control file.
 
@@ -475,27 +475,27 @@ In this lab
 
    Connect to source database using RMAN and execute below query to check the controlfile AUTOBACKUP configuration.
 
-    ```text
-     <copy>
-     RMAN> show CONTROLFILE AUTOBACKUP;
-     </copy>
-      ```
-     Below is the sample output which shows AUTOBACKUP is ON.
+   ```text
+   <copy>
+   RMAN> show CONTROLFILE AUTOBACKUP;
+   </copy>
+    ```
+   Below is the sample output which shows AUTOBACKUP is ON.
 
-     ![Image showing controlfile autobackup status](./images/rman-control-autobkp.png)
+   ![Image showing controlfile autobackup status](./images/rman-control-autobkp.png)
 
-     If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
+   If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
     
-     Connect to source database using RMAN and execute below query to enable controlfile autobackup.
+   Connect to source database using RMAN and execute below query to enable controlfile autobackup.
 
-      ```text
-      <copy>
-      RMAN> CONFIGURE CONTROLFILE AUTOBACKUP ON;
-      </copy>
-       ```
-      Below is sample output.
+   ```text
+   <copy>
+   RMAN> CONFIGURE CONTROLFILE AUTOBACKUP ON;
+   </copy>
+   ```
+   Below is sample output.
    
-      ![Image showing output of controlfile autobackup on command](./images/rman-controlfile-autobackup-configure.png)
+   ![Image showing output of controlfile autobackup on command](./images/rman-controlfile-autobackup-configure.png)
 
 12. Register database with srvctl.
 
@@ -523,7 +523,6 @@ In this lab
     If the time on any of these systems varies beyond 6 minutes from the time on OCI, it should be adjusted. You can use ntp time check to synchronize the time if NTP is configured. If NTP is not configured, then it is recommended that you configure it. If configuring NTP is not an option, then you need to correct the time manually to ensure it is in sync with OCI time.
 
     Steps to check and compare time is mentioned in next Lab.
-
 
 You may now **proceed to the next lab**.
 

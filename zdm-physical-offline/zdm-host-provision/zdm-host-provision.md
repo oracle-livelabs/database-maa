@@ -82,7 +82,6 @@ In this lab
 ## Task 2 : Configure ZDM Service
 
 1. Login to ZDM host using the Public IP and ssh key file.
-
    
 2. Expand the root FS.
 
@@ -103,7 +102,7 @@ In this lab
      </copy>
      ```
      
-     Enter y when asked as shown below.
+     Enter **y** when asked the question **Is this ok[y/N]:**as shown below.
 
      ![Image showing package installation confirmation screen ](./images/zdm-package-confirm.png)
 
@@ -111,12 +110,12 @@ In this lab
 
      ![Image showing the output of command to install packages for ZDM ](./images/zdm-pkg-install-end.png)
 
-4. Create user, group and directories required for ZDM.
+4. Create required directory for ZDM.
 
-   Execute below commands.
+   Execute below command.
      ```text
      <copy>
-     mkdir -p /home/opc/zdm
+     mkdir /home/opc/zdm
      </copy>
      ```
 5. Download ZDM software.
@@ -139,7 +138,7 @@ In this lab
 
    sample ouput of unzip command is shown below.
 
-   ![Image showing the output of unzip command ](./images)
+   ![Image showing the output of unzip command ](./images/zdm-unzip.png)
 
    Note down the directory path of unzipped folder , it will be **/home/opc/zdm21.x** for **ZDM 21.x** , Please note this is a generic placeholder name for ZDM software and make sure to use the latest version available.
 
@@ -152,7 +151,7 @@ In this lab
    Execute the below command to install ZDM software.
      ```text
      <copy>
-     ./zdminstall.sh setup oraclehome=/home/zdmuser/zdmhome oraclebase=/home/zdmuser/zdmbase ziploc=/tmp/zdm21.3/zdm_home.zip -zdm
+     ./zdminstall.sh setup oraclehome=/home/opc/zdm/home oraclebase=/home/opc/zdm/base ziploc=/home/opc/zdm21.4/zdm_home.zip -zdm
      </copy>
      ```
 
@@ -162,9 +161,9 @@ In this lab
 
      ZDM installation will take couple of minutes.
 
-     You will see output as below when ZDM service setup has been completed.
+     You will see output as below when ZDM installation has been completed.
 
-     ![Image showing ZDM service setup completion](./images/zdm-install-cmd-ouput-final.png)
+     ![Image showing ZDM installation completion](./images/zdm-install-cmd-ouput-final.png)
 
 10. Verify the installed version.
 
@@ -280,6 +279,8 @@ In this lab
 
    **ssh -i key\_file\_name opc@zdm-source-db**
 
+   Press **yes** when asked with **Are you sure you want to continue connecting (yes/no/[fingerprint])?**
+
    You will be logged in to the Source DB system if the connectivity is successful as shown below.
 
    ![Image showing successful ssh connectivity from zdm to source](./images/ssh-source-login.png)
@@ -288,11 +289,26 @@ In this lab
 
    **ssh -i key\_file\_name opc@zdm-target-db**
 
+   Press **yes** when asked with **Are you sure you want to continue connecting (yes/no/[fingerprint])?**
+
    You will be logged in to the Target DB system if the connectivity is successful as shown below.
 
    ![Image showing successful ssh connectivity from zdm to target](./images/ssh-target-login.png)
 
-5. Enable persistent contens for **/etc/hosts**.
+5. Enable configuration to make contents of **/etc/hosts** persistent.
+
+   If the ZDM compute VM in OCI is rebooted for some reason, the custom entries made in /etc/hosts as part of step 2 are not saved. 
+   
+   To save these custom entries, edit /etc/oci-hostname.conf as follows:
+
+   Modify the below line to reflect as below.
+
+   PRESERVE_HOSTINFO=2
+
+   Below is sample ouput of modified contents.
+
+   ![Image showing contents of /etc/oci-hostname.conf](./images/oci-hostname.png)
+
 
    
 

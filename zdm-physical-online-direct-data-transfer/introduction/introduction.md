@@ -2,7 +2,7 @@
 
 ## About this workshop
 
-This workshop will consist of a step by step physical online migration using RMAN to backup/restore the source/target database and Oracle Data Guard for Database Synchronization.
+This workshop consists of step-by-step instrcutions for physical online migration using RMAN to backup/restore the source/target database and Oracle Data Guard for Database Synchronization.
 
 Estimated Time: 3 hours 30 minutes
 
@@ -85,4 +85,4 @@ Please *proceed to the next lab*.
 ## Acknowledgements
 * **Author** - Ricardo Gonzalez, Senior Principal Product Manager, Oracle Cloud Database Migration
 * **Contributors** - LiveLabs Team, ZDM Development Team
-* **Last Updated By/Date** - Ricardo Gonzalez, April 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, April 2023

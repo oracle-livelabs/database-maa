@@ -58,21 +58,21 @@ In this lab
 
 2. Click the **Navigation Menu** in the upper left, navigate to **Marketplace** and then select **All Applications**.
 
-     ![Image showing navigation to Marketplace](./images/navigate-to-marketplace.png " ")
+   ![Image showing navigation to Marketplace](./images/navigate-to-marketplace.png " ")
 
 3. Type **Oracle Database** in search bar.
 
-     ![Image showing search bar for Marketplace](./images/search-marketplace.png " ")
+   ![Image showing search bar for Marketplace](./images/search-marketplace.png " ")
 
 4. Click on the listed **Oracle Database (Single Instance)** Image.
 
-     ![Image showing Oracle Database Marketplace Image](./images/oracle-database-image.png " ")
+   ![Image showing Oracle Database Marketplace Image](./images/oracle-database-image.png " ")
 
 5. Select an Oracle Database version which is latest ( There will be one on OL7 and one on OL8).
     
    Please choose database on Oracle Linux 7 since your Target DB system will be on Oracle Linux 7 for this lab.
 
-     ![Image showing available Marketplace Database Images](./images/db-image-options.png " ")
+   ![Image showing available Marketplace Database Images](./images/db-image-options.png " ")
 
    Please make a note of the exact database version with Release Update since it will be required in next Lab.
 
@@ -84,26 +84,27 @@ In this lab
 
    ![Image showing Compute instance Name Prompt](./images/compute-name-prompt.png)
 
-    You can leave the Image and Shape as default.
+   You can leave the Image and Shape as default.
 
    ![Image showing compute mage and shape](./images/image-shape.png)
 
  8. Under **Networking** , please enter details as shown below.
 
-    ![Image showing Network selection](./images/network-details.png " ")
+   ![Image showing Network selection](./images/network-details.png " ")
 
  9. Under **Add SSH keys**.
 
-    Browse and provide the public ssh key generated in Lab 1.
+   Browse and provide the public ssh key generated in Lab 1.
 
-    ![Image showing SSK key details](./images/ssh-key-upload.png " ")
+   ![Image showing SSK key details](./images/ssh-key-upload.png " ")
 
 10. Click on **Create** to start the compute provisioning.
 
-    ![Image showing final page for compute creation](./images/compute-creation.png " ")
+   ![Image showing final page for compute creation](./images/compute-creation.png " ")
 
 11. In few minutes , compute instance with database will be provisioned and running as below.
-    ![Image showing provisioned compute instance](./images/prov-final.png)
+   
+   ![Image showing provisioned compute instance](./images/prov-final.png)
 
 12. Take a note of the Public IP address of the compute instance which will used to login to source database system.
 

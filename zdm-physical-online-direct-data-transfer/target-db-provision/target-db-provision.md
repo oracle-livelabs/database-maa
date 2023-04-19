@@ -36,16 +36,16 @@ In this lab
 
    Execute the below command after logged in as **opc** user.
    
-     ```text
-     <copy>
-     cat /etc/os-release
-     </copy>
-     ```
-     Please use similar commands in case above command doesn't work for you ( in case you have a different source database platform than the one specified in Lab 2).
+   ```text
+   <copy>
+   cat /etc/os-release
+   </copy>
+    ```
+   Please use similar commands in case above command doesn't work for you ( in case you have a different source database platform than the one specified in Lab 2).
 
-     You will get an output similar to the one below.
+   You will get an output similar to the one below.
 
-     ![Image showing output of command to check OS version ](./images/os-version.png)
+   ![Image showing output of command to check OS version ](./images/os-version.png)
 
 2. Establish connection to source database.
 
@@ -79,28 +79,29 @@ In this lab
 
    Execute the below query after connecting to source database using connection established in step 2.
 
-     ```console
-     <copy>
-     select banner from v$version;
-     </copy>
-      ```
-     You will receive an output similar to the one below which will have the Database Edition.
+   ```console
+   <copy>
+   select banner from v$version;
+   </copy>
+    ```
+   You will receive an output similar to the one below which will have the Database Edition.
 
-     ![Image showing Database Edition of Source database](./images/database-edition.png)
+   ![Image showing Database Edition of Source database](./images/database-edition.png)
 
 4. Check database characterset.
    
    Execute the below query after connecting to source database using connection established in step 2.
-     ```console
-     <copy>
-     select PARAMETER,VALUE from nls_database_parameters where parameter like '%NLS%CHARACTERSET';
-     </copy>
-      ```
-     In the query output **NLS\_CHARACTERSET** is the database characterset and **NLS\_NCHAR\_CHARACTERSET** is the national characterset.
+     
+   ```console
+   <copy>
+   select PARAMETER,VALUE from nls_database_parameters where parameter like '%NLS%CHARACTERSET';
+   </copy>
+    ```
+   In the query output **NLS\_CHARACTERSET** is the database characterset and **NLS\_NCHAR\_CHARACTERSET** is the national characterset.
 
-     Sample output is shown below.
+   Sample output is shown below.
 
-     ![Image showing database and national character set in database](./images/database-characterset.png)
+   ![Image showing database and national character set in database](./images/database-characterset.png)
 
 5. Check encryption algorithm.
 
@@ -181,7 +182,7 @@ In this lab
 
    Leave Availability Domain and Shape as to thier default values.
 
-5.  Modify the shape of the DB System.
+5. Modify the shape of the DB System.
 
    When you create the database from the console, ensure that your chosen shape can accommodate the source database, plus any future sizing requirements. A good guideline is to use a shape similar to or larger in size than source database.
 
@@ -212,7 +213,6 @@ In this lab
    Please select **Grid Infrastructure** and **Balanced** option and click on **Save changes** as shown below.
 
    ![Image showing option to change storage](./images/storage-selection.png)
-
 
 7. Configure database edition.
 

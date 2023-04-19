@@ -80,11 +80,12 @@ In this lab
 
    Execute the below query after connecting to source database using connection established in step 2.
 
-   ```console
-   <copy>
-   select banner from v$version;
-   </copy>
+    ```console
+    <copy>
+    select banner from v$version;
+    </copy>
     ```
+   
    You will receive an output similar to the one below which will have the Database Edition.
 
    ![Image showing Database Edition of Source database](./images/database-edition.png)
@@ -93,11 +94,12 @@ In this lab
    
    Execute the below query after connecting to source database using connection established in step 2.
      
-   ```console
-   <copy>
-   select PARAMETER,VALUE from nls_database_parameters where parameter like '%NLS%CHARACTERSET';
-   </copy>
+    ```console
+    <copy>
+    select PARAMETER,VALUE from nls_database_parameters where parameter like '%NLS%CHARACTERSET';
+    </copy>
     ```
+   
    In the query output **NLS\_CHARACTERSET** is the database characterset and **NLS\_NCHAR\_CHARACTERSET** is the national characterset.
 
    Sample output is shown below.

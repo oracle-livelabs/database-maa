@@ -104,6 +104,7 @@ In this lab
    oraclelinux-developer-release-el7
 
    Execute the below command to identify already installed packages.
+
      ```text
      <copy>
      yum list installed glibc-devel expect unzip libaio oraclelinux-developer-release-e17
@@ -132,6 +133,7 @@ In this lab
    **sudo su -**
 
    Execute below commands.
+
      ```text
      <copy>
      groupadd zdm
@@ -171,6 +173,7 @@ In this lab
    cd /tmp/zdm21.x
    
    Execute the below command to install ZDM software.
+   
      ```text
      <copy>
      ./zdminstall.sh setup oraclehome=/home/zdmuser/zdmhome oraclebase=/home/zdmuser/zdmbase ziploc=/tmp/zdm21.x/zdm_home.zip -zdm

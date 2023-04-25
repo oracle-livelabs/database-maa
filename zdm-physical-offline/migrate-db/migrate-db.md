@@ -76,7 +76,7 @@ In this lab
 
    **objectstorage\_namespace** value for your environment was collected in Lab 7 Task 1.
 
-   Save the response file parameters to a file named as **physical\_offline.rsp** under directory **/home/opc**.
+   Save the response file parameters to a file named as **physical\_offline.rsp** under directory **/home/zdmuser**.
 
    Please note that this lab is using minimal parameters for migration , however more flexibility and control can be achieved by using other available options in the below document.
 
@@ -93,7 +93,7 @@ In this lab
 
    Execute below commands.
 
-   **export ZDM_HOME=/home/opc/zdm/home**
+   **export ZDM_HOME=/home/zdmuser/zdmhome**
 
    **$ZDM_HOME/bin/zdmservice status**
 
@@ -111,7 +111,7 @@ In this lab
 
     ```text
     <copy>
-    $ZDM_HOME/bin/zdmcli migrate database  -sourcesid ORCL  -sourcenode zdm-source-db  -srcauth zdmauth  -srcarg1 user:opc  -srcarg2 identity_file:/home/opc/mykey.key  -srcarg3 sudo_location:/bin/sudo  -targetnode zdm-target-db  -backupuser "xxxxxxxx/xxxxxx.xxxxx@xxxxx.com"  -rsp /home/opc/physical_offline.rsp  -tgtauth zdmauth  -tgtarg1 user:opc  -tgtarg2 identity_file:/home/opc/mykey.key  -tgtarg3 sudo_location:/usr/bin/sudo -eval
+    $ZDM_HOME/bin/zdmcli migrate database  -sourcesid ORCL  -sourcenode zdm-source-db  -srcauth zdmauth  -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key  -srcarg3 sudo_location:/bin/sudo  -targetnode zdm-target-db  -backupuser "xxxxxxxx/xxxxxx.xxxxx@xxxxx.com"  -rsp /home/zdmuser/physical_offline.rsp  -tgtauth zdmauth  -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key  -tgtarg3 sudo_location:/usr/bin/sudo -eval
     </copy>
     ```
   
@@ -155,7 +155,7 @@ In this lab
 
    Please proceed with the migration evaluation once you have the command updated for your environment.
 
-   ![Image showing execution of migration evaluation command](./images/mig-eval-start.png)
+   ![Image showing execution of migration evaluation command](./images/evaluation-start.png)
 
    Please provide the SYS password of source database and Auth token when asked.
 
@@ -171,11 +171,11 @@ In this lab
 
    You will receive a similar ouput as below.
 
-   ![Image showing intermediate status of migration evaluation](./images/mig-eval-status.png)
+   ![Image showing intermediate status of migration evaluation](./images/evaluation-status.png)
 
    Continue to execute the status command until all phases have been completed with status **PRECHECK_PASSED** as shown below.
 
-   ![Image showing final status of migration evaluation](./images/mig-eval-final.png)
+   ![Image showing final status of migration evaluation](./images/evaluation-final.png)
 
 ## Task 3 : Start Database Migration
 
@@ -250,7 +250,47 @@ In this lab
 
 2. Verify **HR01.EMP** table in target database.
 
-   There is no HR01.EMP table in target database since it was newly provisioned for this lab.
+   There is no HR01.EMP table in target database , However let's verify it.
+
+   a. Connect to target database server.
+
+      Connect to target database server using Public IP and ssh key.
+
+   b. Login to target container database.
+
+      Switch user to **oracle** using below command.
+
+      **sudo su - oracle**
+
+      Set the environment to connect to your database.
+
+      Type **. oraenv** and press **Enter**. 
+    
+      Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different).
+
+      Login to container database(CDB) using sqlplus as shown below.
+   
+      ![Image showing connection to CDB using sqlplus](./images/target-cdb-connection.png)
+   
+   c. Switch to pluggable database ORCL_PDB1.
+
+      Switch to pluggable database ORCL_PDB1 using below command. 
+   
+      **alter session set container=ORCL_PDB1;**
+
+   d. Verify existence of HR01.EMP table.
+
+      Execute the below command in pluggable database.
+
+       ```text
+       <copy>
+       select * from hr01.emp;
+       </copy>
+       ```
+
+     You will receive an output similar to the one below indicating that HR01.EMP table doesn't exist in target database which is expected.
+
+     ![Image showing select statement output from target before migration](./images/target-select-before-migration.png)
 
 3. Start the database migration
 
@@ -274,7 +314,7 @@ In this lab
 
        ```text
        <copy>
-       $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db -srcauth zdmauth -srcarg1 user:opc -srcarg2 identity_file:/home/opc/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db -backupuser "oracleidentitycloudservice/xxxxx.xxxx@xxxcle.com" -rsp /home/opc/physical_offline.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/opc/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
+       $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db  -srcauth zdmauth -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db  -backupuser "oracleidentitycloudservice/xxxxx.xxxx@xxxcle.com" -rsp /home/zdmuser/physical_offline.rsp -tgtauth zdmauth -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo
        </copy>
        ```
       Please provide the SYS password of source database and Auth token when asked.
@@ -348,7 +388,7 @@ Congrats, you have completed ZDM Physical Offline Migration Live Lab.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, Apr 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
 
 
 

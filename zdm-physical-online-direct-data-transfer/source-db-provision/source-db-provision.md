@@ -41,7 +41,7 @@ In this task you will create a new Virtual Cloud Network which will be used to h
 
    ![Image showing VCN and Subnet CIDR](./images/vcn-cidr-info.png " ")
 
-   Once details are entered , click on **Next**.
+Once details are entered , click on **Next**.
 
 7. On the next screen , click on **Create**.
 
@@ -70,11 +70,11 @@ In this task you will create a new Virtual Cloud Network which will be used to h
 
 5. Select an Oracle Database version which is latest ( There will be one on OL7 and one on OL8).
     
-   Please choose database on Oracle Linux 7 since your Target DB system will be on Oracle Linux 7 for this lab.
+Please choose database on Oracle Linux 7 since your Target DB system will be on Oracle Linux 7 for this lab.
 
    ![Image showing available Marketplace Database Images](./images/db-image-options.png " ")
 
-   Please make a note of the exact database version with Release Update since it will be required in next Lab.
+Please make a note of the exact database version with Release Update since it will be required in next Lab.
 
 6. Ensure to select the correct compartment in your tenancy and then click on **Launch Instance**.
 
@@ -84,7 +84,7 @@ In this task you will create a new Virtual Cloud Network which will be used to h
 
    ![Image showing Compute instance Name Prompt](./images/compute-name-prompt.png)
 
-   You can leave the Image and Shape as default.
+You can leave the Image and Shape as default.
 
    ![Image showing compute mage and shape](./images/image-shape.png)
 
@@ -94,7 +94,7 @@ In this task you will create a new Virtual Cloud Network which will be used to h
 
  9. Under **Add SSH keys**.
 
-   Browse and provide the public ssh key generated in Lab 1.
+Browse and provide the public ssh key generated in Lab 1.
 
    ![Image showing SSK key details](./images/ssh-key-upload.png " ")
 
@@ -110,9 +110,9 @@ In this task you will create a new Virtual Cloud Network which will be used to h
 
 13. Collect the value of SYS password.
 
-    Login to the source database server using the Public IP and private ssh key.
+Login to the source database server using the Public IP and private ssh key.
 
-    Please refer the value of RACPASSWORD variable in file /u01/ocidb/params.ini for SYS,SYSTEM,PDBADMIN and SYSMAN password.
+Please refer the value of RACPASSWORD variable in file /u01/ocidb/params.ini for SYS,SYSTEM,PDBADMIN and SYSMAN password.
 
     
     

@@ -19,9 +19,9 @@ In this lab
 
 In this task you will create a new Virtual Cloud Network which will be used to host source database compute , target database system and ZDM service host.
 
-1. Login to your Oracle Cloud Console.
+1.Login to your Oracle Cloud Console.
 
-2. Click the **Navigation Menu** in the upper left, navigate to **Networking** and then select **Virtual Cloud Networks**.
+2.Click the **Navigation Menu** in the upper left, navigate to **Networking** and then select **Virtual Cloud Networks**.
    
 ![Image showing navigation to VCN](./images/navigate-to-vcn.png " ")
  

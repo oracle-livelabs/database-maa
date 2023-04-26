@@ -19,9 +19,9 @@ In this lab
 
 1. Navigate to compute instance in Oracle Console.
 
-   Click the **Navigation Menu** in the upper left, navigate to **Compute** and then select **Instances**.
+Click the **Navigation Menu** in the upper left, navigate to **Compute** and then select **Instances**.
 
-   ![Image showing navigation to compute instance](./images/navigate-to-compute.png)
+![Image showing navigation to compute instance](./images/navigate-to-compute.png)
 
 2. Select **Compartment**.
 

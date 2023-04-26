@@ -17,7 +17,7 @@ In this lab
 
 ## Task 1 : Create Virtual Cloud Network
 
-   In this task you will create a new Virtual Cloud Network which will be used to host source database compute , target database system and ZDM service host.
+In this task you will create a new Virtual Cloud Network which will be used to host source database compute , target database system and ZDM service host.
 
 1. Login to your Oracle Cloud Console.
 

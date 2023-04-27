@@ -2,9 +2,9 @@
 
 ## About this workshop
 
-This workshop consists of a step by step physical online migration using RMAN to backup/restore the source/target database, Oracle Data Guard for Database Synchronization and an Oracle Cloud Infrastructure (Oracle Cloud Infrastructure) object storage bucket as a backup location.
+This workshop consists of step-by-step instrcutions for physical online migration using RMAN to backup/restore the source/target database and Oracle Data Guard for Database Synchronization.
 
-Estimated Time: 3 hours
+Estimated Time: 3 hours 30 minutes
 
 
 ### About Zero Downtime Migration
@@ -59,7 +59,6 @@ For more information on Oracle Zero Downtime Migration please visit ZDM's [produ
 ### Objectives
 
 In this lab, you will:
-
 * Learn about Oracle Zero Downtime Migration Fundamentals.
 * Create SSH keys.
 * Provision source database.
@@ -67,7 +66,6 @@ In this lab, you will:
 * Provision and configure ZDM service host.
 * Prepare source database.
 * Prepare target database.
-* Create Object Storage Bucket and Auth Token.
 * Migrate database.
 
 ### Prerequisites
@@ -87,4 +85,4 @@ Please *proceed to the next lab*.
 ## Acknowledgements
 * **Author** - Ricardo Gonzalez, Senior Principal Product Manager, Oracle Cloud Database Migration
 * **Contributors** - LiveLabs Team, ZDM Development Team
-* **Last Updated By/Date** - Amalraj Puthenchira, Apr 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, April 2023

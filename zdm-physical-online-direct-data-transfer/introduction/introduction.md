@@ -2,7 +2,7 @@
 
 ## About this workshop
 
-This workshop consists of step-by-step instrcutions for physical online migration using RMAN to backup/restore the source/target database and Oracle Data Guard for Database Synchronization.
+This workshop consists of step-by-step instrcutions for ZDM physical online migration using RMAN to backup/restore the source/target database and Oracle Data Guard for Database Synchronization.
 
 Estimated Time: 3 hours 30 minutes
 

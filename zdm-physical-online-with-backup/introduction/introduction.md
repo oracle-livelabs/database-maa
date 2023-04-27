@@ -87,4 +87,4 @@ Please *proceed to the next lab*.
 ## Acknowledgements
 * **Author** - Ricardo Gonzalez, Senior Principal Product Manager, Oracle Cloud Database Migration
 * **Contributors** - LiveLabs Team, ZDM Development Team
-* **Last Updated By/Date** - Ricardo Gonzalez, March 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, Apr 2023

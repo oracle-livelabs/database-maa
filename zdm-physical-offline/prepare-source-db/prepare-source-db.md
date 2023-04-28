@@ -329,58 +329,60 @@ In this lab
 
 10. Configure RMAN to automatically backup control file.
 
-   Ignore this step for the source database you have configured in this lab since it has automatic controlfile backup already configured.
+    Ignore this step for the source database you have configured in this lab since it has automatic controlfile backup already configured.
 
-   Follow the below steps for the source database configured using steps mentioned not in this lab.
+    Follow the below steps for the source database configured using steps mentioned not in this lab.
 
-   Connect to source database using RMAN and execute below query to check the controlfile AUTOBACKUP configuration.
+    Connect to source database using RMAN and execute below query to check the controlfile AUTOBACKUP configuration.
 
-    ```text
-     <copy>
-     RMAN> show CONTROLFILE AUTOBACKUP;
-     </copy>
-      ```
-     Below is the sample output which shows AUTOBACKUP is ON.
+     ```text
+      <copy>
+      RMAN> show CONTROLFILE AUTOBACKUP;
+      </copy>
+       ```
+    Below is the sample output which shows AUTOBACKUP is ON.
 
-     ![Image showing controlfile autobackup status](./images/rman-control-autobkp.png)
+    ![Image showing controlfile autobackup status](./images/rman-control-autobkp.png)
 
-     If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
+    If RMAN is not already configured to automatically back up the control file and SPFILE, then set CONFIGURE CONTROLFILE AUTOBACKUP to ON and revert the setting back to OFF after migration is complete.
     
-     Connect to source database using RMAN and execute below query to enable controlfile autobackup.
+    Connect to source database using RMAN and execute below query to enable controlfile autobackup.
 
-      ```text
+     ```text
       <copy>
       RMAN> CONFIGURE CONTROLFILE AUTOBACKUP ON;
       </copy>
        ```
-      Below is sample output.
+    Below is sample output.
    
-      ![Image showing output of controlfile autobackup on command](./images/rman-controlfile-autobkp-config.png)
+     ![Image showing output of controlfile autobackup on command](./images/rman-controlfile-autobkp-config.png)
 
 11. Register database with srvctl.
 
-   Ignore this step for the source database provisioned in this lab since it is not using Grid Infrastructure.
+    Ignore this step for the source database provisioned in this lab since it is not using Grid Infrastructure.
 
-   If the source database is deployed using Oracle Grid Infrastructure and the database is not registered using SRVCTL, then you must register the database before the migration.
+    If the source database is deployed using Oracle Grid Infrastructure and the database is not registered using SRVCTL, then you must register the database before the migration.
    
 12. Maintain RMAN backup strategy.
 
-   This step can be ignored for this lab since there is no existing RMAN backup strategy for the source database used in this lab.
+    This step can be ignored for this lab since there is no existing RMAN backup strategy for the source database used in this lab.
 
-   Follow the below procedure if your source database has an existing RMAN backup strategy.
+    Follow the below procedure if your source database has an existing RMAN backup strategy.
 
-   To preserve the source database Recovery Time Objective (RTO) and Recovery Point Objective (RPO) during the migration, the existing RMAN backup strategy should be maintained.
+    To preserve the source database Recovery Time Objective (RTO) and Recovery Point Objective (RPO) during the migration, the existing RMAN backup strategy should be maintained.
 
-   During the migration a dual backup strategy will be in place; the existing backup strategy and the strategy used by Zero Downtime Migration.
+    During the migration a dual backup strategy will be in place; the existing backup strategy and the strategy used by Zero Downtime Migration.
 
-   Avoid having two RMAN backup jobs running simultaneously (the existing one and the one initiated by Zero Downtime Migration).
+    Avoid having two RMAN backup jobs running simultaneously (the existing one and the one initiated by Zero Downtime Migration).
 
-   If archive logs were to be deleted on the source database, and these archive logs are needed by Zero Downtime Migration to synchronize the target cloud database, then these files should be restored so that Zero Downtime Migration can continue the migration process.
+    If archive logs were to be deleted on the source database, and these archive logs are needed by Zero Downtime Migration to synchronize the target cloud database, then these files should be restored so that Zero Downtime Migration can continue the migration process.
 
    
-13. Ensure system time of the ZDM service host and source database server are in sync with your Oracle Cloud Infrastructure target    
+13. Ensure system time of the ZDM service host and source database server are in sync with your Oracle Cloud Infrastructure target.
 
-   If the time on any of these systems varies beyond 6 minutes from the time on OCI, it is recommended to be adjusted. You can use ntp time check to synchronize the time if NTP is configured. If NTP is not configured, then it is recommended that you configure it. If configuring NTP is not an option, then you need to correct the time manually to ensure it is in sync with OCI time.
+    This is an optional step.
+
+    If the time on any of these systems varies beyond 6 minutes from the time on OCI, it is recommended to be adjusted. You can use ntp time check to synchronize the time if NTP is configured. If NTP is not configured, then it is recommended that you configure it. If configuring NTP is not an option, then you need to correct the time manually to ensure it is in sync with OCI time.
 
     Steps to check and compare time is mentioned in next Lab.
 

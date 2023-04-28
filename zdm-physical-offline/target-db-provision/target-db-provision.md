@@ -6,7 +6,7 @@ You must create a placeholder target database before beginning a migration to th
 
 The placeholder target database is overwritten during migration, but it retains the overall configuration.
 
-Please note as of Zero Downtime Migration Release 21.3 , only Grid Infrastructure-based database services are supported as targets. For example, an LVM-based instance or an instance created in compute node without Grid Infrastructure are not supported targets.
+Please note as of Zero Downtime Migration Release 21.4 , only Grid Infrastructure-based database services are supported as targets. For example, an LVM-based instance or an instance created in compute node without Grid Infrastructure are not supported targets.
 
 You must use the control plane for the creation of a target placeholder database on Exadata Database Service on Dedicated Infrastructure and Exadata Cloud at Customer.
 
@@ -16,7 +16,7 @@ Estimated Time: 30 minutes
 
 In this lab
 
-* You will collect some information from the source database that is required for target database provisioning.
+* You will collect information from the source database required for target database provisioning.
 
 * You will prepare a database software image for the target database.
 
@@ -28,16 +28,14 @@ In this lab
 
 ## Task 1 : Collect Source Database Details
 
-1. Login to the source database system using the Public IP.
+1. Check the Operating System version of the source database.
+
+   Login to the source database compute using the Public IP and privte SSH key.
 
    Username to login : **opc** 
 
-   Use the private SSH key generated earlier.
-
-2. Check the Operating System version of the source database.
-
-   Execute the below command after login in as **opc** user.
-   
+   Execute the below command after logged in as **opc** user.
+     
      ```text
      <copy>
      cat /etc/os-release
@@ -49,31 +47,27 @@ In this lab
 
      ![Image showing output of command to check OS version ](./images/os-version.png)
 
-3. Set the database environment to connect to your database.
+2. Establish connection to source database.
 
-   Switch user to **oracle** using below command.
+   Switch user to **oracle** using below command after logged into source database server.
 
    **sudo su - oracle**
 
-   Set the environment to connect to your database using below command.
+   Set the environment to connect to your database.
 
-   Type **. oraenv** and press **Enter**.
+   Type **. oraenv** and press **Enter**. 
     
-   Enter **ORCL** when asked for **ORACLE_SID** and then press **Enter** .   --> Enter your **ORACLE\_SID** if that is different in case of an on-premises database.
+   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID in case if it is different).
 
-4. Check the database version of the source database.
+   Type **sqlplus "/as sysdba"**  and press **Enter** to connect to source database as SYS user.
 
-   Please check the source database version that was selected while provisioning the source database using Marketplace Image in Lab 2.
+   Please find below snippet of the connection steps.
 
-   In case you would like know the database version for your on-premises database then refer the below steps.
-    
-   Execute **opatch lsinventory** command as **oracle** user.
+   ![Image showing sqlplus connection to source cdb](./images/source-cdb-connection.png)
 
-   Check for the output to determine the exact database version.
+3. Check the database edition of the source database.
 
-5. Check the database edition of the source database.
-
-   Your source database is in **Enterprise Edition** since the Oracle Marketplace Image used in previous lab provisions Enterprise Edition database.
+   Your source database is an **Enterprise Edition** database since the Oracle Marketplace Image used in previous lab provisions Enterprise Edition database.
 
    In case you would like know the database edition for your on-premises database then refer the below steps.
 
@@ -87,9 +81,9 @@ In this lab
 
      ![Image showing Database Edition of Source database](./images/database-edition.png)
 
-6. Check database characterset.
+4. Check database characterset.
    
-   Run the below query to identify the database character set and national characterset.
+   Execute the below query after connecting to source database using connection established in step 2.
      ```console
      <copy>
      select PARAMETER,VALUE from nls_database_parameters where parameter like '%NLS%CHARACTERSET';
@@ -101,17 +95,31 @@ In this lab
 
      ![Image showing database and national character set in database](./images/database-characterset.png)
 
-7. Check encryption algorithm under sqlnet.ora.
+5. Check encryption algorithm under sqlnet.ora.
 
-   Check the **sqlnet.ora** to identify any encryption algorithm mentioned.
+   Check the **$ORACLE\_HOME\network\admin\sqlnet.ora** file in source database server to identify any encryption algorithm mentioned.
 
-8. Generate patch inventory ouput.
+6. Generate patch inventory output.
 
-   Execute **opatch lsinventory** command as **oracle** user in source database server.
+   Execute below steps after logged into the source database system.
 
-9. Download inventory output to the local desktop.
+   Switch user to **oracle** using below command.
 
-   We will require this file in Task 2.
+   **sudo su - oracle**
+
+   Set the PATH variable using below command.
+
+   export PATH=$ORACLE_HOME/OPatch:$PATH
+
+   Execute below command.
+
+   **opatch lsinventory**
+
+   Below is sample trimmed output of the above command.
+
+   ![Image showing database and national character set in database](./images/source-db-lsinventory.png)
+
+   Download the Lsinventory output file (location is shown in the output) to local desktop since it will be required in next Task.
 
 ## Task 2 : Prepare Database Software Image for Target Database
 
@@ -123,17 +131,23 @@ In this lab
 
 2. Click on **Database software images**.
 
-   Select the appropriate compartment and then click on **Database software images** under **Resources**.
+   Click on **Database software images** under **Resources** as shown below.
 
-   ![Image showing compartment selection ](./images/compartment.png)
+   ![Image showing compartment selection ](./images/click-software-image.png)
 
-3. Click **Create Database software image**.
+3. Click on **Create database software image**.
 
-   Enter Display name as **DBImage-Source-DB** as below.
+   Click on **Create database software image** as shown below.
+
+   ![Image showing compartment selection ](./images/click-create-db-image.png)
+
+4. Enter Display Image Name.
+
+   Enter Display name as **Source-DB-Image** and select appropriate compartment as below.
 
    ![Image showing Database Software Image Name ](./images/database-image-name.png)
 
-4. Configure database software image.
+5. Configure database software image.
 
    Select database version as **19c**   (same as the major version of your source database).
 
@@ -143,9 +157,11 @@ In this lab
 
    ![Image showing database version selected for Image ](./images/db-version-info.png)
 
-5. Create database software image.
+6. Create database software image.
 
-   Click on **Create Database software image** to create DB Image.
+   Click on **Create Database software image** to create DB Image as shown below.
+
+   ![Image showing the final screen for database image creation ](./images/database-image-final.png)
 
    Please wait for the completion of this task before proceeding to the next task.
 
@@ -159,7 +175,7 @@ In this lab
 
 2. Click on  **Create DB System**.
     
-   ![Image showing Create DB system option](./images/createdb.png)
+   ![Image showing Create DB system option](./images/create-db-system.png)
 
 3. Provide name of the DB System and select compartment.
 
@@ -167,30 +183,45 @@ In this lab
     
    ![Image showing the updated DB system name](./images/db-system-name.png)
 
-4.  Modify the shape of the DB System.
+   You can leave the **Availability Domain** to default value.
+
+4.  Configure the shape of the DB System.
 
    When you create the database from the console, ensure that your chosen shape can accommodate the source database, plus any future sizing requirements. A good guideline is to use a shape similar to or larger in size than source database.
 
    For this lab we will use **AMD Flex** with 1 OCPU.
 
-   Click on **Change Shape** and reduce the number of OCPU per node to 1 as below.
+   Click on **Change Shape** as shown below.
 
-   ![Image showing the option to reduce the OCPU](./images/ocpu.png)
+   ![Image showing the option to change shape](./images/click-change-shape.png)
 
-   Click on **Select a Shape** , your final selection will appear as below.
+   Ensure that AMD is selected in new screen and reduce **Number of OCPU per Node** to 1 as shown below.
+
+   ![Image showing the option to reduce the OCPU](./images/ocpu-selection.png)
+
+   Click on **Select a Shape** as shown below.
+
+   ![Image showing the option to reduce the OCPU](./images/click-select-a-shape.png)
+
+   Your final selection will appear as below.
 
    ![Image showing final selection of DB System Shape](./images/shape.png)
 
 5. Configure storage.
 
-   Leave this section as the default.
+    Click on Change Storage as shown below.
+
+   ![Image showing option to change storage](./images/click-change-storage.png)
+
+   Please select **Grid Infrastructure** and **Balanced** option and click on **Save changes** as shown below.
+
+   ![Image showing option to change storage](./images/storage-selection.png)
 
 6. Configure database edition.
 
-   Under **Configure the DB system** , ensure to select **Enterprise Edition** which is the same edition as our source database.
+   Under **Configure the DB system** , ensure to select **Enterprise Edition** which is the same edition as your source database.
 
    ![Image showing the selection for Database Edition](./images/edition.png)
-
    
 7. Upload SSH Keys.
    
@@ -202,17 +233,19 @@ In this lab
 
    Select appropriate license type applicable for you.
 
-9. Specify the network information.
+9. Specify the network and hostname information.
 
-   Select **ZDM-VCN** as Virtual Cloud Network and **Public Subnet-ZDM-VCN** as Client subnet.
+   Select **ZDM-VCN** as Virtual Cloud Network and **public subnet-ZDM-VCN** as Client subnet.
 
    Provide **zdm-target-db** as Hostname prefix.
 
-   ![Image showing the Network select for DB system](./images/network.png)
+   ![Image showing the Network select for DB system](./images/network-hostname.png)
 
 10. Click Next
 
-   Click **Next** to go to the next page.
+    Leave the **Diagnostics collection** section to default and Click **Next** to go to the next page as shown below.
+
+    ![Image showing the diagnostic collection setting and option to go to next screen](./images/diag-collection.png)
 
 11. Provide database name.
 
@@ -230,13 +263,17 @@ In this lab
 
 12. Select Database Image.
 
-   Click on **Change Database Image** and select **Custom Database Software Images** as below.
+   Click on **Change Database Image** as shown below.
+
+   ![Image showing the option to change Database Software Image](./images/click-change-db-image.png)
+   
+   Select **Custom Database Software Images** as shown below.
 
    ![Image showing selection of Database Software Image](./images/custom.png)
 
    Select the appropriate compartment and select DB Image created in earlier lab as below.
 
-   ![Image showing custom software images created earlier](./images/dbimage.png)
+   ![Image showing custom software images created earlier](./images/db-image.png)
 
 13. Provide SYS password.
 
@@ -254,7 +291,7 @@ In this lab
 
    We don't need automatic backups until we complete the database migration.
 
-   ![Image showing the option to disable database backups](./images/disable-backup.png)
+   ![Image showing the option to disable database backups](./images/disable-db-backup.png)
 
 16. Select database charactetset.
 
@@ -276,7 +313,7 @@ In this lab
 
    Click on the **Create DB System** to initiate the DB system provisioning.
 
-   ![Image showing the option to start the provisioning](./images/prov-final.png)
+   ![Image showing the option to start the provisioning](./images/db-prov-final.png)
 
    This step is going to take up to 1 hour , however you can proceed to next lab while DB System is being provisioned.
 
@@ -284,6 +321,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, Apr 2023
 
 

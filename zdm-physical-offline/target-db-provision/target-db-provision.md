@@ -49,7 +49,7 @@ In this lab
 
 2. Establish connection to source database.
 
-   Switch user to **oracle** using below command after logged into source database server.
+   Switch user to **oracle** using below command after logged into source database compute.
 
    **sudo su - oracle**
 
@@ -67,11 +67,11 @@ In this lab
 
 3. Check the database edition of the source database.
 
-   Your source database is an **Enterprise Edition** database since the Oracle Marketplace Image used in previous lab provisions Enterprise Edition database.
+   Source database you had provisioned in previous lab is an **Enterprise Edition** database since the Oracle Marketplace Image used provisions an Enterprise Edition database.
 
    In case you would like know the database edition for your on-premises database then refer the below steps.
 
-   Execute the below query after connecting to database using sqlplus.
+   Execute the below query after connecting to source database using sqlplus.
      ```console
      <copy>
      select banner from v$version;
@@ -97,11 +97,11 @@ In this lab
 
 5. Check encryption algorithm under sqlnet.ora.
 
-   Check the **$ORACLE\_HOME\network\admin\sqlnet.ora** file in source database server to identify any encryption algorithm mentioned.
+   Check the **$ORACLE\_HOME\network\admin\sqlnet.ora** file in source database compute to identify any encryption algorithm mentioned.
 
 6. Generate patch inventory output.
 
-   Execute below steps after logged into the source database system.
+   Execute below steps after logged into the source database compute.
 
    Switch user to **oracle** using below command.
 

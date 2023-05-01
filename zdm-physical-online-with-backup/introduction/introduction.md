@@ -71,6 +71,7 @@ In this lab, you will:
 * Migrate database.
 
 ### Prerequisites
+
 This workshop requires an Oracle Cloud account.
 
 

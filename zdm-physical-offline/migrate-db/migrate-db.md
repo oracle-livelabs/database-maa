@@ -111,7 +111,7 @@ In this lab
 
     ```text
     <copy>
-    $ZDM_HOME/bin/zdmcli migrate database  -sourcesid ORCL  -sourcenode zdm-source-db  -srcauth zdmauth  -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key  -srcarg3 sudo_location:/bin/sudo  -targetnode zdm-target-db  -backupuser "xxxxxxxx/xxxxxx.xxxxx@xxxxx.com"  -rsp /home/zdmuser/physical_offline.rsp  -tgtauth zdmauth  -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key  -tgtarg3 sudo_location:/usr/bin/sudo -eval
+    $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db -srcauth zdmauth -srcarg1 user:opc -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db -backupuser "xxxxxxxx/xxxxxx.xxxxx@xxxxx.com" -rsp /home/zdmuser/physical_offline.rsp -tgtauth zdmauth -tgtarg1 user:opc -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo -eval
     </copy>
     ```
   
@@ -388,7 +388,7 @@ Congrats, you have completed ZDM Physical Offline Migration Live Lab.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, April 2023
 
 
 

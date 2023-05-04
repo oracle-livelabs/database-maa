@@ -12,7 +12,6 @@ In this lab, you will:
 * Create Create Policies to Enable Access to Recovery Service
 * Create Security List with Ingress Rules
 * Create a subnet in your database VCN
-* Register the Recovery Service Subnet
 
 ## Task 1: Create Policies to Enable Access to Recovery Service and Related Resources
 
@@ -85,30 +84,10 @@ In this lab, you will:
 5. Wait for State to become Available
     ![Image alt text](images/subnet_available.png)
 
-## Task 4: Register the Recovery Service Subnet
-
-1. Navigate to Database Backups
-    ![Image alt text](images/Ham_database_DBBackups.png)
-
-2. Select Recovery Service Subnets under Database Backups on the left
-    ![Image alt text](images/Recovery_Service_subnets_menu.png)
-
-3. Click the Register Recovery Service subnet button
-    ![image alt text](images/register_Recovery_Service_subnet_button.png)
-
-4. Enter the following information to Register the Recovery Service Subnet
-    * Name: Recovery Service Subnet
-    * Compartment: (need this)
-    * Subnet: Select Recovery Service Subnet from the drop down menu
-
-5. Click the Register button
-    ![image alt text](images/register_button.png)
-
 ## Learn More
 
 * [Policies to Enable Access to Recovery Service and Related Resources](https://docs.oracle.com/en/cloud/paas/recovery-service/dbrsu/recovery-service-permissions.html#GUID-867093E8-DBC2-4FD1-9002-5A5722749F9E)
 * [Configuring Network Resources for Recovery Service](https://docs.oracle.com/en/cloud/paas/recovery-service/dbrsu/recovery-service-network.html#GUID-1D4A9C7A-41D6-46A6-A401-E5381FA04548)
-* [Managing Recovery Service Subnets](https://docs.oracle.com/en/cloud/paas/recovery-service/dbrsu/manage-backup-networks.html#GUID-2093C2E1-4A88-4D56-9D12-C7F11816CB21)
 
 ## Acknowledgements
 * **Author** - <Kelly Smith, Product Manager, Backup & Recovery Solutions>

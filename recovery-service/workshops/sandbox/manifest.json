@@ -13,17 +13,11 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
         },
         {
-            "title": "Introduction",
-            "description": "Introduction to configuring automatic backups to use Autonmous Recovery Serice",
-            "filename": "../../intro-recovery-service/intro-recovery-service.md"
+            "title": "Lab 1: Configure the Recovery Service for database backups",
+            "filename": "../../config-RCV/config-RCV.md"
         },
         {
-            "title": "Lab 1: Configure the tenancy for Recovery Service",
-            "description": "This will configure the tenancy for use with the Recovery Service",
-            "filename": "../../config-tenancy/config-tenancy.md"
-        },
-        {
-            "title": "Lab 2: Deploy a database with Automatic backup enabled",
+            "title": "Lab 2: Configure automatic backups for the Base Database",
             "filename": "../../DB-auto-backup/DB-auto-backup.md"
         },
         {

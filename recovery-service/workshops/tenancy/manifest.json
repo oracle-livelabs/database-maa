@@ -18,15 +18,19 @@
             "filename": "../../config-tenancy/config-tenancy.md"
         },
         {
-            "title": "Lab 2: Deploy a database with Automatic backup enabled",
+            "title": "Lab 2: Configure the Recovery Service for database backups",
+            "filename": "../../config-RCV/config-RCV.md"
+        },
+        {
+            "title": "Lab 2: Configure automatic backups for the Base Database",
             "filename": "../../DB-auto-backup/DB-auto-backup.md"
         },
         {
-            "title": "Lab 3: Perform Point-in-time restores",
+            "title": "Lab 4: Perform Point-in-time restores",
             "filename": "../../PIT-restore/PIT-restore.md"
         },
         {
-            "title": "Lab 4: Monitor & Create Alarms",
+            "title": "Lab 5: Monitor & Create Alarms",
             "filename": "../../metrics-alarms/metrics-alarms.md"
         },
         {

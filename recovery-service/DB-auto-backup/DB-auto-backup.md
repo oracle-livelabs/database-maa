@@ -28,11 +28,17 @@ In this lab, you will:
     * Select the Enable automatic backups box
     * Backup scheduling (UTC): Select a time window to run backups from the drop-down menu
     * Backup Destination: Select Autonomous Recovery Service from the drop-down menu
-    * Protection policy: Select the custom protection policy create in the previous lab
+    * Protection policy: Select the custom protection policy created in the previous lab
     * Select the Real-time data protection box
     * Deletion options after database termination: Select how to manage backups after the database is terminated
 
 6. Click the Save changes button
+
+## Task 2: Monitor the automatic backup
+
+1. The backup will appear under Resources | Backups in the lower left of the database details page. 
+     Note: it may take 10-20 seconds to appear.
+    ![image alt txt](images/Backup_created.png)
 
 ## Learn More
 

@@ -53,5 +53,5 @@ In this lab, you will:
 * [Managing Protection Policies](https://docs.oracle.com/en/cloud/paas/recovery-service/dbrsu/manage-protection-policy.html#GUID-3823E813-1236-4755-B791-ABE1963C4EB8)
 
 ## Acknowledgements
-* **Author** - <Kelly Smith, Product Manager, Backup & Recovery Solutions>
-* **Last Updated By/Date** - <Kelly Smith, May 2023>
+* **Author** - Kelly Smith, Product Manager, Backup & Recovery Solutions
+* **Last Updated By/Date** - Kelly Smith, May 2023

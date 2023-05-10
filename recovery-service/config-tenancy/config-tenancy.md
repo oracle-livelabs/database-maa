@@ -90,5 +90,5 @@ In this lab, you will:
 * [Configuring Network Resources for Recovery Service](https://docs.oracle.com/en/cloud/paas/recovery-service/dbrsu/recovery-service-network.html#GUID-1D4A9C7A-41D6-46A6-A401-E5381FA04548)
 
 ## Acknowledgements
-* **Author** - <Kelly Smith, Product Manager, Backup & Recovery Solutions>
-* **Last Updated By/Date** - <Kelly Smith, May 2023>
+* **Author** - Kelly Smith, Product Manager, Backup & Recovery Solutions
+* **Last Updated By/Date** - Kelly Smith, May 2023

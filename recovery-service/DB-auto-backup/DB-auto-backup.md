@@ -40,6 +40,8 @@ In this lab, you will:
      Note: it may take 10-20 seconds to appear.
     ![image alt txt](images/Backup_created.png)
 
+2. The backup will complete in approximately XX minutes.
+
 ## Learn More
 
 * [Back Up a Database Using the Console](https://docs.oracle.com/en/cloud/paas/bm-and-vm-dbs-cloud/dbbackupoci/index.html)

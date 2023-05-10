@@ -48,7 +48,7 @@ In this lab, you will:
     ![Image alt text](images/create_security_list_button.png)
 
 5. Enter the following information for the Security List
-    * Name:  Recovery Serice Security List
+    * Name:  Recovery Service Security List
     * Compartment:  (need this information)
 
 6. Click + Another Ingress Rule
@@ -75,7 +75,7 @@ In this lab, you will:
     * IPv4 CIDR Block:  (need this)/24
     * Select Route Table:  (need this)
     * Subnet Access: Private Subnet
-    * Secuirty Lists: Select Recovery Service Security List from the drop down menu
+    * Security Lists: Select Recovery Service Security List from the drop down menu
     * Leave all other settings as default
 
 4. Click Create Subnet

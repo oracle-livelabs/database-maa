@@ -9,9 +9,29 @@ Estimated Time: 5 minutes
 ### Objectives
 
 In this lab, you will:
+* Create a custom protection policy
 * Customize Automatic Backups for Base Database Service and enable real-time protection
 
-## Task 1: Customize the Automatic Backup configuration for Base Database Service
+## Task 1: Create a custom Protection Policy
+
+1. Navigate to Database Backups
+    ![Image alt text](images/Ham_database_DBBackups.png)
+
+2. Select Protection Policies from the left menu
+    ![Image alt text](images/Recovery_Service_Protection_Policy_menu.png)
+
+3. Click the Create protection policy button
+    ![Image alt text](images/create_protection_policy_button.png)
+
+4. Enter the following information to create a protection policy
+    * Name: Any name you would like to use to identify the policy
+    * Compartment:  The compartment being used
+    * Backup retention period (in days): Enter the number of days to retain the backup
+
+5. Click the Create button
+    ![image alt text](images/create_button.png)
+
+## Task 2: Customize the Automatic Backup configuration for Base Database Service
 
 1. Navigate to Base Database Service
     ![Image alt text](images/Ham_Base_Database.png)

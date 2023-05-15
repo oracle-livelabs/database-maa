@@ -13,19 +13,15 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
         },
         {
-            "title": "Lab 1: Configure the Recovery Service for database backups",
-            "filename": "../../config-RCV/config-RCV.md"
-        },
-        {
-            "title": "Lab 2: Customize automatic backups for the Base Database",
+            "title": "Lab 1: Customize automatic backups for the Base Database",
             "filename": "../../DB-custom-auto-backup/DB-custom-auto-backup.md"
         },
         {
-            "title": "Lab 3: Perform Point-in-time restores",
+            "title": "Lab 2: Perform Point-in-time restores",
             "filename": "../../PIT-restore/PIT-restore.md"
         },
         {
-            "title": "Lab 4: Monitor & Create Alarms",
+            "title": "Lab 3: Monitor & Create Alarms",
             "filename": "../../metrics-alarms/metrics-alarms.md"
         },
         {

@@ -2,14 +2,14 @@
 
 ## Introduction
 
-This lab shows you how to configure automatic backups for the Oracle Database with Autonomous Recovery Service as the backup destination.  After completing this workshop you should be familiar with the configuration of automatic backups for Base Database Service, real-time database protection, point-in-time recovery of a database, monitoring protection status, reporting on protection metrics, and setting alarms when metrics exceed your service level requirements.
+This lab shows you how to customize automatic backups for the Oracle Database with Autonomous Recovery Service as the backup destination.  After completing this workshop you should be familiar with the configuration of automatic backups for Base Database Service, real-time database protection, point-in-time recovery of a database, monitoring protection status, reporting on protection metrics, and setting alarms when metrics exceed your service level requirements.
 
 Estimated Time: TBD minutes
 
 ### Objectives
 
 In this lab, you will:
-* Configure Automatic Backups for Base Database Service with real-time protection enabled
+* Customize Automatic Backups for Base Database Service and real-time protection enabled
 * Perform a point-in-time recovery
 * Review protection metrics and configure alarms for these metrics
 

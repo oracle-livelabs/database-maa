@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab shows you how to customize automatic backups for the Oracle Database with Autonomous Recovery Service as the backup destination.  The initial backup configuration was completed to save time during the lab.
+This lab shows you how to customize automatic backups for the Oracle Database with Autonomous Recovery Service as the backup destination.  The initial default backup configuration to Autonomous Recovery Service was completed to save time during the lab.
 
 Estimated Time: 5 minutes
 
@@ -52,13 +52,14 @@ In this lab, you will:
 
 6. Click the Save changes button
 
-## Task 2: Monitor the automatic backup
+## Task 3: Monitor the database update
 
-1. The backup will appear under Resources | Backups in the lower left of the database details page. 
+1. The update task will appear under Resources | Work requests in the lower left of the database details page. 
      Note: it may take 10-20 seconds to appear.
-    ![image alt txt](images/Backup_created.png)
+    ![image alt txt](images/Update_database.png)
 
-2. The backup will complete in approximately XX minutes.
+2. The update will complete in approximately 5 minutes and the state will show Succeeded.
+    ![image alt text](images/Update_database_completed.png)
 
 ## Learn More
 

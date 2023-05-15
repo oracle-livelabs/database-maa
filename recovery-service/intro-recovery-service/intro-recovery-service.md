@@ -9,7 +9,7 @@ Estimated Time: TBD minutes
 ### Objectives
 
 In this lab, you will:
-* Customize Automatic Backups for Base Database Service and real-time protection enabled
+* Customize Automatic Backups for Base Database Service and enable real-time protection
 * Perform a point-in-time recovery
 * Review protection metrics and configure alarms for these metrics
 

@@ -17,8 +17,8 @@
             "filename": "../../config-RCV/config-RCV.md"
         },
         {
-            "title": "Lab 2: Configure automatic backups for the Base Database",
-            "filename": "../../DB-auto-backup/DB-auto-backup.md"
+            "title": "Lab 2: Customize automatic backups for the Base Database",
+            "filename": "../../DB-custom-auto-backup/DB-custom-auto-backup.md"
         },
         {
             "title": "Lab 3: Perform Point-in-time restores",

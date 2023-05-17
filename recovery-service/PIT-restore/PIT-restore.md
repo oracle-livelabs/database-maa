@@ -56,11 +56,6 @@ In this lab, you will:
     SQL> select * from employees;
     ```
 
-9. Capture the SCN for the database after the second employee was added:
-    ```
-    SQL> Select CURRENT_SCN as AFTER_BOB from v$database;
-    ```
-
 9. Force a log switch
     ```
     SQL> alter system switch logfile;
@@ -68,10 +63,20 @@ In this lab, you will:
     SQL> Exit
     ```
 
+9. Force a database shutdown
+    ```
+    SQL> SHUTDOWN ABORT
+    SQL> exit
+    ```
+
 10. Force delete all the archivelogs from the FRA
     ```
-    $> cd /u03/app/oracle/fast_recovery_area
+    $> cd /u03/app/oracle/
+    $> find . -name '*.log' -delete
     $> find . -name '*.arc' -delete
+    $> find . -name '*.bkp' -delete
+    $> find . -name '*.ctl' -delete
+    $> cd /u02/app/oracle/oradata
     ```
 
 11. Restore the database using the SCN from AFTER_THOMAS in step 6.

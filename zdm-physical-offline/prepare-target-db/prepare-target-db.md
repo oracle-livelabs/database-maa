@@ -19,11 +19,33 @@ In this lab
 
 ## Task 1 : Prepare Target Database
 
-1. Login to target database server.
+1. Establish connection to target database.
+   
+   Please follow below steps to establish connection to target database using SQLPLUS.
 
    Login to target database server using Public IP and ssh key.
 
-2. Connect to the target database.
+   Switch user to **oracle** using below command.
+
+   **sudo su - oracle**
+
+   Set the environment to connect to your database.
+
+   Type **. oraenv** and press **Enter**.
+
+   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different from ORCL).
+
+   Type **sqlplus "/as sysdba"** and press **Enter** to connect to target database as SYS user.
+
+   Please find below snippet of the connection steps.
+
+   ![Image showing how to set the database environment](./images/target-cdb-connection.png)
+
+2. Establish connection to source database.
+
+   Please follow below steps to establish connection to source database using SQLPLUS.
+
+   Login to source database server using Public IP and ssh key.
 
    Switch user to **oracle** using below command.
 
@@ -33,50 +55,87 @@ In this lab
 
    Type **. oraenv** and press **Enter**. 
     
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different than the one used in this lab).
+   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different from ORCL).
 
-   Use **sqlplus** to connect to the database after the environment has been set.
+   Type **sqlplus "/as sysdba"**  and press **Enter** to connect to source database as SYS user.
 
-   Please find below sample output showing the steps to connect to database.
+   Please find below snippet of the connection steps.
 
-   ![Image showing how to set the database environment](./images/target-cdb-connection.png)
-   
-3. Check whether target database is using spfile.
+   ![Image showing sqlplus connection to source cdb](./images/source-cdb-connection.png)
 
-   Please ignore this step if you have provisioned the target database as per the instructions in this lab.
+3. Ensure the target timezone version is same or higher than the source.
 
-   Follow the below steps for the target database that you have provisioned using steps not mentioned in this livelab.
-
-   Execute **show parameter spfile** while you are in the sqlplus prompt.
-
-   If you get a similar output as below,  it means spfile is in use.
-
-   ![Image showing output of spfile check](./images/spfile.png)
-
-   If you see that spfile is not in use, then use the below link to configure spfile for your database.
-
-   https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/creating-and-configuring-an-oracle-database.html#GUID-1C90AAE6-1E89-47B9-B218-C2B0ED659B60
-
-4. Verify time zone version.
-
-   The target placeholder database must have a time zone file version that is the same or higher than the source database. 
+   Please ensure that the target placeholder database has a time zone file version that is the same or higher than the source database. 
    
    If that is not the case, then the time zone file has to be upgraded in the target placeholder database.
 
-   To check the current time zone version, query the V$TIMEZONE_FILE view as shown here, and upgrade the time zone file if necessary.
-     ```text
+   Please follow the below steps to verify the timezone version.
+
+   i. Check the timezone of source database server.
+
+   Execute below query using the source database connection established using step 2.
+   
+    ```text
      <copy>
      SELECT * FROM v$timezone_file;
      </copy>
      ```   
      Sample output is shown below.   
-     ![Image showing timezone version](./images/timezone.png)
+     ![Image showing timezone version of source database](./images/source-timezone.png)
+
+   ii. Check the timezone of target database server.
+
+   Execute below query using the target database connection established using step 1.
+   
+    ```text
+     <copy>
+     SELECT * FROM v$timezone_file;
+     </copy>
+     ```   
+     Sample output is shown below.   
+     ![Image showing timezone version of target database](./images/target-timezone.png)
+   
+   iii. Ensure timezone of target database sever is same or higher than source database.
+
+   Compare the values of timezone collected in step i and ii and ensure target timezone is same or higher than source database.
+
+   For e.g
+
+   The source and Target database timezone are 32 in the above sample output, which means no further action is to be taken.
+   
+   If the target timezone version is lower than the source database, follow the below document to do the timezone upgrade for an Oracle 19c target database.
+
+   https://docs.oracle.com/en/database/oracle/oracle-database/19/nlspg/datetime-data-types-and-time-zone-support.html#GUID-B0ACDB2E-4B49-4EB4-B4CC-9260DAE1567A
+   
+4. Check whether target database is using spfile.
+
+   Please ignore this step if you have provisioned the target database as per the instructions in this lab.
+
+   Follow the below steps for the target database that you have provisioned using steps not mentioned in this livelab.
+
+   Execute below statement using target database connection (established using step 1) to check whether SPFILE is in use.
+
+     ```text
+     <copy>
+     show parameter spfile
+     </copy>
+     ```
+
+   If the above query output shows a value for the SPFILE parameter, it means the SPFILE is already in use.
+
+   Sample output with SPFILE in use is shown below.
+
+   ![Image showing output of spfile check](./images/spfile.png)
+
+   If SPFILE is not in use, then use the below link to configure SPFILE for your database.
+
+   https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/creating-and-configuring-an-oracle-database.html#GUID-1C90AAE6-1E89-47B9-B218-C2B0ED659B60
 
 5. Verify TDE Wallet Folder.
 
    Please ignore this step if you have provisioned the target database as per the instructions in this lab.
 
-   Follow the below steps for the target database you have provisioned using steps not mentioned in this livelab.
+   Please follow the below steps if you have provisioned the target database using methods not mentioned in this lab.
 
    Execute the below SQL.
      ```text
@@ -90,22 +149,21 @@ In this lab
 
      ![Image showing TDE status of target database](./images/target-tde-status.png)
 
-     Verify that the TDE wallet folder exists, and ensure that the wallet STATUS is OPEN and WALLET\_TYPE is AUTOLOGIN (For an auto-login wallet type), or WALLET\_TYPE is PASSWORD (For a password-based wallet). 
+     Verify that the TDE wallet folder(value of WRL\_PARAMETER in the above output) exists, and ensure that the wallet STATUS is OPEN and WALLET\_TYPE is AUTOLOGIN (For an auto-login wallet type), or WALLET\_TYPE is PASSWORD (For a password-based wallet). 
    
      For a multitenant database, ensure that the wallet is open on all PDBs as well as the CDB, and the master key is set for all PDBs and the CDB.
 
      If the query output is not as per the above recommendation,  please do the needful to enable TDE in the target database.
 
-6. Check disk group size.
+6. Check available free space in target database server.
    
    You can ignore this step if you have provisioned the source and target database as per the instructions in this lab.
 
-   Follow the below steps for the target database that you have provisioned using steps not mentioned in this livelab.
+   Please follow the below steps if you have provisioned the target database using methods not mentioned in this lab.
 
-   Check the size of the target database ASM diskgroup or File System to make sure adequate storage is provisioned and available on the 
-   target database server.
+   Check the size of the target database ASM diskgroup (or File System) where you plan to keep the database files to ensure adequate storage has been provisioned and available on the target database server.
 
-   Below is a sample output of lsdg (command to check diskgroup details) command.
+   Below is a sample output of lsdg (command to check diskgroup details) command which can be used to check the free space of an ASM diskgroup.
 
    ![Image showing lsdg output from target database server](./images/target-db-lsdg.png)
 
@@ -159,5 +217,5 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, April 2023
 

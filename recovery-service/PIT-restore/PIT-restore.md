@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab shows you how to configure automatic backups for the Oracle Database with Autonomous Recovery Service as the backup destination.  After completing this workshop you should be familiar with the configuration of automatic backups for Base Database Service, real-time database protection, point-in-time recovery of a database, monitoring protection status, reporting on protection metrics, and setting alarms when metrics exceed your service level requirements.
+This lab shows you how to recover from malicious behavior.  Note that the configured automatic backups for the Oracle Database with Autonomous Recovery Service as the backup destination with real-time protection.  This means that database transactions are being protected as they occur on the database, so you can easily go back to the point just before the malicious behavior to recover the database without having to worry about when the last backup happened.
 
 Estimated Time: TBD minutes
 
@@ -12,7 +12,7 @@ In this lab, you will:
 * Alter data in the Oracle Database
 * Perform a point-in-time recovery using the SCN just prior to the data alteration
 
-## Task 1: Perform a point-in-time restore
+## Task 1: Create a table and insert data
 
 1. Navigate to Database node details
     ![image alt text](images/Ham_policies.png)
@@ -25,68 +25,79 @@ In this lab, you will:
     <copy>ssh -i <private_key_file> opc@<public-ip-address> </copy>
     ```
 
-4. Use SQLPlus:
-
+4. Change user to Oracle:
     ```
-    $ sudo su - oracle     // Changes the user to oracle.
-    $ sqlplus / as sysdba  // Connects to the database.
+    $ <copy>sudo su - oracle</copy>  
     ```
-
-5. Create a table with a user entry:
-
+5. Connect to the database:
     ```
-    SQL> create table employees(first_name varchar2(50));
-    SQL> insert into employees values ('Thomas');
-    SQL> commit;
+    $ <copy>sqlplus / as sysdba</copy> 
     ```
 
-6. Capture the SCN for the database after the first employee was added:
+6. Create a table for customers:
     ```
-    SQL> Select CURRENT_SCN as AFTER_THOMAS from v$database;
+    SQL> <copy>create table customer(first_name varchar2(50));</copy>
     ```
-
-7. Insert another employee:
+7. Insert new customers:
     ```
-    SQL> insert into employees values ('Bob');
-    SQL> commit;
-    ```
-
-8. Query the employees table to see both new names:
-    ```
-    SQL> select * from employees;
-    ```
-
-9. Force a log switch
-    ```
-    SQL> alter system switch logfile;
-    SQL> alter system archive log current;
-    SQL> Exit
+    SQL> <copy>INSERT INTO customer (first_name) 
+            WITH names AS (
+                SELECT 'Andrew' FROM dual UNION ALL
+                SELECT 'Bob' FROM dual UNION ALL
+                SELECT 'Mike' FROM dual
+            )
+            SELECT * FROM names;</copy>
     ```
 
-9. Force a database shutdown
+5. Query to see the customer names:
     ```
-    SQL> SHUTDOWN ABORT
-    SQL> exit
-    ```
-
-10. Force delete all the archivelogs from the FRA
-    ```
-    $> cd /u03/app/oracle/
-    $> find . -name '*.log' -delete
-    $> find . -name '*.arc' -delete
-    $> find . -name '*.bkp' -delete
-    $> find . -name '*.ctl' -delete
-    $> cd /u02/app/oracle/oradata
+    SQL> <copy>select * from customer;</copy>
     ```
 
-11. Restore the database using the SCN from AFTER_THOMAS in step 6.
+6. Capture the SCN for the database before being malicious:
+    ```
+    SQL> <copy>Select CURRENT_SCN as BEFORE_DELETE from v$database;</copy>
+    ```
 
+## Task 2: Be malicious and destroy data!
+
+1. Drop the table
+    ```
+    SQL> <copy>drop table customer;</copy>
+    ```
+    ```
+    SQL> <copy>commit;</copy>
+    ```
+
+2. Query the customer table to see that it is gone:
+    ```
+    SQL> <copy>select * from customer;</copy>
+    ```
+
+3. Force a database shutdown
+    ```
+    SQL> <copy>SHUTDOWN ABORT</copy>
+    SQL> <copy>exit</copy>
+    ```
+
+5. Force delete all the logs, backups, controlfiles and datafiles from the disk
+    ```
+    $ cd /u03/app/oracle/
+    $ <copy>find . \( -name "*.log" -o -name "*.arc" -o -name "*.bkp" -o -name "*.ctl" \) -delete</copy>
+    $ cd /u02/app/oracle/oradata
+    $ <copy>find . \( -name "*.ctl" -o -name "*.dbf" \) -delete</copy>
+    ```
+
+## Task 3: Recover the database to the point before the malicious behavior
+
+1. Restore the database using the SCN from BEFORE_DELETE in step 6 above.
+    Restore is under work request
     Restore will take about 10 minutes
 
-12. After the restore is complete query the employee table:
+2. After the restore is complete query the customer table:
     ```
     sqlplus / as sysdba
-    select * from employees;
+    select * from customer;
     ```
 
 

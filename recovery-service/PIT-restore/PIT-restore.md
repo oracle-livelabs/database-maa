@@ -2,43 +2,51 @@
 
 ## Introduction
 
-This lab shows you how to recover from malicious behavior.  Note that the configured automatic backups for the Oracle Database with Autonomous Recovery Service as the backup destination with real-time protection.  This means that database transactions are being protected as they occur on the database, so you can easily go back to the point just before the malicious behavior to recover the database without having to worry about when the last backup happened.
+This lab shows you how to recover from malicious behavior.  Note that the automatic backups configured for this Oracle Database with Autonomous Recovery Service as the backup destination uses real-time protection.  This means that database transactions are being protected as they occur on the database, so you can easily go back to the point just before the malicious behavior to recover the database without having to worry about when the last backup happened.
 
 Estimated Time: TBD minutes
 
 ### Objectives
 
 In this lab, you will:
-* Alter data in the Oracle Database
-* Perform a point-in-time recovery using the SCN just prior to the data alteration
+* Connect to the Oracle data
+* Create data in the Oracle Database
+* Maliciously destroy data in the Oracle Database
+* Perform a point-in-time recovery using the SCN just prior to the malicious
 
-## Task 1: Create a table and insert data
+## Task 1: Get the details for your database node
 
-1. Navigate to Database node details
-    ![image alt text](images/Ham_policies.png)
+1. Navigate to Oracle Base Database Service
+    ![image alt text](images/Ham_baseDB.png)
 
-2. Get the public IP address of the system
-    ![image alt text](images/create_policy_button.png)
+2. Click on your database system under Display name
 
-3. SSH into the host using the follow commnand:
+3. Click Nodes under Resources on the left
+    ![image alt text](images/BaseDB_Public_IP.png)
+
+4. Copy the Public IP address
+
+## Task 2: Connect to the database, create a table and insert data
+
+1. SSH into the host using the follow command:
     ```
     <copy>ssh -i <private_key_file> opc@<public-ip-address> </copy>
     ```
 
-4. Change user to Oracle:
+2. Change user to Oracle:
     ```
     $ <copy>sudo su - oracle</copy>  
     ```
-5. Connect to the database:
+3. Connect to the database:
     ```
     $ <copy>sqlplus / as sysdba</copy> 
     ```
 
-6. Create a table for customers:
+4. Create a table for customers:
     ```
     SQL> <copy>create table customer(first_name varchar2(50));</copy>
     ```
-7. Insert new customers:
+5. Insert new customers:
     ```
     SQL> <copy>INSERT INTO customer (first_name) 
             WITH names AS (
@@ -49,17 +57,17 @@ In this lab, you will:
             SELECT * FROM names;</copy>
     ```
 
-5. Query to see the customer names:
+6. Query to see the customer names:
     ```
     SQL> <copy>select * from customer;</copy>
     ```
 
-6. Capture the SCN for the database before being malicious:
+7. Capture the SCN for the database before being malicious:
     ```
     SQL> <copy>Select CURRENT_SCN as BEFORE_DELETE from v$database;</copy>
     ```
 
-## Task 2: Be malicious and destroy data!
+## Task 3: Be malicious and destroy data!
 
 1. Drop the table
     ```
@@ -80,24 +88,49 @@ In this lab, you will:
     SQL> <copy>exit</copy>
     ```
 
-5. Force delete all the logs, backups, controlfiles and datafiles from the disk
+4. Force delete all the logs, backups, controlfiles and datafiles from the disk
     ```
-    $ cd /u03/app/oracle/
+    $ <copy>cd /u03/app/oracle/</copy>
+    ```
+    ```
     $ <copy>find . \( -name "*.log" -o -name "*.arc" -o -name "*.bkp" -o -name "*.ctl" \) -delete</copy>
-    $ cd /u02/app/oracle/oradata
+    ```
+    ```
+    $ <copy>cd /u02/app/oracle/oradata</copy>
+    ```
+    ```
     $ <copy>find . \( -name "*.ctl" -o -name "*.dbf" \) -delete</copy>
     ```
 
-## Task 3: Recover the database to the point before the malicious behavior
+## Task 4: Recover the database to the point before the malicious behavior
 
-1. Restore the database using the SCN from BEFORE_DELETE in step 6 above.
-    Restore is under work request
-    Restore will take about 10 minutes
+1. Navigate to Oracle Base Database Service
+    ![image alt text](images/Ham_baseDB.png)
 
-2. After the restore is complete query the customer table:
+2. Click on your database system under Display name
+
+3. Click on your database name at the bottom under Databases
+    ![image alt text](images/BaseDB_Database.png)
+
+4. Click Restore on the button bar
+    ![image alt text](images/BaseDB_button_bar.png)
+
+5. Select Restore to SCN in the Restore Database dialog
+    ![image alt text](images/BaseDB_Restore_Dialog.png)
+
+6. Enter the SCN captured from BEFORE_DELETE in Task 2, Step 7 above
+
+7. Click Restore Database
+
+8. The restore will take approximately 10 minutes and you can track progress under the Work requests at the bottom left
+    ![image alt text]()
+
+9. You can continue to the next lab and return after the restore is complete.  After the restore is complete query the customer table:
     ```
-    sqlplus / as sysdba
-    select * from customer;
+    <copy>sqlplus / as sysdba</copy>
+    ```
+    ```
+    <copy>select * from customer;</copy>
     ```
 
 
@@ -107,8 +140,7 @@ Add information about Recovery Service
 
 ## Learn More
 
-* [Website for Zero Data Loss Autonomous Recovery Service](https://oracle.com/zrcv)
-* [Blog Introducing the Oracle Database Zero Data Loss Autonomous Recovery Service](https://blogs.oracle.com/maa/post/introducing-recovery-service)
+* [Recovering a Database](https://docs.oracle.com/en-us/iaas/recovery-service/doc/recovering-database.html#GUID-6E88692E-FCFA-4CFE-844C-00A79E8D079B)
 * [Documentation for Zero Data Loss Autonomous Recovery Service](https://docs.oracle.com/en/cloud/paas/recovery-service/dbrsu/)
 
 

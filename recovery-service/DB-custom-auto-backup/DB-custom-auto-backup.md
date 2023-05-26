@@ -15,7 +15,7 @@ In this lab, you will:
 ## Task 1: Create a custom Protection Policy
 
 1. Navigate to Database Backups
-    ![Image alt text](images/Ham_database_DBBackups.png)
+    ![Image alt text](images/Ham_baseDB.png)
 
 2. Select Protection Policies from the left menu
     ![Image alt text](images/Recovery_Service_Protection_Policy_menu.png)
@@ -63,7 +63,7 @@ In this lab, you will:
 
 ## Task 4: Review the Backup information on the database page
 
-Under the Backup section above review the information available for the database backup.
+* Under the Backup section above review the information available for the database backup.
     * Health - The health will change state if there are issues with the backups for the database.  Issue details will be displayed by hoovering over the 'i'.
     * Data loss exposure - This is the amount of time since the database was protected by a backup.  Since real-time protection is enabled this value will be 0 seconds since the database is under constant protection.
     * Last failed backup - shows any backup that has failed for the entire protection window defined in the policy

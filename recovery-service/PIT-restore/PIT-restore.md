@@ -9,10 +9,10 @@ Estimated Time: TBD minutes
 ### Objectives
 
 In this lab, you will:
-* Connect to the Oracle data
+* Connect to the Oracle Database
 * Create data in the Oracle Database
-* Maliciously destroy data in the Oracle Database
-* Perform a point-in-time recovery using the SCN just prior to the malicious
+* Maliciously destroy Oracle Database data
+* Perform a point-in-time recovery using the SCN just prior to the malicious activity
 
 ## Task 1: Get the details for your database node
 
@@ -22,7 +22,7 @@ In this lab, you will:
 2. Click on your database system under Display name
 
 3. Click Nodes under Resources on the left
-    ![image alt text](images/BaseDB_Public_IP.png)
+    ![Image alt text](images/BaseDB_Public_IP.png)
 
 4. Copy the Public IP address
 
@@ -123,7 +123,7 @@ In this lab, you will:
 7. Click Restore Database
 
 8. The restore will take approximately 10 minutes and you can track progress under the Work requests at the bottom left
-    ![image alt text]()
+    ![image alt text](images/BaseDB_Public_IP.png)
 
 9. You can continue to the next lab and return after the restore is complete.  After the restore is complete query the customer table:
     ```
@@ -133,10 +133,6 @@ In this lab, you will:
     <copy>select * from customer;</copy>
     ```
 
-
-## Appendix 1: Overview of Zero Data Loss Autonomous Recovery Service
-
-Add information about Recovery Service
 
 ## Learn More
 

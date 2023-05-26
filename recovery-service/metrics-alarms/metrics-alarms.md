@@ -22,14 +22,14 @@ In this lab, you will:
 
 3. In the Query 1 selection area choose the following options:
     * Compartment: Your compartment name
-    * Metric namespace: oci_recovery_service
+    * Metric namespace: oci-recovery-service
     * Metric name: DataLossExposure
     * Interval: 15 minutes
     * Statistic: Mean
 
 4. Click Update Chart
 
-5. Review the chart at the top to see the data loss exposure for the database in your compartment.  Data loss exposure shows the time since the database was last protected by backup.  When real-time protection is enabled, the value in the chart will be zero over time since the database is always being protected.
+5. Review the chart at the top to see the data loss exposure for the database in your compartment.  Data loss exposure shows the time since the database was last protected by backup.  When real-time protection is enabled, the value in the chart will be zero since the database is always being protected.
 
 6. You can also see a table of the values by toggling the Show Data Table option
     ![image alt text](images/Show_data_table.png)
@@ -71,7 +71,7 @@ In this lab, you will:
 
 5. You will receive an email confirming the subscription.
 
-6. If you would like to see the notification click Confirm subscription in the email
+6. If you would like to see the notification from optional Task 3 & 4 click Confirm subscription in the email
 
 ## Task 3:  (Optional) Trigger the alarm
 
@@ -99,11 +99,8 @@ In this lab, you will:
 
 3. Click the Actions menu in the top right
 
-4. Click Delete alarm
+4. Click Delete alarm.  This will prevent further alarms once the lab is complete.
 
-## Appendix 1: Overview of Zero Data Loss Autonomous Recovery Service
-
-Add information about Recovery Service
 
 ## Learn More
 

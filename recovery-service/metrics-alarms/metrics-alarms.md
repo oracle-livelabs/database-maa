@@ -2,9 +2,9 @@
 
 ## Introduction
 
-This lab shows you how to configure automatic backups for the Oracle Database with Autonomous Recovery Service as the backup destination.  After completing this workshop you should be familiar with the configuration of automatic backups for Base Database Service, real-time database protection, point-in-time recovery of a database, monitoring protection status, reporting on protection metrics, and setting alarms when metrics exceed your service level requirements.
+This lab shows you how to use metrics to monitor backups of databases protected by the Autonomous Recovery Service.  When you used in conjunction with the OCI alarms you can be notified if the metrics exceed the threshold you specify.
 
-Estimated Time: TBD minutes
+Estimated Time: 10 minutes
 
 ### Objectives
 
@@ -104,8 +104,8 @@ In this lab, you will:
 
 ## Learn More
 
-* [Website for Zero Data Loss Autonomous Recovery Service](https://oracle.com/zrcv)
-* [Blog Introducing the Oracle Database Zero Data Loss Autonomous Recovery Service](https://blogs.oracle.com/maa/post/introducing-recovery-service)
+* [Using the Console to View Protected Database Metrics](https://docs.oracle.com/en/cloud/paas/recovery-service/dbrsu/console-recovery-service-metrics.html)
+* [Using Alarms to Monitor Protected Databases](https://docs.oracle.com/en/cloud/paas/recovery-service/dbrsu/alarm-recovery-service-metrics.html)
 * [Documentation for Zero Data Loss Autonomous Recovery Service](https://docs.oracle.com/en/cloud/paas/recovery-service/dbrsu/)
 
 

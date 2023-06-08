@@ -10,6 +10,7 @@ In this workshop you will create a 2-node Oracle Real Application Clusters datab
 You will be using the VM.Standard2.2 shape with 4 OCPUs and 60GB of memory.
 
 For more about Virtual DB systems, click [here](https://docs.cloud.oracle.com/en-us/iaas/Content/Database/Concepts/overview.htm).
+
 Estimated Workshop Time:  4 hours
 
 Watch the video below for an overview of Oracle RAC.
@@ -58,11 +59,11 @@ RAC is a key underpinning of MAA.
 
 ![Oracle Maximum Availability Architecture](./images/maa_overview.png " ")
 
-## More Information on Oracle RAC
+## Learn more
 
 * [Visit the RAC site on OTN](https://www.oracle.com/database/technologies/rac.html)
 
 ## Acknowledgements
 
 - **Authors/Contributors** - Troy Anthony, Anil Nair, Kay Malcolm
-- **Last Updated By/Date** - Anil Nair , 08-June 2023
+- **Last Updated By/Date** - Anil Nair , June 2023

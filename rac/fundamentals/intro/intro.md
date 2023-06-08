@@ -1,19 +1,6 @@
 # Introduction
 
-## Introduction to Real Application Clusters ##
-Oracle RAC is a cluster database with a shared cache architecture that overcomes the limitations of traditional shared-nothing and shared-disk approaches to provide highly scalable and available database solutions for all business applications. Oracle RAC is a key component of Oracle's private cloud architecture.
-
-Oracle Real Application Clusters provides customers with the highest database availability by removing individual database servers as a single point of failure. In a clustered server environment, the database itself is shared across a pool of servers, which means that if any server in the server pool fails, the database continues to run on surviving servers. Oracle RAC not only enables customers to continue processing database workloads in the event of a server failure, it also helps to further reduce costs of downtime by reducing the amount of time databases are taken offline for planned maintenance operations.
-
-Oracle Real Application Clusters enables the transparent deployment of Oracle Databases across a pool of clustered servers. This enables customers to easily re-deploy their single server Oracle Database onto a cluster of database servers, and thereby take full advantage of the combined memory capacity and processing power the clustered database servers provide.
-
-Oracle Real Application Clusters provides all the software components required to easily deploy Oracle Databases on a pool of servers and take full advantage of the performance, scalability and availability that clustering provides. Oracle RAC utilizes Oracle Grid Infrastructure as the foundation for Oracle RAC database systems. Oracle Grid Infrastructure includes Oracle Clusterware and Oracle Automatic Storage Management (ASM) that enable efficient sharing of server and storage resources in a highly available and scalable database cloud environment.
-
-Watch the video below for an overview of Oracle RAC.
-
-[](youtube:CbIGJs_eNtI)
-
-### About this Workshop
+## About this Workshop
 Oracle Real Application clusters can be deployed in a variety of ways.  On bare metal servers, in docker containers, on engineered systems and in the Oracle Cloud.
 
 ![RAC Deployment Choices](./images/rac-deployment.png " ")
@@ -23,8 +10,25 @@ In this workshop you will create a 2-node Oracle Real Application Clusters datab
 You will be using the VM.Standard2.2 shape with 4 OCPUs and 60GB of memory.
 
 For more about Virtual DB systems, click [here](https://docs.cloud.oracle.com/en-us/iaas/Content/Database/Concepts/overview.htm).
+Estimated Workshop Time:  4 hours
 
-### Workshop Objectives
+Watch the video below for an overview of Oracle RAC.
+
+[](youtube:CbIGJs_eNtI)
+
+
+### About Real Application Clusters (RAC)
+Oracle RAC is a cluster database with a shared cache architecture that overcomes the limitations of traditional shared-nothing and shared-disk approaches to provide highly scalable and available database solutions for all business applications. Oracle RAC is a key component of Oracle's private cloud architecture.
+
+Oracle Real Application Clusters provides customers with the highest database availability by removing individual database servers as a single point of failure. In a clustered server environment, the database itself is shared across a pool of servers, which means that if any server in the server pool fails, the database continues to run on surviving servers. Oracle RAC not only enables customers to continue processing database workloads in the event of a server failure, it also helps to further reduce costs of downtime by reducing the amount of time databases are taken offline for planned maintenance operations.
+
+Oracle Real Application Clusters enables the transparent deployment of Oracle Databases across a pool of clustered servers. This enables customers to easily re-deploy their single server Oracle Database onto a cluster of database servers, and thereby take full advantage of the combined memory capacity and processing power the clustered database servers provide.
+
+Oracle Real Application Clusters provides all the software components required to easily deploy Oracle Databases on a pool of servers and take full advantage of the performance, scalability and availability that clustering provides. Oracle RAC utilizes Oracle Grid Infrastructure as the foundation for Oracle RAC database systems. Oracle Grid Infrastructure includes Oracle Clusterware and Oracle Automatic Storage Management (ASM) that enable efficient sharing of server and storage resources in a highly available and scalable database cloud environment.
+
+
+
+### Objectives
 - Connect to a DB System
 - Clusterware and Fencing
 - Fast Application Notification
@@ -35,7 +39,6 @@ For more about Virtual DB systems, click [here](https://docs.cloud.oracle.com/en
 - Oracle Scheduler
 - PL/SQL Packages
 
-Estimated Workshop Time:  4 hours
 
 ## More on Oracle RAC
 
@@ -62,4 +65,4 @@ RAC is a key underpinning of MAA.
 ## Acknowledgements
 
 - **Authors/Contributors** - Troy Anthony, Anil Nair, Kay Malcolm
-- **Last Updated By/Date** - Kay Malcolm, October 2020
+- **Last Updated By/Date** - Anil Nair , 08-June 2023

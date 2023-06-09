@@ -31,7 +31,7 @@ Oracle Real Application Clusters provides all the software components required t
 
 ### Objectives
 - Connect to a DB System
-- Clusterware and Fencing
+- Inject failure to demonstrate clusterware's Fencing ability
 - Fast Application Notification
 - Install Sample Schema
 - Services

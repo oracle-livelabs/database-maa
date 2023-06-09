@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab walks you through the steps to demonstrate Oracle Clusterware’s fencing ability by forcing a configuration that will trigger Oracle Clusterware’s built-in fencing features. With Oracle Clusterware, fencing is handled at the node level by rebooting the non-responsive or failed node. This is similar to the as Shoot The Other Node In The Head (STONITH) algorithm, but it’s really a suicide instead of affecting the other machine. There are many good sources for more information online. .
+This lab walks you through the steps to demonstrate Oracle Clusterware’s fencing ability by forcing a configuration that will trigger Oracle Clusterware’s built-in fencing features. With Oracle Clusterware, fencing is handled at the node level by evicting the failed node via reboot or rebootless restart. If the clusterware process is able to determine that all the database processes have been stopped then it chooses a rebootless restart. On the contrary if any of the database processes cannot be stopped then the clusterware processes evicts the node via reboot.
 
 Estimated Lab Time: 20 Minutes
 
@@ -29,7 +29,7 @@ For more information on Oracle Clusterware visit http://www.oracle.com/goto/clus
 3.  Start Cloud Shell in each.  Maximize both Cloud Shell instances.
 
     *Note:* You can also use Putty or MAC Cygwin if you chose those formats in the earlier lab.  
-    ![Connect to CloudShell](./images/start-cloudshell.png " ")
+    ![Connect to CloudShell](https://raw.githubusercontent.com/oracle-livelabs/common/main/images/console/cloud-shell.png " ")
 
 4.  Connect to node 1 as the *opc* user (you identified the IP address of node 1 in the Build DB System lab).
 

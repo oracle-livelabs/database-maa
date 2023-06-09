@@ -28,8 +28,8 @@ For more information about FAN, click [here](https://www.oracle.com/technetwork/
 3.  Start Cloud Shell in each.  Maximize both Cloud Shell instances.
 
     *Note:* You can also use Putty or MAC Cygwin if you chose those formats in the earlier lab.  
-    ![Connect to CloudShell](./images/start-cloudshell.png " ")
 
+    ![Connect to CloudShell](https://raw.githubusercontent.com/oracle-livelabs/common/main/images/console/cloud-shell.png " ")
 4.  Connect to node 1 (you identified the IP in an earlier lab) as the opc user.
 
     ```

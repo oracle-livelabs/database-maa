@@ -31,7 +31,10 @@ In this lab, you will:
 
 5. Review the chart at the top to see the data loss exposure for the database in your compartment.  Data loss exposure shows the time since the database was last protected by backup.  When real-time protection is enabled, the value in the chart will be zero since the database is always being protected.
 
-6. You can also see a table of the values by toggling the Show Data Table option
+Example chart:
+![image alt text](images/Chart_data_loss_exposure.png)
+
+6. You can also see a table of the values for Data Loss Exposure by toggling the Show Data Table option
     ![image alt text](images/Show_data_table.png)
 
 ## Task 2: Set an alarm to monitor the data loss exposure

@@ -31,7 +31,7 @@ In this lab, you will:
 
 ## Task 2: Monitor the adhoc / run now backup
 
-1. The manual backup task will appear under Resources | Work requests in the lower left of the database details page. 
+1. The adhoc backup task will appear under Resources | Work requests in the lower left of the database details page. 
      Note: it may take 10-20 seconds to appear.
     ![image alt txt](images/Backup_work_request.png)
 

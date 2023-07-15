@@ -2,18 +2,18 @@
 
 ## Introduction
 
-This lab shows you how start an adhoc / run now backup which will backup the database immediately.  Once this backup starts you can monitor the status of the backup and see the results in the backup history.
+This lab shows you how start an on-demand backup which will backup the database immediately.  Once this backup starts you can monitor the status of the backup and see the results in the backup history.
 
 Estimated Time: 10 minutes
 
 ### Objectives
 
 In this lab, you will:
-* Start an adhoc backup 
+* Start an on-demand backup 
 * Monitor the backup status
 * Review the backup job in the history
 
-## Task 1:  Start an adhoc / run now backup
+## Task 1:  Start an on-demand backup
 
 1. Navigate to Base Database Service
     ![alt image text](images/Ham_baseDB.png)
@@ -29,9 +29,9 @@ In this lab, you will:
 
 6. Provide a name which will be used in the backup job history to identify this backup
 
-## Task 2: Monitor the adhoc / run now backup
+## Task 2: Monitor the on-demand backup
 
-1. The adhoc backup task will appear under Resources | Work requests in the lower left of the database details page. 
+1. The on-demand backup task will appear under Resources | Work requests in the lower left of the database details page.  
      Note: it may take 10-20 seconds to appear.
     ![image alt txt](images/Backup_work_request.png)
 
@@ -43,8 +43,7 @@ In this lab, you will:
 
 ## Learn More
 
-* [Using the Console to View Protected Database Metrics](https://docs.oracle.com/en/cloud/paas/recovery-service/dbrsu/console-recovery-service-metrics.html)
-* [Using Alarms to Monitor Protected Databases](https://docs.oracle.com/en/cloud/paas/recovery-service/dbrsu/alarm-recovery-service-metrics.html)
+* [Create an On-Demand Full Backup of a Database](https://docs.oracle.com/en/cloud/paas/bm-and-vm-dbs-cloud/dbbackupoci/index.html#GUID-B4412946-7452-479C-A763-5AE3462A540C)
 * [Documentation for Zero Data Loss Autonomous Recovery Service](https://docs.oracle.com/en/cloud/paas/recovery-service/dbrsu/)
 
 

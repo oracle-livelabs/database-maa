@@ -39,7 +39,7 @@ The benefits of parallel execution can be observed in DSS and data warehouse env
 2.  Start Cloud Shell
 
     *Note:* You can also use Putty or MAC Cygwin if you chose those formats in the earlier lab.  
-    ![open CloudShell](../clusterware/images/start-cloudshell.png " ")
+    ![open CloudShell](https://raw.githubusercontent.com/oracle-livelabs/common/main/images/console/cloud-shell.png " ")
 
 3.  Connect to node 1 as the *opc* user (you identified the IP address of node 1 in the Build DB System lab).
 

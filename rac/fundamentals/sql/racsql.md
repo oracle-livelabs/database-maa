@@ -23,7 +23,7 @@ Watch the video below for an overview of the SQL and PL/SQL Sequences lab
 2.  Start Cloud Shell
 
     *Note:* You can also use Putty or MAC Cygwin if you chose those formats in the earlier lab.  
-    ![Connect to CloudShell](../clusterware/images/start-cloudshell.png " ")
+    ![Connect to CloudShell](https://raw.githubusercontent.com/oracle-livelabs/common/main/images/console/cloud-shell.png " ")
 
 3.  Connect to **node 1** as the *opc* user (you identified the IP address of node 1 in the Build DB System lab).
 

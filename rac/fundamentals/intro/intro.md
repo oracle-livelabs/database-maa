@@ -11,7 +11,7 @@ You will be using the VM.Standard2.2 shape with 4 OCPUs and 60GB of memory.
 
 For more about Virtual DB systems, click [here](https://docs.cloud.oracle.com/en-us/iaas/Content/Database/Concepts/overview.htm).
 
-Estimated Workshop Time:  4 hours
+Estimated Workshop Time:  1.5 hours
 
 Watch the video below for an overview of Oracle RAC.
 
@@ -31,11 +31,11 @@ Oracle Real Application Clusters provides all the software components required t
 
 ### Objectives
 - Connect to a DB System
-- Inject failure to demonstrate clusterware's Fencing ability
-- Fast Application Notification
+- Understand clusterware Fencing
+- Review Fast Application Notification
 - Install Sample Schema
-- Services
-- SQL and PL/SQL - Sequences
+- Create Services
+- Execute SQL and PL/SQL - Sequences
 - Parallel Execution
 - Oracle Scheduler
 - PL/SQL Packages

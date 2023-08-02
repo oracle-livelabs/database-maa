@@ -16,10 +16,10 @@ In this lab, you will:
 ## Task 1: Create Policies to Enable Access to Recovery Service and Related Resources
 
 1. Navigate to Policies
-    ![image alt text](images/ham_policies.png)
+    ![OCI menu to policies](images/ham_policies.png)
 
 2. Click the Create Policy button
-    ![image alt text](images/create_policy_button.png)
+    ![Button to create a new OCI policy](images/create_policy_button.png)
 
 3. Enter the following information for the Policy
     * Name: Recovery-Service-Policy
@@ -28,24 +28,24 @@ In this lab, you will:
     * Common policy templates: Select Ability to do all things with Autonomous Recovery Service
 
 4. Click the Create button
-    ![image alt text](images/create_button.png)
+    ![Button to complete the policy creation](images/create_button.png)
 
 ## Task 2: Create the Recovery Service Security List with Ingress Rules
 
 1. Navitgate to Virtual cloud networks
 
-	![Image alt text](images/ham_network_vcn.png)
+	![OCI menu to Network VCN](images/ham_network_vcn.png)
 
 	> **Note:** Use this format for notes, hints, and tips. Only use one "Note" at a time in a step.
 
 2. Select the Virtual Cloud Network (need these details from the LiveLab tenancy)
 
-  ![Image alt text](images/vcn_detail.png)
+  ![Dialog which shows the VCNs](images/vcn_detail.png)
 
 3. Select Security Lists under Resources on the left (need this image)
 
 4. Click the Create Security List button
-    ![Image alt text](images/create_security_list_button.png)
+    ![Button to create a security list](images/create_security_list_button.png)
 
 5. Enter the following information for the Security List
     * Name:  Recovery Service Security List
@@ -59,14 +59,14 @@ In this lab, you will:
     * Leave all other settings as default
 
 8. Click Create Security List
-    ![image alt text](images/create_security_list_button.png)
+    ![Button to complete the security list creation](images/create_security_list_button.png)
 
 ## Task 3: Create the Recovery Service Subnet
     
 1. Select Subnets under Resources on the left (need this image)
 
 2. Click the Create Subnet button
-  ![Image alt text](images/create_subnet_button.png)
+  ![Button to create a new subnet](images/create_subnet_button.png)
 
 3. Enter the following information for the subnet
     * Name:  Recovery Service Subnet
@@ -79,10 +79,10 @@ In this lab, you will:
     * Leave all other settings as default
 
 4. Click Create Subnet
-    ![Image alt text](images/create_subnet_button.png)
+    ![Button to complete the subnet creation](images/create_subnet_button.png)
 
 5. Wait for State to become Available
-    ![Image alt text](images/subnet_available.png)
+    ![Subnet Status](images/subnet_available.png)
 
 ## Learn More
 

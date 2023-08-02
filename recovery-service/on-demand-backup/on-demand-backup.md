@@ -16,7 +16,7 @@ In this lab, you will:
 ## Task 1:  Start an on-demand backup
 
 1. Navigate to Base Database Service
-    ![alt image text](images/ham_baseDB.png)
+    ![OCI menu showing Base Database](images/ham_baseDB.png)
 
 2. Click on your database system under Display name
 
@@ -25,7 +25,7 @@ In this lab, you will:
 4. Click "Backups" under "Resources" in the lower left
 
 5. Click "Create Backup"
-    ![alt image text](images/create_backup.png)
+    ![Button to Create Backup](images/create_backup.png)
 
 6. Provide a name which will be used in the backup job history to identify this backup
 
@@ -33,12 +33,12 @@ In this lab, you will:
 
 1. The on-demand backup task will appear under Resources | Work requests in the lower left of the database details page.  
      Note: it may take 10-20 seconds to appear.
-    ![image alt txt](images/backup_work_request.png)
+    ![Work request list that shows the backup work](images/backup_work_request.png)
 
 2. The backup will complete in approximately 10 minutes and the state will show Succeeded.
 
 3. The backup will also appear under "Resources | Backups".  Note the name provided above is displayed in the list of backups.
-    ![image alt text](images/jobs_backup.png)
+    ![Active backup under backups](images/jobs_backup.png)
 
 
 ## Learn More

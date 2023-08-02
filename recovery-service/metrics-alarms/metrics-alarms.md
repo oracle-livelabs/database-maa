@@ -15,10 +15,10 @@ In this lab, you will:
 ## Task 1: Review the protection metrics for your database
 
 1. Navigate to Metrics Explorer
-    ![image alt text](images/ham_metrics_explorer.png)
+    ![OCI menu for Metrics Explorer](images/ham_metrics_explorer.png)
 
 2. Select Last 7 days from the Quick selects drop down
-    ![image alt text](images/quick_selects_7days.png)
+    ![Quick select drop down for 7 days](images/quick_selects_7days.png)
 
 3. In the Query 1 selection area choose the following options:
     * Compartment: Your compartment name
@@ -32,15 +32,15 @@ In this lab, you will:
 5. Review the chart at the top to see the data loss exposure for the database in your compartment.  Data loss exposure shows the time since the database was last protected by backup.  When real-time protection is enabled, the value in the chart will be zero since the database is always being protected.
 
 Example chart:
-![image alt text](images/chart_data_loss_exposure.png)
+![Sample chart showing data loss exposure](images/chart_data_loss_exposure.png)
 
 6. You can also see a table of the values for Data Loss Exposure by toggling the Show Data Table option
-    ![image alt text](images/show_data_table.png)
+    ![Table same when toggle is used to show table](images/show_data_table.png)
 
 ## Task 2: Set an alarm to monitor the data loss exposure
 
 1. Navigate to Alarm Definitions
-    ![image alt text](images/ham_alarm_definitions.png)
+    ![OCI menu showing Alarm definitions](images/ham_alarm_definitions.png)
 
 2. Click Create Alarm
 
@@ -79,15 +79,15 @@ Example chart:
 ## Task 3:  (Optional) Trigger the alarm
 
 1. Navigate to Base Database Service
-    ![alt image text](images/ham_baseDB.png)
+    ![OCI menu to Base Database Service](images/ham_baseDB.png)
 
 2. Click on your database system under Display name
 
 3. Click Nodes under Resources on the left
-    ![image alt text](images/basedb_public_ip.png)
+    ![Table showing all the nodes for the database](images/basedb_public_ip.png)
 
 4. Click the 3 dots on the far right and select Stop
-    ![image alt text](images/node_stop.png)
+    ![Right drop down menu showing stop command](images/node_stop.png)
 
 5. Click Stop node on the confirmation pop up message
 
@@ -96,7 +96,7 @@ Example chart:
 ## Task 4: (Optional) Delete the Alarm to stop email notification
 
 1. Navigate to Alarm Definitions
-    ![image alt text](images/ham_alarm_definitions.png)
+    ![OCI menu showing Alarm definitions](images/ham_alarm_definitions.png)
 
 2. Click the name of your alarm
 

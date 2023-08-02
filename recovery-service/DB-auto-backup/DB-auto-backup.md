@@ -15,14 +15,14 @@ In this lab, you will:
 ## Task 1: Configure Automatic Backups for Base Database Service
 
 1. Navigate to Base Database Service
-    ![Image alt text](images/ham_base_database.png)
+    ![OCI menu to Base Database Service](images/ham_base_database.png)
 
 2. Click on your database system name
 
 3. Click on your database name under the Databases section
 
 4. In the button bar at the top click the Configure automatic backups button
-    ![image alt text](images/config_auto_backups_button.png)
+    ![Button to configure automatic backups](images/config_auto_backups_button.png)
 
 5. Enter the following information to Configure automatic backups
     * Select the Enable automatic backups box
@@ -38,7 +38,7 @@ In this lab, you will:
 
 1. The backup will appear under Resources | Backups in the lower left of the database details page. 
      Note: it may take 10-20 seconds to appear.
-    ![image alt txt](images/backup_created.png)
+    ![Status dialog for backup creation](images/backup_created.png)
 
 2. The backup will complete in approximately XX minutes.
 

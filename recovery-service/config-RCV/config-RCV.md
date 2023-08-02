@@ -15,13 +15,13 @@ In this lab, you will:
 ## Task 1: Register the Recovery Service Subnet
 
 1. Navigate to Database Backups
-    ![Image alt text](images/ham_database_dbbackups.png)
+    ![OCI menu path to Database Backups](images/ham_database_dbbackups.png)
 
 2. Select Recovery Service Subnets under Database Backups on the left
-    ![Image alt text](images/recovery_service_subnets_menu.png)
+    ![OCI menu for Recovery Service subnet](images/recovery_service_subnets_menu.png)
 
 3. Click the Register Recovery Service subnet button
-    ![image alt text](images/register_recovery_service_subnet_button.png)
+    ![OCI button to register subnet](images/register_recovery_service_subnet_button.png)
 
 4. Enter the following information to Register the Recovery Service Subnet
     * Name: Recovery Service Subnet
@@ -29,15 +29,15 @@ In this lab, you will:
     * Subnet: Select Recovery Service Subnet from the drop down menu
 
 5. Click the Register button
-    ![image alt text](images/register_button.png)
+    ![Button to complete the registration](images/register_button.png)
 
 ## Task 2: Create a custom Protection Policy
 
 1. Select Protection Policies
-    ![Image alt text](images/recovery_service_protection_policy_menu.png)
+    ![OCI menu for Recovery Service protection policy](images/recovery_service_protection_policy_menu.png)
 
 2. Click the Create protection policy button
-    ![Image alt text](images/create_protection_policy_button.png)
+    ![Button to create a new protection policy](images/create_protection_policy_button.png)
 
 3. Enter the following information to create a protection policy
     * Name: Any name you would like to use to identify the policy
@@ -45,7 +45,7 @@ In this lab, you will:
     * Backup retention period (in days): Enter the number of days to retain the backup
 
 4. Click the Create button
-    ![image alt text](images/create_button.png)
+    ![Button to complete the policy creation](images/create_button.png)
 
 ## Learn More
 

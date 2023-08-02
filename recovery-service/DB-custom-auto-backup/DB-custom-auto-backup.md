@@ -15,10 +15,10 @@ In this lab, you will:
 ## Task 1: Create a custom Protection Policy
 
 1. Navigate to Database Backups
-    ![Image alt text](images/Ham_baseDB.png)
+    ![Image alt text](images/ham_baseDB.png)
 
 2. Select Protection Policies from the left menu
-    ![Image alt text](images/Recovery_Service_Protection_Policy_menu.png)
+    ![Image alt text](images/recovery_service_protection_policy_menu.png)
 
 3. Click the Create protection policy button
     ![Image alt text](images/create_protection_policy_button.png)
@@ -34,14 +34,14 @@ In this lab, you will:
 ## Task 2: Customize the Automatic Backup configuration for Base Database Service
 
 1. Navigate to Base Database Service
-    ![Image alt text](images/Ham_baseDB.png)
+    ![Image alt text](images/ham_baseDB.png)
 
 2. Click on your database system name
 
 3. Click on your database name under the Databases section
 
 4. In the button bar at the top click the Configure automatic backups button
-    ![image alt text](images/Config_auto_backups_button.png)
+    ![image alt text](images/config_auto_backups_button.png)
 
 5. You can customize the automatic backups for this database
     * Backup scheduling (UTC): Select a time window to run backups from the drop-down menu
@@ -56,10 +56,10 @@ In this lab, you will:
 
 1. The update task will appear under Resources | Work requests in the lower left of the database details page. 
      Note: it may take 10-20 seconds to appear.
-    ![image alt txt](images/Update_database.png)
+    ![image alt txt](images/update_database.png)
 
 2. The update will complete in approximately 5 minutes and the state will show Succeeded.  You can proceed to the next task while this update is being completed.  The database icon on the left will turn green when the work is completed.
-    ![image alt text](images/Update_database_completed.png)
+    ![image alt text](images/update_database_completed.png)
 
 ## Task 4: Review the Backup information on the database page
 

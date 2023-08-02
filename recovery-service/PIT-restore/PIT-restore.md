@@ -17,12 +17,12 @@ In this lab, you will:
 ## Task 1: Get the details for your database node
 
 1. Navigate to Oracle Base Database Service
-    ![image alt text](images/Ham_baseDB.png)
+    ![image alt text](images/ham_basedb.png)
 
 2. Click on your database system under Display name
 
 3. Click Nodes under Resources on the left
-    ![Image alt text](images/BaseDB_Public_IP.png)
+    ![Image alt text](images/basedb_public_ip.png)
 
 4. Copy the Public IP address
 
@@ -105,25 +105,25 @@ In this lab, you will:
 ## Task 4: Recover the database to the point before the malicious behavior
 
 1. Navigate to Oracle Base Database Service
-    ![image alt text](images/Ham_baseDB.png)
+    ![image alt text](images/ham_basedb.png)
 
 2. Click on your database system under Display name
 
 3. Click on your database name at the bottom under Databases
-    ![image alt text](images/BaseDB_Database.png)
+    ![image alt text](images/basedb_database.png)
 
 4. Click Restore on the button bar
-    ![image alt text](images/BaseDB_button_bar.png)
+    ![image alt text](images/basedb_button_bar.png)
 
 5. Select Restore to SCN in the Restore Database dialog
-    ![image alt text](images/BaseDB_Restore_Dialog.png)
+    ![image alt text](images/basedb_restore_dialog.png)
 
 6. Enter the SCN captured from BEFORE_DELETE in Task 2, Step 7 above
 
 7. Click Restore Database
 
 8. The restore will take approximately 10 minutes and you can track progress under the Work requests at the bottom left
-    ![image alt text](images/BaseDB_Public_IP.png)
+    ![image alt text](images/basedb_public_ip.png)
 
 9. You can continue to the next lab and return after the restore is complete.  After the restore is complete query the customer table:
     ```

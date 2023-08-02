@@ -16,7 +16,7 @@ In this lab, you will:
 ## Task 1: Create Policies to Enable Access to Recovery Service and Related Resources
 
 1. Navigate to Policies
-    ![image alt text](images/Ham_policies.png)
+    ![image alt text](images/ham_policies.png)
 
 2. Click the Create Policy button
     ![image alt text](images/create_policy_button.png)
@@ -34,13 +34,13 @@ In this lab, you will:
 
 1. Navitgate to Virtual cloud networks
 
-	![Image alt text](images/Ham_Network_VCN.png)
+	![Image alt text](images/ham_network_vcn.png)
 
 	> **Note:** Use this format for notes, hints, and tips. Only use one "Note" at a time in a step.
 
 2. Select the Virtual Cloud Network (need these details from the LiveLab tenancy)
 
-  ![Image alt text](images/VCN_detail.png)
+  ![Image alt text](images/vcn_detail.png)
 
 3. Select Security Lists under Resources on the left (need this image)
 

@@ -19,15 +19,15 @@
         },
         {
             "title": "Lab 2: Configure the Recovery Service for database backups",
-            "filename": "../../config-RCV/config-RCV.md"
+            "filename": "../../config-rcv/config-rcv.md"
         },
         {
             "title": "Lab 2: Configure automatic backups for the Base Database",
-            "filename": "../../DB-auto-backup/DB-auto-backup.md"
+            "filename": "../../db-auto-backup/db-auto-backup.md"
         },
         {
             "title": "Lab 4: Perform Point-in-time restores",
-            "filename": "../../PIT-restore/PIT-restore.md"
+            "filename": "../../pit-restore/pit-restore.md"
         },
         {
             "title": "Lab 5: Monitor & Create Alarms",

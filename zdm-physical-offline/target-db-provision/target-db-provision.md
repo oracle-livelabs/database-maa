@@ -125,7 +125,7 @@ In this lab
 
 1. Navigate to Oracle Base Database.
 
-   Click the **Navigation Menu** in the upper left, navigate to **Oracle Database** and then select **Oracle Base Database (VM,BM)**.
+   Click the **Navigation Menu** in the upper left, navigate to **Oracle Database** and then select **Oracle Base Database Service**.
 
    ![Image showing navigation to Oracle Base Database](./images/navigate-to-database.png)
 
@@ -251,9 +251,9 @@ In this lab
 
    If the target database is in Exadata Database Service on Dedicated Infrastructure or Exadata Cloud at Customer, then the target database **DB\_NAME** should be the same as the source database **DB\_NAME**.
 
-   If the target database is Oracle Base Database VM , then the target **DB\_NAME** can be the same as or different from the source database **DB\_NAME**.
+   If the target database is Oracle Base Database Service , then the target **DB\_NAME** can be the same as or different from the source database **DB\_NAME**.
 
-   Our target database is **Oracle Base Database VM** and we can specify a same or different name for **DB\_NAME**. 
+   Our target database is **Oracle Base Database Service** and we can specify a same or different name for **DB\_NAME**. 
 
    We will keep the same **DB\_NAME** as source database for this lab.
 
@@ -274,6 +274,11 @@ In this lab
    Select the appropriate compartment and select DB Image created in earlier lab as below.
 
    ![Image showing custom software images created earlier](./images/db-image.png)
+
+   Click on **Select** to finalise the selection as shown below.
+
+   ![Image showing custom software images created earlier](./images/db-image-selection-final.png)
+
 
 13. Provide SYS password.
 

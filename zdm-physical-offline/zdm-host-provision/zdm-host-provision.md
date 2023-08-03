@@ -39,7 +39,7 @@ In this lab
 
    ![Image showing the name to be entered for compute](./images/compute-name.png)
 
-5. Leave the **Placement** section as it is.
+5. Leave the **Placement** and **Security** settings to theie defaults.x.
 
 6. Select correct image.
 
@@ -49,13 +49,15 @@ In this lab
 
    Select **Oracle Linux 7.9** and click on **Select Image**
 
-   ![Image showing the OS image selected for compute](./images/os-selected.png)
+   ![Image showing the OS image selected for compute](./images/os-selection.png)
+
+   You can leave the **Shape** to default.
 
 7. Select VCN and Subnet.
 
-   Under **Networking** , Select **ZDM-VCN** as VCN and **Public Subnet-ZDM-VCN** as subnet.
+   Under **Networking** , Select **ZDM-VCN** as VCN and **public subnet-ZDM-VCN** as subnet.
 
-   ![Image showing network selected](./images/network.png)
+   ![Image showing network selected](./images/network-selection.png)
 
 8. Upload SSH Keys.
 
@@ -68,9 +70,11 @@ In this lab
    Under **Boot volume** , select **Specify a custom boot volume size** and specify 150.
 
    ![Image showing custom boot volume size](./images/boot.png)
-10. Click on **Create** to start the provisioning of compute.
+10. Click on **Create** to start the provisioning of compute as shown below.
 
-    In less than a few minutes ZDM compute instance will be provisioned.
+   ![Image showing Create button for compute provisioning](./images/create-compute.png)
+
+   In less than a few minutes ZDM compute instance will be provisioned.
 
 ## Task 2 : Configure ZDM Service
 
@@ -105,7 +109,7 @@ In this lab
    Execute the below command to identify already installed packages.
      ```text
      <copy>
-     yum list installed glibc-devel expect unzip libaio oraclelinux-developer-release-
+     yum list installed glibc-devel expect unzip libaio oraclelinux-developer-release-*
      </copy>
      ```
      You will receive an output similar to the one below which shows glibc-devel, libaio , oraclelinux-developer-release-e17 and unzip are alraady installed.
@@ -138,7 +142,7 @@ In this lab
      mkdir -p /home/zdmuser/zdminstall
      mkdir /home/zdmuser/zdmhome
      mkdir /home/zdmuser/zdmbase
-     chown -R zdmuser:zdm /home/
+     chown -R zdmuser:zdm /home/zdmuser
      </copy>
      ```
 6. Download ZDM software.
@@ -243,15 +247,19 @@ In this lab
 
    b. Collect Target Database System details.
 
-   Click the **Navigation Menu** in the upper left, navigate to **Oracle Database** and then select **Oracle Base Database (VM,BM)**.
+   Click the **Navigation Menu** in the upper left, navigate to **Oracle Database** and then select **Oracle Base Database Service**.
 
-   ![Image showing navigation to Oracle Base Database](./images/navigate-oracle-base.png)
+   ![Image showing navigation to Oracle Base Database](./images/navigate-to-database.png)
 
-   Click on **zdm-target-db**.
+   Click on **zdm-target-db** as shown below.
 
-   Click on **Nodes** under **Resources** section and note down the **Private IP** and **FQDN**.
+   ![Image showing list of DB System in specific compartment ](./images/db-system-list.png)
+
+   Navigate to **Resources** section on the left and click on **Nodes** as shown below .
 
    ![Image showing private ip and fqdn of target database](./images/target-ip-fqdn.png)
+
+   Note down the **Private IP** and **FQDN**.
    
    c. Modify **/etc/hosts** file  in ZDM service host.
 

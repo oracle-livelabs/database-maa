@@ -237,7 +237,7 @@ In this lab
 
    ![Image showing navigation to compute instance](./images/navigate-to-compute.png)
 
-   Click on the **ZDM-Source-DB** compute host as shown below.
+   Click on the **zdm-source-db** compute host as shown below.
 
    ![Image showing list of compute instances](./images/compute-list.png)
 

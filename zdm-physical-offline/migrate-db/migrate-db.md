@@ -39,7 +39,7 @@ In this lab
     TGT_DB_UNIQUE_NAME=ORCL_T
     MIGRATION_METHOD=OFFLINE_PHYSICAL
     DATA_TRANSFER_MEDIUM=OSS
-    HOST=https://swiftobjectstorage.uk-london-1.oraclecloud.com/v1/xxxxxxxxx
+    HOST=https://swiftobjectstorage.eu-frankfurt-1.oraclecloud.com/v1/xxxxxxxxx
     OPC_CONTAINER=ZDM-Physical
     PLATFORM_TYPE=VMDB
     SHUTDOWN_SRC=TRUE
@@ -387,8 +387,8 @@ In this lab
 Congrats, you have completed ZDM Physical Offline Migration Live Lab.
 
 ## Acknowledgements
-* **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, April 2023
+* **Author** - Amalraj Puthenchira, Data Management Modernise Specialist, EMEA Technology Engineering
+* **Last Updated By/Date** - Amalraj Puthenchira, August 2023
 
 
 

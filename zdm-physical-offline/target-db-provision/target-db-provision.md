@@ -143,7 +143,7 @@ In this lab
 
 4. Enter Display Image Name.
 
-   Enter Display name as **Source-DB-Image** and select appropriate compartment as below.
+   Enter Display name as **source-db-image** and select appropriate compartment as below.
 
    ![Image showing Database Software Image Name ](./images/database-image-name.png)
 

@@ -14,13 +14,13 @@
             "filename":"../../introduction/introduction.md"
         },
         {
-            "title": "Lab 1: Connecting to the Database ",
+            "title": "Lab 1: Connect to the Database ",
             "description":"Connection to the databases",
             "type": "livelabs",
             "filename":"../../connect-db/connect-db-cs.md"
         },
         {
-            "title": "Lab 2: Performing a switchover",
+            "title": "Lab 2: Perform a switchover",
             "description":"Perform a switchover",
             "publisheddate": "26/02/2021",
             "filename":"../../switchover/switchover-cs.md"

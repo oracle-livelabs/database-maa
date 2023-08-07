@@ -1,0 +1,37 @@
+{
+    "workshoptitle": "Real-time Oracle Database protection with Autonomous Recovery Service",
+    "help": "livelabs-help-dbmaa_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Introduction to configuring automatic backups to use Autonmous Recovery Serice",
+            "filename": "../../intro-recovery-service/intro-recovery-service.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Prerequisites for LiveLabs (Oracle-owned tenancies). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
+        },
+        {
+            "title": "Lab 1: Customize automatic backups for the Base Database",
+            "filename": "../../db-custom-auto-backup/db-custom-auto-backup.md"
+        },
+        {
+            "title": "Lab 2: Perform Point-in-time restores",
+            "filename": "../../pit-restore/pit-restore.md"
+        },
+        {
+            "title": "Lab 3: Monitor & Create Alarms",
+            "filename": "../../metrics-alarms/metrics-alarms.md"
+        },
+        {
+            "title": "Lab 4: Create an on-demand backup",
+            "filename": "../../on-demand-backup/on-demand-backup.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+        }
+    ]
+}

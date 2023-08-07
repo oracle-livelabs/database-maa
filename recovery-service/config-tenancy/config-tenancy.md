@@ -36,8 +36,6 @@ In this lab, you will:
 
 	![OCI menu to Network VCN](images/ham_network_vcn.png)
 
-	> **Note:** Use this format for notes, hints, and tips. Only use one "Note" at a time in a step.
-
 2. Select the Virtual Cloud Network (need these details from the LiveLab tenancy)
 
   ![Dialog which shows the VCNs](images/vcn_detail.png)

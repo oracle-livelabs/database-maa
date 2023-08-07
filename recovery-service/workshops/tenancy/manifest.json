@@ -13,25 +13,20 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
         },
         {
-            "title": "Lab 1: Configure the tenancy for Recovery Service",
-            "description": "This will configure the tenancy for use with the Recovery Service",
-            "filename": "../../config-tenancy/config-tenancy.md"
+            "title": "Lab 1: Customize automatic backups for the Base Database",
+            "filename": "../../db-custom-auto-backup/db-custom-auto-backup.md"
         },
         {
-            "title": "Lab 2: Configure the Recovery Service for database backups",
-            "filename": "../../config-rcv/config-rcv.md"
-        },
-        {
-            "title": "Lab 2: Configure automatic backups for the Base Database",
-            "filename": "../../db-auto-backup/db-auto-backup.md"
-        },
-        {
-            "title": "Lab 4: Perform Point-in-time restores",
+            "title": "Lab 2: Perform Point-in-time restores",
             "filename": "../../pit-restore/pit-restore.md"
         },
         {
-            "title": "Lab 5: Monitor & Create Alarms",
+            "title": "Lab 3: Monitor & Create Alarms",
             "filename": "../../metrics-alarms/metrics-alarms.md"
+        },
+        {
+            "title": "Lab 4: Create an on-demand backup",
+            "filename": "../../on-demand-backup/on-demand-backup.md"
         },
         {
             "title": "Need Help?",

@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Oracle RAC: High Availability and Scalability for Your Applications",
+    "workshoptitle": "Set up your applications on Oracle RAC and let them failover seamlessly",
     "help": "livelabs-help-dbmaa_us@oracle.com",
     "tutorials": [
         {

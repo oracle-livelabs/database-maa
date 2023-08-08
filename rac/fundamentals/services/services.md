@@ -41,7 +41,7 @@ You should have already identified your database name and instance name.  Each p
 3.  Start Cloud Shell in each.  Maximize both Cloud Shell instances.
 
     *Note:* You can also use Putty or MAC Cygwin if you chose those formats in the earlier lab.  
-    ![Connect to CloudShell](../clusterware/images/start-cloudshell.png " ")
+    ![Connect to CloudShell](https://raw.githubusercontent.com/oracle-livelabs/common/main/images/console/cloud-shell.png " ")
 
 4.  Connect to node 1 as the *opc* user (you identified the IP address of node 1 in the Build DB System lab).
 

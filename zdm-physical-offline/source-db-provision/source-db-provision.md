@@ -135,6 +135,6 @@ Please note that you will be provisioning source database in a Public subnet for
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
-* **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, April 2023
+* **Author** - Amalraj Puthenchira, Data Management Modernise Specialist, EMEA Technology Engineering
+* **Last Updated By/Date** - Amalraj Puthenchira, August 2023
 

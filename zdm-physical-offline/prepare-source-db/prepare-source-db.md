@@ -390,7 +390,7 @@ In this lab
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
-* **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, Apr 2023
+* **Author** - Amalraj Puthenchira, Data Management Modernise Specialist, EMEA Technology Engineering
+* **Last Updated By/Date** - Amalraj Puthenchira, August 2023
 
 

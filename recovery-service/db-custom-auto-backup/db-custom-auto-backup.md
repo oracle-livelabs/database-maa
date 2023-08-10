@@ -15,7 +15,7 @@ In this lab, you will:
 ## Task 1: Create a custom Protection Policy
 
 1. Navigate to Database Backups
-    ![OCI menu to Database Backups](images/ham_baseDB.png)
+    ![OCI menu to Database Backups](images/ham_database_dbbackups.png)
 
 2. Select Protection Policies from the left menu
     ![OCI menu showing protection policies](images/recovery_service_protection_policy_menu.png)

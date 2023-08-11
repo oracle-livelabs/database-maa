@@ -55,7 +55,7 @@ In this lab, you will:
 ## Task 3: Monitor the database update
 
 1. The update task will appear under Resources | Work requests in the lower left of the database details page. 
-> **Note:** it may take 10-20 seconds to appear.
+    > **Note:** it may take 10-20 seconds to appear.
     ![Status dialog for work requests](images/update_database.png)
 
 2. The update will complete in approximately 5 minutes and the state will show Succeeded.  You can proceed to the next task while this update is being completed.  The database icon on the left will turn green when the work is completed.

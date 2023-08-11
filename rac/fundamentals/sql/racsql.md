@@ -14,7 +14,7 @@ Estimated Lab Time: 10 Minutes
 - Lab: Services
 
 Watch the video below for an overview of the SQL and PL/SQL Sequences lab
-[](youtube:x8UkHPBkwJo)
+[](videohub:1_8xieq98t)
 
 ## Task 1:  Build Tom Kyte's RUNSTATS package
 

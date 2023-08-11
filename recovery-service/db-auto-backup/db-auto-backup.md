@@ -37,7 +37,7 @@ In this lab, you will:
 ## Task 2: Monitor the automatic backup
 
 1. The backup will appear under Resources | Backups in the lower left of the database details page. 
-     Note: it may take 10-20 seconds to appear.
+    > **Note:** it may take 10-20 seconds to appear.
     ![Status dialog for backup creation](images/backup_created.png)
 
 2. The backup will complete in approximately XX minutes.

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab shows you how to recover from malicious behavior.  Note that the automatic backups configured for this Oracle Database with Autonomous Recovery Service as the backup destination uses real-time protection.  This means that database transactions are being protected as they occur on the database, so you can easily go back to the point just before the malicious behavior to recover the database without having to worry about when the last backup happened.
+This lab shows you how to recover from malicious behavior.  Notice that the automatic backups configured for this Oracle Database with Autonomous Recovery Service as the backup destination uses real-time protection.  This means that database transactions are being protected as they occur on the database, so you can easily go back to the point just before the malicious behavior to recover the database without having to worry about when the last backup happened.
 
 Estimated Time: 15 minutes
 

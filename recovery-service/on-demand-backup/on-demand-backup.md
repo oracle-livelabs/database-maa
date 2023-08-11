@@ -38,7 +38,7 @@ In this lab, you will:
 2. The backup will complete in approximately 10 minutes and the state will show Succeeded.
 
 3. The backup will also appear under "Resources | Backups".  
-> **Note:** the name provided above is displayed in the list of backups.
+> **Note:** the name provided in Task 1 above is displayed in the list of backups.
     ![Active backup under backups](images/jobs_backup.png)
 
 

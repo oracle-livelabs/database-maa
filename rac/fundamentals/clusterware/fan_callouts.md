@@ -9,7 +9,7 @@ FAN is configured and runs automatically when you install Oracle Grid Infrastruc
 Estimated Lab Time: 30 Minutes
 
 Watch the video below for an overview of the Fast Application Notification lab
-[](youtube:J54SS_49AXs)
+[](videohub:1_k15f3p74)
 
 ### Prerequisites
 - An Oracle LiveLabs or Paid Oracle Cloud account
@@ -44,7 +44,7 @@ For more information about FAN, click [here](https://www.oracle.com/technetwork/
     ```
     <copy>
     ssh -i ~/.ssh/sshkeyname opc@<<Node 2 Public IP Address>>
-    <copy>
+    </copy>
     ```
     ![SSH to node-2](./images/racnode2-login.png " ")
 

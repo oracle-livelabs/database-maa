@@ -9,7 +9,7 @@ This lab will show you how to setup your database schemas for the subsequent lab
 - Lab: Build a DB System
 
 Watch the video below for an overview of the Install Sample Schema lab
-[](youtube:rUIxZjy9HQg)
+[](videohub:1_actvhor8)
 
 ## Task 1: Install Sample Data
 

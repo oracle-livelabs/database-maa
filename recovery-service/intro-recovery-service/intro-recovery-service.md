@@ -23,7 +23,6 @@ In this lab, you will:
 This lab assumes you have:
 * LiveLabs Oracle Cloud account
 
-
 ## Learn More
 
 * [Website for Zero Data Loss Autonomous Recovery Service](https://oracle.com/zrcv)

@@ -39,7 +39,7 @@ In this lab
     TGT_DB_UNIQUE_NAME=ORCL_T
     MIGRATION_METHOD=OFFLINE_PHYSICAL
     DATA_TRANSFER_MEDIUM=OSS
-    HOST=https://swiftobjectstorage.uk-london-1.oraclecloud.com/v1/xxxxxxxxx
+    HOST=https://swiftobjectstorage.eu-frankfurt-1.oraclecloud.com/v1/xxxxxxxxx
     OPC_CONTAINER=ZDM-Physical
     PLATFORM_TYPE=VMDB
     SHUTDOWN_SRC=TRUE
@@ -111,7 +111,7 @@ In this lab
 
     ```text
     <copy>
-    $ZDM_HOME/bin/zdmcli migrate database  -sourcesid ORCL  -sourcenode zdm-source-db  -srcauth zdmauth  -srcarg1 user:opc  -srcarg2 identity_file:/home/zdmuser/mykey.key  -srcarg3 sudo_location:/bin/sudo  -targetnode zdm-target-db  -backupuser "xxxxxxxx/xxxxxx.xxxxx@xxxxx.com"  -rsp /home/zdmuser/physical_offline.rsp  -tgtauth zdmauth  -tgtarg1 user:opc  -tgtarg2 identity_file:/home/zdmuser/mykey.key  -tgtarg3 sudo_location:/usr/bin/sudo -eval
+    $ZDM_HOME/bin/zdmcli migrate database -sourcesid ORCL -sourcenode zdm-source-db -srcauth zdmauth -srcarg1 user:opc -srcarg2 identity_file:/home/zdmuser/mykey.key -srcarg3 sudo_location:/bin/sudo -targetnode zdm-target-db -backupuser "xxxxxxxx/xxxxxx.xxxxx@xxxxx.com" -rsp /home/zdmuser/physical_offline.rsp -tgtauth zdmauth -tgtarg1 user:opc -tgtarg2 identity_file:/home/zdmuser/mykey.key -tgtarg3 sudo_location:/usr/bin/sudo -eval
     </copy>
     ```
   
@@ -387,8 +387,8 @@ In this lab
 Congrats, you have completed ZDM Physical Offline Migration Live Lab.
 
 ## Acknowledgements
-* **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
+* **Author** - Amalraj Puthenchira, Data Management Modernise Specialist, EMEA Technology Engineering
+* **Last Updated By/Date** - Amalraj Puthenchira, August 2023
 
 
 

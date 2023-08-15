@@ -37,22 +37,32 @@ In this lab
 
    ![Image showing VCN Name prompt](./images/vcn-name-prompt.png)
 
-6. Under **Configure VCN and Subnets** , enter details as shown in image below.
+6. Under **Configure VCN** , enter details as shown in image below.
 
-   ![Image showing VCN and Subnet CIDR](./images/vcn-cidr-info.png " ")
+   ![Image showing VCN CIDR](./images/vcn-cidr-info.png " ")
+   
+7. Under **Configure public subnet** , enter details as shown in image below.
+
+   ![Image showing public subnet CIDR](./images/public-subnet-cidr.png " ")
+
+8. Under **Configure private subnet** , enter details as shown in image below.
+
+   ![Image showing private subnet CIDR](./images/private-subnet-cidr.png " ")
 
    Once details are entered , click on **Next**.
 
-7. On the next screen , click on **Create**.
+9. On the next screen , click on **Create**.
 
    ![Image showing VCN creation options selected](./images/vcn-summary.png " ")
 
-8. This will take few seconds and you will receive a screen similar to the one below after completion.
+10. This will take few seconds and you will receive a screen similar to the one below after completion.
 
    ![Image showing VCN summary after creation](./images/vcn-creation-summary.png " ")
 
 
 ## Task 2 : Provision Source Database
+
+Please note that you will be provisioning source database in a Public subnet for this livelab , however it is recommended to keep your actual databases in a private subnet for better security.
 
 1. Login to your Oracle Cloud Console.
 
@@ -70,19 +80,23 @@ In this lab
 
 5. Select an Oracle Database version which is latest ( There will be one on OL7 and one on OL8).
     
-   We have choosen OL7 since our Target DB system will be on Oracle Linux 7.
+   We have choosen latest database version on OL7(Oracle Linux 7)  since our Target DB system will be on Oracle Linux 7.
 
      ![Image showing available Marketplace Database Images](./images/db-image-options.png " ")
 
 6. Ensure to select the correct compartment in your tenancy and then click on **Launch Instance**.
 
-   ![Image showing selection for compartment](./images/compartment.png)
+   ![Image showing selection for compartment and option to Launch instance](./images/launch-instance.png)
 
-7. On the **Create compute instance** page , Please update **Name** for compute as **ZDM-Source-DB**.
+7. On the **Create compute instance** page , Please update **Name** for compute as **zdm-source-db**.
 
    ![Image showing Compute instance Name Prompt](./images/compute-name-prompt.png)
 
-    You can leave the Image and Shape as default.
+    You can leave the Placement and Security section to default values as shown below.
+
+   ![Image showing Placement and Security](./images/palcement-security.png)
+
+    You can also leave the Image and Shape as default.
 
    ![Image showing compute mage and shape](./images/image-shape.png)
 
@@ -96,14 +110,19 @@ In this lab
 
     ![Image showing SSK key details](./images/ssh-key-upload.png " ")
 
+10. Leave the Boot volume section to default values.
+
+    ![Image showing Boot Volume details](./images/boot-volume.png " ")
+
 10. Click on **Create** to start the compute provisioning.
 
     ![Image showing final page for compute creation](./images/compute-creation.png " ")
 
 11. In few minutes , compute instance with database will be provisioned and running as below.
-    ![Image showing provisioned compute instance](./images/prov-final.png)
 
-12. Take a note of the Public IP address of the compute instance which will used to login to source database system.
+    ![Image showing provisioned compute instance](./images/compute-after-prov.png)
+
+12. Take a note of the Public IP address of the compute instance which will be used to login to source database system.
 
 13. Collect the value of SYS password.
 
@@ -116,6 +135,6 @@ In this lab
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
-* **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, February 2023
+* **Author** - Amalraj Puthenchira, Data Management Modernise Specialist, EMEA Technology Engineering
+* **Last Updated By/Date** - Amalraj Puthenchira, August 2023
 

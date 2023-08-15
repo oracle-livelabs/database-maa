@@ -1,4 +1,4 @@
-# Real-time Oracle Database protection with Autonomous Recovery Service
+# Register a Recovery Service Subnet and create a policy
 
 ## Introduction
 

@@ -1,4 +1,4 @@
-# Real-time Oracle Database protection with Autonomous Recovery Service
+# Configure your tenancy for use with the Autonomous Recovery Service
 
 ## Introduction
 

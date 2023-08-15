@@ -1,4 +1,4 @@
-# Real-time Oracle Database protection with Autonomous Recovery Service
+# Setup automatic backups for Autonomous Recovery Service
 
 ## Introduction
 

@@ -1,4 +1,4 @@
-# Real-time Oracle Database protection with Autonomous Recovery Service
+# Customize automatic backups for the Base Database
 
 ## Introduction
 
@@ -15,7 +15,7 @@ In this lab, you will:
 ## Task 1: Create a custom Protection Policy
 
 1. Navigate to Database Backups
-    ![OCI menu to Database Backups](images/ham_baseDB.png)
+    ![OCI menu to Database Backups](images/ham_database_dbbackups.png)
 
 2. Select Protection Policies from the left menu
     ![OCI menu showing protection policies](images/recovery_service_protection_policy_menu.png)
@@ -34,7 +34,7 @@ In this lab, you will:
 ## Task 2: Customize the Automatic Backup configuration for Base Database Service
 
 1. Navigate to Base Database Service
-    ![OCI menu to Base Database Service](images/ham_baseDB.png)
+    ![OCI menu to Base Database Service](images/ham_basedb2.png)
 
 2. Click on your database system name
 
@@ -55,7 +55,7 @@ In this lab, you will:
 ## Task 3: Monitor the database update
 
 1. The update task will appear under Resources | Work requests in the lower left of the database details page. 
-     Note: it may take 10-20 seconds to appear.
+    > **Note:** it may take 10-20 seconds to appear.
     ![Status dialog for work requests](images/update_database.png)
 
 2. The update will complete in approximately 5 minutes and the state will show Succeeded.  You can proceed to the next task while this update is being completed.  The database icon on the left will turn green when the work is completed.

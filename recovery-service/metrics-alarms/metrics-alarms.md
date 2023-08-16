@@ -1,4 +1,4 @@
-# Real-time Oracle Database protection with Autonomous Recovery Service
+# Monitor & Create Alarms
 
 ## Introduction
 
@@ -31,8 +31,8 @@ In this lab, you will:
 
 5. Review the chart at the top to see the data loss exposure for the database in your compartment.  Data loss exposure shows the time since the database was last protected by backup.  When real-time protection is enabled, the value in the chart will be zero since the database is always being protected.
 
-Example chart:
-![Sample chart showing data loss exposure](images/chart_data_loss_exposure.png)
+    Example chart:
+    ![Sample chart showing data loss exposure](images/chart_data_loss_exposure.png)
 
 6. You can also see a table of the values for Data Loss Exposure by toggling the Show Data Table option
     ![Table same when toggle is used to show table](images/show_data_table.png)
@@ -79,7 +79,7 @@ Example chart:
 ## Task 3:  (Optional) Trigger the alarm
 
 1. Navigate to Base Database Service
-    ![OCI menu to Base Database Service](images/ham_baseDB.png)
+    ![OCI menu to Base Database Service](images/ham_basedb.png)
 
 2. Click on your database system under Display name
 

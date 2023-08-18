@@ -13,9 +13,9 @@ For more about Virtual DB systems, click [here](https://docs.cloud.oracle.com/en
 
 Estimated Workshop Time:  1.5 hours
 
-Watch the video below for an overview of Oracle RAC.
+Watch the video below for an overview of this workshop.
 
-[](youtube:CbIGJs_eNtI)
+[](videohub:1_o8hyf6k0)
 
 
 ### About Real Application Clusters (RAC)
@@ -27,7 +27,9 @@ Oracle Real Application Clusters enables the transparent deployment of Oracle Da
 
 Oracle Real Application Clusters provides all the software components required to easily deploy Oracle Databases on a pool of servers and take full advantage of the performance, scalability and availability that clustering provides. Oracle RAC utilizes Oracle Grid Infrastructure as the foundation for Oracle RAC database systems. Oracle Grid Infrastructure includes Oracle Clusterware and Oracle Automatic Storage Management (ASM) that enable efficient sharing of server and storage resources in a highly available and scalable database cloud environment.
 
+Watch the video below for an overview of Oracle RAC.
 
+[](youtube:CbIGJs_eNtI)
 
 ### Objectives
 - Connect to a DB System

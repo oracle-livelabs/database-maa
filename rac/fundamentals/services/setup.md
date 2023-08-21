@@ -9,7 +9,7 @@ This lab will show you how to setup your database schemas for the subsequent lab
 - Lab: Build a DB System
 
 Watch the video below for an overview of the Install Sample Schema lab
-[](youtube:rUIxZjy9HQg)
+[](videohub:1_actvhor8)
 
 ## Task 1: Install Sample Data
 
@@ -24,7 +24,7 @@ Copy the following commands into your terminal. These commands download the file
 2.  Start Cloud Shell
 
     *Note:* You can also use Putty or MAC Cygwin if you chose those formats in the earlier lab.  
-    ![Start CloudShell](../clusterware/images/start-cloudshell.png " ")
+    ![Start CloudShell](https://raw.githubusercontent.com/oracle-livelabs/common/main/images/console/cloud-shell.png " ")
 
 3.  Connect to node 1 as the *opc* user (you identified the IP address of node 1 in the Build DB System lab).
 

@@ -231,7 +231,7 @@ Please *proceed to the next lab*.
 ## Learn More About ZDM's Oracle GoldenGate Hub
 
 * [Oracle Zero Downtime Migration - Product Page](http://www.oracle.com/goto/zdm)
-* [Oracle GoldenGate MicroService Documentation](https://docs.oracle.com/en/middleware/goldengate/core/19.1/oggmp/oracle-goldengate-microservices-oracle-cloud-marketplace.html)
+* [Oracle GoldenGate MicroService Documentation](https://docs.oracle.com/en/middleware/goldengate/core/21.3/oggmp/provisioning-oracle-goldengate-microservices-oci-marketplace.html)
 
 
 
@@ -239,4 +239,4 @@ Please *proceed to the next lab*.
 * **Authors** - Ricardo Gonzalez, Senior Principal Product Manager, Oracle Cloud Database Migration
 * **Authors** - Ameet Kumar Nihalani, Senior Principal Support Engineer, Oracle Cloud Database Migration
 * **Contributors** - LiveLabs Team, ZDM Development Team
-* **Last Updated By/Date** - Ricardo Gonzalez, January 2022
+* **Last Updated By/Date** - Ricardo Gonzalez, March 2023

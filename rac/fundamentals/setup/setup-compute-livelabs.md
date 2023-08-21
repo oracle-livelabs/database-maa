@@ -5,8 +5,8 @@ This lab will show you how to connect to your DB System.
 
 Estimated Lab Time:  5 minutes
 
-Watch the video below for an overview of the Build a DB System lab
-[](youtube:tRo33KktXt0)
+Watch the video below for an overview of connecting to your DB System lab
+[](videohub:1_tbdkdjr1)
 
 ### Objectives
 -   Identify DB Instance Public IP Addresses
@@ -58,11 +58,9 @@ Your options are:
 
 1.  To start the Oracle Cloud Shell, go to your Cloud console and click the Cloud Shell icon at the top right of the page.
 
-	![Open CloudShell](./images/cloudshelllogin.png " ")
+    ![CloudShell initialising](https://oracle-livelabs.github.io/common/images/console/cloud-shell.png " ")
 
-    ![CloudShell initialising](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/cloudshellsetup.png " ")
-
-    ![CloudShell opened](https://oracle-livelabs.github.io/common//labs/generate-ssh-key-cloud-shell/images/cloudshell.png " ")
+    ![CloudShell opened](https://oracle-livelabs.github.io/common/images/console/cloud-shell-open.png " ")
 
 2.  Click on the Cloud Shell hamburger icon and select **Upload** to upload your private key
 

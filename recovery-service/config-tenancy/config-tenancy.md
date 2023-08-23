@@ -1,4 +1,4 @@
-# Real-time Oracle Database protection with Autonomous Recovery Service
+# Configure your tenancy for use with the Autonomous Recovery Service
 
 ## Introduction
 
@@ -32,13 +32,13 @@ In this lab, you will:
 
 ## Task 2: Create the Recovery Service Security List with Ingress Rules
 
-1. Navitgate to Virtual cloud networks
+1. Navigate to Virtual cloud networks
 
 	![OCI menu to Network VCN](images/ham_network_vcn.png)
 
 2. Select the Virtual Cloud Network (need these details from the LiveLab tenancy)
 
-  ![Dialog which shows the VCNs](images/vcn_detail.png)
+    ![Dialog which shows the VCNs](images/vcn_detail.png)
 
 3. Select Security Lists under Resources on the left (need this image)
 
@@ -64,7 +64,7 @@ In this lab, you will:
 1. Select Subnets under Resources on the left (need this image)
 
 2. Click the Create Subnet button
-  ![Button to create a new subnet](images/create_subnet_button.png)
+    ![Button to create a new subnet](images/create_subnet_button.png)
 
 3. Enter the following information for the subnet
     * Name:  Recovery Service Subnet

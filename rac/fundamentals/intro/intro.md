@@ -13,9 +13,9 @@ For more about Virtual DB systems, click [here](https://docs.cloud.oracle.com/en
 
 Estimated Workshop Time:  1.5 hours
 
-Watch the video below for an overview of this workshop.
+Watch the video below for walkthrough of this workshop.
 
-[](videohub:1_o8hyf6k0)
+[Complete Walkthrough](videohub:1_o8hyf6k0)
 
 
 ### About Real Application Clusters (RAC)
@@ -29,7 +29,7 @@ Oracle Real Application Clusters provides all the software components required t
 
 Watch the video below for an overview of Oracle RAC.
 
-[](youtube:CbIGJs_eNtI)
+[Full Overview Video of RAC](youtube:CbIGJs_eNtI)
 
 ### Objectives
 - Connect to a DB System

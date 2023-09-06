@@ -56,6 +56,9 @@ In this lab, you will:
             )
             SELECT * FROM names;</copy>
     ```
+    ```
+    SQL> <copy>commit;</copy>
+    ```
 
 6. Query to see the customer names:
     ```
@@ -123,7 +126,7 @@ In this lab, you will:
 7. Click Restore Database
 
 8. The restore will take approximately 10 minutes and you can track progress under the Work requests at the bottom left
-    ![Work request table](images/basedb_public_ip.png)
+    ![Work request table](images/work_request_restore.png)
 
 9. You can continue to the next lab and return after the restore is complete.  After the restore is complete query the customer table:
     ```

@@ -29,8 +29,14 @@
             "filename": "../../on-demand-backup/on-demand-backup.md"
         },
         {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+        },
+        {
             "title": "Oracle CloudWorld 2023 - Support",
-            "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md" 
+            "description": "Oracle CloudWorld 2023 - Support",
+            "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
         }
     ]
 }

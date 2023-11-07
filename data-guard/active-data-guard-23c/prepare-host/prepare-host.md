@@ -65,9 +65,11 @@ Estimated Lab Time: 15 Minutes
     ````
     Replace `cloudshellkey` with the name of your private key file, and `IP_ADDRESS` with the real public IP address.
 
+  You should be connected to the primary database host.
 
+## Task 2: Prepare the primary database host
 
-9. You should be connected to the primary database host. Install some packages that we will use later:
+1. Install some packages that we will use later:
 
     ````
     <copy>sudo dnf install -y java-17-openjdk git</copy>
@@ -75,25 +77,53 @@ Estimated Lab Time: 15 Minutes
 
   ![Screenshot of the cloud shell showing the steps executed so far](images/prepare-host0-1.png)
 
+1. Become the `oracle` user:
 
-## Task 2: Create the Connection to the Standby in a new tab
+    ````
+    <copy>sudo su - oracle</copy>
+    ````
 
-1. **Duplicate the tab in your browser**. If your browser does not support tab duplication, open a new tab and connect again to the **Cloud Console**.
+1. Download the helper scripts using git:
 
-2. From the menu, navigate again to **Oracle Database**, then  **Oracle Base Database (VM, BM)**.
+  ````
+  <copy>
+  git clone -b adghol23c -n --filter=tree:0 --depth=1 https://github.com/lcaldara-oracle/livelabs-database-maa.git
+  cd livelabs-database-maa
+  git sparse-checkout set --no-cone data-guard/active-data-guard-23c/prepare-host/scripts
+  git checkout
+  </copy>
+  ````
 
-  This time, select the **ADGHOLAD2** DB System (the standby database).
+1. Execute the preparation script. This will:
+  * Set up a function for the execution of the last version of SQLcl
+  * Create the static service registration entry in listener.ora
+  * Create the application TNS entries in tnsnames.ora
 
-  ![Screenshot of OCI console showing the database systems](images/db-systems-livelabs.png)
+  ```
+  <copy>
+  sh ~/livelabs-database-maa/data-guard/active-data-guard-23c/prepare-host/scripts/prepare.sh
+  </copy>
+  ```
 
-  Scroll down on the page and click on **Nodes(1)** to find on which host it resides.
-  The Public IP Address part is the IP Address we want to know. Make a copy of this on the clipboard or make sure to have this information noted down.
+  The static listener registration is required for the duplicate, and also because there is no Oracle Clusterware: the Data Guard has to restart the remote instance with a SQL*Net connection.
 
-  ![Screenshot of OCI Console showing the public IP address of the second node](./images/nodes-2.png)
+## Task 3: Create a connection to the standby database host
+
+1. Duplicate the tab in your browser. If your browser does not support tab duplication, open a new tab and connect again to the Cloud Console.
+
+2. Repeat all the steps from **Task 1: Create the connection to the primary database host**
+
+  This time, select the **adghol1** DB System (the standby database).
+
+  ![OCI Console showing the existing DB Systems](images/db-systems.png)
+
+  Scroll down on the page and click on **Nodes(1)** to get the public IP address. Copy it to the clipboard and make sure to have this information noted down.
+
+  ![Screenshot of OCI Console showing the public IP address of the second node](images/node1.png)
 
 5. Open the **Cloud Shell** using the icon next to the region.
 
-  ![Screenshot of OCI Console showing the button for the Cloud Shell](./images/cloud-shell.png)
+  ![Screenshot of OCI Console showing the button for the Cloud Shell](images/cloud-shell.png)
 
   The Cloud Shell opens after a few seconds and shows the **prompt**.
 

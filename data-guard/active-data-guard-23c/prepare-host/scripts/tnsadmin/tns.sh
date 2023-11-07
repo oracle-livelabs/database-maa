@@ -1,7 +1,8 @@
-L_pdb="phol23c"
+L_resId=$(echo $HOSTNAME | awk -F\- '{print $2}')
+L_pdb="mypdb"
 L_types="rw ro snap"
-L_hosts="hol23c0 hol23c1"
-L_domain="dbhol23c.misclabs.oraclevcn.com"
+L_hosts="adghol0-${L_resId} adghol1-${L_resId}"
+L_domain=$(dnsdomainname)
 
 for L_type in ${L_types} ; do
 cat <<EOF
@@ -25,4 +26,3 @@ EOF
 
 
 done
-

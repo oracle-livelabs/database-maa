@@ -49,30 +49,28 @@ Watch the video below for a quick walk through of the lab.
 
 6. Download the private key for the Oracle Cloud World LiveLab using the below command in the Cloud Shell.
     ````
-    <copy>wget http://bit.ly/ocw22-ssh</copy>
+    <copy>wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/hfpJ4-8XrB5tWBDUWvgnCmGch_1WHhihBrRpHNIzj6JSq5O5hbwp2wsqRPYbg8Gm/n/c4u04/b/livelabsfiles/o/labfiles/ocw23-keys.zip</copy>
     ````
 
 7. Unzip the archive:
     ```
-    <copy>unzip ocw22-ssh</copy>
+    <copy>unzip ocw23-keys.zip</copy>
     ```
-
-   *Please note: The file does not have a file extension!*
 
    You will find the following files:
 
-      * ocw2022_rsa (privayte key)
-      * ocw2022_rsa.pub (public key)
-      * ocw2022-putty.ppk (private key in Putty format - for Windows only)
+      * ocw2023-rsa (privayte key)
+      * ocw2023-rsa.pub (public key)
+      * ocw2023-rsa.ppk (private key in Putty format - for Windows only)
 
 
-8. Change the permission of the private key `ocw2022_rsa` to `0600` and connect to the primary host as `opc`, using the public IP address that you have noted down earlier.
+8. Change the permission of the private key `ocw2023-rsa` to `0600` and connect to the primary host as `opc`, using the public IP address that you have noted down earlier.
     ````
-    <copy>chmod 600 ocw2022_rsa</copy>
+    <copy>chmod 600 ocw2023-rsa</copy>
     ````
 
     ````
-    <copy>ssh -i ocw2022_rsa opc@IP_ADDRESS</copy>
+    <copy>ssh -i ocw2023-rsa opc@IP_ADDRESS</copy>
     ````
 
     Replace `IP_ADDRESS` with the real public IP address.
@@ -112,7 +110,7 @@ Watch the video below for a quick walk through of the lab.
 
   Connect to the standby host as `opc`, using the public IP address that you have noted down earlier.
     ````
-    <copy>ssh -i ocw2022_rsa opc@IP_ADDRESS2</copy>
+    <copy>ssh -i ocw2023-rsa opc@IP_ADDRESS2</copy>
     ````
     Replace `IP_ADDRESS2` with the public IP address of the standby database host.
 

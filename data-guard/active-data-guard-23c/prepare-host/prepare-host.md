@@ -10,6 +10,7 @@ Estimated Lab Time: 15 Minutes
 - Prepare the primary database host
 - Create a connection to the standby database host
 - Prepare the standby database host
+- Copy the TDE wallet and password file
 
 ## Task 1: Create the connection to the primary database host
 
@@ -105,7 +106,22 @@ Estimated Lab Time: 15 Minutes
   </copy>
   ```
 
-  The static listener registration is required for the duplicate, and also because there is no Oracle Clusterware: the Data Guard has to restart the remote instance with a SQL*Net connection.
+1. Verify the content of `listener.ora` and `tnsnames.ora`
+
+  ```
+  <copy>
+  cat $ORACLE_HOME/network/admin/listener.ora
+  cat $ORACLE_HOME/network/admin/tnsnames.ora
+  </copy>
+  ```
+
+  ![Content of listener.ora](images/listener-ora.png)
+
+  The static service registration is required for the duplicate, and also because there is no Oracle Clusterware: the Data Guard has to restart the remote instance with a SQL*Net connection when switching over.
+
+  By default, without Oracle Clusterware, Data Guard expects a static service named `{DB_UNIQUE_NAME}_DGMGRL.{DOMAIN_NAME}`. It is possible to override this name using the Data Guard property `StaticConnectIdentifier` (we will see that over the next labs).
+
+  For more information about static service registration, check the documentation: [Configuring Static Service Registration](https://docs.oracle.com/en/database/oracle/oracle-database/23/netag/enabling-advanced-features.html#GUID-0203C8FA-A4BE-44A5-9A25-3D1E578E879F)
 
 ## Task 3: Create a connection to the standby database host
 
@@ -135,18 +151,131 @@ Estimated Lab Time: 15 Minutes
     ````
     Replace `cloudshellkey` with the name of your private key file, and `IP_ADDRESS2` with the public IP address of the standby database host.
 
-9. You should be connected to the standby database host. You can become **oracle** using `sudo su - oracle` and connect to the instance with the command `sqlplus / as sysdba` and execute a query:
+9. You should be connected to the standby database host.
 
-    ````
-    <copy>Select name, db_unique_name, database_role from v$database;</copy>
-    ````
-
-  ![Screenshot of the cloud shell showing the steps executed so far](./images/connect-standby.png)
 
 You have now successfully created a database connection to the primary and the standby database.
+
+## Task 4: Prepare the standby database host
+
+1. Install some packages that we will use later:
+
+    ````
+    <copy>sudo dnf install -y java-17-openjdk git</copy>
+    ````
+
+  ![Screenshot of the cloud shell showing the steps executed so far](images/prepare-host0-1.png)
+
+1. Become the `oracle` user:
+
+    ````
+    <copy>sudo su - oracle</copy>
+    ````
+
+1. Download the helper scripts using git:
+
+  ````
+  <copy>
+  git clone -b adghol23c -n --filter=tree:0 --depth=1 https://github.com/lcaldara-oracle/livelabs-database-maa.git
+  cd livelabs-database-maa
+  git sparse-checkout set --no-cone data-guard/active-data-guard-23c/prepare-host/scripts
+  git checkout
+  </copy>
+  ````
+
+1. Execute the preparation script. This will:
+  * Set up a function for the execution of the last version of SQLcl
+  * Create the static service registration entry in listener.ora
+  * Create the application TNS entries in tnsnames.ora
+
+  ```
+  <copy>
+  sh ~/livelabs-database-maa/data-guard/active-data-guard-23c/prepare-host/scripts/prepare.sh
+  </copy>
+  ```
+
+1. Verify the content of `listener.ora` and `tnsnames.ora`
+
+  ```
+  <copy>
+  cat $ORACLE_HOME/network/admin/listener.ora
+  cat $ORACLE_HOME/network/admin/tnsnames.ora
+  </copy>
+  ```
+
+## Task 5: copy the TDE wallet and password file
+
+Oracle Data Guard requires the same TDE master keys in the primary and standby database wallets. The quickest way to achieve that is to copy the entire wallet from the primary to the standby database.
+
+Similarly, the default Data Guard authentication mechanism is to use the password file. The password files must match to ensure that there are no authentication problems.
+
+1. On the primary host (adghol0), copy the keys in a location accessible from the user opc:
+
+  ```
+  <copy>
+  cd /opt/oracle/dcs/commonstore/wallets/$ORACLE_UNQNAME/tde
+  tar cvf /tmp/wallet.tar cwallet.sso ewallet.p12
+  cp $ORACLE_HOME/dbs/orapwadghol /tmp
+  chmod 644 /tmp/orapwadghol
+  </copy>
+  ```
+
+1. Temporarily go back to the Cloud Shell environment by exiting the shell twice:
+
+  ```
+  exit
+  exit
+  ```
+
+1. Copy the wallet and password file from one node to the other, then delete them.
+
+  In the following command, replace IP_ADDRESS0 and IP_ADDRESS1 with the public IP addresses of the two hosts you noted down earlier.
+
+  ```
+  <copy>
+  scp opc@IP_ADDRESS0:/tmp/wallet.tar /tmp
+  scp opc@IP_ADDRESS0:/tmp/orapwadghol /tmp
+  scp /tmp/wallet.tar opc@IP_ADDRESS1:/tmp
+  scp /tmp/orapwadghol opc@IP_ADDRESS1:/tmp
+  rm /tmp/wallet.tar
+  rm /tmp/orapwadghol
+  </copy>
+  ```
+
+  ![Steps executed to copy the wallet on the second host](images/wallet-copy-1.png)
+
+1. Connect back to the first host and remove the wallet and password file from the temporary location:
+
+  ```
+  <copy>
+  ssh -i cloudshellkey opc@IP_ADDRESS0
+  sudo su - oracle
+  rm /tmp/wallet.tar
+  rm /tmp/orapwadghol
+  </copy>
+  ```
+
+1. On the standby host (adghol1), copy the files to the correct locations and permissions (as `oracle`), then remove the temporary files as `opc`:
+
+  ```
+  <copy>
+  cd /opt/oracle/dcs/commonstore/wallets/$ORACLE_UNQNAME/tde
+  tar xvf /tmp/wallet.tar
+  cp /tmp/orapwadghol $ORACLE_HOME/dbs
+  chmod 600 $ORACLE_HOME/dbs/orapwadghol
+  exit
+  rm /tmp/wallet.tar
+  rm /tmp/orapwadghol
+  sudo su - oracle
+  </copy>
+  ```
+
+  ![Steps executed to copy the wallet on the second host](images/wallet-copy-2.png)
+
+You have successfully prepared the two hosts with everything required to start configuring Data Guard.
 
 ## Acknowledgements
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
-- **Contributors** - Robert Pastijn, Suraj Ramesh
-- **Last Updated By/Date** -  Ludovico Caldara, July 2022
+- **Contributors** - Robert Pastijn
+- **Last Updated By/Date** -  Ludovico Caldara, December 2023

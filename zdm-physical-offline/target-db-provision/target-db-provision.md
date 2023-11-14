@@ -277,8 +277,7 @@ In this lab
 
    Click on **Select** to finalise the selection as shown below.
 
-   ![Image showing custom software images created earlier](./images)
-
+   ![Image showing custom software images created earlier](./images/db-image-selection-final.png)
 
 13. Provide SYS password.
 
@@ -310,7 +309,7 @@ In this lab
 
    ![Image showing the database characterset selected](./images/db-characterset.png)
 
-17. Start DB System provisioning.
+16. Start DB System provisioning.
 
    Click on the **Create DB System** to initiate the DB system provisioning.
 

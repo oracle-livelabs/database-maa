@@ -29,12 +29,6 @@ In this lab
 
    **sudo su - oracle**
 
-   Set the environment to connect to your database.
-
-   Type **. oraenv** and press **Enter**.
-
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different from ORCL).
-
    Type **sqlplus "/as sysdba"** and press **Enter** to connect to target database as SYS user.
 
    Please find below snippet of the connection steps.
@@ -50,12 +44,6 @@ In this lab
    Switch user to **oracle** using below command.
 
    **sudo su - oracle**
-
-   Set the environment to connect to your database.
-
-   Type **. oraenv** and press **Enter**. 
-    
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different from ORCL).
 
    Type **sqlplus "/as sysdba"**  and press **Enter** to connect to source database as SYS user.
 
@@ -101,7 +89,7 @@ In this lab
 
    For e.g
 
-   The Target database timezone is 42 in this example which is greater then the source timezone version of 32 , which means no further action is to be taken.
+   The Target database timezone is 42 for this lab which is greater then the source timezone version of 32 , which means no further action is to be taken.
    
    If the target timezone version is lower than the source database, follow the below document to do the timezone upgrade for an Oracle 19c target database.
 

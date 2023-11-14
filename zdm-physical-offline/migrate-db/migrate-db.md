@@ -193,13 +193,7 @@ In this lab
 
       Switch OS user to **oracle** using below command.
 
-      **sudo su - oracle**
-
-      Set the environment to connect to your database.
-
-      Type **. oraenv** and press **Enter**. 
-    
-      Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).    
+      **sudo su - oracle** 
    
       Login to container database (CDB) using sqlplus as shown below.
    
@@ -261,12 +255,6 @@ In this lab
       Switch user to **oracle** using below command.
 
       **sudo su - oracle**
-
-      Set the environment to connect to your database.
-
-      Type **. oraenv** and press **Enter**. 
-    
-      Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different).
 
       Login to container database(CDB) using sqlplus as shown below.
    
@@ -355,12 +343,6 @@ In this lab
 
       **sudo su - oracle**
 
-      Set the environment to connect to your database.
-
-      Type **. oraenv** and press **Enter**. 
-    
-      Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different).
-
       Login to container database(CDB) using sqlplus as shown below.
    
       ![Image showing connection to CDB using sqlplus](./images/target-cdb-connection.png)
@@ -388,7 +370,7 @@ Congrats, you have completed ZDM Physical Offline Migration Live Lab.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Data Management Modernise Specialist, EMEA Technology Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, August 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, November 2023
 
 
 

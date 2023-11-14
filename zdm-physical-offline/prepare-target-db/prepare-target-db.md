@@ -101,7 +101,7 @@ In this lab
 
    For e.g
 
-   The source and Target database timezone are 32 in the above sample output, which means no further action is to be taken.
+   The Target database timezone is 42 in this example which is greater then the source timezone version of 32 , which means no further action is to be taken.
    
    If the target timezone version is lower than the source database, follow the below document to do the timezone upgrade for an Oracle 19c target database.
 
@@ -217,5 +217,5 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Data Management Modernise Specialist, EMEA Technology Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, August 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, November 2023
 

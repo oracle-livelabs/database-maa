@@ -193,9 +193,11 @@ In this lab
 
       Switch OS user to **oracle** using below command.
 
-      **sudo su - oracle** 
+      **sudo su - oracle**
+
+      Type **sqlplus "/as sysdba"**  and press **Enter** to connect to source CDB as SYS user.
    
-      Login to container database (CDB) using sqlplus as shown below.
+      Please find below snippet of the connection steps.
    
       ![Image showing connection to CDB using sqlplus](./images/source-cdb-connection.png)   
     
@@ -255,8 +257,10 @@ In this lab
       Switch user to **oracle** using below command.
 
       **sudo su - oracle**
+      
+      Type **sqlplus "/as sysdba"**  and press **Enter** to connect to target CDB database as SYS user.
 
-      Login to container database(CDB) using sqlplus as shown below.
+      Please find below snippet of the connection steps.
    
       ![Image showing connection to CDB using sqlplus](./images/target-cdb-connection.png)
    
@@ -343,7 +347,9 @@ In this lab
 
       **sudo su - oracle**
 
-      Login to container database(CDB) using sqlplus as shown below.
+      Type **sqlplus "/as sysdba"**  and press **Enter** to connect to target CDB database as SYS user.
+
+      Please find below snippet of the connection steps.
    
       ![Image showing connection to CDB using sqlplus](./images/target-cdb-connection.png)
    

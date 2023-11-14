@@ -151,7 +151,7 @@ In this lab
 
    Select database version as **19c**   (same as the major version of your source database).
 
-   Select PSU as **19.16.0.0** ( If you have selected a different version for the source database in the previous lab, please provide that version here).
+   Select PSU as **19.20.0.0** ( If you have selected a different version for the source database in the previous lab, please provide that version here).
 
    Upload Oracle Home patch inventory output generated in Task 1 as below.
 
@@ -277,7 +277,7 @@ In this lab
 
    Click on **Select** to finalise the selection as shown below.
 
-   ![Image showing custom software images created earlier](./images/db-image-selection-final.png)
+   ![Image showing custom software images created earlier](./images)
 
 
 13. Provide SYS password.
@@ -286,11 +286,7 @@ In this lab
 
    ![Image showing the provision to enter SYS password](./images/sys-password.png)
 
-14. Select database workload type.
-
-   In this lab , leave it to the default.
-
-15. Disable database backups.
+14. Disable database backups.
 
    Uncheck the **Enable automatic backups** box to disable database backups.
 
@@ -298,7 +294,7 @@ In this lab
 
    ![Image showing the option to disable database backups](./images/disable-db-backup.png)
 
-16. Select database charactetset.
+15. Select database charactetset.
 
    Click on **show advanced** options.
 
@@ -306,7 +302,7 @@ In this lab
 
    In this lab source database has below Database and National Characterset.
 
-   Database Characterset : AL32UTF8
+   Database Characterset : US7ASCII
 
    National Characterset : AL16UTF16
 
@@ -326,6 +322,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, August 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, November 2023
 
 

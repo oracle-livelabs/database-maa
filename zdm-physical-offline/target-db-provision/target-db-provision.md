@@ -53,12 +53,6 @@ In this lab
 
    **sudo su - oracle**
 
-   Set the environment to connect to your database.
-
-   Type **. oraenv** and press **Enter**. 
-    
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID in case if it is different).
-
    Type **sqlplus "/as sysdba"**  and press **Enter** to connect to source database as SYS user.
 
    Please find below snippet of the connection steps.

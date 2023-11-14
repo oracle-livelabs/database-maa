@@ -89,7 +89,7 @@ In this lab
 
    For e.g
 
-   The Target database timezone is 42 for this lab which is greater then the source timezone version of 32 , which means no further action is to be taken.
+   The Target database timezone is 42 for this lab which is greater than the source timezone version of 32 , which means no further action is to be taken.
    
    If the target timezone version is lower than the source database, follow the below document to do the timezone upgrade for an Oracle 19c target database.
 

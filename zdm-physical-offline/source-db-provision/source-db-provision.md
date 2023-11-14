@@ -102,9 +102,11 @@ Please note that you will be provisioning source database in a Public subnet for
 
  8. Under **Primary VNIC Information** , make choices to reflect the below details.
 
-    ![Image showing Network selection](./images/primary-vnic-info.png " ")
+    ![Image showing Primary VNIC selection](./images/primary-vnic-info.png " ")
+
 9.  Leave **Primary VNIC IP Addresses** to default.
-    ![image showing Primary VNIC IP addresses](./images/primary-vnic-ip.png " ") 
+
+    ![Image showing Primary VNIC IP addresses](./images/primary-vnic-ip.png " ") 
 
 10. Under **Add SSH keys**.
 

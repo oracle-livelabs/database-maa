@@ -195,13 +195,9 @@ In this lab
 
       **sudo su - oracle**
 
-      Set the environment to connect to your database.
-
-      Type **. oraenv** and press **Enter**. 
-    
-      Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different in case of an on premises-database).    
+      Type **sqlplus "/as sysdba"**  and press **Enter** to connect to source CDB as SYS user.
    
-      Login to container database (CDB) using sqlplus as shown below.
+      Please find below snippet of the connection steps.
    
       ![Image showing connection to CDB using sqlplus](./images/source-cdb-connection.png)   
     
@@ -261,14 +257,10 @@ In this lab
       Switch user to **oracle** using below command.
 
       **sudo su - oracle**
+      
+      Type **sqlplus "/as sysdba"**  and press **Enter** to connect to target CDB database as SYS user.
 
-      Set the environment to connect to your database.
-
-      Type **. oraenv** and press **Enter**. 
-    
-      Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different).
-
-      Login to container database(CDB) using sqlplus as shown below.
+      Please find below snippet of the connection steps.
    
       ![Image showing connection to CDB using sqlplus](./images/target-cdb-connection.png)
    
@@ -355,13 +347,9 @@ In this lab
 
       **sudo su - oracle**
 
-      Set the environment to connect to your database.
+      Type **sqlplus "/as sysdba"**  and press **Enter** to connect to target CDB database as SYS user.
 
-      Type **. oraenv** and press **Enter**. 
-    
-      Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different).
-
-      Login to container database(CDB) using sqlplus as shown below.
+      Please find below snippet of the connection steps.
    
       ![Image showing connection to CDB using sqlplus](./images/target-cdb-connection.png)
    
@@ -388,7 +376,7 @@ Congrats, you have completed ZDM Physical Offline Migration Live Lab.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Data Management Modernise Specialist, EMEA Technology Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, August 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, November 2023
 
 
 

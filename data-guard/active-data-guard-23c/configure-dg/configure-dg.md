@@ -229,7 +229,7 @@ The following examples show how to do it.
 
   ![Stop and start the apply and the transport processes](images/stop-start-apply.png)
 
-## Task 4: Review the Data Guard configuration and processes
+## Task 4: Review the Data Guard configuration and processes (optional)
 
 Oracle Data Guard exposes many fixed views that help observing and monitoring the Data Guard configuration. It is important to get familiar with them.
 
@@ -316,7 +316,9 @@ select * from v$dataguard_config;
 select source_db_unique_name, name, value, time_computed, datum_time from v$dataguard_stats;
    </copy>
    ```
-  The column `VALUE` contains a value different from `+00 00:00:00` for the transport or apply lag if there is a lag, but `DATUM_TIME` is extremely important to detect if the standby database is actively receiving data from the primary database. If it does, `DATUM_TIME` will be no more than 1 second older than the current date. Otherwise, you will see `DATUM_TIME` matching the timestamp of the last information received from the primary.
+  The column `VALUE` contains a value different from `+00 00:00:00` for the transport or apply lag if there is a lag (in this case, ecerything is OK).
+
+   `DATUM_TIME` is extremely important to detect if the standby database is actively receiving data from the primary database. If it does, `DATUM_TIME` will be no more than 1 second older than the current date. Otherwise, you will see `DATUM_TIME` matching the timestamp of the last information received from the primary.
 
   If you query it again, you will see the `DATUM_TIME` increasing.
    ```
@@ -343,7 +345,7 @@ select name, role, action, client_role, group#, sequence#, block#, block_count, 
   * PR0* - the recovery processes (logmerger, appliers)
 
 
-## Task 5: Control Data Guard with PL/SQL
+## Task 5: Control Data Guard with PL/SQL and enable Flashback Logging
 
 During the validation in Task 2 we have seen that we must enable flashback on the standby database. Remember?
 
@@ -362,27 +364,59 @@ alter database flashback on;
 
    ```
    <copy>
-set serveroutput on
-DECLARE
-  severity BINARY_INTEGER;
-  retcode  BINARY_INTEGER;
-BEGIN
-  retcode := DBMS_DG.SET_STATE_APPLY_OFF ( member_name => 'chol23c_r2j_lhr', severity => severity);
-  dbms_output.put_line('retcode: '||to_char(retcode)||'  severity: '||to_char(severity));
-END;
-/
+  set serveroutput on
+    declare
+    severity binary_integer;
+    retcode  binary_integer;
+    standby_dbuname v$dataguard_config.db_unique_name%type;
+  begin
+    select db_unique_name into standby_dbuname from v$dataguard_config where dest_role='PHYSICAL STANDBY';
+    retcode := dbms_dg.set_state_apply_off ( member_name => standby_dbuname, severity => severity);
+    dbms_output.put_line('retcode: '||to_char(retcode)||'  severity: '||to_char(severity));
+  end;
+  /
    </copy>
    ```
 
+  Run it on the primary or standby database. As you can see, the procedure dynamically gets the standby `db_unique_name` from `v$dataguard_config` using then stops the apply using `dbms_dg.set_state_apply_off`.
+
+  Notice that we cannot use `raise_application_error` on the standby database because it is not a fixed procedure: that means that its definition is in the dictionary and cannot be accessed by a mounted database. More complex procedure can run only on the primary database, or must be rewritten in a way that works on a mounted database.
+
+  ![Stop the apply process using the new PL/SQL API.](images/plsql-stop-apply.png)
+
+1. At this point, you can enable the flashback logging on the standby database:
+
+   ```
+   <copy>
 alter database flashback on;
 select flashback_on from v$database;
-select name, role, action, action_dur, client_role, sequence#, block#, dest_id  from v$dataguard_process;
-DECLARE
-  severity BINARY_INTEGER;
-  retcode  BINARY_INTEGER;
-BEGIN
-  retcode := DBMS_DG.SET_STATE_APPLY_ON ( member_name => 'chol23c_r2j_lhr', severity => severity);
-  dbms_output.put_line('retcode: '||to_char(retcode)||'  severity: '||to_char(severity));
-END;
-/
---- tmux resize-pane -Z -t :.0
+   </copy>
+   ```
+
+1. As a final step, we must enable the apply. We can do that again using the PL/SQL API:
+
+   ```
+   <copy>
+  set serveroutput on
+    declare
+    severity binary_integer;
+    retcode  binary_integer;
+    standby_dbuname v$dataguard_config.db_unique_name%type;
+  begin
+    select db_unique_name into standby_dbuname from v$dataguard_config where dest_role='PHYSICAL STANDBY';
+    retcode := dbms_dg.set_state_apply_on ( member_name => standby_dbuname, severity => severity);
+    dbms_output.put_line('retcode: '||to_char(retcode)||'  severity: '||to_char(severity));
+  end;
+  /
+   </copy>
+   ```
+
+  ![Enable flashback logging and start the apply process using the new PL/SQL API.](images/plsql-stop-apply.png)
+
+You have successfully created and verified the Oracle Data Guard configuration. In the next lab, we will execute the switchover to move the primary workload to the standby database.
+
+## Acknowledgements
+
+- **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
+- **Contributors** - Robert Pastijn
+- **Last Updated By/Date** -  Ludovico Caldara, December 2023

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Once the Data Guard configuration is in place, it is important to connect to the databases using highly-available connection strings. The connection strings, besides having multiple addresses, require connections to specific application services (for example, the OLTP read-write service for the HR application). The read-write services should only be available on the primary database. If it's not the case, the application would run into problems when connecting to a database that is not available for write operations.  Also, when having a highly-available connection strings, it's possible to keep the same connection string across role changes (e.g. after a failover or a switchover), without reconfiguring the application connectivity.
+Once the Data Guard configuration is in place, it is important to connect to the databases using highly-available connection strings. The connection strings, besides having multiple addresses, require connections to specific application services (for example, the OLTP read-write service for the HR application). The read-write services should only be available on the primary database. If this is not the case, the application will run into problems when connecting to a database that is not available for write operations.  Also, when having a highly-available connection string, it's possible to keep the same connection string across role changes (e.g. after a failover or a switchover), without reconfiguring the application connectivity.
 
 The services that run only on databases with specific roles are called role-based services.
 
@@ -10,7 +10,7 @@ The services that run only on databases with specific roles are called role-base
 
 Oracle recommends that you use Oracle Clusterware for Real Application Clusters databases, or Oracle Restart for single instance databases when you need to configure role-based services. The Oracle Data Guard broker is aware of Oracle Clusterware, and delegates the stop and start of the instances to it. Also, Oracle Clusterware optimally manages the role-based services.
 
-However, when Oracle Clusterware is not available (like on single-instance deployments on OCI Base Database Services), one has to manage role-based services in a different way. Typically, we use the `DBMS_SERVICES` package along with startup triggers to stop and start the correct services depending on the database role.
+However, when Oracle Clusterware is not available (like on single-instance deployments on OCI Base Database Services), one has to manage role-based services differently. Typically, we use the `DBMS_SERVICES` package along with startup triggers to stop and start the correct services depending on the database role.
 
 In this lab, we will create the services for the primary, physical standby, and snapshot standby roles, along with the trigger that stops and starts them. We will then test the connection to the primary service.
 
@@ -25,7 +25,7 @@ To try this lab, you must have successfully completed:
 
 ### Objectives
 * Create and start the role-based services
-* Review the connect strings and connect to the primary service
+* Review the connection strings and connect to the primary service
 
 ## Task 1: Create and start the role-based services
 
@@ -88,13 +88,31 @@ exit
 
   ![List of new services in v$active_services](images/services-after.png)
 
-## Task 2: Review the connect strings and connect to the primary service
+## Task 2: Review the connection strings and connect to the primary service
 
+1. Review the connection strings in `tnsnames.ora`
 
   ```
   <copy>
+  cat $ORACLE_HOME/network/admin/tnsnames.ora
   </copy>
   ```
+
+  ![List of new services in v$active_services](images/tns-entries.png)
+
+2. Connect to the read-write service and verify where you are connected
+
+  ```
+  <copy>
+  sql sys/WElcome123##@mypdb_rw as sysdba
+  select sys_context('USERENV','DB_UNIQUE_NAME') db_unique_name , sys_context('USERENV','SERVER_HOST') server_host from dual;
+
+  </copy>
+  ```
+
+  ![Connection to the read-write service](images/connect.png)
+
+You have successfully created, started, and connected to the application role-based service.
 
 ## Acknowledgements
 

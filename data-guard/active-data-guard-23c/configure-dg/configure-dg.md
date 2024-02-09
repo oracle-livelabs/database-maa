@@ -28,7 +28,7 @@ To try this lab, you must have successfully completed:
 
 You should have two Cloud Shell tabs connected to the primary and secondary hosts, adghol0 and adghol1. If you don't, follow the first steps of Lab 1 until you have both SSH connections established.
 
-1. From a terminal (which one of the two is irrelevant for this task), connect to the primary database using the broker client command-line (DGMGRL). We use the DGConnectIdentifier for that (the service named after the db_unique_name). Replace `ADGHOL0_DGCI` with the one noted down during Lab 2.
+1. From a terminal (which one of the two is irrelevant for this task), connect to the primary database using the broker client command line (DGMGRL). We use the DGConnectIdentifier for that (the service named after the db_unique_name). Replace `ADGHOL0_DGCI` with the one noted down during Lab 2.
 
   ```
   <copy>
@@ -64,7 +64,7 @@ You should have two Cloud Shell tabs connected to the primary and secondary host
   add database adghol_p4n_lhr as connect identifier is 'adghol1-1234.ll1234pubsubnt.ll1234vcn.oraclevcn.com:1521/adghol_p4n_lhr.ll1234pubsubnt.ll1234vcn.oraclevcn.com';
   ```
 
-  Notice that we don't specify the static service (suffixed with _DGMGRL), because under normal operation, the broker expect the standby to be mounted, therefore the default service is available.
+  Notice that we don't specify the static service (suffixed with _DGMGRL), because, under normal operation, the broker expects the standby to be mounted, therefore the default service is available.
 
 1. (Optional): set the `StaticConnectIdentifier` for both databases.
   Although the broker builds the default static connect identifier if it's not explicitly configured, it is still a good practice to set it to ease troubleshooting.
@@ -134,9 +134,9 @@ Oracle Data Guard broker provides several commands to check the health of the Da
 
   ![Output of validate static connect identifier and validate network configuration](images/validate-static-network.png)
 
-1. The command `validate database` shows the database readiness for switchover and failover. With the `verbose` keyword, it gives additional detail regarding the different checks performed during the validation.
+1. The command `validate database` shows the database readiness for switchover and failover. The `verbose` keyword gives additional detail regarding the different checks performed during the validation.
 
-  The output will be different from primary and standby database.
+  The output will be different between the primary and standby databases.
 
   Replace the db_unique_name as usual:
 
@@ -161,7 +161,7 @@ Oracle Data Guard broker provides several commands to check the health of the Da
 
   ![Output of VALIDATE DATABASE STRICT ALL](images/validate-strict.png)
 
-  In this case, you can see that the configuration is not ready for the switchover. The output shows that the Flashback logging is not enabled on the standby database. This won't prevent the switchover from working, but might give unexpected problems later, for example, the inability to reinstate the new primary in case of failover.
+  In this case, you can see that the configuration is not ready for the switchover. The output shows that the Flashback logging is not enabled on the standby database. This won't prevent the switchover from working but might give unexpected problems later, for example, the inability to reinstate the new primary in case of failover.
 
   Don't worry, we will fix that later.
 
@@ -173,7 +173,7 @@ Oracle Data Guard broker provides several commands to check the health of the Da
 
   ![Output of VALIDATE DATABASE SPFILE](images/validate-spfile.png)
 
-1. The command `validate dgconnectidentifier` verifies that a specific connect identifier is correctly reachable from all members of the configuration, and that it's possible to connect to it using the same username and password used to start the broker command-line session. That is useful when diagnosing connectivity or authentication problems (ORA-01017), especially before executing a role transition.
+1. The command `validate dgconnectidentifier` verifies that a specific connect identifier is correctly reachable from all members of the configuration, and that it's possible to connect to it using the same username and password used to start the broker command line session. That is useful when diagnosing connectivity or authentication problems (ORA-01017), especially before executing a role transition.
 
   Change the DGConnectIdentifier with the appropriate one.
   ```

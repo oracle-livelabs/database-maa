@@ -100,31 +100,35 @@ Please note that you will be provisioning source database in a Public subnet for
 
    ![Image showing compute mage and shape](./images/image-shape.png)
 
- 8. Under **Networking** , make choices to reflect the below details.
+ 8. Under **Primary VNIC Information** , make choices to reflect the below details.
 
-    ![Image showing Network selection](./images/network-details.png " ")
+    ![Image showing Primary VNIC selection](./images/primary-vnic-info.png " ")
 
- 9. Under **Add SSH keys**.
+9.  Leave **Primary VNIC IP Addresses** to default.
+
+    ![Image showing Primary VNIC IP addresses](./images/primary-vnic-ip.png " ") 
+
+10. Under **Add SSH keys**.
 
     Browse and provide the public ssh key generated earlier.
 
     ![Image showing SSK key details](./images/ssh-key-upload.png " ")
 
-10. Leave the Boot volume section to default values.
+11. Leave the Boot volume section to default values.
 
     ![Image showing Boot Volume details](./images/boot-volume.png " ")
 
-10. Click on **Create** to start the compute provisioning.
+12. Click on **Create** to start the compute provisioning.
 
     ![Image showing final page for compute creation](./images/compute-creation.png " ")
 
-11. In few minutes , compute instance with database will be provisioned and running as below.
+13. In few minutes , compute instance with database will be provisioned and running as below.
 
     ![Image showing provisioned compute instance](./images/compute-after-prov.png)
 
-12. Take a note of the Public IP address of the compute instance which will be used to login to source database system.
+14. Take a note of the Public IP address of the compute instance which will be used to login to source database system.
 
-13. Collect the value of SYS password.
+15. Collect the value of SYS password.
 
     Login to the source database server using the Public IP and private ssh key.
 
@@ -136,5 +140,5 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Data Management Modernise Specialist, EMEA Technology Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, August 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, November 2023
 

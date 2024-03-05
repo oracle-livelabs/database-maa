@@ -61,6 +61,8 @@ ALTER USER TACUSER QUOTA UNLIMITED ON USERS;
   </copy>
   ```
 
+![Creation of the TAC user](images/create-tac-user.png)
+
 ## Task 2: Start a user transaction
 
 1. Connect as the newly created user and start a transaction:
@@ -79,6 +81,8 @@ insert into t values ('TAC test');
   </copy>
   ```
 
+![Start a transaction with the TAC user](images/start-tac-transaction.png)
+
 ## Task 3: Execute a switchover
 
 **From another window**, connect to the Data Guard Broker, and execute a switchover:
@@ -92,11 +96,15 @@ switchover to ADGHOL1_UNIQUE_NAME
   </copy>
   ```
 
+![Show the Data Guard configuration](images/show-configuration.png)
+
+![Execute the switchover](images/switchover.png)
+
 You don't need to wait for the switchover to finish, you can continue to the next step.
 
 ## Task 4: Commit the user transaction
 
-Back to the previous window, commit the transaction that we left
+Back to the previous window, commit the transaction that we left pending:
   ```
   <copy>
 commit;
@@ -105,8 +113,22 @@ select sys_context('USERENV','DB_UNIQUE_NAME') db_unique_name , sys_context('USE
   </copy>
   ```
 
+![Successful execution of the commit](images/commit.png)
+
 You should see that the commit succeeds, the data inserted before the switchover is there, and that we are now connected to the second host where the new primary resides.
 
+## Task 5: Switch back to the original primary
+
+Before continuing with the next labs, don't forget to switch back. The labs expect ADGHOL0 to be the primary environment. 
+
+  ```
+  <copy>
+dgmgrl sys/WElcome123##@ADGHOL0_DGCI
+show configuration
+set time on
+switchover to ADGHOL0_UNIQUE_NAME
+  </copy>
+  ```
 
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies

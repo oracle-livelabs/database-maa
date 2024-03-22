@@ -138,7 +138,7 @@ In this lab
      mkdir -p /home/zdmuser/zdminstall
      mkdir /home/zdmuser/zdmhome
      mkdir /home/zdmuser/zdmbase
-     chown -R zdmuser:zdm /home/
+     chown -R zdmuser:zdm /home/zdmuser
      </copy>
      ```
 6. Download ZDM software.
@@ -271,9 +271,11 @@ In this lab
 
    If you have different private keys for source and target database systems then you have to copy both of them to ZDM service host.
 
-   Change the permission of private key as below.
+   Change the permission and ownership of private key as below.
 
    chmod 600 **key\_file\_name**
+   
+   chown zdmuser:zdm **key\_file\_name**
 
 4. Verify SSH connectivity from ZDM servive host to Source and Target DB system.
 
@@ -298,7 +300,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, March 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, March 2024
 
 
 

@@ -24,34 +24,44 @@
             "filename":"../../prepare-db/prepare-db.md"
         },
         {
-            "title": "Lab 3: Configure and verify Data Guard",
+            "title": "Lab 3: Configure Data Guard",
             "description":"Configure Data Guard",
             "filename":"../../configure-dg/configure-dg.md"
         },
         {
-            "title": "Lab 4: Create role-based services",
+            "title": "Lab 4: Verify the Data Guard configuration",
+            "description":"Configure Data Guard",
+            "filename":"../../verify-dg/verify-dg.md"
+        },
+        {
+            "title": "Lab 5: OPTIONAL: Perform a role switchover",
+            "description":"Perform a role switchover",
+            "filename":"../../switchover/switchover.md"
+        },
+        {
+            "title": "Lab 6: Create role-based services",
             "description":"Create role-based services",
             "filename":"../../create-services/create-services.md"
         },
         {
-            "title": "Lab 5: Transparent Application Continuity",
+            "title": "Lab 7: Transparent Application Continuity",
             "description":"Transparent Application Continuity",
             "filename":"../../tac/tac.md"
         },
         {
-            "title": "Lab 6: Test your deployments with Snapshot Standby",
+            "title": "Lab 8: Test your deployments with Snapshot Standby",
             "description":"Test your deployments with Snapshot Standby",
             "filename":"../../snapshot-standby/snapshot-standby.md"
         },
         {
-            "title": "Lab 7: Use Real-Time Query and DML Redirection",
+            "title": "Lab 9: Use Real-Time Query and DML Redirection",
             "description":"Use Real-Time Query and DML Redirection",
             "filename":"../../real-time-query-dml/real-time-query-dml.md"
         },
         {
-            "title": "Lab 8: Create AWR reports on the standby database",
+            "title": "Lab 10: Create AWR reports on the standby database",
             "description":"Create AWR reports on the standby database",
-            "filename":"../../standby-awr/standby-awr.md"
+            "filename":"../../awr-snapshots/awr-snapshots.md"
         },
         {
             "title": "Need Help?",

@@ -24,14 +24,14 @@
             "filename":"../../prepare-db/prepare-db.md"
         },
         {
-            "title": "Lab 3: Configure and verify Data Guard",
+            "title": "Lab 3: Configure Data Guard",
             "description":"Configure Data Guard",
             "filename":"../../configure-dg/configure-dg.md"
         },
         {
-            "title": "Lab 4: Perform a Switchover",
-            "description":"Perform a Switchover",
-            "filename":"../../switchover/switchover.md"
+            "title": "Lab 4: Verify the Data Guard configuration",
+            "description":"Configure Data Guard",
+            "filename":"../../verify-dg/verify-dg.md"
         },
         {
             "title": "Lab 5: Create role-based services",
@@ -56,22 +56,7 @@
         {
             "title": "Lab 9: Create AWR reports on the standby database",
             "description":"Create AWR reports on the standby database",
-            "filename":"../../standby-awr/standby-awr.md"
-        },
-        {
-            "title": "Lab 10: Automatic Block Repair",
-            "description":"Automatic Block Repair",
-            "filename":"../../abr/abr.md"
-        },
-        {
-            "title": "Appendix 1: Creation of the primary Database",
-            "description":"Setup the 19c Primary Database",
-            "filename":"../../primary-db/primary-db.md"
-        },
-        {
-            "title": "Appendix 2: Creation of the Standby ",
-            "description":"Setup the standby Database",
-            "filename":"../../standby-db/standby-db.md"
+            "filename":"../../awr-snapshots/awr-snapshots.md"
         },
         {
             "title": "Need Help?",

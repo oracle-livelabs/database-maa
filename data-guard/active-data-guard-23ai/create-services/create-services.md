@@ -36,8 +36,9 @@ To try this lab, you must have successfully completed:
 
   ```
   <copy>
-  sqlplus sys/WElcome123##@ADGHOL0_CI
+  sql sys/WElcome123##@ADGHOL0_CI as sysdba
   alter pluggable database all discard state;
+  exit
   </copy>
   ```
 
@@ -48,7 +49,7 @@ To try this lab, you must have successfully completed:
 
   ```
   <copy>
-  cd ~/livelabs-database-maa/data-guard/active-data-guard-23c/prepare-host/scripts/tac
+  cd ~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/tac
   </copy>
   ```
 

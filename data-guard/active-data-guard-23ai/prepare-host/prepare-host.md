@@ -73,7 +73,7 @@ Estimated Lab Time: 15 Minutes
 1. Install some packages that we will use later:
 
     ````
-    <copy>sudo dnf install -y java-17-openjdk git</copy>
+    <copy>sudo dnf install -y git</copy>
     ````
 
   ![Screenshot of the cloud shell showing the steps executed so far](images/prepare-host0-1.png)
@@ -88,9 +88,9 @@ Estimated Lab Time: 15 Minutes
 
   ````
   <copy>
-  git clone -b adghol23c -n --filter=tree:0 --depth=1 https://github.com/lcaldara-oracle/livelabs-database-maa.git
-  cd livelabs-database-maa
-  git sparse-checkout set --no-cone data-guard/active-data-guard-23c/prepare-host/scripts
+  git clone -b main -n --filter=tree:0 --depth=1 https://github.com/oracle-livelabs/database-maa.git
+  cd database-maa
+  git sparse-checkout set --no-cone data-guard/active-data-guard-23ai/prepare-host/scripts
   git checkout
   </copy>
   ````
@@ -102,7 +102,7 @@ Estimated Lab Time: 15 Minutes
 
   ```
   <copy>
-  sh ~/livelabs-database-maa/data-guard/active-data-guard-23c/prepare-host/scripts/prepare.sh
+  sh ~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/prepare.sh
   </copy>
   ```
 
@@ -161,7 +161,7 @@ You have now successfully created a database connection to the primary and the s
 1. Install some packages that we will use later:
 
     ````
-    <copy>sudo dnf install -y java-17-openjdk git</copy>
+    <copy>sudo dnf install -y git</copy>
     ````
 
   ![Screenshot of the cloud shell showing the steps executed so far](images/prepare-host0-1.png)
@@ -176,9 +176,9 @@ You have now successfully created a database connection to the primary and the s
 
   ````
   <copy>
-  git clone -b adghol23c -n --filter=tree:0 --depth=1 https://github.com/lcaldara-oracle/livelabs-database-maa.git
-  cd livelabs-database-maa
-  git sparse-checkout set --no-cone data-guard/active-data-guard-23c/prepare-host/scripts
+  git clone -b main -n --filter=tree:0 --depth=1 https://github.com/oracle-livelabs/database-maa.git
+  cd database-maa
+  git sparse-checkout set --no-cone data-guard/active-data-guard-23ai/prepare-host/scripts
   git checkout
   </copy>
   ````
@@ -190,7 +190,7 @@ You have now successfully created a database connection to the primary and the s
 
   ```
   <copy>
-  sh ~/livelabs-database-maa/data-guard/active-data-guard-23c/prepare-host/scripts/prepare.sh
+  sh ~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/prepare.sh
   </copy>
   ```
 
@@ -233,10 +233,10 @@ Similarly, the default Data Guard authentication mechanism is to use the passwor
 
   ```
   <copy>
-  scp opc@IP_ADDRESS0:/tmp/wallet.tar /tmp
-  scp opc@IP_ADDRESS0:/tmp/orapwadghol /tmp
-  scp /tmp/wallet.tar opc@IP_ADDRESS1:/tmp
-  scp /tmp/orapwadghol opc@IP_ADDRESS1:/tmp
+  scp -i cloudshellkey opc@IP_ADDRESS0:/tmp/wallet.tar /tmp
+  scp -i cloudshellkey opc@IP_ADDRESS0:/tmp/orapwadghol /tmp
+  scp -i cloudshellkey /tmp/wallet.tar opc@IP_ADDRESS1:/tmp
+  scp -i cloudshellkey /tmp/orapwadghol opc@IP_ADDRESS1:/tmp
   rm /tmp/wallet.tar
   rm /tmp/orapwadghol
   </copy>

@@ -65,11 +65,11 @@ ALTER USER TACUSER QUOTA UNLIMITED ON USERS;
 
 ## Task 2: Start a user transaction
 
-1. Connect as the newly created user and start a transaction:
+1. Using `sqlplus`, connect as the newly created user and start a transaction:
 
   ```
   <copy>
-connect tacuser/WElcome123##@mypdb_rw
+sqlplus tacuser/WElcome123##@mypdb_rw
   </copy>
   ```
 

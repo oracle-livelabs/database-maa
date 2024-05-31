@@ -22,7 +22,7 @@ To try this lab, you must have successfully completed **Lab 1: Prepare the datab
 You should have two Cloud Shell tabs connected to the primary and secondary hosts, adghol0 and adghol1. If you don't, follow the first steps of Lab 1 until you have both SSH connections established.
 Make sure you are using the `oracle` user.
 
-1. On host `adghol0`, get the DB_UNIQUE_NAME of the primary database. On OCI BaseDB, the environment variable `$ORACLE_UNQNAME` is set to the correct value:
+1. On host `adghol0`, get the `DB_UNIQUE_NAME` of the primary database. On OCI BaseDB, the environment variable `$ORACLE_UNQNAME` is set to the correct value:
 
   ```
   <copy>echo $ORACLE_UNQNAME</copy>
@@ -30,7 +30,7 @@ Make sure you are using the `oracle` user.
 
   Note its value down as you will require it many times during this workshop.
 
-  **From now on, we'll refer to its value as ADGHOL0_UNIQUE_NAME.**
+  **From now on, we'll refer to its value as `ADGHOL0_UNIQUE_NAME`.**
 
 2. Connect to the Data Guard broker client command-line (dgmgrl) using the sys password:
 
@@ -40,7 +40,7 @@ Make sure you are using the `oracle` user.
 
 3. Execute the following command to prepare the primary database for its Data Guard role.
 
-  Make sure to change the value of ADGHOL0_UNIQUE_NAME accordingly.
+  Make sure to change the value of `ADGHOL0_UNIQUE_NAME` accordingly.
 
   ```
   <copy>
@@ -166,7 +166,7 @@ More information about Easy Connect and naming methods:
 
 More information about Data Guard `DGConnectIdentifier` and `StaticConnectIdentifier`:
 * [Oracle Data Guard Broker Properties - DGConnectIdentifier](https://docs.oracle.com/en/database/oracle/oracle-database/23/dgbkr/oracle-data-guard-broker-properties.html#GUID-32FF0A08-67DA-41AC-8BE8-0596CAF130BA)
-* [Oracle Data Guard Broker Properties - DGConnectIdentifier](https://docs.oracle.com/en/database/oracle/oracle-database/23/dgbkr/oracle-data-guard-broker-properties.html#GUID-2F938A76-A178-4A35-A629-F67F34212CAB)
+* [Oracle Data Guard Broker Properties - StaticConnectIdentifier](https://docs.oracle.com/en/database/oracle/oracle-database/23/dgbkr/oracle-data-guard-broker-properties.html#GUID-2F938A76-A178-4A35-A629-F67F34212CAB)
 
 ## Task 4: Duplicate the database for standby
 

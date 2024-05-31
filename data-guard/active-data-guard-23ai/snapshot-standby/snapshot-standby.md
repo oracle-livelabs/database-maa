@@ -59,12 +59,26 @@ show configuration
   ![Show configuration reports "Snapshot Standby database" for the standby database](images/show-configuration-snapshot.png)
 
 
-## Task 2: Change some data
+## Task 2: Open the PDB and change some data
+
+1. Connect to the standby database:
+  ```
+  <copy>
+  sql sys/WElcome123##@ADGHOL1_DGCI as sysdba
+  </copy>
+  ```
+
+1. Open the PDB:
+  ```
+  <copy>
+  alter pluggable database mypdb open;
+  </copy>
+  ```
 
 1. Connect to the snapshot standby service:
   ```
   <copy>
-sql tacuser/WElcome123##@mypdb_snap
+  connect tacuser/WElcome123##@mypdb_snap
   </copy>
   ```
 
@@ -89,7 +103,7 @@ exit
 dgmgrl sys/WElcome123##@ADGHOL0_DGCI
 show configuration
 set time on
-convert ADGHOL1_UNIQUE_NAME to physical standby
+convert database ADGHOL1_UNIQUE_NAME to physical standby
 show configuration
   </copy>
   ```

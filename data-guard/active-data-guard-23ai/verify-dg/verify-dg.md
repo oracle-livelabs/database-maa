@@ -4,7 +4,7 @@
 ## Introduction
 In this lab we will check the configuration and gain a basic knowledge of how to control and monitor Data Guard.
 
-Estimated Lab Time: 5 Minutes
+Estimated Lab Time: 15 Minutes
 
 ### Requirements
 To try this lab, you must have successfully completed:
@@ -94,7 +94,7 @@ Oracle Data Guard broker provides several commands to check the health of the Da
   <copy>validate dgconnectidentifier ADGHOL1_DGCI;</copy>
   ```
 
-## Task 2: Stop and start the redo transport and the apply process (optional)
+## Task 2 (OPTIONAL): Stop and start the redo transport and the apply process
 
 When operating Oracle Data Guard, you will need to stop and start the recovery, pause the redo log shipping, etc.
 

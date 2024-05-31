@@ -35,7 +35,7 @@ Make sure you are using the `oracle` user.
 2. Connect to the Data Guard broker client command-line (dgmgrl) using the sys password:
 
   ```
-  <copy>dgmgrl sys/WElcome##123</copy>
+  <copy>dgmgrl sys/WElcome123##</copy>
   ```
 
 3. Execute the following command to prepare the primary database for its Data Guard role.
@@ -54,7 +54,7 @@ Make sure you are using the `oracle` user.
 
   ![Execution of the PREPARE DATABASE command](images/prepare-primary.png)
 
-  This new 23c command checks and sets many required and recommended parameters and settings, including:
+  This new 23ai command checks and sets many required and recommended parameters and settings, including:
   * SPFILE preparation
   * Recommended parameters
   * Archivelog mode

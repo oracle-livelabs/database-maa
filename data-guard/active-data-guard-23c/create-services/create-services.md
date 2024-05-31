@@ -8,6 +8,8 @@ The services that run only on databases with specific roles are called role-base
 
 **Never configure your applications to connect to the default services!** Always use a role-based application service with high availability properties.
 
+**Don't use any PDB saved states!** Saving a PDB's state will automatically open the PDB and the primary role services on the standby database when the PDB is opened there, which can lead to unwanted situations (e.g., the read/write application pointing to the standby database). Always discard the PDB states when configuring Data Guard.
+
 Oracle recommends that you use Oracle Clusterware for Real Application Clusters databases, or Oracle Restart for single instance databases when you need to configure role-based services. The Oracle Data Guard broker is aware of Oracle Clusterware, and delegates the stop and start of the instances to it. Also, Oracle Clusterware optimally manages the role-based services.
 
 However, when Oracle Clusterware is not available (like on single-instance deployments on OCI Base Database Services), one has to manage role-based services differently. Typically, we use the `DBMS_SERVICES` package along with startup triggers to stop and start the correct services depending on the database role.
@@ -24,10 +26,23 @@ To try this lab, you must have successfully completed:
 * Lab 3: Configure and Verify Data Guard
 
 ### Objectives
+* Discard all PDB saved states
 * Create and start the role-based services
 * Review the connection strings and connect to the primary service
 
-## Task 1: Create and start the role-based services
+## Task 1: Discard all PDB saved states
+
+1. Connect to the primary database as SYSDBA and discard any existing saved states. Replace ADGHOL0_CI with the actual connection identifier.
+
+  ```
+  <copy>
+  sqlplus sys/WElcome123##@ADGHOL0_CI
+  alter pluggable database all discard state;
+  </copy>
+  ```
+
+
+## Task 2: Create and start the role-based services
 
 1. Review the scripts that we'll use to create the services. We downloaded the scripts in the first lab. They are in the directory:
 
@@ -37,7 +52,7 @@ To try this lab, you must have successfully completed:
   </copy>
   ```
 
-2. Connect to the PDB and verify the existing services:
+2. Connect to the primary database and verify the existing services:
 
   ```
   <copy>
@@ -88,7 +103,7 @@ exit
 
   ![List of new services in v$active_services](images/services-after.png)
 
-## Task 2: Review the connection strings and connect to the primary service
+## Task 3: Review the connection strings and connect to the primary service
 
 1. Review the connection strings in `tnsnames.ora`
 

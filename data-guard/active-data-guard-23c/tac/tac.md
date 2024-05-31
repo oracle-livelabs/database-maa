@@ -37,7 +37,7 @@ sql sys/WElcome123##@mypdb_rw as sysdba
   ```
   <copy>
 drop user TACUSER cascade;
-create user TACUSER identified by Welcome#Welcome#123;
+create user TACUSER identified by WElcome123##;
 CREATE ROLE TAC_ROLE NOT IDENTIFIED ;
 GRANT CREATE TYPE TO TAC_ROLE ;
 GRANT CREATE VIEW TO TAC_ROLE ;
@@ -69,7 +69,7 @@ ALTER USER TACUSER QUOTA UNLIMITED ON USERS;
 
   ```
   <copy>
-connect tacuser/Welcome#Welcome#123@mypdb_rw
+connect tacuser/WElcome123##@mypdb_rw
   </copy>
   ```
 

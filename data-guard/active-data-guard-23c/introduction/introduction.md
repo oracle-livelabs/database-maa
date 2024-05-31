@@ -1,4 +1,4 @@
-# Oracle Database 23c Active Data Guard
+# Oracle Database 23ai Active Data Guard
 
 ## Introduction
 
@@ -6,11 +6,11 @@ Oracle Data Guard provides a comprehensive set of services that create, maintain
 
 Oracle Data Guard maintains these standby databases as copies of the production database. Then, if the production database becomes unavailable because of a planned or an unplanned outage, Oracle Data Guard can switch any standby database to the production role, minimizing the downtime associated with the outage. Oracle Data Guard can be used with traditional backup, restoration, and cluster techniques to provide a high level of data protection and data availability.
 
-Oracle (Active) Data Guard capabilities in Oracle Database 23c further enhance its strategic objective of preventing data loss, providing high availability, eliminating risk, and increasing return on investment by enabling highly functional active disaster recovery systems that are simple to deploy and manage.
+Oracle (Active) Data Guard capabilities in Oracle Database 23ai further enhance its strategic objective of preventing data loss, providing high availability, eliminating risk, and increasing return on investment by enabling highly functional active disaster recovery systems that are simple to deploy and manage.
 
 It accomplishes this by providing the management, monitoring, and automation software infrastructure to create and maintain one or more synchronized standby databases that protect Oracle data from failures, data corruption, human error, and disasters
 
-This workshop focuses on **Creating Active Data Guard 23c in Oracle Cloud Infrastructure using Base Database Services (BaseDB)**.
+This workshop focuses on **Creating Active Data Guard 23ai in Oracle Cloud Infrastructure using Base Database Services (BaseDB)**.
 
 Instead of leveraging the Control Plane automation to create the Data Guard association, this workshop will guide you through the manual creation of the standby database and the Data Guard configuration, to provide a similar experience to on-premises and hybrid environments. Similarly, complex topologies that cannot be achieved with the Control Plane automation, require manual Data Guard setup in the Oracle Cloud Infrastructure.
 
@@ -45,4 +45,4 @@ The following is intended to outline our general product direction. It is intend
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn, Kamryn Vinson
-- **Last Updated By/Date** -  Ludovico Caldara, November 2023
+- **Last Updated By/Date** -  Ludovico Caldara, May 2024

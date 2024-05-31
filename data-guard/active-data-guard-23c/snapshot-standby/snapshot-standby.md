@@ -64,7 +64,7 @@ show configuration
 1. Connect to the snapshot standby service:
   ```
   <copy>
-sql tacuser/Welcome#Welcome#123@mypdb_snap
+sql tacuser/WElcome123##@mypdb_snap
   </copy>
   ```
 

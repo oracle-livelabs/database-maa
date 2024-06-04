@@ -92,13 +92,18 @@ You should have two Cloud Shell tabs connected to the primary and secondary host
 
   ![Steps executed to create and enable the Data Guard configuration](images/create-configuration.png)
 
-  The command `show configuration` should report success. If it's not the case, try using `show configuration verbose` instead, to force a refresh of the status cache.
+  The command `show configuration` should report success. 
 
   ```
   <copy>
   show configuration;
   </copy>
   ```
+  If you see the following warning:
+  ```
+  Warning: ORA-16854: apply lag could not be determined
+  ```
+  Try using `show configuration verbose` instead, to force a refresh of the status cache.
 
   ![Show configuration shows a healthy status](images/show-configuration.png)
 
@@ -110,4 +115,4 @@ You have successfully created the Oracle Data Guard configuration. In the next l
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, December 2023
+- **Last Updated By/Date** -  Ludovico Caldara, June 2024

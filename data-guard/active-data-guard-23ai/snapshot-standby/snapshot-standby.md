@@ -27,7 +27,7 @@ To try this lab, you must have successfully completed the following labs:
 
 ## Task 1: Convert the physical standby to a snapshot standby
 
-In a window, connect with **dgmgrl** and convert the standby database to a snapshot standby. Don't forget to replace ADGHOL1_UNIQUE_NAME with the actual db_unique_name of the standby database.
+Connect with **dgmgrl** and convert the standby database to a snapshot standby. Don't forget to replace ADGHOL1_UNIQUE_NAME with the actual db_unique_name of the standby database.
 
   ```
   <copy>
@@ -114,4 +114,4 @@ The conversion to physical standby closes the standby database, flashes it back 
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, December 2023
+- **Last Updated By/Date** -  Ludovico Caldara, June 2024

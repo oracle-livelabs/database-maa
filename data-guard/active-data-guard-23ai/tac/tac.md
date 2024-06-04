@@ -133,4 +133,4 @@ switchover to ADGHOL0_UNIQUE_NAME
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, December 2023
+- **Last Updated By/Date** -  Ludovico Caldara, June 2024

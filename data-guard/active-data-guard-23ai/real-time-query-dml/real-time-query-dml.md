@@ -6,7 +6,7 @@ You have a copy of your production data on the standby database, so why not use 
 A standby database can be open read only while it applies changes coming from the primary database. This feature is called **Real-Time Query**, and it's part of the Active Data Guard option.
 Real-Time Query can offload read-only workloads, such as reports or read-only application modules. If the transport is synchronous, the reading sessions can wait for the received redo to be applied, providing **consistent reads** of all the transactions committed on the primary database.
 
-Additionally, the standby database can be configured to automatically redirect write requests to the primary database, in an ACID-compliant way, with the changes visible only in the the privacy of the transaction started on the standby database.
+Additionally, the standby database can be configured to automatically redirect write requests to the primary database, in an ACID-compliant way, with the changes visible only in the privacy of the transaction started on the standby database.
 This functionality broadens the use cases for the physical standby, including running read-write workloads directly on the standby database. The feature, called **DML Redirection**, also supports DDLs and PL/SQL calls (although with some documented limitations).
 
 Estimated Lab Time: 15 Minutes
@@ -172,4 +172,4 @@ exit
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn;
-- **Last Updated By/Date** -  Ludovico Caldara, December 2023
+- **Last Updated By/Date** -  Ludovico Caldara, June 2024

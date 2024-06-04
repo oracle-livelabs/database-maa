@@ -64,7 +64,7 @@ Make sure you are using the `oracle` user.
   * Standby redo logs (SRLs)
   * DB_UNIQUE_NAME
 
-  Because some of these changes might require a restart of the instance, we specified the `restart` keyword to confirm we agree to do that, if required.
+  Because some of these changes require a restart of the instance, we specified the `restart` keyword to confirm we agree to do that, if required.
 
   For more information, [refer to the documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/dgbkr/oracle-data-guard-broker-commands.html#GUID-46F6267D-E3CF-4544-AC47-A22D9704BAF2).
 
@@ -72,13 +72,13 @@ Make sure you are using the `oracle` user.
 ## Task 2: Clean-up the standby database system
 
 1. On host `adghol1`, get the DB_UNIQUE_NAME of the standby database. On OCI BaseDB, the environment variable `$ORACLE_UNQNAME` is set to the correct value:
-
+  
   ```
   <copy>echo $ORACLE_UNQNAME</copy>
   ```
-
+  
   Note its value down as you will require it many times during this workshop.
-
+  
   **From now on, we'll refer to its value as ADGHOL1_UNIQUE_NAME.**
 
 2. Connect as SYSDBA and shutdown the current database (make sure you are on host `adghol1`):
@@ -280,4 +280,4 @@ You have successfully duplicated and configured the standby database for Data Gu
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, December 2023
+- **Last Updated By/Date** -  Ludovico Caldara, June 2024

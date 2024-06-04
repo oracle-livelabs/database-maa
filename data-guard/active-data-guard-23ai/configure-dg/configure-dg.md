@@ -10,7 +10,7 @@ For more information about the Data Guard broker, refer to the [broker documenta
 
 After configuring the broker, we will check the configuration and have a basic knowledge of how to control and monitor Data Guard.
 
-Estimated Lab Time: 10 Minutes
+Estimated Lab Time: 5 Minutes
 
 ### Requirements
 To try this lab, you must have successfully completed:
@@ -62,8 +62,8 @@ You should have two Cloud Shell tabs connected to the primary and secondary host
 
   Notice that we don't specify the static service (suffixed with _DGMGRL), because, under normal operation, the broker expects the standby to be mounted, therefore the default service is available.
 
-1. (Optional): set the `StaticConnectIdentifier` for both databases.
-  Although the broker builds the default static connect identifier if it's not explicitly configured, it is still a good practice to set it to ease troubleshooting.
+1. Set the `StaticConnectIdentifier` for both databases.
+  Although the broker builds the default static connect identifier if it's not explicitly configured, it is still a good practice to set it to ease troubleshooting. In this lab, we need to set it to specify the FQDN of the hosts, or the DNS will not solve the remote host.
 
   Replace `ADGHOL0_UNIQUE_NAME`, `ADGHOL0_SCI`, `ADGHOL1_UNIQUE_NAME`, and `ADGHOL1_SCI` with the actual values:
   ```
@@ -92,13 +92,18 @@ You should have two Cloud Shell tabs connected to the primary and secondary host
 
   ![Steps executed to create and enable the Data Guard configuration](images/create-configuration.png)
 
-  The command `show configuration` should report success.
+  The command `show configuration` should report success. 
 
   ```
   <copy>
   show configuration;
   </copy>
   ```
+  If you see the following warning:
+  ```
+  Warning: ORA-16854: apply lag could not be determined
+  ```
+  Try using `show configuration verbose` instead, to force a refresh of the status cache.
 
   ![Show configuration shows a healthy status](images/show-configuration.png)
 
@@ -110,4 +115,4 @@ You have successfully created the Oracle Data Guard configuration. In the next l
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, December 2023
+- **Last Updated By/Date** -  Ludovico Caldara, June 2024

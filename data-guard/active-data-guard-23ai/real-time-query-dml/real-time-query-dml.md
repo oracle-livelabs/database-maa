@@ -6,7 +6,7 @@ You have a copy of your production data on the standby database, so why not use 
 A standby database can be open read only while it applies changes coming from the primary database. This feature is called **Real-Time Query**, and it's part of the Active Data Guard option.
 Real-Time Query can offload read-only workloads, such as reports or read-only application modules. If the transport is synchronous, the reading sessions can wait for the received redo to be applied, providing **consistent reads** of all the transactions committed on the primary database.
 
-Additionally, the standby database can be configured to automatically redirect write requests to the primary database, in an ACID-compliant way, with the changes visible only in the the privacy of the transaction started on the standby database.
+Additionally, the standby database can be configured to automatically redirect write requests to the primary database, in an ACID-compliant way, with the changes visible only in the privacy of the transaction started on the standby database.
 This functionality broadens the use cases for the physical standby, including running read-write workloads directly on the standby database. The feature, called **DML Redirection**, also supports DDLs and PL/SQL calls (although with some documented limitations).
 
 Estimated Lab Time: 15 Minutes
@@ -47,7 +47,7 @@ exit
 Connect with an application user to the read-only service. Regardless of where the standby database is, the role-based service will land you there:
 ```
 <copy>
-sqlplus tacuser/WElcome123##@mypdb_ro
+connect tacuser/WElcome123##@mypdb_ro
 </copy>
 ```
 
@@ -87,11 +87,10 @@ sqlplus tacuser/WElcome123##@mypdb_rw
 <copy>
 insert into t values ('Find me on the standby!');
 commit;
-exit
 </copy>
 ```
 
-On the terminal connected to the read-only service, verify that the inserted data is visible:
+Connect to the read-only service and verify that the inserted data is visible:
 ```
 <copy>
 connect tacuser/WElcome123##@mypdb_ro
@@ -149,12 +148,7 @@ exit
 ![External consistent reads work once the transport is synchronous](images/external-consistency.png)
 
 ## Task 3: Enable DML redirection
-Finally, enable DML redirection and see that DML will work while connected to the standby database:
-```
-<copy>
-sqlplus tacuser/WElcome123##@mypdb_ro
-</copy>
-```
+Finally, while connected to the read-only service, enable DML redirection and see that DML will work while connected to the standby database.
 
 The first try will fail with
 `ORA-16000: database or pluggable database open for read-only access`:
@@ -177,5 +171,5 @@ exit
 ![DML works on the standby thanks to DML redirection](images/dml-redirection.png)
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
-- **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, December 2023
+- **Contributors** - Robert Pastijn;
+- **Last Updated By/Date** -  Ludovico Caldara, June 2024

@@ -4,7 +4,7 @@
 ## Introduction
 In this lab we will check the configuration and gain a basic knowledge of how to control and monitor Data Guard.
 
-Estimated Lab Time: 5 Minutes
+Estimated Lab Time: 15 Minutes
 
 ### Requirements
 To try this lab, you must have successfully completed:
@@ -94,7 +94,7 @@ Oracle Data Guard broker provides several commands to check the health of the Da
   <copy>validate dgconnectidentifier ADGHOL1_DGCI;</copy>
   ```
 
-## Task 2: Stop and start the redo transport and the apply process (optional)
+## Task 2 (OPTIONAL): Stop and start the redo transport and the apply process
 
 When operating Oracle Data Guard, you will need to stop and start the recovery, pause the redo log shipping, etc.
 
@@ -227,7 +227,7 @@ Oracle Data Guard exposes many fixed views that help observing and monitoring th
    select source_db_unique_name, name, value, time_computed, datum_time from v$dataguard_stats;
    </copy>
    ```
-  The column `VALUE` contains a value different from `+00 00:00:00` for the transport or apply lag if there is a lag (in this case, ecerything is OK).
+  The column `VALUE` contains a value different from `+00 00:00:00` for the transport or apply lag if there is a lag (in this case, everything is OK).
 
    `DATUM_TIME` is extremely important to detect if the standby database is actively receiving data from the primary database. If it does, `DATUM_TIME` will be no more than 1 second older than the current date. Otherwise, you will see `DATUM_TIME` matching the timestamp of the last information received from the primary.
 
@@ -330,4 +330,4 @@ You have successfully verified and altered the Oracle Data Guard configuration. 
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, December 2023
+- **Last Updated By/Date** -  Ludovico Caldara, June 2024

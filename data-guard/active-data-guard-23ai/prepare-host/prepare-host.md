@@ -42,13 +42,13 @@ Estimated Lab Time: 15 Minutes
 
 7. Find your ssh private key which has been created earlier to connect to the host where the primary database is located.
 
-  a. If you have used Reserve Workshop on Livelabs option(Green Button), you should have used anyone of the method for generating SSH key pairs using [How to Generate SSH Keys](https://oracle-livelabs.github.io/common/labs/generate-ssh-key/?lab=generate-ssh-keys) .
+  a. If you have used Reserve Workshop on Livelabs option (Green Button), you should have used any of the method for generating SSH key pairs using [How to Generate SSH Keys](https://oracle-livelabs.github.io/common/labs/generate-ssh-key/?lab=generate-ssh-keys) .
 
   Now, you should have the **Public** and **Private** key pair. You must have provided the Public Key while reserving the lab and you need the repsective Private key to connect the DB Server.
 
-  b. If you have used Run on Your Tenancy option (Brown Button), you must use the downloaded public and private keys ( While creating the DB Systems) for connecting to the DB servers.
+  b. If you have used Run on Your Tenancy option (Brown Button), you must use the downloaded public and private keys (While creating the DB Systems) for connecting to the DB servers.
 
-  In all the labs we use Cloud shell to connect to the DB server. You can also connect to the DB servers in anyone of your preferred way such as Terminal in Mac, Powershell in Windows, Putty etc.  Refer the above mentioned link [How to Connect to Servers](https://oracle-livelabs.github.io/common/labs/generate-ssh-key/?lab=generate-ssh-keys) for detailed instructions. Once you are connected to the DB server, **rest of the instructions will remain same**.
+  In all the labs we use Cloud shell to connect to the DB server. You can also connect to the DB servers in any of your preferred way such as Terminal in Mac, Powershell in Windows, Putty etc.  Refer the above mentioned link [How to Connect to Servers](https://oracle-livelabs.github.io/common/labs/generate-ssh-key/?lab=generate-ssh-keys) for detailed instructions. Once you are connected to the DB server, **rest of the instructions will remain same**.
 
 7. Using the **Upload** facility, upload the private key in the **Cloud Shell** environment.
 
@@ -64,7 +64,7 @@ Estimated Lab Time: 15 Minutes
     ````
     <copy>ssh -i cloudshellkey opc@IP_ADDRESS</copy>
     ````
-    Replace `cloudshellkey` with the name of your private key file, and `IP_ADDRESS` with the real public IP address.
+    Replace again `cloudshellkey` with the name of your private key file, and `IP_ADDRESS` with the real public IP address.
 
   You should be connected to the primary database host.
 
@@ -73,7 +73,7 @@ Estimated Lab Time: 15 Minutes
 1. Install some packages that we will use later:
 
     ````
-    <copy>sudo dnf install -y java-17-openjdk git</copy>
+    <copy>sudo dnf install -y git</copy>
     ````
 
   ![Screenshot of the cloud shell showing the steps executed so far](images/prepare-host0-1.png)
@@ -88,9 +88,9 @@ Estimated Lab Time: 15 Minutes
 
   ````
   <copy>
-  git clone -b adghol23c -n --filter=tree:0 --depth=1 https://github.com/lcaldara-oracle/livelabs-database-maa.git
-  cd livelabs-database-maa
-  git sparse-checkout set --no-cone data-guard/active-data-guard-23c/prepare-host/scripts
+  git clone -b main -n --filter=tree:0 --depth=1 https://github.com/oracle-livelabs/database-maa.git
+  cd database-maa
+  git sparse-checkout set --no-cone data-guard/active-data-guard-23ai/prepare-host/scripts
   git checkout
   </copy>
   ````
@@ -102,7 +102,7 @@ Estimated Lab Time: 15 Minutes
 
   ```
   <copy>
-  sh ~/livelabs-database-maa/data-guard/active-data-guard-23c/prepare-host/scripts/prepare.sh
+  sh ~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/prepare.sh
   </copy>
   ```
 
@@ -117,7 +117,7 @@ Estimated Lab Time: 15 Minutes
 
   ![Content of listener.ora](images/listener-ora.png)
 
-  The static service registration is required for the duplicate, and also because there is no Oracle Clusterware: the Data Guard has to restart the remote instance with a SQL*Net connection when switching over.
+  The static service registration is required for the duplicate, and also because there is no Oracle Clusterware: Data Guard has to restart the remote instance with a SQL*Net connection when switching over.
 
   By default, without Oracle Clusterware, Data Guard expects a static service named `{DB_UNIQUE_NAME}_DGMGRL.{DOMAIN_NAME}`. It is possible to override this name using the Data Guard property `StaticConnectIdentifier` (we will see that over the next labs).
 
@@ -161,7 +161,7 @@ You have now successfully created a database connection to the primary and the s
 1. Install some packages that we will use later:
 
     ````
-    <copy>sudo dnf install -y java-17-openjdk git</copy>
+    <copy>sudo dnf install -y git</copy>
     ````
 
   ![Screenshot of the cloud shell showing the steps executed so far](images/prepare-host0-1.png)
@@ -174,26 +174,26 @@ You have now successfully created a database connection to the primary and the s
 
 1. Download the helper scripts using git:
 
-  ````
-  <copy>
-  git clone -b adghol23c -n --filter=tree:0 --depth=1 https://github.com/lcaldara-oracle/livelabs-database-maa.git
-  cd livelabs-database-maa
-  git sparse-checkout set --no-cone data-guard/active-data-guard-23c/prepare-host/scripts
-  git checkout
-  </copy>
-  ````
-
+    ````
+    <copy>
+    git clone -b main -n --filter=tree:0 --depth=1 https://github.com/oracle-livelabs/database-maa.git
+    cd database-maa
+    git sparse-checkout set --no-cone data-guard/active-data-guard-23ai/prepare-host/scripts
+    git checkout
+    </copy>
+    ````
+     
 1. Execute the preparation script. This will:
   * Set up a function for the execution of the last version of SQLcl
   * Create the static service registration entry in listener.ora
   * Create the application TNS entries in tnsnames.ora
-
+   
   ```
   <copy>
-  sh ~/livelabs-database-maa/data-guard/active-data-guard-23c/prepare-host/scripts/prepare.sh
+  sh ~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/prepare.sh
   </copy>
   ```
-
+  
 1. Verify the content of `listener.ora` and `tnsnames.ora`
 
   ```
@@ -203,14 +203,14 @@ You have now successfully created a database connection to the primary and the s
   </copy>
   ```
 
-## Task 5: copy the TDE wallet and password file
+## Task 5: copy the Transparent Data Encryption (TDE) wallet and password file
 
-Oracle Data Guard requires the same TDE master keys in the primary and standby database wallets. The quickest way to achieve that is to copy the entire wallet from the primary to the standby database.
+Oracle Data Guard requires the same Transparent Data Encryption (TDE) master keys in the primary and standby database wallets. The quickest way to achieve that is to copy the entire wallet from the primary to the standby database.
 
 Similarly, the default Data Guard authentication mechanism is to use the password file. The password files must match to ensure that there are no authentication problems.
 
 1. On the primary host (adghol0), copy the keys in a location accessible from the user opc:
-
+  
   ```
   <copy>
   cd /opt/oracle/dcs/commonstore/wallets/$ORACLE_UNQNAME/tde
@@ -219,33 +219,33 @@ Similarly, the default Data Guard authentication mechanism is to use the passwor
   chmod 644 /tmp/orapwadghol
   </copy>
   ```
-
+  
 1. Temporarily go back to the Cloud Shell environment by exiting the shell twice:
-
+  
   ```
   exit
   exit
   ```
-
+  
 1. Copy the wallet and password file from one node to the other, then delete them.
-
+  
   In the following command, replace IP_ADDRESS0 and IP_ADDRESS1 with the public IP addresses of the two hosts you noted down earlier.
-
+  
   ```
   <copy>
-  scp opc@IP_ADDRESS0:/tmp/wallet.tar /tmp
-  scp opc@IP_ADDRESS0:/tmp/orapwadghol /tmp
-  scp /tmp/wallet.tar opc@IP_ADDRESS1:/tmp
-  scp /tmp/orapwadghol opc@IP_ADDRESS1:/tmp
+  scp -i cloudshellkey opc@IP_ADDRESS0:/tmp/wallet.tar /tmp
+  scp -i cloudshellkey opc@IP_ADDRESS0:/tmp/orapwadghol /tmp
+  scp -i cloudshellkey /tmp/wallet.tar opc@IP_ADDRESS1:/tmp
+  scp -i cloudshellkey /tmp/orapwadghol opc@IP_ADDRESS1:/tmp
   rm /tmp/wallet.tar
   rm /tmp/orapwadghol
   </copy>
   ```
-
+  
   ![Steps executed to copy the wallet on the second host](images/wallet-copy-1.png)
-
+  
 1. Connect back to the first host and remove the wallet and password file from the temporary location:
-
+  
   ```
   <copy>
   ssh -i cloudshellkey opc@IP_ADDRESS0
@@ -256,7 +256,7 @@ Similarly, the default Data Guard authentication mechanism is to use the passwor
   ```
 
 1. On the standby host (adghol1), copy the files to the correct locations and permissions (as `oracle`), then remove the temporary files as `opc`:
-
+  
   ```
   <copy>
   cd /opt/oracle/dcs/commonstore/wallets/$ORACLE_UNQNAME/tde
@@ -278,4 +278,4 @@ You have successfully prepared the two hosts with everything required to start c
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, December 2023
+- **Last Updated By/Date** -  Ludovico Caldara, June 2024

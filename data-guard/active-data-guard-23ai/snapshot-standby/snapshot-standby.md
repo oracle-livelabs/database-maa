@@ -27,7 +27,7 @@ To try this lab, you must have successfully completed the following labs:
 
 ## Task 1: Convert the physical standby to a snapshot standby
 
-In a window, connect with **dgmgrl** and convert the standby database to a snapshot standby. Don't forget to replace ADGHOL1_UNIQUE_NAME with the actual db_unique_name of the standby database.
+Connect with **dgmgrl** and convert the standby database to a snapshot standby. Don't forget to replace ADGHOL1_UNIQUE_NAME with the actual db_unique_name of the standby database.
 
   ```
   <copy>
@@ -59,12 +59,26 @@ show configuration
   ![Show configuration reports "Snapshot Standby database" for the standby database](images/show-configuration-snapshot.png)
 
 
-## Task 2: Change some data
+## Task 2: Open the PDB and change some data
+
+1. Connect to the standby database:
+  ```
+  <copy>
+  sql sys/WElcome123##@ADGHOL1_DGCI as sysdba
+  </copy>
+  ```
+
+1. Open the PDB:
+  ```
+  <copy>
+  alter pluggable database mypdb open;
+  </copy>
+  ```
 
 1. Connect to the snapshot standby service:
   ```
   <copy>
-sql tacuser/WElcome123##@mypdb_snap
+  connect tacuser/WElcome123##@mypdb_snap
   </copy>
   ```
 
@@ -89,7 +103,7 @@ exit
 dgmgrl sys/WElcome123##@ADGHOL0_DGCI
 show configuration
 set time on
-convert ADGHOL1_UNIQUE_NAME to physical standby
+convert database ADGHOL1_UNIQUE_NAME to physical standby
 show configuration
   </copy>
   ```
@@ -100,4 +114,4 @@ The conversion to physical standby closes the standby database, flashes it back 
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, December 2023
+- **Last Updated By/Date** -  Ludovico Caldara, June 2024

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Once the Data Guard configuration is in place, it is important to connect to the databases using highly-available connection strings. The connection strings, besides having multiple addresses, require connections to specific application services (for example, the OLTP read-write service for the HR application). The read-write services should only be available on the primary database. If this is not the case, the application will run into problems when connecting to a database that is not available for write operations.  Also, when having a highly-available connection string, it's possible to keep the same connection string across role changes (e.g. after a failover or a switchover), without reconfiguring the application connectivity.
+Once the Data Guard configuration is in place, it is important to connect to the databases using highly-available connection strings. The connection strings, besides having multiple addresses, require connections to specific application services (for example, the OLTP read-write service for the HR application). The read-write services should only be available on the primary database. If this is not the case, the application will have issues when connecting to a database that is not available for write operations.  Also, when having a highly-available connection string, it's possible to keep the same connection string across role changes (e.g. after a failover or a switchover), without reconfiguring the application connectivity.
 
 The services that run only on databases with specific roles are called role-based services.
 
@@ -10,9 +10,9 @@ The services that run only on databases with specific roles are called role-base
 
 **Don't use any PDB saved states!** Saving a PDB's state will automatically open the PDB and the primary role services on the standby database when the PDB is opened there, which can lead to unwanted situations (e.g., the read/write application pointing to the standby database). Always discard the PDB states when configuring Data Guard.
 
-Oracle recommends that you use Oracle Clusterware for Real Application Clusters databases, or Oracle Restart for single instance databases when you need to configure role-based services. The Oracle Data Guard broker is aware of Oracle Clusterware, and delegates the stop and start of the instances to it. Also, Oracle Clusterware optimally manages the role-based services.
+Oracle recommends that you use Oracle Clusterware or Oracle Restart for single instance databases when you need to configure role-based services. For Oracle Real Application Clusters, Oracle Clusterware is a requirement. The Oracle Data Guard broker is aware of Oracle Clusterware, and delegates the stop and start of the instances to it. Also, Oracle Clusterware optimally manages the role-based services.
 
-However, when Oracle Clusterware is not available (like on single-instance deployments on OCI Base Database Services), one has to manage role-based services differently. Typically, we use the `DBMS_SERVICES` package along with startup triggers to stop and start the correct services depending on the database role.
+However, when Oracle Clusterware is not available (like on the database servers created for this lab), one has to manage role-based services differently. Typically, we use the `DBMS_SERVICES` package along with startup triggers to stop and start the correct services depending on the database role.
 
 In this lab, we will create the services for the primary, physical standby, and snapshot standby roles, along with the trigger that stops and starts them. We will then test the connection to the primary service.
 
@@ -36,8 +36,9 @@ To try this lab, you must have successfully completed:
 
   ```
   <copy>
-  sqlplus sys/WElcome123##@ADGHOL0_CI
+  sql sys/WElcome123##@ADGHOL0_CI as sysdba
   alter pluggable database all discard state;
+  exit
   </copy>
   ```
 
@@ -48,7 +49,7 @@ To try this lab, you must have successfully completed:
 
   ```
   <copy>
-  cd ~/livelabs-database-maa/data-guard/active-data-guard-23c/prepare-host/scripts/tac
+  cd ~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/tac
   </copy>
   ```
 
@@ -133,4 +134,4 @@ You have successfully created, started, and connected to the application role-ba
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, December 2023
+- **Last Updated By/Date** -  Ludovico Caldara, June 2024

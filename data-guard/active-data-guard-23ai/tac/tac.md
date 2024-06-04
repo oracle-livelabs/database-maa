@@ -65,11 +65,11 @@ ALTER USER TACUSER QUOTA UNLIMITED ON USERS;
 
 ## Task 2: Start a user transaction
 
-1. Connect as the newly created user and start a transaction:
+1. Using `sqlplus`, connect as the newly created user and start a transaction:
 
   ```
   <copy>
-connect tacuser/WElcome123##@mypdb_rw
+sqlplus tacuser/WElcome123##@mypdb_rw
   </copy>
   ```
 
@@ -133,4 +133,4 @@ switchover to ADGHOL0_UNIQUE_NAME
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, December 2023
+- **Last Updated By/Date** -  Ludovico Caldara, June 2024

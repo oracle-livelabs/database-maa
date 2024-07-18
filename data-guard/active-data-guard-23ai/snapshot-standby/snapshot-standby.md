@@ -17,7 +17,8 @@ Estimated Lab Time: 5 Minutes
 To try this lab, you must have successfully completed the following labs:
 * [Prepare the database hosts](../prepare-host/prepare-host.md)
 * [Prepare the databases](../prepare-db/prepare-db.md)
-* [Configure and Verify Data Guard](../configure-dg/configure-dg.md)
+* [Configure Data Guard](../configure-dg/configure-dg.md)
+* [Verify the Data Guard configuration](../verify-dg/verify-dg.md)
 * [Create role-based services](../create-services/create-services.md)
 
 ### Objectives
@@ -27,91 +28,95 @@ To try this lab, you must have successfully completed the following labs:
 
 ## Task 1: Convert the physical standby to a snapshot standby
 
-Connect with **dgmgrl** and convert the standby database to a snapshot standby. Don't forget to replace ADGHOL1_UNIQUE_NAME with the actual db_unique_name of the standby database.
+1. From a terminal (**the host is irrelevant**), connect with `dgmgrl` and convert the standby database to a snapshot standby.
 
-  ```
-  <copy>
-dgmgrl sys/WElcome123##@ADGHOL0_DGCI
-  </copy>
-  ```
-  ```
-  <copy>
-show configuration
-set time on
-convert database ADGHOL1_UNIQUE_NAME to snapshot standby
-  </copy>
-  ```
+    ```
+    <copy>
+    dgmgrl sys/WElcome123##@adghol0_dgci
+    </copy>
+    ```
+    **Don't forget to replace `ADGHOL1_UNIQUE_NAME` with the actual `db_unique_name` of the standby database.**
+    ```
+    <copy>
+    show configuration
+    convert database ADGHOL1_UNIQUE_NAME to snapshot standby
+    </copy>
+    ```
 
-  ![The conversion to snapshot standby succeeds](images/convert-to-snapshot-standby.png)
+    ![The conversion to snapshot standby succeeds](images/convert-to-snapshot-standby.png)
 
-The conversion stops the apply process on the standby database, creates a guaranteed restore point, and opens it in read write mode.
+    Note, we don't use SQLcl for the conversion, because the command `CONVERT DATABASE` isn't yet integrated in SQLcl.
+    The conversion stops the apply process on the standby database, creates a guaranteed restore point, and opens it in read write mode.
 
-While the database is in snapshot standby mode, it keeps receiving the redo from the primary database, keeping it protected.
+    While the database is in snapshot standby mode, it keeps receiving the redo from the primary database, keeping it protected.
 
-After the conversion, the configuration reports the new role.
+2. After the conversion, the configuration reports the new role.
 
-  ```
-  <copy>
-show configuration
-  </copy>
-  ```
+    ```
+    <copy>
+    show configuration
+    exit
+    </copy>
+    ```
 
-  ![Show configuration reports "Snapshot Standby database" for the standby database](images/show-configuration-snapshot.png)
+    ![Show configuration reports "Snapshot Standby database" for the standby database](images/show-configuration-snapshot.png)
 
 
-## Task 2: Open the PDB and change some data
+## Task 2: Open the PDB, connect to the snapshot standby service, and change some data
 
-1. Connect to the standby database:
-  ```
-  <copy>
-  sql sys/WElcome123##@ADGHOL1_DGCI as sysdba
-  </copy>
-  ```
+1. Connect to the standby database.
+    ```
+    <copy>
+    sql sys/WElcome123##@adghol1_dgci as sysdba
+    </copy>
+    ```
 
-1. Open the PDB:
-  ```
-  <copy>
-  alter pluggable database mypdb open;
-  </copy>
-  ```
+2. Open the PDB:
+    ```
+    <copy>
+    alter pluggable database mypdb open;
+    </copy>
+    ```
 
-1. Connect to the snapshot standby service:
-  ```
-  <copy>
-  connect tacuser/WElcome123##@mypdb_snap
-  </copy>
-  ```
+3. Connect to the snapshot standby service. The service is started by the startup trigger only when the PDB is in a snapshot standby role.
+    ```
+    <copy>
+    connect tacuser/WElcome123##@mypdb_snap
+    </copy>
+    ```
+    The user `tacuser` has been created during the lab *Transparent Application Continuity*. If you don't have tried it, you can copy the instructions to create the user from there.
+    ```
+    <copy>
+    create table this_wasnt_there (a varchar2(50));
+    insert into this_wasnt_there values ('Let''s do some tests!');
+    commit;
+    exit
+    </copy>
+    ```
 
-  ```
-  <copy>
-desc t
-drop table t;
-create table this_wasnt_there (a varchar2(50));
-insert into this_wasnt_there values ('Let''s do some tests!');
-commit;
-exit
-  </copy>
-  ```
-
-  ![The DDL and DML statements work on the standby database](images/modify-snapshot-standby.png)
+    ![The DDL and DML statements work on the standby database](images/modify-snapshot-standby.png)
   
 
 ## Task 3: Convert back to physical standby
 
-  ```
-  <copy>
-dgmgrl sys/WElcome123##@ADGHOL0_DGCI
-show configuration
-set time on
-convert database ADGHOL1_UNIQUE_NAME to physical standby
-show configuration
-  </copy>
-  ```
+1. Connect to either the primary or the standby database with `dgmgrl` and convert the standby database back to the physical standby role. **Again, replace `ADGHOL1_UNIQUE_NAME` with the correct name**.
+    ```
+    <copy>
+    dgmgrl sys/WElcome123##@adghol0_dgci
+    show configuration
+    convert database ADGHOL1_UNIQUE_NAME to physical standby
+    show configuration verbose
+    exit
+    </copy>
+    ```
 
-  ![The conversion to physical standby succeeds](images/convert-to-snapshot-standby.png)
+    ![The conversion to physical standby succeeds](images/convert-to-snapshot-standby.png)
 
-The conversion to physical standby closes the standby database, flashes it back to the previously created restore point, and start the apply process again.
+    The conversion to physical standby closes the standby database, flashes it back to the previously created restore point, and start the apply process again.
+    If the `show configuration verbose` reports a warning, try to run it again, as the standby might take some seconds to start receiveing redo from the primary.
+
+You have successfully tested a snapshot standby database.
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, June 2024
+- **Last Updated By/Date** -  Ludovico Caldara, July 2024

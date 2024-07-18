@@ -23,7 +23,8 @@ Estimated Lab Time: 5 Minutes
 To try this lab, you must have successfully completed:
 * Lab 1: Prepare the database hosts
 * Lab 2: Prepare the databases
-* Lab 3: Configure and Verify Data Guard
+* Lab 3: Configure Data Guard
+* Lab 4: Verify the Data Guard configuration
 
 ### Objectives
 * Discard all PDB saved states
@@ -32,101 +33,101 @@ To try this lab, you must have successfully completed:
 
 ## Task 1: Discard all PDB saved states
 
-1. Connect to the primary database as SYSDBA and discard any existing saved states. Replace ADGHOL0_CI with the actual connection identifier.
+1. From a terminal (**which one of the two hosts is irrelevant for this lab**), connect to the primary database as SYSDBA and discard any existing saved states.
 
   ```
   <copy>
-  sql sys/WElcome123##@ADGHOL0_CI as sysdba
+  sql sys/WElcome123##@adghol0_dgci as sysdba
   alter pluggable database all discard state;
-  exit
   </copy>
   ```
 
 
 ## Task 2: Create and start the role-based services
 
-1. Review the scripts that we'll use to create the services. We downloaded the scripts in the first lab. They are in the directory:
+1. Review the scripts that we'll use to create the services. We downloaded the scripts in the first lab. **Without quitting SQLcl, change the directory**:
 
-  ```
-  <copy>
-  cd ~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/tac
-  </copy>
-  ```
+    ```
+    <copy>
+    cd ~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/tac
+    </copy>
+    ```
 
-2. Connect to the primary database and verify the existing services:
+2. Verify the existing services:
 
-  ```
-  <copy>
-sql / as sysdba
-  </copy>
-  ```
+    ```
+    <copy>
+    alter session set container=MYPDB;
+    select name from v$active_services;
+    </copy>
+    ```
 
-  ```
-  <copy>
-alter session set container=MYPDB;
-select name from v$active_services where con_id>=2;
-  </copy>
-  ```
+    ![List of existing services in v$active_services](images/services-before.png)
 
-  ![List of existing services in v$active_services](images/services-before.png)
+3. Create and start the services using the scripts in the following order (we set the container again, just to be sure):
 
-3. Create and start the services using the scripts in the following order:
-
-  ```
-  <copy>
-  set echo on
-  @create_pdb_services.sql
-  @create_pdb_service_trigger.sql
-  @execute_pdb_service_trigger.sql
-  </copy>
-  ```
-
-  ![Execution of the scripts that create the services](images/script-execution.png)
-
-  The first script creates the service definition with high availability properties. Three services are created:
-  * MYPDB_RW for the primary role
-  * MYPDB_RO for the physical standby role
-  * MYPDB_SNAP for the snapshot standby role
-
-  The second script creates the startup trigger to start or stop the services depending on the database role.
-
-  The last script executes the same code as the startup trigger, so the services are started without restarting the PDB.
+    ```
+    <copy>
+    set echo on
+    alter session set container=MYPDB;
+    @create_pdb_services.sql
+    @create_pdb_service_trigger.sql
+    @execute_pdb_service_trigger.sql
+    </copy>
+    ```
+ 
+    ![Execution of the scripts that create the services](images/script-execution.png)
+ 
+    The first script creates the service definition with high availability properties. Three services are created:
+    * `MYPDB_RW` for the primary role
+    * `MYPDB_RO` for the physical standby role
+    * `MYPDB_SNAP` for the snapshot standby role
+ 
+    The second script creates the startup trigger to start or stop the services depending on the database role.
+ 
+    The last script executes the same code as the startup trigger, so the services are started without restarting the PDB.
 
 4. After the execution, the read-write service is running with high availability properties:
 
-  ```
-  <copy>
-select name from v$active_services where con_id>=2;
-select name, aq_ha_notification, commit_outcome, session_state_consistency, failover_restore from v$active_services where con_id >=2;
-exit
-  </copy>
-  ```
+    ```
+    <copy>
+    select name from v$active_services;
+    select name, aq_ha_notification, commit_outcome, session_state_consistency, failover_restore from v$active_services;
+    </copy>
+    ```
 
-  ![List of new services in v$active_services](images/services-after.png)
+    ![List of new services in v$active_services](images/services-after.png)
 
 ## Task 3: Review the connection strings and connect to the primary service
 
-1. Review the connection strings in `tnsnames.ora`
+1. Without quitting SQLcl, review the connection strings in `tnsnames.ora`
 
-  ```
-  <copy>
-  cat $ORACLE_HOME/network/admin/tnsnames.ora
-  </copy>
-  ```
+    ```
+    <copy>
+    ! cat $ORACLE_HOME/network/admin/tnsnames.ora
+    </copy>
+    ```
 
-  ![List of new services in v$active_services](images/tns-entries.png)
+    ![List of new services in v$active_services](images/tns-entries.png)
 
-2. Connect to the read-write service and verify where you are connected
+2. Connect to the read-write service and verify that you are connected to the primary database (also notice that we don't require "*from dual*" anymore):
 
-  ```
-  <copy>
-  sql sys/WElcome123##@mypdb_rw as sysdba
-  select sys_context('USERENV','DB_UNIQUE_NAME') db_unique_name , sys_context('USERENV','SERVER_HOST') server_host from dual;
+    ```
+    <copy>
+    connect sys/WElcome123##@mypdb_rw as sysdba
+    select sys_context('USERENV','DB_UNIQUE_NAME') db_unique_name , sys_context('USERENV','SERVER_HOST') server_host;
+    </copy>
+    ```
 
-  </copy>
-  ```
+    ![Connection to the read-write service](images/connect.png)
 
-  ![Connection to the read-write service](images/connect.png)
+3. Exit the SQLcl command-line:
+
+    ```
+    <copy>
+    exit
+    </copy>
+    ```
 
 You have successfully created, started, and connected to the application role-based service.
 
@@ -134,4 +135,4 @@ You have successfully created, started, and connected to the application role-ba
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, June 2024
+- **Last Updated By/Date** -  Ludovico Caldara, July 2024

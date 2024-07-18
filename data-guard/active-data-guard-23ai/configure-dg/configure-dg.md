@@ -24,90 +24,94 @@ To try this lab, you must have successfully completed:
 
 You should have two Cloud Shell tabs connected to the primary and secondary hosts, adghol0 and adghol1. If you don't, follow the first steps of Lab 1 until you have both SSH connections established.
 
-1. From a terminal (which one of the two is irrelevant for this task), connect to the primary database using the broker client command line (DGMGRL). We use the DGConnectIdentifier for that (the service named after the db_unique_name). Replace `ADGHOL0_DGCI` with the one noted down during Lab 2.
+For this live lab, we will use the new `sql` (SQLcl) integration for Data Guard instead of the traditional `dgmgrl` command-line. Starting with Oracle 21c, it is possible to use SQLcl to run most Data Guard commands. The commands are identical, except that they require to prepend `DG` before the actual Data Guard command.
 
-  ```
-  <copy>
-  dgmgrl sys/WElcome123##@ADGHOL0_DGCI
-  </copy>
-  ```
-  For example:
-  ```
-  dgmgrl sys/WElcome123##@adghol0-1234.ll1234pubsubnt.ll1234vcn.oraclevcn.com:1521/adghol_53k_lhr.ll1234pubsubnt.ll1234vcn.oraclevcn.com
-  ```
+1. From a terminal (**which one of the two hosts is irrelevant for this task**), connect to the primary database using the `sql` command-line tool (SQLcl). We use the DGConnectIdentifier for that (the one that connects to the service named after the `db_unique_name`).
 
-1. Create the configuration using the `CREATE CONFIGURATION` command. Again, replace `ADGHOL0_DGCI` with the actual connect string and `ADGHOL0_UNIQUE_NAME` with the actual db_unique_name:
+    ```
+    <copy>
+    sql sys/WElcome123##@adghol0_dgci as sysdba
+    </copy>
+    ```
+  
+2. Create the configuration using the `DG CREATE CONFIGURATION` command. 
+    **Replace `ADGHOL0_UNIQUE_NAME` with the actual `db_unique_name`**:
+ 
+    ```
+    <copy>
+    dg create configuration adghol as primary database is ADGHOL0_UNIQUE_NAME connect identifier is 'adghol0_dgci';
+    </copy>
+    ```
+    For example:
+    ```
+    dg create configuration adghol primary database is adghol_53k_lhr connect identifier is 'adghol0_dgci';
+    ```
+ 
+3. Add the standby database to the configuration using the `DG ADD DATABASE` command.
+    **Replace  `ADGHOL1_UNIQUE_NAME` with the actual `db_unique_name` of the standby database**:
 
-  ```
-  <copy>
-  create configuration adghol primary database is ADGHOL0_UNIQUE_NAME connect identifier is 'ADGHOL0_DGCI';
-  </copy>
-  ```
-  For example:
-  ```
-  create configuration adghol primary database is adghol_53k_lhr connect identifier is 'adghol0-1234.ll1234pubsubnt.ll1234vcn.oraclevcn.com:1521/adghol_53k_lhr.ll1234pubsubnt.ll1234vcn.oraclevcn.com';
-  ```
+    ```
+    <copy>
+    dg add database ADGHOL1_UNIQUE_NAME as connect identifier is 'adghol1_dgci';
+    </copy>
+    ```
+    For example:
+    ```
+    dg add database adghol_p4n_lhr as connect identifier is 'adghol1_dgci';
+    ```
 
-1. Add the standby database to the configuration using the `ADD DATABASE` command. Replace `ADGHOL1_DGCI` and `ADGHOL1_UNIQUE_NAME` with the actual connect string and db_unique_name of the standby database:
+4. Set the `StaticConnectIdentifier` for both databases.
+    Although the broker builds the default static connect identifier if it's not explicitly configured, it is still a good practice to set it to ease the troubleshooting. In this lab, we need to set it to specify the FQDN of the hosts, or the DNS will not solve the remote host.
 
-  ```
-  <copy>
-  add database ADGHOL1_UNIQUE_NAME as connect identifier is 'ADGHOL1_DGCI';
-  </copy>
-  ```
-  For example:
-  ```
-  add database adghol_p4n_lhr as connect identifier is 'adghol1-1234.ll1234pubsubnt.ll1234vcn.oraclevcn.com:1521/adghol_p4n_lhr.ll1234pubsubnt.ll1234vcn.oraclevcn.com';
-  ```
+    **Replace `ADGHOL0_UNIQUE_NAME` and `ADGHOL1_UNIQUE_NAME` with the actual values**:
+    ```
+    <copy>
+    dg edit database ADGHOL0_UNIQUE_NAME set property StaticConnectIdentifier='adghol0_sci';
+     
+    dg edit database ADGHOL1_UNIQUE_NAME set property StaticConnectIdentifier='adghol1_sci';
+    </copy>
+    ```
+    For example:
+    ```
+    <copy>
+    dg edit database adghol_53k_lhr set property StaticConnectIdentifier='adghol0_sci';
+ 
+    dg edit database adghol_p4n_lhr set property StaticConnectIdentifier='adghol1_sci';
+    </copy>
+    ```
 
-  Notice that we don't specify the static service (suffixed with _DGMGRL), because, under normal operation, the broker expects the standby to be mounted, therefore the default service is available.
+5. Enable the configuration. This final command will set the required parameters and execute the required commands to start the redo shipping from the primary to the standby database and start the standby recovery:
 
-1. Set the `StaticConnectIdentifier` for both databases.
-  Although the broker builds the default static connect identifier if it's not explicitly configured, it is still a good practice to set it to ease troubleshooting. In this lab, we need to set it to specify the FQDN of the hosts, or the DNS will not solve the remote host.
+    ```
+    <copy>
+    dg enable configuration;
+    </copy>
+    ```
 
-  Replace `ADGHOL0_UNIQUE_NAME`, `ADGHOL0_SCI`, `ADGHOL1_UNIQUE_NAME`, and `ADGHOL1_SCI` with the actual values:
-  ```
-  <copy>
-  edit database ADGHOL0_UNIQUE_NAME set property StaticConnectIdentifier='ADGHOL0_SCI';
+    ![Steps executed to create and enable the Data Guard configuration](images/create-configuration.png)
 
-  edit database ADGHOL1_UNIQUE_NAME set property StaticConnectIdentifier='ADGHOL1_SCI';
-  </copy>
-  ```
-  For example:
-  ```
-  <copy>
-  edit database adghol_53k_lhr set property StaticConnectIdentifier='adghol0-1234.ll1234pubsubnt.ll1234vcn.oraclevcn.com:1521/adghol_53k_lhr_DGMGRL.ll1234pubsubnt.ll1234vcn.oraclevcn.com';
+    The command `dg show configuration` should report success. 
 
-  edit database adghol_p4n_lhr set property StaticConnectIdentifier='adghol1-1234.ll1234pubsubnt.ll1234vcn.oraclevcn.com:1521/adghol_p4n_lhr_DGMGRL.ll1234pubsubnt.ll1234vcn.oraclevcn.com';
-  </copy>
-  ```
+    ```
+    <copy>
+    dg show configuration;
+    </copy>
+    ```
+    If you see the following warning:
+    ```
+    Warning: ORA-16854: apply lag could not be determined
+    ```
+    Try using `dg show configuration verbose` instead, to force a refresh of the status cache.
 
-1. Enable the configuration. This final command will set the required parameters and execute the required commands to start the redo shipping from the primary to the standby database and start the standby recovery:
+    ![Show configuration shows a healthy status](images/show-configuration.png)
 
-  ```
-  <copy>
-  enable configuration;
-  </copy>
-  ```
-
-  ![Steps executed to create and enable the Data Guard configuration](images/create-configuration.png)
-
-  The command `show configuration` should report success. 
-
-  ```
-  <copy>
-  show configuration;
-  </copy>
-  ```
-  If you see the following warning:
-  ```
-  Warning: ORA-16854: apply lag could not be determined
-  ```
-  Try using `show configuration verbose` instead, to force a refresh of the status cache.
-
-  ![Show configuration shows a healthy status](images/show-configuration.png)
-
-  That means that the primary can contact the standby database with the `DGConnectIdentifier`, send the redo stream with no lag, and the standby database can apply it successfully without lag.
+    That means that the primary can contact the standby database with the `DGConnectIdentifier`, send the redo stream with no lag, and the standby database can apply it successfully without lag.
+6. Exit from the SQLcl command-line:
+    ```
+    <copy>
+    exit
+    </copy>
+    ```
 
 You have successfully created the Oracle Data Guard configuration. In the next lab, we will see how to monitor and alter the configuration.
 
@@ -115,4 +119,4 @@ You have successfully created the Oracle Data Guard configuration. In the next l
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, June 2024
+- **Last Updated By/Date** -  Ludovico Caldara, July 2024

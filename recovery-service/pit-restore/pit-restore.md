@@ -28,25 +28,36 @@ In this lab, you will:
 
 ## Task 2: Connect to the database, create a table and insert data
 
-1. SSH into the host using the follow command:
+1. Open OCI Cloud Shell by clicking the drop-down in the top right
+    ![](images/cloud_shell_button.png)
+
+2. Upload the SSH key by clicking the gear in the top right of the cloud shell
+    ![](images/cloud_shell_upload.png)
+
+3. Change the permissions on the uploaded key file
+    ```
+    <copy>chmod 600 </copy>
+    ```
+
+4. SSH into the host using the follow command:
     ```
     <copy>ssh -i <private_key_file> opc@<public-ip-address> </copy>
     ```
 
-2. Change user to Oracle:
+5. Change user to Oracle:
     ```
     $ <copy>sudo su - oracle</copy>  
     ```
-3. Connect to the database:
+6. Connect to the database:
     ```
     $ <copy>sqlplus / as sysdba</copy> 
     ```
 
-4. Create a table for customers:
+7. Create a table for customers:
     ```
     SQL> <copy>create table customer(first_name varchar2(50));</copy>
     ```
-5. Insert new customers:
+8. Insert new customers:
     ```
     SQL> <copy>INSERT INTO customer (first_name) 
             WITH names AS (
@@ -60,12 +71,12 @@ In this lab, you will:
     SQL> <copy>commit;</copy>
     ```
 
-6. Query to see the customer names:
+9. Query to see the customer names:
     ```
     SQL> <copy>select * from customer;</copy>
     ```
 
-7. Capture the SCN for the database before being malicious:
+10. Capture the SCN for the database before being malicious:
     ```
     SQL> <copy>Select CURRENT_SCN as BEFORE_DELETE from v$database;</copy>
     ```

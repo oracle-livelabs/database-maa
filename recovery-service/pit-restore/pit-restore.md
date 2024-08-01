@@ -29,14 +29,14 @@ In this lab, you will:
 ## Task 2: Connect to the database, create a table and insert data
 
 1. Open OCI Cloud Shell by clicking the drop-down in the top right
-    ![](images/cloud_shell_button.png)
+    ![Launch point location for Cloud Shell](images/cloud_shell_button.png)
 
 2. Upload the SSH key by clicking the gear in the top right of the cloud shell
-    ![](images/cloud_shell_upload.png)
+    ![Launch point location for cloud shell upload](images/cloud_shell_upload.png)
 
 3. Change the permissions on the uploaded key file
     ```
-    <copy>chmod 600 </copy>
+    <copy>chmod 600 <private_key_file> </copy>
     ```
 
 4. SSH into the host using the follow command:

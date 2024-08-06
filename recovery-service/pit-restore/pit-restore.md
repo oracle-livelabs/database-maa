@@ -31,33 +31,37 @@ In this lab, you will:
 1. Open OCI Cloud Shell by clicking the drop-down in the top right
     ![Launch point location for Cloud Shell](images/cloud_shell_button.png)
 
-2. Upload the SSH key by clicking the gear in the top right of the cloud shell
+2. Click OK if a prompt appears regarding processor type.
+
+3. Type N to exit out of the Cloud Shell tutorial.
+
+4. Upload the SSH private key by clicking the gear in the top right of the cloud shell
     ![Launch point location for cloud shell upload](images/cloud_shell_upload.png)
 
-3. Change the permissions on the uploaded key file
+5. Change the permissions on the uploaded key file
     ```
     <copy>chmod 600 <private_key_file> </copy>
     ```
 
-4. SSH into the host using the follow command:
+6. SSH into the host using the follow command:
     ```
     <copy>ssh -i <private_key_file> opc@<public-ip-address> </copy>
     ```
 
-5. Change user to Oracle:
+7. Change user to Oracle:
     ```
     $ <copy>sudo su - oracle</copy>  
     ```
-6. Connect to the database:
+8. Connect to the database:
     ```
     $ <copy>sqlplus / as sysdba</copy> 
     ```
 
-7. Create a table for customers:
+9. Create a table for customers:
     ```
     SQL> <copy>create table customer(first_name varchar2(50));</copy>
     ```
-8. Insert new customers:
+10. Insert new customers:
     ```
     SQL> <copy>INSERT INTO customer (first_name) 
             WITH names AS (
@@ -71,12 +75,12 @@ In this lab, you will:
     SQL> <copy>commit;</copy>
     ```
 
-9. Query to see the customer names:
+11. Query to see the customer names:
     ```
     SQL> <copy>select * from customer;</copy>
     ```
 
-10. Capture the SCN for the database before being malicious:
+12. Capture the SCN for the database before being malicious:
     ```
     SQL> <copy>Select CURRENT_SCN as BEFORE_DELETE from v$database;</copy>
     ```

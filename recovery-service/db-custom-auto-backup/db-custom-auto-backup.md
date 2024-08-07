@@ -50,7 +50,7 @@ In this lab, you will:
 5. You can customize the automatic backups for this database
     * Backup Destination: Keep the selection for Autonomous Recovery Service from the drop-down menu
     * Protection policy: Select the custom protection policy created in the previous lab
-    * Keep the selection checked for Real-time data protection
+    * Be sure the selection for **Real-time data protection is checked**
     * Deletion options after database termination: Select how to manage backups after the database is terminated
     * Backup scheduling (UTC): Select a time window to run backups from the drop-down menu
 

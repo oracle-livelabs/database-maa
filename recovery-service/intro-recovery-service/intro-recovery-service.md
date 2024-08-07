@@ -1,4 +1,4 @@
-# Real-time Oracle Database protection with Autonomous Recovery Service
+# Protect & Recover Databases from Ransomware with Oracle Recovery Service
 
 ## Introduction
 

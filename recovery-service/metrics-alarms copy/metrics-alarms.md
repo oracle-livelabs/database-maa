@@ -47,8 +47,7 @@ In this lab, you will:
 3. Provide the follow information in the dialog under each section:
     * Define alarm:
         * Alarm name: Type a name for the alarm definition.  Ex: Data Loss Alarm
-        * Alarm body: Provide a description of the alarm.  Ex: Data Loss Exposure too high for the database
-    * Tags - leave as default
+        * Alarm summary: Provide a description of the alarm.  Ex: Data Loss Exposure too high for the database
     * Metric description
         * Compartment: Your compartment name
         * Metric namespace: oci-recovery-service
@@ -60,6 +59,8 @@ In this lab, you will:
         * operator: greater than
         * Value: 120 (provide number of seconds)
         * Trigger delay minutes: 1
+        * Alarm severity: Critical
+        * Alarm body: Provide any steps you would like the notification reader to follow.
     * Define alarm notifications
         * Destination service: Notifications
         * Compartment: Your compartment name
@@ -70,7 +71,7 @@ In this lab, you will:
     * Message group - leave as default
     * Message format - leave as default
 
-4. Click Save alarm
+4. Click Save.
 
 5. You will receive an email confirming the subscription.
 

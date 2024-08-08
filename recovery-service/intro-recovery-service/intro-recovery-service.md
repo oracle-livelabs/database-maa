@@ -32,4 +32,4 @@ This lab assumes you have:
 
 ## Acknowledgements
 * **Author** - Kelly Smith, Product Manager, Backup & Recovery Solutions
-* **Last Updated By/Date** - Kelly Smith, May 2023
+* **Last Updated By/Date** - Kelly Smith, August 2024

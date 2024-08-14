@@ -30,12 +30,6 @@ In this lab
 
    **sudo su - oracle**
 
-   Set the environment to connect to your database.
-
-   Type **. oraenv** and press **Enter**. 
-    
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different from ORCL).
-
    Type **sqlplus "/as sysdba"**  and press **Enter** to connect to source database as SYS user.
 
    Please find below snippet of the connection steps.
@@ -49,12 +43,6 @@ In this lab
    Switch user to **oracle** using below command.
 
    **sudo su - oracle**
-
-   Set the environment to connect to your database.
-
-   Type **. oraenv** and press **Enter**. 
-    
-   Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different from ORCL).
 
    Type **sqlplus "/as sysdba"**  and press **Enter** to connect to target database as SYS user.
 
@@ -391,6 +379,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Data Management Modernise Specialist, EMEA Technology Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, August 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, November 2023
 
 

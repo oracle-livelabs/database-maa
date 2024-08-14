@@ -17,18 +17,22 @@ In this lab, you will:
 1. Navigate to Database Backups
     ![OCI menu to Database Backups](images/ham_database_dbbackups.png)
 
-2. Select Protection Policies from the left menu
+2. Select the compartment provided in your Login Info
+    ![OCI drop down selection for compartments](images/select_compartment.png)
+
+3. Select Protection Policies from the left menu
     ![OCI menu showing protection policies](images/recovery_service_protection_policy_menu.png)
 
-3. Click the Create protection policy button
+4. Click the Create protection policy button
     ![Button to create a protection policy](images/create_protection_policy_button.png)
 
-4. Enter the following information to create a protection policy
+5. Enter the following information to create a protection policy
     * Name: Any name you would like to use to identify the policy
     * Compartment:  The compartment being used
     * Backup retention period (in days): Enter the number of days to retain the backup
+    * Enable retention lock: Locks the retention of the backups so no one can reduce backup retention time. (Scheduled lock time must be 14 days in the future)
 
-5. Click the Create button
+6. Click the Create button
     ![Button to complete the policy creation](images/create_button.png)
 
 ## Task 2: Customize the Automatic Backup configuration for Base Database Service
@@ -44,11 +48,11 @@ In this lab, you will:
     ![Button to configure automatic backups](images/config_auto_backups_button.png)
 
 5. You can customize the automatic backups for this database
-    * Backup scheduling (UTC): Select a time window to run backups from the drop-down menu
     * Backup Destination: Keep the selection for Autonomous Recovery Service from the drop-down menu
     * Protection policy: Select the custom protection policy created in the previous lab
-    * Keep the selection checked for Real-time data protection
+    * Be sure the selection for **Real-time data protection is checked**
     * Deletion options after database termination: Select how to manage backups after the database is terminated
+    * Backup scheduling (UTC): Select a time window to run backups from the drop-down menu
 
 6. Click the Save changes button
 
@@ -82,4 +86,4 @@ In this lab, you will:
 
 ## Acknowledgements
 * **Author** - Kelly Smith, Product Manager, Backup & Recovery Solutions
-* **Last Updated By/Date** - Kelly Smith, May 2023
+* **Last Updated By/Date** - Kelly Smith, August 2024

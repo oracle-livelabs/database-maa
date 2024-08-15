@@ -107,17 +107,61 @@ In this lab
 
 12. Take a note of the Public IP address of the compute instance which will used to login to source database system.
 
-13. Collect the value of SYS password.
+13. Modify the SYS user password on Source Database.
 
-    Login to the source database server using the Public IP and private ssh key.
+    Please note that we need to use same Source Database SYS password for the Target database provisioning (Lab 3).
 
-    Please refer the value of RACPASSWORD variable in file /u01/ocidb/params.ini for SYS,SYSTEM,PDBADMIN and SYSMAN password.
+    Current SYS user password (refer RACPASSWORD variable in /u01/ocidb/params.ini file) can't be used for Target database provisioning since it doesn't meet the password complexity of Target database service.
 
+    Please follow below procedure to change SYS user password of Source Database.
+
+    a. Establish connection to source database.
+      
+      Please follow below steps to establish connection to source database using SQLPLUS.
+
+      Login to source database server using Public IP and ssh key.
+
+      Switch user to **oracle** using below command.
+
+      **sudo su - oracle**
+
+      Set the environment to connect to your database.
+
+      Type **. oraenv** and press **Enter**. 
+    
+      Enter **ORCL** when asked for **ORACLE\_SID** and then press **Enter** (Enter your ORACLE\_SID if that is different from ORCL).
+
+      Type **sqlplus "/as sysdba"**  and press **Enter** to connect to source database as SYS user.
+
+      Please find below snippet of the connection steps.
+
+     ![Image showing sqlplus connection to source cdb](./images/source-cdb-connection.png)
+     
+    b. Modify the SYS password.     
+     
+      Execute below statement on the source database connection already established using previous step.
+
+    ```text
+     <copy>
+     alter user SYS identified by Your_Password 
+     </copy>
+     ```
+     Below is the sample output.
+
+      ![Image showing output of sys password change command on source](./images/sys-password-change.png)
+   
+     Please note that you need to provide a password that meets below criteria.
+      
+     The password must be 9 to 30 characters and contain at least two uppercase, two lowercase, two numeric, and two special characters.
+    
+     The special characters must be _, #, or -.
+    
+     The password must not contain the user name (SYS, SYSTEM, and so on) or the word "oracle" either in forward or reversed order and regardless of casing.
     
     
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, March 2023
+* **Last Updated By/Date** - Amalraj Puthenchira, March 2024
 

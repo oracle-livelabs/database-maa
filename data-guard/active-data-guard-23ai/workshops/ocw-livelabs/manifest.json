@@ -1,0 +1,67 @@
+{
+    "workshoptitle": "Protect Your Data with Oracle Active Data Guard",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Get Started",
+            "description": "Login to Oracle Cloud",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
+        },
+        {
+            "title": "Introduction",
+            "description":"Workshop Overview",
+            "filename":"../../introduction/introduction.md"
+        },
+        {
+            "title": "Lab 1: Prepare the database hosts",
+            "description":"Prepare the database hosts",
+            "type": "livelabs",
+            "filename":"../../prepare-host/prepare-host.md"
+        },
+        {
+            "title": "Lab 2: Prepare the databases",
+            "description":"Prepare the databases",
+            "filename":"../../prepare-db/prepare-db.md"
+        },
+        {
+            "title": "Lab 3: Configure Data Guard",
+            "description":"Configure Data Guard",
+            "filename":"../../configure-dg/configure-dg.md"
+        },
+        {
+            "title": "Lab 4: Verify the Data Guard configuration",
+            "description":"Configure Data Guard",
+            "filename":"../../verify-dg/verify-dg.md"
+        },
+        {
+            "title": "Lab 5: Create role-based services",
+            "description":"Create role-based services",
+            "filename":"../../create-services/create-services.md"
+        },
+        {
+            "title": "Lab 6: Transparent Application Continuity",
+            "description":"Transparent Application Continuity",
+            "filename":"../../tac/tac.md"
+        },
+        {
+            "title": "Lab 7: Test your deployments with Snapshot Standby",
+            "description":"Test your deployments with Snapshot Standby",
+            "filename":"../../snapshot-standby/snapshot-standby.md"
+        },
+        {
+            "title": "Lab 8: Use Real-Time Query and DML Redirection",
+            "description":"Use Real-Time Query and DML Redirection",
+            "filename":"../../real-time-query-dml/real-time-query-dml.md"
+        },
+        {
+            "title": "Lab 9: Create AWR reports on the standby database",
+            "description":"Create AWR reports on the standby database",
+            "filename":"../../awr-snapshots/awr-snapshots.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+        }
+    ]
+}

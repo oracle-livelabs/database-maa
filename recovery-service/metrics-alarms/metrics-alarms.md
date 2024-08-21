@@ -64,7 +64,7 @@ In this lab, you will:
     * Define alarm notifications
         * Destination service: Notifications
         * Compartment: Your compartment name
-        * Click Create a topic
+        * Click Create a topic (Note: You will not be able to save the topic in the lab environment)
             * Topic name: High-Data-Loss
             * Subscription protocol: Email
             * Subscription email: Enter an email you would like to use to see the results

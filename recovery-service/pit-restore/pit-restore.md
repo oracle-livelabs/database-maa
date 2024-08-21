@@ -80,7 +80,8 @@ In this lab, you will:
     SQL> <copy>select * from customer;</copy>
     ```
 
-12. Capture the SCN for the database before being malicious:
+12. Capture the SCN for the database before being malicious.  
+* Note: This SCN will be used later in the lab.
     ```
     SQL> <copy>Select CURRENT_SCN as BEFORE_DELETE from v$database;</copy>
     ```

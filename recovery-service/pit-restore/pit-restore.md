@@ -30,8 +30,8 @@ In this lab, you will:
 
 1. Open OCI Cloud Shell by clicking the drop-down in the top right
     ![Launch point location for Cloud Shell](images/cloud_shell_button.png)
-
-2. Click OK if a prompt appears regarding processor type.
+    
+2. Click Close if a prompt appears regarding processor type.
 
 3. Type N to exit out of the Cloud Shell tutorial.
 
@@ -79,8 +79,9 @@ In this lab, you will:
     ```
     SQL> <copy>select * from customer;</copy>
     ```
-
-12. Capture the SCN for the database before being malicious:
+    
+12. Capture the SCN for the database before being malicious.  
+* Note: This SCN will be used later in the lab.
     ```
     SQL> <copy>Select CURRENT_SCN as BEFORE_DELETE from v$database;</copy>
     ```
@@ -136,7 +137,7 @@ In this lab, you will:
 5. Select Restore to SCN in the Restore Database dialog
     ![Restore to SCN dialog](images/basedb_restore_dialog.png)
 
-6. Enter the SCN captured from BEFORE_DELETE in Task 2, Step 7 above
+6. Enter the SCN captured from BEFORE_DELETE in Task 2, Step 12 above
 
 7. Click Restore Database
 

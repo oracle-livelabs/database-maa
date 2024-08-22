@@ -18,15 +18,16 @@ Estimated Lab Time: 15 Minutes
 
 2. From the menu, select **Oracle Database**, then **Oracle Base Database (VM, BM)**.
 
-   ![Menu of OCI Console showing how to navigate to the next steps](images/oci-menu-basedb.png " ")
+    ![Menu of OCI Console showing how to navigate to the next steps](images/oci-menu-basedb.png " ")
 
 3. In the List Scope section on the left, enter the first part of the compartment assigned to you in the Search field, then click the compartment name.
     ![List of compartments where the correct compartment must be selected](images/select-compartment-livelabs.png)
     
-   There are two Database Systems created for you. The system prefixed with `adghol0` is the primary database, and the system prefixed with `adghol1` is the secondary database that will become the standby database.
+    There are two Database Systems created for you. The system prefixed with `adghol0` is the primary database, and the system prefixed with `adghol1` is the secondary database that will become the standby database.
    
 4. Click the name of the primary database (`adghol0`).
     ![OCI Console showing how to navigate to the next step](images/db-systems.png)
+
 5. Scroll down on the page and click on **Nodes(1)** to find the host's **Public IP Address**.
     **Copy the address on the clipboard and make sure to have this information noted down for later.**
     ![Screenshot of OCI Console showing how to navigate to the next step](images/node0.png)
@@ -43,29 +44,34 @@ Estimated Lab Time: 15 Minutes
 
 9. Open the **Cloud Shell** using the icon next to the region.
     ![Screenshot of OCI Console showing the button for the Cloud Shell](images/cloud-shell.png)
-  The Cloud Shell opens and shows the **prompt**.
-  You can maximize it for a better experience. You can enter `N` if it asks to run a tutorial.
+    The Cloud Shell opens and shows the **prompt**.
+    You can maximize it for a better experience. You can enter `N` if it asks to run a tutorial.
 
-10. Find your ssh private key which has been created earlier to connect to the host where the primary database is located.
-     1. If you have used the **Reserve Workshop on Livelabs** option (Green Button), you should have used any of the methods for generating SSH key pairs using [How to Generate SSH Keys](https://oracle-livelabs.github.io/common/labs/generate-ssh-key/?lab=generate-ssh-keys) .
-   Now, you should have the **Public** and **Private** key pair. You must have provided the Public Key while reserving the lab and you need the repsective Private key to connect the DB Server.
-     2. If you have used the **Run on Your Tenancy** option (Brown Button), you must use the downloaded public and private keys (downloaded while creating the DB Systems) to connect to the DB servers.
+10. Download the SSH keys using wget. We employ a LiveLabs-generic SSH key pair to streamline the environment provisioning process, saving you valuable time. This approach allows you to commence the hands-on exercises promptly without the need to worry about initial configurations.
+    ```
+    <copy>
+    wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/75QkYvgn8zNo7vSaI8M4k5GGvs62bRQzeHPQFCxoQQZD1nwD5sl8oDyWjkBvAScE/n/c4u04/b/OCW2024/o/id_rsa_livelabs.zip 
+    </copy>
+    ```
 
-   All the labs use Cloud shell to connect to the DB server. You can also connect to the DB servers with your preferred tools, such as Terminal on Mac, Powershell on Windows, Putty etc.  Refer the above mentioned link [How to Connect to Servers](https://oracle-livelabs.github.io/common/labs/generate-ssh-key/?lab=generate-ssh-keys) for detailed instructions. Once you connect to the DB server, **the rest of the instructions will remain the same**.
+11. Unzip the archive
+    ```
+    <copy>
+    unzip id_rsa_livelabs.zip
+    </copy>
+    ```
 
-11. Using the **Upload** facility, upload the private key in the **Cloud Shell** environment.
-    ![Screenshot of the cloud shell showing how to upload the keys](./images/cloud-shell-upload.png)
-    ![Screenshot of the cloud shell showing how to upload the keys](./images/cloud-shell-upload-key.png)
-   
-12. To ease the copy & paste of the next operations, rename the key file to `cloudshellkey` (replace `YOUR_KEY_FILE` with the actual name):
+    You will find the following files:
+
+      * id\_rsa\_livelabs (private key)
+      * id\_rsa\_livelabs.pub (public key)
+      * id\_rsa\_livelabs.ppk (private key in Putty format - for Windows only)
+
+12. Change the permission of the private key to `0600`:
     ````
-    <copy>mv YOUR_KEY_FILE cloudshellkey</copy>
+    <copy>chmod 600 id_rsa_livelabs</copy>
     ````
-13. Change the permission of the private key to `0600`:
-    ````
-    <copy>chmod 600 cloudshellkey</copy>
-    ````
-14. Prepare the SSH config file to connect to the hosts.
+13. Prepare the SSH config file to connect to the hosts.
     ````
     <copy>
     mkdir ~/.ssh
@@ -78,17 +84,17 @@ Estimated Lab Time: 15 Minutes
     Host adghol0
         Hostname \$0
         User opc
-        IdentityFile ~/cloudshellkey
+        IdentityFile ~/id_rsa_livelabs
 
     Host adghol1
         Hostname \$1
         User opc
-        IdentityFile ~/cloudshellkey
+        IdentityFile ~/id_rsa_livelabs
     EOF" IP_ADDRESS0 IPADDRESS1
     </copy>
     ````
     ![Screenshot of the cloud shell showing the steps executed so far](./images/ssh-config.png)
-15. Verify the SSH config file content:
+14. Verify the SSH config file content:
     ````
     <copy>
     cat ~/.ssh/config
@@ -99,14 +105,14 @@ Estimated Lab Time: 15 Minutes
     Host adghol0
     Hostname 129.148.41.182
         User opc
-        IdentityFile ~/cloudshellkey
+        IdentityFile ~/id_rsa_livelabs
     
     Host adghol1
         Hostname 168.75.74.51
         User opc
-        IdentityFile ~/cloudshellkey
+        IdentityFile ~/id_rsa_livelabs
     ````
-16. Try the connection to the primary host:
+15. Try the connection to the primary host:
     ````
     <copy>
     ssh adghol0
@@ -114,7 +120,7 @@ Estimated Lab Time: 15 Minutes
     ````
     ![The SSH connection to adghol0 succeeded.](./images/ssh-adghol0.png)
 
-   You should be connected to the primary database host.
+    You should be connected to the primary database host.
 
 ## Task 2: Prepare the primary database host
 
@@ -123,7 +129,7 @@ Estimated Lab Time: 15 Minutes
     ````
     <copy>sudo dnf install -y git</copy>
     ````
-   ![Screenshot of the cloud shell showing the steps executed so far](images/prepare-host0-1.png)
+    ![Screenshot of the cloud shell showing the steps executed so far](images/prepare-host0-1.png)
 
 2. Become the `oracle` user:
 
@@ -141,7 +147,7 @@ Estimated Lab Time: 15 Minutes
     git checkout
     </copy>
     ```
-   ![The git clone command downloads only a portion of the git repository](images/git-clone.png)
+    ![The git clone command downloads only a portion of the git repository](images/git-clone.png)
 
 4. Execute the preparation script. It will:
     * Create the static service registration entry in listener.ora
@@ -180,7 +186,7 @@ Estimated Lab Time: 15 Minutes
     ```
     <copy>sudo dnf install -y git</copy>
     ```
-   ![Screenshot of the cloud shell showing the steps executed so far](images/prepare-host0-1.png)
+    ![Screenshot of the cloud shell showing the steps executed so far](images/prepare-host0-1.png)
 
 2. Become the `oracle` user:
     
@@ -189,7 +195,7 @@ Estimated Lab Time: 15 Minutes
     ```
 
 3. Download the helper scripts using git:
-
+    
     ```
     <copy>
     git clone -b main -n --filter=tree:0 --depth=1 https://github.com/oracle-livelabs/database-maa.git
@@ -198,7 +204,7 @@ Estimated Lab Time: 15 Minutes
     git checkout
     </copy>
     ```
-   ![The git clone command downloads only a portion of the git repository](images/git-clone.png)
+    ![The git clone command downloads only a portion of the git repository](images/git-clone.png)
      
 4. Execute the preparation script also on the secondary host. It will:
     * Create the static service registration entry in listener.ora

@@ -2,16 +2,16 @@
 
 ## Introduction
 
-When switching over or failing over the Data Guard configuration, the correct services are started, and the highly available connection string still works for new connections.
+When switching over or failing over the Data Guard configuration, the correct services start, and the highly available connection string still works for new connections.
 
-What about existing connections? But more importantly, what about transactions that were active at the time of the role change?
+What about existing connections? More importantly, what about active transactions at the time of the role change?
 
-Transparent Application Continuity solves this problem brilliantly. Once the session is terminated, the client retries to connect until the service is available again, and then Transparent Application Continuity restores the session state and replays the transaction to the state before the session failure.
+Transparent Application Continuity brilliantly solves this problem. Once the session is terminated, the client retries to connect until the service is available again. Then, Transparent Application Continuity restores the session state and replays the transaction to the state the session had before the failure.
 
 Estimated Lab Time: 10 Minutes
 
 ### Requirements
-To try this lab, you must have successfully completed the following labs:
+To try this lab, you must have completed the following labs:
 * [Prepare the database hosts](../prepare-host/prepare-host.md)
 * [Prepare the databases](../prepare-db/prepare-db.md)
 * [Configure Data Guard](../configure-dg/configure-dg.md)
@@ -33,7 +33,7 @@ To try this lab, you must have successfully completed the following labs:
     </copy>
     ```
 
-2.  Create the user and role for the application:
+2. Create the user and role for the application:
      ```
      <copy>
      create user TACUSER identified by WElcome123##;
@@ -102,7 +102,7 @@ To try this lab, you must have successfully completed the following labs:
 
     ![Execute the switchover](images/switchover.png)
 
-    You don't need to wait for the switchover to finish, you can continue to the next step.
+    You don't need to wait for the switchover to finish; you can continue to the next step.
 
 ## Task 4: Commit the user transaction
 
@@ -122,7 +122,7 @@ To try this lab, you must have successfully completed the following labs:
 
 ## Task 5: Switch back to the original primary
 
-Before continuing with the next labs, don't forget to switch back. The labs expect `ADGHOL0` to be the primary environment. 
+Remember to switch back before continuing with the next labs. The labs expect `ADGHOL0` to be the primary environment. 
 
 1. **From the terminal where you have the dgmgrl session**, execute another switchover back to the database on host `adghol`:
 
@@ -133,7 +133,8 @@ Before continuing with the next labs, don't forget to switch back. The labs expe
     </copy>
     ```
 
-2. Exit the dgmgrl command-line:
+2. Exit the dgmgrl command line:
+    
     ```
     <copy>
     exit

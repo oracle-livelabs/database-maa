@@ -2,19 +2,19 @@
 
 ## Introduction
 
-A Data Guard standby database is not just there to protect your data. You can use it for maintenance (by switching over the primary workload to the secondary site while you do the maintenance on the primary site), or you can temporarily open your standby database in read/write mode to test changes on a copy of the primary database.
+A Data Guard standby database does more than protect your data. You can use it for maintenance (by switching over the primary workload to the secondary site while you do the maintenance on the primary site) or temporarily open your standby database in read/write mode to test changes on a copy of the primary database.
 This capability is called **snapshot standby**.
 Data Guard allows you to transition from physical standby to a snapshot standby with a single command.
-The modifications made to the snapshot standby are automatically reverted by flashing back the database when it is converted back to a physical standby.
-This functionality can be useful for testing:
+When the snapshot standby is converted back to a physical standby, the modifications made to it are automatically reverted by flashing back the database.
+This functionality can be helpful in testing:
 * application deployments
-* structural changes (e.g. new indexes)
+* structural changes (e.g., new indexes)
 * new patches or even new versions
 
 Estimated Lab Time: 5 Minutes
 
 ### Requirements
-To try this lab, you must have successfully completed the following labs:
+To try this lab, you must have completed the following labs:
 * [Prepare the database hosts](../prepare-host/prepare-host.md)
 * [Prepare the databases](../prepare-db/prepare-db.md)
 * [Configure Data Guard](../configure-dg/configure-dg.md)
@@ -45,10 +45,10 @@ To try this lab, you must have successfully completed the following labs:
 
     ![The conversion to snapshot standby succeeds](images/convert-to-snapshot-standby.png)
 
-    Note, we don't use SQLcl for the conversion, because the command `CONVERT DATABASE` isn't yet integrated in SQLcl.
-    The conversion stops the apply process on the standby database, creates a guaranteed restore point, and opens it in read write mode.
+    Note, we don't use SQLcl for the conversion because the command `CONVERT DATABASE` isn't yet integrated in SQLcl.
+    The conversion stops the apply process on the standby database, creates a guaranteed restore point, and opens it in read-write mode.
 
-    While the database is in snapshot standby mode, it keeps receiving the redo from the primary database, keeping it protected.
+    While the database is in snapshot standby mode, it continues to receive the redo from the primary database, protecting it.
 
 2. After the conversion, the configuration reports the new role.
 
@@ -78,13 +78,13 @@ To try this lab, you must have successfully completed the following labs:
     </copy>
     ```
 
-3. Connect to the snapshot standby service. The service is started by the startup trigger only when the PDB is in a snapshot standby role.
+3. Connect to the snapshot standby service. The startup trigger starts the service only when the PDB is in a snapshot standby role.
     ```
     <copy>
     connect tacuser/WElcome123##@mypdb_snap
     </copy>
     ```
-    The user `tacuser` has been created during the lab *Transparent Application Continuity*. If you don't have tried it, you can copy the instructions to create the user from there.
+    The user `tacuser` has been created during the lab *Transparent Application Continuity*. If you haven't tried it, you can copy the instructions to create the user from there.
     ```
     <copy>
     create table this_wasnt_there (a varchar2(50));
@@ -112,8 +112,10 @@ To try this lab, you must have successfully completed the following labs:
 
     ![The conversion to physical standby succeeds](images/convert-to-snapshot-standby.png)
 
-    The conversion to physical standby closes the standby database, flashes it back to the previously created restore point, and start the apply process again.
-    If the `show configuration verbose` reports a warning, try to run it again, as the standby might take some seconds to start receiveing redo from the primary.
+    The conversion to physical standby closes the standby database, flashes it back to the previously created restore point, and starts the apply process again.
+    If `show configuration verbose` reports a warning, try running it again, as the standby might take some seconds to start receiving redo from the primary.
+
+For more information about Snapshot Standby Database, read the [documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/sbydb/managing-oracle-data-guard-physical-standby-databases.html).
 
 You have successfully tested a snapshot standby database.
 

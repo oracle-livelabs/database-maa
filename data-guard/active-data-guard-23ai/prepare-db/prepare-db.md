@@ -8,30 +8,30 @@ This lab uses a manual Data Guard configuration on top of two OCI Base Database 
 Estimated Lab Time: 15 Minutes
 
 ### Requirements
-To try this lab, you must have successfully completed **Lab 1: Prepare the database hosts**
+To try this lab, you must have completed **Lab 1: Prepare the database hosts**
 
 ### Objectives
 - Prepare the primary database for Data Guard
-- Clean-up the standby database system
+- Clean up the standby database system
 - Duplicate the database for standby
 - Finish the standby database configuration
 
 ## Task 1: Prepare the primary database for Data Guard
 
-You should have two Cloud Shell tabs connected to the primary and secondary hosts, adghol0 and adghol1. If you don't, follow the first steps of Lab 1 until you have both SSH connections established.
+You should have two Cloud Shell tabs connected to the primary and secondary hosts, adghol0 and adghol1. Otherwise, follow the first steps of Lab 1 until you have both SSH connections established.
 Make sure you are using the `oracle` user.
 
-1. **On the primary host** `adghol0`, get the `DB_UNIQUE_NAME` of the primary database. It is different for every deployment, so we will have to replace it in the workshop commands. On OCI BaseDB, the environment variable `$ORACLE_UNQNAME` is set to the correct value:
-
+1. **On the primary host** `adghol0`, get the `DB_UNIQUE_NAME` of the primary database. It differs for every deployment, so we must replace it in the workshop commands. On OCI BaseDB, the environment variable `$ORACLE_UNQNAME` is set to the correct value:
+    
     ```
     <copy>echo $ORACLE_UNQNAME</copy>
     ```
 
-    Note its value down as you will require it many times during this workshop.
+    Note its value, as you will require it often during this workshop.
 
     **From now on, we'll refer to its value as `ADGHOL0_UNIQUE_NAME`.**
 
-2. Connect to the Data Guard broker client command-line (dgmgrl). We use **SQLcl** for most steps, but some, including `PREPARE DATABASE`, still require `dgmgrl`.
+2. Connect to the Data Guard broker client command line (dgmgrl). We use **SQLcl** for most steps, but some, including `PREPARE DATABASE`, still require `dgmgrl`.
 
     ```
     <copy>dgmgrl /</copy>
@@ -68,28 +68,29 @@ Make sure you are using the `oracle` user.
     For more information, [refer to the documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/dgbkr/oracle-data-guard-broker-commands.html#GUID-46F6267D-E3CF-4544-AC47-A22D9704BAF2).
 
 4. Exit the `dgmgrl` command-line:
+    
     ```
     <copy>exit</copy>
     ```
 
 
-## Task 2: Clean-up the standby database system
+## Task 2: Clean up the standby database system
 
 1. **On the secondary host** `adghol1`, get the `DB_UNIQUE_NAME` of the standby database. On OCI BaseDB, the environment variable `$ORACLE_UNQNAME` is set to the correct value:
   
     ```
     <copy>echo $ORACLE_UNQNAME</copy>
     ```
-    Note its value down as you will require it many times during this workshop.
+    Note its value, as you will require it often during this workshop.
   
     **From now on, we'll refer to its value as `ADGHOL1_UNIQUE_NAME`.**
 
-2. Connect as SYSDBA and shutdown the current database (make sure you are on host `adghol1`):
+2. Connect as SYSDBA and shut down the current database (make sure you are on host `adghol1`):
 
     ```
     <copy>sql / as sysdba</copy>
     ```
-    then:
+    Then:
     ```
     <copy>
     shutdown abort
@@ -111,14 +112,14 @@ Make sure you are using the `oracle` user.
 
 ## Task 3: Duplicate the database for standby
 
-Oracle usually recommends to use `RESTORE FROM SERVICE` to instantiate the standby database. That has the advantage of letting users retry the restore operation without restarting the copy of the datafiles that have already been restored. However, for simplicity, we use the `DUPLICATE` command in this lab.
+Oracle recommends using `RESTORE FROM SERVICE` to instantiate the standby database. That has the advantage of letting users retry the restore operation without restarting the copy of the data files that have already been restored. However we use the `DUPLICATE` command in this lab for simplicity.
 
 1. **On the secondary host** `adghol1`, where we prepare the standby database, start the standby instance:
 
     ```
     <copy>sql / as sysdba</copy>
     ```
-    then:
+    Then:
     ```
     <copy>
     startup nomount force
@@ -128,9 +129,9 @@ Oracle usually recommends to use `RESTORE FROM SERVICE` to instantiate the stand
 
     ![Start the standby in nomount](images/standby-nomount.png)
 
-2. With the Recovery Manager (RMAN) command-line, connect to the primary and standby instances.
+2. Connect to the primary and standby instances with the Recovery Manager (RMAN) command line, 
 
-    For the standby instance, we must use the static service registered with the listener, because the instance is in nomount, and no other services are available yet.
+    For the standby instance, we must use the static service registered with the listener because the instance is in nomount, and no other services are available yet.
 
     ```
     <copy>
@@ -163,6 +164,8 @@ Oracle usually recommends to use `RESTORE FROM SERVICE` to instantiate the stand
     <copy>exit</copy>
     ```
 
+    For more information about the DUPLICATE command, [refer to the documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/rcmrf/DUPLICATE.html).
+
 ## Task 4: Finish the standby database configuration
 
 1. Connect to the freshly duplicated standby database and clear the online and standby redo logs:
@@ -181,7 +184,7 @@ Oracle usually recommends to use `RESTORE FROM SERVICE` to instantiate the stand
 
     ![Clear online and standby logs](images/clear-standby-logs.png)
 
-    The standby redo logs (sometimes shortened as SRLs) are fundamental to receive the current redo stream from the primary database.
+    The standby redo logs (sometimes shortened as SRLs) are fundamental for receiving the current redo stream from the primary database.
 
     ![Redo transport architecture](images/redo-transport-architecture.png)
 

@@ -50,7 +50,7 @@ Alternatively, you may run the script file `.set-env-db.sh` from the home locati
 
 In this task, you download and execute the SQL script file using the following steps.
 
-1. Download and save the [backup-and-recovery-operations-prerequisities.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/wVaLF_P62mfpzEzA7rRaCh7CgG8WtfStsG5MQ_kmRI6JkWNwErWWnQREmO0FLXcv/n/c4u04/b/livelabsfiles/o/labfiles/backup-and-recovery-operations-prerequisities.zip) file in `/opt/oracle/product/21c/dbhome_1/bin` location.
+1. Download and save the [backup-and-recovery-operations-prerequisities.zip](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/backup-and-recovery-operations-prerequisities.zip) file in `/opt/oracle/product/21c/dbhome_1/bin` location.
 
 2. Extract the contents from the zip file using the following command.
     ```

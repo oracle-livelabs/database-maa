@@ -16,7 +16,7 @@ In this workshop, you will:
 
 ### Prerequisites 
 
-* Download and unzip the [Terraform zip file](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/resource-manager-bin.zip) onto your local machine.
+* Download and unzip the [Terraform zip file](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/resource-manager-bin.zip) onto your local machine.
 
 You may proceed to the first lab.
 

@@ -47,8 +47,7 @@ In this lab, you will:
 3. Provide the follow information in the dialog under each section:
     * Define alarm:
         * Alarm name: Type a name for the alarm definition.  Ex: Data Loss Alarm
-        * Alarm body: Provide a description of the alarm.  Ex: Data Loss Exposure too high for the database
-    * Tags - leave as default
+        * Alarm summary: Provide a description of the alarm.  Ex: Data Loss Exposure too high for the database
     * Metric description
         * Compartment: Your compartment name
         * Metric namespace: oci-recovery-service
@@ -60,49 +59,19 @@ In this lab, you will:
         * operator: greater than
         * Value: 120 (provide number of seconds)
         * Trigger delay minutes: 1
+        * Alarm severity: Critical
+        * Alarm body: Provide any steps you would like the notification reader to follow.
     * Define alarm notifications
         * Destination service: Notifications
         * Compartment: Your compartment name
-        * Click Create a topic
+        * Click Create a topic (Note: You will not be able to save the topic in the lab environment)
             * Topic name: High-Data-Loss
             * Subscription protocol: Email
             * Subscription email: Enter an email you would like to use to see the results
     * Message group - leave as default
     * Message format - leave as default
 
-4. Click Save alarm
-
-5. You will receive an email confirming the subscription.
-
-6. If you would like to see the notification from optional Task 3 & 4 click Confirm subscription in the email
-
-## Task 3:  (Optional) Trigger the alarm
-
-1. Navigate to Base Database Service
-    ![OCI menu to Base Database Service](images/ham_basedb.png)
-
-2. Click on your database system under Display name
-
-3. Click Nodes under Resources on the left
-    ![Table showing all the nodes for the database](images/basedb_public_ip.png)
-
-4. Click the 3 dots on the far right and select Stop
-    ![Right drop down menu showing stop command](images/node_stop.png)
-
-5. Click Stop node on the confirmation pop up message
-
-6. An email will appear when the threshold is passed
-
-## Task 4: (Optional) Delete the Alarm to stop email notification
-
-1. Navigate to Alarm Definitions
-    ![OCI menu showing Alarm definitions](images/ham_alarm_definitions.png)
-
-2. Click the name of your alarm
-
-3. Click the Actions menu in the top right
-
-4. Click Delete alarm.  This will prevent further alarms once the lab is complete.
+4. Note you will not be able to save the alarm in this LiveLab environment.  Click cancel and continue the the next lab section.
 
 
 ## Learn More
@@ -114,4 +83,4 @@ In this lab, you will:
 
 ## Acknowledgements
 * **Author** - Kelly Smith, Product Manager, Backup & Recovery Solutions
-* **Last Updated By/Date** - Kelly Smith, May 2023
+* **Last Updated By/Date** - Kelly Smith, August 2024

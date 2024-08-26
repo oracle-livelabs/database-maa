@@ -28,60 +28,60 @@ To try this lab, you must have successfully completed:
 
 1. Connect to the Data Guard broker using the primary's DGConnectIdentifier. Don't forget to change the command with the actual connect identifier:
 
-  ```
-  <copy>
-dgmgrl sys/WElcome123##@ADGHOL0_DGCI
-  </copy>
-  ```
+    ```
+    <copy>
+    dgmgrl sys/WElcome123##@ADGHOL0_DGCI
+    </copy>
+    ```
 
-2. Validate the readiness of the standby database with the `VALIDATE DATABASE STRICT ALL` command. Again, change ADGHOL1_UNIQUE_NAME with the actual db_unique_name. It should show **Ready for Switchover: Yes**
+2. Validate the readiness of the standby database with the `VALIDATE DATABASE STRICT ALL` command. Again, change `ADGHOL1_UNIQUE_NAME` with the actual `db_unique_name`. It should show **Ready for Switchover: Yes**
 
-  ```
-  <copy>
-show configuration
-validate database ADGHOL1_UNIQUE_NAME strict all
-  </copy>
-  ```
+    ```
+    <copy>
+    show configuration
+    validate database ADGHOL1_UNIQUE_NAME strict all
+    </copy>
+    ```
 
-  ![Successful validation of the standby database](images/validate.png)
+    ![Successful validation of the standby database](images/validate.png)
 
 ## Task 2: Execute the Switchover
 
 1. Execute the switchover to the standby database:
 
-  ```
-  <copy>
-set time on
-switchover to ADGHOL1_UNIQUE_NAME
-  </copy>
-  ```
+    ```
+    <copy>
+    set time on
+    switchover to ADGHOL1_UNIQUE_NAME
+    </copy>
+    ```
 
-  ![Successful execution of the switchover command](images/switchover.png)
+    ![Successful execution of the switchover command](images/switchover.png)
 
 1. The `show configuration` command should show the new situation (the primary database is now the one running on `adghol1`):
 
-  ```
-  <copy>
-show configuration
-  </copy>
-  ```
+    ```
+    <copy>
+    show configuration
+    </copy>
+    ```
 
-  ![New configuration ofter the switchover](images/show-configuration.png)
+    ![New configuration ofter the switchover](images/show-configuration.png)
 
 
 ## Task 3: Switch back to the first node
 
 1. Move the primary role back to the database on host `adghol0` so that the next labs will work properly.
 
-  ```
-  <copy>
-validate database ADGHOL0_UNIQUE_NAME strict all
-switchover to ADGHOL0_UNIQUE_NAME
-  </copy>
-  ```
+    ```
+    <copy>
+    validate database ADGHOL0_UNIQUE_NAME strict all
+    switchover to ADGHOL0_UNIQUE_NAME
+    </copy>
+    ```
 
-  ![Successful validation of the standby database](images/validate2.png)
-  ![Successful execution of the switchover command](images/switchover2.png)
+    ![Successful validation of the standby database](images/validate2.png)
+    ![Successful execution of the switchover command](images/switchover2.png)
 
 
 You have successfully tested a switchover operation.
@@ -90,6 +90,6 @@ You have successfully tested a switchover operation.
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, December 2023
+- **Last Updated By/Date** -  Ludovico Caldara, July 2024
 
   

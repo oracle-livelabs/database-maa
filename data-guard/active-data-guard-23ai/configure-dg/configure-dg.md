@@ -10,6 +10,8 @@ For more information about the Data Guard broker, refer to the [broker documenta
 
 Estimated Lab Time: 5 Minutes
 
+[Oracle Active Data Guard 23ai](videohub:1_eucevsm7)
+
 ### Requirements
 To try this lab, you must have completed:
 * Lab 1: Prepare the database hosts

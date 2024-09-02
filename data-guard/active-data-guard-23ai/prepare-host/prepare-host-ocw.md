@@ -5,6 +5,8 @@ In this lab, we connect to the database hosts and do some preliminary preparatio
 
 Estimated Lab Time: 15 Minutes
 
+[Oracle Active Data Guard 23ai](videohub:1_1cq91vn7)
+
 ### Objectives
 - Prepare the connection to the database hosts
 - Prepare the primary database host

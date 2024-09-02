@@ -7,6 +7,8 @@ This lab uses a manual Data Guard configuration on top of two OCI Base Database 
 
 Estimated Lab Time: 15 Minutes
 
+[Oracle Active Data Guard 23ai](videohub:1_6i8cq28y)
+
 ### Requirements
 To try this lab, you must have completed **Lab 1: Prepare the database hosts**
 
@@ -176,8 +178,9 @@ Oracle recommends using `RESTORE FROM SERVICE` to instantiate the standby databa
 
     ```
     <copy>
-    select * from v$standby_log;
+    select * from v$log;
     alter database clear logfile group 1, group 2, group 3;
+    select * from v$standby_log;
     alter database clear logfile group 4, group 5, group 6;
     </copy>
     ```

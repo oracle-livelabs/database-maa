@@ -6,6 +6,8 @@ In this lab, we will check the configuration and gain a basic knowledge of contr
 
 Estimated Lab Time: 15 Minutes
 
+[Oracle Active Data Guard 23ai](videohub:1_esvtn3k8)
+
 ### Requirements
 To try this lab, you must have completed:
 * Lab 1: Prepare the database hosts
@@ -37,14 +39,13 @@ The SQLcl integration does not yet support `VALIDATE` commands. Therefore, we wi
 
     ![Show configuration verbose shows a healthy status](images/show-configuration-verbose.png)
 
-3. The command `validate static connect identifier for all` checks that all members' static connect identifiers are reachable by each other.
+3. The command `validate static connect identifier for all` checks that the specified service is statically registered with the listener:
 
     ```
     <copy>validate static connect identifier for all;</copy>
     ```
 
-4. Similarly, the command `validate network configuration for all` checks the network configuration is healthy.
-
+4. Similarly, the command `validate network configuration for all` checks that all member's instances are reachable by each other.
     ```
     <copy>validate network configuration for all;</copy>
     ```
@@ -75,7 +76,7 @@ The SQLcl integration does not yet support `VALIDATE` commands. Therefore, we wi
 
     ![Output of VALIDATE DATABASE STRICT ALL](images/validate-strict.png)
 
-    In this case, you can see that the configuration **is not ready for the switchover**. The output shows that the Flashback logging is not enabled on the standby database. It won't prevent the switchover from working but might give unexpected problems later, for example, the inability to reinstate the new primary in case of failover.
+    In this case, you can see that the configuration **is not ready for the switchover**. The output shows that the Flashback logging is not enabled on the standby database. It won't prevent the switchover from working but might give unexpected problems later, for example, the inability to reinstate the database after a failover.
 
     Don't worry; we will fix that later.
 
@@ -184,17 +185,17 @@ Oracle Data Guard exposes many fixed views that help observe and monitor the Dat
     </copy>
     ```
      
-2. Query `v$dataguard_config`:
+2. Query `v$dg_broker_config`:
 
     ```
     <copy>
-    select * from v$dataguard_config;
+    select * from v$dg_broker_config;
     </copy>
     ```
 
     ![Content of the v$dataguard_config view](images/v-dataguard-config-primary.png)
 
-    The view `v$dataguard_config` contains the configuration members. The content is the same on the primary and standby databases, and it's helpful to understand the topology.
+    The view `v$dg_broker_config` contains the configuration members. The content is the same on the primary and standby databases, and it's helpful to understand the topology.
 
 3. Query the broker properties from `v$dg_broker_property`:
 
@@ -236,7 +237,7 @@ Oracle Data Guard exposes many fixed views that help observe and monitor the Dat
 
     ```
     <copy>
-    select * from v$dataguard_config;
+    select * from v$dg_broker_config;
     </copy>
     ```
 

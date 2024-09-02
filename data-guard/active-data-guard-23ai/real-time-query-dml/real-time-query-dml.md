@@ -11,6 +11,8 @@ This functionality broadens the use cases for the physical standby, including ru
 
 Estimated Lab Time: 15 Minutes
 
+[Oracle Active Data Guard 23ai](videohub:1_fzrzvek5)
+
 ### Requirements
 To try this lab, you must have completed the following labs:
 * [Prepare the database hosts](../prepare-host/prepare-host.md)

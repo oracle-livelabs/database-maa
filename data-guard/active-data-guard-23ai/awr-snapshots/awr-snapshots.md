@@ -7,6 +7,8 @@ Before Oracle Database 23ai, creating a snapshot on the standby database was imp
 
 Estimated Lab Time: 5 Minutes
 
+[Oracle Active Data Guard 23ai](videohub:1_7rghvu1t)
+
 ### Requirements
 To try this lab, you must have completed the following labs:
 * [Prepare the database hosts](../prepare-host/prepare-host.md)

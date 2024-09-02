@@ -10,6 +10,8 @@ Transparent Application Continuity brilliantly solves this problem. Once the ses
 
 Estimated Lab Time: 10 Minutes
 
+[Oracle Active Data Guard 23ai](videohub:1_83rxr9ae)
+
 ### Requirements
 To try this lab, you must have completed the following labs:
 * [Prepare the database hosts](../prepare-host/prepare-host.md)
@@ -138,6 +140,24 @@ Remember to switch back before continuing with the next labs. The labs expect `A
     ```
     <copy>
     exit
+    </copy>
+    ```
+
+## Task 6 (optiona): List the recent switchovers
+
+1. From a terminal (**the host is irrelevant for this lab**), connect to the read-write service on the primary:
+    
+    ```
+    <copy>
+    sql sys/WElcome123##@mypdb_rw as sysdba
+    </copy>
+    ```
+
+2. Query the view `v$dg_broker_role_change` to get the recent role changes:
+    
+    ```
+    <copy>
+    select * from v$dg_broker_role_change;
     </copy>
     ```
 

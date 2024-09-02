@@ -143,7 +143,7 @@ Remember to switch back before continuing with the next labs. The labs expect `A
     </copy>
     ```
 
-## Task 6 (optiona): List the recent switchovers
+## Task 6 (optional): List the recent switchovers
 
 1. From a terminal (**the host is irrelevant for this lab**), connect to the read-write service on the primary:
     

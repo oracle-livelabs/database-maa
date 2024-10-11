@@ -13,6 +13,8 @@ This functionality can be helpful in testing:
 
 Estimated Lab Time: 5 Minutes
 
+[Oracle Active Data Guard 23ai](videohub:1_w5u4zktb)
+
 ### Requirements
 To try this lab, you must have completed the following labs:
 * [Prepare the database hosts](../prepare-host/prepare-host.md)

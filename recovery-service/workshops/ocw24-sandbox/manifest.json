@@ -29,9 +29,14 @@
             "filename": "../../on-demand-backup/on-demand-backup.md"
         },
         {
+            "title": "Your LiveLabs SSH Key",
+            "description": "How to use LiveLabs' SSH Keys",
+            "filename": "https://oracle-livelabs.github.io/common/labs/livelabs-ssh/livelabs-ssh.md"
+        },
+        {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+            "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
         }
     ]
 }

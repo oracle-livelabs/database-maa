@@ -28,25 +28,40 @@ In this lab, you will:
 
 ## Task 2: Connect to the database, create a table and insert data
 
-1. SSH into the host using the follow command:
+1. Open OCI Cloud Shell by clicking the drop-down in the top right
+    ![Launch point location for Cloud Shell](images/cloud_shell_button.png)
+    
+2. Click Close if a prompt appears regarding processor type.
+
+3. Type N to exit out of the Cloud Shell tutorial.
+
+4. Upload the SSH private key by clicking the gear in the top right of the cloud shell
+    ![Launch point location for cloud shell upload](images/cloud_shell_upload.png)
+
+5. Change the permissions on the uploaded key file
+    ```
+    <copy>chmod 600 <private_key_file> </copy>
+    ```
+
+6. SSH into the host using the follow command:
     ```
     <copy>ssh -i <private_key_file> opc@<public-ip-address> </copy>
     ```
 
-2. Change user to Oracle:
+7. Change user to Oracle:
     ```
     $ <copy>sudo su - oracle</copy>  
     ```
-3. Connect to the database:
+8. Connect to the database:
     ```
     $ <copy>sqlplus / as sysdba</copy> 
     ```
 
-4. Create a table for customers:
+9. Create a table for customers:
     ```
     SQL> <copy>create table customer(first_name varchar2(50));</copy>
     ```
-5. Insert new customers:
+10. Insert new customers:
     ```
     SQL> <copy>INSERT INTO customer (first_name) 
             WITH names AS (
@@ -56,13 +71,17 @@ In this lab, you will:
             )
             SELECT * FROM names;</copy>
     ```
+    ```
+    SQL> <copy>commit;</copy>
+    ```
 
-6. Query to see the customer names:
+11. Query to see the customer names:
     ```
     SQL> <copy>select * from customer;</copy>
     ```
-
-7. Capture the SCN for the database before being malicious:
+    
+12. Capture the SCN for the database before being malicious.  
+* Note: This SCN will be used later in the lab.
     ```
     SQL> <copy>Select CURRENT_SCN as BEFORE_DELETE from v$database;</copy>
     ```
@@ -118,12 +137,12 @@ In this lab, you will:
 5. Select Restore to SCN in the Restore Database dialog
     ![Restore to SCN dialog](images/basedb_restore_dialog.png)
 
-6. Enter the SCN captured from BEFORE_DELETE in Task 2, Step 7 above
+6. Enter the SCN captured from BEFORE_DELETE in Task 2, Step 12 above
 
 7. Click Restore Database
 
 8. The restore will take approximately 10 minutes and you can track progress under the Work requests at the bottom left
-    ![Work request table](images/basedb_public_ip.png)
+    ![Work request table](images/work_request_restore.png)
 
 9. You can continue to the next lab and return after the restore is complete.  After the restore is complete query the customer table:
     ```
@@ -142,4 +161,4 @@ In this lab, you will:
 
 ## Acknowledgements
 * **Author** - Kelly Smith, Product Manager, Backup & Recovery Solutions
-* **Last Updated By/Date** - Kelly Smith, May 2023
+* **Last Updated By/Date** - Kelly Smith, August 2024

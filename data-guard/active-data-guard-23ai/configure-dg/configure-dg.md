@@ -30,53 +30,34 @@ For this live lab, we will use the new `sql` (SQLcl) integration for Data Guard 
 
     ```
     <copy>
-    sql sys/WElcome123##@adghol0_dgci as sysdba
+    sql sys/WElcome123##@adghol_site0 as sysdba
     </copy>
     ```
   
 2. Create the configuration using the `DG CREATE CONFIGURATION` command. 
-    **Replace `ADGHOL0_UNIQUE_NAME` with the actual `db_unique_name`**:
  
     ```
     <copy>
-    dg create configuration adghol as primary database is ADGHOL0_UNIQUE_NAME connect identifier is 'adghol0_dgci';
+    dg create configuration adghol as primary database is adghol_site0 connect identifier is 'adghol_site0';
     </copy>
-    ```
-    For example:
-    ```
-    dg create configuration adghol primary database is adghol_53k_lhr connect identifier is 'adghol0_dgci';
     ```
  
 3. Add the standby database to the configuration using the `DG ADD DATABASE` command.
-    **Replace  `ADGHOL1_UNIQUE_NAME` with the actual `db_unique_name` of the standby database**:
 
     ```
     <copy>
-    dg add database ADGHOL1_UNIQUE_NAME as connect identifier is 'adghol1_dgci';
+    dg add database adghol_site1 as connect identifier is 'adghol_site1';
     </copy>
-    ```
-    For example:
-    ```
-    dg add database adghol_p4n_lhr as connect identifier is 'adghol1_dgci';
     ```
 
 4. Set the `StaticConnectIdentifier` for both databases.
     Although the broker builds the default static connect identifier if it's not explicitly configured, it is still a good practice to set it to ease the troubleshooting. In this lab, we need to set it to specify the FQDN of the hosts or the DNS will not solve the remote host.
 
-    **Replace `ADGHOL0_UNIQUE_NAME` and `ADGHOL1_UNIQUE_NAME` with the actual values**:
     ```
     <copy>
-    dg edit database ADGHOL0_UNIQUE_NAME set property StaticConnectIdentifier='adghol0_sci';
+    dg edit database adghol_site0 set property StaticConnectIdentifier='adghol_site0_dgmgrl';
      
-    dg edit database ADGHOL1_UNIQUE_NAME set property StaticConnectIdentifier='adghol1_sci';
-    </copy>
-    ```
-    For example:
-    ```
-    <copy>
-    dg edit database adghol_53k_lhr set property StaticConnectIdentifier='adghol0_sci';
- 
-    dg edit database adghol_p4n_lhr set property StaticConnectIdentifier='adghol1_sci';
+    dg edit database adghol_site1 set property StaticConnectIdentifier='adghol_site1_dgmgrl';
     </copy>
     ```
 
@@ -106,6 +87,7 @@ For this live lab, we will use the new `sql` (SQLcl) integration for Data Guard 
     ![Show configuration shows a healthy status](images/show-configuration.png)
 
     That means that the primary can contact the standby database with the `DGConnectIdentifier`, send the redo stream with no lag, and the standby database can apply it successfully without lag.
+
 6. Exit from the SQLcl command line:
     
     ```

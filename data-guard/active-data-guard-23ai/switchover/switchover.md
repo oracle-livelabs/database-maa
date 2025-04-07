@@ -26,22 +26,24 @@ To try this lab, you must have successfully completed:
 
 ## Task 1: Run the validation command
 
-1. Connect to the Data Guard broker using the primary's DGConnectIdentifier. Don't forget to change the command with the actual connect identifier:
+1. Connect to the Data Guard broker using the primary's DGConnectIdentifier.
 
     ```
     <copy>
-    dgmgrl sys/WElcome123##@ADGHOL0_DGCI
+    dgmgrl sys/WElcome123##@adghol_site0
     </copy>
     ```
 
-2. Validate the readiness of the standby database with the `VALIDATE DATABASE STRICT ALL` command. Again, change `ADGHOL1_UNIQUE_NAME` with the actual `db_unique_name`. It should show **Ready for Switchover: Yes**
+2. Validate the readiness of the standby database with the `VALIDATE DATABASE STRICT ALL` command. 
 
     ```
     <copy>
     show configuration
-    validate database ADGHOL1_UNIQUE_NAME strict all
+    validate database adghol_site1 strict all
     </copy>
     ```
+
+    It will show **Ready for Switchover: No**. The only reason should be: **One or more pluggable databases have save state enabled.**
 
     ![Successful validation of the standby database](images/validate.png)
 
@@ -52,17 +54,17 @@ To try this lab, you must have successfully completed:
     ```
     <copy>
     set time on
-    switchover to ADGHOL1_UNIQUE_NAME
+    switchover to adghol_site1
     </copy>
     ```
 
     ![Successful execution of the switchover command](images/switchover.png)
 
-1. The `show configuration` command should show the new situation (the primary database is now the one running on `adghol1`):
+1. The `show configuration verbose` command should show the new situation (the primary database is now `adghol_site1`):
 
     ```
     <copy>
-    show configuration
+    show configuration verbose
     </copy>
     ```
 
@@ -71,12 +73,12 @@ To try this lab, you must have successfully completed:
 
 ## Task 3: Switch back to the first node
 
-1. Move the primary role back to the database on host `adghol0` so that the next labs will work properly.
+1. Move the primary role back to the database `adghol_site0` so that the next labs will work properly.
 
     ```
     <copy>
-    validate database ADGHOL0_UNIQUE_NAME strict all
-    switchover to ADGHOL0_UNIQUE_NAME
+    validate database adghol_site0 strict all
+    switchover to adghol_site0
     </copy>
     ```
 

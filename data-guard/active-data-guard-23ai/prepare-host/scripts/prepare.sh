@@ -24,5 +24,5 @@ EOF
 
 echo ##########################
 echo Creating the entries in tnsnames.ora
-grep _rw $ORACLE_HOME/network/admin/tnsnames.ora || sh /home/oracle/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/tnsadmin/tns.sh >> $ORACLE_HOME/network/admin/tnsnames.ora
+sh /home/oracle/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/tnsadmin/tns.sh > $ORACLE_HOME/network/admin/tnsnames.ora
 cat $ORACLE_HOME/network/admin/tnsnames.ora

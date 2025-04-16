@@ -31,7 +31,7 @@ To try this lab, you must have completed the following labs:
 1. From any terminal, connect to the standby database as SYSDBA.
     ```
     <copy>
-    sql sys/WElcome123##@adghol1_dgci as sysdba
+    sql sys/WElcome123##@adghol_site1 as sysdba
     </copy>
     ```
 

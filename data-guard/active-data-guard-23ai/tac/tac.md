@@ -88,15 +88,13 @@ To try this lab, you must have completed the following labs:
 ## Task 3: Execute a switchover
 
 1. **From the other terminal**, connect to the primary database and execute a switchover. We will use `dgmgrl`this time.
-    **Replace `ADGHOL1_UNIQUE_NAME` with the standby database `db_unique_name`.**
-
 
     ```
     <copy>
-    dgmgrl sys/WElcome123##@adghol0_dgci
+    dgmgrl sys/WElcome123##@adghol_site0
     show configuration
     set time on
-    switchover to ADGHOL1_UNIQUE_NAME
+    switchover to adghol_site1
     </copy>
     ```
 
@@ -131,7 +129,7 @@ Remember to switch back before continuing with the next labs. The labs expect `A
     ```
     <copy>
     show configuration
-    switchover to ADGHOL0_UNIQUE_NAME
+    switchover to adghol_site0
     </copy>
     ```
 
@@ -157,9 +155,10 @@ Remember to switch back before continuing with the next labs. The labs expect `A
     
     ```
     <copy>
-    select * from v$dg_broker_role_change;
+    select event, old_primary, new_primary, begin_time, end_time from v$dg_broker_role_change;
     </copy>
     ```
+    ![The new view v$dg_broker_role_change lists the recent role changes.](images/v-dg-broker-role-change.png)
 
 You have successfully tested Transparent Application Continuity.
 

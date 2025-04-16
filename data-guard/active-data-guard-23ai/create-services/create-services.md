@@ -39,7 +39,7 @@ To try this lab, you must have successfully completed:
     
     ```
     <copy>
-    sql sys/WElcome123##@adghol0_dgci as sysdba
+    sql sys/WElcome123##@adghol_site0 as sysdba
     alter pluggable database all discard state;
     </copy>
     ```

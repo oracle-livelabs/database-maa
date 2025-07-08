@@ -165,14 +165,15 @@ To try this lab, you must have completed the following labs:
 
 ## Task 6: Verify the inserted vectors
 
-   ```
-   <copy>
-   select vector_serialize(embed_vector) from vector_store;
-   exit
-   </copy>
-   ```
-    
-   ![Select the vector representing the embeddings](images/select-vectors.png)
+1. Query the table `embed_vector` to get the embeddings generated in the previous step.
+    ```
+    <copy>
+    select vector_serialize(embed_vector) from vector_store;
+    exit
+    </copy>
+    ```
+
+    ![Select the vector representing the embeddings](images/select-vectors.png)
 
 For more information about Real-Time Query, read the [documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/sbydb/managing-oracle-data-guard-physical-standby-databases.html#GUID-D5FB88EC-799D-40E7-80E1-19474E3167E4).
 

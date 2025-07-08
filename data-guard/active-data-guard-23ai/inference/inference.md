@@ -65,10 +65,12 @@ To try this lab, you must have completed the following labs:
     ```
     mkdir $HOME/vector
     cd $HOME/vector
-    cp database-maa/data-guard/active-data-guard-23ai/inference/adg-vs-storage-mirroring.pdf .
+    cp ~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/inference/adg-vs-storage-mirroring.pdf .
     wget https://objectstorage.us-chicago-1.oraclecloud.com/n/idb6enfdcxbl/b/Livelabs/o/onnx-embedding-models/tinybert.onnx
     cd
     ```
+
+    ![The PDF is copied and the ONNX model downloaded](images/download-model.png)
 
 ## Task 3: Load the document on the primary database
 1. Connect to the primary database to create the directory and configure the permissions:
@@ -86,6 +88,8 @@ To try this lab, you must have completed the following labs:
     </copy>
     ```
 
+    ![Create the directory in the database and grant read to the user](images/create-directory.png)
+
 2. Connect as `tacuser` user and create the supporting tables:
     ```
     <copy>
@@ -93,16 +97,19 @@ To try this lab, you must have completed the following labs:
     </copy>
     ```
 
+
     ```
     <copy>
-    @~/database-maa/data-guard/active-data-guard-23ai/inference/01-create-tables.sql
+    @~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/inference/01-create-tables.sql
     </copy>
     ```
+
+    ![Create the tables to store the PDF, its chunks, and the embeddings](images/create-tables.png)
 
 3. Insert the sample PDF document as a BLOB on the primary database:
     ```
     <copy>
-    @~/database-maa/data-guard/active-data-guard-23ai/inference/02-load-pdf.sql
+    @~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/inference/02-load-pdf.sql
     <copy>
     ```
 
@@ -111,10 +118,11 @@ To try this lab, you must have completed the following labs:
 1. Still connected as `tacuser` on the primary database, load the model:
     ```
     <copy>
-    @~/database-maa/data-guard/active-data-guard-23ai/inference/02-load-model.sql
+    @~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/inference/03-load-model.sql
     </copy>
     ```
 
+    ![Load the PDF with TOBLOB(), and the model with DBMS_VECTOR.LOAD_ONNX_MODEL()](images/load-model.png)
 
 ## Task 5: Run embedding generation on the standby database.
 
@@ -122,7 +130,7 @@ To try this lab, you must have completed the following labs:
 
     ```
     <copy>
-    sql tacuser/WElcome123##@MYPDB_RW
+    connect tacuser/WElcome123##@MYPDB_RO
     </copy>
     ```
 
@@ -141,13 +149,17 @@ To try this lab, you must have completed the following labs:
     </copy>
     ```
 
+    ![The model is loaded on the standby and DML redirect enabled for the session](images/check-model-enable-dml-redirect.png)
+
 3. Generate and insert the embeddings:
 
     ```
     <copy>
-    @~/database-maa/data-guard/active-data-guard-23ai/inference/04-generate-embeddings.sql
+    @~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/inference/04-generate-embeddings.sql
     </copy>
     ```
+
+    ![Embeddings are generated on the standby and inserted through DML redirection](images/generate-embeddings.png)
 
     **Note:** The generation would work as an INSERT .. SELECT on the primary database. On the standby database, the `dbms_vector_chain.utl_to_embeddings` procedure returns a type `VARRAY_VECTOR_T` which is not yet supported by DML redirection. For that reason you see a separation of vector generation and insertion in a PL/SQL block.
 
@@ -155,9 +167,16 @@ To try this lab, you must have completed the following labs:
 
     ```
     <copy>
-    SELECT vector_serialize(embed_vector) FROM vector_store;
+    select vector_serialize(embed_vector) from vector_store;
+    exit
     </copy>
     ```
+
+    ![Select the vector representing the embeddings](images/select-vectors.png)
+
+For more information about Real-Time Query, read the [documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/sbydb/managing-oracle-data-guard-physical-standby-databases.html#GUID-D5FB88EC-799D-40E7-80E1-19474E3167E4).
+
+You have successfully tested Real-Time Query, DML Redirection, and inferencing with ONNX models on the Standby Database!
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn;

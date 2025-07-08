@@ -1,7 +1,7 @@
-#Performing Automatic Block Media Recovery
+# Performing Automatic Block Repair
 
 ## Introduction
-In this lab, we will see how Active Data Guard Automatic Block media recovery works.
+In this lab, we will see how Active Data Guard Automatic Block Repair works.
 
 [Video explaining the basics of automatic block recovery](youtube:WFoTNPgKll4)
 
@@ -45,15 +45,19 @@ To try this lab, you must have completed the following labs:
 
     ![Screenshot of the cloud shell showing the alert log of the primary database](./images/abmr-alert-primary.png)  
 
-2. **On another tab**, log onto the **primary** database:
+2. **On another tab**, **connect again to the primary host** `adghol0` (**the lab will not work otherwise!!**)
+    ````
+    <copy>
+    ssh adghol0
+    sudo su - oracle
+    </copy>
+    ````
+
     ````
     <copy>
     sql sys/WElcome123##@mypdb_rw as sysdba
     </copy>
     ````
-
-    ![Screenshot of the cloud shell showing a connection to the primary database](./images/abmr-connect-primary.png)  
-
 
 3. Run the `01-abmr.sql` script.
     ````
@@ -62,66 +66,9 @@ To try this lab, you must have completed the following labs:
 
     This script creates a tablespace, adds a table in it and inserts a row. This will also return the rowID. Take a note of this number as you will need it in step 2, the step that will introduce corruption.
 
-    ````
-    SQL> @~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/abr/01-abmr.sql
-    SQL> set feed on;
-    SQL> Col owner format a20;
-    SQL> var rid varchar2(25);
-    SQL> col segment_name format a20;
-    SQL> drop tablespace corruptiontest including contents and datafiles;
-    drop tablespace corruptiontest including contents and datafiles
-    *
-    ERROR at line 1:
-    ORA-00959: tablespace 'CORRUPTIONTEST' does not exist
-    
-    SQL> create tablespace corruptiontest datafile '/home/oracle/corruptiontest01.dbf' size 8m;
-    
-    Tablespace created.
-    
-    SQL> create table will_be_corrupted(myfield varchar2(50)) tablespace corruptiontest;
-    
-    Table created.
-    
-    SQL> insert into will_be_corrupted(myfield) values ('This will have a problem') returning rowid into :rid;
-    
-    1 row created.
-    
-    SQL> print
-    
-    RID
-    --------------------------------------------------------------------------------------------------------------------------------
-    AAASGFAANAAAAAPAAA
-    
-    SQL> Commit;
-    
-    Commit complete.
-    
-    SQL> Alter system checkpoint;
-    
-    System altered.
-    
-    SQL> select * from will_be_corrupted;
-    
-    MYFIELD
-    --------------------------------------------------
-    This will have a problem
-    
-    1 row selected.
-    
-    SQL> --select owner, segment_name,tablespace_name,file_id,block_id from dba_extents where segment_name='WILL_BE_CORRUPTED'; -- will be segment id
-    
-    SQL> select dbms_rowid.ROWID_BLOCK_NUMBER(ROWID, 'SMALLFILE') FROM will_be_corrupted where myfield='This will have a problem';
-    
-    DBMS_ROWID.ROWID_BLOCK_NUMBER(ROWID,'SMALLFILE')
-    ------------------------------------------------
-                                                  11
-    
-    1 row selected.
-    
-    SQL>
-    ````
+    ![Output of the steps that show the block number containing the inserted row.](./images/abmr-prepare.png)  
 
-In this example, you will need to remember the number **11**.
+In this example, you will need to remember the number `782`. This might vary on your environment.
 
 ## Task 2: Corrupt the datafile
 1. In the same session, execute script `02-abmr.sql`.
@@ -133,15 +80,6 @@ In this example, you will need to remember the number **11**.
     </copy>
     ````
 
-    ````
-    SQL> host dd conv=notrunc bs=1 count=2 if=/dev/zero of=/home/oracle/corruptiontest01.dbf seek=$((&block_id*8192+16))
-    Enter value for block_id: 11
-    2+0 records in
-    2+0 records out
-    2 bytes (2 B) copied, 0.000608575 s, 3.3 kB/s
-
-    SQL>
-    ````
 
 At this point, we have a corrupt datafile, but the database is not aware of it yet.
 
@@ -156,32 +94,17 @@ By accessing the table, Oracle will need to read the data. This demo database is
 
     ````
     <copy>
-    @~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/abr/02-abmr.sql
+    @~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/abr/03-abmr.sql
     </copy>
     ````
 
     In the sqlplus window we will see this
 
-    ````
-    SQL> @~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/abr/03-abmr.sql
-    SQL> alter system flush buffer_cache;
-
-    System altered.
-
-    SQL> <copy>select * from will_be_corrupted;
-
-    MYFIELD
-    --------------------------------------------------
-    This will have a problem
-
-    1 row selected.
-
-    SQL>
-    ````
+    ![Despite the corruption, the select had no errors](./images/abmr-corrupt.png)  
 
     The corrupted block has not generated any error to the user session. In the alert log from the primary database we notice that the automated block media recovery took place.
 
-    ![Screenshot of the cloud shell showing the recovery happening automatically in the alert log](./images/abmr-alert-recovery.png)  
+    ![The recovery happening automatically as seen in the alert log](./images/abmr-alert-recovery.png)  
 
 ## Task 4: Cleanup
 
@@ -191,6 +114,7 @@ To clean this excercise, just drop the tablespace.
     ````
     <copy>
     drop tablespace corruptiontest including contents and datafiles;
+    exit
     </copy>
     ````
 

@@ -1,8 +1,6 @@
 set echo on
-EXEC DBMS_VECTOR.LOAD_ONNX_MODEL(
-  'VEC_DUMP',
-  'tinybert.onnx',
-  'TINYBERT',
+BEGIN
+DBMS_VECTOR.LOAD_ONNX_MODEL( 'VEC_DUMP', 'tinybert.onnx', 'TINYBERT',
   JSON('{
     "function": "embedding",
     "embeddingOutput": "embedding",
@@ -11,6 +9,7 @@ EXEC DBMS_VECTOR.LOAD_ONNX_MODEL(
     }
   }')
 );
-
+END;
+/
 COMMIT;
 set echo off

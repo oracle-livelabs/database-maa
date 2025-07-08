@@ -44,7 +44,7 @@
             "filename":"../../tac/tac.md"
         },
         {
-            "title": "Lab 7: Use Real-Time Query and DML Redirection for AI Inference",
+            "title": "Lab 7: AI Inferencing with Real-Time Query and DML Redirection",
             "description":"Use Real-Time Query and DML Redirection",
             "filename":"../../inference/inference.md"
         },

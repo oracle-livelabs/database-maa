@@ -17,7 +17,7 @@ Estimated Lab Time: 15 Minutes
 
 1. Open up the menu in the left-hand corner.  
 
-2. From the menu, select **Oracle Database**, then **Oracle Base Database (VM, BM)**.
+2. From the menu, select **Oracle Database**, then **Oracle Base Database Service**.
 
    ![Menu of OCI Console showing how to navigate to the next steps](images/oci-menu-basedb.png " ")
 

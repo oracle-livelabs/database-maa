@@ -44,14 +44,14 @@
             "filename":"../../tac/tac.md"
         },
         {
-            "title": "Lab 7: Test your deployments with Snapshot Standby",
-            "description":"Test your deployments with Snapshot Standby",
-            "filename":"../../snapshot-standby/snapshot-standby.md"
+            "title": "Lab 7: Use Real-Time Query and DML Redirection for AI Inference",
+            "description":"Use Real-Time Query and DML Redirection",
+            "filename":"../../inference/inference.md"
         },
         {
-            "title": "Lab 8: Use Real-Time Query and DML Redirection",
-            "description":"Use Real-Time Query and DML Redirection",
-            "filename":"../../real-time-query-dml/real-time-query-dml.md"
+            "title": "Lab 8: Automatic Block Recovery",
+            "description":"Automatic Block Recovery",
+            "filename":"../../media-recovery/media-recovery.md"
         },
         {
             "title": "Lab 9: Create AWR reports on the standby database",

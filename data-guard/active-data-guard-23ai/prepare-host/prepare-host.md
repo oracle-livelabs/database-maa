@@ -113,6 +113,13 @@ Estimated Lab Time: 15 Minutes
     ssh adghol0
     </copy>
     ````
+
+    The first connection will ask:
+    ````
+    Are you sure you want to continue connecting (yes/no/[fingerprint])? 
+    ````
+
+    Type `yes`.
     ![The SSH connection to adghol0 succeeded.](./images/ssh-adghol0.png)
 
    You should be connected to the primary database host.
@@ -197,6 +204,13 @@ Estimated Lab Time: 15 Minutes
     ssh adghol1
     </copy>
     ````
+
+    The first connection will ask:
+    ````
+    Are you sure you want to continue connecting (yes/no/[fingerprint])? 
+    ````
+
+    Type `yes`.
 
 1. Install the git package that we will use later:
     ```
@@ -284,7 +298,8 @@ Similarly, the default Data Guard authentication mechanism uses the password fil
     </copy>
     ```
 
-5. **On the standby host** (`adghol1`), **as oracle**, copy the files to the correct locations and permissions (as `oracle`), then remove the temporary files as `opc`:
+5. **On the standby host** (`adghol1`), **as oracle**, copy the files to the correct locations and permissions (as `oracle`), then remove the temporary files as `opc`. 
+    **Note:** Use the appropriate browser tab connected to the `adghol1` server. Throughout the lab, make sure to have two browser tabs, one connected to `adghol0` and one connected to `adghol1`. Please carefully run the commands on the correct host according to the instructions provided.
     ```
     <copy>
     cd /opt/oracle/dcs/commonstore/wallets/$ORACLE_UNQNAME/tde
@@ -305,4 +320,4 @@ You have successfully prepared the two hosts with everything required to start c
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, July 2024
+- **Last Updated By/Date** -  Ludovico Caldara, July 2025

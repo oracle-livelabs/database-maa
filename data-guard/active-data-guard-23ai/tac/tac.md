@@ -40,21 +40,8 @@ To try this lab, you must have completed the following labs:
      <copy>
      create user TACUSER identified by WElcome123##;
      CREATE ROLE TAC_ROLE NOT IDENTIFIED ;
-     GRANT CREATE TYPE TO TAC_ROLE ;
-     GRANT CREATE VIEW TO TAC_ROLE ;
-     GRANT CREATE TABLE TO TAC_ROLE ;
-     GRANT ALTER SESSION TO TAC_ROLE ;
-     GRANT CREATE CLUSTER TO TAC_ROLE ;
-     GRANT CREATE SESSION TO TAC_ROLE ;
-     GRANT CREATE SYNONYM TO TAC_ROLE ;
-     GRANT CREATE TRIGGER TO TAC_ROLE ;
-     GRANT CREATE OPERATOR TO TAC_ROLE ;
-     GRANT CREATE SEQUENCE TO TAC_ROLE ;
-     GRANT CREATE INDEXTYPE TO TAC_ROLE ;
-     GRANT CREATE PROCEDURE TO TAC_ROLE ;
-     GRANT DROP ANY DIRECTORY TO TAC_ROLE ;
-     GRANT CREATE ANY DIRECTORY TO TAC_ROLE ;
-     GRANT SELECT ANY DICTIONARY TO TAC_ROLE ;
+     GRANT DB_DEVELOPER_ROLE TO TAC_ROLE;
+     GRANT CREATE MINING MODEL TO TAC_ROLE;
      GRANT KEEP DATE TIME TO TAC_ROLE;
      GRANT KEEP SYSGUID TO TAC_ROLE;
      GRANT TAC_ROLE TO TACUSER;
@@ -164,4 +151,4 @@ You have successfully tested Transparent Application Continuity.
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, July 2024
+- **Last Updated By/Date** -  Ludovico Caldara, July 2025

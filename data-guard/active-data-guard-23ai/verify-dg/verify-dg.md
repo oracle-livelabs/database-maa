@@ -101,6 +101,7 @@ The SQLcl integration does not yet support `VALIDATE` commands. Therefore, we wi
     ![Output of VALIDATE DGCONNECTIDENTIFIER](images/validate-dgci.png)
 
 9. Exit the `dgmgrl` command-line. We will perform the other activities using SQLcl.
+
     ```
     <copy>
     exit
@@ -377,4 +378,4 @@ You have successfully verified and altered the Oracle Data Guard configuration. 
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, July 2024
+- **Last Updated By/Date** -  Ludovico Caldara, July 2025

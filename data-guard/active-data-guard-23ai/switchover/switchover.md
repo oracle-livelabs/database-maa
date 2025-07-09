@@ -60,6 +60,8 @@ To try this lab, you must have successfully completed:
 
     ![Successful execution of the switchover command](images/switchover.png)
 
+    If you used Data Guard before 23ai, you might notice a faster role transition!
+
 1. The `show configuration verbose` command should show the new situation (the primary database is now `adghol_site1`):
 
     ```
@@ -92,6 +94,4 @@ You have successfully tested a switchover operation.
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, July 2024
-
-  
+- **Last Updated By/Date** -  Ludovico Caldara, July 2025

@@ -21,8 +21,8 @@
             "filename": "../../pit-restore/pit-restore.md"
         },
         {
-            "title": "Lab 3: Monitor & Create Alarms",
-            "filename": "../../metrics-alarms/metrics-alarms.md"
+            "title": "Lab 3: Monitor backups",
+            "filename": "../../metrics/metrics.md"
         },
         {
             "title": "Lab 4: Create an on-demand backup",

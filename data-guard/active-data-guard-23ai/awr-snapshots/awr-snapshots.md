@@ -2,13 +2,15 @@
 ## Introduction
 In real-world environments, it is common to require Automatic Workload Repository (AWR) reports for the standby databases to troubleshoot the redo apply throughput or the standby database performance in general.
 
-Before Oracle Database 23ai, it wasn't possible to create a snapshot on the standby without configuring a SYS$UMF topology. The process was cumbersome and required manual intervention after a role change (e.g. switchover). Oracle Database 23ai greatly simplify the task by allowing the seamless creation of AWR snapshots!
+Before Oracle Database 23ai, creating a snapshot on the standby database was impossible without configuring a SYS$UMF topology. The process was cumbersome and required manual intervention after a role change (e.g., a switch over). Oracle Database 23ai greatly simplifies the task by allowing the seamless creation of AWR snapshots!
 
 
 Estimated Lab Time: 5 Minutes
 
+[Oracle Active Data Guard 23ai](videohub:1_7rghvu1t)
+
 ### Requirements
-To try this lab, you must have successfully completed the following labs:
+To try this lab, you must have completed the following labs:
 * [Prepare the database hosts](../prepare-host/prepare-host.md)
 * [Prepare the databases](../prepare-db/prepare-db.md)
 * [Configure Data Guard](../configure-dg/configure-dg.md)
@@ -19,7 +21,7 @@ To try this lab, you must have successfully completed the following labs:
 * Create an AWR report
 * Review the report
 
-## Task 1: Create two AWR snapshost
+## Task 1: Create two AWR snapshots
 
 1. On the host where the standby database is running (adghol1), connect as SYSDBA and create an AWR snapshot:
 
@@ -58,7 +60,7 @@ To try this lab, you must have successfully completed the following labs:
     ![First part of the report creation](images/awrrpt-1.png)
 
 2. Select **text** as the report_type.
-    You will notice that the DBID list shows a different DBID for the standby database. This is because the new DBID is generated syntetically to distinguish the primary snapshots from the standby snapshots.
+    You will notice that the DBID list shows a different DBID for the standby database. That is because the new DBID is generated synthetically to distinguish the primary snapshots from the standby snapshots.
 
 3. The DBID and SID are pre-selected by the reporting tool, so you only need to specify the number of days (**1**), and the snapshots to generate the report (**1** and **2**):
 
@@ -79,10 +81,10 @@ To try this lab, you must have successfully completed the following labs:
     You will notice that the AWR report belongs to the standby database.
   
 
-You have successfully created AWR reports for the standby database. This concludes the Data Guard overview workshop.
+You have successfully created AWR reports for the standby database and completed the Data Guard overview workshop.
 
-Well done!
+Good job!
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, July 2024
+- **Last Updated By/Date** -  Ludovico Caldara, July 2025

@@ -3,69 +3,75 @@
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
+            "title": "Get Started",
+            "description": "Login to Oracle Cloud",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
+        },
+        {
             "title": "Introduction",
             "description":"Workshop Overview",
-            "publisheddate": "26/02/2021",
             "filename":"../../introduction/introduction.md"
         },
         {
-            "title": "Lab 1: Create the primary database",
-            "description":"Setup the 19c Primary Database",
-            "publisheddate": "26/02/2021",
-            "filename":"../../primary-db/primary-db.md"
+            "title": "Lab 1: Prepare the database hosts",
+            "description":"Prepare the database hosts",
+            "type": "livelabs",
+            "filename":"../../prepare-host/prepare-host.md"
         },
         {
-            "title": "Lab 2: Create the standby database",
-            "description":"Setup the standby Database",
-            "publisheddate": "26/02/2021",
-            "filename":"../../standby-db/standby-db.md"
+            "title": "Lab 2: Prepare the databases",
+            "description":"Prepare the databases",
+            "filename":"../../prepare-db/prepare-db.md"
         },
         {
-            "title": "Lab 3: Connect to the database",
-            "description":"Connection to the databases",
-            "publisheddate": "26/02/2021",
-            "filename":"../../connect-db/connect-db-cs.md"
+            "title": "Lab 3: Configure Data Guard",
+            "description":"Configure Data Guard",
+            "filename":"../../configure-dg/configure-dg.md"
         },
         {
-            "title": "Lab 4: Perform a switchover",
-            "description":"Perform a switchover",
-            "publisheddate": "26/02/2021",
-            "filename":"../../switchover/switchover-cs.md"
+            "title": "Lab 4: Verify the Data Guard configuration",
+            "description":"Configure Data Guard",
+            "filename":"../../verify-dg/verify-dg.md"
         },
         {
-            "title": "Lab 5: Perform a failover ",
-            "description":"Perform a Failover",
-            "publisheddate": "26/02/2021",
-            "filename":"../../failover/failover-cs.md"
+            "title": "Lab 5: OPTIONAL: Perform a role switchover",
+            "description":"Perform a role switchover",
+            "filename":"../../switchover/switchover.md"
         },
         {
-            "title": "Lab 6: Enable Active Data Guard DML Redirection ",
-            "description":"Enable Active Data Guard DML Redirection",
-            "publisheddate": "26/02/2021",
-            "filename":"../../dml-redirection/dml-redirection-cs.md"
+            "title": "Lab 6: Create role-based services",
+            "description":"Create role-based services",
+            "filename":"../../create-services/create-services.md"
         },
         {
-            "title": "Lab 7: Automatic block media recovery",
-            "description":"Learn about Automatic block media recovery ",
-            "publisheddate": "26/02/2021",
-            "filename":"../../media-recovery/media-recovery-cs.md"
+            "title": "Lab 7: Transparent Application Continuity",
+            "description":"Transparent Application Continuity",
+            "filename":"../../tac/tac.md"
         },
         {
-            "title": "Lab 8: Restore point propagation",
-            "description":"Learn about Restore point propagation ",
-            "publisheddate": "26/02/2021",
-            "filename":"../../restore-point-propagation/restore-point-propagation-cs.md"
+            "title": "Lab 8: Test your deployments with Snapshot Standby",
+            "description":"Test your deployments with Snapshot Standby",
+            "filename":"../../snapshot-standby/snapshot-standby.md"
         },
         {
-            "title": "Lab 9: Change the SYS password",
-            "description":"Change the SYS password",
-            "publisheddate": "26/02/2021",
-            "filename":"../../sys-passwords/sys-passwords-cs.md"
+            "title": "Lab 9: Use Real-Time Query and DML Redirection",
+            "description":"Use Real-Time Query and DML Redirection",
+            "filename":"../../real-time-query-dml/real-time-query-dml.md"
+        },
+        {
+            "title": "Lab 10: AI Inferencing with Real-Time Query and DML Redirection",
+            "description":"Use Real-Time Query and DML Redirection",
+            "filename":"../../inference/inference.md"
+        },
+        {
+            "title": "Lab 11: Create AWR reports on the standby database",
+            "description":"Create AWR reports on the standby database",
+            "filename":"../../awr-snapshots/awr-snapshots.md"
         },
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-            "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+            "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
         }
     ]
 }

@@ -45,19 +45,15 @@ Watch the video below for an overview of Oracle RAC.
 
 ## More on Oracle RAC
 
-Oracle RAC provides:
-* High availability
-* Scalability
-* Database as a Service
 
-Oracle Database with the Oracle Real Application Clusters (RAC) option allows multiple instances running on different servers to access the same physical database stored on shared storage. The database spans multiple hardware systems and yet appears as a single unified database to the application. This enables the utilization of commodity hardware to reduce total cost of ownership and to provide a scalable computing environment that supports various application workloads. If additional computing capacity is needed, customers can add additional nodes instead of replacing their existing servers. The only requirement is that servers in the cluster must run the same operating system and the same version of Oracle. They do not have to be the same model or capacity. This saves on capital expenditures allowing customers to buy servers with latest hardware configurations and use it alongside existing servers. This architecture also provides high availability as RAC instances running on different nodes provides protection from a server failure. It is important to note that (almost) all applications such as Oracle Applications, PeopleSoft, Siebel, SAP run without any changes on Oracle RAC.
+Oracle Database with the Oracle Real Application Clusters (RAC) option allows multiple instances running on different servers to access the same physical database stored on shared storage. The database spans multiple hardware systems and yet appears as a single unified database to the application. This enables the utilization of commodity hardware to reduce total cost of ownership and to provide a scalable computing environment that supports various application workloads. If additional computing capacity is needed, customers can add additional nodes instead of replacing their existing servers. The only requirement is that servers in the cluster must run the same operating system and the same version of Oracle. They do not have to be the same model or capacity. This saves on capital expenditures allowing customers to buy servers with latest hardware configurations and use it alongside existing servers. This architecture also provides high availability as RAC instances running on different nodes provides protection from a server failure. It is important to note that both custom built applications and traditional off-the-shelf applications such as Oracle E-Biz, PeopleSoft, Siebel, SAP etc. benefits from Oracle RAC availability and scalability features.
 
-![RAC Family of Solutions](./images/racfamily.png " ")
+![RAC Family of Solutions](./images/racandassociated.png " ")
 
 ## RAC and MAA
 Oracle MAA is a collection of architecture, configuration, and life cycle best practices and blueprints. It provides Oracle’s customers with valuable insights and expert recommendations which have been validated and tested working with enterprise customers. This is also an outcome of ongoing communication, with the community of database architects, software engineers, and database strategists, that helps Oracle develop a deep and complete understanding of various kinds of events that can affect availability or data integrity. Over the years, this led to the development and natural evolution of an array of availability reference architectures.
 
-RAC is a key underpinning of MAA.
+RAC is one of the key technologies for MAA.
 
 ![Oracle Maximum Availability Architecture](./images/maa_overview.png " ")
 
@@ -68,4 +64,4 @@ RAC is a key underpinning of MAA.
 ## Acknowledgements
 
 - **Authors/Contributors** - Troy Anthony, Anil Nair, Kay Malcolm
-- **Last Updated By/Date** - Anil Nair , June 2023
+- **Last Updated By/Date** - Anil Nair , Oct 2024

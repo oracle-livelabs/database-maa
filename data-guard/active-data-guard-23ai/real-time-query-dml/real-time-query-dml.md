@@ -3,16 +3,18 @@
 ## Introduction
 
 You have a copy of your production data on the standby database, so why not use it to offload some work from the primary database? 
-A standby database can be open read only while it applies changes coming from the primary database. This feature is called **Real-Time Query**, and it's part of the Active Data Guard option.
-Real-Time Query can offload read-only workloads, such as reports or read-only application modules. If the transport is synchronous, the reading sessions can wait for the received redo to be applied, providing **consistent reads** of all the transactions committed on the primary database.
+A standby database can simultaneously be opened read-only and applying changes from the primary database. This feature is called **Real-Time Query** and is part of the Active Data Guard option.
+Real-Time Query can offload read-only workloads like reports or read-only application modules. If the transport is synchronous, the reading sessions can wait for the received redo to be applied, providing **consistent reads** of all the transactions committed on the primary database.
 
-Additionally, the standby database can be configured to automatically redirect write requests to the primary database, in an ACID-compliant way, with the changes visible only in the privacy of the transaction started on the standby database.
-This functionality broadens the use cases for the physical standby, including running read-write workloads directly on the standby database. The feature, called **DML Redirection**, also supports DDLs and PL/SQL calls.
+Additionally, the standby database can automatically redirect write requests to the primary database in an ACID-compliant way, with the changes visible only in the privacy of the transaction started on the standby database.
+This functionality broadens the use cases for the physical standby, including running read-write workloads directly on the standby database. The **DML Redirection** feature also supports DDLs and PL/SQL calls.
 
 Estimated Lab Time: 15 Minutes
 
+[Oracle Active Data Guard 23ai](videohub:1_fzrzvek5)
+
 ### Requirements
-To try this lab, you must have successfully completed the following labs:
+To try this lab, you must have completed the following labs:
 * [Prepare the database hosts](../prepare-host/prepare-host.md)
 * [Prepare the databases](../prepare-db/prepare-db.md)
 * [Configure Data Guard](../configure-dg/configure-dg.md)
@@ -29,7 +31,7 @@ To try this lab, you must have successfully completed the following labs:
 1. From any terminal, connect to the standby database as SYSDBA.
     ```
     <copy>
-    sql sys/WElcome123##@adghol1_dgci as sysdba
+    sql sys/WElcome123##@adghol_site1 as sysdba
     </copy>
     ```
 
@@ -51,9 +53,9 @@ To try this lab, you must have successfully completed the following labs:
     </copy>
     ```
 
-    We have created the user `tacuser` in the lab *Transparent Application Continuity*. If you have not tried it, you can copy the user creation commands from there, and also create the table `t` on the primary database.
+    We have created the user `tacuser` in the lab *Transparent Application Continuity*. If you have not tried it, you can copy the user creation commands from there and create the table `t` in the primary database.
 
-4. Read-only queries will work on the standby database while it is applying the changes coming from the primary.
+4. Read-only queries will work on the standby database while it applies the changes coming from the primary.
     ```
     <copy>
     select * from t;
@@ -100,9 +102,9 @@ To try this lab, you must have successfully completed the following labs:
     ![Real-Time Query in action](images/real-time-query.png)
 
 ## Task 2: Enable synchronous transport and causal consistency
-The standby database can read consistent data (read all the data as soon as it's committed on the primary), despite having an asynchronous APPLY process. But that requires the TRANSPORT to be synchronous, otherwise the commands that enforce consistent reads will fail. This is because the sessions on a synchronous standby database know that all the redo has been written to the standby redo logs, and can wait for the last written SCN to be applied to ensure a consistent read.
+The standby database can read consistent data (read all the data as soon as it's committed on the primary), despite having an asynchronous APPLY process. But that requires the TRANSPORT to be synchronous; otherwise, the commands that enforce consistent reads will fail. That is because the sessions on a synchronous standby database know that all the redo has been written to the standby redo logs and can wait for the last written SCN to be applied to ensure a consistent read.
 
-1. On the standby database, try to do a read that is consistent with the primary database.
+1. On the standby database, try to do a read consistent with the primary database.
     It will fail:
     ```
     <copy>
@@ -115,7 +117,7 @@ The standby database can read consistent data (read all the data as soon as it's
     ![External consistent read are not possible yet](images/no-external-consistency.png)
     For more information on causal consistency, refer to the documentation: [Concepts and Administration - Real-Time Query](https://docs.oracle.com/en/database/oracle/oracle-database/23/sbydb/managing-oracle-data-guard-physical-standby-databases.html#GUID-07CB190C-C248-4FF5-AB64-EAA9C6D42677)
     
-2. From another terminal, connect to the Data Guard configuration with `dgmgrl` and set the transport mode to synchonous:
+2. From another terminal, connect to the Data Guard configuration with `dgmgrl` and set the transport mode to synchronous:
 
     ```
     <copy>
@@ -176,8 +178,10 @@ The standby database can read consistent data (read all the data as soon as it's
     
     ![DML works on the standby thanks to DML redirection](images/dml-redirection.png)
 
+For more information about Real-Time Query, read the [documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/sbydb/managing-oracle-data-guard-physical-standby-databases.html#GUID-D5FB88EC-799D-40E7-80E1-19474E3167E4).
+
 You have successfully configured Real-Time Query and DML Redirection.
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn;
-- **Last Updated By/Date** -  Ludovico Caldara, July 2024
+- **Last Updated By/Date** -  Ludovico Caldara, July 2025

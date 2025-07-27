@@ -59,7 +59,12 @@
             "filename":"../../real-time-query-dml/real-time-query-dml.md"
         },
         {
-            "title": "Lab 10: Create AWR reports on the standby database",
+            "title": "Lab 10: AI Inferencing with Real-Time Query and DML Redirection",
+            "description":"Use Real-Time Query and DML Redirection",
+            "filename":"../../inference/inference.md"
+        },
+        {
+            "title": "Lab 11: Create AWR reports on the standby database",
             "description":"Create AWR reports on the standby database",
             "filename":"../../awr-snapshots/awr-snapshots.md"
         },

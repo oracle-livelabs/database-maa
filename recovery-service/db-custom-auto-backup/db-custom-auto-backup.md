@@ -40,25 +40,28 @@ In this lab, you will:
 1. Navigate to Base Database Service
     ![OCI menu to Base Database Service](images/ham_basedb2.png)
 
-2. Click on your database system name
+2. Click on your database system under Display name
 
-3. Click on your database name under the Databases section
+3. Click on the Databases tab
+    ![Menu tab to list databases](images/tab_basedb_databases.png)
 
-4. In the button bar at the top click the Configure automatic backups button
-    ![Button to configure automatic backups](images/config_auto_backups_button.png)
+4. Click on your database name
 
-5. You can customize the automatic backups for this database
+5. Under the Actions drop-down menu select Configure automatic backups
+    ![Drop-down selection to configure automatic backups](images/config_auto_backups_button.png)
+
+6. You can customize the automatic backups for this database
     * Backup Destination: Keep the selection for Autonomous Recovery Service from the drop-down menu
     * Protection policy: Select the custom protection policy created in the previous lab
     * Be sure the selection for **Real-time data protection is checked**
     * Deletion options after database termination: Select how to manage backups after the database is terminated
     * Backup scheduling (UTC): Select a time window to run backups from the drop-down menu
 
-6. Click the Save changes button
+7. Click the Save changes button
 
 ## Task 3: Monitor the database update
 
-1. The update task will appear under Resources | Work requests in the lower left of the database details page. 
+1. The update task will appear under the Work requests tab in the top right of the database details page. 
     > **Note:** it may take 10-20 seconds to appear.
     ![Status dialog for work requests](images/update_database.png)
 
@@ -86,4 +89,4 @@ In this lab, you will:
 
 ## Acknowledgements
 * **Author** - Kelly Smith, Product Manager, Backup & Recovery Solutions
-* **Last Updated By/Date** - Kelly Smith, August 2024
+* **Last Updated By/Date** - Kelly Smith, July 2025

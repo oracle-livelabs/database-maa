@@ -39,7 +39,7 @@ To try this lab, you must have successfully completed:
     
     ```
     <copy>
-    sql sys/WElcome123##@adghol0_dgci as sysdba
+    sql sys/WElcome123##@adghol_site0 as sysdba
     alter pluggable database all discard state;
     </copy>
     ```
@@ -139,4 +139,4 @@ You have successfully created, started, and connected to the application role-ba
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, July 2024
+- **Last Updated By/Date** -  Ludovico Caldara, July 2025

@@ -34,14 +34,13 @@ To try this lab, you must have completed the following labs:
 
     ```
     <copy>
-    dgmgrl sys/WElcome123##@adghol0_dgci
+    dgmgrl sys/WElcome123##@adghol_site0
     </copy>
     ```
-    **Don't forget to replace `ADGHOL1_UNIQUE_NAME` with the actual `db_unique_name` of the standby database.**
     ```
     <copy>
     show configuration
-    convert database ADGHOL1_UNIQUE_NAME to snapshot standby
+    convert database adghol_site1 to snapshot standby
     </copy>
     ```
 
@@ -69,7 +68,7 @@ To try this lab, you must have completed the following labs:
 1. Connect to the standby database.
     ```
     <copy>
-    sql sys/WElcome123##@adghol1_dgci as sysdba
+    sql sys/WElcome123##@adghol_site1 as sysdba
     </copy>
     ```
 
@@ -101,18 +100,18 @@ To try this lab, you must have completed the following labs:
 
 ## Task 3: Convert back to physical standby
 
-1. Connect to either the primary or the standby database with `dgmgrl` and convert the standby database back to the physical standby role. **Again, replace `ADGHOL1_UNIQUE_NAME` with the correct name**.
+1. Connect to either the primary or the standby database with `dgmgrl` and convert the standby database back to the physical standby role.
     ```
     <copy>
-    dgmgrl sys/WElcome123##@adghol0_dgci
+    dgmgrl sys/WElcome123##@adghol_site0
     show configuration
-    convert database ADGHOL1_UNIQUE_NAME to physical standby
+    convert database adghol_site1 to physical standby
     show configuration verbose
     exit
     </copy>
     ```
 
-    ![The conversion to physical standby succeeds](images/convert-to-snapshot-standby.png)
+    ![The conversion to physical standby succeeds](images/convert-to-physical-standby.png)
 
     The conversion to physical standby closes the standby database, flashes it back to the previously created restore point, and starts the apply process again.
     If `show configuration verbose` reports a warning, try running it again, as the standby might take some seconds to start receiving redo from the primary.
@@ -123,4 +122,4 @@ You have successfully tested a snapshot standby database.
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn
-- **Last Updated By/Date** -  Ludovico Caldara, July 2024
+- **Last Updated By/Date** -  Ludovico Caldara, July 2025

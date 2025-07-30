@@ -31,7 +31,7 @@ To try this lab, you must have completed the following labs:
 1. From any terminal, connect to the standby database as SYSDBA.
     ```
     <copy>
-    sql sys/WElcome123##@adghol1_dgci as sysdba
+    sql sys/WElcome123##@adghol_site1 as sysdba
     </copy>
     ```
 
@@ -184,4 +184,4 @@ You have successfully configured Real-Time Query and DML Redirection.
 
 - **Author** - Ludovico Caldara, Product Manager Data Guard, Active Data Guard and Flashback Technologies
 - **Contributors** - Robert Pastijn;
-- **Last Updated By/Date** -  Ludovico Caldara, July 2024
+- **Last Updated By/Date** -  Ludovico Caldara, July 2025

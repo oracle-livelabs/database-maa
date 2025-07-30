@@ -3,6 +3,32 @@ L_pdb="mypdb"
 L_types="rw ro snap"
 L_hosts="adghol0-${L_resId} adghol1-${L_resId}"
 L_domain=$(dnsdomainname)
+L_indexes="0 1"
+
+
+for L_index in $L_indexes ; do
+cat <<EOF
+adghol_site${L_index}.${L_domain} =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = adghol${L_index}-${L_resId}.${L_domain})(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = adghol_site${L_index}.${L_domain})
+    )
+  )
+
+adghol_site${L_index}_dgmgrl.${L_domain} =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = adghol${L_index}-${L_resId}.${L_domain})(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = adghol_site${L_index}_dgmgrl.${L_domain})
+    )
+  )
+EOF
+done
+
+
 
 for L_type in ${L_types} ; do
 cat <<EOF

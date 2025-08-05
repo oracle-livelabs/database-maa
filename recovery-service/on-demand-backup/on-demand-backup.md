@@ -39,9 +39,10 @@ In this lab, you will:
 
 8. Select one of the two Backup retention period options:
 
-9. Retain backup per backup retention policy will create the an incremental backup
+    - Retain backup per backup retention policy will create the an incremental backup
+    - Specify long-term backup retention period will create a full backup from existing Recovery Service backups
 
-10. Specify long-term backup retention period will create a full backup from existing Recovery Service backups
+9. Click "Create"
 
 ## Task 2: Monitor the on-demand backup
 
@@ -54,7 +55,7 @@ In this lab, you will:
 3. The backup will also appear under "Resources | Backups" with the name provided in Task 1 above
     ![Active backup under backups](images/jobs_backup.png)
 
-Note: "Long-term backup" type which appears in the backup history
+Note: "Long-term backup" type which appears in the backup history, if that backup option was selected in Task 1.
 
 ## Learn More
 

@@ -7,7 +7,7 @@ A standby database can simultaneously be opened read-only and applying changes f
 Real-Time Query can offload read-only workloads like reports, read-only application modules, or even AI inferencing using ONNX models. If the transport is synchronous, the reading sessions can optionally get **consistent reads** of all the transactions committed on the primary database if they wish to do so.
 
 Additionally, the standby database can automatically redirect write requests to the primary database in an ACID-compliant way, with the changes visible only in the privacy of the transaction started on the standby database.
-This functionality broadens the use cases for the physical standby, including running read-write workloads directly on the standby database or generating embeddings and inserting them into `vector` columns. The **DML Redirection** feature also supports PL/SQL calls and some Data Definition Language queries (DDLs).
+This functionality broadens the use cases for the physical standby, including running read-write workloads directly on the standby database or generating embeddings and inserting them into `vector` columns. The **DML Redirection** feature also supports PL/SQL calls.
 
 In this lab you will run Generative AI inference into an Oracle Database environment by importing an ONNX model on the primary database and executing it on the physical standby database. Leveraging Real-Time Query and DML redirection features, we offload the resource-intensive workload of generating embeddings to the standby database while seamlessly inserting the results into the primary database. This approach provides a scalable and efficient method for embedding generation without impacting the performance or availability of the primary database.
 
@@ -18,7 +18,7 @@ By the end of this lab, you'll have a working example of an AI-enabled Oracle se
 
 Estimated Lab Time: 15 Minutes
 
-[Oracle Active Data Guard 23ai](videohub:1_fzrzvek5)
+[Oracle Active Data Guard 23ai](videohub:1_bv2fa9uo)
 
 ### Requirements
 To try this lab, you must have completed the following labs:
@@ -107,6 +107,7 @@ To try this lab, you must have completed the following labs:
     ![Create the tables to store the PDF, its chunks, and the embeddings](images/create-tables.png)
 
 3. Insert the sample PDF document as a BLOB on the primary database:
+
     ```
     <copy>
     @~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/inference/02-load-pdf.sql
@@ -116,6 +117,7 @@ To try this lab, you must have completed the following labs:
 ## Task 4: Load the ONNX model on the primary database
 
 1. Still connected as `tacuser` on the primary database, load the model:
+
     ```
     <copy>
     @~/database-maa/data-guard/active-data-guard-23ai/prepare-host/scripts/inference/03-load-model.sql

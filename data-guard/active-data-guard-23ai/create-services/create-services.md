@@ -19,7 +19,7 @@ In this lab, we will create the services for the primary, physical standby, and 
 
 Estimated Lab Time: 5 Minutes
 
-[Oracle Active Data Guard 23ai](videohub:1_zluu0czz)
+[Oracle Active Data Guard 23ai](videohub:1_b9sod4ej)
 
 ### Requirements
 To try this lab, you must have successfully completed:

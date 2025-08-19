@@ -70,7 +70,9 @@ To try this lab, you must have successfully completed:
     </copy>
     ```
 
-    ![New configuration ofter the switchover](images/show-configuration.png)
+    ![New configuration after the switchover](images/show-configuration.png)
+
+    If you still get a warning, try waiting until the next health check. They happen automatically every minute.
 
 
 ## Task 3: Switch back to the first node

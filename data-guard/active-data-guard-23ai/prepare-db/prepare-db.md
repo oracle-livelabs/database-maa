@@ -7,7 +7,7 @@ This lab uses a manual Data Guard configuration on top of two OCI Base Database 
 
 Estimated Lab Time: 15 Minutes
 
-[Oracle Active Data Guard 23ai](videohub:1_6i8cq28y)
+[Oracle Active Data Guard 23ai](videohub:1_qae0kglg)
 
 ### Requirements
 To try this lab, you must have completed **Lab 1: Prepare the database hosts**
@@ -26,7 +26,10 @@ Make sure you are using the `oracle` user.
 1. **On the primary host** `adghol0`, connect to the Data Guard broker client command line (dgmgrl). We use **SQLcl** for most steps, but some, including `PREPARE DATABASE`, still require `dgmgrl`.
 
     ```
-    <copy>dgmgrl /</copy>
+    <copy>
+    # to execute on ADGHOL0
+    dgmgrl /
+    </copy>
     ```
 
 3. Execute the following command to prepare the primary database for its Data Guard role.
@@ -69,7 +72,10 @@ Make sure you are using the `oracle` user.
 1. **On the secondary host** `adghol1`, connect as SYSDBA and shut down the current database (make sure you are on host `adghol1`):
 
     ```
-    <copy>sql / as sysdba</copy>
+    <copy>
+    # to execute on ADGHOL1
+    sql / as sysdba
+    </copy>
     ```
     Then:
     ```
@@ -98,7 +104,10 @@ Oracle recommends using `RESTORE FROM SERVICE` to instantiate the standby databa
 1. **On the secondary host** `adghol1`, where we prepare the standby database, start the standby instance:
 
     ```
-    <copy>sql / as sysdba</copy>
+    <copy>
+    # to execute on ADGHOL1
+    sql / as sysdba
+    </copy>
     ```
     Then:
     ```
@@ -152,7 +161,10 @@ Oracle recommends using `RESTORE FROM SERVICE` to instantiate the standby databa
 1. Connect to the freshly duplicated standby database and clear the online and standby redo logs:
 
     ```
-    <copy>sql / as sysdba </copy>
+    <copy>
+    # to execute on ADGHOL1
+    sql / as sysdba
+    </copy>
     ```
 
     ```

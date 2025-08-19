@@ -10,7 +10,7 @@ Transparent Application Continuity brilliantly solves this problem. Once the ses
 
 Estimated Lab Time: 10 Minutes
 
-[Oracle Active Data Guard 23ai](videohub:1_83rxr9ae)
+[Oracle Active Data Guard 23ai](videohub:1_9u5fnubu)
 
 ### Requirements
 To try this lab, you must have completed the following labs:

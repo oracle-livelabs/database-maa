@@ -30,7 +30,7 @@
         },
         {
             "title": "Lab 4: Verify the Data Guard configuration",
-            "description":"Configure Data Guard",
+            "description":"Verify the Data Guard configuration",
             "filename":"../../verify-dg/verify-dg.md"
         },
         {
@@ -60,7 +60,7 @@
         },
         {
             "title": "Lab 10: AI Inferencing with Real-Time Query and DML Redirection",
-            "description":"Use Real-Time Query and DML Redirection",
+            "description":"AI Inferencing with Real-Time Query and DML Redirection",
             "filename":"../../inference/inference.md"
         },
         {

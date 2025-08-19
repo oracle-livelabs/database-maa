@@ -6,7 +6,7 @@ In this lab, we will check the configuration and gain a basic knowledge of contr
 
 Estimated Lab Time: 15 Minutes
 
-[Oracle Active Data Guard 23ai](videohub:1_esvtn3k8)
+[Oracle Active Data Guard 23ai](videohub:1_o9gcduc3)
 
 ### Requirements
 To try this lab, you must have completed:
@@ -289,6 +289,7 @@ During the validation in Task 2 we have seen that we must enable flashback on th
 
     ```
     <copy>
+    -- to exeute when connected to adghol_site1
     select flashback_on from v$database;
     alter database flashback on;
     </copy>

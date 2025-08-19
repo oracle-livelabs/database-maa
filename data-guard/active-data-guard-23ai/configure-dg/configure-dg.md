@@ -10,7 +10,7 @@ For more information about the Data Guard broker, refer to the [broker documenta
 
 Estimated Lab Time: 5 Minutes
 
-[Oracle Active Data Guard 23ai](videohub:1_eucevsm7)
+[Oracle Active Data Guard 23ai](videohub:1_te5deac3)
 
 ### Requirements
 To try this lab, you must have completed:
@@ -82,7 +82,7 @@ For this live lab, we will use the new `sql` (SQLcl) integration for Data Guard 
     ```
     Warning: ORA-16854: apply lag could not be determined
     ```
-    Try using `dg show configuration verbose` instead to force a refresh of the status cache.
+    Try using `select DBMS_DG.HEALTH_CHECK from dual;` to force a refresh of the status cache.
 
     ![Show configuration shows a healthy status](images/show-configuration.png)
 

@@ -113,8 +113,10 @@ To try this lab, you must have completed the following labs:
 
     ![The conversion to physical standby succeeds](images/convert-to-physical-standby.png)
 
+    Immediately after the conversion, the command can report a warning. You can wait until the next health check (default every minute) and run `show configuration` again.
+
     The conversion to physical standby closes the standby database, flashes it back to the previously created restore point, and starts the apply process again.
-    If `show configuration verbose` reports a warning, try running it again, as the standby might take some seconds to start receiving redo from the primary.
+    If `show configuration verbose` reports a warning, try running it again, as the standby might take some seconds to start receiving redo from the primary. You can force a refresh of the status cache with `select DBMS_DG.HEALTH_CHECK from dual;`
 
 For more information about Snapshot Standby Database, read the [documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/sbydb/managing-oracle-data-guard-physical-standby-databases.html).
 

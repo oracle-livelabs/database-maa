@@ -5,7 +5,7 @@ In this lab, we connect to the database hosts and do some preliminary preparatio
 
 Estimated Lab Time: 15 Minutes
 
-[Oracle Active Data Guard 23ai](videohub:1_1cq91vn7)
+[Oracle Active Data Guard 23ai](videohub:1_6e3wxgt0)
 
 ### Objectives
 - Prepare the connection to the database hosts
@@ -21,7 +21,7 @@ Estimated Lab Time: 15 Minutes
 
    ![Menu of OCI Console showing how to navigate to the next steps](images/oci-menu-basedb.png " ")
 
-3. In the List Scope section on the left, enter the first part of the compartment assigned to you in the Search field, then click the compartment name.
+3. In the Applied Filters section on the top, enter the first part of the compartment assigned to you in the Search field, then click the compartment name.
     ![List of compartments where the correct compartment must be selected](images/select-compartment-livelabs.png)
     
    There are two Database Systems created for you. The system prefixed with `adghol0` is the primary database, and the system prefixed with `adghol1` is the secondary database that will become the standby database.
@@ -262,6 +262,7 @@ Similarly, the default Data Guard authentication mechanism uses the password fil
 1. **On the primary host** (adghol0), **as oracle**, copy the keys in a location accessible from the user opc:
     ```
     <copy>
+    # to execute on ADGHOL0
     cd /opt/oracle/dcs/commonstore/wallets/$ORACLE_UNQNAME/tde
     tar cvf /tmp/wallet.tar cwallet.sso ewallet.p12
     cp $ORACLE_HOME/dbs/orapwadghol /tmp
@@ -288,7 +289,7 @@ Similarly, the default Data Guard authentication mechanism uses the password fil
     ```
     ![Steps executed to copy the wallet on the second host](images/wallet-copy-1.png)
   
-4. **Connect back to the first host** and remove the wallet and password file from the temporary location:
+4. **Connect back to adghol0** and remove the wallet and password file from the temporary location:
     ```
     <copy>
     ssh adghol0
@@ -302,6 +303,7 @@ Similarly, the default Data Guard authentication mechanism uses the password fil
     **Note:** Use the appropriate browser tab connected to the `adghol1` server. Throughout the lab, make sure to have two browser tabs, one connected to `adghol0` and one connected to `adghol1`. Please carefully run the commands on the correct host according to the instructions provided.
     ```
     <copy>
+    # to execute on ADGHOL1
     cd /opt/oracle/dcs/commonstore/wallets/$ORACLE_UNQNAME/tde
     tar xvf /tmp/wallet.tar
     cp /tmp/orapwadghol $ORACLE_HOME/dbs

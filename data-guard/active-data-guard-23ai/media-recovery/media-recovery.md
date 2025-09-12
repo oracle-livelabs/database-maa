@@ -15,7 +15,7 @@ Estimated Lab Time: 10 Minutes
 
 Watch the video below for a quick walk through of the lab.
 
-[Video showing the steps to demonstrate automatic block recovery](youtube:05IR37v7kg8)
+[Video showing the steps to demonstrate automatic block recovery](videohub:1_nl43temm)
 
 
 ### Requirements

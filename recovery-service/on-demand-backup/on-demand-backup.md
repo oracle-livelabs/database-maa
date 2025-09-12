@@ -46,13 +46,13 @@ In this lab, you will:
 
 ## Task 2: Monitor the on-demand backup
 
-1. The on-demand backup task will appear under Resources | Work requests in the lower left of the database details page.  
+1. The on-demand backup task will appear under "Work requests" in the top right of the database details page.  
     > **Note:** it may take 10-20 seconds to appear.
     ![Work request list that shows the backup work](images/backup_work_request.png)
 
 2. The backup will complete in approximately 10 minutes and the state will show Succeeded
 
-3. The backup will also appear under "Resources | Backups" with the name provided in Task 1 above
+3. The backup will also appear under "Backups" with the name provided in Task 1 above
     ![Active backup under backups](images/jobs_backup.png)
 
 Note: "Long-term backup" type which appears in the backup history, if that backup option was selected in Task 1.

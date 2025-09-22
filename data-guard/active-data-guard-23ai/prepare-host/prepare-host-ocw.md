@@ -47,26 +47,33 @@ Estimated Lab Time: 15 Minutes
   The Cloud Shell opens and shows the **prompt**.
   You can maximize it for a better experience. You can enter `N` if it asks to run a tutorial.
 
-10. Find your ssh private key which has been created earlier to connect to the host where the primary database is located.
-     1. If you have used the **Reserve Workshop on Livelabs** option (Green Button), you should have used any of the methods for generating SSH key pairs using [How to Generate SSH Keys](https://oracle-livelabs.github.io/common/labs/generate-ssh-key/?lab=generate-ssh-keys) .
-   Now, you should have the **Public** and **Private** key pair. You must have provided the Public Key while reserving the lab and you need the repsective Private key to connect the DB Server.
-     2. If you have used the **Run on Your Tenancy** option (Brown Button), you must use the downloaded public and private keys (downloaded while creating the DB Systems) to connect to the DB servers.
+10. Download the SSH keys using wget. We employ a LiveLabs-generic SSH key pair to streamline the environment provisioning process, saving you valuable time. This approach allows you to commence the hands-on exercises promptly without the need to worry about initial configurations.
+    ````
+    <copy>
+    wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/pFCXNoopaTHpNpK2n1eyvnzzVi4bcDGN5wCf7ZJA-Le-BwUnsibXb1SQT-VdPF9x/n/c4u04/b/events/o/id_rsa_livelabs.zip
+    </copy>
+    ````
 
-   All the labs use Cloud shell to connect to the DB server. You can also connect to the DB servers with your preferred tools, such as Terminal on Mac, Powershell on Windows, Putty etc.  Refer the above mentioned link [How to Connect to Servers](https://oracle-livelabs.github.io/common/labs/generate-ssh-key/?lab=generate-ssh-keys) for detailed instructions. Once you connect to the DB server, **the rest of the instructions will remain the same**.
+11. Unzip the archive
+    ```
+    <copy>
+    unzip id_rsa_livelabs.zip
+    </copy>
+    ```
 
-11. Using the **Upload** facility, upload the private key in the **Cloud Shell** environment.
-    ![Screenshot of the cloud shell showing how to upload the keys](./images/cloud-shell-upload.png)
-    ![Screenshot of the cloud shell showing how to upload the keys](./images/cloud-shell-upload-key.png)
+    You will find the following files:
+
+      * id\_rsa\_livelabs (private key)
+      * id\_rsa\_livelabs.pub (public key)
+      * id\_rsa\_livelabs.ppk (private key in Putty format - for Windows only)
+
    
-12. To ease the copy & paste of the next operations, rename the key file to `cloudshellkey` (replace `YOUR_KEY_FILE` with the actual name):
+12. Change the permission of the private key to `0600`:
     ````
-    <copy>mv YOUR_KEY_FILE cloudshellkey</copy>
+    <copy>chmod 600 id_rsa_livelabs</copy>
     ````
-13. Change the permission of the private key to `0600`:
-    ````
-    <copy>chmod 600 cloudshellkey</copy>
-    ````
-14. Prepare the SSH config file to connect to the hosts.
+
+13. Prepare the SSH config file to connect to the hosts.
     ````
     <copy>
     mkdir ~/.ssh
@@ -79,16 +86,15 @@ Estimated Lab Time: 15 Minutes
     Host adghol0
         Hostname \$0
         User opc
-        IdentityFile ~/cloudshellkey
+        IdentityFile ~/id_rsa_livelabs
 
     Host adghol1
         Hostname \$1
         User opc
-        IdentityFile ~/cloudshellkey
+        IdentityFile ~/id_rsa_livelabs
     EOF" IP_ADDRESS0 IPADDRESS1
     </copy>
     ````
-    ![Screenshot of the cloud shell showing the steps executed so far](./images/ssh-config.png)
 15. Verify the SSH config file content:
     ````
     <copy>
@@ -98,14 +104,14 @@ Estimated Lab Time: 15 Minutes
     it should look similar to this (with the correct IP addresses):
     ````
     Host adghol0
-    Hostname 129.148.41.182
+    Hostname 129.147.41.182
         User opc
-        IdentityFile ~/cloudshellkey
+        IdentityFile ~/id_rsa_livelabs
     
     Host adghol1
-        Hostname 168.75.74.51
+        Hostname 168.74.74.51
         User opc
-        IdentityFile ~/cloudshellkey
+        IdentityFile ~/id_rsa_livelabs
     ````
 16. Try the connection to the primary host:
     ````

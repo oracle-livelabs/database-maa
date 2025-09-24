@@ -38,7 +38,7 @@ In this lab, you will:
 ## Task 2: Customize the Automatic Backup configuration for Base Database Service
 
 1. Navigate to Base Database Service
-    ![OCI menu to Base Database Service](images/ham_basedb2.png)
+    ![OCI menu to Base Database Service](images/ham_basedb.png)
 
 2. Click on your database system under Display name
 

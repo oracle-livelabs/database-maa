@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will learn how to protect and recover Oracle databases running on Oracle Cloud Infrastructure (OCI) in the event of a ransomware attack. Get hands-on experience using the Zero Data Loss Autonomous Recovery Service to protect Oracle Database 23ai. Provision an Oracle Database with automatic backups and leverage unique features that enable real-time protection, enforce RMAN backup retention and immutability, display granular protection status, send alerts for critical events, and recover locally to the same or a different region. Gain a clear understanding of ransomware protection and cyber-resiliency when operating in a cloud environment.
+In this lab, you will learn how to protect and recover Oracle databases running on Oracle Cloud Infrastructure (OCI) in the event of a ransomware attack. Get hands-on experience using the Zero Data Loss Autonomous Recovery Service to protect Oracle Database. Provision an Oracle Database with automatic backups and leverage unique features that enable real-time protection, enforce RMAN backup retention and immutability, display granular protection status, send alerts for critical events, and recover locally to the same or a different region. Gain a clear understanding of ransomware protection and cyber-resiliency when operating in a cloud environment.
 
 Estimated Workshop Time: 90 minutes
 

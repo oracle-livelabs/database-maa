@@ -26,7 +26,7 @@
         },
         {
             "title": "Lab 4: Provision the target autonomous database",
-            "filename": "https://objectstorage.us-phoenix-1.oraclecloud.com/p/H0jETEY29lR15UAGcmx9SltmVXgR8aZPHHSp-DeFi4hkpAFJ4xG9s-ClwdYELqDE/n/c4u02/b/adb/o/shared/adb-provision/adb-provision-conditional.md"
+            "filename": "https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision-conditional.md"
         },
         {
             "title": "Lab 5: Configure the GoldenGate hub",

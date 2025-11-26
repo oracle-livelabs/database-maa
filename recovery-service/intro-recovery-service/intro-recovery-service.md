@@ -15,8 +15,9 @@ Oracle Database Zero Data Loss Autonomous Recovery Service is a fully managed da
 In this lab, you will:
 * Customize Automatic Backups for Base Database Service and enable real-time protection
 * Perform a point-in-time recovery
-* Review protection metrics and configure alarms for these metrics
 * Create an on-demand backup
+* Review protection metrics and configure alarms for these metrics
+
 
 ### Prerequisites
 

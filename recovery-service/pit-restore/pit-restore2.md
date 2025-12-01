@@ -37,35 +37,33 @@ In this lab, you will:
 
 3. Type N to exit out of the Cloud Shell tutorial.
 
-4. Download and unzip this [SSH key](https://objectstorage.us-ashburn-1.oraclecloud.com/p/pFCXNoopaTHpNpK2n1eyvnzzVi4bcDGN5wCf7ZJA-Le-BwUnsibXb1SQT-VdPF9x/n/c4u04/b/events/o/id_rsa_livelabs.zip)
-
-5. Upload the SSH private key by clicking the gear in the top right of the cloud shell
+4. Upload the SSH private key by clicking the gear in the top right of the cloud shell
     ![Launch point location for cloud shell upload](images/cloud_shell_upload.png)
 
-6. Change the permissions on the uploaded key file
+5. Change the permissions on the uploaded key file
     ```
     <copy>chmod 600 <private_key_file> </copy>
     ```
 
-7. SSH into the host using the follow command:
+6. SSH into the host using the follow command:
     ```
     <copy>ssh -i <private_key_file> opc@<public-ip-address> </copy>
     ```
 
-8. Change user to Oracle:
+7. Change user to Oracle:
     ```
     $ <copy>sudo su - oracle</copy>  
     ```
-9. Connect to the database:
+8. Connect to the database:
     ```
     $ <copy>sqlplus / as sysdba</copy> 
     ```
 
-10. Create a table for customers:
+9. Create a table for customers:
     ```
     SQL> <copy>create table customer(first_name varchar2(50));</copy>
     ```
-11. Insert new customers:
+10. Insert new customers:
     ```
     SQL> <copy>INSERT INTO customer (first_name) 
             WITH names AS (
@@ -79,12 +77,12 @@ In this lab, you will:
     SQL> <copy>commit;</copy>
     ```
 
-12. Query to see the customer names:
+11. Query to see the customer names:
     ```
     SQL> <copy>select * from customer;</copy>
     ```
     
-13. Capture the SCN for the database before being malicious.  
+12. Capture the SCN for the database before being malicious.  
 * Note: This SCN will be used later in the lab.
     ```
     SQL> <copy>Select CURRENT_SCN as BEFORE_DELETE from v$database;</copy>

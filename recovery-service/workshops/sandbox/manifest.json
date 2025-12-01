@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Real-time Oracle Database protection with Autonomous Recovery Service",
+    "workshoptitle": "Protect & Recover Databases from Ransomware with Oracle Recovery Service",
     "help": "livelabs-help-dbmaa_us@oracle.com",
     "tutorials": [
         {
@@ -18,15 +18,20 @@
         },
         {
             "title": "Lab 2: Perform Point-in-time restores",
-            "filename": "../../pit-restore/pit-restore.md"
+            "filename": "../../pit-restore/pit-restore2.md"
         },
         {
-            "title": "Lab 3: Monitor & Create Alarms",
+            "title": "Lab 3: Create an on-demand backup",
+            "filename": "../../on-demand-backup/on-demand-backup.md"
+        },
+        {
+            "title": "Lab 4: Monitor & Create Alarms",
             "filename": "../../metrics-alarms/metrics-alarms.md"
         },
         {
-            "title": "Lab 4: Create an on-demand backup",
-            "filename": "../../on-demand-backup/on-demand-backup.md"
+            "title": "Your LiveLabs SSH Key",
+            "description": "How to use LiveLabs' SSH Keys",
+            "filename": "https://oracle-livelabs.github.io/common/labs/livelabs-ssh/livelabs-ssh.md"
         },
         {
             "title": "Need Help?",

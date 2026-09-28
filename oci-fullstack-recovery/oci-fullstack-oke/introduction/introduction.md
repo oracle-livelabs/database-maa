@@ -20,7 +20,7 @@ This workshop demonstrates resiliency at two levels: Full Stack DR provides cros
 
 Together, these tracks demonstrate cross-region application DR orchestration with Full Stack DR and single-region backup and recovery orchestration with Full Stack BR.
 
-## Task: Service Overview
+## Task 1: Service Overview
 
 1. Review the services and resources used in this workshop.
 

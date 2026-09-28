@@ -2,7 +2,9 @@
 
 ## Introduction
 
-Configure Full Stack DR for the AI application from Lab 1. Keep the original Ashburn Cloud Shell session available. The configuration creates DR Protection Groups and DR plans for the primary and standby regions. It configures the DR plan to convert the standby Autonomous AI Database to a snapshot standby when you execute Start Drill in Lab 3.
+Configure OCI Full Stack DR for the AI application deployed in Lab 1. Keep the original Ashburn Cloud Shell session available.
+
+This lab creates DR protection groups and plans for the primary and standby regions. The Start Drill plan converts the standby Autonomous AI Database to the Snapshot Standby role, restores the application to the standby OKE cluster, and restores its associated storage when you execute the plan in Lab 3.
 
 Watch the video below for a quick walk-through of the lab.
 [Configure Full Stack DR](videohub:1_zwchhrdr)
@@ -19,7 +21,7 @@ Estimated Time: 15 minutes
 
 In this lab, you will:
 
-- Run the Full Stack DR snapshot standby configuration script.
+- Run the Full Stack DR configuration script.
 - Confirm that the configuration completes successfully.
 - Verify the DR protection groups and DR plans in the OCI Console.
 
@@ -35,7 +37,7 @@ In this lab, you will:
     </copy>
     ```
 
-2. Run the Full Stack DR snapshot standby configuration script.
+2. Run the Full Stack DR configuration script.
 
     Before you run the script, review the configuration flow. The script performs these actions in order:
 
@@ -75,6 +77,14 @@ In this lab, you will:
 
 1. While the script runs, open two additional OCI Console tabs. Set one to **Ashburn** and the other to **Phoenix**. Keep the Ashburn Cloud Shell tab open. In each Console tab, select **Migration & Recovery**, then **Recovery**, and then **Disaster Recovery**.
 
+    **Ashburn:**
+
+    ![OCI Console navigation menu showing Migration & Recovery, Recovery, and Disaster Recovery in Ashburn](./images/oci-navigation-ashburn-disaster-recovery.png)
+
+    **Phoenix:**
+
+    ![OCI Console navigation menu showing Migration & Recovery, Recovery, and Disaster Recovery in Phoenix](./images/oci-navigation-phoenix-disaster-recovery.png)
+
 2. In both OCI Console tabs, change to the compartment assigned to you. Expand the root compartment, select **Livelabs**, and then select your assigned compartment.
 
 3. Open **DR Protection groups** in each Console tab and monitor the pages as the primary and standby protection groups are created. Refresh the Console tabs periodically if the resources do not appear immediately; do not refresh the Cloud Shell tab. Verify the region-specific names:
@@ -100,7 +110,7 @@ In this lab, you will:
 
     ![Phoenix Full Stack DR protection groups members](./images/phoenix-full-stack-dr-protection-groups-members.png)
 
-5. After you confirm successful completion in the Ashburn Cloud Shell, use the Phoenix Console tab to open the plans for the **standby DR protection group**. Confirm that the following plans are available:
+5. After the configuration script in Task 1 completes successfully in the Ashburn Cloud Shell, use the Phoenix Console tab to open the plans for the **standby DR protection group**. Confirm that the following plans are available:
 
     ![Full Stack DR plans](./images/full-stack-dr-plans.png)
 
@@ -144,24 +154,14 @@ In this lab, you will:
 
     ![Start Drill plan groups in the standby DR protection group](./images/fsdr-start-drill-plan-groups.png)
 
-    After the separate precheck run in Lab 3, the **Start Drill** execution restores the Ollama volume group for the drill, converts the standby Autonomous Database to a snapshot standby, and restores the standby OKE cluster. These steps create a recovery test environment without changing the production roles of the DR protection groups.
+    The **Start Drill** plan uses these resources to create a recovery test environment without changing the production roles of the DR protection groups.
 
+    **Important:**
 
-    > **Workshop execution:** We will run the **Start Drill** plan as part of this workshop in **Lab 3**. Do not execute it in Lab 2.
-
-    > ---
-
-    > **Stop Drill:** After the **Start Drill** plan completes successfully, Full Stack DR allows you to create a **Stop Drill** plan to end the drill and restore the environment. Creating or running a **Stop Drill** plan is not part of this workshop.
-
-    > ---
-
-    > **DR protection group roles:** Executing a successful **Switchover** or **Failover** plan changes the roles of the DR protection groups. After the role change, you can create Switchover and Failover plans in the new standby DR protection group. Executing a **Start Drill** or **Stop Drill** plan does not change the roles of the DR protection groups.
-
-    > ---
-
-    > **User-defined plan groups:** Full Stack DR allows you to customize plans with user-defined plan groups. You can add your own scripts or OCI Functions alongside the built-in plan groups, or create a plan containing only user-defined plan groups. This workshop does not customize the DR plans with user-defined plan groups. To configure them, use **Manage plan groups**.
-
-    Do not click **Start**, **Execute**, or **Run Prechecks** for any plan in Lab 2. The **Start Drill** plan is executed in Lab 3.
+    - Do not run or precheck any plan in Lab 2. The **Start Drill** plan runs in Lab 3.
+    - After a successful **Start Drill**, you can create a **Stop Drill** plan to end the drill and restore the environment. Running it is outside the scope of this workshop.
+    - **Switchover** and **Failover** change the DR protection group roles. **Start Drill** and **Stop Drill** do not change the roles.
+    - This workshop uses the built-in plan groups. User-defined plan groups are not covered; use **Manage plan groups** to customize plans.
 
 In Lab 3, you will run prechecks and execute the **Start Drill** plan, then monitor the drill execution until it succeeds.
 

@@ -7,15 +7,21 @@ In this lab, use the supplied configuration script to configure OCI Full Stack B
 Watch the video below for a quick walk-through of the lab.
 [Configure and Execute Full Stack Backup Recovery](videohub:1_d7qsytvw)
 
-The synthetic AI workload runs on both compute VMs as a scheduler. It continuously updates a counter by completing one job every minute. Record the counter value before and after Full Stack BR operations and use it to observe workload continuity during backup and recovery testing.
+The synthetic AI workload runs on both compute VMs and completes one job every minute. Record the job counter before and after Full Stack BR operations to observe workload continuity during backup and recovery testing.
 
-At a high level, the configuration script creates the backup policy and Full Stack BR protection group, adds the compute and volume group members, and activates protection. You then use the OCI Console to create or review member backups, create a recovery point from the Recovery Catalog, and use a Full Stack BR plan to recover a protected compute resource.
+The configuration script creates the backup policy and Full Stack BR protection group, adds the compute and volume group members, and activates protection. You then review the member backups, create a recovery point, and run the recovery plan.
 
-**Before you begin:** Start the Start Drill execution in Lab 3, Task 2, Steps 1–4. Begin this lab during the drill wait, using the Ashburn Cloud Shell. Keep the Phoenix drill execution open in another tab.
+**Before you begin:** Start the Start Drill in Lab 3, Task 2, Steps 1–4. Then:
 
-**When to switch back to Full Stack DR:** Check the drill status between steps and while waiting for operations. As soon as the Start Drill shows **Succeeded**, note your current Lab 5 task, step, and any running operation, then pause these instructions. Leave running scripts, backups, and recovery operations open and let them continue; do not cancel or restart them. Return to [Lab 3](?lab=execute-prechecks-start-drill), Task 2, Step 5, complete the remaining checks, and then finish [Lab 4](?lab=test-recovery). If the drill fails, return to Lab 3 to investigate; do not start Lab 4 until the drill succeeds.
+- Begin Lab 5 during the drill wait using the Ashburn Cloud Shell.
+- Keep the Phoenix drill execution open in another browser tab.
+- Check the drill status between Lab 5 steps.
 
-**After Lab 4:** Return to your recorded Lab 5 task and step. Check the status of any operation you left running before continuing; do not submit it again. Complete every remaining task in this lab. If you already completed Lab 5 during the drill wait, you do not need to repeat it.
+**When the Start Drill shows Succeeded:** Pause Lab 5 and note your current task and step. Leave running operations open, return to [Lab 3](?lab=execute-prechecks-start-drill), complete the remaining checks, and finish [Lab 4](?lab=test-recovery). Then resume Lab 5.
+
+If the drill fails, return to Lab 3 to investigate.
+
+**After Lab 4:** Return to your recorded Lab 5 task and step. Check any operation you left running before continuing; do not submit it again. Complete the remaining tasks in this lab.
 
 Estimated Time: 20 minutes
 
@@ -34,6 +40,8 @@ In this lab, you will:
 
 1. In the **Ashburn** region, open the OCI Console navigation menu and select **Compute**, then **Instances**. In the compartment assigned to you, locate these two compute instances:
 
+    ![OCI Console navigation menu showing Compute and Instances in Ashburn](./images/oci-navigation-ashburn-compute-instances.png)
+
     - `fsr-ai-app-recovery-vm-0`
     - `fsr-ai-app-recovery-vm-1`
 
@@ -43,7 +51,16 @@ In this lab, you will:
 
 2. In separate browser tabs, open `http://<public-ip-1>` for VM 0 and `http://<public-ip-2>` for VM 1. Use the first tab to monitor VM 0 and the second tab to monitor VM 1. Record the number of completed AI jobs shown by the synthetic AI workload on each VM. These values are the baseline for the Full Stack BR backup and recovery validation. Keep both tabs open throughout Lab 5 and return to them at each major Full Stack BR milestone to record the updated counters.
 
-    **In the example run, the baseline is 454 completed jobs on each VM. Your values will vary depending on when each VM was started and how long the workload has been running. Always use the values displayed in your own VM tabs when comparing checkpoints.**
+   If a browser security warning appears when opening the VM workload page, proceed to the site and continue.
+
+   If you encounter another browser error, try the following troubleshooting steps:
+
+   - Try opening the page in a different browser or in a private/incognito window.
+   - If you are connected to a VPN, disconnect from the VPN and try again.
+   - If the issue persists, go to the **Compute VMs** section, open the **three-dot menu** for the affected VM, and reboot the VM.
+   - After the VM has rebooted, retry accessing the workload page.
+
+   **In the example run, the baseline is 454 completed jobs on each VM. Your values will vary depending on when each VM was started and how long the workload has been running. Always use the values displayed in your own VM tabs when comparing checkpoints.**
 
     ![Synthetic AI workload counters for VM 0 and VM 1](./images/synthetic-ai-workload-vm-counters.png)
 
@@ -90,6 +107,8 @@ In this lab, you will:
 ## Task 3: Review the Full Stack BR Protection Group
 
 1. In the Ashburn OCI Console, open the navigation menu and select **Migration & Recovery**, then **Backup Recovery**.
+
+    ![OCI Console navigation menu showing Migration & Recovery and Backup Recovery in Ashburn](./images/oci-navigation-ashburn-backup-recovery.png)
 
     Confirm that the **Backup Recovery** protection-group page is open and that the Full Stack BR protection group created by the script appears in the assigned compartment. Its name follows the pattern `fsbr-vm-vg-xxxxxx`, where `xxxxxx` is generated for your environment.
 
@@ -160,6 +179,8 @@ In this lab, you will:
     ![Create a Full Stack BR recovery point](./images/full-stack-br-create-recovery-point.png)
 
 3. Monitor the Recovery catalog until **First recovery point** is **Active**. Confirm that the recovery point is available and uses the member backups created in Task 4.
+
+    Open the recovery point details and confirm that it references the four active member backups created in Task 4: two compute-instance backups and two volume-group backups.
 
     ![Active First recovery point](./images/full-stack-br-recovery-catalog-point.png)
 

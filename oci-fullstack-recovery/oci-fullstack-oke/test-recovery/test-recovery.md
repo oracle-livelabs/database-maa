@@ -7,9 +7,9 @@ After the Full Stack DR Start Drill plan completes, run the post-DR script to po
 Watch the video below for a quick walk-through of the lab.
 [Execute Post-DR Script and Validate the App](videohub:1_jqhuyewg)
 
-Complete Lab 3 and wait for the Start Drill plan to finish successfully before starting this lab. Lab 4 depends on the completed Start Drill environment.
+Start Lab 4 after the Start Drill succeeds and the remaining Lab 3 checks are complete. Lab 4 depends on the recovered Phoenix environment.
 
-**Before you begin:** Open Cloud Shell in the Phoenix region and use the application package from Lab 1.
+**Before you begin:** Open Cloud Shell in the Phoenix region. The Full Stack DR Start Drill has restored the application in the Phoenix standby environment.
 
 The restored application runs in the `ai-fsdr-lab` namespace on the Phoenix standby OKE cluster. Use `kubectl -n ai-fsdr-lab` for application checks and troubleshooting.
 
@@ -28,7 +28,7 @@ In this lab, you will:
 
 ## Task 1: Execute the Post-DR Script
 
-1. Open Cloud Shell in the **Phoenix** region. Navigate to the `scripts` directory from the application package that you extracted in Lab 1:
+1. Open Cloud Shell in the **Phoenix** region. Navigate to the `scripts` directory from the application package downloaded and extracted in Lab 1:
 
     ```bash
     <copy>
@@ -77,7 +77,18 @@ In this lab, you will:
 
 ## Task 2: Validate the Cloud-Native AI Workload
 
-1. Open the recovered application URL in a separate browser tab.
+1. Open the recovered application URL in a separate browser tab. Use `http://` followed by the `EXTERNAL-IP` value from Task 1, Step 4.
+
+    If the page does not open, confirm that the external IP is no longer `<pending>` and check the service and pod status in the Phoenix Cloud Shell:
+
+    ```bash
+    <copy>
+    kubectl -n ai-fsdr-lab get svc ai-frontend
+    kubectl -n ai-fsdr-lab get pods
+    </copy>
+    ```
+
+    Wait a few minutes if the load balancer was recently created, then retry the URL. If the page still does not open, clear the browser cache, try a different browser, or open the URL in a private or incognito browser window. Do not continue until the frontend opens.
 
 2. Confirm that the frontend loads. Verify that the API, Autonomous DB, and Ollama statuses show **ok** or **up**, that **Active DB region** and **Connected DB region** show `us-phoenix-1`, and that the model is `granite4.1:3b`.
 

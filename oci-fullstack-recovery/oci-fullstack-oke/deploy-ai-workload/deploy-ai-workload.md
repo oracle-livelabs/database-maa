@@ -111,7 +111,7 @@ In this lab, you will:
     </copy>
     ```
 
-    When prompted, enter these values. Passwords remain hidden. Enter each password twice so the script can catch typing mistakes before deployment begins. Press **Enter** after each value.
+    When prompted, enter these values. **Passwords are not visible while you type them in Cloud Shell. This is expected.** Enter each password twice so the script can catch typing mistakes before deployment begins. Press **Enter** after each value.
 
     - **Database username: `ADMIN`**
     - **Database password: `AIWorld2026!`**
@@ -131,6 +131,8 @@ In this lab, you will:
     ![Monitor AI application deployment](./images/monitor-ai-application-deployment-1.png)
 
     **Expected result:** The script returns to the shell prompt without an error. If it reports an error, verify the values from Step 1 and rerun the step.
+
+    If the deployment output displays an **Application URL**, open it in a separate browser tab. If it is not displayed, you will retrieve the URL in Step 4.
 
     ![Monitor AI application deployment](./images/monitor-ai-application-deployment-2.png)
 
@@ -157,7 +159,7 @@ In this lab, you will:
     ```
     ![Application details](./images/application-details.png)
 
-    Click the **Application URL** displayed in the output of Step 2 or copy the `ai-frontend` service's **External IP** value and open it in a separate browser tab. This is the application URL. If no external IP appears, wait a few moments and run the command again. You will validate the application in the next task.
+    The `ai-frontend` service's **External IP** is the application URL. If no external IP appears, wait a few moments and run the command again. You will validate the application in the next task.
 
 
 ## Task 3: Validate the AI Application Without and With RAG

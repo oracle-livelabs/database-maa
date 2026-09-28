@@ -20,19 +20,7 @@ This workshop demonstrates resiliency at two levels: Full Stack DR provides cros
 
 Together, these tracks demonstrate cross-region application DR orchestration with Full Stack DR and single-region backup and recovery orchestration with Full Stack BR.
 
-### Lab Execution Order
-
-For this 90-minute workshop, follow this order: **Lab 1 → Lab 2 → start Lab 3 → work on Lab 5 during the drill wait → finish Labs 3–4 when the drill succeeds → resume and finish Lab 5**.
-
-In Lab 3, complete Task 1 and Task 2, Steps 1–4, to start the drill. Keep the Phoenix drill execution open, then open [Lab 5: Configure and Execute Full Stack Backup Recovery](?lab=configure-backup-recovery) in a separate browser tab. Use the Ashburn Cloud Shell for Lab 5. Check the drill status between Lab 5 steps and while waiting for operations.
-
-**When the Start Drill execution shows Succeeded, pause your Lab 5 instructions and prioritize Full Stack DR.** Note your current Lab 5 task, step, and any running operation. Leave running scripts, backups, and recovery operations open and let them continue; do not cancel or restart them. Return to Lab 3, Task 2, Step 5, complete the remaining checks, and then finish Lab 4. After Lab 4, resume Lab 5 from your recorded position and finish all remaining tasks. Both tracks are required to complete the workshop.
-
-If Lab 5 finishes before the drill, return to Lab 3 to monitor it and complete Labs 3–4 once it succeeds. If the drill fails, return to Lab 3 to investigate; do not start Lab 4 until the drill succeeds.
-
-The sidebar and **Next** button follow numerical lab order. Use the links in the lab instructions for the Lab 3–Lab 5 handoff.
-
-## Task 1: Review the Service Overview
+## Task 1: Service Overview
 
 1. Review the services and resources used in this workshop.
 
@@ -82,7 +70,7 @@ The sidebar and **Next** button follow numerical lab order. Use the links in the
 
     ### Full Stack Backup Recovery
 
-    OCI Full Stack BR provides coordinated backup and recovery for OCI resources within one region. It protects infrastructure state, backup configuration, member backups, and BR points that form consistent recovery points.
+    OCI Full Stack BR provides coordinated backup and recovery for OCI resources within one region. It protects infrastructure state, backup configuration, member backups, and recovery points.
 
     In this workshop, Full Stack BR protects two Ashburn compute virtual machines and an individual volume group for each VM. You configure the BR protection group and policy, review the catalog and recovery point, and run a backup and recovery plan.
 
@@ -105,8 +93,6 @@ The sidebar and **Next** button follow numerical lab order. Use the links in the
     - Protect the infrastructure and data required by AI workloads.
     - Customize recovery plans with application-specific validation.
     - Test recovery readiness through drills before an outage.
-
-    Estimated Workshop Time: 90 minutes
 
 ## Workshop Architecture
 
@@ -145,6 +131,21 @@ The workshop environment includes the following resources for the two resiliency
 - Review the Full Stack BR recovery catalog and recovery points.
 - Run Full Stack BR backup and recovery plans and verify their executions.
 - Troubleshoot common policy, context, replication, and application-validation issues.
+
+## Lab Execution Order
+
+Estimated Workshop Time: approximately 90 minutes
+
+For this workshop:
+
+1. Complete Lab 1.
+2. Complete Lab 2.
+3. Start Lab 3 and run the Start Drill.
+4. While the Start Drill is running, begin Lab 5.
+5. When the Start Drill succeeds, pause Lab 5 and complete Labs 3 and 4.
+6. Resume Lab 5 and complete the remaining steps.
+
+Lab 5 may still be in progress when you return to Labs 3 and 4. Keep running operations open; do not cancel or restart them.
 
 ## Reference Links
 

@@ -61,7 +61,7 @@ In this lab, you will:
 
 ## Task 2: Execute and Monitor the Start Drill Plan
 
-The Start Drill tests recovery in Phoenix without changing the production role. It restores the standby database, OKE application, storage, and related resources, then runs validation checks. The drill may take approximately **15–20 minutes**.
+The Start Drill tests recovery in Phoenix without changing the production role. It  converts the standby database to snapshot standby database, restores the OKE application, storage, and related resources, then runs validation checks. The drill may take approximately **15–20 minutes**.
 
 1. Return to the **fsdr-rag-xxxxxx-start-drill** plan. Open **Actions** and select **Execute plan**.
 

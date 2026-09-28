@@ -51,9 +51,16 @@ In this lab, you will:
 
 2. In separate browser tabs, open `http://<public-ip-1>` for VM 0 and `http://<public-ip-2>` for VM 1. Use the first tab to monitor VM 0 and the second tab to monitor VM 1. Record the number of completed AI jobs shown by the synthetic AI workload on each VM. These values are the baseline for the Full Stack BR backup and recovery validation. Keep both tabs open throughout Lab 5 and return to them at each major Full Stack BR milestone to record the updated counters.
 
-    If a browser security warning appears when opening the VM workload page, proceed to the site and continue. If you encounter another browser error, try a different browser or use a private/incognito window.
+   If a browser security warning appears when opening the VM workload page, proceed to the site and continue.
 
-    **In the example run, the baseline is 454 completed jobs on each VM. Your values will vary depending on when each VM was started and how long the workload has been running. Always use the values displayed in your own VM tabs when comparing checkpoints.**
+   If you encounter another browser error, try the following troubleshooting steps:
+
+   - Try opening the page in a different browser or in a private/incognito window.
+   - If you are connected to a VPN, disconnect from the VPN and try again.
+   - If the issue persists, go to the **Compute VMs** section, open the **three-dot menu** for the affected VM, and reboot the VM.
+   - After the VM has rebooted, retry accessing the workload page.
+
+   **In the example run, the baseline is 454 completed jobs on each VM. Your values will vary depending on when each VM was started and how long the workload has been running. Always use the values displayed in your own VM tabs when comparing checkpoints.**
 
     ![Synthetic AI workload counters for VM 0 and VM 1](./images/synthetic-ai-workload-vm-counters.png)
 

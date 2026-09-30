@@ -17,25 +17,25 @@ In this lab, you will:
 1. Navigate to Metrics Explorer
     ![OCI menu for Metrics Explorer](images/ham_metrics_explorer.png)
 
-2. Select Last 7 days from the Quick selects drop down
-    ![Quick select drop down for 7 days](images/quick_selects_7days.png)
+2. Select "Add query"
 
-3. In the Query 1 selection area choose the following options:
+3. In the Add query dialog choose the following options:
+    * Name: Recovery Service
     * Compartment: Your compartment name
     * Metric namespace: oci-recovery-service
     * Metric name: DataLossExposure
     * Interval: 15 minutes
     * Statistic: Mean
 
-4. Click Update Chart
+4. Click Add query
 
 5. Review the chart at the top to see the data loss exposure for the database in your compartment.  Data loss exposure shows the time since the database was last protected by backup.  When real-time protection is enabled, the value in the chart will be zero since the database is always being protected.
 
     Example chart:
     ![Sample chart showing data loss exposure](images/chart_data_loss_exposure.png)
 
-6. You can also see a table of the values for Data Loss Exposure by toggling the Show Data Table option
-    ![Table same when toggle is used to show table](images/show_data_table.png)
+6. Click the three dots above the chart and select View in table
+    ![Table same when used to show table](images/view_in_table.png)
 
 ## Task 2: Set an alarm to monitor the data loss exposure
 
@@ -48,9 +48,12 @@ In this lab, you will:
     * Define alarm:
         * Alarm name: Type a name for the alarm definition.  Ex: Data Loss Alarm
         * Alarm summary: Provide a description of the alarm.  Ex: Data Loss Exposure too high for the database
+    * Choose creation Mode
+        * Select basic mode
     * Metric description
         * Compartment: Your compartment name
         * Metric namespace: oci-recovery-service
+        * Resource Group: leave as blacnk
         * Metric name: DataLossExposure
         * Interval: 1 minutes
         * Statistic: Mean
@@ -61,6 +64,7 @@ In this lab, you will:
         * Trigger delay minutes: 1
         * Alarm severity: Critical
         * Alarm body: Provide any steps you would like the notification reader to follow.
+    * Click Next
     * Define alarm notifications
         * Destination service: Notifications
         * Compartment: Your compartment name

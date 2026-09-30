@@ -1,0 +1,52 @@
+{
+    "workshoptitle": "Prove Your AI Workloads Can Recover: Hands-On with Full-Stack DR and Full-Stack Backup Recovery",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Get Started",
+            "description": "Prerequisites for LiveLabs (Oracle-owned tenancies). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
+        },
+        {
+            "title": "Introduction",
+            "description": "Workshop overview and objectives.",
+            "type": "livelabs",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Lab 1: Deploy and Validate the Cloud-Native AI Workload in the Primary Region OKE Cluster",
+            "description": "",
+            "type": "livelabs",
+            "filename": "../../deploy-ai-workload/deploy-ai-workload.md"
+        },
+        {
+            "title": "Lab 2: Configure Full Stack DR for the AI Workload",
+            "description": "",
+            "type": "livelabs",
+            "filename": "../../configure-fsdr/configure-fsdr.md"
+        },
+        {
+            "title": "Lab 3: Execute Prechecks and the Full Stack DR Start Drill Plan",
+            "description": "",
+            "type": "livelabs",
+            "filename": "../../execute-prechecks-start-drill/execute-prechecks-start-drill.md"
+        },
+        {
+            "title": "Lab 4: Execute the Post-DR Script and Validate the App",
+            "description": "",
+            "type": "livelabs",
+            "filename": "../../test-recovery/test-recovery.md"
+        },
+        {
+            "title": "Lab 5: Configure and Execute Full Stack Backup Recovery",
+            "description": "",
+            "type": "livelabs",
+            "filename": "../../configure-backup-recovery/configure-backup-recovery.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+        }
+    ]
+}

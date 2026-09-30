@@ -19,55 +19,55 @@ In this lab
 
 1. Navigate to compute instance in Oracle Console.
 
-   Click the **Navigation Menu** in the upper left, navigate to **Compute** and then select **Instances**.
+    Click the **Navigation Menu** in the upper left, navigate to **Compute** and then select **Instances**.
 
-   ![Image showing navigation to compute instance](./images/navigate-to-compute.png)
+    ![Image showing navigation to compute instance](./images/navigate-to-compute.png)
 
 2. Select **Compartment**.
 
-   Select the appropriate compartment on the left side of the console.
+    Select the appropriate compartment on the left side of the console.
 
-   ![Image showing the selection of compartment](./images/compartment.png)
+    ![Image showing the selection of compartment](./images/compartment.png)
 
 3. Click on **Create Instance**.
 
-   ![Image showing option to create compute instance](./images/create-instance.png)
+    ![Image showing option to create compute instance](./images/create-instance.png)
 
 4. Enter **Name** for compute.
 
-   Enter **zdm-host** as name for compute and select appropriate **compartment** if it is not already done.
+    Enter **zdm-host** as name for compute and select appropriate **compartment** if it is not already done.
 
-   ![Image showing the name to be entered for compute](./images/compute-name.png)
+    ![Image showing the name to be entered for compute](./images/compute-name.png)
 
 5. Leave the **Placement** section as it is.
 
 6. Select correct image.
 
-   Under **Image and Shape** , click on **Change image**.
+    Under **Image and Shape** , click on **Change image**.
 
-   ![Image showing the option to change the image for compute](./images/os-image.png)
+    ![Image showing the option to change the image for compute](./images/os-image.png)
 
-   Select **Oracle Linux 7.9** and click on **Select Image**
+    Select **Oracle Linux 8** and click on **Select Image**
 
-   ![Image showing the OS image selected for compute](./images/os-selected.png)
+    ![Image showing the OS image selected for compute](./images/os-selected.png)
 
 7. Select VCN and Subnet.
 
-   Under **Networking** , Select **ZDM-VCN** as VCN and **Public Subnet-ZDM-VCN** as subnet.
+    Under **Networking** , Select **ZDM-VCN** as VCN and **Public Subnet-ZDM-VCN** as subnet.
 
-   ![Image showing network selected](./images/network.png)
+    ![Image showing network selected](./images/network.png)
 
 8. Upload SSH Keys.
 
-   Under **Add SSH keys** , upload the public ssh key generated in Lab 1.
+    Under **Add SSH keys** , upload the public ssh key generated in Lab 1.
 
-   ![Image showing option to upload ssh kesy](./images/ssh.png)
+    ![Image showing option to upload ssh kesy](./images/ssh.png)
 
 9. Specify custom boot volume.
 
-   Under **Boot volume** , select **Specify a custom boot volume size** and specify 150.
+    Under **Boot volume** , select **Specify a custom boot volume size** and specify 150.
 
-   ![Image showing custom boot volume size](./images/boot.png)
+    ![Image showing custom boot volume size](./images/boot.png)
 10. Click on **Create** to start the provisioning of compute.
 
     In less than a few minutes ZDM compute instance will be provisioned.
@@ -76,61 +76,61 @@ In this lab
 
 1. Login to ZDM host using the Public IP and ssh key file.
 
-   ![Image showing Public IP for ZDM host ](./images/ip.png)
+    ![Image showing Public IP for ZDM host ](./images/ip.png)
 
 2. Expand the root FS.
 
-   Execute below command as **opc** user and **press y and Enter** when asked.
+    Execute below command as **opc** user and **press y and Enter** when asked.
 
-   **sudo /usr/libexec/oci-growfs**
+    **sudo /usr/libexec/oci-growfs**
 
-   You will see an output similar to the one below.
+    You will see an output similar to the one below.
 
-   ![Image showing command to expand root FS](./images/expand-fs.png)
+    ![Image showing command to expand root FS](./images/expand-fs.png)
 
 3. Check the existence of required packages for ZDM.
 
-   ZDM software requires below packages to be installed.
+    ZDM software requires below packages to be installed.
 
-   glibc-devel
+    glibc-devel
 
-   expect
+    expect
 
-   unzip
+    unzip
 
-   libaio
+    libaio
 
-   oraclelinux-developer-release-el7
+    oraclelinux-developer-release-el7
 
-   Execute the below command to identify already installed packages.
+    Execute the below command to identify already installed packages.
      ```text
      <copy>
-     yum list installed glibc-devel expect unzip libaio oraclelinux-developer-release-e17
+     yum list installed glibc-devel expect unzip libaio libnsl
      </copy>
      ```
-     You will receive an output similar to the one below which shows glibc-devel, libaio , oraclelinux-developer-release-e17 and unzip are alraady installed.
+     You will receive an output similar to the one below which shows glibc-devel, libaio , libnsl and unzip are alraady installed.
 
      ![Image showing pre installed packages for ZDM ](./images/preinstalled-package.png)
 
 4. Install missing packages.
 
-   We have seen that **expect** package is missing as per output of previous step.
+    We have seen that **expect** package is missing as per output of previous step.
 
-   Install the **expect** package using commands below.
+    Install the **expect** package using commands below.
 
-   **sudo yum install -y expect**
+    **sudo yum install -y expect**
 
-   Sample output is shown below.
+    Sample output is shown below.
 
-   ![Image showing installation of expect package](./images/expect-install.png)
+    ![Image showing installation of expect package](./images/expect-install.png)
 
 5. Create user, group and directories required for ZDM.
 
-   Switch to **root** user using below command.
+    Switch to **root** user using below command.
 
-   **sudo su -**
+    **sudo su -**
 
-   Execute below commands.
+    Execute below commands.
      ```text
      <copy>
      groupadd zdm
@@ -143,33 +143,33 @@ In this lab
      ```
 6. Download ZDM software.
 
-   Download the ZDM software from below URL.
+    Download the ZDM software from below URL.
 
-   https://www.oracle.com/database/technologies/rac/zdm-downloads.html
+    https://www.oracle.com/database/technologies/rac/zdm-downloads.html
 
 7. Upload ZDM software to ZDM host.
 
-   Upload the software(.zip file) to /tmp directory in ZDM host.
+    Upload the software(.zip file) to /tmp directory in ZDM host.
 
-   Ensure that all users can read the .zip file.
+    Ensure that all users can read the .zip file.
 
 8. Unzip the ZDM software.
 
-   Switch user to **zdmuser** using below command.
+    Switch user to **zdmuser** using below command.
 
-   **sudo su - zdmuser**
+    **sudo su - zdmuser**
    
-   Unzip the ZDM software under /tmp directory.
+    Unzip the ZDM software under /tmp directory.
 
-   Note down the directory path of unzipped folder , it will be **/tmp/zdm21.x** for **ZDM 21.x** , Please note this is a generic placeholder name for ZDM software and make sure to use the latest version available.
+    Note down the directory path of unzipped folder , it will be **/tmp/zdm21.x** for **ZDM 21.x** , Please note this is a generic placeholder name for ZDM software and make sure to use the latest version available.
 
 9. Install ZDM software.
 
-   Change directory to ZDM software unzipped location using below command.
+    Change directory to ZDM software unzipped location using below command.
 
-   cd /tmp/zdm21.x
+    cd /tmp/zdm21.x
    
-   Execute the below command to install ZDM software.
+    Execute the below command to install ZDM software.
      ```text
      <copy>
      ./zdminstall.sh setup oraclehome=/home/zdmuser/zdmhome oraclebase=/home/zdmuser/zdmbase ziploc=/tmp/zdm21.x/zdm_home.zip -zdm
@@ -213,69 +213,69 @@ In this lab
 
 1. Allow incoming connection on port 22 for Source and Target database subnet.
 
-   You have deployed source database , target database and ZDM service host into the same Public subnet for the purpose of this lab.
+    You have deployed source database , target database and ZDM service host into the same Public subnet for the purpose of this lab.
 
-   You need to ensure that incoming connection on port 22 is not blocked on Subnet level.
+    You need to ensure that incoming connection on port 22 is not blocked on Subnet level.
 
-   No action needs to be taken for this lab since port 22 is already open by default for the Public subnet configured in this lab.
+    No action needs to be taken for this lab since port 22 is already open by default for the Public subnet configured in this lab.
 
-   However, you may need to take care of opening port 22 if your source and target deployment is different compared to the one specified in this lab.
+    However, you may need to take care of opening port 22 if your source and target deployment is different compared to the one specified in this lab.
 
 2. Enable Source and Target hostname resolution from ZDM service host.
 
-   You can enable Source and Target hostname resolution by adding the correspnding Database System IP and FQDN Details to **/etc/hosts** file in ZDM service host.
+    You can enable Source and Target hostname resolution by adding the correspnding Database System IP and FQDN Details to **/etc/hosts** file in ZDM service host.
 
-   Please follow below steps.
+    Please follow below steps.
 
-   a. Collect Source Database System details.
+    a. Collect Source Database System details.
 
-   Click the **Navigation Menu** in the upper left, navigate to **Compute** and then select **Instances**.
+    Click the **Navigation Menu** in the upper left, navigate to **Compute** and then select **Instances**.
 
-   ![Image showing navigation to compute instance](./images/navigate-to-compute.png)
+    ![Image showing navigation to compute instance](./images/navigate-to-compute.png)
 
-   Click on the **ZDM-Source-DB** compute host as shown below.
+    Click on the **ZDM-Source-DB** compute host as shown below.
 
-   ![Image showing list of compute instances](./images/compute-list.png)
+    ![Image showing list of compute instances](./images/compute-list.png)
 
-   Note down the **Private IP** and **Internal FQDN** under Primary VNIC section.
+    Note down the **Private IP** and **Internal FQDN** under Primary VNIC section.
 
-   ![Image showing private ip and  of source](./images/source-ip-fqdn.png)
+    ![Image showing private ip and  of source](./images/source-ip-fqdn.png)
 
-   b. Collect Target Database System details.
+    b. Collect Target Database System details.
 
-   Click the **Navigation Menu** in the upper left, navigate to **Oracle Database** and then select **Oracle Base Database (VM,BM)**.
+    Click the **Navigation Menu** in the upper left, navigate to **Oracle Database** and then select **Oracle Base Database (VM,BM)**.
 
-   ![Image showing navigation to Oracle Base Database](./images/navigate-oracle-base.png)
+    ![Image showing navigation to Oracle Base Database](./images/navigate-oracle-base.png)
 
-   Click on **zdm-target-db**.
+    Click on **zdm-target-db**.
 
-   Click on **Nodes** under **Resources** section and note down the **Private IP** and **FQDN**.
+    Click on **Nodes** under **Resources** section and note down the **Private IP** and **FQDN**.
 
-   ![Image showing private ip and fqdn of target database](./images/target-ip-fqdn.png)
+    ![Image showing private ip and fqdn of target database](./images/target-ip-fqdn.png)
    
-   c. Modify **/etc/hosts** file  in ZDM service host.
+    c. Modify **/etc/hosts** file  in ZDM service host.
 
-   Open the /etc/hosts file for editing using **sudo vi /etc/hosts** command as opc user.
+    Open the /etc/hosts file for editing using **sudo vi /etc/hosts** command as opc user.
    
-   Insert Source and Target database system private IP and FQDN details to **/etc/hosts** file and save it.
+    Insert Source and Target database system private IP and FQDN details to **/etc/hosts** file and save it.
 
-   Sample output after editing is shown below.
+    Sample output after editing is shown below.
 
-   ![Image showing contents of hosts file](./images/etc-host.png)
+    ![Image showing contents of hosts file](./images/etc-host.png)
 
 3. Copy the private SSH key to ZDM host.
 
-   Copy the SSH private key generated in lab 1 to ZDM service host under **zdmuser** home (/home/zdmuser).
+    Copy the SSH private key generated in lab 1 to ZDM service host under **zdmuser** home (/home/zdmuser).
 
-   Please note that you are using same private key and public key pair for source database compute , target DB System and ZDM host in this lab.
+    Please note that you are using same private key and public key pair for source database compute , target DB System and ZDM host in this lab.
 
-   If you have different private keys for source and target database systems then you have to copy both of them to ZDM service host.
+    If you have different private keys for source and target database systems then you have to copy both of them to ZDM service host.
 
-   Change the permission and ownership of private key as below.
+    Change the permission and ownership of private key as below.
 
-   chmod 600 **key\_file\_name**
+    chmod 600 **key\_file\_name**
    
-   chown zdmuser:zdm **key\_file\_name**
+    chown zdmuser:zdm **key\_file\_name**
 
 4. Verify SSH connectivity from ZDM servive host to Source and Target DB system.
 
@@ -300,7 +300,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Amalraj Puthenchira, Cloud Data Management Modernise Specialist, EMEA Technology Cloud Engineering
-* **Last Updated By/Date** - Amalraj Puthenchira, March 2024
+* **Last Updated By/Date** - Sinan Petrus Toma, May 2026
 
 
 

@@ -48,7 +48,7 @@ In this lab, you will:
 
     ![Oracle ADB menu](./images/adb-menu.png)
 
-    Select the compartment (**LLXXXXXX-COMPARTMENT**) shown in the lab instructions. You can verify it with **View Login Info** at the top left of the instructions page. **LLXXXXXX** is the user name used to sign in to the OCI Console.
+    Select the compartment (**LLXXXXXX-COMPARTMENT**) shown in the lab instructions. You can verify it with **View Login Info** at the top left of the instructions page. Use the exact compartment name shown in **View Login Info**.
 
     Use the compartment selector's search field to enter your assigned compartment name, such as **LLXXXXXX-COMPARTMENT**, and then select the matching compartment from the results.
     
@@ -172,6 +172,8 @@ In this lab, you will:
 
     Under **ADB-backed documents**, confirm that **No documents yet** appears. Leave **Use uploaded documents when available** checked. With no documents available, the application sends your question directly to Granite without retrieved context.
 
+    **Existing environments:** If documents are already listed, uncheck **Use uploaded documents when available** before asking the first question. This bypasses all stored documents without deleting them. The deployment smoke test may also appear in **ADB-backed history**; chat history is not sent to Granite as context.
+
     In **Chat with Granite**, enter the following question and click **Ask**:
 
     **What is OCI Full Stack Disaster Recovery?**
@@ -185,8 +187,6 @@ In this lab, you will:
     ![Granite response without RAG before uploading a document](./images/validate-ai-response-without-rag.png)
 
     **RAG note:** Retrieval-augmented generation (RAG) adds retrieved document text to the question sent to Granite. The first response uses no document context. After you upload a document, the application can retrieve its text chunks to help generate an answer.
-
-    **Existing environments:** If documents are already listed, uncheck **Use uploaded documents when available** before asking the first question. This bypasses all stored documents without deleting them. The deployment smoke test may also appear in **ADB-backed history**; chat history is not sent to Granite as context.
 
 2. Upload the documentation to test RAG.
 
@@ -205,6 +205,8 @@ In this lab, you will:
     Confirm that the response is labeled **With RAG — document context used**. Unlike the generic response in Step 1, which used Granite's model knowledge without document context, this answer is generated using excerpts retrieved from the documentation you uploaded in Step 2. It should reflect the information in that document.
 
     Review the **Sources** filenames and excerpts below the response to confirm that the uploaded PDF was used and that the answer accurately reflects the documentation. RAG grounds the answer in document content, but does not guarantee correctness. The generated wording may vary.
+
+    **Note:** Check that the source excerpts support the main claims in the answer; a matching filename alone does not confirm grounding. Unrelated excerpts indicate a retrieval-quality limitation, not necessarily a deployment failure.
 
     ![Granite response using RAG after uploading the documentation](./images/validate-ai-response-with-rag.png)
 

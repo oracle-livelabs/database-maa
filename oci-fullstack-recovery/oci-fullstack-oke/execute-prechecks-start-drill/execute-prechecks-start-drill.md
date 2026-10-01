@@ -35,11 +35,11 @@ In this lab, you will:
 
 3. Select **fsdr-rag-xxxxxx-start-drill**. Confirm the **Start Drill** type and the standby DR protection group.
 
-4. Click **Actions**, select **Run prechecks**, and confirm the action if the Console prompts you. Wait for the precheck execution to finish.
+4. Click **Actions**, select **Run prechecks**, and confirm the action if the Console prompts you.
 
     ![Actions menu with Run prechecks selected for the Start Drill plan](./images/run-start-drill-prechecks.png)
 
-    In the **Run prechecks** dialog, verify the DR plan and **Start drill** type. Leave **Precheck name** blank or enter a name. Keep **Ignore warnings** turned off. Click **Run prechecks**.
+    In the **Run prechecks** dialog, verify the DR plan and **Start drill** type. Leave **Precheck name** blank or enter a name. Keep **Ignore warnings** turned off. Click **Run prechecks** and wait for the precheck execution to finish.
 
     ![Run prechecks dialog for the Start Drill plan](./images/run-prechecks-dialog.png)
 
@@ -61,7 +61,7 @@ In this lab, you will:
 
 ## Task 2: Execute and Monitor the Start Drill Plan
 
-The Start Drill tests recovery in Phoenix without changing the production role. It  converts the standby database to snapshot standby database, restores the OKE application, storage, and related resources, then runs validation checks. The drill may take approximately **15–20 minutes**.
+The Start Drill tests recovery in Phoenix without changing the production role. It converts the standby database to the **Snapshot Standby** role, restores the OKE application, storage, and related resources, then runs validation checks. The drill may take approximately **15–20 minutes**.
 
 1. Return to the **fsdr-rag-xxxxxx-start-drill** plan. Open **Actions** and select **Execute plan**.
 

@@ -67,7 +67,7 @@ In this lab, you will:
 
     ![Lab 2 snapshot standby script paused before creating the Switchover, Failover, and Start Drill plans](./images/fsdr-snapshot-standby-complete.png)
 
-    Press **Enter** to start creating the Switchover, Failover, and Start Drill plans. Plan creation takes approximately **7–8 minutes**. While the plans are being created, continue to **Task 2: Monitor the Configuration in the OCI Console**. Keep the Ashburn Cloud Shell tab open.
+    Press **Enter** to start creating the Switchover, Failover, and Start Drill plans. Plan creation takes approximately **7–8 minutes**. While the plans are being created, continue to **Task 2: Monitor the Full Stack DR Configuration in the OCI Console**. Keep the Ashburn Cloud Shell tab open.
 
     When the script finishes, return to Task 1. Confirm that it returns to the shell prompt and displays the OCIDs for the primary and standby protection groups and the three DR plans. The complete configuration takes approximately 10 minutes, excluding time spent at the confirmation prompts.
 
@@ -86,6 +86,8 @@ In this lab, you will:
     ![OCI Console navigation menu showing Migration & Recovery, Recovery, and Disaster Recovery in Phoenix](./images/oci-navigation-phoenix-disaster-recovery.png)
 
 2. In both OCI Console tabs, change to the compartment assigned to you. Expand the root compartment, select **Livelabs**, and then select your assigned compartment.
+
+    **Note:** After refreshing an OCI resource list, confirm that your assigned compartment is still selected. If resources disappear or an authorization error appears, reselect that compartment before retrying.
 
 3. Open **DR Protection groups** in each Console tab and monitor the pages as the primary and standby protection groups are created. Refresh the Console tabs periodically if the resources do not appear immediately; do not refresh the Cloud Shell tab. Verify the region-specific names:
 

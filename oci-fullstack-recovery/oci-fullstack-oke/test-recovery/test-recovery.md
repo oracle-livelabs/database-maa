@@ -92,6 +92,8 @@ In this lab, you will:
 
 2. Confirm that the frontend loads. Verify that the API, Autonomous DB, and Ollama statuses show **ok** or **up**, that **Active DB region** and **Connected DB region** show `us-phoenix-1`, and that the model is `granite4.1:3b`.
 
+    **Note:** Replicated documents and history may retain Ashburn metadata during the Phoenix drill.
+
     Keep **Use uploaded documents when available** checked. In **Chat with Granite**, enter the following question and click **Ask**:
 
     **What is OCI Full Stack Disaster Recovery?**

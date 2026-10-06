@@ -104,7 +104,9 @@ The workshop uses a primary OKE and Autonomous AI Database environment in Ashbur
 
 ### Full Stack Backup Recovery
 
-![OCI Full Stack Backup Recovery protecting two compute VMs and a volume group in the Ashburn region](./images/full-stack-br-architecture.png)
+Each compute VM has its own volume group containing its boot volume. The BR protection group has four members: two compute VMs and two individual volume groups.
+
+![OCI Full Stack Backup Recovery protecting two compute VMs and two individual volume groups, one per VM, as four members in the Ashburn region](./images/full-stack-br-architecture.png)
 
 ## Environment Details
 
@@ -114,12 +116,12 @@ The workshop uses a primary OKE and Autonomous AI Database environment in Ashbur
 - The workshop configures cross-region replication before creating the Full Stack DR protection groups and plans.
 - Full Stack BR uses the compute instances and their individual volume groups to create backups, catalog recovery points, and run backup and recovery plans.
 
-### Pre-provisioned Resources
+### Pre-provisioned Resources and Lab Setup
 
 The workshop environment includes the following resources for the two resiliency services:
 
 - **Full Stack DR:** A primary OKE cluster and Autonomous AI Database in Ashburn, a standby OKE cluster and Autonomous AI Database in Phoenix, and Autonomous Data Guard between the databases. Lab 1 creates and configures the AI workload persistent volume group with cross-region replication.
-- **Full Stack BR:** Two compute instances and an individual block volume group for each VM in Ashburn. These resources are added to a BR protection group for backup and recovery.
+- **Full Stack BR:** Two compute instances running the synthetic AI workload in Ashburn. Lab 5 creates one volume group per VM containing its boot volume. The script adds both VMs and both volume groups to the BR protection group as four members.
 
 ## Objectives
 

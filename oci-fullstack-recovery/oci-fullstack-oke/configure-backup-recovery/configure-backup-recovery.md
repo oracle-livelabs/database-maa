@@ -51,6 +51,17 @@ In this lab, you will:
 
 2. In separate browser tabs, open `http://<public-ip-1>` for VM 0 and `http://<public-ip-2>` for VM 1. Use the first tab to monitor VM 0 and the second tab to monitor VM 1. Record the number of completed AI jobs shown by the synthetic AI workload on each VM. These values are the baseline for the Full Stack BR backup and recovery validation. Keep both tabs open throughout Lab 5 and return to them at each major Full Stack BR milestone to record the updated counters.
 
+    Copy the following table into your notes and record the counters from both workload tabs there. Return to it at each checkpoint in Tasks 4 and 5. Record your initial baseline now.
+
+    | Checkpoint | VM 0 | VM 1 |
+    |---|---|---|
+    | Initial baseline — Task 1, Step 2 | Record | Record |
+    | Before backup — Task 4, Step 3 | Record | Record |
+    | After backup — Task 4, Step 8 | Record | Record |
+    | First observation after Compute Instances - Start succeeds — Task 5, Step 7 | Record | Record |
+    | After recovery completes — Task 5, Step 8 | Record | Record |
+    | Next scheduler update — Task 5, Step 8 | Record | Record |
+
    If a browser security warning appears when opening the VM workload page, proceed to the site and continue.
 
    If you encounter another browser error, try the following troubleshooting steps:
@@ -138,11 +149,11 @@ In this lab, you will:
 
     ![Plan groups in the default backup plan](./images/full-stack-br-default-backup-plan-groups.png)
 
-3. Before running the backup plan, return to the two workload tabs and record the current **AI jobs completed** value from VM 0 and VM 1. In the example run, this value is **483 jobs** on each VM. Use the values displayed in your own VM tabs as the pre-backup baseline for comparison after the backup and restore operations.
+3. Before running the backup plan, return to the two workload tabs and record the current **AI jobs completed** value from VM 0 and VM 1. In the example run, this value is **483 jobs** on each VM. Use the values displayed in your own VM tabs as the pre-backup baseline for comparison after the backup and restore operations. Enter both values in the **Before backup** row of the recording table in Task 1, Step 2.
 
     ![Synthetic AI workload counters before the backup](./images/synthetic-ai-workload-pre-backup.png)
 
-4. On the **default-backup-plan** page, open **Actions** and select **Execute plan**. Confirm the execution to start the backup plan.
+4. On the **default-backup-plan** page, open **Actions** and select **Execute plan**.
 
     ![Execute the default backup plan](./images/full-stack-br-execute-backup-plan.png)
 
@@ -164,7 +175,7 @@ In this lab, you will:
 
     ![Available Full Stack BR member backups](./images/full-stack-br-member-backups.png)
 
-8. Return to the two workload tabs and record the updated **AI jobs completed** value from VM 0 and VM 1. In the example run, this value is **491 jobs** on each VM. Compare the values with the pre-backup baseline, using the values displayed in your own VM tabs.
+8. Return to the two workload tabs and record the updated **AI jobs completed** value from VM 0 and VM 1. In the example run, this value is **491 jobs** on each VM. Compare the values with the pre-backup baseline, using the values displayed in your own VM tabs. Enter both values in the **After backup** row of the recording table.
 
     ![Synthetic AI workload counters after the backup](./images/synthetic-ai-workload-post-backup.png)
 
@@ -180,7 +191,7 @@ In this lab, you will:
 
 3. Monitor the Recovery catalog until **First recovery point** is **Active**. Confirm that the recovery point is available and uses the member backups created in Task 4.
 
-    Open the recovery point details and confirm that it references the four active member backups created in Task 4: two compute-instance backups and two volume-group backups.
+    Open the recovery point details. Confirm that the recovery point references the latest Active member backups created by **First backup** in Task 4: two compute-instance backups and two volume-group backups.
 
     ![Active First recovery point](./images/full-stack-br-recovery-catalog-point.png)
 
@@ -190,15 +201,23 @@ In this lab, you will:
 
     ![Recover now from the First recovery point](./images/full-stack-br-recovery-point-recover-now.png)
 
-6. In the execution form, confirm that **default-recover-plan** is selected and that the recovery point is **First recovery point**. Leave prechecks enabled, enter a name such as `Recovery plan execution`, and select **Execute plan**.
+6. In the execution form, confirm that **default-recover-plan** is selected and that the recovery point is **First recovery point**. Leave prechecks enabled and enter a name such as `Recovery plan execution`.
+
+    **Note:** During recovery, both demo VMs stop briefly and their storage is restored from the selected backups. Changes made after those backups are lost, and the plan replaces and terminates the original volumes. The workloads resume as the VMs restart.
+
+    Select **Execute plan**.
 
     ![Execute the recovery plan from the First recovery point](./images/full-stack-br-recovery-plan-execution.png)
 
-7. Open the **Plan executions** tab, select **Recovery plan execution**, and monitor the plan execution groups. Confirm that the prechecks, compute stop, volume-group restore, boot-volume replacement, compute start, and block-volume replacement groups progress to completion.
+7. Open the **Plan executions** tab, select **Recovery plan execution**, and monitor the plan execution groups. Confirm that the prechecks, compute stop, volume-group restore, boot-volume replacement, compute start, block-volume replacement, **Volume Groups - Replace Volumes**, and **Compute Instances - Terminate Volumes** groups progress to completion.
 
     ![Monitor the recovery plan execution](./images/full-stack-br-recovery-execution-progress.png)
 
-    When you observe the **Compute Instances - Start** group complete successfully, return to the two workload tabs and check the **AI jobs completed** counter on both VMs. Compare the counters with the value captured by **First recovery point**. The values should be approximately aligned with the recovery point, although the workload may complete another job while the remaining recovery steps finish. If you were completing Labs 3–4 when the VMs restarted, record the counters when you return. They may be higher because the workload continued running; do not repeat recovery just to reproduce the example counters.
+    When you observe the **Compute Instances - Start** group complete successfully, return to the two workload tabs and check the **AI jobs completed** counter on both VMs. Enter both values in the **First observation after Compute Instances - Start succeeds** row of the recording table.
+
+    Compare each VM's restored counter with its own **Before backup** and **After backup** values in the recording table. The recovery point restores the state captured by its referenced backups. Counters may have increased by the time you observe them because the scheduler resumes after restart.
+
+    If you were completing Labs 3–4 when the VMs restarted, record the counters when you return. They may be higher because the workload continued running; do not repeat recovery just to reproduce the example counters.
 
     ![VM workload counters after compute instances restart](./images/synthetic-ai-workload-after-recovery.png)
 
@@ -210,7 +229,9 @@ In this lab, you will:
 
     ![Successful recovery plan execution groups](./images/full-stack-br-recovery-execution-groups-succeeded.png)
 
-8. After the recovery plan completes, review the final **AI jobs completed** values on both workload tabs. The counters may be slightly higher than the recovery-point value because the scheduler resumes as the VMs restart. In a production workload, the selected recovery point determines the state restored according to the recovery requirement.
+8. After the recovery plan completes, review the final **AI jobs completed** values on both workload tabs. Enter both values in the **After recovery completes** row of the recording table. The counters may be slightly higher than the recovery-point value because the scheduler resumes as the VMs restart. In a production workload, the selected recovery point determines the state restored according to the recovery requirement.
+
+    Keep both workload tabs open and wait for the next scheduler update, which occurs about once per minute. Record both counters in the **Next scheduler update** row and confirm that each counter increases from its recorded post-recovery value. If a counter does not increase, wait for one more update and check the workload status before considering recovery validation complete.
 
 ## Conclusion
 

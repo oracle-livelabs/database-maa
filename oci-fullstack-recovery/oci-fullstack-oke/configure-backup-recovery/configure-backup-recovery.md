@@ -197,7 +197,7 @@ In this lab, you will:
 
 4. After **First recovery point** becomes **Active**, review the member backups it references. Recovery restores the workload state captured by those backups, not the counter value when the recovery point becomes active. Use the pre-backup and post-backup counters recorded in Task 4 as comparison checkpoints. The restored value may fall between them because the workload continues running during backup.
 
-5. In the Recovery catalog, select **First recovery point**. Confirm that its state is **Active**, then select **Actions** → **Recover now**.
+5. In the Recovery catalog, select **First recovery point**. Confirm that its state is **Active**, then select **Actions** → **Recover**.
 
     ![Recover now from the First recovery point](./images/full-stack-br-recovery-point-recover-now.png)
 
@@ -244,4 +244,4 @@ Together, OCI Full Stack DR and OCI Full Stack BR help you protect, recover, and
 ## Acknowledgements
 
 * **Author** - Suraj Ramesh, Lead Principal Product Manager, Oracle Database High Availability (HA), Scalability and Maximum Availability Architecture (MAA)
-* **Last Updated By/Date** - September 2026
+* **Last Updated By/Date** - October 2026

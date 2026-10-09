@@ -128,7 +128,7 @@ In this lab, you will:
 
     The `xxxxxx` portion is generated for your environment and may differ from the example.
 
-6. Open each plan and review its task groups. Expand the groups to understand the order of operations. Do not start or execute a plan.
+6. Open each plan and review its plan groups. Expand the groups to understand the order of operations. Do not start or execute a plan.
 
     A plan group is an ordered collection of recovery tasks that Full Stack DR executes as part of a plan. Full Stack DR creates the plans in the standby DR protection group. You can create plans, run plan prechecks, and execute plans only from the standby DR protection group.
 
@@ -142,7 +142,7 @@ In this lab, you will:
     | **Failover** | Recovery when the Ashburn primary environment is unavailable. | Recovery prechecks, standby activation, application and database recovery, OKE and storage operations, and validation. |
     | **Start Drill** | Test the recovery workflow without changing the production role of the application. | Prechecks, drill-specific database and application operations, OKE and storage actions, and application validation. |
 
-    The following console views show the task groups generated for each plan type:
+    The following console views show the plan groups generated for each plan type:
 
     **Switchover plan**
 
@@ -172,4 +172,4 @@ You may now [proceed to the next lab](#next).
 ## Acknowledgements
 
 * **Author** - Suraj Ramesh, Lead Principal Product Manager, Oracle Database High Availability (HA), Scalability and Maximum Availability Architecture (MAA)
-* **Last Updated By/Date** - September 2026
+* **Last Updated By/Date** - October 2026

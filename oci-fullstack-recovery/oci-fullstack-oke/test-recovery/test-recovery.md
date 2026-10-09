@@ -124,4 +124,4 @@ If you completed Lab 5 while the Start Drill ran, you have finished both worksho
 ## Acknowledgements
 
 * **Author** - Suraj Ramesh, Lead Principal Product Manager, Oracle Database High Availability (HA), Scalability and Maximum Availability Architecture (MAA)
-* **Last Updated By/Date** - September 2026
+* **Last Updated By/Date** - October 2026

@@ -24,7 +24,7 @@ Estimated lab time: 1 hour
 
 ## Task 1: Quickstart Deployment
 
-1. [Download ZIP](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/resource-manager-bin-dr.zip)
+1. [Download ZIP](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/data-management-library-files/resource-manager-bin-dr.zip)
 2.  Create your own private/public key pair on your local system.
 3.  Move the key pair to the resource-manager-bin folder.
 4.  Zip up all of the files from resource-manager-bin folder. The zip file name is not important.

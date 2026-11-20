@@ -37,7 +37,7 @@ In this lab, you will:
 
 3. Type N to exit out of the Cloud Shell tutorial.
 
-4. Download and unzip this [SSH key](https://objectstorage.us-ashburn-1.oraclecloud.com/p/pFCXNoopaTHpNpK2n1eyvnzzVi4bcDGN5wCf7ZJA-Le-BwUnsibXb1SQT-VdPF9x/n/c4u04/b/events/o/id_rsa_livelabs.zip)
+4. Download and unzip this [SSH key](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/events/id_rsa_livelabs.zip)
 
 5. Upload the SSH private key by clicking the gear in the top right of the cloud shell
     ![Launch point location for cloud shell upload](images/cloud_shell_upload.png)
